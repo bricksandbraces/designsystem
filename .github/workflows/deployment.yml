@@ -13,7 +13,7 @@ jobs:
       - name: Install and Build
         run: |
           yarn install --immutable
-          yarn build-storybook
+          yarn build:storybook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
