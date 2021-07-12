@@ -8,7 +8,8 @@
 }
 
 /* tooltip-container text */
-.tooltip-container .tooltip-text {
+.tooltip-text {
+  opacity: 0;
   visibility: hidden;
   text-align: center;
   font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -26,18 +27,20 @@
   position: absolute;
   z-index: 1;
   height: 32px;
+  transition: 0.15s ease-in-out;
 }
 
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
+  opacity: 1;
 }
 
 .tooltip-text.tooltip-bottom {
-  top: 32px;
+  top: 48px;
 }
 
 .tooltip-text.tooltip-top {
-  bottom: 32px;
+  bottom: 48px;
 }
 
 .tooltip-text.tooltip-left {
