@@ -19,8 +19,6 @@ Awesome designsystem for the Bricks & Braces brand.
 
 ## How to integrate the design system?
 
-This repo shows an example of how the designsystem has to be integrated.
-
 At first, install the dependencies:
 
 ```bash
