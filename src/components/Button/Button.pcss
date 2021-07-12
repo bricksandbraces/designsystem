@@ -1,0 +1,195 @@
+.button {
+  min-height: 36px;
+  max-height: 36px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #ffffff;
+  border-radius: 2px;
+  transition: 0.15s ease-in-out;
+  position: relative;
+  background-color: #000000;
+}
+
+.button.button-large {
+  min-height: 48px;
+  max-height: 48px;
+}
+
+.button.button-fluid {
+  width: 100%;
+}
+
+.button.outline {
+  border: 1px solid #4a00e0;
+}
+
+.button.outline:hover {
+  background-color: #110033;
+  border: 1px solid #3900ad;
+}
+
+.button.outline:active {
+  background-color: #28007a;
+  border: 1px solid #3900ad;
+}
+
+.button.outline:focus-visible {
+  border: 1px solid #ffffff;
+  outline: 0;
+}
+
+.button.outline.button-disabled {
+  border: 1px solid #262626;
+  color: #404040;
+  pointer-events: none;
+}
+
+.button.danger {
+  border: 1px solid #e96565;
+  color: #e96565;
+}
+
+.button.danger:hover {
+  background-color: #2d0606;
+  border: 1px solid #e96565;
+}
+
+.button.danger:active {
+  background-color: #6b0f0f;
+  border: 1px solid #e96565;
+}
+
+.button.danger:focus-visible {
+  border: 1px solid #ffffff;
+  outline: 0;
+}
+
+.button.danger.button-disabled {
+  border: 1px solid #262626;
+  color: #404040;
+  pointer-events: none;
+}
+
+.button.ghost {
+  border: 1px solid transparent;
+}
+
+.button.ghost:hover {
+  background-color: #110033;
+  border: 1px solid #110033;
+}
+
+.button.ghost:active {
+  background-color: #28007a;
+  border: 1px solid #28007a;
+}
+
+.button.ghost:focus-visible {
+  border: 1px solid #ffffff;
+  outline: 0;
+}
+
+.button.ghost.button-disabled {
+  border: 1px solid #262626;
+  background-color: #262626;
+  color: #404040;
+  pointer-events: none;
+}
+
+.button.primary {
+  background-color: #4a00e0;
+  border: 1px solid #4a00e0;
+}
+
+.button.primary:hover {
+  background-color: #3900ad;
+  border: 1px solid #3900ad;
+}
+
+.button.primary:active {
+  background-color: #28007a;
+  border: 1px solid #28007a;
+}
+
+.button.primary:focus-visible {
+  border: 1px solid #ffffff;
+  outline: 0;
+}
+
+.button.primary.button-disabled {
+  border: 1px solid #262626;
+  background-color: #262626;
+  color: #404040;
+  pointer-events: none;
+}
+
+.icon-only {
+  min-width: 36px;
+  max-width: 36px;
+  padding: 0;
+}
+
+.icon-only.button-large {
+  min-width: 48px;
+  max-width: 48px;
+}
+
+.with-icon {
+  padding: 0 10px;
+}
+
+.icon-only > div > svg {
+  stroke-width: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.with-icon > div > svg {
+  stroke-width: 2px;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.button-fluid.with-icon > div > svg {
+  margin-right: 0;
+  position: absolute;
+}
+
+.button-fluid.with-icon.with-icon-left > div > svg {
+  left: 10px;
+}
+
+.button-fluid.with-icon.with-icon-right > div > svg {
+  right: 10px;
+}
+
+.spinner-border.loading {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+}
+
+.button-loading {
+  pointer-events: none;
+}
+
+.button-hidden {
+  opacity: 0;
+}
+
+.button-notallowed {
+  cursor: not-allowed;
+}
+
+.button-label {
+  display: flex;
+  align-items: center;
+}

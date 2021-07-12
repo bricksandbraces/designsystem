@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "outFiles": [],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Development Server",
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": ["dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Tests",
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": ["test"]
+    }
+  ]
+}

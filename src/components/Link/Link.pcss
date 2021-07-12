@@ -1,0 +1,69 @@
+.link {
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  vertical-align: baseline;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+.link:focus-visible {
+  outline: 1px solid white;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #ffffff;
+  transition: width 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.link-label {
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  flex-wrap: nowrap;
+}
+
+.link-label > svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.link.link-inline {
+  font-size: inherit;
+  transition: 0.15s ease-in-out;
+}
+
+.link.link-inline:hover {
+  color: #c297fb;
+}
+
+.link.link-inline::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  pointer-events: none;
+  transition: 0.15s ease-in-out;
+}
+
+.link.link-inline:hover::after {
+  background-color: #c297fb;
+}

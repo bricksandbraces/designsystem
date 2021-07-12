@@ -1,0 +1,16 @@
+{
+  "css.validate": false, // Disable css built-in lint
+  "stylelint.enable": true, // Enable sytlelint
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "svg.preview.background": "black",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  }
+}
