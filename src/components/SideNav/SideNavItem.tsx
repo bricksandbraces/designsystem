@@ -5,12 +5,12 @@ type SideNavItemProps = {
   /**
    * Href for link
    */
-  href: string;
+  href?: string;
 
   /**
    * label for link
    */
-  label: string;
+  label?: string;
 
   /**
    * icon that is shown

@@ -31,9 +31,9 @@ export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Logo
-        variant={select("Variant", variantOptions, defaultVariant)}
-        size={select("Size", sizeOptions, defaultSize)}
-        kind={select("kind", kindOptions, defaultKind)}
+        variant={select("Variant", variantOptions, defaultVariant) as any}
+        size={select("Size", sizeOptions, defaultSize) as any}
+        kind={select("kind", kindOptions, defaultKind) as any}
       />
     </div>
   );
