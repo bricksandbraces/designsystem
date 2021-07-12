@@ -15,9 +15,7 @@ Awesome designsystem for the Bricks & Braces brand.
 - Husky
 - Jest, Enzyme
 
-### How to use
-
-## How to integrate the design system?
+## How to use
 
 At first, install the dependencies:
 
