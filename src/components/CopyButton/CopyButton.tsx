@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import cx from "classnames";
 import { IconCopy } from "@tabler/icons";
 import Button from "../Button/Button";
@@ -23,13 +23,19 @@ export type CopyButtonProps = {
    * Classname
    */
   className?: string;
+
+  /**
+   * Children
+   */
+  children?: ReactNode;
 };
 
 const CopyButton = ({
   position,
   toolTipLabel,
   onClick,
-  className
+  className,
+  children
 }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
   return (
@@ -47,7 +53,7 @@ const CopyButton = ({
           onClick?.(event);
         }}
       >
-        <IconCopy />
+        {children || <IconCopy />}
       </Button>
       <span
         className={cx("tooltip-text", {

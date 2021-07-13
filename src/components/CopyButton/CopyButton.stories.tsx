@@ -18,7 +18,7 @@ export const Default = () => (
   <div style={{ width: "100vw", height: "100vh" }}>
     <CopyButton
       toolTipLabel={text("Label", "Copied!")}
-      position={select("Positioning", positioning, defaultPosition)}
+      position={select("Positioning", positioning, defaultPosition) as any}
     >
       <IconLayoutGridAdd />
     </CopyButton>

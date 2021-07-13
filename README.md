@@ -47,9 +47,10 @@ Last but not least, use a component from the library:
 
 ```javascript
 ...
-import { Button } from "@bricksandbraces/designsystem"
+import { Button, useInitialize } from "@bricksandbraces/designsystem"
 
 function App() {
+  useInitialize();
   return (
    ...
         <Button label="Hello" />
@@ -61,6 +62,8 @@ function App() {
 Aaaand you are done!
 
 ![image](https://user-images.githubusercontent.com/8998518/125286009-934f4500-e31b-11eb-94d7-4238b41b446f.png)
+
+> **Note: use the useInitialize() hook to initialize mandatory listeners (for viewport height correction an such magical stuff 🪄).**
 
 ### Develop with storybook
 

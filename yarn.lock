@@ -1530,7 +1530,7 @@ __metadata:
     jest: ^27.0.5
     lodash: ^4.17.21
     postcss: ^8.3.5
-    postcss-100vh-fix: ^1.0.2
+    postcss-calc: ^8.0.0
     postcss-cli: ^8.3.1
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^14.0.2
@@ -1540,6 +1540,7 @@ __metadata:
     postcss-simple-vars: ^6.0.3
     postcss-size: ^4.0.1
     postcss-utilities: ^0.8.4
+    postcss-viewport-height-correction: ^1.1.1
     prettier: ^2.3.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -14335,15 +14336,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-100vh-fix@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "postcss-100vh-fix@npm:1.0.2"
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: abfaece1119200b336f075cae34b0fc7ec70a20ca1af8acbd94c5b168c6033ecb3a8c87d0f00e016fafd05e8c4a15a2f8ee077e7f858430c68d5c1256dffb8fa
-  languageName: node
-  linkType: hard
-
 "postcss-attribute-case-insensitive@npm:^4.0.1":
   version: 4.0.2
   resolution: "postcss-attribute-case-insensitive@npm:4.0.2"
@@ -15358,7 +15350,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^7.0.14, postcss@npm:^7.0.17, postcss@npm:^7.0.2, postcss@npm:^7.0.21, postcss@npm:^7.0.26, postcss@npm:^7.0.31, postcss@npm:^7.0.32, postcss@npm:^7.0.35, postcss@npm:^7.0.36, postcss@npm:^7.0.5, postcss@npm:^7.0.6":
+"postcss-viewport-height-correction@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "postcss-viewport-height-correction@npm:1.1.1"
+  dependencies:
+    postcss: ^7.0.18
+  checksum: 9729a3569ce8b6413543aca7950578aa452e0bdaf3856d426c134516558cae80f774c951a3600459e89532a813834df85ab99cc8b916f1e5d7844ffacf971e47
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^7.0.14, postcss@npm:^7.0.17, postcss@npm:^7.0.18, postcss@npm:^7.0.2, postcss@npm:^7.0.21, postcss@npm:^7.0.26, postcss@npm:^7.0.31, postcss@npm:^7.0.32, postcss@npm:^7.0.35, postcss@npm:^7.0.36, postcss@npm:^7.0.5, postcss@npm:^7.0.6":
   version: 7.0.36
   resolution: "postcss@npm:7.0.36"
   dependencies:
