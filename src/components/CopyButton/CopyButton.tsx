@@ -7,7 +7,7 @@ export type CopyButtonProps = {
   /**
    * Provide the click handler for the button
    */
-  onClick?: (event: any) => void;
+  onClick: (event: any) => void;
 
   /**
    * Position of tooltip.
