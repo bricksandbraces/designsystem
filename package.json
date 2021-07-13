@@ -30,7 +30,7 @@
     "lib"
   ],
   "resolutions": {
-    "@babel/core": "7.13.15",
+    "@babel/core": "7.14.6",
     "@babel/preset-env": "7.13.15"
   },
   "peerDependencies": {
@@ -69,7 +69,7 @@
     "webpack-bundle-analyzer": "^4.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.14.6",
     "@types/bootstrap": "^5.0.16",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.10",
