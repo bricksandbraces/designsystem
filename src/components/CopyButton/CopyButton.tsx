@@ -39,12 +39,12 @@ const CopyButton = ({
       <Button
         kind="ghost"
         iconOnly
-        onClick={() => {
+        onClick={(event) => {
           setCopied(true);
           setTimeout(() => {
             setCopied(false);
           }, 2000);
-          onClick();
+          onClick?.(event);
         }}
       >
         <IconCopy />
