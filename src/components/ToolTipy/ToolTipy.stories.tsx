@@ -1,8 +1,8 @@
 import { text, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import ToolTip from "./ToolTip";
+import ToolTipy from "./ToolTipy";
 
-export default { title: "ToolTip", decorators: [withKnobs] };
+export default { title: "Tooltip", decorators: [withKnobs] };
 
 const positioning = {
   Left: "left",
@@ -25,14 +25,14 @@ export const Default = () => {
         alignItems: "center"
       }}
     >
-      <ToolTip
+      <ToolTipy
         position={
           select("Tooltip position", positioning, defaultPosition) as any
         }
         label={text("Tooltip label", "This is a tooltip")}
       >
         Hover me
-      </ToolTip>
+      </ToolTipy>
     </div>
   );
 };
