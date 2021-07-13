@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import { IconCopy } from "@tabler/icons";
+import { IconCopy, IconCheck } from "@tabler/icons";
 import Button from "../Button/Button";
 
 export type CopyButtonProps = {
@@ -47,7 +47,7 @@ const CopyButton = ({
           onClick?.(event);
         }}
       >
-        <IconCopy />
+        {copied ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       </Button>
       <span
         className={cx("tooltip-text", {

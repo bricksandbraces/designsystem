@@ -19,8 +19,6 @@ export const Default = () => (
     <CopyButton
       toolTipLabel={text("Label", "Copied!")}
       position={select("Positioning", positioning, defaultPosition)}
-    >
-      <IconLayoutGridAdd />
-    </CopyButton>
+    />
   </div>
 );
