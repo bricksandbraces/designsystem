@@ -8,6 +8,7 @@
 @import "../components/Logo/Logo.pcss";
 @import "../components/ToolTip/ToolTip.pcss";
 @import "../components/CopyButton/CopyButton.pcss";
+@import "../components/CodeSnippet/CodeSnippet.pcss";
 
 * {
   box-sizing: border-box;

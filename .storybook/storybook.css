@@ -1,6 +1,10 @@
 @import "./fonts.css";
 
 .sb-show-main {
-  padding: 32px !important;
+  padding: 32px;
   background: #000000 !important;
+}
+
+.sb-show-main .no-padding {
+  padding: 0;
 }
