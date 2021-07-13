@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 
-type ToolTipyProps = {
+type TooltipProps = {
   /**
    * Label that is shown.
    */
@@ -18,7 +18,7 @@ type ToolTipyProps = {
   label: string;
 };
 
-const ToolTipy = ({ children, position, label }: ToolTipyProps) => {
+const Tooltip = ({ children, position, label }: TooltipProps) => {
   return (
     <div className="tooltip-container">
       {children}
@@ -36,4 +36,4 @@ const ToolTipy = ({ children, position, label }: ToolTipyProps) => {
   );
 };
 
-export default ToolTipy;
+export default Tooltip;

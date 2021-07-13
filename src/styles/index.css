@@ -9,7 +9,7 @@
 @import "../components/UserProfile/UserProfile.pcss";
 @import "../components/SideNav/SideNav.pcss";
 @import "../components/Logo/Logo.pcss";
-@import "../components/ToolTip/ToolTip.pcss";
+@import "../components/Tooltip/Tooltip.pcss";
 @import "../components/CopyButton/CopyButton.pcss";
 
 * {
