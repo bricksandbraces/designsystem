@@ -10,6 +10,7 @@ module.exports = (ctx) => ({
     require("postcss-nested"),
     require("postcss-simple-vars"),
     require("postcss-utilities"),
+    require("postcss-size"),
     require("autoprefixer"),
     ctx.env === "production" ? require("cssnano") : false
   ]

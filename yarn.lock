@@ -1537,8 +1537,8 @@ __metadata:
     postcss-mixins: ^8.1.0
     postcss-nested: ^5.0.5
     postcss-preset-env: ^6.7.0
-    postcss-scss: ^4.0.0
     postcss-simple-vars: ^6.0.3
+    postcss-size: ^4.0.1
     postcss-utilities: ^0.8.4
     prettier: ^2.3.1
     react: ^17.0.2
@@ -15227,15 +15227,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-scss@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "postcss-scss@npm:4.0.0"
-  peerDependencies:
-    postcss: ^8.3.3
-  checksum: 9b1c628facaa7ad363c9674d8bf281a66a6a99e6c3b64fb64fba9bb9b302fed4283db690fbf6328f08403ab0dfc9bce71e1d94f4fbe0b54a47f9f7bec66b1b3a
-  languageName: node
-  linkType: hard
-
 "postcss-selector-matches@npm:^4.0.0":
   version: 4.0.0
   resolution: "postcss-selector-matches@npm:4.0.0"
@@ -15283,6 +15274,15 @@ fsevents@^1.2.7:
   peerDependencies:
     postcss: ^8.2.1
   checksum: ebb2d8eb7e150706246725bb38c55a64a18851f44dbbc4a197cadf3612fbe8ca8378ea4d8f7e37f81328235128d38fdc81040d4239cefc94302719ffa6d30286
+  languageName: node
+  linkType: hard
+
+"postcss-size@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "postcss-size@npm:4.0.1"
+  peerDependencies:
+    postcss: ^8.1.0
+  checksum: c0f2a5d9e487582c1ddf3532fa77078f73c90acd0dc86307d01096c1fe61188c48920267cd58e1aa8c2c67b1997e19701e5c0e66b8f0cf592272597d4e1334a4
   languageName: node
   linkType: hard
 
