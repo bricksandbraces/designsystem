@@ -26,7 +26,9 @@ export const Default = () => {
       }}
     >
       <ToolTip
-        position={select("Tooltip position", positioning, defaultPosition)}
+        position={
+          select("Tooltip position", positioning, defaultPosition) as any
+        }
         label={text("Tooltip label", "This is a tooltip")}
       >
         Hover me

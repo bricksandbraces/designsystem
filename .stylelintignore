@@ -9,12 +9,17 @@
 # testing
 /coverage
 
+# lib
+lib/
+bin/
+
 # next.js
 /.next/
 /out/
 
 # production
 /build
+storybook-static
 
 # yarn
 /.yarn

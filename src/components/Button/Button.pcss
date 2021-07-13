@@ -1,18 +1,18 @@
 .button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   min-height: 36px;
   max-height: 36px;
   padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.875rem;
+  transition: 0.15s ease-in-out;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
   font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #ffffff;
-  border-radius: 2px;
-  transition: 0.15s ease-in-out;
-  position: relative;
-  background-color: #000000;
+  font-size: 0.875rem;
 }
 
 .button.button-large {
@@ -29,17 +29,17 @@
 }
 
 .button.outline:hover {
-  background-color: #110033;
   border: 1px solid #3900ad;
+  background-color: #103;
 }
 
 .button.outline:active {
-  background-color: #28007a;
   border: 1px solid #3900ad;
+  background-color: #28007a;
 }
 
 .button.outline:focus-visible {
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   outline: 0;
 }
 
@@ -55,17 +55,17 @@
 }
 
 .button.danger:hover {
-  background-color: #2d0606;
   border: 1px solid #e96565;
+  background-color: #2d0606;
 }
 
 .button.danger:active {
-  background-color: #6b0f0f;
   border: 1px solid #e96565;
+  background-color: #6b0f0f;
 }
 
 .button.danger:focus-visible {
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   outline: 0;
 }
 
@@ -80,17 +80,17 @@
 }
 
 .button.ghost:hover {
-  background-color: #110033;
-  border: 1px solid #110033;
+  border: 1px solid #103;
+  background-color: #103;
 }
 
 .button.ghost:active {
-  background-color: #28007a;
   border: 1px solid #28007a;
+  background-color: #28007a;
 }
 
 .button.ghost:focus-visible {
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   outline: 0;
 }
 
@@ -102,22 +102,22 @@
 }
 
 .button.primary {
-  background-color: #4a00e0;
   border: 1px solid #4a00e0;
+  background-color: #4a00e0;
 }
 
 .button.primary:hover {
-  background-color: #3900ad;
   border: 1px solid #3900ad;
+  background-color: #3900ad;
 }
 
 .button.primary:active {
-  background-color: #28007a;
   border: 1px solid #28007a;
+  background-color: #28007a;
 }
 
 .button.primary:focus-visible {
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   outline: 0;
 }
 
@@ -144,21 +144,21 @@
 }
 
 .icon-only > div > svg {
-  stroke-width: 2px;
   width: 16px;
   height: 16px;
+  stroke-width: 2px;
 }
 
 .with-icon > div > svg {
-  stroke-width: 2px;
   width: 16px;
   height: 16px;
   margin-right: 10px;
+  stroke-width: 2px;
 }
 
 .button-fluid.with-icon > div > svg {
-  margin-right: 0;
   position: absolute;
+  margin-right: 0;
 }
 
 .button-fluid.with-icon.with-icon-left > div > svg {
@@ -171,8 +171,8 @@
 
 .spinner-border.loading {
   position: absolute;
-  height: 14px;
   width: 14px;
+  height: 14px;
   border: 2px solid currentColor;
   border-right-color: transparent;
 }

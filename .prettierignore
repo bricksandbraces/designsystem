@@ -28,6 +28,7 @@ storybook-static
 .DS_Store
 *.pem
 .npmrc
+.yarn/
 
 # debug
 npm-debug.log*

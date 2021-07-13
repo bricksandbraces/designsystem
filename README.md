@@ -35,10 +35,10 @@ import './App.css';
 ...
 ```
 
-Instead of importing already processed styles you could also import 
+Instead of importing already processed styles you could also import
 
 ```javascript
-import "@bricksandbraces/designsystem/lib/styles/postcss/index.css"
+import "@bricksandbraces/designsystem/lib/styles/postcss/index.css";
 ```
 
 for easy customisation reasons. Please note, that you need a postcss-loader for this. Make yourself common with the configuration by looking at [the designsystem repo](https://github.com/bricksandbraces/designsystem).
@@ -58,10 +58,9 @@ function App() {
 }
 ```
 
-Aaaand you are done! 
+Aaaand you are done!
 
 ![image](https://user-images.githubusercontent.com/8998518/125286009-934f4500-e31b-11eb-94d7-4238b41b446f.png)
-
 
 ### Develop with storybook
 
@@ -75,8 +74,8 @@ yarn storybook
 
 ```
 yarn test
-yarn check-format
-yarn format
+yarn format:check
+yarn format:fix
 yarn build:package
 yarn build:storybook
 yarn start:storybook
