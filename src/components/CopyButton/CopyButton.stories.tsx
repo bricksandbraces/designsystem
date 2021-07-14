@@ -1,6 +1,5 @@
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { IconLayoutGridAdd } from "@tabler/icons";
 import CopyButton from "./CopyButton";
 
 export default { title: "CopyButton", decorators: [withKnobs] };
@@ -14,13 +13,20 @@ const positioning = {
 
 const defaultPosition = "top";
 
-export const Default = () => (
-  <div style={{ width: "100vw", height: "100vh" }}>
-    <CopyButton
-      toolTipLabel={text("Label", "Copied!")}
-      position={select("Positioning", positioning, defaultPosition) as any}
-    >
-      <IconLayoutGridAdd />
-    </CopyButton>
-  </div>
-);
+export const Default = () => {
+  const valueToCopy = "Lynxes are awesome";
+  return (
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <span style={{ display: "flex", alignItems: "center" }}>
+        <span style={{ paddingRight: "24px" }}>{valueToCopy}</span>
+        <CopyButton
+          tooltipLabel={text("Label", "Copied!")}
+          tooltipPosition={
+            select("Positioning", positioning, defaultPosition) as any
+          }
+          valueToCopy={valueToCopy}
+        />
+      </span>
+    </div>
+  );
+};

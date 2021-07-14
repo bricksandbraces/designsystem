@@ -1,23 +1,29 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
-import { IconCopy } from "@tabler/icons";
+import { useCopyToClipboard } from "react-use";
+import { IconCopy, IconCheck } from "@tabler/icons";
 import Button from "../Button/Button";
 
 export type CopyButtonProps = {
   /**
-   * Provide the click handler for the button
+   * Provide optional click handler for the button
    */
   onClick?: (event: any) => void;
 
   /**
    * Position of tooltip.
    */
-  position: "top" | "bottom" | "left" | "right";
+  tooltipPosition: "top" | "bottom" | "left" | "right";
 
   /**
    * Label of tooltip.
    */
-  toolTipLabel: string;
+  tooltipLabel: string;
+
+  /**
+   * Sets the timeout after which the tooltip should hide.
+   */
+  timeout?: number;
 
   /**
    * Classname
@@ -25,45 +31,52 @@ export type CopyButtonProps = {
   className?: string;
 
   /**
-   * Children
+   * Value to copy
    */
-  children?: ReactNode;
+  valueToCopy: string;
 };
 
 const CopyButton = ({
-  position,
-  toolTipLabel,
+  tooltipPosition,
+  tooltipLabel,
   onClick,
   className,
-  children
+  timeout,
+  valueToCopy
 }: CopyButtonProps) => {
-  const [copied, setCopied] = useState(false);
+  const [showState, setShowState] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
   return (
     <div
-      className={cx("copybutton", { "copybutton-copied": copied }, className)}
+      className={cx(
+        "copybutton",
+        { "copybutton-copied": showState },
+        className
+      )}
     >
       <Button
         kind="ghost"
         iconOnly
         onClick={(event) => {
-          setCopied(true);
+          setShowState(true);
+          copyToClipboard(valueToCopy);
           setTimeout(() => {
-            setCopied(false);
-          }, 2000);
+            setShowState(false);
+          }, timeout ?? 2000);
           onClick?.(event);
         }}
       >
-        {children || <IconCopy />}
+        {showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       </Button>
       <span
         className={cx("tooltip-text", {
-          "tooltip-top": position === "top",
-          "tooltip-bottom": position === "bottom",
-          "tooltip-left": position === "left",
-          "tooltip-right": position === "right"
+          "tooltip-top": tooltipPosition === "top",
+          "tooltip-bottom": tooltipPosition === "bottom",
+          "tooltip-left": tooltipPosition === "left",
+          "tooltip-right": tooltipPosition === "right"
         })}
       >
-        {toolTipLabel}
+        {tooltipLabel}
       </span>
     </div>
   );
