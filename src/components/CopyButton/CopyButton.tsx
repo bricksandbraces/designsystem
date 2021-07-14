@@ -3,7 +3,6 @@ import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
 import { IconCopy, IconCheck } from "@tabler/icons";
 import Button from "../Button/Button";
-import Tooltip from "../Tooltip/Tooltip";
 
 export type CopyButtonProps = {
   /**
@@ -48,14 +47,12 @@ const CopyButton = ({
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
-    <Tooltip
+    <div
       className={cx(
         "copybutton",
         { "copybutton-copied": showState },
         className
       )}
-      label={tooltipLabel}
-      position={tooltipPosition}
     >
       <Button
         kind="ghost"
@@ -71,7 +68,17 @@ const CopyButton = ({
       >
         {showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       </Button>
-    </Tooltip>
+      <span
+        className={cx("tooltip-text", {
+          "tooltip-top": tooltipPosition === "top",
+          "tooltip-bottom": tooltipPosition === "bottom",
+          "tooltip-left": tooltipPosition === "left",
+          "tooltip-right": tooltipPosition === "right"
+        })}
+      >
+        {tooltipLabel}
+      </span>
+    </div>
   );
 };
 

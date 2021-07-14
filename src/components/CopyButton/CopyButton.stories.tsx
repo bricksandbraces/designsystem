@@ -17,8 +17,8 @@ export const Default = () => {
   const valueToCopy = "Lynxes are awesome";
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <span>
-        {valueToCopy}
+      <span style={{ display: "flex", alignItems: "center" }}>
+        <span style={{ paddingRight: "24px" }}>{valueToCopy}</span>
         <CopyButton
           tooltipLabel={text("Label", "Copied!")}
           tooltipPosition={
