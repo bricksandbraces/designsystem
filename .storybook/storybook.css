@@ -4,3 +4,7 @@
   padding: 32px !important;
   background: #000 !important;
 }
+
+.sb-show-main .no-padding {
+  padding: 0;
+}

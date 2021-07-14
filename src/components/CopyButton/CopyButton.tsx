@@ -1,13 +1,13 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
-import { IconCopy } from "@tabler/icons";
+import { IconCopy, IconCheck } from "@tabler/icons";
 import Button from "../Button/Button";
 import Tooltip from "../Tooltip/Tooltip";
 
 export type CopyButtonProps = {
   /**
-   * Provide the click handler for the button
+   * Provide optional click handler for the button
    */
   onClick?: (event: any) => void;
 
@@ -35,11 +35,6 @@ export type CopyButtonProps = {
    * Value to copy
    */
   valueToCopy: string;
-
-  /**
-   * Children
-   */
-  children?: ReactNode;
 };
 
 const CopyButton = ({
@@ -48,7 +43,6 @@ const CopyButton = ({
   onClick,
   className,
   timeout,
-  children,
   valueToCopy
 }: CopyButtonProps) => {
   const [showState, setShowState] = useState(false);
@@ -75,7 +69,7 @@ const CopyButton = ({
           onClick?.(event);
         }}
       >
-        {children || <IconCopy />}
+        {showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       </Button>
     </Tooltip>
   );

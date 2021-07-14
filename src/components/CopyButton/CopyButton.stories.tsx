@@ -1,6 +1,5 @@
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { IconLayoutGridAdd } from "@tabler/icons";
 import CopyButton from "./CopyButton";
 
 export default { title: "CopyButton", decorators: [withKnobs] };
@@ -26,9 +25,7 @@ export const Default = () => {
             select("Positioning", positioning, defaultPosition) as any
           }
           valueToCopy={valueToCopy}
-        >
-          <IconLayoutGridAdd />
-        </CopyButton>
+        />
       </span>
     </div>
   );
