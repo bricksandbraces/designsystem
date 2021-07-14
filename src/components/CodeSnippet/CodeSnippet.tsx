@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import CopyButton from "../CopyButton/CopyButton";
 
@@ -9,9 +9,9 @@ export type CodeSnippetProps = {
   inline?: boolean;
 
   /**
-   * React Children
+   * Code to copy
    */
-  children: ReactNode;
+  code: string;
 
   /**
    * ClassName
@@ -21,7 +21,7 @@ export type CodeSnippetProps = {
 
 const CodeSnippet = ({
   inline,
-  children,
+  code,
   className,
   ...rest
 }: CodeSnippetProps) => {
@@ -29,9 +29,10 @@ const CodeSnippet = ({
     <div className={cx("codesnippet-container", className)} {...rest}>
       <div className="codesnippet-container--overlay" />
       <CopyButton
-        position="bottom"
+        valueToCopy={code}
+        tooltipPosition="bottom"
         onClick={() => {}}
-        toolTipLabel="Copied!"
+        tooltipLabel="Copied!"
         className={cx("codesnippet-container--button", {
           "codesnippet-container--button__inline": inline
         })}
@@ -47,7 +48,7 @@ const CodeSnippet = ({
               "codesnippet-code--inline": inline
             })}
           >
-            {children}
+            {code}
           </code>
         </pre>
       </div>
