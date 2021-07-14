@@ -9,8 +9,8 @@ module.exports = (ctx) => ({
     require("postcss-nested"),
     require("postcss-simple-vars"),
     require("postcss-utilities"),
-    require("postcss-viewport-height-correction")({ variable: "pvh" }),
     require("postcss-calc"),
+    require("postcss-viewport-height-correction"),
     require("postcss-size"),
     require("autoprefixer"),
     ctx.env === "production" ? require("cssnano") : false
