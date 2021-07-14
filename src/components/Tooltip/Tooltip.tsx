@@ -8,6 +8,11 @@ type TooltipProps = {
   children: ReactNode;
 
   /**
+   * DOM class names for the container
+   */
+  className?: string;
+
+  /**
    * Position of tooltip.
    */
   position: "top" | "bottom" | "left" | "right";
@@ -18,9 +23,9 @@ type TooltipProps = {
   label: string;
 };
 
-const Tooltip = ({ children, position, label }: TooltipProps) => {
+const Tooltip = ({ children, className, position, label }: TooltipProps) => {
   return (
-    <div className="tooltip-container">
+    <div className={cx(className, "tooltip-container")}>
       {children}
       <span
         className={cx("tooltip-text", {

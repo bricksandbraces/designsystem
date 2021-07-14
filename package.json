@@ -23,6 +23,9 @@
     "not dead",
     "not op_mini all"
   ],
+  "engines": {
+    "node": ">=15.X"
+  },
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",

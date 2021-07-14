@@ -14,13 +14,22 @@ const positioning = {
 
 const defaultPosition = "top";
 
-export const Default = () => (
-  <div style={{ width: "100vw", height: "100vh" }}>
-    <CopyButton
-      toolTipLabel={text("Label", "Copied!")}
-      position={select("Positioning", positioning, defaultPosition) as any}
-    >
-      <IconLayoutGridAdd />
-    </CopyButton>
-  </div>
-);
+export const Default = () => {
+  const valueToCopy = "Lynxes are awesome";
+  return (
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <span>
+        {valueToCopy}
+        <CopyButton
+          tooltipLabel={text("Label", "Copied!")}
+          tooltipPosition={
+            select("Positioning", positioning, defaultPosition) as any
+          }
+          valueToCopy={valueToCopy}
+        >
+          <IconLayoutGridAdd />
+        </CopyButton>
+      </span>
+    </div>
+  );
+};

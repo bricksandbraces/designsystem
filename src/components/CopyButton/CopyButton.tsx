@@ -1,7 +1,9 @@
 import React, { ReactNode, useState } from "react";
 import cx from "classnames";
+import { useCopyToClipboard } from "react-use";
 import { IconCopy } from "@tabler/icons";
 import Button from "../Button/Button";
+import Tooltip from "../Tooltip/Tooltip";
 
 export type CopyButtonProps = {
   /**
@@ -12,17 +14,27 @@ export type CopyButtonProps = {
   /**
    * Position of tooltip.
    */
-  position: "top" | "bottom" | "left" | "right";
+  tooltipPosition: "top" | "bottom" | "left" | "right";
 
   /**
    * Label of tooltip.
    */
-  toolTipLabel: string;
+  tooltipLabel: string;
+
+  /**
+   * Sets the timeout after which the tooltip should hide.
+   */
+  timeout?: number;
 
   /**
    * Classname
    */
   className?: string;
+
+  /**
+   * Value to copy
+   */
+  valueToCopy: string;
 
   /**
    * Children
@@ -31,41 +43,41 @@ export type CopyButtonProps = {
 };
 
 const CopyButton = ({
-  position,
-  toolTipLabel,
+  tooltipPosition,
+  tooltipLabel,
   onClick,
   className,
-  children
+  timeout,
+  children,
+  valueToCopy
 }: CopyButtonProps) => {
-  const [copied, setCopied] = useState(false);
+  const [showState, setShowState] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
   return (
-    <div
-      className={cx("copybutton", { "copybutton-copied": copied }, className)}
+    <Tooltip
+      className={cx(
+        "copybutton",
+        { "copybutton-copied": showState },
+        className
+      )}
+      label={tooltipLabel}
+      position={tooltipPosition}
     >
       <Button
         kind="ghost"
         iconOnly
         onClick={(event) => {
-          setCopied(true);
+          setShowState(true);
+          copyToClipboard(valueToCopy);
           setTimeout(() => {
-            setCopied(false);
-          }, 2000);
+            setShowState(false);
+          }, timeout ?? 2000);
           onClick?.(event);
         }}
       >
         {children || <IconCopy />}
       </Button>
-      <span
-        className={cx("tooltip-text", {
-          "tooltip-top": position === "top",
-          "tooltip-bottom": position === "bottom",
-          "tooltip-left": position === "left",
-          "tooltip-right": position === "right"
-        })}
-      >
-        {toolTipLabel}
-      </span>
-    </div>
+    </Tooltip>
   );
 };
 
