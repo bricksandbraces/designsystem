@@ -1,5 +1,6 @@
 @import "./colors.pcss";
 @import "./metrics.pcss";
+@import "./theme.pcss";
 
 @import "../components/LoginForm/LoginForm.pcss";
 @import "../components/Button/Button.pcss";

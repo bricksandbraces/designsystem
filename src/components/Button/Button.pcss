@@ -3,156 +3,160 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  max-height: 36px;
+  min-height: $container-03;
+  max-height: $container-03;
   padding: 0 16px;
-  transition: 0.15s ease-in-out;
-  border-radius: 2px;
-  background-color: #000;
-  color: #fff;
+  transition: $transition-01;
+  border-radius: $border-radius-01;
+  background-color: transparent;
+  color: $white;
   font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 0.875rem;
+
+  &-small {
+    min-height: $container-02;
+    max-height: $container-02;
+  }
+
+  &-large {
+    min-height: $container-05;
+    max-height: $container-05;
+  }
+  &-fluid {
+    width: 100%;
+  }
+
+  &-loading {
+    pointer-events: none;
+  }
+
+  &-hidden {
+    opacity: 0;
+  }
+
+  &-notallowed {
+    cursor: not-allowed;
+  }
+
+  &-label {
+    display: flex;
+    align-items: center;
+    transform: translate(0, -1px);
+  }
+
+  &-outline {
+    border: $border-01 $interactive-01;
+
+    &:hover {
+      border: $border-01 $interactive-01;
+      background-color: $interactive-01-accent-hover;
+    }
+
+    &:active {
+      border: $border-01 $interactive-01;
+      background-color: $interactive-01-accent-active;
+    }
+  }
+
+  &-primary {
+    border: $border-01 $interactive-01;
+    background-color: $interactive-01;
+
+    &:hover {
+      border: $border-01 $interactive-01-hover;
+      background-color: $interactive-01-hover;
+    }
+
+    &:active {
+      border: $border-01 $interactive-01-active;
+      background-color: $interactive-01-active;
+    }
+  }
+
+  &-ghost {
+    border: $border-01 transparent;
+    background-color: transparent;
+
+    &:hover {
+      border: $border-01 $ui-hover;
+      background-color: $ui-hover;
+    }
+
+    &:active {
+      border: $border-01 $ui-active;
+      background-color: $ui-active;
+    }
+  }
+
+  &-danger {
+    border: $border-01 $danger;
+    color: $danger;
+
+    &:hover {
+      border: $border-01 $danger;
+      background-color: $danger-accent-hover;
+    }
+
+    &:active {
+      border: $border-01 $danger;
+      background-color: $danger-accent-active;
+    }
+  }
 }
 
-.button.button-large {
-  min-height: 48px;
-  max-height: 48px;
-}
-
-.button.button-fluid {
-  width: 100%;
-}
-
-.button.outline {
-  border: 1px solid #4a00e0;
-}
-
-.button.outline:hover {
-  border: 1px solid #3900ad;
-  background-color: #103;
-}
-
-.button.outline:active {
-  border: 1px solid #3900ad;
-  background-color: #28007a;
-}
-
-.button.outline:focus-visible {
-  border: 1px solid #fff;
+.button.button-ghost:focus-visible,
+.button.button-primary:focus-visible,
+.button.button-danger:focus-visible,
+.button.button-outline:focus-visible {
+  border: $border-01 $focus;
   outline: 0;
 }
 
-.button.outline.button-disabled {
-  border: 1px solid #262626;
-  color: #404040;
+.button.button-ghost.button-disabled,
+.button.button-primary.button-disabled {
+  border: $border-01 $disabled-01;
+  background-color: $disabled-01;
+  color: $disabled-02;
   pointer-events: none;
 }
 
-.button.danger {
-  border: 1px solid #e96565;
-  color: #e96565;
-}
-
-.button.danger:hover {
-  border: 1px solid #e96565;
-  background-color: #2d0606;
-}
-
-.button.danger:active {
-  border: 1px solid #e96565;
-  background-color: #6b0f0f;
-}
-
-.button.danger:focus-visible {
-  border: 1px solid #fff;
-  outline: 0;
-}
-
-.button.danger.button-disabled {
-  border: 1px solid #262626;
-  color: #404040;
-  pointer-events: none;
-}
-
-.button.ghost {
-  border: 1px solid transparent;
-  background-color: transparent;
-}
-
-.button.ghost:hover {
-  border: 1px solid #1a1a1a;
-  background-color: #1a1a1a;
-}
-
-.button.ghost:active {
-  border: 1px solid #333;
-  background-color: #333;
-}
-
-.button.ghost:focus-visible {
-  border: 1px solid #fff;
-  outline: 0;
-}
-
-.button.ghost.button-disabled {
-  border: 1px solid #262626;
-  background-color: #262626;
-  color: #404040;
-  pointer-events: none;
-}
-
-.button.primary {
-  border: 1px solid #4a00e0;
-  background-color: #4a00e0;
-}
-
-.button.primary:hover {
-  border: 1px solid #3900ad;
-  background-color: #3900ad;
-}
-
-.button.primary:active {
-  border: 1px solid #28007a;
-  background-color: #28007a;
-}
-
-.button.primary:focus-visible {
-  border: 1px solid #fff;
-  outline: 0;
-}
-
-.button.primary.button-disabled {
-  border: 1px solid #262626;
-  background-color: #262626;
-  color: #404040;
+.button.button-outline.button-disabled,
+.button.button-danger.button-disabled {
+  border: $border-01 $disabled-01;
+  color: $disabled-02;
   pointer-events: none;
 }
 
 .icon-only {
-  min-width: 36px;
-  max-width: 36px;
+  min-width: $container-03;
+  max-width: $container-03;
   padding: 0;
 }
 
 .icon-only.button-large {
-  min-width: 48px;
-  max-width: 48px;
+  min-width: $container-05;
+  max-width: $container-05;
+}
+
+.icon-only.button-small {
+  min-width: $container-02;
+  max-width: $container-02;
 }
 
 .with-icon {
-  padding: 0 10px;
+  padding: 0 20px 0 10px;
 }
 
 .icon-only > div > svg {
-  width: 16px;
-  height: 16px;
+  width: $container-01;
+  height: $container-01;
   stroke-width: 2px;
 }
 
 .with-icon > div > svg {
-  width: 16px;
-  height: 16px;
+  width: $container-01;
+  height: $container-01;
   margin-right: 10px;
   stroke-width: 2px;
 }
@@ -176,21 +180,4 @@
   height: 14px;
   border: 2px solid currentColor;
   border-right-color: transparent;
-}
-
-.button-loading {
-  pointer-events: none;
-}
-
-.button-hidden {
-  opacity: 0;
-}
-
-.button-notallowed {
-  cursor: not-allowed;
-}
-
-.button-label {
-  display: flex;
-  align-items: center;
 }

@@ -28,6 +28,7 @@ export const Default = () => (
         kind={select("Kind", options, defaultValue)}
         label={text("Label", "Button")}
         large={boolean("large", false)}
+        small={boolean("small", false)}
         fluid={boolean("Fluid", false)}
         withIcon={boolean("with Icon", false)}
         iconPosition={select("Icon positioning", positioning, defaultPosition)}

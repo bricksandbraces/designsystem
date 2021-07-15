@@ -45,6 +45,9 @@ export type ButtonProps = {
   /** Set the button large */
   large?: boolean;
 
+  /** Set the button small */
+  small?: boolean;
+
   /** Set the button to icon only button */
   iconOnly?: boolean;
 
@@ -63,16 +66,16 @@ export type ButtonProps = {
 
 const kindStyles: Record<string, Record<string, string>> = {
   primary: {
-    "": "primary"
+    "": "button-primary"
   },
   outline: {
-    "": "outline"
+    "": "button-outline"
   },
   danger: {
-    "": "danger"
+    "": "button-danger"
   },
   ghost: {
-    "": "ghost"
+    "": "button-ghost"
   }
 };
 
@@ -80,6 +83,7 @@ const Button = ({
   label,
   kind = "primary",
   large,
+  small,
   disabled,
   isLoading,
   iconOnly,
@@ -95,9 +99,10 @@ const Button = ({
       className={cx(
         "button",
         {
-          "button-large": large,
+          "button-large": large && !small,
+          "button-small": small && !large,
           "icon-only": iconOnly,
-          "with-icon": withIcon,
+          "with-icon": withIcon && !iconOnly,
           "button-disabled": disabled,
           "button-fluid": fluid && !iconOnly,
           "with-icon-right": iconPosition === "right",
