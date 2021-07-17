@@ -13,7 +13,8 @@
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "test": "jest --passWithNoTests",
     "format:fix": "DEBUG=eslint:cli-engine eslint --fix . && prettier --write . && stylelint \"**/*.?(p)css\" --fix --formatter verbose",
-    "format:check": "DEBUG=eslint:cli-engine eslint . && prettier --check . && stylelint \"**/*.?(p)css\" --formatter verbose"
+    "format:check": "DEBUG=eslint:cli-engine eslint . && prettier --check . && stylelint \"**/*.?(p)css\" --formatter verbose",
+    "postinstall": "husky install"
   },
   "browserslist": [
     "last 2 versions",
@@ -95,7 +96,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.5",
     "postcss": "^8.3.5",
