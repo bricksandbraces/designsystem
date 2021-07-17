@@ -1,0 +1,56 @@
+.grid-example {
+  background-color: $purple-10;
+  color: $white;
+  border: 1px dashed $purple-40;
+  padding: 16px;
+}
+
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$container-max-widths: (
+  sm: 240px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+.with-gutter > div > div {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.with-gutter > div {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.gutter-left > div > div {
+  padding-left: 1rem;
+}
+
+.gutter-right > div > div {
+  padding-right: 1rem;
+}
+
+.gutter-left > div {
+  padding-left: 1rem;
+}
+
+.gutter-right > div {
+  padding-right: 1rem;
+}
+
+.row > * {
+  padding: 0;
+}
