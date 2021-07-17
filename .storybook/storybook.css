@@ -1,8 +1,8 @@
 @import "./fonts.css";
 
 .sb-show-main {
-  padding: 32px !important;
-  background: #000 !important;
+  padding: 8px;
+  background: #000;
 }
 
 .sb-show-main .no-padding {

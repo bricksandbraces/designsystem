@@ -13,6 +13,7 @@
 @import "../components/Tooltip/Tooltip.pcss";
 @import "../components/CopyButton/CopyButton.pcss";
 @import "../components/CodeSnippet/CodeSnippet.pcss";
+@import "../components/Grid/Grid.pcss";
 
 * {
   box-sizing: border-box;
