@@ -26,12 +26,12 @@ type LinkProps = {
 const Link = ({ children, href, target, inline, ...rest }: LinkProps) => {
   return (
     <a
-      className={cx("link", { "link-inline": inline })}
+      className={cx("link", { "link--inline": inline })}
       href={href}
       target={target}
       {...rest}
     >
-      <div className="link-label">{children}</div>
+      <div className="link--label">{children}</div>
     </a>
   );
 };

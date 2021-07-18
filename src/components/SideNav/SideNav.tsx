@@ -20,11 +20,11 @@ type SideNavProps = {
 const SideNav = ({ children, basePath }: SideNavProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cx("sidenav", { "sidenav-open": open })}>
-      <div className="sidenav-top">
+    <div className={cx("sidenav", { "sidenav--open": open })}>
+      <div className="sidenav--top">
         <a
           href={basePath}
-          className={cx("sidenav-homebutton", { "sidenav-icon-open": open })}
+          className={cx("sidenav--homebutton", { "sidenav--icon-open": open })}
         >
           <Logo
             kind={open ? "logotype" : "logomark"}
@@ -42,21 +42,21 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
               color="white"
               stroke={2}
               strokeLinejoin="miter"
-              className={cx("sidenav-menuicon", {
-                "sidenav-menuicon-open": open
+              className={cx("sidenav--menuicon", {
+                "sidenav--menuicon-open": open
               })}
             />
           }
         />
-        <hr className="sidenav-divider" />
+        <hr className="sidenav--divider" />
       </div>
-      <div className="sidenav-items">{children}</div>
-      <p className="sidenav-appinfo">
+      <div className="sidenav--items">{children}</div>
+      <p className="sidenav--appinfo">
         &#169; 2021 BRICKS &amp; BRACES BARK
         <br />
         v.0.1 Release 1
       </p>
-      <div className="sidenav-user">
+      <div className="sidenav--user">
         <UserProfile
           name="Hendrik Ulbrich"
           subName="@hendrikU"

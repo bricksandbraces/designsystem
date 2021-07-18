@@ -1,4 +1,4 @@
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Grid, Column } from "./CSSGrid";
 
@@ -121,7 +121,7 @@ export const WithGutterRight = () => {
 export const Example = () => {
   return (
     <>
-      <Grid gutter>
+      <Grid gutter fullWidth={boolean("Full width", false)}>
         <Column
           sm={4}
           md={8}
@@ -136,7 +136,7 @@ export const Example = () => {
           }}
         />
       </Grid>
-      <Grid gutter>
+      <Grid gutter fullWidth={boolean("Full width", false)}>
         <Column sm={4} md={4} lg={4} xlg={4}>
           <div style={{ color: "#fff", marginTop: "24px" }}>
             <p style={{ fontSize: "64px", fontWeight: "200" }}>

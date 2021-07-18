@@ -50,7 +50,7 @@ const CopyButton = ({
     <div
       className={cx(
         "copybutton",
-        { "copybutton-copied": showState },
+        { "copybutton--copied": showState },
         className
       )}
     >
@@ -69,11 +69,11 @@ const CopyButton = ({
         {showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       </Button>
       <span
-        className={cx("tooltip-text", {
-          "tooltip-top": tooltipPosition === "top",
-          "tooltip-bottom": tooltipPosition === "bottom",
-          "tooltip-left": tooltipPosition === "left",
-          "tooltip-right": tooltipPosition === "right"
+        className={cx("tooltip--text", {
+          "tooltip--top": tooltipPosition === "top",
+          "tooltip--bottom": tooltipPosition === "bottom",
+          "tooltip--left": tooltipPosition === "left",
+          "tooltip--right": tooltipPosition === "right"
         })}
       >
         {tooltipLabel}

@@ -44,8 +44,8 @@ const CookieBanner = ({
   onClick
 }: CookieBannerProps) => {
   return (
-    <div className={cx("cookiebanner", { "cookiebanner-open": open })}>
-      <div className="cookiebanner-label">
+    <div className={cx("cookiebanner", { "cookiebanner--open": open })}>
+      <div className="cookiebanner--label">
         <p>{label}</p>
         {linkLabel && (
           <Link inline href={linkHref ?? "#"} target="_blank">

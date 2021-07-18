@@ -1,31 +1,33 @@
-.logo-black {
-  fill: #000;
-}
+.logo {
+  &--black {
+    fill: #000;
+  }
 
-.logo-white {
-  fill: #fff;
-}
+  &--white {
+    fill: #fff;
+  }
 
-.logo:hover > path {
-  fill: #4a00e0;
+  &:hover > path {
+    fill: $purple-60;
+  }
 }
 
 .logo > path {
   transition: 0.3s ease-in-out;
 }
 
-.logo.logo-small {
+.logo.logo--small {
   height: 32px;
 }
 
-.logo.logo-medium {
+.logo.logo--medium {
   height: 48px;
 }
 
-.logo.logo-large {
+.logo.logo--large {
   height: 64px;
 }
 
-.logo.logo-xlarge {
+.logo.logo--xlarge {
   height: 96px;
 }
