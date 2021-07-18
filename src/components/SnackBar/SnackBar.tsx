@@ -46,7 +46,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
           {messageType === "danger" && (
             <IconForbid
               size={16}
-              color="#c53a3a"
+              color="#ff8080"
               stroke={2}
               strokeLinejoin="miter"
               className="snackbar--icon"
@@ -55,7 +55,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
           {messageType === "success" && (
             <IconCheck
               size={16}
-              color="#68b748"
+              color="#a4fe80"
               stroke={2}
               strokeLinejoin="miter"
               className="snackbar--icon"
@@ -64,7 +64,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
           {messageType === "info" && (
             <IconInfoCircle
               size={16}
-              color="#05f"
+              color="#80aaff"
               stroke={2}
               strokeLinejoin="miter"
               className="snackbar--icon"
@@ -73,7 +73,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
           {messageType === "warning" && (
             <IconAlertTriangle
               size={16}
-              color="#dbb024"
+              color="#ffe180"
               stroke={2}
               strokeLinejoin="miter"
               className="snackbar--icon"
