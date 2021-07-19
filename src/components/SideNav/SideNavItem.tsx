@@ -40,19 +40,23 @@ const SideNavItem = ({
       {href !== undefined ? (
         <a
           href={href}
-          className={cx("sidenav-item", { "sidenav-item--selected": selected })}
+          className={cx("sidenav--item", {
+            "sidenav--item-selected": selected
+          })}
         >
-          <div className="sidenav-item--icon">{renderIcon}</div>
-          <div className="sidenav-item--label">{label}</div>
+          <div className="sidenav--item-icon">{renderIcon}</div>
+          <div className="sidenav--item-label">{label}</div>
         </a>
       ) : (
         <button
           type="button"
           onClick={onClick}
-          className={cx("sidenav-item", { "sidenav-item--selected": selected })}
+          className={cx("sidenav--item", {
+            "sidenav--item-selected": selected
+          })}
         >
-          <div className="sidenav-item--icon">{renderIcon}</div>
-          <div className="sidenav-item--label">{label}</div>
+          <div className="sidenav--item-icon">{renderIcon}</div>
+          <div className="sidenav--item-label">{label}</div>
         </button>
       )}
     </>

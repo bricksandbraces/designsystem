@@ -25,14 +25,14 @@ type TooltipProps = {
 
 const Tooltip = ({ children, className, position, label }: TooltipProps) => {
   return (
-    <div className={cx(className, "tooltip-container")}>
+    <div className={cx(className, "tooltip--container")}>
       {children}
       <span
-        className={cx("tooltip-text", {
-          "tooltip-top": position === "top",
-          "tooltip-bottom": position === "bottom",
-          "tooltip-left": position === "left",
-          "tooltip-right": position === "right"
+        className={cx("tooltip--text", {
+          "tooltip--top": position === "top",
+          "tooltip--bottom": position === "bottom",
+          "tooltip--left": position === "left",
+          "tooltip--right": position === "right"
         })}
       >
         {label}

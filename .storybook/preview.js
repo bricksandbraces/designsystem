@@ -26,14 +26,23 @@ export const parameters = {
     // Override the default dark theme
     dark: {
       ...themes.dark,
-      appBg: "#060606",
-      colorSecondary: "#4a00e0",
+      appBg: "#0c0c0e",
+      colorSecondary: "#aa80ff",
+      textColor: "#fff",
+      textInverseColor: "#fff",
+      barTextColor: "#fff",
+      barSelectedColor: "#aa80ff",
       brandImage: LogoWhite
     },
     // Override the default light theme
     light: {
       ...themes.normal,
-      colorSecondary: "#4a00e0",
+      appBg: "#e3e4e8",
+      colorSecondary: "#5400ff",
+      textColor: "#000",
+      textInverseColor: "#000",
+      barTextColor: "#000",
+      barSelectedColor: "#5400ff",
       brandImage: LogoBlack
     }
   }

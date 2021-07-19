@@ -14,6 +14,7 @@
 @import "../components/CopyButton/CopyButton.pcss";
 @import "../components/CodeSnippet/CodeSnippet.pcss";
 @import "../components/Grid/Grid.pcss";
+@import "../components/AspectRatio/AspectRatio.pcss";
 
 * {
   box-sizing: border-box;

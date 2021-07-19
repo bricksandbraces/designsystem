@@ -10,133 +10,134 @@
   border-radius: 50%;
   outline: 0;
   background-color: transparent;
+
+  &--link {
+    margin: 0 0 4px 0;
+    padding: 0;
+  }
+
+  &--linklist {
+    margin: 12px 0 0 0;
+    padding: 0;
+  }
+
+  &--avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    transition: transform 0.15s ease-in-out;
+    border-radius: 50%;
+    background-color: #333;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: #999;
+    font-size: 16px;
+  }
+
+  &--content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &--menu {
+    visibility: hidden;
+    position: absolute;
+    bottom: -7px;
+    left: 64px;
+    width: 260px;
+    padding: 16px;
+    transform: translate(0, 0);
+    transition: 0.15s ease-in-out;
+    border: 1px solid #202020;
+    border-radius: 4px;
+    opacity: 0;
+    background-color: #171717;
+    color: white;
+    font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+
+    &-user {
+      display: flex;
+    }
+
+    &-open {
+      visibility: visible;
+      transform: translate(0, 6px);
+      opacity: 1;
+    }
+
+    &-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-right: 16px;
+      padding: 0;
+      border-radius: 50%;
+      background-color: #333;
+      background-repeat: no-repeat;
+      background-size: contain;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      color: #999;
+      font-size: 20px;
+    }
+  }
+
+  &--name {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+  }
+
+  &--divider {
+    width: calc(100% + 32px);
+    margin: 16px 0;
+    transform: translate(-16px, 0);
+    border: 0;
+    opacity: 1;
+    background-color: #262626;
+    color: inherit;
+  }
+
+  &--subname {
+    margin: 0;
+    padding: 0;
+    color: #808080;
+    font-size: 14px;
+  }
+
+  &:hover {
+    border: 1px solid rgba(74, 0, 224, 1);
+  }
+
+  &:hover > .userprofile-avatar {
+    transform: scale(0.9);
+  }
+
+  &:focus-visible {
+    border: 1px solid white;
+  }
+
+  &:active > .userprofile-avatar {
+    box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.userprofile:hover {
+.userprofile.userprofile--open {
   border: 1px solid rgba(74, 0, 224, 1);
 }
 
-.userprofile:hover > .userprofile-avatar {
-  transform: scale(0.9);
-}
-
-.userprofile:focus-visible {
+.userprofile:focus-visible.userprofile--open {
   border: 1px solid white;
 }
 
-.userprofile:active > .userprofile-avatar {
-  box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.1);
-}
-
-.userprofile-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  transition: transform 0.15s ease-in-out;
-  border-radius: 50%;
-  background-color: #333;
-  background-repeat: no-repeat;
-  background-size: contain;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  color: #999;
-  font-size: 16px;
-}
-
-.userprofile.userprofile-open {
-  border: 1px solid rgba(74, 0, 224, 1);
-}
-
-.userprofile:focus-visible.userprofile-open {
-  border: 1px solid white;
-}
-
-.userprofile.userprofile-open > .userprofile-avatar {
+.userprofile.userprofile--open > .userprofile--avatar {
   transform: scale(0.9);
   box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.25);
-}
-
-.userprofile-menu {
-  visibility: hidden;
-  position: absolute;
-  bottom: -7px;
-  left: 64px;
-  width: 260px;
-  padding: 16px;
-  transform: translate(0, 0);
-  transition: 0.15s ease-in-out;
-  border: 1px solid #202020;
-  border-radius: 4px;
-  opacity: 0;
-  background-color: #171717;
-  color: white;
-  font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.userprofile-menu-open {
-  visibility: visible;
-  transform: translate(0, 6px);
-  opacity: 1;
-}
-
-.userprofile-menu-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  margin-right: 16px;
-  padding: 0;
-  border-radius: 50%;
-  background-color: #333;
-  background-repeat: no-repeat;
-  background-size: contain;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  color: #999;
-  font-size: 20px;
-}
-
-.userprofile-name {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-}
-
-.userprofile-subname {
-  margin: 0;
-  padding: 0;
-  color: #808080;
-  font-size: 14px;
-}
-
-.userprofile-menu-user {
-  display: flex;
-}
-
-.userprofile-content {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.userprofile-link {
-  margin: 0 0 4px 0;
-  padding: 0;
-}
-
-.userprofile-linklist {
-  margin: 12px 0 0 0;
-  padding: 0;
-}
-
-.userprofile-divider {
-  width: calc(100% + 32px);
-  margin: 16px 0;
-  transform: translate(-16px, 0);
-  border: 0;
-  opacity: 1;
-  background-color: #262626;
-  color: inherit;
 }

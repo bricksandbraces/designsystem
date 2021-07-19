@@ -26,26 +26,26 @@ const CodeSnippet = ({
   ...rest
 }: CodeSnippetProps) => {
   return (
-    <div className={cx("codesnippet-container", className)} {...rest}>
-      <div className="codesnippet-container--overlay" />
+    <div className={cx("codesnippet--container", className)} {...rest}>
+      <div className="codesnippet--container-overlay" />
       <CopyButton
         valueToCopy={code}
         tooltipPosition="bottom"
         onClick={() => {}}
         tooltipLabel="Copied!"
-        className={cx("codesnippet-container--button", {
-          "codesnippet-container--button__inline": inline
+        className={cx("codesnippet--container-button", {
+          "codesnippet--container-button__inline": inline
         })}
       />
       <div
-        className={cx("codesnippet-innercontainer", {
-          "codesnippet-innercontainer--inline": inline
+        className={cx("codesnippet--innercontainer", {
+          "codesnippet--innercontainer-inline": inline
         })}
       >
-        <pre className="codesnippet-pre">
+        <pre className="codesnippet--pre">
           <code
-            className={cx("codesnippet-code", {
-              "codesnippet-code--inline": inline
+            className={cx("codesnippet--code", {
+              "codesnippet--code-inline": inline
             })}
           >
             {code}

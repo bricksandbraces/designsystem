@@ -8,62 +8,61 @@
   font-size: 0.875rem;
   text-decoration: none;
   vertical-align: baseline;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 1px;
+    transition: width 0.3s ease-in-out;
+    background: #fff;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:focus-visible {
+    outline: 1px solid white;
+  }
+
+  &--label {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-size: inherit;
+  }
+
+  &--label > svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+  }
 }
 
-.link:hover {
-  color: #fff;
-}
-
-.link:focus-visible {
-  outline: 1px solid white;
-}
-
-.link:hover::after {
-  width: 100%;
-}
-
-.link::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 1px;
-  transition: width 0.3s ease-in-out;
-  background: #fff;
-  pointer-events: none;
-}
-
-.link-label {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  font-size: inherit;
-}
-
-.link-label > svg {
-  width: 16px;
-  height: 16px;
-  margin-left: 6px;
-}
-
-.link.link-inline {
+.link.link--inline {
   transition: 0.15s ease-in-out;
   font-size: inherit;
-}
 
-.link.link-inline:hover {
-  color: #c297fb;
-}
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    transition: 0.15s ease-in-out;
+    background: #fff;
+    pointer-events: none;
+  }
 
-.link.link-inline::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  transition: 0.15s ease-in-out;
-  background: #fff;
-  pointer-events: none;
-}
-
-.link.link-inline:hover::after {
-  background-color: #c297fb;
+  &:hover {
+    color: #c297fb;
+    &::after {
+      background-color: #c297fb;
+    }
+  }
 }

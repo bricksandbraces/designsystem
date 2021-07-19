@@ -32,56 +32,56 @@ type SnackBarProps = {
 
 const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
   return (
-    <div className="snackbar-container">
+    <div className="snackbar--container">
       <div
         className={cx("snackbar", {
-          "snackbar-open": open,
-          "snackbar-danger": messageType === "danger",
-          "snackbar-success": messageType === "success",
-          "snackbar-info": messageType === "info",
-          "snackbar-warning": messageType === "warning"
+          "snackbar--open": open,
+          "snackbar--danger": messageType === "danger",
+          "snackbar--success": messageType === "success",
+          "snackbar--info": messageType === "info",
+          "snackbar--warning": messageType === "warning"
         })}
       >
-        <span className="snackbar-content">
+        <span className="snackbar--content">
           {messageType === "danger" && (
             <IconForbid
               size={16}
-              color="#e96565"
+              color="#ff8080"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar-icon"
+              className="snackbar--icon"
             />
           )}
           {messageType === "success" && (
             <IconCheck
               size={16}
-              color="#83D662"
+              color="#a4fe80"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar-icon"
+              className="snackbar--icon"
             />
           )}
           {messageType === "info" && (
             <IconInfoCircle
               size={16}
-              color="#44b2fc"
+              color="#80aaff"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar-icon"
+              className="snackbar--icon"
             />
           )}
           {messageType === "warning" && (
             <IconAlertTriangle
               size={16}
-              color="#F2C635"
+              color="#ffe180"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar-icon"
+              className="snackbar--icon"
             />
           )}
-          <p className="snackbar-message">{message}</p>
+          <p className="snackbar--message">{message}</p>
         </span>
-        <button type="button" className="snackbar-close" onClick={onClose}>
+        <button type="button" className="snackbar--close" onClick={onClose}>
           <IconX size={16} stroke={2} strokeLinejoin="miter" />
         </button>
       </div>

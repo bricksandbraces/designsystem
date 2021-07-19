@@ -54,13 +54,13 @@ const UserProfile = ({
     <>
       <button
         type="button"
-        className={cx("userprofile", { "userprofile-open": open })}
+        className={cx("userprofile", { "userprofile--open": open })}
         onClick={() => {
           setOpen(!open);
         }}
       >
         <div
-          className="userprofile-avatar"
+          className="userprofile--avatar"
           style={{
             backgroundImage: `url(${imgUrl})`
           }}
@@ -69,11 +69,11 @@ const UserProfile = ({
         </div>
       </button>
       <div
-        className={cx("userprofile-menu", { "userprofile-menu-open": open })}
+        className={cx("userprofile--menu", { "userprofile--menu-open": open })}
       >
-        <div className="userprofile-menu-user">
+        <div className="userprofile--menu-user">
           <div
-            className="userprofile-menu-avatar"
+            className="userprofile--menu-avatar"
             style={{
               backgroundImage: `url(${imgUrl})`
             }}
@@ -81,14 +81,14 @@ const UserProfile = ({
             {!imgUrl && name.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="userprofile-name">{name}</p>
-            <p className="userprofile-subname">{subName}</p>
+            <p className="userprofile--name">{name}</p>
+            <p className="userprofile--subname">{subName}</p>
             {links && (
-              <div className="userprofile-linklist">
+              <div className="userprofile--linklist">
                 {links
                   .map((link) => {
                     return (
-                      <p key={link.href} className="userprofile-link">
+                      <p key={link.href} className="userprofile--link">
                         <Link href={link.href}>{link.label}</Link>
                       </p>
                     );
@@ -98,7 +98,7 @@ const UserProfile = ({
             )}
           </div>
         </div>
-        <hr className="userprofile-divider" />
+        <hr className="userprofile--divider" />
         <Button onClick={onLogout} fluid label="Sign out" />
       </div>
     </>

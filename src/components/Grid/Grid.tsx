@@ -13,30 +13,16 @@ type GridProps = {
   className?: string;
 
   /**
-   * Gutter
+   * Fullwidth
    */
-  withGutter?: boolean;
-  withGutterLeft?: boolean;
-  withGutterRight?: boolean;
-};
-
-type RowProps = {
-  /**
-   * Row Children
-   */
-  children?: ReactNode;
-
-  /**
-   * Classnames
-   */
-  className?: string;
+  fullWidth?: boolean;
 
   /**
    * Gutter
    */
-  withGutter?: boolean;
-  withGutterLeft?: boolean;
-  withGutterRight?: boolean;
+  gutter?: boolean;
+  gutterLeft?: boolean;
+  gutterRight?: boolean;
 };
 
 type ColumnProps = {
@@ -51,58 +37,58 @@ type ColumnProps = {
   className?: string;
 
   /**
-   * Breakpoints
+   * Span
    */
-  xs?: number;
+  span?: number;
+
+  /**
+   * Offset
+   */
+  offset?: number;
+
+  /**
+   * Breakpoint
+   */
   sm?: number;
   md?: number;
   lg?: number;
-  xl?: number;
-  xxl?: number;
+  xlg?: number;
+  smOffset?: number;
+  mdOffset?: number;
+  lgOffset?: number;
+  xlgOffset?: number;
+  defaultColumn?: boolean;
+
+  /**
+   * React inline styles for the column
+   */
+  style?: any;
 };
 
 export const Grid = ({
   children,
+  fullWidth,
   className,
-  withGutter,
-  withGutterLeft,
-  withGutterRight
+  gutter,
+  gutterLeft,
+  gutterRight,
+  ...rest
 }: GridProps) => {
+  const childrenCount = React.Children.count(children);
   return (
     <div
+      columnCount={childrenCount}
       className={cx(
-        "container",
+        "grid--container",
         {
-          "with-gutter": withGutter,
-          "gutter-left": withGutterLeft,
-          "gutter-right": withGutterRight
+          "grid--fullwidth": fullWidth,
+          "grid--container-gutter": gutter,
+          "grid--container-gutter__left": gutterLeft,
+          "grid--container-gutter__right": gutterRight
         },
         className
       )}
-    >
-      {children}
-    </div>
-  );
-};
-
-export const Row = ({
-  children,
-  className,
-  withGutter,
-  withGutterLeft,
-  withGutterRight
-}: RowProps) => {
-  return (
-    <div
-      className={cx(
-        "row",
-        {
-          "with-gutter": withGutter,
-          "gutter-left": withGutterLeft,
-          "gutter-right": withGutterRight
-        },
-        className
-      )}
+      {...rest}
     >
       {children}
     </div>
@@ -111,28 +97,39 @@ export const Row = ({
 
 export const Column = ({
   children,
-  xs,
+  span,
+  offset,
   sm,
   md,
   lg,
-  xl,
-  xxl,
-  className
+  xlg,
+  smOffset,
+  mdOffset,
+  lgOffset,
+  xlgOffset,
+  className,
+  defaultColumn,
+  ...rest
 }: ColumnProps) => {
   return (
     <div
       className={cx(
-        "col",
-        xs && `col-${xs}`,
-        sm && `col-sm-${sm}`,
-        md && `col-md-${md}`,
-        lg && `col-lg-${lg}`,
-        xl && `col-xl-${xl}`,
-        xxl && `col-xxl-${xxl}`,
+        span && `grid--col-${span}`,
+        offset && `grid--col-${span}__offset-${offset}`,
+        sm && sm <= 4 && `grid--col-sm__${sm}`,
+        smOffset && `grid--col-sm__${sm}__offset-${smOffset}`,
+        md && md <= 8 && `grid--col-md__${md}`,
+        mdOffset && `grid--col-md__${md}__offset-${mdOffset}`,
+        lg && lg <= 16 && `grid--col-lg__${lg}`,
+        lgOffset && `grid--col-lg__${lg}__offset-${lgOffset}`,
+        xlg && xlg <= 16 && `grid--col-xlg__${xlg}`,
+        xlgOffset && `grid--col-xlg__${xlg}__offset-${xlgOffset}`,
+        { "grid--col": defaultColumn },
         className
       )}
+      {...rest}
     >
-      {children}
+      <div>{children}</div>
     </div>
   );
 };
