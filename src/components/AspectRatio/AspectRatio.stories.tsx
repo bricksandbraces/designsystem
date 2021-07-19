@@ -1,7 +1,7 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import AspectRatio from "./AspectRatio";
-import { Grid, Column } from "../CSSGrid/CSSGrid";
+import { Grid, Column } from "../Grid/Grid";
 
 export default { title: "AspectRatio", decorators: [withKnobs] };
 
