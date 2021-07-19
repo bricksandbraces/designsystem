@@ -58,6 +58,11 @@ type ColumnProps = {
   lgOffset?: number;
   xlgOffset?: number;
   defaultColumn?: boolean;
+
+  /**
+   * React inline styles for the column
+   */
+  style?: any;
 };
 
 export const Grid = ({

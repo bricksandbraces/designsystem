@@ -19,22 +19,22 @@ export const AspectRatioComponent = () => {
   return (
     <Grid gutter>
       <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio)}>
+        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
           <div className="grid--example">Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio)}>
+        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
           <div className="grid--example">Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio)}>
+        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
           <div className="grid--example">Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio)}>
+        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
           <div className="grid--example">Content</div>
         </AspectRatio>
       </Column>

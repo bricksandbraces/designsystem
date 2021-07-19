@@ -139,7 +139,7 @@ export const Example = () => {
       <Grid gutter fullWidth={boolean("Full width", false)}>
         <Column sm={4} md={4} lg={4} xlg={4}>
           <div style={{ color: "#fff", marginTop: "24px" }}>
-            <p style={{ fontSize: "64px", fontWeight: "200" }}>
+            <p style={{ fontSize: "64px", fontWeight: 200 }}>
               Hello,{" "}
               <span
                 style={{
@@ -153,7 +153,7 @@ export const Example = () => {
         </Column>
         <Column sm={4} md={8} lg={8} xlg={12}>
           <div style={{ color: "#e0e0e0", marginTop: "40px" }}>
-            <p style={{ fontSize: "24px", fontWeight: "300" }}>
+            <p style={{ fontSize: "24px", fontWeight: 300 }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua. At vero eos et accusam et justo duo
