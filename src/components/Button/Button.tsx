@@ -8,9 +8,6 @@ export type ButtonProps = {
   /** Specify the content of your button */
   children?: ReactNode;
 
-  /** Specify classic label text for the button */
-  label?: string;
-
   /** Specify button kind */
   kind?: string;
 
@@ -51,63 +48,61 @@ export type ButtonProps = {
   /** Set the button to icon only button */
   iconOnly?: boolean;
 
-  /** Set the button to icon + label */
-  withIcon?: boolean;
-
   /** Set the button loading */
   isLoading?: boolean;
 
   /** Set the button fluid */
   fluid?: boolean;
 
-  /** Set the icon position if the button is fluid */
-  iconPosition?: string;
+  /** Set the icon position and icon */
+  withIconRight?: boolean;
+  withIconLeft?: boolean;
+  renderIcon?: ReactNode;
 };
 
 const kindStyles: Record<string, Record<string, string>> = {
   primary: {
-    "": "button-primary"
+    "": "button--primary"
   },
   outline: {
-    "": "button-outline"
+    "": "button--outline"
   },
   danger: {
-    "": "button-danger"
+    "": "button--danger"
   },
   ghost: {
-    "": "button-ghost"
+    "": "button--ghost"
   }
 };
 
 const Button = ({
-  label,
   kind = "primary",
   large,
   small,
   disabled,
   isLoading,
   iconOnly,
-  withIcon,
   children,
-  iconPosition = "left",
+  withIconRight,
+  withIconLeft,
   fluid,
+  renderIcon,
   ...rest
 }: ButtonProps) => (
-  <div className={cx({ "button-notallowed": isLoading || disabled })}>
+  <div className={cx({ "button--notallowed": isLoading || disabled })}>
     <button
       type="button"
       className={cx(
         "button",
         {
-          "button-large": large && !small,
-          "button-small": small && !large,
+          "button--large": large && !small,
+          "button--small": small && !large,
           "icon-only": iconOnly,
-          "with-icon": withIcon && !iconOnly,
-          "button-disabled": disabled,
-          "button-fluid": fluid && !iconOnly,
-          "with-icon-right": iconPosition === "right",
-          "with-icon-left": iconPosition === "left",
-          "button-loading": isLoading
+          "button--disabled": disabled,
+          "button--fluid": fluid && !iconOnly,
+          "with-icon-right": withIconRight && !iconOnly,
+          "with-icon-left": withIconLeft && !iconOnly,
+          "button--loading": isLoading
         },
         kindStyles[kind][""]
       )}
@@ -120,11 +115,12 @@ const Button = ({
         </div>
       )}
       <div
-        className={cx("button-label", {
-          "button-hidden": isLoading
+        className={cx("button--label", {
+          "button--hidden": isLoading
         })}
       >
-        {iconOnly || withIcon ? children : label}
+        {(withIconRight || withIconLeft || iconOnly) && renderIcon}
+        {!iconOnly && children}
       </div>
     </button>
   </div>

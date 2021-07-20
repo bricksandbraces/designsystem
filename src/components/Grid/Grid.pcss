@@ -1,10 +1,5 @@
 @import "../../styles/colors.pcss";
-
-$breakpoint-sm: 320px;
-$breakpoint-md: 672px;
-$breakpoint-lg: 1088px;
-$breakpoint-xlg: 1312px;
-$breakpoint-max: 1584px;
+@import "../../styles/breakpoints.pcss";
 
 $span-1: 1;
 $span-2: 2;
@@ -23,38 +18,50 @@ $span-14: 14;
 $span-15: 15;
 $span-16: 16;
 
-.grid--example {
-  padding: 1rem;
-  border: 1px dashed $purple-40;
-  background-color: $purple-10;
-  color: $white;
-}
-
-.grid--container {
-  display: grid;
-  grid-template-rows: auto;
-  max-width: 99rem;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
-
-  &-gutter__left > div > div {
-    padding-left: 1rem;
+.grid {
+  &--example {
+    padding: 1rem;
+    border: 1px dashed $purple-40;
+    background-color: $purple-10;
+    color: $white;
   }
 
-  &-gutter__right > div > div {
-    padding-right: 1rem;
+  &--container {
+    display: grid;
+    grid-template-rows: auto;
+    max-width: 99rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    & > div > div {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    &-no-gutter__left > div > div {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    &-no-gutter__right > div > div {
+      padding-right: 0;
+      padding-left: 1rem;
+    }
+
+    &-no-gutter > div > div {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    &-no-gutter {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 
-  &-gutter > div > div {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  &--fullwidth {
+    max-width: unset;
   }
-}
-
-.grid--container.grid--fullwidth {
-  max-width: unset;
 }
 
 .grid--col-1 {
@@ -1558,7 +1565,34 @@ $span-16: 16;
   }
 }
 
+@media screen and (max-width: $breakpoint-md) {
+  .grid--container.grid--container-no-gutter {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .grid--container.grid--container-no-gutter__left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .grid--container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
 @media screen and (min-width: $breakpoint-md) {
+  .grid--container.grid--container-no-gutter {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .grid--container.grid--container-no-gutter__left {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .grid--container {
     padding-right: 2rem;
     padding-left: 2rem;
@@ -1566,6 +1600,16 @@ $span-16: 16;
 }
 
 @media screen and (min-width: $breakpoint-max) {
+  .grid--container.grid--container-no-gutter {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .grid--container.grid--container-no-gutter__left {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .grid--container {
     padding-right: 2.5rem;
     padding-left: 2.5rem;

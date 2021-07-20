@@ -20,9 +20,14 @@ type GridProps = {
   /**
    * Gutter
    */
-  gutter?: boolean;
-  gutterLeft?: boolean;
-  gutterRight?: boolean;
+  narrow?: boolean;
+  condensed?: boolean;
+  narrowRight?: boolean;
+
+  /**
+   * React inline styles for the Grid
+   */
+  style?: any;
 };
 
 type ColumnProps = {
@@ -69,9 +74,8 @@ export const Grid = ({
   children,
   fullWidth,
   className,
-  gutter,
-  gutterLeft,
-  gutterRight,
+  narrow,
+  condensed,
   ...rest
 }: GridProps) => {
   const childrenCount = React.Children.count(children);
@@ -82,9 +86,8 @@ export const Grid = ({
         "grid--container",
         {
           "grid--fullwidth": fullWidth,
-          "grid--container-gutter": gutter,
-          "grid--container-gutter__left": gutterLeft,
-          "grid--container-gutter__right": gutterRight
+          "grid--container-no-gutter": narrow,
+          "grid--container-no-gutter__left": condensed
         },
         className
       )}

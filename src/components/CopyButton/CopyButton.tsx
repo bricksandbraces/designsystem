@@ -57,6 +57,7 @@ const CopyButton = ({
       <Button
         kind="ghost"
         iconOnly
+        renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
         onClick={(event) => {
           setShowState(true);
           copyToClipboard(valueToCopy);
@@ -65,9 +66,7 @@ const CopyButton = ({
           }, timeout ?? 2000);
           onClick?.(event);
         }}
-      >
-        {showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
-      </Button>
+      />
       <span
         className={cx("tooltip--text", {
           "tooltip--top": tooltipPosition === "top",

@@ -1,6 +1,7 @@
 @import "../../styles/theme.pcss";
 
 .button {
+  @mixin type--body-small;
   display: flex;
   position: relative;
   align-items: center;
@@ -12,42 +13,38 @@
   border-radius: $border-radius-01;
   background-color: transparent;
   color: $white;
-  font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 0.875rem;
 
-  &-small {
+  &--small {
     min-height: $container-02;
     max-height: $container-02;
   }
 
-  &-large {
+  &--large {
     min-height: $container-05;
     max-height: $container-05;
   }
-  &-fluid {
+  &--fluid {
     width: 100%;
   }
 
-  &-loading {
+  &--loading {
     pointer-events: none;
   }
 
-  &-hidden {
+  &--hidden {
     opacity: 0;
   }
 
-  &-notallowed {
+  &--notallowed {
     cursor: not-allowed;
   }
 
-  &-label {
+  &--label {
     display: flex;
     align-items: center;
-    transform: translate(0, -1px);
   }
 
-  &-outline {
+  &--outline {
     border: $border-01 $interactive-01;
 
     &:hover {
@@ -61,7 +58,7 @@
     }
   }
 
-  &-primary {
+  &--primary {
     border: $border-01 $interactive-01;
     background-color: $interactive-01;
 
@@ -76,22 +73,22 @@
     }
   }
 
-  &-ghost {
+  &--ghost {
     border: $border-01 transparent;
     background-color: transparent;
 
     &:hover {
-      border: $border-01 $ui-hover;
-      background-color: $ui-hover;
+      border: $border-01 transparent;
+      background-color: $ghost-hover;
     }
 
     &:active {
-      border: $border-01 $ui-active;
-      background-color: $ui-active;
+      border: $border-01 transparent;
+      background-color: $ghost-active;
     }
   }
 
-  &-danger {
+  &--danger {
     border: $border-01 $danger;
     color: $danger;
 
@@ -107,24 +104,24 @@
   }
 }
 
-.button.button-ghost:focus-visible,
-.button.button-primary:focus-visible,
-.button.button-danger:focus-visible,
-.button.button-outline:focus-visible {
+.button.button--ghost:focus-visible,
+.button.button--primary:focus-visible,
+.button.button--danger:focus-visible,
+.button.button--outline:focus-visible {
   border: $border-01 $focus;
   outline: 0;
 }
 
-.button.button-ghost.button-disabled,
-.button.button-primary.button-disabled {
+.button.button--ghost.button--disabled,
+.button.button--primary.button--disabled {
   border: $border-01 $disabled-01;
   background-color: $disabled-01;
   color: $disabled-02;
   pointer-events: none;
 }
 
-.button.button-outline.button-disabled,
-.button.button-danger.button-disabled {
+.button.button--outline.button--disabled,
+.button.button--danger.button--disabled {
   border: $border-01 $disabled-01;
   color: $disabled-02;
   pointer-events: none;
@@ -136,19 +133,31 @@
   padding: 0;
 }
 
-.icon-only.button-large {
+.icon-only.button--large {
   min-width: $container-05;
   max-width: $container-05;
 }
 
-.icon-only.button-small {
+.icon-only.button--small {
   min-width: $container-02;
   max-width: $container-02;
 }
 
-.with-icon {
+.with-icon-left > .button--label {
+  flex-direction: row;
+}
+
+.with-icon-right > .button--label {
+  flex-direction: row-reverse;
+}
+
+/* .with-icon-left {
   padding: 0 20px 0 10px;
 }
+
+.with-icon-right {
+  padding: 0 10px 0 20px;
+} */
 
 .icon-only > div > svg {
   width: $container-01;
@@ -156,24 +165,35 @@
   stroke-width: 2px;
 }
 
-.with-icon > div > svg {
+.with-icon-left > div > svg {
   width: $container-01;
   height: $container-01;
-  margin-right: 10px;
+  margin-right: 6px;
   stroke-width: 2px;
 }
 
-.button-fluid.with-icon > div > svg {
+.with-icon-right > div > svg {
+  width: $container-01;
+  height: $container-01;
+  margin-left: 6px;
+  stroke-width: 2px;
+}
+
+.button--fluid.with-icon > div > svg {
   position: absolute;
   margin-right: 0;
 }
 
-.button-fluid.with-icon.with-icon-left > div > svg {
-  left: 10px;
+.button--fluid.with-icon-left > div > svg {
+  position: absolute;
+  margin-right: 0;
+  left: 20px;
 }
 
-.button-fluid.with-icon.with-icon-right > div > svg {
-  right: 10px;
+.button--fluid.with-icon-right > div > svg {
+  position: absolute;
+  margin-right: 0;
+  right: 20px;
 }
 
 .spinner-border.loading {

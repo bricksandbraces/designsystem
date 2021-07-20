@@ -12,13 +12,6 @@ const options = {
   Ghost: "ghost"
 };
 
-const positioning = {
-  Left: "left",
-  Right: "right"
-};
-
-const defaultPosition = "left";
-
 const defaultValue = "primary";
 
 export const Default = () => (
@@ -26,17 +19,16 @@ export const Default = () => (
     <div style={{ width: "405px" }}>
       <Button
         kind={select("Kind", options, defaultValue)}
-        label={text("Label", "Button")}
+        renderIcon={<IconLayoutGridAdd />}
         large={boolean("large", false)}
         small={boolean("small", false)}
         fluid={boolean("Fluid", false)}
-        withIcon={boolean("with Icon", false)}
-        iconPosition={select("Icon positioning", positioning, defaultPosition)}
+        withIconRight={boolean("with Icon right", false)}
+        withIconLeft={boolean("with Icon left", false)}
         iconOnly={boolean("Icon only", false)}
         isLoading={boolean("is Loading?", false)}
         disabled={boolean("Disabled", false)}
       >
-        <IconLayoutGridAdd />
         {text("Label", "Button")}
       </Button>
     </div>
