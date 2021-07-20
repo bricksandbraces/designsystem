@@ -86,43 +86,79 @@ const Button = ({
   withIconRight,
   withIconLeft,
   fluid,
+  href,
   renderIcon,
   ...rest
 }: ButtonProps) => (
   <div className={cx({ "button--notallowed": isLoading || disabled })}>
-    <button
-      type="button"
-      className={cx(
-        "button",
-        {
-          "button--large": large && !small,
-          "button--small": small && !large,
-          "icon-only": iconOnly,
-          "button--disabled": disabled,
-          "button--fluid": fluid && !iconOnly,
-          "with-icon-right": withIconRight && !iconOnly,
-          "with-icon-left": withIconLeft && !iconOnly,
-          "button--loading": isLoading
-        },
-        kindStyles[kind][""]
-      )}
-      disabled={disabled}
-      {...rest}
-    >
-      {isLoading && (
-        <div className="spinner-border loading" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      )}
-      <div
-        className={cx("button--label", {
-          "button--hidden": isLoading
-        })}
+    {href ? (
+      <a
+        href={href}
+        className={cx(
+          "button",
+          {
+            "button--large": large && !small,
+            "button--small": small && !large,
+            "icon-only": iconOnly,
+            "button--disabled": disabled,
+            "button--fluid": fluid && !iconOnly,
+            "with-icon-right": withIconRight && !iconOnly,
+            "with-icon-left": withIconLeft && !iconOnly,
+            "button--loading": isLoading
+          },
+          kindStyles[kind][""]
+        )}
+        {...rest}
       >
-        {(withIconRight || withIconLeft || iconOnly) && renderIcon}
-        {!iconOnly && children}
-      </div>
-    </button>
+        {isLoading && (
+          <div className="spinner-border loading" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
+        <div
+          className={cx("button--label", {
+            "button--hidden": isLoading
+          })}
+        >
+          {(withIconRight || withIconLeft || iconOnly) && renderIcon}
+          {!iconOnly && children}
+        </div>
+      </a>
+    ) : (
+      <button
+        type="button"
+        className={cx(
+          "button",
+          {
+            "button--large": large && !small,
+            "button--small": small && !large,
+            "icon-only": iconOnly,
+            "button--disabled": disabled,
+            "button--fluid": fluid && !iconOnly,
+            "with-icon-right": withIconRight && !iconOnly,
+            "with-icon-left": withIconLeft && !iconOnly,
+            "button--loading": isLoading
+          },
+          kindStyles[kind][""]
+        )}
+        disabled={disabled}
+        {...rest}
+      >
+        {isLoading && (
+          <div className="spinner-border loading" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
+        <div
+          className={cx("button--label", {
+            "button--hidden": isLoading
+          })}
+        >
+          {(withIconRight || withIconLeft || iconOnly) && renderIcon}
+          {!iconOnly && children}
+        </div>
+      </button>
+    )}
   </div>
 );
 

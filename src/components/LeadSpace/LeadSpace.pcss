@@ -57,7 +57,7 @@
 
 @media screen and (max-width: $breakpoint-md) {
   .leadspace {
-    height: 320px;
+    height: 360px;
 
     &::before {
       background: linear-gradient(
@@ -102,9 +102,9 @@
   }
 
   .button--ghost {
+    backdrop-filter: blur(6px);
     background-color: $ghost;
     border: $border-01 $ghost;
-    backdrop-filter: blur(6px);
 
     &:hover {
       background-color: $ghost-hover;
@@ -115,11 +115,27 @@
       background-color: $ghost-active;
       border: $border-01 $ghost-active;
     }
+
+    &:focus-visible {
+      border: $border-01 $white;
+    }
   }
 
   @media screen and (max-width: $breakpoint-md) {
     .typography {
       margin-bottom: 16px;
+    }
+
+    .leadspace--content-buttongroup > div > .with-icon-left > div > svg {
+      position: absolute;
+      margin-right: 0;
+      left: 20px;
+    }
+
+    .leadspace--content-buttongroup > div > .with-icon-right > div > svg {
+      position: absolute;
+      margin-right: 0;
+      right: 20px;
     }
 
     .button {

@@ -1,35 +1,51 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
 import { Grid, Column } from "../Grid/Grid";
 import Typography from "../Typography/Typography";
 import Button from "../Button/Button";
 
-type LeadSpaceProps = {
+type CtaItem = {
   /**
-   * Grid Children
+   * Link to location
    */
-  children?: ReactNode;
+  href: string;
 
   /**
-   * Kind
+   * Label that is shown
    */
-  kind?: "small" | "max" | "100vh" | "default";
+  label: string;
 
   /**
-   * Overlay
+   * Chevron
    */
-  overlay?: "full" | "gradient";
+  showChevron: boolean;
 };
 
-const LeadSpace = ({ kind, overlay }: LeadSpaceProps) => {
+type LeadSpaceProps = {
+  /**
+   * Bg image
+   */
+  backgroundImage?: string;
+
+  /**
+   * Leadspace title
+   */
+  title?: string;
+
+  /**
+   * CTA section / Buttons
+   */
+  ctaItems?: CtaItem[];
+};
+
+const LeadSpace = ({ backgroundImage, title, ctaItems }: LeadSpaceProps) => {
   return (
     <section
       id="leadspace"
       className={cx("leadspace")}
       style={{
-        backgroundImage:
-          "url(https://images.pexels.com/photos/1910230/pexels-photo-1910230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)"
+        backgroundImage: `url(${backgroundImage})`
       }}
     >
       <Grid narrow className="leadspace--grid">
@@ -46,17 +62,29 @@ const LeadSpace = ({ kind, overlay }: LeadSpaceProps) => {
         >
           <div className="leadspace--container">
             <div className="leadspace--content">
-              <Typography type="h1" token="heading-06">
-                Let’s shape tomorrow.
-              </Typography>
-              <div className="leadspace--content-buttongroup">
-                <Button large withIconRight renderIcon={<IconChevronRight />}>
-                  What we do
-                </Button>
-                <Button kind="ghost" large>
-                  Learn more about us
-                </Button>
-              </div>
+              {title && (
+                <Typography type="h1" token="heading-06">
+                  {title}
+                </Typography>
+              )}
+              {ctaItems && (
+                <div className="leadspace--content-buttongroup">
+                  {ctaItems?.map((cta, i) => {
+                    return (
+                      <Button
+                        key={cta.href}
+                        large
+                        kind={i === 0 ? "primary" : "ghost"}
+                        href={cta.href}
+                        withIconRight
+                        renderIcon={cta.showChevron && <IconChevronRight />}
+                      >
+                        {cta.label}
+                      </Button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </Column>
