@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import cx from "classnames";
-import { IconChevronRight } from "@tabler/icons";
+import {
+  IconChevronRight,
+  IconPlayerPause,
+  IconPlayerPlay
+} from "@tabler/icons";
 import { Grid, Column } from "../Grid/Grid";
 import Typography from "../Typography/Typography";
 import Button from "../Button/Button";
@@ -29,6 +33,11 @@ type LeadSpaceProps = {
   backgroundImage?: string;
 
   /**
+   * Bg image
+   */
+  videoUrl?: string;
+
+  /**
    * Leadspace title
    */
   title?: string;
@@ -39,16 +48,58 @@ type LeadSpaceProps = {
   ctaItems?: CtaItem[];
 };
 
-const LeadSpace = ({ backgroundImage, title, ctaItems }: LeadSpaceProps) => {
+const LeadSpace = ({
+  backgroundImage,
+  videoUrl,
+  title,
+  ctaItems
+}: LeadSpaceProps) => {
+  const video = useRef(null);
+  const [videoPlay, setVideoPlay] = useState(true);
   return (
     <section
       id="leadspace"
-      className={cx("leadspace")}
+      className={cx("leadspace", { "leadspace--video-player": videoUrl })}
       style={{
         backgroundImage: `url(${backgroundImage})`
       }}
     >
-      <Grid narrow className="leadspace--grid">
+      {videoUrl && (
+        <>
+          <video
+            ref={video}
+            autoPlay
+            muted
+            loop
+            disablePictureInPicture
+            playsInline
+            id="leadspace--video"
+            poster={backgroundImage}
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+          <button
+            className="leadspace--video-controls"
+            type="button"
+            aria-label={videoPlay ? "Pause video" : "Play video"}
+            onClick={() => {
+              if (videoPlay) {
+                video.current.pause();
+              } else {
+                video.current.play();
+              }
+
+              setVideoPlay(!videoPlay);
+            }}
+          >
+            {videoPlay ? <IconPlayerPause /> : <IconPlayerPlay />}
+          </button>
+        </>
+      )}
+      <Grid
+        narrow
+        className={cx("leadspace--grid", { "leadspace--video": videoUrl })}
+      >
         <Column
           sm={4}
           smOffset={0}
