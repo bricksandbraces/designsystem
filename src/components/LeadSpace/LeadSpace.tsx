@@ -54,7 +54,7 @@ const LeadSpace = ({
   title,
   ctaItems
 }: LeadSpaceProps) => {
-  const video = useRef(null);
+  const video = useRef<HTMLVideoElement>(null);
   const [videoPlay, setVideoPlay] = useState(true);
   return (
     <section

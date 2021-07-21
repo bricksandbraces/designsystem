@@ -12,7 +12,15 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["apply", "layer", "variants", "responsive", "screen"]
+        "ignoreAtRules": [
+          "apply",
+          "layer",
+          "variants",
+          "responsive",
+          "screen",
+          "mixin",
+          "define-mixin"
+        ]
       }
     ],
     "declaration-block-trailing-semicolon": null,
