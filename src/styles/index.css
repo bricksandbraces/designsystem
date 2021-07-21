@@ -19,6 +19,7 @@
 @import "../components/AspectRatio/AspectRatio.pcss";
 @import "../components/Typography/Typography.pcss";
 @import "../components/LeadSpace/LeadSpace.pcss";
+@import "../components/Header/Header.pcss";
 
 * {
   box-sizing: border-box;
