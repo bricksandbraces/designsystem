@@ -1,6 +1,8 @@
 @import "./colors.pcss";
 @import "./metrics.pcss";
 @import "./theme.pcss";
+@import "./breakpoints.pcss";
+@import "./typography.pcss";
 
 @import "../components/LoginForm/LoginForm.pcss";
 @import "../components/Button/Button.pcss";
@@ -15,6 +17,8 @@
 @import "../components/CodeSnippet/CodeSnippet.pcss";
 @import "../components/Grid/Grid.pcss";
 @import "../components/AspectRatio/AspectRatio.pcss";
+@import "../components/Typography/Typography.pcss";
+@import "../components/LeadSpace/LeadSpace.pcss";
 
 * {
   box-sizing: border-box;

@@ -28,10 +28,9 @@ export const Default = () => (
           fluid
           large
           kind="outline"
-          withIcon
-          iconPosition="right"
+          withIconRight
+          renderIcon={<IconArrowRight />}
         >
-          <IconArrowRight />
           Login
         </Button>
       </div>

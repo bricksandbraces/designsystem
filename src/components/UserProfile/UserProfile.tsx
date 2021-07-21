@@ -99,7 +99,9 @@ const UserProfile = ({
           </div>
         </div>
         <hr className="userprofile--divider" />
-        <Button onClick={onLogout} fluid label="Sign out" />
+        <Button onClick={onLogout} fluid>
+          Sign out
+        </Button>
       </div>
     </>
   );

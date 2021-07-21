@@ -1,0 +1,239 @@
+/* Default Lead Space */
+
+.leadspace {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+
+  &--grid {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+  }
+
+  &--column {
+    padding: 1rem;
+  }
+
+  &--column > div {
+    height: 100%;
+  }
+
+  &--container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &--content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    &-buttongroup {
+      display: flex;
+      flex-wrap: wrap;
+
+      .button--primary {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &::before {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.85) 20%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .leadspace {
+    height: 360px;
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.75) 20%,
+        rgba(0, 0, 0, 0.75) 100%
+      );
+    }
+
+    &--content {
+      align-content: space-between;
+      height: 100%;
+      flex-direction: row;
+
+      &-buttongroup {
+        flex-direction: column-reverse;
+
+        .button--ghost {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .leadspace {
+    height: 384px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  .leadspace {
+    height: 672px;
+  }
+}
+
+#leadspace {
+  .typography {
+    color: $white;
+    margin-bottom: 64px;
+  }
+
+  .button--ghost {
+    backdrop-filter: blur(6px);
+    background-color: $ghost;
+    border: $border-01 $ghost;
+
+    &:hover {
+      background-color: $ghost-hover;
+      border: $border-01 $ghost-hover;
+    }
+
+    &:active {
+      background-color: $ghost-active;
+      border: $border-01 $ghost-active;
+    }
+
+    &:focus-visible {
+      border: $border-01 $white;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    .typography {
+      margin-bottom: 16px;
+    }
+
+    .leadspace--content-buttongroup > div > .with-icon-left > div > svg {
+      position: absolute;
+      margin-right: 0;
+      left: 20px;
+    }
+
+    .leadspace--content-buttongroup > div > .with-icon-right > div > svg {
+      position: absolute;
+      margin-right: 0;
+      right: 20px;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .leadspace {
+      &--content > div {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Lead Space Video */
+
+#leadspace--video {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+
+  @media screen and (max-width: $breakpoint-md) {
+    height: 360px;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    height: 384px;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    height: 672px;
+  }
+}
+
+.leadspace.leadspace--video-player::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.leadspace--grid.leadspace--video {
+  position: relative;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.leadspace--video-controls {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 4;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  transition: 0.15s ease-in-out;
+  outline: 0;
+
+  &:hover {
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  &:focus-visible {
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+}
+
+.leadspace--video-controls > svg {
+  stroke: $white;
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .leadspace--video-controls {
+    right: 16px;
+    bottom: -48px;
+  }
+}

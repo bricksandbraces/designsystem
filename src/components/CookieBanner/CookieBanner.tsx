@@ -53,7 +53,7 @@ const CookieBanner = ({
           </Link>
         )}
       </div>
-      {buttonLabel && <Button onClick={onClick} label={buttonLabel} />}
+      {buttonLabel && <Button onClick={onClick}>{buttonLabel} </Button>}
     </div>
   );
 };

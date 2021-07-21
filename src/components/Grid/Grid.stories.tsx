@@ -61,9 +61,9 @@ export const ResponsiveBreakpoints = () => {
   );
 };
 
-export const WithGutter = () => {
+export const narrow = () => {
   return (
-    <Grid gutter>
+    <Grid narrow>
       <Column sm={4} md={8} lg={4} xlg={4}>
         <div className="grid--example">Column 1</div>
       </Column>
@@ -80,28 +80,9 @@ export const WithGutter = () => {
   );
 };
 
-export const WithGutterLeft = () => {
+export const condensed = () => {
   return (
-    <Grid gutterLeft>
-      <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 1</div>
-      </Column>
-      <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 2</div>
-      </Column>
-      <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 3</div>
-      </Column>
-      <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 4</div>
-      </Column>
-    </Grid>
-  );
-};
-
-export const WithGutterRight = () => {
-  return (
-    <Grid gutterRight>
+    <Grid condensed>
       <Column sm={4} md={8} lg={4} xlg={4}>
         <div className="grid--example">Column 1</div>
       </Column>
@@ -121,7 +102,7 @@ export const WithGutterRight = () => {
 export const Example = () => {
   return (
     <>
-      <Grid gutter fullWidth={boolean("Full width", false)}>
+      <Grid narrow fullWidth={boolean("Full width", false)}>
         <Column
           sm={4}
           md={8}
@@ -136,7 +117,7 @@ export const Example = () => {
           }}
         />
       </Grid>
-      <Grid gutter fullWidth={boolean("Full width", false)}>
+      <Grid fullWidth={boolean("Full width", false)}>
         <Column sm={4} md={4} lg={4} xlg={4}>
           <div style={{ color: "#fff", marginTop: "24px" }}>
             <p style={{ fontSize: "64px", fontWeight: 200 }}>

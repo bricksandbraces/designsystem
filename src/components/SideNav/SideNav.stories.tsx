@@ -8,7 +8,7 @@ export default { title: "SideNav", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
-    <div className="no-padding">
+    <div style={{ height: "100vh" }}>
       <SideNav basePath="#">
         <SideNavItem
           href="#"
