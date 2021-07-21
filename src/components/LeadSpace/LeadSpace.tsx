@@ -84,9 +84,9 @@ const LeadSpace = ({
             aria-label={videoPlay ? "Pause video" : "Play video"}
             onClick={() => {
               if (videoPlay) {
-               video.current?.pause();
+                video.current?.pause();
               } else {
-                video.current.play();
+                video.current?.play();
               }
 
               setVideoPlay(!videoPlay);
