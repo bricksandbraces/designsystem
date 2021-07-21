@@ -1,10 +1,14 @@
+@import "../../styles/breakpoints.pcss";
+@import "../../styles/colors.pcss";
+@import "../../styles/theme.pcss";
+
 /* Default Lead Space */
 
 .leadspace {
-  background-position: center;
-  background-size: cover;
   position: relative;
   z-index: 1;
+  background-position: center;
+  background-size: cover;
 
   &--grid {
     position: relative;
@@ -21,15 +25,15 @@
   }
 
   &--container {
-    height: 100%;
     display: flex;
     align-items: center;
+    height: 100%;
   }
 
   &--content {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
+    flex-wrap: wrap;
 
     &-buttongroup {
       display: flex;
@@ -42,11 +46,11 @@
   }
 
   &::before {
+    content: "";
     position: absolute;
     z-index: 2;
     top: 0;
     left: 0;
-    content: "";
     width: 100%;
     height: 100%;
     background: linear-gradient(
@@ -70,9 +74,9 @@
     }
 
     &--content {
+      flex-direction: row;
       align-content: space-between;
       height: 100%;
-      flex-direction: row;
 
       &-buttongroup {
         flex-direction: column-reverse;
@@ -99,23 +103,23 @@
 
 #leadspace {
   .typography {
-    color: $white;
     margin-bottom: 64px;
+    color: $white;
   }
 
   .button--ghost {
-    backdrop-filter: blur(6px);
-    background-color: $ghost;
     border: $border-01 $ghost;
+    background-color: $ghost;
+    backdrop-filter: blur(6px);
 
     &:hover {
-      background-color: $ghost-hover;
       border: $border-01 $ghost-hover;
+      background-color: $ghost-hover;
     }
 
     &:active {
-      background-color: $ghost-active;
       border: $border-01 $ghost-active;
+      background-color: $ghost-active;
     }
 
     &:focus-visible {
@@ -130,14 +134,14 @@
 
     .leadspace--content-buttongroup > div > .with-icon-left > div > svg {
       position: absolute;
-      margin-right: 0;
       left: 20px;
+      margin-right: 0;
     }
 
     .leadspace--content-buttongroup > div > .with-icon-right > div > svg {
       position: absolute;
-      margin-right: 0;
       right: 20px;
+      margin-right: 0;
     }
 
     .button {
@@ -156,10 +160,10 @@
 
 #leadspace--video {
   position: absolute;
+  z-index: 1;
   top: 0;
   width: 100%;
   object-fit: cover;
-  z-index: 1;
 
   @media screen and (max-width: $breakpoint-md) {
     height: 360px;
@@ -175,11 +179,11 @@
 }
 
 .leadspace.leadspace--video-player::before {
+  content: "";
   position: absolute;
   z-index: 2;
   top: 0;
   left: 0;
-  content: "";
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
@@ -187,37 +191,37 @@
 
 .leadspace--grid.leadspace--video {
   position: relative;
-  width: 100%;
-  top: 0;
   z-index: 2;
+  top: 0;
+  width: 100%;
 }
 
 .leadspace--video-controls {
+  display: flex;
   position: absolute;
+  z-index: 4;
   right: 16px;
   bottom: 16px;
-  z-index: 4;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: 0.15s ease-in-out;
   border: 0;
   border-radius: 50%;
-  background: transparent;
-  transition: 0.15s ease-in-out;
   outline: 0;
+  background: transparent;
 
   &:hover {
-    backdrop-filter: blur(6px);
-    background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
   }
 
   &:active {
-    background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
   }
 
   &:focus-visible {
@@ -226,9 +230,9 @@
 }
 
 .leadspace--video-controls > svg {
-  stroke: $white;
   width: 20px;
   height: 20px;
+  stroke: $white;
 }
 
 @media screen and (max-width: $breakpoint-md) {
