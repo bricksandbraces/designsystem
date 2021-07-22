@@ -21,12 +21,24 @@ type LinkProps = {
    * Inline link .
    */
   inline?: boolean;
+
+  /**
+   * React className
+   */
+  className?: string;
 };
 
-const Link = ({ children, href, target, inline, ...rest }: LinkProps) => {
+const Link = ({
+  children,
+  href,
+  target,
+  inline,
+  className,
+  ...rest
+}: LinkProps) => {
   return (
     <a
-      className={cx("link", { "link--inline": inline })}
+      className={cx("link", { "link--inline": inline }, className)}
       href={href}
       target={target}
       {...rest}

@@ -1,0 +1,131 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/colors.pcss";
+@import "../../styles/breakpoints.pcss";
+
+.header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  transition: 0.15s ease-in-out;
+
+  &--mobile {
+    visibility: hidden;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: scroll;
+    transform: translate(-100px, 100px);
+    transition: 0.15s ease-in-out;
+    opacity: 0;
+    background-color: $black;
+
+    @media screen and (min-width: $breakpoint-lg) {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-visible {
+      visibility: visible;
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+    &-list {
+      padding: 80px 1rem 1rem 1rem;
+
+      &__item {
+        color: $white;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &--menubutton {
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    padding: 0;
+    transition: 0.15s ease-in-out;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+    background-color: transparent;
+
+    @media screen and (min-width: $breakpoint-md) {
+      margin-right: 0;
+    }
+
+    @media screen and (min-width: $breakpoint-lg) {
+      visibility: hidden;
+    }
+
+    &-container {
+      justify-content: flex-end;
+    }
+
+    &-container.header--column > div {
+      width: max-content;
+    }
+  }
+
+  &--menubutton > svg {
+    width: 20px;
+    height: 20px;
+    stroke: $white;
+  }
+
+  &--small {
+    height: 48px;
+  }
+
+  &--grid {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--column {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 1.15rem;
+  }
+
+  &--column > div {
+    width: 100%;
+  }
+  &--linksection {
+    display: flex;
+    visibility: visible;
+    justify-content: flex-end;
+    width: 100%;
+
+    @media screen and (max-width: $breakpoint-lg) {
+      visibility: hidden;
+    }
+
+    &-item {
+      @mixin type--body;
+
+      margin: 0 0 0 1.5rem;
+      color: $white;
+    }
+  }
+}
+
+.header + .leadspace {
+  transform: translate(0, -80px);
+}
+
+.header + .leadspace > div > div > div > div > .leadspace--content {
+  padding-top: 64px;
+}
