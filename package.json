@@ -25,7 +25,7 @@
     "not op_mini all"
   ],
   "engines": {
-    "node": ">=15.X"
+    "node": ">=16.X"
   },
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
