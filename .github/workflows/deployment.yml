@@ -1,9 +1,5 @@
 name: Build and Deploy
-cache:
-  untracked: true
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+
 on:
   push:
     branches:
@@ -13,11 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-
+        uses: actions/checkout@v2
+      - name: Setting correct node version
+        uses: actions/setup-node@v2
+          with:
+            cache: 'yarn'
       - name: Install and Build
         run: |
-          yarn cache clean --all
           yarn install --immutable
           yarn build:storybook
 
