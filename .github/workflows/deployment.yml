@@ -1,4 +1,9 @@
 name: Build and Deploy
+cache:
+  untracked: true
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
 on:
   push:
     branches:
@@ -12,6 +17,7 @@ jobs:
 
       - name: Install and Build
         run: |
+          yarn cache clean --all
           yarn install --immutable
           yarn build:storybook
 
