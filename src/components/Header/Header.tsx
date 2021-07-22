@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { IconMenu, IconX } from "@tabler/icons";
+import { useWindowScroll } from "react-use";
 import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
@@ -31,16 +32,10 @@ type HeaderProps = {
 };
 
 const Header = ({ linkItems, baseUrl }: HeaderProps) => {
-  const [small, setSmall] = useState(false);
   const [open, setOpen] = useState(false);
+  const { x, y } = useWindowScroll();
+  const small = y > 64 && x === 0;
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setSmall(window.pageYOffset > 64)
-      );
-    }
-  }, []);
   return (
     <>
       <div className={cx("header--mobile", { "header--mobile-visible": open })}>
