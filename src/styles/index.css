@@ -20,6 +20,7 @@
 @import "../components/Typography/Typography.pcss";
 @import "../components/LeadSpace/LeadSpace.pcss";
 @import "../components/Header/Header.pcss";
+@import "../components/Footer/Footer.pcss";
 
 * {
   box-sizing: border-box;

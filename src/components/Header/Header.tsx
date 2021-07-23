@@ -71,7 +71,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             xlgOffset={2}
             className="header--column"
           >
-            <a href={baseUrl}>
+            <a href={baseUrl} className="header--logo">
               <Logo
                 variant="white"
                 size="xsmall"
