@@ -1,0 +1,104 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/colors.pcss";
+@import "../../styles/breakpoints.pcss";
+@import "../../styles/theme.pcss";
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--container {
+    visibility: hidden;
+    position: relative;
+    z-index: 11000;
+    width: 100%;
+    margin: 32px;
+    padding: 24px;
+    transform: translate(0, 8px);
+    transition: $transition-01;
+    border-radius: $border-radius-2;
+    opacity: 0;
+    background-color: $modal-background;
+    color: $white;
+
+    &-headline {
+      width: calc(100% - 32px);
+      margin: 0 0 1rem 0;
+      color: $modal-headline;
+    }
+
+    &-subline {
+      width: calc(100% - 32px);
+      margin: 0;
+      color: $modal-subline;
+    }
+
+    &-small {
+      max-width: 400px;
+    }
+
+    &-medium {
+      max-width: 600px;
+    }
+
+    &-large {
+      max-width: 800px;
+    }
+
+    &-xlarge {
+      max-width: 1000px;
+    }
+  }
+
+  &--buttongroup {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2.5rem 0 0 0;
+
+    &-primary {
+      margin: 0;
+    }
+
+    &-ghost {
+      margin: 0 1rem 0 0;
+    }
+
+    &-fluid {
+      width: 100%;
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    & > .button {
+      color: $modal-close;
+    }
+  }
+
+  &--overlay {
+    visibility: hidden;
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: $transition-03;
+    opacity: 0;
+    background-color: $modal-overlay;
+  }
+}
+
+.modal--open > .modal--overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal--open > .modal--container {
+  visibility: visible;
+  transform: translate(0, 0);
+  opacity: 1;
+}
