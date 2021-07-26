@@ -1,6 +1,8 @@
+@import "../../styles/theme.pcss";
+
 .form-control.fluid {
   height: 64px;
-  transition: border-color 0.15s ease-in-out, z-index 0.15s ease-in-out;
+  transition: border-color $transition-01, z-index $transition-01;
   border-color: #262626;
   background-color: #000;
   color: #fff;
@@ -54,7 +56,7 @@ input#loginPassword {
 .form-floating.fluid {
   position: relative;
   z-index: 1;
-  transition: z-index 0.15s ease-in-out;
+  transition: z-index $transition-01;
 }
 
 .form-floating.fluid:focus-within {

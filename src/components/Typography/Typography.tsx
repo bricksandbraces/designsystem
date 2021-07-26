@@ -50,42 +50,66 @@ const Typography = ({
   return (
     <>
       {type === "h1" && (
-        <h1 className={cx(`typography typography--${token}`)} {...rest}>
+        <h1
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h1>
       )}
       {type === "h2" && (
-        <h2 className={cx(`typography typography--${token}`)} {...rest}>
+        <h2
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h2>
       )}
       {type === "h3" && (
-        <h3 className={cx(`typography typography--${token}`)} {...rest}>
+        <h3
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h3>
       )}
       {type === "h4" && (
-        <h4 className={cx(`typography typography--${token}`)} {...rest}>
+        <h4
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h4>
       )}
       {type === "h5" && (
-        <h5 className={cx(`typography typography--${token}`)} {...rest}>
+        <h5
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h5>
       )}
       {type === "h6" && (
-        <h6 className={cx(`typography typography--${token}`)} {...rest}>
+        <h6
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </h6>
       )}
       {type === "paragraph" && (
-        <p className={cx(`typography typography--${token}`)} {...rest}>
+        <p
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </p>
       )}
       {type === "span" && (
-        <span className={cx(`typography typography--${token}`)} {...rest}>
+        <span
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
           {children}
         </span>
       )}

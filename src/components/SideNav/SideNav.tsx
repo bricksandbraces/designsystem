@@ -28,7 +28,7 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
         >
           <Logo
             kind={open ? "logotype" : "logomark"}
-            size={open ? "medium" : "small"}
+            size={open ? "xsmall" : "xsmall"}
             variant="white"
           />
         </a>
