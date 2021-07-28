@@ -21,6 +21,7 @@
 @import "../components/LeadSpace/LeadSpace.pcss";
 @import "../components/Header/Header.pcss";
 @import "../components/Modal/Modal.pcss";
+@import "../components/Checkbox/Checkbox.pcss";
 
 * {
   box-sizing: border-box;
