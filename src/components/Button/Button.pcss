@@ -12,7 +12,7 @@
   max-height: $container-03;
   padding: 0 16px;
   transition: $transition-01;
-  border-radius: $border-radius-01;
+  border-radius: $border-radius-2;
   background-color: transparent;
   color: $white;
 
@@ -53,60 +53,60 @@
   }
 
   &--outline {
-    border: $border-01 $interactive-01;
+    border: $border $interactive-primary;
 
     &:hover {
-      border: $border-01 $interactive-01;
-      background-color: $interactive-01-accent-hover;
+      border: $border $interactive-primary;
+      background-color: $interactive-primary-accent-hover;
     }
 
     &:active {
-      border: $border-01 $interactive-01;
-      background-color: $interactive-01-accent-active;
+      border: $border $interactive-primary;
+      background-color: $interactive-primary-accent-active;
     }
   }
 
   &--primary {
-    border: $border-01 $interactive-01;
-    background-color: $interactive-01;
+    border: $border $interactive-primary;
+    background-color: $interactive-primary;
 
     &:hover {
-      border: $border-01 $interactive-01-hover;
-      background-color: $interactive-01-hover;
+      border: $border $interactive-primary-hover;
+      background-color: $interactive-primary-hover;
     }
 
     &:active {
-      border: $border-01 $interactive-01-active;
-      background-color: $interactive-01-active;
+      border: $border $interactive-primary-active;
+      background-color: $interactive-primary-active;
     }
   }
 
   &--ghost {
-    border: $border-01 transparent;
+    border: $border transparent;
     background-color: transparent;
 
     &:hover {
-      border: $border-01 transparent;
-      background-color: $ghost-hover;
+      border: $border transparent;
+      background-color: $interactive-ghost-hover;
     }
 
     &:active {
-      border: $border-01 transparent;
-      background-color: $ghost-active;
+      border: $border transparent;
+      background-color: $interactive-ghost-active;
     }
   }
 
   &--danger {
-    border: $border-01 $danger;
+    border: $border $danger;
     color: $danger;
 
     &:hover {
-      border: $border-01 $danger;
+      border: $border $danger;
       background-color: $danger-accent-hover;
     }
 
     &:active {
-      border: $border-01 $danger;
+      border: $border $danger;
       background-color: $danger-accent-active;
     }
   }
@@ -116,22 +116,22 @@
 .button.button--primary:focus-visible,
 .button.button--danger:focus-visible,
 .button.button--outline:focus-visible {
-  border: $border-01 $focus;
+  border: $border $focus;
   outline: 0;
 }
 
 .button.button--ghost.button--disabled,
 .button.button--primary.button--disabled {
-  border: $border-01 $disabled-01;
-  background-color: $disabled-01;
-  color: $disabled-02;
+  border: $border $disabled-container;
+  background-color: $disabled-container;
+  color: $disabled-text;
   pointer-events: none;
 }
 
 .button.button--outline.button--disabled,
 .button.button--danger.button--disabled {
-  border: $border-01 $disabled-01;
-  color: $disabled-02;
+  border: $border $disabled-container;
+  color: $disabled-text;
   pointer-events: none;
 }
 

@@ -21,35 +21,30 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
   const [open, setOpen] = useState(false);
   return (
     <div className={cx("sidenav", { "sidenav--open": open })}>
-      <div className="sidenav--top">
-        <a
-          href={basePath}
-          className={cx("sidenav--homebutton", { "sidenav--icon-open": open })}
-        >
-          <Logo
-            kind={open ? "logotype" : "logomark"}
-            size={open ? "medium" : "small"}
-            variant="white"
+      <SideNavItem
+        href={basePath}
+        label="Bark"
+        renderIcon={<Logo kind="logomark" size="xsmall" variant="white" />}
+        className="sidenav--logo"
+      />
+
+      <SideNavItem
+        onClick={() => {
+          setOpen(!open);
+        }}
+        renderIcon={
+          <IconArrowNarrowRight
+            size={20}
+            color="white"
+            stroke={2}
+            strokeLinejoin="miter"
+            className={cx("sidenav--menuicon", {
+              "sidenav--menuicon-open": open
+            })}
           />
-        </a>
-        <SideNavItem
-          onClick={() => {
-            setOpen(!open);
-          }}
-          renderIcon={
-            <IconArrowNarrowRight
-              size={20}
-              color="white"
-              stroke={2}
-              strokeLinejoin="miter"
-              className={cx("sidenav--menuicon", {
-                "sidenav--menuicon-open": open
-              })}
-            />
-          }
-        />
-        <hr className="sidenav--divider" />
-      </div>
+        }
+      />
+      <hr className="sidenav--divider" />
       <div className="sidenav--items">{children}</div>
       <p className="sidenav--appinfo">
         &#169; 2021 BRICKS &amp; BRACES BARK

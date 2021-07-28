@@ -14,6 +14,7 @@ import SideNav from "./components/SideNav/SideNav";
 import Tooltip from "./components/Tooltip/Tooltip";
 import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
+import Modal from "./components/Modal/Modal";
 
 export {
   Button,
@@ -32,5 +33,6 @@ export {
   SideNav,
   Tooltip,
   Typography,
-  UserProfile
+  UserProfile,
+  Modal
 };

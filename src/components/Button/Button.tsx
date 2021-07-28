@@ -87,10 +87,13 @@ const Button = ({
   withIconLeft,
   fluid,
   href,
+  className,
   renderIcon,
   ...rest
 }: ButtonProps) => (
-  <div className={cx({ "button--notallowed": isLoading || disabled })}>
+  <div
+    className={cx({ "button--notallowed": isLoading || disabled }, className)}
+  >
     {href ? (
       <a
         href={href}

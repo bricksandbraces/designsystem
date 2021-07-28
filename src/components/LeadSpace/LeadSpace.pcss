@@ -108,22 +108,22 @@
   }
 
   .button--ghost {
-    border: $border-01 $ghost;
-    background-color: $ghost;
+    border: $border $interactive-ghost;
+    background-color: $interactive-ghost;
     backdrop-filter: blur(6px);
 
     &:hover {
-      border: $border-01 $ghost-hover;
-      background-color: $ghost-hover;
+      border: $border $interactive-ghost-hover;
+      background-color: $interactive-ghost-hover;
     }
 
     &:active {
-      border: $border-01 $ghost-active;
-      background-color: $ghost-active;
+      border: $border $interactive-ghost-active;
+      background-color: $interactive-ghost-active;
     }
 
     &:focus-visible {
-      border: $border-01 $white;
+      border: $border $white;
     }
   }
 
@@ -207,7 +207,7 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  transition: 0.15s ease-in-out;
+  transition: $transition-01;
   border: 0;
   border-radius: 50%;
   outline: 0;

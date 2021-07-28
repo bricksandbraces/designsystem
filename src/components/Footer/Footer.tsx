@@ -77,16 +77,14 @@ const Footer = ({
               kind="logomark"
             />
           </a>
-          <Typography
-            type="paragraph"
-            token="label"
-            className="footer--logo-label"
-          >
+          <Typography type="text" token="label" className="footer--logo-label">
+            <br />
             &copy; {currentYear} BRICKS &amp; BRACES
+            <br />
           </Typography>
           {(description || descriptionLink) && (
             <Typography
-              type="paragraph"
+              type="text"
               token="label"
               className="footer--logo-cookies"
             >
