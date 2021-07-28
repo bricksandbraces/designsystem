@@ -51,7 +51,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
                     setOpen(!open);
                   }}
                 >
-                  <Typography type="paragraph" token="heading-06">
+                  <Typography type="text" token="heading-06">
                     {link.label}
                   </Typography>
                 </a>

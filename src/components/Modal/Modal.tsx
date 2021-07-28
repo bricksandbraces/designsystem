@@ -60,7 +60,7 @@ const Modal = ({
         })}
       >
         <Typography
-          type="paragraph"
+          type="text"
           token="heading-02"
           className="modal--container-headline"
         >

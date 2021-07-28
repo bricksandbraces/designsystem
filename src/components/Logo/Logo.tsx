@@ -16,9 +16,14 @@ type LogoProps = {
    * Logo kind
    */
   kind: "logomark" | "logotype";
+
+  /**
+   * ClassName
+   */
+  className?: string;
 };
 
-const Logo = ({ variant, size, kind }: LogoProps) => {
+const Logo = ({ variant, size, kind, className }: LogoProps) => {
   return (
     <>
       {kind === "logomark" && (
@@ -27,13 +32,17 @@ const Logo = ({ variant, size, kind }: LogoProps) => {
           data-name="logo"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 62.84 50"
-          className={cx("logo", {
-            "logo--xsmall": size === "xsmall",
-            "logo--small": size === "small",
-            "logo--medium": size === "medium",
-            "logo--large": size === "large",
-            "logo--xlarge": size === "xlarge"
-          })}
+          className={cx(
+            "logo",
+            {
+              "logo--xsmall": size === "xsmall",
+              "logo--small": size === "small",
+              "logo--medium": size === "medium",
+              "logo--large": size === "large",
+              "logo--xlarge": size === "xlarge"
+            },
+            className
+          )}
         >
           <path
             className={cx({
@@ -51,13 +60,17 @@ const Logo = ({ variant, size, kind }: LogoProps) => {
           data-name="logo"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 520.35 50"
-          className={cx("logo", {
-            "logo--xsmall": size === "xsmall",
-            "logo--small": size === "small",
-            "logo--medium": size === "medium",
-            "logo--large": size === "large",
-            "logo--xlarge": size === "xlarge"
-          })}
+          className={cx(
+            "logo",
+            {
+              "logo--xsmall": size === "xsmall",
+              "logo--small": size === "small",
+              "logo--medium": size === "medium",
+              "logo--large": size === "large",
+              "logo--xlarge": size === "xlarge"
+            },
+            className
+          )}
         >
           <path
             className={cx({
