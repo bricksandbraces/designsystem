@@ -2,6 +2,7 @@ import { text, object, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import LeadSpace from "./LeadSpace";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 export default { title: "LeadSpace", decorators: [withKnobs] };
 
@@ -67,6 +68,7 @@ export const WithHeader = () => {
         )}
         title={text("Leadspace title", "Creating a better tomorrow.")}
       />
+      <Footer />
     </>
   );
 };

@@ -51,7 +51,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
                     setOpen(!open);
                   }}
                 >
-                  <Typography type="paragraph" token="heading-06">
+                  <Typography type="text" token="heading-06">
                     {link.label}
                   </Typography>
                 </a>
@@ -71,7 +71,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             xlgOffset={2}
             className="header--column"
           >
-            <a href={baseUrl}>
+            <a href={baseUrl} className="header--logo">
               <Logo
                 variant="white"
                 size="xsmall"

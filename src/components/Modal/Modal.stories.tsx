@@ -29,7 +29,7 @@ export const Default = () => {
         }}
       >
         <Typography
-          type="paragraph"
+          type="text"
           token="body"
           className="modal--container-subline"
         >
