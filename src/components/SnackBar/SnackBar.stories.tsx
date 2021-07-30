@@ -2,7 +2,7 @@ import { text, boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import SnackBar from "./SnackBar";
 
-export default { title: "SnackBar", decorators: [withKnobs] };
+export default { title: "Components/SnackBar", decorators: [withKnobs] };
 
 const options = {
   warning: "warning",

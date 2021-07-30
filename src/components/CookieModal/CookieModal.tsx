@@ -78,6 +78,7 @@ const CookieModal = ({ open, onClose }: CookieModalProps) => {
         primaryLabel="Alle Cookies akzeptieren"
         secondaryLabel="Alle ablehnen"
         onClose={onClose}
+        onPrimary={() => {}}
       />
     </Modal>
   );

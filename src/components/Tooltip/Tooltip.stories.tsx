@@ -2,7 +2,7 @@ import { text, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Tooltip from "./Tooltip";
 
-export default { title: "Tooltip", decorators: [withKnobs] };
+export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
 const positioning = {
   Left: "left",

@@ -2,7 +2,7 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CookieModal from "./CookieModal";
 
-export default { title: "CookieModal", decorators: [withKnobs] };
+export default { title: "Web/CookieModal", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

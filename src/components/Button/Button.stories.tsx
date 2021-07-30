@@ -3,7 +3,7 @@ import React from "react";
 import { IconLayoutGridAdd } from "@tabler/icons";
 import Button from "./Button";
 
-export default { title: "Button", decorators: [withKnobs] };
+export default { title: "Components/Button", decorators: [withKnobs] };
 
 const options = {
   Primary: "primary",

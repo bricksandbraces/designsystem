@@ -3,7 +3,7 @@ import { IconArrowNarrowRight } from "@tabler/icons";
 import React from "react";
 import Link from "./Link";
 
-export default { title: "Link", decorators: [withKnobs] };
+export default { title: "Components/Link", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

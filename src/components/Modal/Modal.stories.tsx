@@ -5,7 +5,7 @@ import ModalHeader from "./ModalHeader";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 
-export default { title: "Modal", decorators: [withKnobs] };
+export default { title: "Components/Modal", decorators: [withKnobs] };
 
 const options = {
   Small: "sm",
@@ -45,6 +45,9 @@ export const Default = () => {
           primaryLabel={text("Primary Label", "Update now")}
           secondaryLabel={text("Secondary Label", "Cancel")}
           onClose={() => {
+            setOpen(false);
+          }}
+          onPrimary={() => {
             setOpen(false);
           }}
         />

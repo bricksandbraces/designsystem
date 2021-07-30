@@ -3,7 +3,7 @@ import React from "react";
 import AspectRatio from "./AspectRatio";
 import { Grid, Column } from "../Grid/Grid";
 
-export default { title: "AspectRatio", decorators: [withKnobs] };
+export default { title: "Components/AspectRatio", decorators: [withKnobs] };
 
 const ratio = {
   "1x1": "1x1",

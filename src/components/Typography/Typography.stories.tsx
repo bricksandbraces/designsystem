@@ -2,7 +2,7 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Typography from "./Typography";
 
-export default { title: "Typography", decorators: [withKnobs] };
+export default { title: "Components/Typography", decorators: [withKnobs] };
 
 const type = {
   Text: "text",
