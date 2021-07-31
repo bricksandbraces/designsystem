@@ -2,7 +2,7 @@ import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Header from "./Header";
 
-export default { title: "Header", decorators: [withKnobs] };
+export default { title: "Web/Header", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

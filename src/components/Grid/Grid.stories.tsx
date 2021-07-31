@@ -2,7 +2,7 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Grid, Column } from "./Grid";
 
-export default { title: "Grid", decorators: [withKnobs] };
+export default { title: "Components/Grid", decorators: [withKnobs] };
 
 export const Auto = () => {
   return (

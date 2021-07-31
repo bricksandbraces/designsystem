@@ -2,11 +2,10 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Typography from "./Typography";
 
-export default { title: "Typography", decorators: [withKnobs] };
+export default { title: "Components/Typography", decorators: [withKnobs] };
 
 const type = {
-  Paragraph: "paragraph",
-  Span: "span",
+  Text: "text",
   H1: "h1",
   H2: "h2",
   H3: "h3",
@@ -15,7 +14,7 @@ const type = {
   H6: "h6"
 };
 
-const defaultType = "paragraph";
+const defaultType = "text";
 
 const token = {
   footnote: "footnote",

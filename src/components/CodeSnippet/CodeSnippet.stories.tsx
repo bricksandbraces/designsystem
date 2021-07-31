@@ -2,7 +2,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CodeSnippet from "./CodeSnippet";
 
-export default { title: "CodeSnippet", decorators: [withKnobs] };
+export default { title: "Components/CodeSnippet", decorators: [withKnobs] };
 
 export const Default = () => (
   <>

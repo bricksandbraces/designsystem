@@ -1,0 +1,81 @@
+@import "../../styles/colors.pcss";
+@import "../../styles/breakpoints.pcss";
+
+.footer {
+  min-height: 16rem;
+  background-color: $black;
+
+  &--divider {
+    margin-top: 3rem;
+    background-color: $warm-gray-50;
+  }
+
+  &--grid {
+    height: 100%;
+  }
+
+  &--column {
+    display: flex;
+    padding: 1rem 1rem 3rem 1rem;
+  }
+
+  &--column > div {
+    width: 100%;
+  }
+
+  &--logo {
+    &:focus-visible {
+      outline: 1px solid $white;
+      outline-offset: 8px;
+    }
+
+    &-link {
+      margin: 1rem 0;
+    }
+
+    &-logomark {
+      margin: 2rem 0;
+    }
+
+    &-label {
+      margin: 0 0 0.5rem 0;
+      color: $warm-gray-90;
+    }
+
+    &-cookies {
+      color: $warm-gray-70;
+    }
+  }
+
+  &--linksection {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem 0;
+
+    &-item {
+      margin: 0 0 0 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .footer {
+    &--column {
+      display: flex;
+      padding: 1rem;
+    }
+
+    &--logo {
+      margin: 1rem 0 2rem 0;
+    }
+    &--linksection {
+      display: flex;
+      justify-content: flex-start;
+      margin: 0 0 1rem 0;
+
+      &-item {
+        margin: 0 1.5rem 0 0;
+      }
+    }
+  }
+}

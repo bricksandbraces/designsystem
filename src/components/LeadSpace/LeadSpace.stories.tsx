@@ -3,7 +3,7 @@ import React from "react";
 import LeadSpace from "./LeadSpace";
 import Header from "../Header/Header";
 
-export default { title: "LeadSpace", decorators: [withKnobs] };
+export default { title: "Web/LeadSpace", decorators: [withKnobs] };
 
 export const WithImage = () => {
   return (

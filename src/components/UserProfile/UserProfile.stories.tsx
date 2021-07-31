@@ -2,7 +2,7 @@ import { text, object, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import UserProfile from "./UserProfile";
 
-export default { title: "UserProfile", decorators: [withKnobs] };
+export default { title: "Components/UserProfile", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

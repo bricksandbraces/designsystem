@@ -13,6 +13,11 @@ type SideNavItemProps = {
   label?: string;
 
   /**
+   * ClassName
+   */
+  className?: string;
+
+  /**
    * icon that is shown
    */
   renderIcon: ReactNode;
@@ -33,6 +38,7 @@ const SideNavItem = ({
   label,
   renderIcon,
   selected,
+  className,
   onClick
 }: SideNavItemProps) => {
   return (
@@ -40,9 +46,13 @@ const SideNavItem = ({
       {href !== undefined ? (
         <a
           href={href}
-          className={cx("sidenav--item", {
-            "sidenav--item-selected": selected
-          })}
+          className={cx(
+            "sidenav--item",
+            {
+              "sidenav--item-selected": selected
+            },
+            className
+          )}
         >
           <div className="sidenav--item-icon">{renderIcon}</div>
           <div className="sidenav--item-label">{label}</div>

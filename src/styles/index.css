@@ -20,7 +20,10 @@
 @import "../components/Typography/Typography.pcss";
 @import "../components/LeadSpace/LeadSpace.pcss";
 @import "../components/Header/Header.pcss";
+@import "../components/Footer/Footer.pcss";
 @import "../components/Modal/Modal.pcss";
+@import "../components/Checkbox/Checkbox.pcss";
+@import "../components/CookieModal/CookieModal.pcss";
 
 * {
   box-sizing: border-box;
