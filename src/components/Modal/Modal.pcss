@@ -5,69 +5,18 @@
 
 .modal {
   display: flex;
+  visibility: hidden;
+  position: fixed;
+  z-index: 9000;
+  top: 0;
+  left: 0;
   align-items: center;
   justify-content: center;
-
-  &--container {
-    visibility: hidden;
-    position: relative;
-    z-index: 11000;
-    width: 100%;
-    margin: 32px;
-    padding: 24px;
-    transform: translate(0, 8px);
-    transition: $transition-01;
-    border-radius: $border-radius-2;
-    opacity: 0;
-    background-color: $modal-background;
-    color: $white;
-
-    &-headline {
-      width: calc(100% - 32px);
-      margin: 0 0 1rem 0;
-      color: $modal-headline;
-    }
-
-    &-subline {
-      width: calc(100% - 32px);
-      margin: 0;
-      color: $modal-subline;
-    }
-
-    &-small {
-      max-width: 400px;
-    }
-
-    &-medium {
-      max-width: 600px;
-    }
-
-    &-large {
-      max-width: 800px;
-    }
-
-    &-xlarge {
-      max-width: 1000px;
-    }
-  }
-
-  &--buttongroup {
-    display: flex;
-    justify-content: flex-end;
-    margin: 2.5rem 0 0 0;
-
-    &-primary {
-      margin: 0;
-    }
-
-    &-ghost {
-      margin: 0 1rem 0 0;
-    }
-
-    &-fluid {
-      width: 100%;
-    }
-  }
+  width: 100vw;
+  height: 100vh;
+  transition: opacity $transition-01, visibility 0ms linear 0.15s;
+  opacity: 0;
+  background-color: $modal-overlay;
 
   &--close {
     position: absolute;
@@ -78,23 +27,155 @@
     }
   }
 
-  &--overlay {
-    visibility: hidden;
-    position: absolute;
-    z-index: 10000;
+  &--header {
+    width: 100%;
+    padding: 1.5rem 6rem 0 1.5rem;
+
+    &-headline {
+      margin: 0 0 0.5rem 0;
+    }
+
+    &-subheadline {
+      margin: 0 0 1.5rem 0;
+      color: $modal-subheadline;
+    }
+  }
+
+  &--body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &-content {
+      height: 100%;
+      margin: 0;
+      padding: 0 6rem 0 1.5rem;
+      overflow: scroll;
+      color: $modal-content;
+
+      @media screen and (max-width: $breakpoint-md) {
+        padding: 0 1.5rem;
+      }
+    }
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 1.5rem;
+
+    &-primary {
+      margin: 0;
+    }
+
+    &-ghost {
+      margin: 0 1rem 0 0;
+    }
+
+    @media screen and (max-width: $breakpoint-md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &-primary {
+        width: 100%;
+      }
+
+      &-ghost {
+        width: 100%;
+        margin: 0 0 1rem 0;
+      }
+    }
+  }
+
+  &--open {
+    visibility: visible;
+    transition: opacity $transition-01;
+    opacity: 1;
+  }
+
+  &--container {
+    display: grid;
+    position: fixed;
     top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transition: $transition-03;
-    opacity: 0;
-    background-color: $modal-overlay;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    transform: translate3d(0, 16px, 0);
+    transform-origin: top center;
+    transition: transform $transition-01, opacity $transition-01, visibility 0ms;
+    border: 1px solid $warm-gray-15;
+    border-radius: $border-radius-2;
+    outline: 3px solid transparent;
+    outline-offset: -3px;
+    background-color: $modal-background;
+    color: $white;
+
+    @media screen and (min-width: $breakpoint-md) {
+      position: static;
+      width: 84%;
+      height: auto;
+      max-height: 90%;
+
+      &-small {
+        max-width: 400px;
+      }
+
+      &-medium {
+        max-width: 600px;
+      }
+
+      &-large {
+        max-width: 800px;
+      }
+
+      &-xlarge {
+        max-width: 1000px;
+      }
+    }
   }
 }
 
-.modal--open > .modal--overlay {
-  visibility: visible;
-  opacity: 1;
+.modal--container-small > div > .modal--body-content {
+  padding: 0 1.5rem;
+}
+
+.modal--container-small > .modal--footer {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.modal--container-small > .modal--footer > .modal--footer-primary {
+  width: 100%;
+}
+
+.modal--container-small > .modal--footer > .modal--footer-ghost {
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+.modal--with-divider > div > .modal--header {
+  border-bottom: 1px solid $warm-gray-20;
+}
+
+.modal--with-divider > div > div > .modal--body-content {
+  padding: 1.5rem 6rem 1.5rem 1.5rem;
+
+  @media screen and (max-width: $breakpoint-md) {
+    padding: 1.5rem;
+  }
+}
+
+.modal--with-divider > .modal--container-small > div > .modal--body-content {
+  padding: 1.5rem;
+}
+
+.modal--with-divider > div > .modal--footer {
+  margin: 0;
+  border-top: 1px solid $warm-gray-20;
 }
 
 .modal--open > .modal--container {

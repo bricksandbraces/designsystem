@@ -2,7 +2,7 @@ import { text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Checkbox from "./Checkbox";
 
-export default { title: "Checkbox", decorators: [withKnobs] };
+export default { title: "Components/Checkbox", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

@@ -9,6 +9,13 @@ import LogoBlack from "./public/logo-black.svg";
 addDecorator((storyFn) => <Layout>{storyFn()}</Layout>);
 
 export const parameters = {
+  options: {
+    /**
+     * display the top-level grouping as a "root" in the sidebar
+     * @type {Boolean}
+     */
+    showRoots: true
+  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   backgrounds: {
     default: "black",

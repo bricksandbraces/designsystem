@@ -4,7 +4,7 @@ import { IconArrowRight } from "@tabler/icons";
 import LoginForm from "./LoginForm";
 import Button from "../Button/Button";
 
-export default { title: "LoginForm", decorators: [withKnobs] };
+export default { title: "Web/LoginForm", decorators: [withKnobs] };
 
 export const Default = () => (
   <div

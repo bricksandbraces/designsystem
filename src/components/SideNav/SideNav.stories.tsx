@@ -4,7 +4,7 @@ import { IconSmartHome, IconSend, IconDatabase } from "@tabler/icons";
 import SideNav from "./SideNav";
 import SideNavItem from "./SideNavItem";
 
-export default { title: "SideNav", decorators: [withKnobs] };
+export default { title: "Components/SideNav", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

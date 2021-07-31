@@ -78,9 +78,7 @@ const Footer = ({
             />
           </a>
           <Typography type="text" token="label" className="footer--logo-label">
-            <br />
             &copy; {currentYear} BRICKS &amp; BRACES
-            <br />
           </Typography>
           {(description || descriptionLink) && (
             <Typography
@@ -90,11 +88,11 @@ const Footer = ({
             >
               {description}
               {descriptionLink && (
-                <p className="footer--logo-link">
+                <div className="footer--logo-link">
                   <Link href={descriptionLink.href} inline>
                     {descriptionLink.label}
                   </Link>
-                </p>
+                </div>
               )}
             </Typography>
           )}

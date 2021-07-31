@@ -2,7 +2,7 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CopyButton from "./CopyButton";
 
-export default { title: "CopyButton", decorators: [withKnobs] };
+export default { title: "Components/CopyButton", decorators: [withKnobs] };
 
 const positioning = {
   Left: "left",

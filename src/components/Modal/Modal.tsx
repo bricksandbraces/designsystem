@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconX } from "@tabler/icons";
 import Button from "../Button/Button";
-import Typography from "../Typography/Typography";
 
 type ModalProps = {
   /**
@@ -16,11 +15,9 @@ type ModalProps = {
   open?: boolean;
 
   /**
-   * Text labels
+   * With Divider
    */
-  cancelLabel?: string;
-  primaryLabel?: string;
-  headline: string;
+  withDivider?: boolean;
 
   /**
    * Children
@@ -31,26 +28,16 @@ type ModalProps = {
    * OnClose
    */
   onClose?: (event: any) => void;
-
-  /**
-   * OnPrimary
-   */
-  onPrimary?: (event: any) => void;
 };
 
-const Modal = ({
-  size,
-  open,
-  onClose,
-  onPrimary,
-  cancelLabel,
-  primaryLabel,
-  headline,
-  children
-}: ModalProps) => {
+const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
   return (
-    <div className={cx("modal", { "modal--open": open })}>
-      <div className="modal--overlay" />
+    <div
+      className={cx("modal", {
+        "modal--open": open,
+        "modal--with-divider": withDivider
+      })}
+    >
       <div
         className={cx("modal--container", {
           "modal--container-small": size === "sm",
@@ -59,41 +46,6 @@ const Modal = ({
           "modal--container-xlarge": size === "xlg"
         })}
       >
-        <Typography
-          type="text"
-          token="heading-02"
-          className="modal--container-headline"
-        >
-          {headline}
-        </Typography>
-        <div className="modal--container-subline">{children}</div>
-        {((cancelLabel && primaryLabel) || primaryLabel) && (
-          <div className="modal--buttongroup">
-            {cancelLabel && primaryLabel && (
-              <Button
-                fluid
-                kind={size === "sm" ? "outline" : "ghost"}
-                className={cx("modal--buttongroup-ghost", {
-                  "modal--buttongroup-fluid": size === "sm"
-                })}
-                onClick={onClose}
-              >
-                {cancelLabel}
-              </Button>
-            )}
-            {primaryLabel && (
-              <Button
-                fluid
-                className={cx("modal--buttongroup-primary", {
-                  "modal--buttongroup-fluid": size === "sm"
-                })}
-                onClick={onPrimary}
-              >
-                {primaryLabel}
-              </Button>
-            )}
-          </div>
-        )}
         <Button
           kind="ghost"
           renderIcon={<IconX />}
@@ -101,6 +53,7 @@ const Modal = ({
           className="modal--close"
           onClick={onClose}
         />
+        {children}
       </div>
     </div>
   );

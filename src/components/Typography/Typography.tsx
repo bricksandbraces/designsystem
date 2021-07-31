@@ -10,7 +10,7 @@ type TypographyProps = {
   /**
    * Type to use
    */
-  type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "text";
+  type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "text" | "span";
 
   /**
    * token to use
@@ -98,6 +98,14 @@ const Typography = ({
         </h6>
       )}
       {type === "text" && (
+        <div
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
+          {children}
+        </div>
+      )}
+      {type === "span" && (
         <span
           className={cx(`typography typography--${token}`, className)}
           {...rest}
