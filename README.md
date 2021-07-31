@@ -65,7 +65,9 @@ Aaaand you are done!
 
 > **Note: use the useInitialize() hook to initialize mandatory listeners (for viewport height correction an such magical stuff 🪄).**
 
-### Develop with storybook
+## Contribute
+
+At first, install husky using `yarn husky install`.
 
 To start storybook and show all components, simply run:
 
@@ -83,6 +85,27 @@ yarn build:package
 yarn build:storybook
 yarn start:storybook
 ```
+
+## Publishing and Dealing with yarn v2
+
+> Disclaimer: Because we are using yarn v2 options from .yarnrc and .npmrc will be IGNORED. Please look into the [offical documentation](https://yarnpkg.com/configuration/yarnrc) for the new file structure.
+
+1. Authenticate using a personal access token. You find it under Settings->Developer Settings->Personal access token and generate one with `repo, read:packages, write:packages, delete:packages`.
+2. Go into your users home folder and create `.yarnrc.yml`. There you add
+
+```
+npmScopes:
+  "brickandbraces":
+    npmAlwaysAuth: true
+    npmRegistryServer: "https://npm.pkg.github.com"
+    npmAuthToken: "<your-personal-access-token>"
+```
+
+All packages starting with @bricksandbraces on your computers user will use this authentication to publish or consume packages.
+Never commit this file
+
+3. Go back to the repository and login with `yarn npm login --scope=bricksandbraces`. When asked for a username, enter your personal (not the organizations!) github username and as password the personal access token you just generated.
+4. Finally using `yarn npm publish` you will be able to publish a new version of the package!! 🎉🎉🎉
 
 ## License
 
