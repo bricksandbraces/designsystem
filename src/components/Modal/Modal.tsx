@@ -37,6 +37,10 @@ const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
         "modal--open": open,
         "modal--with-divider": withDivider
       })}
+      onClick={onClose}
+      onKeyPress={onClose}
+      role="button"
+      tabIndex={0}
     >
       <div
         className={cx("modal--container", {
