@@ -1,7 +1,6 @@
 @import "./colors.pcss";
 @import "./metrics.pcss";
 @import "./theme.pcss";
-@import "./breakpoints.pcss";
 @import "./typography.pcss";
 
 @import "../components/LoginForm/LoginForm.pcss";
