@@ -24,6 +24,7 @@
 @import "../components/Modal/Modal.pcss";
 @import "../components/Checkbox/Checkbox.pcss";
 @import "../components/CookieModal/CookieModal.pcss";
+@import "../components/Divider/Divider.pcss";
 
 * {
   box-sizing: border-box;

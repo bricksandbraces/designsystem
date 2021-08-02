@@ -1,0 +1,37 @@
+@import "../../styles/theme.pcss";
+
+.divider {
+  margin: 1rem 0;
+  border: 0;
+  opacity: 1;
+  background-color: currentColor;
+  color: inherit;
+
+  &--default {
+    background-color: $divider-default;
+  }
+
+  &--subtle {
+    background-color: $divider-subtle;
+  }
+
+  &--explicit {
+    background-color: $divider-explicit;
+  }
+
+  &--thin {
+    height: 1px !important;
+  }
+
+  &--thicker {
+    height: 2px !important;
+  }
+
+  &--thick {
+    height: 4px !important;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+}
