@@ -31,7 +31,6 @@ storybook-static
 # misc
 .DS_Store
 *.pem
-.npmrc
 .yarn/
 
 # debug
