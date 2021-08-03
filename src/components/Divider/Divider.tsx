@@ -13,9 +13,9 @@ type DividerProps = {
   size?: "default" | "thin" | "thicker" | "thick";
 
   /**
-   * No Margin
+   * Margin
    */
-  noMargin?: boolean;
+  margin?: boolean;
 
   /**
    * Class Name
@@ -23,7 +23,7 @@ type DividerProps = {
   className?: string;
 };
 
-const Divider = ({ kind, noMargin, size, className }: DividerProps) => {
+const Divider = ({ kind, margin = true, size, className }: DividerProps) => {
   return (
     <hr
       className={cx(
@@ -35,7 +35,7 @@ const Divider = ({ kind, noMargin, size, className }: DividerProps) => {
           "divider--thick": size === "thick",
           "divider--subtle": kind === "subtle",
           "divider--explicit": kind === "explicit",
-          "divider--no-margin": noMargin
+          "divider--margin": margin
         },
         className
       )}

@@ -27,7 +27,7 @@ export const Default = () => {
         <Divider
           kind={select("Kind", options, defaultKind) as any}
           size={select("Size", sizeOptions, defaultSizeValue) as any}
-          noMargin={boolean("No Margin", false)}
+          margin={boolean("Margin", true)}
         />
       </div>
     </div>
