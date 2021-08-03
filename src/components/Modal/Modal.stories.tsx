@@ -22,7 +22,7 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
       <Modal
         size={select("Size", options, defaultValue) as any}
-        open={boolean("open", open)}
+        open={open}
         onClose={() => {
           setOpen(false);
         }}

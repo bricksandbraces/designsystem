@@ -1,7 +1,6 @@
 @import "./colors.pcss";
 @import "./metrics.pcss";
 @import "./theme.pcss";
-@import "./breakpoints.pcss";
 @import "./typography.pcss";
 
 @import "../components/LoginForm/LoginForm.pcss";
@@ -24,6 +23,7 @@
 @import "../components/Modal/Modal.pcss";
 @import "../components/Checkbox/Checkbox.pcss";
 @import "../components/CookieModal/CookieModal.pcss";
+@import "../components/Divider/Divider.pcss";
 
 * {
   box-sizing: border-box;
