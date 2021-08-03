@@ -10,7 +10,7 @@ const options = {
   explicit: "explicit"
 };
 
-const defaultValue = "default";
+const defaultKind = "default";
 
 const sizeOptions = {
   thin: "thin",
