@@ -25,7 +25,7 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh" }}>
       <div style={{ width: "405px" }}>
         <Divider
-          kind={select("Kind", options, defaultValue) as any}
+          kind={select("Kind", options, defaultKind) as any}
           size={select("Size", sizeOptions, defaultSizeValue) as any}
           noMargin={boolean("No Margin", false)}
         />
