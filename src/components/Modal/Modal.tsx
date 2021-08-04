@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import OutsideClickHandler from "react-outside-click-handler";
 import { IconX } from "@tabler/icons";
 import Button from "../Button/Button";
 
@@ -27,7 +28,7 @@ type ModalProps = {
   /**
    * OnClose
    */
-  onClose?: (event: any) => void;
+  onClose: (event: any) => void;
 };
 
 const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
@@ -37,28 +38,39 @@ const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
         "modal--open": open,
         "modal--with-divider": withDivider
       })}
-      onClick={onClose}
-      onKeyPress={onClose}
+      onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (open && event.key === "Escape") {
+          onClose(event);
+        }
+      }}
       role="button"
       tabIndex={0}
     >
-      <div
-        className={cx("modal--container", {
-          "modal--container-small": size === "sm",
-          "modal--container-medium": size === "md",
-          "modal--container-large": size === "lg",
-          "modal--container-xlarge": size === "xlg"
-        })}
+      <OutsideClickHandler
+        disabled={!open}
+        onOutsideClick={(event) => {
+          console.log("Outside click");
+          onClose(event);
+        }}
       >
-        <Button
-          kind="ghost"
-          renderIcon={<IconX />}
-          iconOnly
-          className="modal--close"
-          onClick={onClose}
-        />
-        {children}
-      </div>
+        <div
+          className={cx("modal--container", {
+            "modal--container-small": size === "sm",
+            "modal--container-medium": size === "md",
+            "modal--container-large": size === "lg",
+            "modal--container-xlarge": size === "xlg"
+          })}
+        >
+          <Button
+            kind="ghost"
+            renderIcon={<IconX />}
+            iconOnly
+            className="modal--close"
+            onClick={onClose}
+          />
+          {children}
+        </div>
+      </OutsideClickHandler>
     </div>
   );
 };
