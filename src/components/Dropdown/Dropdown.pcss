@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    height: $container-03;
     padding: 0 2.5rem 0 1rem;
     transition: $transition-01;
     border: $border $dropdown-border;
@@ -38,6 +37,10 @@
     &:focus-visible {
       border-color: $dropdown-focus;
     }
+  }
+
+  &--default.dropdown--button {
+    height: $container-03;
   }
 
   &--small.dropdown--button {
@@ -83,7 +86,7 @@
   transform: translate3d(0, 32px, 0) !important;
 }
 
-.dropdown-menu.show {
+.dropdown--default.dropdown-menu.show {
   transform: translate3d(0, 40px, 0) !important;
 }
 
@@ -123,4 +126,8 @@
 
 .dropdown--small > li > .dropdown-item {
   height: $container-02;
+}
+
+.dropdown--default > li > .dropdown-item {
+  height: $container-03;
 }

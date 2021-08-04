@@ -2,6 +2,23 @@ import React from "react";
 import cx from "classnames";
 import { IconChevronDown } from "@tabler/icons";
 
+type DropdownItem = {
+  /**
+   * Link to location
+   */
+  href: string;
+
+  /**
+   * Label that is shown
+   */
+  label: string;
+
+  /**
+   * Selected item
+   */
+  selected?: boolean;
+};
+
 export type DropdownProps = {
   /**
    * Classname
@@ -9,26 +26,41 @@ export type DropdownProps = {
   className?: string;
 
   /**
-   * Large
+   * Dropdown ID
    */
-  large?: boolean;
+  id: string;
 
   /**
-   * Small
+   * Size
    */
-  small?: boolean;
+  size?: "default" | "small" | "large";
+
+  /**
+   * DropdownItems
+   */
+  dropdownItems: DropdownItem[];
 };
 
-const Dropdown = ({ large, small, className }: DropdownProps) => {
+const Dropdown = ({
+  dropdownItems,
+  id,
+  size = "default",
+  className
+}: DropdownProps) => {
   return (
     <div className="dropdown">
       <button
-        className={cx("dropdown--button dropdown-toggle", {
-          "dropdown--small": small,
-          "dropdown--large": large
-        })}
+        className={cx(
+          "dropdown--button dropdown-toggle",
+          {
+            "dropdown--default": size === "default",
+            "dropdown--small": size === "small",
+            "dropdown--large": size === "large"
+          },
+          className
+        )}
         type="button"
-        id="dropdownMenuButton1"
+        id={id}
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
@@ -37,26 +69,26 @@ const Dropdown = ({ large, small, className }: DropdownProps) => {
       </button>
       <ul
         className={cx("dropdown-menu", {
-          "dropdown--small": small,
-          "dropdown--large": large
+          "dropdown--default": size === "default" || undefined,
+          "dropdown--small": size === "small",
+          "dropdown--large": size === "large"
         })}
-        aria-labelledby="dropdownMenuButton1"
+        aria-labelledby={id}
       >
-        <li>
-          <a className="dropdown-item active" href="#">
-            Action
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item" href="#">
-            Another action
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item" href="#">
-            Something else here
-          </a>
-        </li>
+        {dropdownItems?.map((item) => {
+          return (
+            <li key={item.href}>
+              <a
+                className={cx("dropdown-item", {
+                  active: item.selected
+                })}
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
