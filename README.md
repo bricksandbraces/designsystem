@@ -95,16 +95,14 @@ yarn start:storybook
 
 ```
 npmScopes:
-  "brickandbraces":
-    npmAlwaysAuth: true
-    npmRegistryServer: "https://npm.pkg.github.com"
+  brickandbraces:
     npmAuthToken: "<your-personal-access-token>"
 ```
 
 All packages starting with @bricksandbraces on your computers user will use this authentication to publish or consume packages.
 Never commit this file
 
-3. Go back to the repository and login with `yarn npm login --scope=bricksandbraces`. When asked for a username, enter your personal (not the organizations!) github username and as password the personal access token you just generated.
+3. Go back to the repository and login with `yarn npm login --scope bricksandbraces --publish`. When asked for a username, enter your personal (not the organizations!) github username and as password the personal access token you just generated.
 4. Finally using `yarn npm publish` you will be able to publish a new version of the package!! 🎉🎉🎉
 
 ## License
