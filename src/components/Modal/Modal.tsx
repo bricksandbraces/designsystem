@@ -74,7 +74,7 @@ const Modal = ({
       tabIndex={tabIndex}
     >
       <OutsideClickListener
-        disabled={closeOnOutsideClick || !open}
+        disabled={!closeOnOutsideClick || !open}
         onClickOutside={(event) => {
           onClose?.(event);
         }}
