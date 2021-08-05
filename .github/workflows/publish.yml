@@ -31,7 +31,9 @@ jobs:
           cache: "yarn"
           registry-url: https://npm.pkg.github.com/
       - run: yarn install --immutable
-      - uses: borales/actions-yarn@v2.3.0
+      - uses: actions/setup-node@v2
         with:
-          auth-token: ${{ secrets.NPM_TOKEN }}
-          registry-url: https://npm.pkg.github.com
+          registry-url: "https://npm.pkg.github.com"
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
