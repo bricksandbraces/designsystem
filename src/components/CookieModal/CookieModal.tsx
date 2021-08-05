@@ -10,7 +10,7 @@ type CookieModalProps = {
   /**
    * Open
    */
-  open?: boolean;
+  open: boolean;
 
   /**
    * OnClose
