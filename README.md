@@ -1,5 +1,7 @@
 # @bricksandbraces/designsystem
 
+[![Storybook](https://github.com/bricksandbraces/designsystem/actions/workflows/deployment.yml/badge.svg?branch=main)](https://github.com/bricksandbraces/designsystem/actions/workflows/deployment.yml)
+
 Awesome designsystem for the Bricks & Braces brand.
 
 ## Tech Stack
