@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useRef } from "react";
 
 type OutsideClickListenerProps = {
   children: ReactElement<any, string>;
+  disabled?: boolean;
   onClickOutside: (event: any) => void;
 };
 
@@ -15,13 +16,18 @@ function normalizeEventTarget(evt: any) {
 
 const OutsideClickListener = ({
   children,
+  disabled = false,
   onClickOutside
 }: OutsideClickListenerProps) => {
   const elementRef = useRef<any>();
 
   const handleGlobalClick = (event: any) => {
     const { current } = elementRef;
-    if (current?.contains && !current?.contains(normalizeEventTarget(event))) {
+    if (
+      !disabled &&
+      current?.contains &&
+      !current?.contains(normalizeEventTarget(event))
+    ) {
       onClickOutside(event);
     }
   };

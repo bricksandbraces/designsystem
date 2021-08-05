@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import cx from "classnames";
-import OutsideClickHandler from "react-outside-click-handler";
 import { IconX } from "@tabler/icons";
 import Button from "../Button/Button";
+import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 
 type ModalProps = {
   /**
@@ -13,7 +13,7 @@ type ModalProps = {
   /**
    * Open
    */
-  open?: boolean;
+  open: boolean;
 
   /**
    * With Divider
@@ -28,32 +28,39 @@ type ModalProps = {
   /**
    * OnClose
    */
-  onClose: (event: any) => void;
+  onClose?: (event: any) => void;
 };
 
 const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
+  const modalContainerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (open) {
+      console.log("LOL");
+      modalContainerRef.current?.focus();
+    }
+  }, [open]);
   return (
     <div
       className={cx("modal", {
         "modal--open": open,
         "modal--with-divider": withDivider
       })}
-      onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (open && event.key === "Escape") {
-          onClose(event);
-        }
-      }}
-      role="button"
-      tabIndex={0}
     >
-      <OutsideClickHandler
+      <OutsideClickListener
         disabled={!open}
-        onOutsideClick={(event) => {
-          console.log("Outside click");
-          onClose(event);
+        onClickOutside={(event) => {
+          onClose?.(event);
         }}
       >
         <div
+          ref={modalContainerRef}
+          role="button"
+          onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => {
+            if (open && event.key === "Escape") {
+              onClose?.(event);
+            }
+          }}
+          tabIndex={0}
           className={cx("modal--container", {
             "modal--container-small": size === "sm",
             "modal--container-medium": size === "md",
@@ -66,11 +73,14 @@ const Modal = ({ size, open, onClose, withDivider, children }: ModalProps) => {
             renderIcon={<IconX />}
             iconOnly
             className="modal--close"
-            onClick={onClose}
+            onClick={(event: any) => {
+              onClose?.(event);
+            }}
+            autoFocus
           />
           {children}
         </div>
-      </OutsideClickHandler>
+      </OutsideClickListener>
     </div>
   );
 };

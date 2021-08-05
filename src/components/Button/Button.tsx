@@ -58,6 +58,9 @@ export type ButtonProps = {
   withIconRight?: boolean;
   withIconLeft?: boolean;
   renderIcon?: ReactNode;
+
+  /** Automatically focus the button */
+  autoFocus?: boolean;
 };
 
 const kindStyles: Record<string, Record<string, string>> = {
