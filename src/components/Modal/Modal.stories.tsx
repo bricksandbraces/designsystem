@@ -27,6 +27,7 @@ export const Default = () => {
         onClose={() => {
           setOpen(false);
         }}
+        closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
       >
         <ModalHeader
@@ -109,6 +110,7 @@ export const Doppeldecker = () => {
         onClose={() => {
           setSecondOpen(false);
         }}
+        closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
       >
         <ModalHeader
