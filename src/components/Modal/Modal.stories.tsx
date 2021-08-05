@@ -64,7 +64,8 @@ export const Doppeldecker = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
       <Button
-        onClick={() => {
+        onClick={(event: Event) => {
+          event.stopPropagation();
           setOpen(true);
         }}
       >
@@ -74,10 +75,10 @@ export const Doppeldecker = () => {
         size={select("Size", options, defaultValue) as any}
         open={open}
         disabled={secondOpen}
+        closeOnOutsideClick={!secondOpen}
         onClose={() => {
           setOpen(false);
         }}
-        closeOnOutsideClick={!secondOpen}
         withDivider={boolean("With Divider", false)}
       >
         <ModalHeader
@@ -104,7 +105,7 @@ export const Doppeldecker = () => {
           }}
         />
       </Modal>
-      <Modal
+      {/* <Modal
         size={select("Size", options, defaultValue) as any}
         open={secondOpen}
         onClose={() => {
@@ -133,7 +134,7 @@ export const Doppeldecker = () => {
             setSecondOpen(false);
           }}
         />
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

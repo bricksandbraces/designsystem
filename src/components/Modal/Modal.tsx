@@ -58,8 +58,6 @@ const Modal = ({
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (open) {
-      console.log("You should be open and focused!");
-      console.log(closeButtonRef.current);
       setTimeout(() => {
         closeButtonRef.current?.focus();
       }, 2000);

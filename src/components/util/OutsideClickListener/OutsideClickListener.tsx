@@ -6,14 +6,6 @@ type OutsideClickListenerProps = {
   onClickOutside: (event: any) => void;
 };
 
-function normalizeEventTarget(evt: any) {
-  // shadow dom
-  if (evt.composed && typeof evt.composedPath === "function") {
-    return evt.composedPath()[0];
-  }
-  return evt.target;
-}
-
 const OutsideClickListener = ({
   children,
   disabled = false,
@@ -21,13 +13,11 @@ const OutsideClickListener = ({
 }: OutsideClickListenerProps) => {
   const elementRef = useRef<any>();
 
-  const handleGlobalClick = (event: any) => {
+  const handleGlobalClick = (event: Event) => {
     const { current } = elementRef;
-    if (
-      !disabled &&
-      current?.contains &&
-      !current?.contains(normalizeEventTarget(event))
-    ) {
+    event.stopImmediatePropagation();
+
+    if (!disabled && current?.contains && !current?.contains(event.target)) {
       onClickOutside(event);
     }
   };
@@ -38,7 +28,7 @@ const OutsideClickListener = ({
     return () => {
       document.removeEventListener("click", handleGlobalClick);
     };
-  }, []);
+  }, [disabled]);
 
   return React.cloneElement(children, {
     ref: elementRef
