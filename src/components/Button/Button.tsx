@@ -1,5 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { forwardRef, MutableRefObject, ReactNode } from "react";
 import cx from "classnames";
+
+type ForwardedRef<T> =
+  | ((instance: T | null) => void)
+  | MutableRefObject<T | null>
+  | null;
 
 export type ButtonProps = {
   /** Unique identifier for your button */
@@ -58,6 +63,9 @@ export type ButtonProps = {
   withIconRight?: boolean;
   withIconLeft?: boolean;
   renderIcon?: ReactNode;
+
+  /** Automatically focus the button */
+  autoFocus?: boolean;
 };
 
 const kindStyles: Record<string, Record<string, string>> = {
@@ -75,28 +83,32 @@ const kindStyles: Record<string, Record<string, string>> = {
   }
 };
 
-const Button = ({
-  kind = "primary",
-  large,
-  small,
-  disabled,
-  isLoading,
-  iconOnly,
-  children,
-  withIconRight,
-  withIconLeft,
-  fluid,
-  href,
-  className,
-  renderIcon,
-  ...rest
-}: ButtonProps) => (
+const Button = (
+  {
+    kind = "primary",
+    large,
+    small,
+    disabled,
+    isLoading,
+    iconOnly,
+    children,
+    withIconRight,
+    withIconLeft,
+    fluid,
+    href,
+    className,
+    renderIcon,
+    ...rest
+  }: ButtonProps,
+  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => (
   <div
     className={cx({ "button--notallowed": isLoading || disabled }, className)}
   >
     {href ? (
       <a
         href={href}
+        ref={ref as ForwardedRef<HTMLAnchorElement>}
         className={cx(
           "button",
           {
@@ -130,6 +142,7 @@ const Button = ({
     ) : (
       <button
         type="button"
+        ref={ref as ForwardedRef<HTMLButtonElement>}
         className={cx(
           "button",
           {
@@ -165,4 +178,6 @@ const Button = ({
   </div>
 );
 
-export default Button;
+export default forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  Button
+);
