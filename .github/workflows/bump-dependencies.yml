@@ -14,6 +14,9 @@ jobs:
         uses: cometkim/yarn-plugin-bump@master
         with:
           branch: dependencies/all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PULL_REQUEST_FROM_BRANCH: dependencies/all
       - name: Sync dependency update branch with Pull Request
         uses: vsoch/pull-request-action@1.0.18
         env:
