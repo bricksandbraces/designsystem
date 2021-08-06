@@ -30,10 +30,11 @@ jobs:
         with:
           cache: "yarn"
           registry-url: https://npm.pkg.github.com/
+      - run: yarn config set npmScopes.bricksandbraces.npmAuthToken $NODE_AUTH_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --immutable
       - uses: actions/setup-node@v2
         with:
           registry-url: "https://npm.pkg.github.com"
       - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

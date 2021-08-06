@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { forwardRef, ReactNode, FocusEvent } from "react";
 import cx from "classnames";
 
 export type ButtonProps = {
@@ -61,6 +61,9 @@ export type ButtonProps = {
 
   /** Automatically focus the button */
   autoFocus?: boolean;
+
+  /** Triggered when the event receives focus */
+  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
 };
 
 const kindStyles: Record<string, Record<string, string>> = {
