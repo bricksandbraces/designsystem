@@ -72,7 +72,7 @@ export const Nested = () => {
         Open Modal
       </Button>
       <Modal
-        size={select("Size", options, defaultValue) as any}
+        size="md"
         open={open}
         closeOnOutsideClick={!secondOpen}
         onClose={() => {

@@ -1,15 +1,5 @@
-import React, {
-  FocusEvent,
-  forwardRef,
-  MutableRefObject,
-  ReactNode
-} from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
-
-type ForwardedRef<T> =
-  | ((instance: T | null) => void)
-  | MutableRefObject<T | null>
-  | null;
 
 export type ButtonProps = {
   /** Unique identifier for your button */
