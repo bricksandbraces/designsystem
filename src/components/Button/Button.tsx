@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { forwardRef, ReactNode, FocusEvent } from "react";
 import cx from "classnames";
 
 export type ButtonProps = {
