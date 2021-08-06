@@ -22,6 +22,6 @@ jobs:
         with:
           cache: "yarn"
       - run: yarn install --immutable
-      - run: yarn check:format
+      - run: yarn format:check
       - run: yarn test
       - run: yarn build:package
