@@ -72,7 +72,7 @@ export const Doppeldecker = () => {
         Open Modal
       </Button>
       <Modal
-        size={select("Size", options, defaultValue) as any}
+        size="md"
         open={open}
         disabled={secondOpen}
         closeOnOutsideClick={!secondOpen}
@@ -105,8 +105,8 @@ export const Doppeldecker = () => {
           }}
         />
       </Modal>
-      {/* <Modal
-        size={select("Size", options, defaultValue) as any}
+      <Modal
+        size="sm"
         open={secondOpen}
         onClose={() => {
           setSecondOpen(false);
