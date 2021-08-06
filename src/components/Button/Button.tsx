@@ -1,4 +1,9 @@
-import React, { forwardRef, MutableRefObject, ReactNode } from "react";
+import React, {
+  FocusEvent,
+  forwardRef,
+  MutableRefObject,
+  ReactNode
+} from "react";
 import cx from "classnames";
 
 type ForwardedRef<T> =
@@ -66,6 +71,9 @@ export type ButtonProps = {
 
   /** Automatically focus the button */
   autoFocus?: boolean;
+
+  /** Triggered when the event receives focus */
+  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
 };
 
 const kindStyles: Record<string, Record<string, string>> = {
