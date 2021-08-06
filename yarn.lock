@@ -1480,69 +1480,69 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@bricksandbraces/designsystem@workspace:."
   dependencies:
-    "@babel/core": ^7.13.15
-    "@popperjs/core": ^2.9.2
+    "@babel/core": ^7.15.0
+    "@popperjs/core": ^2.9.3
     "@storybook/addon-a11y": ^6.3.6
-    "@storybook/addon-actions": 6.3.6
-    "@storybook/addon-essentials": 6.3.6
-    "@storybook/addon-knobs": 6.3.0
-    "@storybook/addon-links": 6.3.6
+    "@storybook/addon-actions": ^6.3.6
+    "@storybook/addon-essentials": ^6.3.6
+    "@storybook/addon-knobs": ^6.3.0
+    "@storybook/addon-links": ^6.3.6
     "@storybook/addon-postcss": ^2.0.0
-    "@storybook/addons": 6.3.6
+    "@storybook/addons": ^6.3.6
     "@storybook/api": ^6.3.6
     "@storybook/builder-webpack5": ^6.3.6
     "@storybook/components": ^6.3.6
     "@storybook/core-events": ^6.3.6
     "@storybook/manager-webpack5": ^6.3.6
-    "@storybook/react": 6.3.6
+    "@storybook/react": ^6.3.6
     "@storybook/theming": ^6.3.6
     "@tabler/icons": ^1.41.2
-    "@types/bootstrap": ^5.0.16
-    "@types/enzyme": ^3.10.8
-    "@types/jest": ^26.0.10
-    "@types/node": ^15.12.4
-    "@types/prop-types": ^15.7.3
-    "@types/react": ^16.9.47
+    "@types/bootstrap": ^5.0.17
+    "@types/enzyme": ^3.10.9
+    "@types/jest": ^26.0.24
+    "@types/node": ^16.4.13
+    "@types/prop-types": ^15.7.4
+    "@types/react": ^17.0.16
     "@types/react-dom": ^17.0.9
     "@types/react-outside-click-handler": ^1.3.0
-    "@typescript-eslint/eslint-plugin": ^4.28.3
-    "@typescript-eslint/parser": ^4.27.0
-    "@wojtekmaj/enzyme-adapter-react-17": ^0.6.2
-    autoprefixer: ^10.3.0
+    "@typescript-eslint/eslint-plugin": ^4.29.0
+    "@typescript-eslint/parser": ^4.29.0
+    "@wojtekmaj/enzyme-adapter-react-17": ^0.6.3
+    autoprefixer: ^10.3.1
     babel-loader: ^8.2.2
-    bootstrap: ^5.X
+    bootstrap: ^5.1.0
     classnames: ^2.3.1
     copyfiles: ^2.4.1
-    cssnano: ^5.0.6
+    cssnano: ^5.0.7
     enzyme: ^3.11.0
     enzyme-to-json: ^3.6.2
-    eslint: ^7.29.0
+    eslint: ^7.32.0
     eslint-config-airbnb: ^18.2.1
     eslint-config-airbnb-base: ^14.2.1
     eslint-config-airbnb-typescript: ^12.3.1
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: ^2.23.4
-    eslint-plugin-jest: ^24.3.6
+    eslint-plugin-jest: ^24.4.0
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: ^4.2.0
     husky: ^7.0.1
     identity-obj-proxy: ^3.0.0
-    jest: ^27.0.5
+    jest: ^27.0.6
     lodash: ^4.17.21
-    postcss: ^8.3.5
+    postcss: ^8.3.6
     postcss-calc: ^8.0.0
     postcss-cli: ^8.3.1
     postcss-flexbugs-fixes: ^5.0.2
     postcss-import: ^14.0.2
     postcss-mixins: ^8.1.0
-    postcss-nested: ^5.0.5
+    postcss-nested: ^5.0.6
     postcss-preset-env: ^6.7.0
     postcss-simple-vars: ^6.0.3
     postcss-size: ^4.0.1
     postcss-utilities: ^0.8.4
     postcss-viewport-height-correction: ^1.1.1
-    prettier: ^2.3.1
+    prettier: ^2.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-focus-lock: ^2.5.2
@@ -1551,17 +1551,17 @@ __metadata:
     react-use: ^17.2.4
     rimraf: ^3.0.2
     serve: ^12.0.0
-    storybook: 6.3.6
+    storybook: ^6.3.6
     storybook-dark-mode: ^1.0.8
-    style-loader: ^3.0.0
+    style-loader: ^3.2.1
     stylelint: ^13.13.1
     stylelint-config-prettier: ^8.0.2
     stylelint-config-property-sort-order-smacss: ^7.1.0
     stylelint-config-standard: ^22.0.0
     stylelint-prettier: ^1.2.0
-    ts-jest: ^27.0.3
-    typescript: ^4.3.4
-    webpack: ^5.39.1
+    ts-jest: ^27.0.4
+    typescript: ^4.3.5
+    webpack: ^5.49.0
     webpack-bundle-analyzer: ^4.4.2
   peerDependencies:
     react: ^17.X
@@ -2169,7 +2169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0, @popperjs/core@npm:^2.9.2":
+"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0, @popperjs/core@npm:^2.9.2, @popperjs/core@npm:^2.9.3":
   version: 2.9.3
   resolution: "@popperjs/core@npm:2.9.3"
   checksum: cf7381686820f04cb75aacef5373bac43b9b33eaea3387203650c3a89150dc407caf2e0c637184b2f82d83bba352a297d5a3569d1784158593a1e6e2a2af12a2
@@ -2248,7 +2248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.3.6":
+"@storybook/addon-actions@npm:6.3.6, @storybook/addon-actions@npm:^6.3.6":
   version: 6.3.6
   resolution: "@storybook/addon-actions@npm:6.3.6"
   dependencies:
@@ -2423,7 +2423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:6.3.6":
+"@storybook/addon-essentials@npm:^6.3.6":
   version: 6.3.6
   resolution: "@storybook/addon-essentials@npm:6.3.6"
   dependencies:
@@ -2467,7 +2467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-knobs@npm:6.3.0":
+"@storybook/addon-knobs@npm:^6.3.0":
   version: 6.3.0
   resolution: "@storybook/addon-knobs@npm:6.3.0"
   dependencies:
@@ -2498,7 +2498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:6.3.6":
+"@storybook/addon-links@npm:^6.3.6":
   version: 6.3.6
   resolution: "@storybook/addon-links@npm:6.3.6"
   dependencies:
@@ -2609,7 +2609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addons@npm:6.3.6, @storybook/addons@npm:^6.3.0":
+"@storybook/addons@npm:6.3.6, @storybook/addons@npm:^6.3.0, @storybook/addons@npm:^6.3.6":
   version: 6.3.6
   resolution: "@storybook/addons@npm:6.3.6"
   dependencies:
@@ -3320,7 +3320,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:6.3.6":
+"@storybook/react@npm:^6.3.6":
   version: 6.3.6
   resolution: "@storybook/react@npm:6.3.6"
   dependencies:
@@ -3580,7 +3580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bootstrap@npm:^5.0.16":
+"@types/bootstrap@npm:^5.0.17":
   version: 5.0.17
   resolution: "@types/bootstrap@npm:5.0.17"
   dependencies:
@@ -3622,7 +3622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/enzyme@npm:^3.10.8":
+"@types/enzyme@npm:^3.10.9":
   version: 3.10.9
   resolution: "@types/enzyme@npm:3.10.9"
   dependencies:
@@ -3733,7 +3733,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^26.0.10":
+"@types/jest@npm:^26.0.24":
   version: 26.0.24
   resolution: "@types/jest@npm:26.0.24"
   dependencies:
@@ -3847,10 +3847,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^15.12.4":
-  version: 15.14.5
-  resolution: "@types/node@npm:15.14.5"
-  checksum: 3e55617a1b1c166f7708aab4c2a38d2425494ef0a5a3f341e88b5b51b681e8cccc632f86d10f4bb1f764455a45c60d7de4cbdc0dfe2b19d17a329b72151b8669
+"@types/node@npm:^16.4.13":
+  version: 16.4.13
+  resolution: "@types/node@npm:16.4.13"
+  checksum: 3e5f80c62a2fc459a4a87f22c62ae2f5c18ff7019d155b4711c3b079184fd1fb694f64cd85dddf473da13b9eba449e44394f5c2be4c4cbd62b5cb2184f6b81e0
   languageName: node
   linkType: hard
 
@@ -3903,7 +3903,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.3":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.4":
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef15c425a944f6b13824a87854cccf238e1b4cd0350b3124f4938406fe758fbdd6fadb2480d1388a00daeab61ce9888be5ca2b73da275f5dbc977143ff98e1eb
@@ -3964,14 +3964,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^16.9.47":
-  version: 16.14.11
-  resolution: "@types/react@npm:16.14.11"
+"@types/react@npm:^17.0.16":
+  version: 17.0.16
+  resolution: "@types/react@npm:17.0.16"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 82b764ad183e96af02f17497e982deefeb10c2718474c263266c6b3c7e19b5019404ac5187f2f579f12c53e87d8f2c1233f28766acb8ddd5ed94443d728d5fd4
+  checksum: 7bdf3fd92159e1ddea3b270730d4bb9c15d3c578e55b9d82b63a3b27691e082b61eb710dd1a09aad0b058426a0335a9254ceb08dfb875d38788cfb6759e2b98a
   languageName: node
   linkType: hard
 
@@ -4092,7 +4092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^4.28.3":
+"@typescript-eslint/eslint-plugin@npm:^4.29.0":
   version: 4.29.0
   resolution: "@typescript-eslint/eslint-plugin@npm:4.29.0"
   dependencies:
@@ -4129,7 +4129,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^4.27.0, @typescript-eslint/parser@npm:^4.4.1":
+"@typescript-eslint/parser@npm:^4.29.0, @typescript-eslint/parser@npm:^4.4.1":
   version: 4.29.0
   resolution: "@typescript-eslint/parser@npm:4.29.0"
   dependencies:
@@ -4523,7 +4523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wojtekmaj/enzyme-adapter-react-17@npm:^0.6.2":
+"@wojtekmaj/enzyme-adapter-react-17@npm:^0.6.3":
   version: 0.6.3
   resolution: "@wojtekmaj/enzyme-adapter-react-17@npm:0.6.3"
   dependencies:
@@ -5247,7 +5247,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.3.0":
+"autoprefixer@npm:^10.3.1":
   version: 10.3.1
   resolution: "autoprefixer@npm:10.3.1"
   dependencies:
@@ -5684,12 +5684,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.X":
-  version: 5.0.2
-  resolution: "bootstrap@npm:5.0.2"
+"bootstrap@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "bootstrap@npm:5.1.0"
   peerDependencies:
-    "@popperjs/core": ^2.9.2
-  checksum: 5074006f6bdd28f476c9154c3b0945997ad16999564d9b1f0f5aea1ed2083eeeda12619be87ec47da88ff131d6a06a42fea739794c54f487434a14f849c4c187
+    "@popperjs/core": ^2.9.3
+  checksum: 0400dfa3e07726e07131d9fbc0b14acb2a602fd4ba17ef9bd32758b588a120419b61c1569efa3751a18c57beea9d1c386d487e001224aba82f0e3e032b92f136
   languageName: node
   linkType: hard
 
@@ -7263,7 +7263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:^5.0.6":
+"cssnano@npm:^5.0.7":
   version: 5.0.7
   resolution: "cssnano@npm:5.0.7"
   dependencies:
@@ -8422,7 +8422,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^24.3.6":
+"eslint-plugin-jest@npm:^24.4.0":
   version: 24.4.0
   resolution: "eslint-plugin-jest@npm:24.4.0"
   dependencies:
@@ -8543,7 +8543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.29.0":
+"eslint@npm:^7.32.0":
   version: 7.32.0
   resolution: "eslint@npm:7.32.0"
   dependencies:
@@ -11886,7 +11886,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest@npm:^27.0.5":
+"jest@npm:^27.0.6":
   version: 27.0.6
   resolution: "jest@npm:27.0.6"
   dependencies:
@@ -15001,7 +15001,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-nested@npm:^5.0.5":
+"postcss-nested@npm:^5.0.6":
   version: 5.0.6
   resolution: "postcss-nested@npm:5.0.6"
   dependencies:
@@ -15454,7 +15454,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.6, postcss@npm:^8.2.15, postcss@npm:^8.3.5":
+"postcss@npm:^8.1.6, postcss@npm:^8.2.15, postcss@npm:^8.3.6":
   version: 8.3.6
   resolution: "postcss@npm:8.3.6"
   dependencies:
@@ -15495,7 +15495,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.3.1":
+"prettier@npm:^2.3.2":
   version: 2.3.2
   resolution: "prettier@npm:2.3.2"
   bin:
@@ -17890,7 +17890,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"storybook@npm:6.3.6":
+"storybook@npm:^6.3.6":
   version: 6.3.6
   resolution: "storybook@npm:6.3.6"
   dependencies:
@@ -18200,7 +18200,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^3.0.0":
+"style-loader@npm:^3.2.1":
   version: 3.2.1
   resolution: "style-loader@npm:3.2.1"
   peerDependencies:
@@ -18867,7 +18867,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^27.0.3":
+"ts-jest@npm:^27.0.4":
   version: 27.0.4
   resolution: "ts-jest@npm:27.0.4"
   dependencies:
@@ -19039,7 +19039,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@^4.3.4:
+typescript@^4.3.5:
   version: 4.3.5
   resolution: "typescript@npm:4.3.5"
   bin:
@@ -19049,7 +19049,7 @@ typescript@^4.3.4:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.3.4#builtin<compat/typescript>":
+"typescript@patch:typescript@^4.3.5#builtin<compat/typescript>":
   version: 4.3.5
   resolution: "typescript@patch:typescript@npm%3A4.3.5#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"
   bin:
@@ -19878,7 +19878,44 @@ typescript@^4.3.4:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.39.1, webpack@npm:^5.9.0":
+"webpack@npm:^5.49.0":
+  version: 5.49.0
+  resolution: "webpack@npm:5.49.0"
+  dependencies:
+    "@types/eslint-scope": ^3.7.0
+    "@types/estree": ^0.0.50
+    "@webassemblyjs/ast": 1.11.1
+    "@webassemblyjs/wasm-edit": 1.11.1
+    "@webassemblyjs/wasm-parser": 1.11.1
+    acorn: ^8.4.1
+    acorn-import-assertions: ^1.7.6
+    browserslist: ^4.14.5
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.8.0
+    es-module-lexer: ^0.7.1
+    eslint-scope: 5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.4
+    json-parse-better-errors: ^1.0.2
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.1.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.1.3
+    watchpack: ^2.2.0
+    webpack-sources: ^3.2.0
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: b3c434f1e98076192077b85eb385e639856bc412b2200ae5d24c918eff2c551d80b2d3516f3cb05f88bc040a743a487b78426e9037f5c24abb7a0548990812ab
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.9.0":
   version: 5.48.0
   resolution: "webpack@npm:5.48.0"
   dependencies:
