@@ -37,4 +37,4 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           registry-url: "https://npm.pkg.github.com"
-      - run: yarn publish
+      - run: yarn npm publish
