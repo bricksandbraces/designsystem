@@ -8,13 +8,13 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  check-format-and-build:
+    name: "Check and build package"
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +22,6 @@ jobs:
         with:
           cache: "yarn"
       - run: yarn install --immutable
-      - run: yarn build:package
+      - run: yarn check:format
       - run: yarn test
+      - run: yarn build:package
