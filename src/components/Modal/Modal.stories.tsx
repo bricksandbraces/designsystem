@@ -58,7 +58,7 @@ export const Default = () => {
   );
 };
 
-export const Doppeldecker = () => {
+export const Nested = () => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
@@ -74,7 +74,6 @@ export const Doppeldecker = () => {
       <Modal
         size="md"
         open={open}
-        disabled={secondOpen}
         closeOnOutsideClick={!secondOpen}
         onClose={() => {
           setOpen(false);
@@ -106,12 +105,11 @@ export const Doppeldecker = () => {
         />
       </Modal>
       <Modal
-        size="sm"
+        size={select("Size", options, defaultValue) as any}
         open={secondOpen}
         onClose={() => {
           setSecondOpen(false);
         }}
-        closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
       >
         <ModalHeader

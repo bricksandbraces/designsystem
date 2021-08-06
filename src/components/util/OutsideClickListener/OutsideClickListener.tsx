@@ -11,13 +11,16 @@ const OutsideClickListener = ({
   disabled = false,
   onClickOutside
 }: OutsideClickListenerProps) => {
-  const elementRef = useRef<any>();
+  const elementRef = useRef<HTMLElement>();
 
   const handleGlobalClick = (event: Event) => {
     const { current } = elementRef;
-    event.stopImmediatePropagation();
 
-    if (!disabled && current?.contains && !current?.contains(event.target)) {
+    if (
+      !disabled &&
+      current?.contains &&
+      !current?.contains(event.target as Node)
+    ) {
       onClickOutside(event);
     }
   };
