@@ -5,8 +5,8 @@ name: 🔍 Continuous Integration
 
 on:
   pull_request:
-    branches: [main]
-
+    branches:
+      - main
 jobs:
   check-format-and-build:
     name: "Check and build package"
@@ -22,6 +22,6 @@ jobs:
         with:
           cache: "yarn"
       - run: yarn install --immutable
-      - run: yarn check:format
+      - run: yarn format:check
       - run: yarn test
       - run: yarn build:package
