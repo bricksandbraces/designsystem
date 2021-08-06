@@ -1,6 +1,6 @@
 # @bricksandbraces/designsystem
 
-[![Storybook](https://github.com/bricksandbraces/designsystem/actions/workflows/deployment.yml/badge.svg?branch=main)](https://github.com/bricksandbraces/designsystem/actions/workflows/deployment.yml)
+[![Build and Deploy to GitHub Pages](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml/badge.svg)](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml)
 
 Awesome designsystem for the Bricks & Braces brand.
 
@@ -102,8 +102,7 @@ npmRegistries:
 ```
 
 All packages starting with @bricksandbraces on your computers user will use this authentication to publish or consume packages.
-Never commit this file
-3. Finally using `yarn npm publish --tag latest` you will be able to publish a new version of the package!! 🎉🎉🎉
+Never commit this file 3. Finally using `yarn npm publish --tag latest` you will be able to publish a new version of the package!! 🎉🎉🎉
 
 ## License
 
