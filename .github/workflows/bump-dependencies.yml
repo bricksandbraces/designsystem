@@ -1,4 +1,4 @@
-name: Bumping dependencies
+name: Bump dependencies
 
 on:
   schedule:
