@@ -134,7 +134,7 @@ export const Doppeldecker = () => {
             setSecondOpen(false);
           }}
         />
-      </Modal> */}
+      </Modal>
     </div>
   );
 };
