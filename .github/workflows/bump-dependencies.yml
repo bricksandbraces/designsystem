@@ -1,8 +1,9 @@
 name: Bump dependencies
 
 on:
-  schedule:
-    - cron: "* * * * 5"
+  push:
+    branches:
+      - main
 
 jobs:
   bump-all:
