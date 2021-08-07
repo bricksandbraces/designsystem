@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@types/bootstrap": "^5.0.17",
+    "@types/bootstrap": "^5.1.0",
     "@types/enzyme": "^3.10.9",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.13",
