@@ -4,19 +4,6 @@
 
 Awesome designsystem for the Bricks & Braces brand.
 
-## Tech Stack
-
-- Typescript
-- React
-- PostCSS
-
-### Dev
-
-- Storybook
-- Prettier, ESlint, Stylelint
-- Husky
-- Jest, Enzyme
-
 ## How to use
 
 At first, install the dependencies:
@@ -66,6 +53,19 @@ Aaaand you are done!
 ![image](https://user-images.githubusercontent.com/8998518/125286009-934f4500-e31b-11eb-94d7-4238b41b446f.png)
 
 > **Note: use the useInitialize() hook to initialize mandatory listeners (for viewport height correction an such magical stuff 🪄).**
+
+## Tech Stack
+
+- Typescript
+- React
+- PostCSS
+
+### Dev
+
+- Storybook
+- Prettier, ESlint, Stylelint
+- Husky
+- Jest, Enzyme
 
 ## Contribute
 
