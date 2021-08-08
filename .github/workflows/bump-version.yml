@@ -22,3 +22,5 @@ jobs:
           minor-wording: "add,Adds,new"
           patch-wording: "patch,fixes"
           rc-wording: "RELEASE,alpha"
+          tag-prefix: "v"
+          commit-message: "CI: bumps version to {{version}} [skip ci]"
