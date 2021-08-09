@@ -32,7 +32,12 @@ type CookieBannerProps = {
   /**
    * onDismiss function
    */
-  onClick?: (event: any) => void;
+  onButtonClick?: (event: any) => void;
+
+  /**
+   * Link Action function
+   */
+  onLinkClick?: (event: any) => void;
 };
 
 const CookieBanner = ({
@@ -41,19 +46,25 @@ const CookieBanner = ({
   linkHref,
   buttonLabel,
   open,
-  onClick
+  onButtonClick,
+  onLinkClick
 }: CookieBannerProps) => {
   return (
     <div className={cx("cookiebanner", { "cookiebanner--open": open })}>
       <div className="cookiebanner--label">
         <p>{label}</p>
         {linkLabel && (
-          <Link inline href={linkHref ?? "#"} target="_blank">
+          <Link
+            inline
+            href={linkHref ?? "#"}
+            onClick={onLinkClick}
+            target="_blank"
+          >
             {linkLabel}
           </Link>
         )}
       </div>
-      {buttonLabel && <Button onClick={onClick}>{buttonLabel} </Button>}
+      {buttonLabel && <Button onClick={onButtonClick}>{buttonLabel} </Button>}
     </div>
   );
 };
