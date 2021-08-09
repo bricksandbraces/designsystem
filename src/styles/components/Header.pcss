@@ -103,6 +103,10 @@
     display: flex;
     align-items: center;
     padding: 0 0 0 1.15rem;
+
+    &:nth-child(2) {
+      padding: 0 1.15rem 0 1.15rem;
+    }
   }
 
   &--column > div {
@@ -129,6 +133,12 @@
 
 .header + .leadspace {
   transform: translate(0, -80px);
+  transition: $transition-01;
+}
+
+.header--small + .leadspace {
+  transform: translate(0, -48px);
+  transition: $transition-01;
 }
 
 .header + .leadspace > div > div > div > div > .leadspace--content {

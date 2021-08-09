@@ -72,44 +72,47 @@ const Modal = ({
     };
   }, [modalRef, open]);
 
-  return ReactDOM.createPortal(
-    <div
-      ref={modalRef}
-      className={cx("modal", {
-        "modal--open": open,
-        "modal--with-divider": withDivider
-      })}
-    >
-      <OutsideClickListener
-        disabled={!closeOnOutsideClick || !open}
-        onClickOutside={(event: any) => {
-          onClose?.(event);
-        }}
+  return (
+    document?.body &&
+    ReactDOM.createPortal(
+      <div
+        ref={modalRef}
+        className={cx("modal", {
+          "modal--open": open,
+          "modal--with-divider": withDivider
+        })}
       >
-        <FocusLock
-          className={cx("modal--container", {
-            "modal--container-small": size === "sm",
-            "modal--container-medium": size === "md",
-            "modal--container-large": size === "lg",
-            "modal--container-xlarge": size === "xlg"
-          })}
-          disabled={!open}
+        <OutsideClickListener
+          disabled={!closeOnOutsideClick || !open}
+          onClickOutside={(event: any) => {
+            onClose?.(event);
+          }}
         >
-          <Button
-            kind="ghost"
-            renderIcon={<IconX />}
-            iconOnly
-            className="modal--close"
-            onClick={(event: any) => {
-              onClose?.(event);
-            }}
-            data-autofocus={autoFocus}
-          />
-          {children}
-        </FocusLock>
-      </OutsideClickListener>
-    </div>,
-    document.body
+          <FocusLock
+            className={cx("modal--container", {
+              "modal--container-small": size === "sm",
+              "modal--container-medium": size === "md",
+              "modal--container-large": size === "lg",
+              "modal--container-xlarge": size === "xlg"
+            })}
+            disabled={!open}
+          >
+            <Button
+              kind="ghost"
+              renderIcon={<IconX />}
+              iconOnly
+              className="modal--close"
+              onClick={(event: any) => {
+                onClose?.(event);
+              }}
+              data-autofocus={autoFocus}
+            />
+            {children}
+          </FocusLock>
+        </OutsideClickListener>
+      </div>,
+      document.body
+    )
   );
 };
 
