@@ -1,0 +1,28 @@
+name: Bump version
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "package.json"
+
+jobs:
+  bump-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PSEUDO_TOKEN }}
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PSEUDO_TOKEN }}
+        with:
+          major-wording: "MAJOR,cut-major"
+          minor-wording: "add,Adds,new"
+          patch-wording: "patch,fixes"
+          rc-wording: "RELEASE,alpha"
+          tag-prefix: "v"
+          commit-message: "CI: bumps version to {{version}} [skip ci]"

@@ -1497,7 +1497,7 @@ __metadata:
     "@storybook/react": ^6.3.6
     "@storybook/theming": ^6.3.6
     "@tabler/icons": ^1.41.2
-    "@types/bootstrap": ^5.0.17
+    "@types/bootstrap": ^5.1.0
     "@types/enzyme": ^3.10.9
     "@types/jest": ^26.0.24
     "@types/node": ^16.4.13
@@ -3580,13 +3580,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bootstrap@npm:^5.0.17":
-  version: 5.0.17
-  resolution: "@types/bootstrap@npm:5.0.17"
+"@types/bootstrap@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@types/bootstrap@npm:5.1.0"
   dependencies:
     "@popperjs/core": ^2.9.2
     "@types/jquery": "*"
-  checksum: defca3b0af9274f038ae2fa7df4d9c83cea3e674fb18550a088cbce3b19e12d7dd3c282fcb6454fb14f2be5de6b345d0e972bf2b8fed03997ea32801f0881cb9
+  checksum: 34614d2fa39d38b13d49d8eb81a50c4b69842c0c2f83c349afb0530aea313cd5527d6bdb57e8c85ec4e2e1671bd3845dfcc8fd6aa8d616aa30b3292694472aec
   languageName: node
   linkType: hard
 
