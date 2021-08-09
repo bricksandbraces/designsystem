@@ -14,7 +14,7 @@ export const Default = () => {
           linkLabel={text("Link label", "Cookie link")}
           linkHref={text("Link Href", "#")}
           buttonLabel={text("Button label", "Close")}
-          onClick={() => {
+          onButtonClick={() => {
             setOpen(false);
           }}
           open={boolean("Open", open)}

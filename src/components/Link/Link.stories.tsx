@@ -13,7 +13,6 @@ export const Default = () => {
           href="https://google.de"
           target="_blank"
           inline={boolean("Inline", false)}
-          onClick={() => {}}
         >
           {text("Link label", "Link text")}
           <IconArrowNarrowRight />
