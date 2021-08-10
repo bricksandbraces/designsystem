@@ -3,7 +3,7 @@
 @import "../../styles/theme.pcss";
 
 .header {
-  position: sticky;
+  position: fixed;
   z-index: 10;
   top: 0;
   width: 100%;
@@ -129,16 +129,6 @@
       color: $white;
     }
   }
-}
-
-.header + .leadspace {
-  transform: translate(0, -80px);
-  transition: $transition-01;
-}
-
-.header--small + .leadspace {
-  transform: translate(0, -48px);
-  transition: $transition-01;
 }
 
 .header + .leadspace > div > div > div > div > .leadspace--content {
