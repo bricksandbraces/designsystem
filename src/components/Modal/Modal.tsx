@@ -5,6 +5,7 @@ import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
 import Button from "../Button/Button";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
+import useMounted from "../../hooks/useMounted";
 
 type ModalProps = {
   /**
@@ -41,9 +42,6 @@ type ModalProps = {
    * Automatically focus the close button of the modal
    */
   autoFocus?: boolean;
-
-  /** Sets the modal disabled */
-  disabled?: boolean;
 };
 
 const Modal = ({
@@ -54,8 +52,10 @@ const Modal = ({
   autoFocus = true,
   withDivider,
   children
-}: ModalProps): React.ReactPortal => {
+}: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const isMounted = useMounted();
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (open && event.key === "Escape") {
@@ -72,8 +72,7 @@ const Modal = ({
     };
   }, [modalRef, open]);
 
-  return (
-    document?.body &&
+  return isMounted ? (
     ReactDOM.createPortal(
       <div
         ref={modalRef}
@@ -113,6 +112,8 @@ const Modal = ({
       </div>,
       document.body
     )
+  ) : (
+    <></>
   );
 };
 
