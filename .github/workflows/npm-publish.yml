@@ -18,7 +18,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn config set npmScopes.openbricksandbraces.npmAuthToken $NPM_TOKEN
         env:
-          $NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn install --immutable
       - run: yarn build:package
       - run: yarn test
