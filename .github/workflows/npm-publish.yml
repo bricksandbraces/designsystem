@@ -15,7 +15,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           cache: "yarn"
-          registry-url: "https://registry.npmjs.org"
       - run: yarn config set 'npmRegistries["https://registry.npmjs.org"].npmAuthToken' $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
