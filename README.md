@@ -1,4 +1,4 @@
-# @bricksandbraces/designsystem
+# @openbricksandbraces/designsystem
 
 [![Build and Deploy to GitHub Pages](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml/badge.svg)](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml)
 
@@ -9,7 +9,7 @@ Awesome designsystem for the Bricks & Braces brand.
 At first, install the dependencies:
 
 ```bash
-yarn add bootstrap @bricksandbraces/designsystem
+yarn add bootstrap @openbricksandbraces/designsystem
 ```
 
 Then, import the styles from your main / application component (App.tsx on create-react-app):
@@ -18,7 +18,7 @@ Then, import the styles from your main / application component (App.tsx on creat
 import React from 'react';
 // Look, first import bootstrap, then bricksandbraces styles
 import "bootstrap/dist/css/bootstrap.min.css"
-import "@bricksandbraces/designsystem/lib/styles/dist/index.css"
+import "@openbricksandbraces/designsystem/lib/styles/dist/index.css"
 
 import './App.css';
 ...
@@ -27,7 +27,7 @@ import './App.css';
 Instead of importing already processed styles you could also import
 
 ```javascript
-import "@bricksandbraces/designsystem/lib/styles/postcss/index.css";
+import "@openbricksandbraces/designsystem/lib/styles/postcss/index.css";
 ```
 
 for easy customisation reasons. Please note, that you need a postcss-loader for this. Make yourself common with the configuration by looking at [the designsystem repo](https://github.com/bricksandbraces/designsystem).
@@ -36,7 +36,7 @@ Last but not least, use a component from the library:
 
 ```javascript
 ...
-import { Button, useInitialize } from "@bricksandbraces/designsystem"
+import { Button, useInitialize } from "@openbricksandbraces/designsystem"
 
 function App() {
   useInitialize();
@@ -88,21 +88,13 @@ yarn build:storybook
 yarn start:storybook
 ```
 
-## Publishing and Dealing with yarn v2
+## Publishing and dealing with yarn v2
 
 > Disclaimer: Because we are using yarn v2 options from .yarnrc and .npmrc will be IGNORED. Please look into the [offical documentation](https://yarnpkg.com/configuration/yarnrc) for the new file structure.
 
-1. Authenticate using a personal access token. You find it under Settings->Developer Settings->Personal access token and generate one with `repo, read:packages, write:packages, delete:packages`.
-2. Go into your users home folder and create `.yarnrc.yml`. There you add
-
-```
-npmRegistries:
-  "https://npm.pkg.github.com":
-    npmAuthToken: "<your-personal-access-token>"
-```
-
-All packages starting with @bricksandbraces on your computers user will use this authentication to publish or consume packages.
-Never commit this file 3. Finally using `yarn npm publish --tag latest` you will be able to publish a new version of the package!! 🎉🎉🎉
+1. Insert `yarn npm login --publish` and authenticate using the npm account of **openbricksandbraces**.
+2. Make sure you've installed the dependencies and built the package `yarn && yarn build:package`.
+3. Using `yarn npm publish --tag latest` you will be able to publish a new version of the package! 🎉
 
 ## License
 
