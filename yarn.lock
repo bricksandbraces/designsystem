@@ -2057,7 +2057,7 @@ __metadata:
     "@types/bootstrap": ^5.1.0
     "@types/enzyme": ^3.10.9
     "@types/jest": ^27.0.0
-    "@types/node": ^16.4.13
+    "@types/node": ^16.4.14
     "@types/prop-types": ^15.7.4
     "@types/react": ^17.0.17
     "@types/react-dom": ^17.0.9
@@ -3833,7 +3833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.4.13":
+"@types/node@npm:*, @types/node@npm:^16.4.14":
   version: 16.4.14
   resolution: "@types/node@npm:16.4.14"
   checksum: ab60d9d7c55eb39fd747d46bef77d3a248ba2702c849f6ee00780eac2d1e832f148b32e9322641d1fd5eacacf00639e432b9de4f7f98eed07134cc4bd009b04a
