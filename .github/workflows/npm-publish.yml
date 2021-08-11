@@ -15,13 +15,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           cache: "yarn"
-          registry-url: https://npm.pkg.github.com/
-      - run: yarn config set npmScopes.bricksandbraces.npmAuthToken $GITHUB_TOKEN
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn config set npmScopes.openbricksandbraces.npmAuthToken $NPM_TOKEN
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          $NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn install --immutable
       - run: yarn build:package
+      - run: yarn test
       - uses: actions/setup-node@v2
         with:
           registry-url: "https://npm.pkg.github.com"
-      - run: yarn npm publish
+      - run: yarn npm publish --tag latest
