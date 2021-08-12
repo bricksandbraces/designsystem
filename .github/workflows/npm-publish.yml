@@ -18,7 +18,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       # - run: yarn npm whoami
-      # - run: yarn npm logout
+      - run: yarn npm logout
       # - run: yarn npm whoami
       - run: yarn config set -H 'npmRegistries["https://registry.npmjs.com"].npmAuthToken' $NPM_TOKEN
         env:
