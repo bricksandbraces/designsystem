@@ -20,9 +20,9 @@ jobs:
       # - run: yarn npm whoami
       - run: yarn npm logout
       # - run: yarn npm whoami
-      - run: yarn config set -H 'npmRegistries["https://registry.npmjs.com"].npmAuthToken' $NPM_TOKEN
+      - run: yarn config set 'npmRegistries["https://registry.npmjs.com"].npmAuthToken' $MY_TOKEN
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          MY_TOKEN: dd4bf7b5-deab-4009-ac5e-c9c9ae95110a
       - run: yarn npm whoami
       - run: yarn install --immutable
       - run: yarn build:package
