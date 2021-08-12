@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: yarn npm whoami
       - uses: actions/setup-node@v2
         with:
           cache: "yarn"
@@ -16,10 +17,13 @@ jobs:
           token: $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn npm whoami
       - run: yarn npm logout
+      - run: yarn npm whoami
       - run: yarn config set -H 'npmRegistries["https://registry.npmjs.com"].npmAuthToken' $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn npm whoami
       - run: yarn install --immutable
       - run: yarn build:package
       - run: yarn npm info
