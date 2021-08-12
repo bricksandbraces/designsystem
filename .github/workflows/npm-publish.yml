@@ -5,21 +5,18 @@ on:
     types: [created]
 
 jobs:
-  publish-gpr:
+  npm-publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           cache: "yarn"
           registry-url: "https://registry.npmjs.org"
-      - run: yarn config set 'npmRegistries["https://registry.npmjs.org"].npmAuthToken' $NPM_TOKEN
+      - run: yarn config set -H 'npmRegistries["https://registry.npmjs.org"].npmAuthToken' $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: yarn config set npmScopes.openbricksandbraces.npmAuthToken $NPM_TOKEN
+      - run: yarn config set -H npmScopes.openbricksandbraces.npmAuthToken $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn install --immutable
