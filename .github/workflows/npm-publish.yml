@@ -21,4 +21,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn install --immutable
       - run: yarn build:package
+      - run: yarn npm info
+      - run: yarn npm whoami
       - run: yarn npm publish --tag latest
