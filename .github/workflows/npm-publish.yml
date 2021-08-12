@@ -9,24 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - run: yarn npm whoami
       - uses: actions/setup-node@v2
         with:
           cache: "yarn"
-          registry-url: "https://registry.npmjs.com"
-          token: $NPM_TOKEN
+      - run: yarn config set 'npmAuthToken' $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # - run: yarn npm whoami
-      - run: yarn npm logout
-      # - run: yarn npm whoami
-      - run: yarn config set 'npmRegistries["https://registry.npmjs.com"].npmAuthToken' $MY_TOKEN
-        env:
-          MY_TOKEN: dd4bf7b5-deab-4009-ac5e-c9c9ae95110a
-      - run: yarn npm whoami
       - run: yarn install --immutable
       - run: yarn build:package
-      - run: yarn npm info
-      - run: yarn config --why
       - run: yarn npm whoami
       - run: yarn npm publish --tag latest
