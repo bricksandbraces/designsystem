@@ -5,6 +5,7 @@
   @mixin type--body-small;
 
   display: flex;
+  visibility: hidden;
   position: fixed;
   z-index: 3;
   bottom: 0;
@@ -35,6 +36,7 @@
   }
 
   &--open {
+    visibility: visible;
     transform: translate(0, 0);
     opacity: 1;
   }
