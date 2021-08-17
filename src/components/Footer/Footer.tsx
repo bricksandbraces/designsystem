@@ -108,10 +108,11 @@ const Footer = ({
           className="footer--column"
         >
           <div className="footer--linksection">
-            {linkItems?.map((link) => {
+            {linkItems?.map((link, i) => {
               return (
                 <Link
-                  key={link.href}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`footer-${i}-${link.href}`}
                   href={link.href}
                   className="footer--linksection-item"
                 >

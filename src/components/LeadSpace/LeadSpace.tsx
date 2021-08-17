@@ -123,7 +123,8 @@ const LeadSpace = ({
                   {ctaItems?.map((cta, i) => {
                     return (
                       <Button
-                        key={cta.href}
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`lead-${i}-${cta.href}`}
                         large
                         kind={i === 0 ? "primary" : "ghost"}
                         href={cta.href}
