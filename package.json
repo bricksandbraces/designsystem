@@ -7,6 +7,7 @@
     "storybook": "start-storybook -s .storybook/public -p 6006",
     "build:storybook": "build-storybook -s .storybook/public",
     "start:storybook": "serve ./storybook-static",
+    "build:local": "yarn build:package && yalc publish",
     "build:package": "rimraf lib/ && yarn build:esm && yarn build:cjs && yarn build:css",
     "build:css": "postcss src/**/*.?(p)css --ext .css --dir lib/styles/dist/ && copyfiles -f src/**/*.?(p)css lib/styles/postcss",
     "build:esm": "tsc",

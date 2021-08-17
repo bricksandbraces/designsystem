@@ -6,6 +6,7 @@ import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
 import Button from "../Button/Button";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
+import useMounted from "../../hooks/useMounted";
 
 type ModalProps = {
   /**
@@ -55,8 +56,6 @@ const Modal = ({
 }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  console.log(`Rendering Modal with open=${open}`);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (open && event.key === "Escape") {
@@ -72,48 +71,52 @@ const Modal = ({
       window?.removeEventListener("keydown", handleKeyDown, true);
     };
   }, [modalRef, open]);
+  const mounted = useMounted();
 
-  return typeof document !== "undefined"
-    ? ReactDOM.createPortal(
-        <div
-          ref={modalRef}
-          className={cx("modal", {
-            "modal--open": open,
-            "modal--with-divider": withDivider
-          })}
-        >
-          <OutsideClickListener
-            disabled={!closeOnOutsideClick || !open}
-            onClickOutside={(event: any) => {
-              onClose?.(event);
-            }}
+  return (
+    <div>
+      {mounted &&
+        ReactDOM.createPortal(
+          <div
+            ref={modalRef}
+            className={cx("modal", {
+              "modal--open": open,
+              "modal--with-divider": withDivider
+            })}
           >
-            <FocusLock
-              className={cx("modal--container", {
-                "modal--container-small": size === "sm",
-                "modal--container-medium": size === "md",
-                "modal--container-large": size === "lg",
-                "modal--container-xlarge": size === "xlg"
-              })}
-              disabled={!open}
+            <OutsideClickListener
+              disabled={!closeOnOutsideClick || !open}
+              onClickOutside={(event: any) => {
+                onClose?.(event);
+              }}
             >
-              <Button
-                kind="ghost"
-                renderIcon={<IconX />}
-                iconOnly
-                className="modal--close"
-                onClick={(event: any) => {
-                  onClose?.(event);
-                }}
-                data-autofocus={autoFocus}
-              />
-              {children}
-            </FocusLock>
-          </OutsideClickListener>
-        </div>,
-        document.body
-      )
-    : null;
+              <FocusLock
+                className={cx("modal--container", {
+                  "modal--container-small": size === "sm",
+                  "modal--container-medium": size === "md",
+                  "modal--container-large": size === "lg",
+                  "modal--container-xlarge": size === "xlg"
+                })}
+                disabled={!open}
+              >
+                <Button
+                  kind="ghost"
+                  renderIcon={<IconX />}
+                  iconOnly
+                  className="modal--close"
+                  onClick={(event: any) => {
+                    onClose?.(event);
+                  }}
+                  data-autofocus={autoFocus}
+                />
+                {children}
+              </FocusLock>
+            </OutsideClickListener>
+          </div>,
+          document.body
+        )}
+    </div>
+  );
 };
 
 export default Modal;
