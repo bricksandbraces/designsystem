@@ -43,14 +43,14 @@ const LoginForm = ({
   invalidEmail,
   onChange
 }: LoginFormProps) => {
-  const [email, setEmail] = useState(value?.email ?? defaultValue?.email);
+  const [email, setEmail] = useState(value?.email ?? defaultValue?.email ?? "");
   const [password, setPassword] = useState(
-    value?.password ?? defaultValue?.password
+    value?.password ?? defaultValue?.password ?? ""
   );
 
   useEffect(() => {
-    setEmail(value?.email);
-    setEmail(value?.email);
+    setEmail(value?.email ?? "");
+    setPassword(value?.password ?? "");
   }, [value]);
 
   return (

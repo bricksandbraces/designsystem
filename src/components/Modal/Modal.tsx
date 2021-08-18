@@ -63,6 +63,17 @@ const Modal = ({
       }
     };
 
+    // Maintain global CSS class on the body element
+    const bodyEl = document?.body;
+    const modalOpenClassName = "body--modal-open";
+    if (bodyEl) {
+      if (bodyEl.classList.contains(modalOpenClassName) && !open) {
+        bodyEl.classList.remove(modalOpenClassName);
+      } else if (!bodyEl.classList.contains(modalOpenClassName) && open) {
+        bodyEl.classList.add(modalOpenClassName);
+      }
+    }
+
     if (open && modalRef.current) {
       window?.addEventListener("keydown", handleKeyDown, true);
     }
