@@ -88,13 +88,13 @@ const UserProfile = ({
                 {links
                   .map((link, i) => {
                     return (
-                      <p
+                      <div
                         // eslint-disable-next-line react/no-array-index-key
                         key={`profile-links-${i}-${link.href}`}
                         className="userprofile--link"
                       >
                         <Link href={link.href}>{link.label}</Link>
-                      </p>
+                      </div>
                     );
                   })
                   .slice(0, 3)}
