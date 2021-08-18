@@ -74,8 +74,6 @@ const Modal = ({
       }
     }
 
-    document?.body.classList.add();
-
     if (open && modalRef.current) {
       window?.addEventListener("keydown", handleKeyDown, true);
     }
