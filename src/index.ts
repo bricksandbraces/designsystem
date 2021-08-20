@@ -19,6 +19,8 @@ import CookieModal from "./components/CookieModal/CookieModal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
+import Tabs from "./components/Tabs/Tabs";
+import Tab from "./components/Tabs/Tab";
 
 export {
   Button,
@@ -42,5 +44,7 @@ export {
   Footer,
   CookieModal,
   Divider,
-  Checkbox
+  Checkbox,
+  Tabs,
+  Tab
 };
