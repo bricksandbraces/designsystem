@@ -41,6 +41,10 @@
       background-color: $tab-background-hover;
     }
 
+    &:focus-visible {
+      outline: 1px solid $tab-focus;
+    }
+
     &:active {
       background-color: $tab-background-active;
     }
@@ -65,8 +69,8 @@
     color: white;
 
     &-item {
-      transform: translate(0, -4px);
-      transition: $transition-02;
+      transform: translate(0, -6px);
+      transition: $transition-03;
       opacity: 0;
       &__selected {
         transform: translate(0, 0);
