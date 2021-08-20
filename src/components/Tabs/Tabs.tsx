@@ -51,7 +51,15 @@ const Tabs = ({ children }: TabsProps) => {
       </div>
       <div className="tabs--content">
         {React.Children.map(children, (child) => {
-          return <>{index === child.props.id && child.props.children}</>;
+          return (
+            <div
+              className={cx("tabs--content-item", {
+                "tabs--content-item__selected": index === child.props.id
+              })}
+            >
+              {index === child.props.id && child.props.children}
+            </div>
+          );
         })}
       </div>
     </div>

@@ -12,8 +12,7 @@ export const Default = () => {
       style={{
         width: "100vw",
         height: "100vh",
-        padding: "32px",
-        display: "flex"
+        padding: "32px"
       }}
     >
       <Tabs>
