@@ -34,7 +34,7 @@ const Tabs = ({ children }: TabsProps) => {
         {React.Children.map(children, (child) => {
           return (
             <button
-              tabIndex={child.props.id}
+              tabIndex={0}
               key={child.props.label}
               className={cx("tabs--btn", {
                 "tabs--btn-selected": index === child.props.id

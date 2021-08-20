@@ -1,6 +1,7 @@
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Button from "../Button/Button";
+import Typography from "../Typography/Typography";
 import Tab from "./Tab";
 import Tabs from "./Tabs";
 
@@ -16,14 +17,59 @@ export const Default = () => {
       }}
     >
       <Tabs>
-        <Tab label="Tab 1" id={1}>
-          Hello 1
+        <Tab label="Web &amp; Mobile Design" id={1}>
+          <Typography type="text" token="heading-03">
+            Mobile Design is the new standard
+          </Typography>
+          <Typography
+            type="text"
+            token="heading-02"
+            style={{ fontWeight: "200", marginTop: "8px", width: "80%" }}
+          >
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+          </Typography>
         </Tab>
-        <Tab label="Tab 2" id={2}>
-          Hello 2<Button>Hello Button</Button>
+        <Tab label="Innovation Sprints" id={2}>
+          <Typography type="text" token="heading-03">
+            Innovation sprints boost your business
+          </Typography>
+          <Typography
+            type="text"
+            token="heading-02"
+            style={{
+              fontWeight: "200",
+              marginTop: "8px",
+              width: "80%",
+              marginBottom: "16px"
+            }}
+          >
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+          </Typography>
+          <Button>Hello Button</Button>
         </Tab>
-        <Tab label="Tab 3 with longer label" id={3}>
-          Hello 3
+        <Tab label="Experience Design" id={3}>
+          <Typography type="text" token="heading-03">
+            Experience design is the base for success
+          </Typography>
+          <Typography
+            type="text"
+            token="heading-02"
+            style={{ fontWeight: "200", marginTop: "8px", width: "80%" }}
+          >
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+          </Typography>
         </Tab>
       </Tabs>
     </div>
