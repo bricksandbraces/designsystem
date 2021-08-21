@@ -27,6 +27,7 @@ type CheckboxProps = {
    */
   checked?: boolean;
   defaultChecked?: boolean;
+  disabled?: boolean;
 };
 
 const Checkbox = ({
