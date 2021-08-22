@@ -43,7 +43,12 @@ const Tabs = ({ children }: TabsProps) => {
                 setIndex(child.props.id);
               }}
             >
-              <Typography type="text" token="body-small">
+              <Typography
+                type="text"
+                token="body-small"
+                name={child.props.label}
+                className="tabs--btn-label"
+              >
                 {child.props.label}
               </Typography>
             </button>
