@@ -1,5 +1,6 @@
 import Button from "./components/Button/Button";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
+import Cookies, { OptType } from "./components/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SnackBar from "./components/SnackBar/SnackBar";
@@ -28,6 +29,7 @@ export {
   LoginForm,
   AspectRatio,
   CodeSnippet,
+  Cookies,
   CopyButton,
   Grid,
   Column,
@@ -42,5 +44,6 @@ export {
   Footer,
   CookieModal,
   Divider,
-  Checkbox
+  Checkbox,
+  OptType
 };

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import Cookies from "js-cookie";
 import Typography from "../Typography/Typography";
 import Modal from "../Modal/Modal";
 import Checkbox from "../Checkbox/Checkbox";
@@ -7,7 +8,7 @@ import ModalHeader from "../Modal/ModalHeader";
 import ModalFooter from "../Modal/ModalFooter";
 import CookieBanner from "../CookieBanner/CookieBanner";
 
-enum OptType {
+export enum OptType {
   OPT_IN,
   OPT_OUT,
   ESSENTIAL
@@ -18,21 +19,29 @@ type CookieSetting = {
   type: OptType;
   label: string;
   description: string;
+
+  checked?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const CookieSettingControl = ({
   id,
   type,
   label,
-  description
+  description,
+  checked,
+  onChange
 }: CookieSetting) => {
   return (
     <div className="cookiemodal--check">
       <Checkbox
         label={label}
         id={id}
-        defaultChecked={type === OptType.OPT_OUT}
+        checked={
+          checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)
+        }
         disabled={type === OptType.ESSENTIAL}
+        onChange={onChange}
       />
       <Typography
         type="text"
@@ -46,22 +55,27 @@ const CookieSettingControl = ({
 };
 
 type CookieModalProps = {
-  modalHeadline?: string;
-  modalIntro: string;
-
+  /** Override the banner open state. */
+  bannerOpen?: boolean;
   bannerLabel: string;
   bannerButtonLabel?: string;
-  bannerLinkLabel: string;
-  bannerLinkHref: string;
+  bannerLinkLabel?: string;
+  bannerLinkHref?: string;
 
-  /**  */
+  modalHeadline?: string;
+  modalIntro?: string;
+  /** Override the modal open state. */
+  modalOpen?: boolean;
   acceptAllLabel?: string;
   denyAllLabel?: string;
 
   /**
-   * The settings to render
+   * The settings to render. Should not change after initial render.
    */
-  settings: CookieSetting[];
+  initialSettings: CookieSetting[];
+
+  /** Version of the settings datastructure. Should not be changed after initial render. Default is 1. Floats are not supported. */
+  revision?: number;
 
   /**
    * When the changed settings are submitted, this listener is called with a settingsMap where keys are the ids of the settings and the values are the checked values.
@@ -69,19 +83,54 @@ type CookieModalProps = {
   onSettingsSubmit?: (settingsMap: Record<string, boolean>) => void;
 };
 
-const Cookies = ({
-  modalIntro,
+const CookiesComponent = ({
+  modalOpen,
+  modalIntro = "Hier können Sie Ihre Cookies anpassen.",
   modalHeadline = "Cookies anpassen",
-  bannerLabel,
-  bannerButtonLabel,
-  bannerLinkLabel,
+  bannerOpen,
+  bannerLabel = "Diese Website verwendet Cookies 🍪 .",
+  bannerButtonLabel = "Standardeinstellungen akzeptieren",
+  bannerLinkLabel = "Einstellungen anpassen",
   bannerLinkHref,
   acceptAllLabel = "Alle Cookies akzeptieren",
   denyAllLabel = "Alle ablehnen",
-  settings,
+  revision = 1,
+  initialSettings,
   onSettingsSubmit
 }: CookieModalProps) => {
-  const [open] = useState<boolean>(false);
+  const [cookieModalOpen, setCookieModalOpen] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const revisionRef = useRef(revision);
+  const [settings, setSettings] = useState<CookieSetting[]>(initialSettings);
+  useEffect(() => {
+    let cachedRevision = Cookies.getJSON("cookieRevision");
+
+    // if there has been a new revision of settings released, all former settings are being dropped.
+    if (revisionRef > cachedRevision) {
+      cachedRevision = revision;
+      Cookies.remove("cookieRevision");
+      Cookies.remove("cookieSettings");
+    }
+
+    // if the revision matches cookies will be loaded into the settings state
+    const cachedSettings = Cookies.getJSON("cookieSettings");
+    if (cachedSettings) {
+      setSettings(cachedSettings);
+    }
+  }, []);
+
+  const persistSettings = (persistedSettings: CookieSetting[]) => {
+    Cookies.set("cookieSettings", persistedSettings);
+    Cookies.set("cookieRevision", `${revisionRef.current}`);
+  };
+
+  useEffect(() => {
+    console.log(
+      `Persisting cookieSettings: ${JSON.stringify(settings)}`,
+      ` with revision ${revisionRef.current}`
+    );
+    persistSettings(settings);
+  }, [settings]);
 
   return (
     <>
@@ -91,18 +140,25 @@ const Cookies = ({
         linkLabel={bannerLinkLabel}
         buttonLabel={bannerButtonLabel}
         onButtonClick={() => {
-          // todo: implement
+          persistSettings(settings);
         }}
-        onLinkClick={() => {
-          // todo: implement
+        onLinkClick={(event: Event) => {
+          event.stopPropagation();
+          setCookieModalOpen(true);
         }}
-        open
+        open={
+          bannerOpen ||
+          (!!Cookies.get("cookieSettings") &&
+            parseInt(Cookies.get("cookieRevision") ?? "1") <= revision)
+        }
       />
       <Modal
+        ref={modalRef}
         size="md"
-        open={open}
+        open={modalOpen || cookieModalOpen}
         onClose={() => {
-          // todo: on submit settings
+          persistSettings(settings);
+          setCookieModalOpen(false);
         }}
         withDivider
       >
@@ -112,24 +168,37 @@ const Cookies = ({
             {modalIntro}
           </Typography>
           {settings.map((setting) => {
-            return <CookieSettingControl key={setting.id} {...setting} />;
+            return (
+              <CookieSettingControl
+                key={setting.id}
+                {...setting}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                  setSettings(
+                    settings.map((s) => ({
+                      ...s,
+                      checked: event.target.checked
+                    }))
+                  );
+                }}
+              />
+            );
           })}
         </ModalBody>
         <ModalFooter
           primaryLabel={acceptAllLabel}
           secondaryLabel={denyAllLabel}
           onClose={() => {
-            // todo: on submit settings
+            persistSettings(settings);
+            setCookieModalOpen(false);
           }}
           onPrimary={() => {
-            // todo: on submit settings
-            onSettingsSubmit?.(
-              settings.reduce((settingsMap, setting) => {
-                // todo: fetch from DOM (?)
-                settingsMap[setting.id] = false;
-                return settingsMap;
-              }, {} as Record<string, boolean>)
-            );
+            // todo: persist new settings only here
+
+            const newSettings: Record<string, boolean> = {};
+            modalRef.current?.querySelectorAll("input").forEach((inputEl) => {
+              newSettings[inputEl.id] = inputEl.checked;
+            });
+            onSettingsSubmit?.(newSettings);
           }}
         />
       </Modal>
@@ -137,4 +206,4 @@ const Cookies = ({
   );
 };
 
-export default Cookies;
+export default CookiesComponent;
