@@ -9,9 +9,8 @@
     margin: 0 0.5rem;
     padding: 0 1rem;
     transition: $transition-01;
-    border: 0;
+    border: 1px solid transparent;
     border-radius: $border-radius-2;
-    outline: 0;
     background-color: $tab-background;
     color: $tab-font;
 
@@ -50,7 +49,7 @@
     }
 
     &:focus-visible {
-      outline: 1px solid $tab-focus;
+      border: 1px solid $tab-focus;
     }
 
     &:active {

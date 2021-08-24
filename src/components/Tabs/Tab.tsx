@@ -1,10 +1,15 @@
 import React, { ReactNode } from "react";
 
-type TabProps = {
+export type TabProps = {
   /**
    * Children
    */
   children?: ReactNode;
+
+  /**
+   * Label
+   */
+  label: string;
 };
 
 const Tab = ({ children }: TabProps) => {

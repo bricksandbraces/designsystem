@@ -1,70 +1,97 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, useRef, useEffect } from "react";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
+import { TabProps } from "./Tab";
 
-type TabProps = {
+type TabsProps = {
   /**
    * Children
    */
   children?: ReactNode;
 
   /**
-   * Label
+   * OnChange Function
    */
-  label: string;
+  onChange?: (selectedIndex: number) => void;
 
   /**
-   * ID
+   * DefaultIndex
    */
-  id: number;
-};
+  defaultIndex?: number;
 
-type TabsProps = {
   /**
-   * Children
+   * Index
    */
-  children?: TabProps[];
+  index?: number;
 };
 
-const Tabs = ({ children }: TabsProps) => {
-  const [index, setIndex] = useState(1);
+const Tabs = ({ children, onChange, defaultIndex, index }: TabsProps) => {
+  const { current: controlled } = useRef(index != null);
+  const [selectedIndex, setSelectedIndex] = useState(
+    (controlled ? index : defaultIndex) ?? 0
+  );
+  useEffect(() => {
+    if (controlled) {
+      setSelectedIndex(index ?? 0);
+    }
+  }, [index]);
+
   return (
     <div className="tabs">
       <div className="tabs--btn-container">
-        {React.Children.map(children, (child) => {
+        {React.Children.map(children, (child, i) => {
+          if (!React.isValidElement<TabProps>(child)) {
+            return child;
+          }
+          const elementChild: React.ReactElement<TabProps> = child;
+          const { props } = elementChild;
           return (
-            <button
-              tabIndex={0}
-              key={child.props.label}
-              className={cx("tabs--btn", {
-                "tabs--btn-selected": index === child.props.id
-              })}
-              onClick={() => {
-                setIndex(child.props.id);
-              }}
-            >
-              <Typography
-                type="text"
-                token="body-small"
-                name={child.props.label}
-                className="tabs--btn-label"
+            props && (
+              <button
+                type="button"
+                tabIndex={0}
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
+                className={cx("tabs--btn", {
+                  "tabs--btn-selected": selectedIndex === i
+                })}
+                onClick={() => {
+                  if (!controlled) {
+                    setSelectedIndex(i);
+                  }
+                  onChange?.(i);
+                }}
               >
-                {child.props.label}
-              </Typography>
-            </button>
+                <Typography
+                  type="text"
+                  token="body-small"
+                  name={props.label}
+                  className="tabs--btn-label"
+                >
+                  {props.label}
+                </Typography>
+              </button>
+            )
           );
         })}
       </div>
       <div className="tabs--content">
-        {React.Children.map(children, (child) => {
+        {React.Children.map(children, (child, i) => {
+          if (!React.isValidElement<TabProps>(child)) {
+            return child;
+          }
+          const elementChild: React.ReactElement<TabProps> = child;
+          const { props } = elementChild;
           return (
-            <div
-              className={cx("tabs--content-item", {
-                "tabs--content-item__selected": index === child.props.id
-              })}
-            >
-              {index === child.props.id && child.props.children}
-            </div>
+            props && (
+              <div
+                className={cx("tabs--content-item", {
+                  "tabs--content-item__selected": selectedIndex === i
+                })}
+              >
+                {selectedIndex === i && props.children}
+              </div>
+            )
           );
         })}
       </div>
