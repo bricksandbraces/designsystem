@@ -1,0 +1,106 @@
+@import "../../styles/theme.pcss";
+@import "../../styles/typography.pcss";
+
+.dropdown {
+  @mixin type--body-small;
+
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 256px;
+  padding: 0 16px;
+  transition: $transition-01;
+  border: 1px solid $dropdown-border;
+  border-radius: $border-radius-2;
+  background-color: $dropdown-background;
+  color: $dropdown-font;
+
+  &:focus-visible {
+    border-color: $dropdown-focus;
+  }
+
+  &:hover {
+    background-color: $dropdown-hover;
+  }
+
+  &:active {
+    background-color: $dropdown-active;
+  }
+
+  &--default {
+    height: $container-03;
+  }
+
+  &--large {
+    height: $container-04;
+  }
+
+  &--small {
+    height: $container-02;
+  }
+
+  &--icon {
+    transition: $transition-01;
+    &-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--menu {
+    visibility: hidden;
+    width: 100%;
+    max-width: 256px;
+    padding: 4px;
+    transform: translateY(4px);
+    transition: $transition-01;
+    border: 1px solid $dropdown-border;
+    border-radius: $border-radius-2;
+    opacity: 0;
+    background-color: $dropdown-background;
+    &-open {
+      visibility: visible;
+      transform: translateY(8px);
+      opacity: 1;
+    }
+    &-item {
+      @mixin type--body-small;
+
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      transition: $transition-01;
+      border-radius: $border-radius-2;
+      color: $dropdown-item-font;
+
+      &:not(:last-child) > &__label {
+        border-bottom: 1px solid $dropdown-divider;
+      }
+
+      &__label {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin: 0 12px;
+      }
+
+      &:focus-visible {
+        border-color: $dropdown-focus;
+      }
+
+      &:hover {
+        background-color: $dropdown-hover;
+        color: $dropdown-item-selected-font;
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: $dropdown-active;
+      }
+    }
+  }
+}

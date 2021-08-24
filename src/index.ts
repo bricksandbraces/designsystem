@@ -19,6 +19,7 @@ import CookieModal from "./components/CookieModal/CookieModal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
+import Dropdown from "./components/Dropdown/Dropdown";
 
 export {
   Button,
