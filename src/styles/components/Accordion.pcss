@@ -1,0 +1,54 @@
+@import "../../styles/theme.pcss";
+
+.accordion {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: white;
+  &--heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: $container-04;
+    padding: 0 $spacing-04;
+    border: 0;
+    background-color: transparent;
+    color: white;
+
+    &:hover {
+      background-color: $warm-gray-10;
+    }
+
+    &-icon {
+      transition: $transition-01;
+    }
+  }
+
+  &--item {
+    height: 100%;
+    max-height: $container-04;
+    overflow: hidden;
+    transition: all $transition-03;
+    border-top: 1px solid #e0e0e0;
+
+    &:last-child {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    &-open {
+      & > .accordion--heading > .accordion--heading-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &--content {
+    width: 80%;
+    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+  }
+}
+
+.accordion--item.accordion--item-open {
+  max-height: 99rem;
+}

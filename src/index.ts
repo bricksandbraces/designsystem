@@ -21,6 +21,8 @@ import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
 import Tabs from "./components/Tabs/Tabs";
 import Tab from "./components/Tabs/Tab";
+import Accordion from "./components/Accordion/Accordion";
+import AccordionItem from "./components/Accordion/AccordionItem";
 
 export {
   Button,
@@ -46,5 +48,7 @@ export {
   Divider,
   Checkbox,
   Tabs,
-  Tab
+  Tab,
+  Accordion,
+  AccordionItem
 };

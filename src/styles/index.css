@@ -25,6 +25,7 @@
 @import "./components/CookieModal.pcss";
 @import "./components/Divider.pcss";
 @import "./components/Tabs.pcss";
+@import "./components/Accordion.pcss";
 
 * {
   box-sizing: border-box;
