@@ -159,7 +159,6 @@ const CookiesComponent = ({
   const close = () => {
     // when closed, keep persisted cookies.
     // if no cookies were persisted, save the initialSettings
-
     if (Cookies.getJSON("cookieSettings") == null) {
       persistSettings(initialSettings);
     }
@@ -169,6 +168,18 @@ const CookiesComponent = ({
     setCookieBannerOpen(false);
 
     onClose?.();
+  };
+
+  const applySettings = (settingsToApply: CookieSettingWithState[]) => {
+    persistSettings(settingsToApply);
+
+    const settingsMapToApply: Record<string, boolean> = {};
+    settingsToApply.forEach((s) => {
+      settingsMapToApply[s.id] = s.checked;
+    });
+    onSettingsSubmit?.(settingsMapToApply);
+
+    close();
   };
 
   return (
@@ -219,20 +230,7 @@ const CookiesComponent = ({
           secondaryLabel={acceptSelectedLabel}
           onSecondaryClick={() => {
             // Use ui settings
-            persistSettings(editingSettings);
-
-            const settingsMapToApply: Record<string, boolean> = {};
-            editingSettings.forEach((s) => {
-              settingsMapToApply[s.id] = s.checked;
-            });
-            onSettingsSubmit?.(settingsMapToApply);
-
-            setCookieModalOpen(false);
-
-            Cookies.set("cookieConsent", "true");
-            setCookieBannerOpen(false);
-
-            onClose?.();
+            applySettings(editingSettings);
           }}
           onPrimaryClick={() => {
             // Do not use ui and rather use all as true
@@ -240,20 +238,8 @@ const CookiesComponent = ({
               ...s,
               checked: true
             }));
-            persistSettings(settingsToApply);
 
-            const settingsMapToApply: Record<string, boolean> = {};
-            settingsToApply.forEach((s) => {
-              settingsMapToApply[s.id] = true;
-            });
-            onSettingsSubmit?.(settingsMapToApply);
-
-            setCookieModalOpen(false);
-
-            Cookies.set("cookieConsent", "true");
-            setCookieBannerOpen(false);
-
-            onClose?.();
+            applySettings(settingsToApply);
           }}
         />
       </Modal>
