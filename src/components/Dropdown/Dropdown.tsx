@@ -2,6 +2,23 @@ import React, { useState } from "react";
 import cx from "classnames";
 import { IconChevronDown } from "@tabler/icons";
 
+type DropDownItem = {
+  /**
+   * Dropdown ID
+   */
+  id?: string;
+
+  /**
+   * Checkbox Label
+   */
+  text?: string;
+
+  /**
+   * Selected item
+   */
+  selected?: boolean;
+};
+
 type DropdownProps = {
   /**
    * React className
@@ -9,38 +26,22 @@ type DropdownProps = {
   className?: string;
 
   /**
-   * Checkbox ID
-   */
-  id?: string;
-
-  /**
    * Dropdown size
    */
   size?: "large" | "small" | "default";
 
   /**
-   * Checkbox Label
+   * Dropdown label
    */
   label?: string;
 
   /**
-   * Checked values
+   * Dropdown items
    */
-  checked?: boolean;
-  defaultChecked?: boolean;
-  disabled?: boolean;
+  items: DropDownItem[];
 };
 
-const Dropdown = ({
-  id,
-  value,
-  size,
-  checked,
-  defaultChecked,
-  label,
-  className,
-  ...rest
-}: DropdownProps) => {
+const Dropdown = ({ size, label, className, items }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -65,34 +66,27 @@ const Dropdown = ({
         />
       </button>
       <div className={cx("dropdown--menu", { "dropdown--menu-open": open })}>
-        <div
-          className={cx("dropdown--menu-item", {
-            "dropdown--large": size === "large",
-            "dropdown--small": size === "small",
-            "dropdown--default": size === "default"
-          })}
-        >
-          <span className="dropdown--menu-item__label">Option 1</span>
-        </div>
-
-        <div
-          className={cx("dropdown--menu-item", {
-            "dropdown--large": size === "large",
-            "dropdown--small": size === "small",
-            "dropdown--default": size === "default"
-          })}
-        >
-          <span className="dropdown--menu-item__label">Option 2</span>
-        </div>
-        <div
-          className={cx("dropdown--menu-item", {
-            "dropdown--large": size === "large",
-            "dropdown--small": size === "small",
-            "dropdown--default": size === "default"
-          })}
-        >
-          <span className="dropdown--menu-item__label">Option 3</span>
-        </div>
+        {items.map((item, i) => {
+          return (
+            <div
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+              className={cx("dropdown--menu-item", {
+                "dropdown--large": size === "large",
+                "dropdown--small": size === "small",
+                "dropdown--default": size === "default",
+                "dropdown--menu-item__selected": item.selected
+              })}
+              id={item.id}
+            >
+              <div className="dropdown--menu-item__text">
+                <span title={item.text}>
+                  {item.text}
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
