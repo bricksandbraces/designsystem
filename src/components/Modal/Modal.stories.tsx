@@ -46,10 +46,10 @@ export const Default = () => {
         <ModalFooter
           primaryLabel={text("Primary Label", "Update now")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setOpen(false);
           }}
         />
@@ -96,10 +96,10 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("Primary Label 1", "Confirm")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setSecondOpen(true);
           }}
         />
@@ -125,10 +125,10 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("Primary Label 2", "I am sure")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setSecondOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setSecondOpen(false);
           }}
         />

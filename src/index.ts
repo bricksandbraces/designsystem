@@ -16,7 +16,6 @@ import Tooltip from "./components/Tooltip/Tooltip";
 import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
-import CookieModal from "./components/CookieModal/CookieModal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
@@ -29,7 +28,6 @@ export {
   LoginForm,
   AspectRatio,
   CodeSnippet,
-  Cookies,
   CopyButton,
   Grid,
   Column,
@@ -42,7 +40,7 @@ export {
   UserProfile,
   Modal,
   Footer,
-  CookieModal,
+  Cookies,
   Divider,
   Checkbox,
   OptType

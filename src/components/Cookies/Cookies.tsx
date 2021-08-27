@@ -19,10 +19,9 @@ type CookieSetting = {
   type: OptType;
   label: string;
   description: string;
-
-  checked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
+
+type CookieSettingWithState = CookieSetting & { checked: boolean };
 
 const CookieSettingControl = ({
   id,
@@ -31,7 +30,9 @@ const CookieSettingControl = ({
   description,
   checked,
   onChange
-}: CookieSetting) => {
+}: CookieSettingWithState & {
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}) => {
   return (
     <div className="cookiemodal--check">
       <Checkbox
@@ -67,20 +68,25 @@ type CookieModalProps = {
   /** Override the modal open state. */
   modalOpen?: boolean;
   acceptAllLabel?: string;
-  denyAllLabel?: string;
+  acceptSelectedLabel?: string;
 
   /**
-   * The settings to render. Should not change after initial render.
+   * The settings to render in the UI. Should not change after initial render.
    */
-  initialSettings: CookieSetting[];
+  settings: CookieSetting[];
 
   /** Version of the settings datastructure. Should not be changed after initial render. Default is 1. Floats are not supported. */
   revision?: number;
 
   /**
-   * When the changed settings are submitted, this listener is called with a settingsMap where keys are the ids of the settings and the values are the checked values.
+   * When changed settings are submitted, this listener is called with a settingsMap where keys are the ids of the settings and the values are the checked values. The listener is NOT called when the modal is being closed. See onClose for this.
    */
   onSettingsSubmit?: (settingsMap: Record<string, boolean>) => void;
+
+  /**
+   * When the modal receives a close request, this listener is being called. It is also being called when the new settings are being submitted additionally to onSettingsSubmit.
+   */
+  onClose?: () => void;
 };
 
 const CookiesComponent = ({
@@ -93,15 +99,38 @@ const CookiesComponent = ({
   bannerLinkLabel = "Einstellungen anpassen",
   bannerLinkHref,
   acceptAllLabel = "Alle Cookies akzeptieren",
-  denyAllLabel = "Alle ablehnen",
+  acceptSelectedLabel = "Einstellungen übernehmen",
   revision = 1,
-  initialSettings,
+  settings,
+  onClose,
   onSettingsSubmit
 }: CookieModalProps) => {
+  const cookiesPersisted = Cookies.get("cookieSettings") != null;
+  const [cookieBannerOpen, setCookieBannerOpen] = useState<boolean>(
+    !cookiesPersisted ||
+      parseInt(Cookies.get("cookieRevision") ?? "1") < revision
+  );
   const [cookieModalOpen, setCookieModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  // cached version of the ref to that the user can't change it after init
   const revisionRef = useRef(revision);
-  const [settings, setSettings] = useState<CookieSetting[]>(initialSettings);
+  // cached version of the initial settings
+  const initialSettings = useRef<CookieSettingWithState[]>(
+    settings.map((definition) => {
+      return {
+        ...definition,
+        checked:
+          definition.type === OptType.ESSENTIAL ||
+          definition.type === OptType.OPT_OUT
+      };
+    })
+  );
+
+  // the settings that are currently set on the UI
+  const [editingSettings, setEditingSettings] = useState<
+    CookieSettingWithState[]
+  >(initialSettings.current);
+
   useEffect(() => {
     let cachedRevision = Cookies.getJSON("cookieRevision");
 
@@ -115,22 +144,25 @@ const CookiesComponent = ({
     // if the revision matches cookies will be loaded into the settings state
     const cachedSettings = Cookies.getJSON("cookieSettings");
     if (cachedSettings) {
-      setSettings(cachedSettings);
+      setEditingSettings(cachedSettings);
     }
-  }, []);
+  }, [modalOpen]);
 
-  const persistSettings = (persistedSettings: CookieSetting[]) => {
-    Cookies.set("cookieSettings", persistedSettings);
+  const persistSettings = (settingsToPersist: CookieSettingWithState[]) => {
+    Cookies.set("cookieSettings", settingsToPersist);
     Cookies.set("cookieRevision", `${revisionRef.current}`);
   };
 
-  useEffect(() => {
-    console.log(
-      `Persisting cookieSettings: ${JSON.stringify(settings)}`,
-      ` with revision ${revisionRef.current}`
-    );
-    persistSettings(settings);
-  }, [settings]);
+  const close = () => {
+    // when closed, keep persisted cookies.
+    // if no cookies were persisted, save the initialSettings
+    if (!cookiesPersisted) {
+      persistSettings(initialSettings.current);
+    }
+    setCookieBannerOpen(false);
+    setCookieModalOpen(false);
+    onClose?.();
+  };
 
   return (
     <>
@@ -139,27 +171,18 @@ const CookiesComponent = ({
         linkHref={bannerLinkHref}
         linkLabel={bannerLinkLabel}
         buttonLabel={bannerButtonLabel}
-        onButtonClick={() => {
-          persistSettings(settings);
-        }}
+        onButtonClick={close}
         onLinkClick={(event: Event) => {
           event.stopPropagation();
           setCookieModalOpen(true);
         }}
-        open={
-          bannerOpen ||
-          (!!Cookies.get("cookieSettings") &&
-            parseInt(Cookies.get("cookieRevision") ?? "1") <= revision)
-        }
+        open={bannerOpen || cookieBannerOpen}
       />
       <Modal
         ref={modalRef}
         size="md"
         open={modalOpen || cookieModalOpen}
-        onClose={() => {
-          persistSettings(settings);
-          setCookieModalOpen(false);
-        }}
+        onClose={close}
         withDivider
       >
         <ModalHeader headline={modalHeadline} />
@@ -167,16 +190,16 @@ const CookiesComponent = ({
           <Typography type="text" token="body-small" className="">
             {modalIntro}
           </Typography>
-          {settings.map((setting) => {
+          {editingSettings.map((setting, i) => {
             return (
               <CookieSettingControl
                 key={setting.id}
                 {...setting}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                  setSettings(
-                    settings.map((s) => ({
+                  setEditingSettings(
+                    editingSettings.map((s, j) => ({
                       ...s,
-                      checked: event.target.checked
+                      checked: i === j ? event.target.checked : s.checked
                     }))
                   );
                 }}
@@ -186,19 +209,40 @@ const CookiesComponent = ({
         </ModalBody>
         <ModalFooter
           primaryLabel={acceptAllLabel}
-          secondaryLabel={denyAllLabel}
-          onClose={() => {
-            persistSettings(settings);
-            setCookieModalOpen(false);
-          }}
-          onPrimary={() => {
-            // todo: persist new settings only here
+          secondaryLabel={acceptSelectedLabel}
+          onSecondaryClick={() => {
+            // Use ui settings
+            persistSettings(editingSettings);
 
-            const newSettings: Record<string, boolean> = {};
-            modalRef.current?.querySelectorAll("input").forEach((inputEl) => {
-              newSettings[inputEl.id] = inputEl.checked;
+            const settingsMapToApply: Record<string, boolean> = {};
+            editingSettings.forEach((s) => {
+              settingsMapToApply[s.id] = s.checked;
             });
-            onSettingsSubmit?.(newSettings);
+            onSettingsSubmit?.(settingsMapToApply);
+
+            setCookieModalOpen(false);
+            setCookieBannerOpen(false);
+
+            onClose?.();
+          }}
+          onPrimaryClick={() => {
+            // Do not use ui and rather use all as true
+            const settingsToApply = editingSettings.map((s) => ({
+              ...s,
+              checked: true
+            }));
+            persistSettings(settingsToApply);
+
+            const settingsMapToApply: Record<string, boolean> = {};
+            settingsToApply.forEach((s) => {
+              settingsMapToApply[s.id] = true;
+            });
+            onSettingsSubmit?.(settingsMapToApply);
+
+            setCookieModalOpen(false);
+            setCookieBannerOpen(false);
+
+            onClose?.();
           }}
         />
       </Modal>
