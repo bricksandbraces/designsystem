@@ -7,6 +7,7 @@ import ModalBody from "../Modal/ModalBody";
 import ModalHeader from "../Modal/ModalHeader";
 import ModalFooter from "../Modal/ModalFooter";
 import CookieBanner from "../CookieBanner/CookieBanner";
+import useConstant from "../../hooks/useConstant";
 
 export enum OptType {
   OPT_IN,
@@ -95,7 +96,7 @@ const CookiesComponent = ({
   modalHeadline = "Cookies anpassen",
   bannerOpen,
   bannerLabel = "Diese Website verwendet Cookies 🍪 .",
-  bannerButtonLabel = "Standardeinstellungen akzeptieren",
+  bannerButtonLabel = "OK",
   bannerLinkLabel = "Einstellungen anpassen",
   bannerLinkHref,
   acceptAllLabel = "Alle Cookies akzeptieren",
@@ -105,17 +106,13 @@ const CookiesComponent = ({
   onClose,
   onSettingsSubmit
 }: CookieModalProps) => {
-  const cookiesPersisted = Cookies.get("cookieSettings") != null;
-  const [cookieBannerOpen, setCookieBannerOpen] = useState<boolean>(
-    !cookiesPersisted ||
-      parseInt(Cookies.get("cookieRevision") ?? "1") < revision
-  );
+  const [cookieBannerOpen, setCookieBannerOpen] = useState<boolean>(false);
   const [cookieModalOpen, setCookieModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
   // cached version of the ref to that the user can't change it after init
-  const revisionRef = useRef(revision);
+  const initialRevision = useConstant<number>(revision);
   // cached version of the initial settings
-  const initialSettings = useRef<CookieSettingWithState[]>(
+  const initialSettings = useConstant<CookieSettingWithState[]>(
     settings.map((definition) => {
       return {
         ...definition,
@@ -129,38 +126,48 @@ const CookiesComponent = ({
   // the settings that are currently set on the UI
   const [editingSettings, setEditingSettings] = useState<
     CookieSettingWithState[]
-  >(initialSettings.current);
+  >([]);
+
+  const persistSettings = (settingsToPersist: CookieSettingWithState[]) => {
+    Cookies.set("cookieSettings", settingsToPersist);
+    Cookies.set("cookieRevision", `${initialRevision}`);
+  };
 
   useEffect(() => {
-    let cachedRevision = Cookies.getJSON("cookieRevision");
+    const cachedRevision = Cookies.getJSON("cookieRevision");
 
     // if there has been a new revision of settings released, all former settings are being dropped.
-    if (revisionRef > cachedRevision) {
-      cachedRevision = revision;
+    if (initialRevision > parseInt(cachedRevision ?? "1")) {
       Cookies.remove("cookieRevision");
       Cookies.remove("cookieSettings");
+      Cookies.remove("cookieConsent");
     }
 
     // if the revision matches cookies will be loaded into the settings state
     const cachedSettings = Cookies.getJSON("cookieSettings");
     if (cachedSettings) {
       setEditingSettings(cachedSettings);
+      setCookieBannerOpen(false);
+    } else {
+      // else the defaults should be persisted
+      setCookieBannerOpen(true);
+      setEditingSettings(initialSettings);
+      persistSettings(initialSettings);
     }
   }, [modalOpen]);
-
-  const persistSettings = (settingsToPersist: CookieSettingWithState[]) => {
-    Cookies.set("cookieSettings", settingsToPersist);
-    Cookies.set("cookieRevision", `${revisionRef.current}`);
-  };
 
   const close = () => {
     // when closed, keep persisted cookies.
     // if no cookies were persisted, save the initialSettings
-    if (!cookiesPersisted) {
-      persistSettings(initialSettings.current);
+
+    if (Cookies.getJSON("cookieSettings") == null) {
+      persistSettings(initialSettings);
     }
-    setCookieBannerOpen(false);
     setCookieModalOpen(false);
+
+    Cookies.set("cookieConsent", "true");
+    setCookieBannerOpen(false);
+
     onClose?.();
   };
 
@@ -221,6 +228,8 @@ const CookiesComponent = ({
             onSettingsSubmit?.(settingsMapToApply);
 
             setCookieModalOpen(false);
+
+            Cookies.set("cookieConsent", "true");
             setCookieBannerOpen(false);
 
             onClose?.();
@@ -240,6 +249,8 @@ const CookiesComponent = ({
             onSettingsSubmit?.(settingsMapToApply);
 
             setCookieModalOpen(false);
+
+            Cookies.set("cookieConsent", "true");
             setCookieBannerOpen(false);
 
             onClose?.();
