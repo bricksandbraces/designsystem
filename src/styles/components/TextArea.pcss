@@ -1,0 +1,53 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/theme.pcss";
+
+.textarea {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  &--input {
+    @mixin type--body-small;
+
+    height: $textarea-height;
+    min-height: 56px;
+    padding: 16px;
+    transition: border $transition-01;
+    border: 1px solid $textarea-border;
+    border-radius: $border-radius-2;
+    outline: 0;
+    background-color: $textarea-background;
+    color: $textarea-font;
+
+    &:focus {
+      border-color: $textarea-focus;
+    }
+
+    &::placeholder {
+      color: $textarea-placeholder;
+    }
+
+    &-container {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+    }
+  }
+
+  &--label {
+    @mixin type--label;
+
+    margin-bottom: $spacing-02;
+    color: $textarea-label-font;
+  }
+}
+
+textarea:disabled {
+  border-color: $textarea-disabled-border;
+  background-color: $textarea-disabled-background;
+  color: $textarea-disabled-font;
+  cursor: not-allowed;
+
+  &::placeholder {
+    color: $textarea-disabled-font;
+  }
+}
