@@ -8,12 +8,15 @@ type LinkItem = {
   /**
    * Link to location
    */
-  href: string;
+  href?: string;
 
   /**
    * Label that is shown
    */
   label: string;
+
+  /** onClick action (acts as button) */
+  onClick?: (event: Event) => void;
 };
 
 type FooterProps = {
@@ -89,7 +92,11 @@ const Footer = ({
               {description}
               {descriptionLink && (
                 <div className="footer--logo-link">
-                  <Link href={descriptionLink.href} inline>
+                  <Link
+                    href={descriptionLink.href}
+                    onClick={descriptionLink.onClick}
+                    inline
+                  >
                     {descriptionLink.label}
                   </Link>
                 </div>

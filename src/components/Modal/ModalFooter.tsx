@@ -9,40 +9,42 @@ type ModalFooterProps = {
   primaryLabel: string;
 
   /**
-   * OnClose
+   * OnSecondaryClick
    */
-  onClose?: (event: any) => void;
+  onSecondaryClick?: (event: any) => void;
 
   /**
-   * OnPrimary
+   * OnPrimaryClick
    */
-  onPrimary: (event: any) => void;
+  onPrimaryClick: (event: any) => void;
 };
 
 const ModalFooter = ({
-  onClose,
-  onPrimary,
+  onSecondaryClick,
+  onPrimaryClick,
   secondaryLabel,
   primaryLabel
 }: ModalFooterProps) => {
   return (
     <>
       <div className="modal--footer">
-        {secondaryLabel && primaryLabel && (
+        {secondaryLabel && (
           <Button
             fluid
             kind="ghost"
             className="modal--footer-ghost"
-            onClick={onClose}
+            onClick={onSecondaryClick}
           >
             {secondaryLabel}
           </Button>
         )}
-        {primaryLabel && (
-          <Button fluid className="modal--footer-primary" onClick={onPrimary}>
-            {primaryLabel}
-          </Button>
-        )}
+        <Button
+          fluid
+          className="modal--footer-primary"
+          onClick={onPrimaryClick}
+        >
+          {primaryLabel}
+        </Button>
       </div>
     </>
   );
