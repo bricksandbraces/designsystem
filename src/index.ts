@@ -20,6 +20,7 @@ import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
 import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
+import TextInput from "./components/TextInput/TextInput";
 
 export {
   Button,
@@ -45,5 +46,6 @@ export {
   Cookies,
   OptType,
   CookieBanner,
-  CookieModal
+  CookieModal,
+  TextInput
 };

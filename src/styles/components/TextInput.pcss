@@ -1,0 +1,21 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/theme.pcss";
+
+.textfield {
+  &--input {
+    @mixin type--body-small;
+
+    border: 1px solid $textfield-border;
+    border-radius: $border-radius-2;
+    background-color: $textfield-background;
+  }
+  &--small {
+    height: $container-02;
+  }
+  &--default {
+    height: $container-03;
+  }
+  &--large {
+    height: $container-04;
+  }
+}

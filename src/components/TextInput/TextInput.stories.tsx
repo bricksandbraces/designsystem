@@ -6,7 +6,7 @@ export default { title: "Components/TextInput", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
@@ -21,7 +21,7 @@ export const Uncontrolled = () => {
 export const Controlled = () => {
   const [value, setValue] = useState<string>("");
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
         value={value}
         id={text("id", "textfield-01")}

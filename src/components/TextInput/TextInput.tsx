@@ -45,11 +45,11 @@ const TextInput = (
   }, [value]);
 
   return (
-    <div>
+    <div className="textfield">
       <input
         id={id}
         ref={ref}
-        className={cx("", className)}
+        className={cx("textfield--input", className)}
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
