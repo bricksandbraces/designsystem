@@ -29,7 +29,7 @@
     height: 100%;
     max-height: $container-04;
     overflow: hidden;
-    transition: all $transition-03;
+    transition: $transition-03;
     border-top: 1px solid #e0e0e0;
 
     &:last-child {
@@ -45,10 +45,22 @@
 
   &--content {
     width: 80%;
+    height: 0;
     padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
   }
 }
 
-.accordion--item.accordion--item-open {
-  max-height: 99rem;
+.accordion--item-expand > .accordion--content {
+  max-height: 0;
+  overflow: hidden;
+  transition: height 0.15s ease;
+}
+
+.accordion--item-open > .accordion--content {
+  height: auto;
+  max-height: inherit;
+}
+
+.accordion--item-open.accordion--item {
+  max-height: inherit;
 }

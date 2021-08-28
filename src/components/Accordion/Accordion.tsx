@@ -1,6 +1,7 @@
 import { IconChevronDown } from "@tabler/icons";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import cx from "classnames";
+import { useMeasure } from "react-use";
 import Typography from "../Typography/Typography";
 import { AccordionItemProps } from "./AccordionItem";
 
@@ -23,30 +24,33 @@ type AccordionProps = {
   /**
    * DefaultIndex
    */
-  defaultIndex?: number;
+  defaultSelectedIndices?: number[];
 
   /**
    * Index
    */
-  index?: number;
+  selectedIndices?: number[];
 };
 
 const Accordion = ({
   children,
   className,
   onChange,
-  defaultIndex,
-  index
+  defaultSelectedIndices,
+  selectedIndices
 }: AccordionProps) => {
-  const { current: controlled } = useRef(index != null);
-  const [selectedIndex, setSelectedIndex] = useState(
-    (controlled ? index : defaultIndex) ?? 0
+  const [ref, { height }] = useMeasure();
+  const [collapse, setCollapse] = useState(false);
+  const [expand, setExpand] = useState(false);
+  const { current: controlled } = useRef(selectedIndices != null);
+  const [selectedIndexList, setSelectedIndexList] = useState<number[]>(
+    (controlled ? selectedIndices : defaultSelectedIndices) ?? []
   );
   useEffect(() => {
     if (controlled) {
-      setSelectedIndex(index ?? 0);
+      setSelectedIndexList(selectedIndices ?? []);
     }
-  }, [index]);
+  }, [selectedIndices]);
   return (
     <ul className={cx("accordion", className)}>
       {React.Children.map(children, (child, i) => {
@@ -58,17 +62,36 @@ const Accordion = ({
         return (
           props && (
             <li
+              ref={ref}
               // eslint-disable-next-line react/no-array-index-key
               key={i}
               className={cx("accordion--item", {
-                "accordion--item-open": selectedIndex === i
+                "accordion--item-collapse":
+                  collapse && selectedIndexList.includes(i),
+                "accordion--item-expand":
+                  expand && selectedIndexList.includes(i),
+                "accordion--item-open": selectedIndexList.includes(i)
               })}
             >
               <button
                 className="accordion--heading"
                 onClick={() => {
                   if (!controlled) {
-                    setSelectedIndex(i);
+                    if (selectedIndexList.includes(i)) {
+                      setCollapse(true);
+                      setSelectedIndexList(
+                        selectedIndexList.filter((item, j) => i !== j)
+                      );
+                      setTimeout(() => {
+                        setCollapse(false);
+                      }, 200);
+                    } else {
+                      setExpand(true);
+                      setSelectedIndexList([...selectedIndexList, i]);
+                      setTimeout(() => {
+                        setExpand(false);
+                      }, 200);
+                    }
                   }
                   onChange?.(i);
                 }}
