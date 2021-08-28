@@ -1,60 +1,13 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import Typography from "../Typography/Typography";
-import Modal from "../Modal/Modal";
-import Checkbox from "../Checkbox/Checkbox";
-import ModalBody from "../Modal/ModalBody";
-import ModalHeader from "../Modal/ModalHeader";
-import ModalFooter from "../Modal/ModalFooter";
 import CookieBanner from "../CookieBanner/CookieBanner";
 import useConstant from "../../hooks/useConstant";
-
-export enum OptType {
-  OPT_IN,
-  OPT_OUT,
-  ESSENTIAL
-}
-
-type CookieSetting = {
-  id: string;
-  type: OptType;
-  label: string;
-  description: string;
-};
-
-type CookieSettingWithState = CookieSetting & { checked: boolean };
-
-const CookieSettingControl = ({
-  id,
-  type,
-  label,
-  description,
-  checked,
-  onChange
-}: CookieSettingWithState & {
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-}) => {
-  return (
-    <div className="cookiemodal--check">
-      <Checkbox
-        label={label}
-        id={id}
-        checked={
-          checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)
-        }
-        disabled={type === OptType.ESSENTIAL}
-        onChange={onChange}
-      />
-      <Typography
-        type="text"
-        token="body-small"
-        className="cookiemodal--check-description"
-      >
-        {description}
-      </Typography>
-    </div>
-  );
-};
+// eslint-disable-next-line import/no-cycle
+import CookieModal, {
+  CookieSetting,
+  CookieSettingWithState,
+  OptType
+} from "../CookieModal/CookieModal";
 
 type CookieModalProps = {
   /** Override the banner open state. */
@@ -90,6 +43,9 @@ type CookieModalProps = {
   onClose?: () => void;
 };
 
+/**
+ * Full feature component for cookies.
+ */
 const CookiesComponent = ({
   modalOpen,
   modalIntro = "Hier können Sie Ihre Cookies anpassen.",
@@ -196,53 +152,40 @@ const CookiesComponent = ({
         }}
         open={bannerOpen || cookieBannerOpen}
       />
-      <Modal
+      <CookieModal
+        intro={modalIntro}
+        headline={modalHeadline}
+        open={cookieModalOpen || modalOpen}
         ref={modalRef}
-        size="md"
-        open={modalOpen || cookieModalOpen}
-        onClose={close}
-        withDivider
-      >
-        <ModalHeader headline={modalHeadline} />
-        <ModalBody>
-          <Typography type="text" token="body-small" className="">
-            {modalIntro}
-          </Typography>
-          {editingSettings.map((setting, i) => {
-            return (
-              <CookieSettingControl
-                key={setting.id}
-                {...setting}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                  setEditingSettings(
-                    editingSettings.map((s, j) => ({
-                      ...s,
-                      checked: i === j ? event.target.checked : s.checked
-                    }))
-                  );
-                }}
-              />
-            );
-          })}
-        </ModalBody>
-        <ModalFooter
-          primaryLabel={acceptAllLabel}
-          secondaryLabel={acceptSelectedLabel}
-          onSecondaryClick={() => {
-            // Use ui settings
-            applySettings(editingSettings);
-          }}
-          onPrimaryClick={() => {
-            // Do not use ui and rather use all as true
-            const settingsToApply = editingSettings.map((s) => ({
+        settings={editingSettings}
+        onSettingChanged={(
+          event: ChangeEvent<HTMLInputElement>,
+          settingIndex: number
+        ) => {
+          setEditingSettings(
+            editingSettings.map((s, i) => ({
               ...s,
-              checked: true
-            }));
+              checked: settingIndex === i ? event.target.checked : s.checked
+            }))
+          );
+        }}
+        secondaryLabel={acceptSelectedLabel}
+        onSecondaryClick={() => {
+          // Use ui settings
+          applySettings(editingSettings);
+        }}
+        primaryLabel={acceptAllLabel}
+        onPrimaryClick={() => {
+          // Do not use ui and rather use all as true
+          const settingsToApply = editingSettings.map((s) => ({
+            ...s,
+            checked: true
+          }));
 
-            applySettings(settingsToApply);
-          }}
-        />
-      </Modal>
+          applySettings(settingsToApply);
+        }}
+        onClose={close}
+      />
     </>
   );
 };

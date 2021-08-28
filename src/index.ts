@@ -1,6 +1,6 @@
 import Button from "./components/Button/Button";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
-import Cookies, { OptType } from "./components/Cookies/Cookies";
+import Cookies from "./components/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SnackBar from "./components/SnackBar/SnackBar";
@@ -19,12 +19,12 @@ import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
+import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
 
 export {
   Button,
   Link,
   SnackBar,
-  CookieBanner,
   LoginForm,
   AspectRatio,
   CodeSnippet,
@@ -40,8 +40,10 @@ export {
   UserProfile,
   Modal,
   Footer,
-  Cookies,
   Divider,
   Checkbox,
-  OptType
+  Cookies,
+  OptType,
+  CookieBanner,
+  CookieModal
 };

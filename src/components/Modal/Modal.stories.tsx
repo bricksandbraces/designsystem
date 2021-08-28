@@ -21,6 +21,7 @@ export const Default = () => {
   const [open, setOpen] = useState(true);
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
+      Please update the background to see the modal (storybook bug).
       <Modal
         size={select("Size", options, defaultValue) as any}
         open={open}
@@ -63,6 +64,7 @@ export const Nested = () => {
   const [secondOpen, setSecondOpen] = useState(false);
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
+      Please update the background to see the modal (storybook bug).
       <Button
         onClick={(event: Event) => {
           event.stopPropagation();
