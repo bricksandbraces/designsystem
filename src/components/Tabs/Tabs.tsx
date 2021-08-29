@@ -59,6 +59,7 @@ const Tabs = ({
           return (
             props && (
               <button
+                disabled={props.disabled}
                 type="button"
                 tabIndex={0}
                 // eslint-disable-next-line react/no-array-index-key

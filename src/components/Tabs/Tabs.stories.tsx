@@ -204,7 +204,7 @@ export const Responsive = () => {
             </Typography>
             <Button>Hello Button</Button>
           </Tab>
-          <Tab title="Experience Design">
+          <Tab title="Experience Design" disabled>
             <Typography type="text" token="heading-03">
               Experience design is the base for success
             </Typography>

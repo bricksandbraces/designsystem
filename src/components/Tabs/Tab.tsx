@@ -10,6 +10,11 @@ export type TabProps = {
    * Title
    */
   title: string;
+
+  /**
+   * Disabled
+   */
+  disabled: boolean;
 };
 
 const Tab = ({ children }: TabProps) => {

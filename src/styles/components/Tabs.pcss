@@ -14,6 +14,15 @@
     background-color: $tab-background;
     color: $tab-font;
 
+    &:disabled {
+      color: $tab-disabled-font;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+
     &-container {
       width: 100%;
       white-space: nowrap;
