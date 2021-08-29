@@ -73,7 +73,9 @@ type PasswordInputProps = {
 };
 
 const PasswordInput = ({ size, children, ...rest }: PasswordInputProps) => {
-  const [passwordType, setPasswordType] = useState("password");
+  const [passwordType, setPasswordType] = useState<"password" | "text">(
+    "password"
+  );
   return (
     <TextInput {...rest} size={size} type={passwordType}>
       <Button
