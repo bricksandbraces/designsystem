@@ -1,0 +1,115 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/theme.pcss";
+
+.textinput {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  &--input {
+    @mixin type--body-small;
+
+    padding: 0 16px;
+    transition: border $transition-01;
+    border: 1px solid $textinput-border;
+    border-radius: $border-radius-2;
+    outline: 0;
+    background-color: $textinput-background;
+    color: $textinput-font;
+
+    &:focus {
+      border-color: $textinput-focus;
+    }
+
+    &::placeholder {
+      color: $textinput-placeholder;
+    }
+
+    &-container {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+    }
+  }
+
+  &--togglepassword {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &--default {
+    height: $container-03;
+  }
+
+  &--large {
+    height: $container-04;
+  }
+
+  &--error {
+    border-color: $textinput-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textinput-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--small {
+    height: $container-02;
+  }
+  &--label {
+    @mixin type--label;
+
+    margin-bottom: $spacing-03;
+    color: $textinput-label-font;
+  }
+}
+
+input:disabled {
+  border-color: $textinput-disabled-border;
+  background-color: $textinput-disabled-background;
+  color: $textinput-disabled-font;
+  cursor: not-allowed;
+
+  &::placeholder {
+    color: $textinput-disabled-font;
+  }
+}
+
+input[type="password"] {
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+
+  &::placeholder {
+    @mixin type--body-small;
+
+    color: $textinput-disabled-font;
+    color: $textinput-placeholder;
+    letter-spacing: initial;
+  }
+}

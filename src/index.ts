@@ -24,6 +24,8 @@ import Tab from "./components/Tabs/Tab";
 import Accordion from "./components/Accordion/Accordion";
 import AccordionItem from "./components/Accordion/AccordionItem";
 import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
+import TextInput from "./components/TextInput/TextInput";
+import PasswordInput from "./components/PasswordInput/PasswordInput";
 
 export {
   Button,
@@ -53,5 +55,7 @@ export {
   Cookies,
   OptType,
   CookieBanner,
-  CookieModal
+  CookieModal,
+  TextInput,
+  PasswordInput
 };
