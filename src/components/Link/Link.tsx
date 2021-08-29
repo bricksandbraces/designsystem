@@ -10,7 +10,7 @@ type LinkProps = {
   /**
    * Link location .
    */
-  href: string;
+  href?: string;
 
   /**
    * Location target .

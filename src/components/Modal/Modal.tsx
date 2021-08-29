@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { forwardRef, ReactNode, useEffect, useRef } from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
 import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
+import mergeRefs from "react-merge-refs";
 import Button from "../Button/Button";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import useMounted from "../../hooks/useMounted";
@@ -45,15 +46,18 @@ type ModalProps = {
   autoFocus?: boolean;
 };
 
-const Modal = ({
-  size,
-  open,
-  onClose,
-  closeOnOutsideClick = true,
-  autoFocus = true,
-  withDivider,
-  children
-}: ModalProps) => {
+const Modal = (
+  {
+    size,
+    open,
+    onClose,
+    closeOnOutsideClick = true,
+    autoFocus = true,
+    withDivider,
+    children
+  }: ModalProps,
+  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -89,7 +93,7 @@ const Modal = ({
       {mounted &&
         ReactDOM.createPortal(
           <div
-            ref={modalRef}
+            ref={mergeRefs([modalRef, ref])}
             className={cx("modal", {
               "modal--open": open,
               "modal--with-divider": withDivider
@@ -130,4 +134,4 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export default forwardRef<HTMLDivElement, ModalProps>(Modal);
