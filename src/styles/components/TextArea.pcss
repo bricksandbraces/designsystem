@@ -5,6 +5,24 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  &--top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing-03;
+  }
+
+  &--char {
+    &-counter {
+      @mixin type--label;
+
+      color: $textarea-font;
+      &__exceeded {
+        color: $textarea-font-error;
+      }
+    }
+  }
+
   &--input {
     @mixin type--body-small;
 
@@ -36,7 +54,6 @@
   &--label {
     @mixin type--label;
 
-    margin-bottom: $spacing-02;
     color: $textarea-label-font;
   }
 

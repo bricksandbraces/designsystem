@@ -105,11 +105,23 @@ const TextArea = (
 
   return (
     <div className="textarea">
-      {label && (
-        <label htmlFor={id} className="textarea--label">
-          {label}
-        </label>
-      )}
+      <div className="textarea--top">
+        {label && (
+          <label htmlFor={id} className="textarea--label">
+            {label}
+          </label>
+        )}
+        {characterLimit && (
+          <div
+            className={cx("textarea--char-counter", {
+              "textarea--char-counter__exceeded":
+                textValue.length > characterLimit
+            })}
+          >
+            {textValue.length} / {characterLimit}
+          </div>
+        )}
+      </div>
       <div className="textarea--input-container">
         <textarea
           maxLength={maxLength}
@@ -119,7 +131,8 @@ const TextArea = (
             "textarea--input",
             {
               "textarea--error":
-                (error || errorText) && !(warning || warningText),
+                ((error || errorText) && !(warning || warningText)) ||
+                (characterLimit && textValue.length > characterLimit),
               "textarea--warning":
                 !(error || errorText) && (warning || warningText)
             },
@@ -147,16 +160,6 @@ const TextArea = (
         <div className="textinput--warning-text">
           <IconAlertTriangle size={16} />
           {warningText}
-        </div>
-      )}
-      {characterLimit && (
-        <div
-          className={cx("textinput--char-counter", {
-            "textinput--char-counter__exceeded":
-              textValue.length > characterLimit
-          })}
-        >
-          {textValue.length} / {characterLimit}
         </div>
       )}
     </div>
