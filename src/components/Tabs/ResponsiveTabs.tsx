@@ -40,7 +40,14 @@ const ResponsiveTabs = ({
       >
         {children}
       </Tabs>
-      <Accordion onChange={onChange} className="responsivetabs--accordion">
+      <Accordion
+        defaultOpenIndices={
+          defaultIndex === undefined ? undefined : [defaultIndex]
+        }
+        openIndices={index === undefined ? undefined : [index]}
+        onChange={onChange}
+        className="responsivetabs--accordion"
+      >
         {children}
       </Accordion>
     </>
