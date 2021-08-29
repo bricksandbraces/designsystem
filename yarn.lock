@@ -2102,7 +2102,6 @@ __metadata:
     postcss-viewport-height-correction: ^1.1.1
     prettier: ^2.3.2
     react: ^17.0.2
-    react-animate-height: ^2.0.23
     react-dom: ^17.0.2
     react-focus-lock: ^2.5.2
     react-merge-refs: ^1.1.0
@@ -15984,19 +15983,6 @@ fsevents@^1.2.7:
   bin:
     rc: ./cli.js
   checksum: ea2b7f7cee201a67923a2240de594a5d9b59bd312b814b06536d3d609a416dfd6fb9b85ea2abfd3b8a4eb5ed33eaff946ee75a8f2b7fb10941073c5cfee6b7a5
-  languageName: node
-  linkType: hard
-
-"react-animate-height@npm:^2.0.23":
-  version: 2.0.23
-  resolution: "react-animate-height@npm:2.0.23::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freact-animate-height%2F-%2Freact-animate-height-2.0.23.tgz"
-  dependencies:
-    classnames: ^2.2.5
-    prop-types: ^15.6.1
-  peerDependencies:
-    react: ">=15.6.2"
-    react-dom: ">=15.6.2"
-  checksum: 2f9741dc27f508e40ea59e3e15231b2fd8db183d42110f01564b67a81bc571caf89f25b5fa755e3deeb0e918dcbe6055840488bef7117ae54bdb77d1d61fedb7
   languageName: node
   linkType: hard
 
