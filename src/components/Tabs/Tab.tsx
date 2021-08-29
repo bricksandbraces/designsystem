@@ -14,7 +14,7 @@ export type TabProps = {
   /**
    * Disabled
    */
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 const Tab = ({ children }: TabProps) => {
