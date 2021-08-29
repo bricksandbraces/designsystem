@@ -1,7 +1,5 @@
 import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
-import { IconEye } from "@tabler/icons";
-import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 
 type TextAreaProps = {
@@ -12,7 +10,7 @@ type TextAreaProps = {
 
   defaultValue?: string;
   value?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 
   children?: React.ReactNode;
 };
@@ -25,9 +23,10 @@ const TextArea = (
     placeholder,
     value,
     defaultValue,
+    children,
     onChange
   }: TextAreaProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLTextAreaElement>
 ) => {
   const controlled = useControlled(value);
   const [textValue, setTextValue] = useState<string>(
@@ -54,13 +53,14 @@ const TextArea = (
           className={cx("textarea--input", className)}
           placeholder={placeholder}
           value={textValue}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
             if (!controlled) {
               setTextValue(event.target.value);
             }
             onChange?.(event);
           }}
         />
+        {children}
       </div>
     </div>
   );

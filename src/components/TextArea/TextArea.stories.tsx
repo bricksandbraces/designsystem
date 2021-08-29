@@ -25,7 +25,7 @@ export const Controlled = () => {
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
         placeholder={text("Placeholder", "Enter text...")}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+        onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
           setValue(event.target.value);
         }}
       />
