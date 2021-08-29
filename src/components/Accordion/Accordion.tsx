@@ -1,56 +1,78 @@
 import { IconChevronDown } from "@tabler/icons";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import cx from "classnames";
-import { useMeasure } from "react-use";
 import Typography from "../Typography/Typography";
 import { AccordionItemProps } from "./AccordionItem";
 
 type AccordionProps = {
   /**
-   * Aspect Ratio Children
+   * Children
    */
   children?: ReactNode;
 
   /**
-   * Classnames
+   * Classnames for the parent element
    */
   className?: string;
 
   /**
-   * OnChange Function
+   * OnChange function delivering the toggled index
    */
   onChange?: (selectedIndex: number) => void;
-
-  /**
-   * DefaultIndex
-   */
-  defaultSelectedIndices?: number[];
-
-  /**
-   * Index
-   */
-  selectedIndices?: number[];
+  defaultOpenIndices?: number[];
+  openIndices?: number[];
 };
+
+enum AnimationType {
+  NONE,
+  COLLAPSE,
+  EXPAND
+}
 
 const Accordion = ({
   children,
   className,
   onChange,
-  defaultSelectedIndices,
-  selectedIndices
+  defaultOpenIndices,
+  openIndices
 }: AccordionProps) => {
-  const [ref, { height }] = useMeasure();
-  const [collapse, setCollapse] = useState(false);
-  const [expand, setExpand] = useState(false);
-  const { current: controlled } = useRef(selectedIndices != null);
-  const [selectedIndexList, setSelectedIndexList] = useState<number[]>(
-    (controlled ? selectedIndices : defaultSelectedIndices) ?? []
+  const [itemAnimations, setItemAnimations] = useState<AnimationType[]>(
+    React.Children.map(children, () => AnimationType.NONE) as AnimationType[]
+  );
+
+  const setAnimationForItem = (
+    itemIndex: number,
+    animationType: AnimationType
+  ) => {
+    setItemAnimations(
+      itemAnimations.map((itemAnimation, j) =>
+        itemIndex === j ? animationType : itemAnimation
+      )
+    );
+  };
+
+  const { current: controlled } = useRef(openIndices != null);
+  const [openIndexList, setOpenIndexList] = useState<number[]>(
+    (controlled ? openIndices : defaultOpenIndices) ?? []
   );
   useEffect(() => {
     if (controlled) {
-      setSelectedIndexList(selectedIndices ?? []);
+      const newAnimations = openIndices?.map((openItemIndex) => {
+        if (
+          openIndexList.includes(openItemIndex) !==
+          openIndices.includes(openItemIndex)
+        ) {
+          if (openIndices.includes(openItemIndex)) {
+            return AnimationType.COLLAPSE;
+          }
+          return AnimationType.EXPAND;
+        }
+        return AnimationType.NONE;
+      });
+      setItemAnimations(newAnimations ?? []);
+      setOpenIndexList(openIndices ?? []);
     }
-  }, [selectedIndices]);
+  }, [openIndices]);
   return (
     <ul className={cx("accordion", className)}>
       {React.Children.map(children, (child, i) => {
@@ -59,40 +81,38 @@ const Accordion = ({
         }
         const elementChild: React.ReactElement<AccordionItemProps> = child;
         const { props } = elementChild;
+        const open = openIndexList.includes(i);
         return (
           props && (
             <li
-              ref={ref}
               // eslint-disable-next-line react/no-array-index-key
               key={i}
               className={cx("accordion--item", {
                 "accordion--item-collapse":
-                  collapse && selectedIndexList.includes(i),
+                  itemAnimations[i] === AnimationType.COLLAPSE && open,
                 "accordion--item-expand":
-                  expand && selectedIndexList.includes(i),
-                "accordion--item-open": selectedIndexList.includes(i)
+                  itemAnimations[i] === AnimationType.EXPAND && open,
+                "accordion--item-open": open
               })}
+              onAnimationEnd={() => {
+                setAnimationForItem(i, AnimationType.NONE);
+              }}
             >
               <button
+                disabled={props.disabled}
                 className="accordion--heading"
                 onClick={() => {
                   if (!controlled) {
-                    if (selectedIndexList.includes(i)) {
-                      setCollapse(true);
-                      setSelectedIndexList(
-                        selectedIndexList.filter(
+                    if (openIndexList.includes(i)) {
+                      setAnimationForItem(i, AnimationType.COLLAPSE);
+                      setOpenIndexList(
+                        openIndexList.filter(
                           (selectedItemIndex) => i !== selectedItemIndex
                         )
                       );
-                      setTimeout(() => {
-                        setCollapse(false);
-                      }, 200);
                     } else {
-                      setExpand(true);
-                      setSelectedIndexList([...selectedIndexList, i]);
-                      setTimeout(() => {
-                        setExpand(false);
-                      }, 200);
+                      setAnimationForItem(i, AnimationType.EXPAND);
+                      setOpenIndexList([...openIndexList, i]);
                     }
                   }
                   onChange?.(i);

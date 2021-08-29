@@ -38,6 +38,8 @@ type TypographyProps = {
    * React inline styles for the typography component
    */
   style?: any;
+
+  name?: string;
 };
 
 const Typography = ({

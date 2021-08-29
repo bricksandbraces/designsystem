@@ -2,14 +2,19 @@ import React, { ReactNode } from "react";
 
 export type AccordionItemProps = {
   /**
-   * Aspect Ratio Children
+   * Accordion Children
    */
   children?: ReactNode;
 
   /**
-   * Ratio
+   * Title
    */
   title: string | ReactNode;
+
+  /**
+   * Disabled Property
+   */
+  disabled?: boolean;
 };
 
 const AccordionItem = ({ children }: AccordionItemProps) => {
