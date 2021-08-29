@@ -1,5 +1,57 @@
 @import "./colors.pcss";
 
+/* Spacings & Sizes */
+
+$container-01: 24px;
+$container-02: 32px;
+$container-03: 40px;
+$container-04: 48px;
+$container-05: 64px;
+$container-06: 128px;
+$container-07: 256px;
+
+$icon-container-01: 16px;
+$icon-container-02: 20px;
+$icon-container-03: 24px;
+$icon-container-04: 32px;
+
+$spacing-01: 2px;
+$spacing-02: 4px;
+$spacing-03: 8px;
+$spacing-04: 16px;
+$spacing-05: 24px;
+$spacing-06: 32px;
+$spacing-07: 40px;
+$spacing-08: 48px;
+$spacing-09: 64px;
+$spacing-10: 80px;
+$spacing-11: 96px;
+$spacing-12: 128px;
+$spacing-13: 156px;
+
+/* Border & Radius */
+
+$border: 1px solid;
+
+$border-radius-2: 2px;
+$border-radius-4: 4px;
+$border-radius-8: 8px;
+$border-radius-16: 16px;
+
+/* Transition */
+
+$transition-01: 0.15s ease-in-out;
+$transition-02: 0.3s ease-in-out;
+$transition-03: 0.45s ease-in-out;
+
+/* Breakpoints */
+
+$breakpoint-sm: 320px;
+$breakpoint-md: 672px;
+$breakpoint-lg: 1088px;
+$breakpoint-xlg: 1312px;
+$breakpoint-max: 1584px;
+
 /* Colors */
 
 $interactive-primary: $purple-50;
@@ -73,7 +125,7 @@ $textinput-focus: $focus;
 $textinput-placeholder: $warm-gray-40;
 $textinput-background: $warm-gray-10;
 
-$textarea-height: 128px;
+$textarea-height: $container-06;
 $textarea-font: $white;
 $textarea-label-font: $warm-gray-80;
 $textarea-disabled-font: $disabled-text;
@@ -84,47 +136,17 @@ $textarea-focus: $focus;
 $textarea-placeholder: $warm-gray-40;
 $textarea-background: $warm-gray-10;
 
-/* Spacings & Sizes */
+$tab-font: $warm-gray-60;
+$tab-background: transparent;
+$tab-background-hover: $warm-gray-15;
+$tab-background-hover-accent: $warm-gray-25;
+$tab-background-active: $warm-gray-20;
+$tab-background-selected: $purple-50;
+$tab-font-selected: $white;
+$tab-focus: $white;
 
-$container-01: 16px;
-$container-02: 24px;
-$container-03: 32px;
-$container-04: 40px;
-$container-05: 48px;
-
-$spacing-01: 2px;
-$spacing-02: 4px;
-$spacing-03: 8px;
-$spacing-04: 16px;
-$spacing-05: 24px;
-$spacing-06: 32px;
-$spacing-07: 40px;
-$spacing-08: 48px;
-$spacing-09: 64px;
-$spacing-10: 80px;
-$spacing-11: 96px;
-$spacing-12: 128px;
-$spacing-13: 156px;
-
-/* Border & Radius */
-
-$border: 1px solid;
-
-$border-radius-2: 2px;
-$border-radius-4: 4px;
-$border-radius-8: 8px;
-$border-radius-16: 16px;
-
-/* Transition */
-
-$transition-01: 0.15s ease-in-out;
-$transition-02: 0.3s ease-in-out;
-$transition-03: 0.45s ease-in-out;
-
-/* Breakpoints */
-
-$breakpoint-sm: 320px;
-$breakpoint-md: 672px;
-$breakpoint-lg: 1088px;
-$breakpoint-xlg: 1312px;
-$breakpoint-max: 1584px;
+$accordion-font: $white;
+$accordion-border: $warm-gray-15;
+$accordion-focus: $focus;
+$accordion-disabled-font: $disabled-text;
+$accordion-background-hover: $warm-gray-15;

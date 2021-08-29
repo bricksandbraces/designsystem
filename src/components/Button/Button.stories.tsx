@@ -14,14 +14,21 @@ const options = {
 
 const defaultValue = "primary";
 
+const sizeOptions = {
+  Large: "large",
+  Small: "small",
+  Default: "default"
+};
+
+const defaultSize = "default";
+
 export const Default = () => (
   <div style={{ width: "100vw", height: "100vh" }}>
     <div style={{ width: "405px" }}>
       <Button
         kind={select("Kind", options, defaultValue)}
         renderIcon={<IconLayoutGridAdd />}
-        large={boolean("large", false)}
-        small={boolean("small", false)}
+        size={select("Size", sizeOptions, defaultSize) as any}
         fluid={boolean("Fluid", false)}
         withIconRight={boolean("with Icon right", false)}
         withIconLeft={boolean("with Icon left", false)}

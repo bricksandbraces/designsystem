@@ -79,17 +79,8 @@ const TextInput = (
             onChange?.(event);
           }}
         />
-        {type === "password" && (
-          <Button
-            className="textinput--togglepassword"
-            type="button"
-            kind="ghost"
-            iconOnly
-            renderIcon={<IconEye />}
-          />
-        )}
+        {children}
       </div>
-      {children}
     </div>
   );
 };
