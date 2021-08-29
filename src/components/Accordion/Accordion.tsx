@@ -80,7 +80,9 @@ const Accordion = ({
                     if (selectedIndexList.includes(i)) {
                       setCollapse(true);
                       setSelectedIndexList(
-                        selectedIndexList.filter((item, j) => i !== j)
+                        selectedIndexList.filter(
+                          (selectedItemIndex) => i !== selectedItemIndex
+                        )
                       );
                       setTimeout(() => {
                         setCollapse(false);
