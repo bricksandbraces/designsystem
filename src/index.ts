@@ -19,6 +19,10 @@ import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
+import Tabs from "./components/Tabs/Tabs";
+import Tab from "./components/Tabs/Tab";
+import Accordion from "./components/Accordion/Accordion";
+import AccordionItem from "./components/Accordion/AccordionItem";
 import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
 
 export {
@@ -42,6 +46,10 @@ export {
   Footer,
   Divider,
   Checkbox,
+  Tabs,
+  Tab,
+  Accordion,
+  AccordionItem,
   Cookies,
   OptType,
   CookieBanner,

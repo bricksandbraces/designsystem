@@ -103,7 +103,7 @@ const UserProfile = ({
           </div>
         </div>
         <hr className="userprofile--divider" />
-        <Button onClick={onLogout} fluid>
+        <Button onClick={onLogout} fluid size="small">
           Sign out
         </Button>
       </div>

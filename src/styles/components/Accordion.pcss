@@ -1,0 +1,95 @@
+@import "../../styles/theme.pcss";
+
+.accordion {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: $accordion-font;
+  &--heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: $container-04;
+    padding: 0 $spacing-04;
+    border: 1px solid transparent;
+    border-radius: $border-radius-2;
+    outline: 0;
+    background-color: transparent;
+    color: $accordion-font;
+
+    &:hover {
+      background-color: $accordion-background-hover;
+    }
+
+    &:focus {
+      border-color: $accordion-focus;
+      outline: 0;
+    }
+
+    &:focus-visible {
+      border-color: $accordion-focus;
+      outline: 0;
+    }
+
+    &:disabled {
+      background-color: inherit;
+      color: $accordion-disabled-font;
+      cursor: not-allowed;
+    }
+
+    &-icon {
+      transition: $transition-01;
+    }
+  }
+
+  &--item {
+    box-sizing: content-box;
+    height: 100%;
+    max-height: $container-04;
+    overflow: hidden;
+    transition: $transition-03;
+    border-top: 1px solid $accordion-border;
+
+    &:last-child {
+      border-bottom: 1px solid $accordion-border;
+    }
+
+    &-open {
+      & > .accordion--heading > .accordion--heading-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &--content {
+    display: none;
+    width: 80%;
+    height: 100%;
+    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+  }
+}
+
+@keyframes accordionTransitionIn {
+  from {
+    padding: 0 $spacing-04 $spacing-04 $spacing-04;
+    opacity: 0;
+  }
+  to {
+    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+    opacity: 1;
+  }
+}
+
+.accordion--item-expand > .accordion--content {
+  animation-name: accordionTransitionIn;
+  animation-duration: 0.15s;
+}
+
+.accordion--item-open > .accordion--content {
+  display: block;
+}
+
+.accordion--item-open.accordion--item {
+  max-height: inherit;
+}

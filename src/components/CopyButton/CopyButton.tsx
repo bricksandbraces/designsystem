@@ -57,6 +57,7 @@ const CopyButton = ({
       <Button
         kind="ghost"
         iconOnly
+        size="small"
         renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
         onClick={(event) => {
           setShowState(true);

@@ -26,8 +26,7 @@ export const Default = () => (
           isLoading={boolean("is Loading?", false)}
           disabled={boolean("Disabled", false)}
           fluid
-          large
-          kind="outline"
+          size="default"
           withIconRight
           renderIcon={<IconArrowRight />}
         >
