@@ -23,9 +23,20 @@ type TabsProps = {
    * Index
    */
   index?: number;
+
+  /**
+   * className
+   */
+  className?: string;
 };
 
-const Tabs = ({ children, onChange, defaultIndex, index }: TabsProps) => {
+const Tabs = ({
+  children,
+  onChange,
+  defaultIndex,
+  className,
+  index
+}: TabsProps) => {
   const { current: controlled } = useRef(index != null);
   const [selectedIndex, setSelectedIndex] = useState(
     (controlled ? index : defaultIndex) ?? 0
@@ -37,7 +48,7 @@ const Tabs = ({ children, onChange, defaultIndex, index }: TabsProps) => {
   }, [index]);
 
   return (
-    <div className="tabs">
+    <div className={cx("tabs", className)}>
       <div className="tabs--btn-container">
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<TabProps>(child)) {
@@ -65,10 +76,10 @@ const Tabs = ({ children, onChange, defaultIndex, index }: TabsProps) => {
                 <Typography
                   type="text"
                   token="body-small"
-                  name={props.label}
+                  name={props.title}
                   className="tabs--btn-label"
                 >
-                  {props.label}
+                  {props.title}
                 </Typography>
               </button>
             )

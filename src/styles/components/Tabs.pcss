@@ -86,3 +86,19 @@
     }
   }
 }
+
+.responsivetabs {
+  &--tabs {
+    display: block;
+    @media screen and (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &--accordion {
+    display: block;
+    @media screen and (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+}

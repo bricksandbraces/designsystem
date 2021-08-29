@@ -7,9 +7,9 @@ export type TabProps = {
   children?: ReactNode;
 
   /**
-   * Label
+   * Title
    */
-  label: string;
+  title: string;
 };
 
 const Tab = ({ children }: TabProps) => {
