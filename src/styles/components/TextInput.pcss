@@ -45,13 +45,47 @@
     height: $container-04;
   }
 
+  &--error {
+    border-color: $textinput-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textinput-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
   &--small {
     height: $container-02;
   }
   &--label {
     @mixin type--label;
 
-    margin-bottom: $spacing-02;
+    margin-bottom: $spacing-03;
     color: $textinput-label-font;
   }
 }

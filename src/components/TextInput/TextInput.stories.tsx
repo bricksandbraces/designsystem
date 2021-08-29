@@ -16,6 +16,8 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
+        warningText={text("warningText", "")}
+        errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
@@ -32,6 +34,8 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
+        warningText={text("warningText", "")}
+        errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
         value={value}
         id={text("id", "textfield-01")}

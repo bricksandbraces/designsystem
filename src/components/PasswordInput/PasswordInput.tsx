@@ -1,23 +1,74 @@
-import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
-import cx from "classnames";
+import React, { forwardRef, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
 import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 
 type PasswordInputProps = {
+  /**
+   * TextInput ClassName
+   */
   className?: string;
+
+  /**
+   * Label
+   */
   label?: string;
+
+  /**
+   * Placeholder text
+   */
   placeholder?: string;
+
+  /**
+   * Id
+   */
   id?: string;
+
+  /**
+   * Error state & text
+   */
+  error?: boolean;
+  errorText?: string;
+
+  /**
+   * Warning state & text
+   */
+  warning?: boolean;
+  warningText?: string;
+
+  /**
+   * Input Type
+   */
   type?: "password" | "text" | "email" | "number" | "search" | "time" | "url";
+
+  /**
+   * Container size
+   */
   size?: "default" | "small" | "large";
 
+  /**
+   * Autocomplete
+   */
   autoComplete?: "off" | "on";
 
+  /**
+   * Default Value
+   */
   defaultValue?: string;
+
+  /**
+   * Value
+   */
   value?: string;
+
+  /**
+   * OnChange Function
+   */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
+  /**
+   * ReactChildren
+   */
   children?: React.ReactNode;
 };
 

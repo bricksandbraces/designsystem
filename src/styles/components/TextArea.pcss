@@ -39,6 +39,40 @@
     margin-bottom: $spacing-02;
     color: $textarea-label-font;
   }
+
+  &--error {
+    border-color: $textarea-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textarea-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textarea-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textarea-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
 }
 
 textarea:disabled {

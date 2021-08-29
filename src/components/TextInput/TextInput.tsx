@@ -1,23 +1,75 @@
 import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
-import { IconEye } from "@tabler/icons";
+import { IconAlertCircle, IconAlertTriangle, IconEye } from "@tabler/icons";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 
 type TextInputProps = {
+  /**
+   * TextInput ClassName
+   */
   className?: string;
+
+  /**
+   * Label
+   */
   label?: string;
+
+  /**
+   * Placeholder text
+   */
   placeholder?: string;
+
+  /**
+   * Id
+   */
   id?: string;
+
+  /**
+   * Error state & text
+   */
+  error?: boolean;
+  errorText?: string;
+
+  /**
+   * Error state & text
+   */
+  warning?: boolean;
+  warningText?: string;
+
+  /**
+   * Input Type
+   */
   type?: "password" | "text" | "email" | "number" | "search" | "time" | "url";
+
+  /**
+   * Container size
+   */
   size?: "default" | "small" | "large";
 
+  /**
+   * Autocomplete
+   */
   autoComplete?: "off" | "on";
 
+  /**
+   * Default Value
+   */
   defaultValue?: string;
+
+  /**
+   * Value
+   */
   value?: string;
+
+  /**
+   * OnChange Function
+   */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
+  /**
+   * ReactChildren
+   */
   children?: React.ReactNode;
 };
 
@@ -32,6 +84,10 @@ const TextInput = (
     defaultValue,
     autoComplete,
     onChange,
+    error,
+    errorText,
+    warning,
+    warningText,
     size = "default",
     children
   }: TextInputProps,
@@ -64,7 +120,11 @@ const TextInput = (
             {
               "textinput--large": size === "large",
               "textinput--default": size === "default" || undefined,
-              "textinput--small": size === "small"
+              "textinput--small": size === "small",
+              "textinput--error":
+                (error || errorText) && !(warning || warningText),
+              "textinput--warning":
+                !(error || errorText) && (warning || warningText)
             },
             className
           )}
@@ -81,6 +141,20 @@ const TextInput = (
         />
         {children}
       </div>
+      {errorText && !warningText && (
+        <div className="textinput--error-text">
+          <IconAlertCircle size={16} />
+
+          {errorText}
+        </div>
+      )}
+      {warningText && !errorText && (
+        <div className="textinput--warning-text">
+          <IconAlertTriangle size={16} />
+
+          {warningText}
+        </div>
+      )}
     </div>
   );
 };
