@@ -37,11 +37,6 @@ type PasswordInputProps = {
   warningText?: string;
 
   /**
-   * Input Type
-   */
-  type?: "password" | "text" | "email" | "number" | "search" | "time" | "url";
-
-  /**
    * Container size
    */
   size?: "default" | "small" | "large";
