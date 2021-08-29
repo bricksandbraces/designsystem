@@ -1,7 +1,6 @@
 import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
-import { IconAlertCircle, IconAlertTriangle, IconEye } from "@tabler/icons";
-import Button from "../Button/Button";
+import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
 
 type TextInputProps = {

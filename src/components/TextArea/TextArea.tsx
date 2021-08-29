@@ -25,7 +25,17 @@ type TextAreaProps = {
   id?: string;
 
   /**
-   * Maximum Length
+   * Maximum length for the characters limit to display.
+   */
+  characterLimit?: number;
+
+  /**
+   * The text to display as error message if the input exceeds the given character limit.
+   */
+  characterLimitExceededText?: string;
+
+  /**
+   * Maximum length set hard to the element so that user can't add more characters anymore.
    */
   maxLength?: number;
 
@@ -69,6 +79,8 @@ const TextArea = (
     errorText,
     warningText,
     warning,
+    characterLimit,
+    characterLimitExceededText,
     maxLength,
     className,
     label,
@@ -124,18 +136,27 @@ const TextArea = (
         />
         {children}
       </div>
-      {errorText && !warningText && (
+      {/* Error text or character limit exceeded. Error text overwrites character limit */}
+      {(errorText || (characterLimit && textValue.length > characterLimit)) && (
         <div className="textinput--error-text">
           <IconAlertCircle size={16} />
-
-          {errorText}
+          {errorText || characterLimitExceededText}
         </div>
       )}
       {warningText && !errorText && (
         <div className="textinput--warning-text">
           <IconAlertTriangle size={16} />
-
           {warningText}
+        </div>
+      )}
+      {characterLimit && (
+        <div
+          className={cx("textinput--char-counter", {
+            "textinput--char-counter__exceeded":
+              textValue.length > characterLimit
+          })}
+        >
+          {textValue.length} / {characterLimit}
         </div>
       )}
     </div>
