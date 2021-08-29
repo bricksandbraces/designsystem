@@ -86,11 +86,15 @@ const UserProfile = ({
             {links && (
               <div className="userprofile--linklist">
                 {links
-                  .map((link) => {
+                  .map((link, i) => {
                     return (
-                      <p key={link.href} className="userprofile--link">
+                      <div
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`profile-links-${i}-${link.href}`}
+                        className="userprofile--link"
+                      >
                         <Link href={link.href}>{link.label}</Link>
-                      </p>
+                      </div>
                     );
                   })
                   .slice(0, 3)}

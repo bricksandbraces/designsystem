@@ -27,6 +27,8 @@ type CheckboxProps = {
    */
   checked?: boolean;
   defaultChecked?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
 };
 
 const Checkbox = ({
@@ -36,6 +38,7 @@ const Checkbox = ({
   defaultChecked,
   label,
   className,
+  onChange,
   ...rest
 }: CheckboxProps) => {
   return (
@@ -47,6 +50,7 @@ const Checkbox = ({
         id={id}
         checked={checked}
         defaultChecked={defaultChecked}
+        onChange={onChange}
         {...rest}
       />
       <label className="form-check-label" htmlFor={id}>

@@ -8,12 +8,15 @@ type LinkItem = {
   /**
    * Link to location
    */
-  href: string;
+  href?: string;
 
   /**
    * Label that is shown
    */
   label: string;
+
+  /** onClick action (acts as button) */
+  onClick?: (event: Event) => void;
 };
 
 type FooterProps = {
@@ -89,7 +92,11 @@ const Footer = ({
               {description}
               {descriptionLink && (
                 <div className="footer--logo-link">
-                  <Link href={descriptionLink.href} inline>
+                  <Link
+                    href={descriptionLink.href}
+                    onClick={descriptionLink.onClick}
+                    inline
+                  >
                     {descriptionLink.label}
                   </Link>
                 </div>
@@ -108,10 +115,11 @@ const Footer = ({
           className="footer--column"
         >
           <div className="footer--linksection">
-            {linkItems?.map((link) => {
+            {linkItems?.map((link, i) => {
               return (
                 <Link
-                  key={link.href}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`footer-${i}-${link.href}`}
                   href={link.href}
                   className="footer--linksection-item"
                 >

@@ -1,87 +1,126 @@
-import React from "react";
-import Typography from "../Typography/Typography";
-import Modal from "../Modal/Modal";
+import React, { ChangeEvent, forwardRef } from "react";
 import Checkbox from "../Checkbox/Checkbox";
+import Modal from "../Modal/Modal";
 import ModalBody from "../Modal/ModalBody";
-import ModalHeader from "../Modal/ModalHeader";
 import ModalFooter from "../Modal/ModalFooter";
+import ModalHeader from "../Modal/ModalHeader";
+import Typography from "../Typography/Typography";
 
-type CookieModalProps = {
-  /**
-   * Open
-   */
-  open: boolean;
+export enum OptType {
+  OPT_IN,
+  OPT_OUT,
+  ESSENTIAL
+}
 
-  /**
-   * OnClose
-   */
-  onClose?: (event: any) => void;
+export type CookieSetting = {
+  id: string;
+  type: OptType;
+  label: string;
+  description: string;
 };
 
-const CookieModal = ({ open, onClose }: CookieModalProps) => {
+export type CookieSettingWithState = CookieSetting & { checked: boolean };
+
+/**
+ * UI component representing a controlled cookie setting checkbox
+ */
+const CookieSettingControl = ({
+  id,
+  type,
+  label,
+  description,
+  checked,
+  onChange
+}: CookieSettingWithState & {
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}) => {
   return (
-    <Modal size="md" open={open} onClose={onClose} withDivider>
-      <ModalHeader headline="Cookies anpassen" />
+    <div className="cookiemodal--check">
+      <Checkbox
+        label={label}
+        id={id}
+        checked={
+          checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)
+        }
+        disabled={type === OptType.ESSENTIAL}
+        onChange={onChange}
+      />
+      <Typography
+        type="text"
+        token="body-small"
+        className="cookiemodal--check-description"
+      >
+        {description}
+      </Typography>
+    </div>
+  );
+};
+
+type CookieModalProps = {
+  open?: boolean;
+  intro: string;
+  headline: string;
+  primaryLabel: string;
+  onPrimaryClick: () => void;
+  secondaryLabel: string;
+  onSecondaryClick?: () => void;
+  settings: CookieSettingWithState[];
+  onSettingChanged?: (
+    event: ChangeEvent<HTMLInputElement>,
+    settingIndex: number
+  ) => void;
+  onClose?: () => void;
+};
+
+/**
+ * UI component building a list of controlled cookie settings and a default layout.
+ */
+const CookieModal = (
+  {
+    open,
+    headline,
+    intro,
+    settings,
+    onSettingChanged,
+    onClose,
+    primaryLabel,
+    onPrimaryClick,
+    secondaryLabel,
+    onSecondaryClick
+  }: CookieModalProps,
+  ref: ForwardedRef<HTMLDivElement>
+) => {
+  return (
+    <Modal
+      ref={ref}
+      size="md"
+      open={open ?? false}
+      onClose={onClose}
+      withDivider
+    >
+      <ModalHeader headline={headline} />
       <ModalBody>
         <Typography type="text" token="body-small" className="">
-          Über unser Tool können Sie sich einen Überblick zu den verwendeten
-          Cookies schaffen, sowie einzelne Kategorien aktivieren bzw.
-          deaktivieren. Mehr Informationen finden Sie in unserer
-          Datenschutzerklärung.
+          {intro}
         </Typography>
-        <div className="cookiemodal--check">
-          <Checkbox label="Essentielle Cookies" id="1" />
-          <Typography
-            type="text"
-            token="body-small"
-            className="cookiemodal--check-description"
-          >
-            Wir verwenden einige Cookies auf der Website, die von wesentlicher
-            Bedeutung sind, um bestimmte Funktionen für Sie zur Verfügung zu
-            stellen (z.B. Zugang zu geschützten Bereichen). Wenn Sie diese
-            Cookies deaktivieren, stehen erweiterte Funktionen der Website nicht
-            zur Verfügung. Sie können diese Cookies über Ihre
-            Browsereinstellungen blockieren oder löschen. Hierzu teilen wir
-            Daten mit Cloudflare.
-          </Typography>
-        </div>
-        <div className="cookiemodal--check">
-          <Checkbox label="Analyse Cookies" id="2" />
-          <Typography
-            type="text"
-            token="body-small"
-            className="cookiemodal--check-description"
-          >
-            Diese Cookies sammeln Informationen, die uns dabei helfen zu
-            verstehen, wie Besucher unsere Website nutzen oder wie effektiv
-            unsere Marketingkampagnen sind. Sie helfen uns die Website optimal
-            anzupassen und Ihre Erfahrung zu verbessern. Hierzu teilen wir Daten
-            mit Google Analytics, Mixpanel, Hotjar &amp; Google Optimize.
-          </Typography>
-        </div>
-        <div className="cookiemodal--check">
-          <Checkbox label="Marketing Cookies" id="3" />
-          <Typography
-            type="text"
-            token="body-small"
-            className="cookiemodal--check-description"
-          >
-            Diese Cookies werden verwendet, um unsere Marketingaktionen für Sie
-            relevanter und interessanter zu machen. Auf diese Weise stellen wir
-            sicher, dass Sie nur die für Sie relevante Anzeigen angezeigt
-            bekommen. Hierzu teilen wir Daten mit LinkedIn, Taboola, Outbrain,
-            Awin, Bing Ads, Google, Outfunnel, Snapchat, Tiktok &amp; Facebook.
-          </Typography>
-        </div>
+        {settings.map((setting, i) => {
+          return (
+            <CookieSettingControl
+              key={setting.id}
+              {...setting}
+              onChange={(event) => onSettingChanged?.(event, i)}
+            />
+          );
+        })}
       </ModalBody>
       <ModalFooter
-        primaryLabel="Alle Cookies akzeptieren"
-        secondaryLabel="Alle ablehnen"
-        onClose={onClose}
-        onPrimary={() => {}}
+        primaryLabel={primaryLabel}
+        secondaryLabel={secondaryLabel}
+        onSecondaryClick={onSecondaryClick}
+        onPrimaryClick={onPrimaryClick}
       />
     </Modal>
   );
 };
 
-export default CookieModal;
+export default forwardRef<HTMLDivElement, CookieModalProps>(CookieModal);

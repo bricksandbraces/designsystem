@@ -41,10 +41,11 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
       <div className={cx("header--mobile", { "header--mobile-visible": open })}>
         <Grid narrow>
           <Column md={7} mdOffset={1} sm={4} className="header--mobile-list">
-            {linkItems?.map((link) => {
+            {linkItems?.map((link, i) => {
               return (
                 <a
-                  key={link.href}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`header-${i}-${link.href}`}
                   className="header--mobile-list__item"
                   href={link.href}
                   onClick={() => {
@@ -89,10 +90,11 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             className="header--column"
           >
             <div className="header--linksection">
-              {linkItems?.map((link) => {
+              {linkItems?.map((link, i) => {
                 return (
                   <Link
-                    key={link.href}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={`header-linksection-${i}-${link.href}`}
                     href={link.href}
                     className="header--linksection-item"
                   >

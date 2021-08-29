@@ -25,6 +25,7 @@ const OutsideClickListener = ({
     }
   };
 
+  // todo: shouldn't document.addEventListener only be called once OR if disabled is false?
   useEffect(() => {
     document.addEventListener("click", handleGlobalClick);
 

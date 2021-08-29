@@ -10,7 +10,7 @@ type LinkProps = {
   /**
    * Link location .
    */
-  href: string;
+  href?: string;
 
   /**
    * Location target .
@@ -26,6 +26,11 @@ type LinkProps = {
    * React className
    */
   className?: string;
+
+  /**
+   * OnClick Event
+   */
+  onClick?: (event: any) => void;
 };
 
 const Link = ({
@@ -33,10 +38,19 @@ const Link = ({
   href,
   target,
   inline,
+  onClick,
   className,
   ...rest
 }: LinkProps) => {
-  return (
+  return onClick ? (
+    <button
+      className={cx("link", { "link--inline": inline }, className)}
+      {...rest}
+      onClick={onClick}
+    >
+      <div className="link--label">{children}</div>
+    </button>
+  ) : (
     <a
       className={cx("link", { "link--inline": inline }, className)}
       href={href}

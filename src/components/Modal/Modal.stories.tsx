@@ -21,6 +21,7 @@ export const Default = () => {
   const [open, setOpen] = useState(true);
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
+      Please update the background to see the modal (storybook bug).
       <Modal
         size={select("Size", options, defaultValue) as any}
         open={open}
@@ -46,10 +47,10 @@ export const Default = () => {
         <ModalFooter
           primaryLabel={text("Primary Label", "Update now")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setOpen(false);
           }}
         />
@@ -63,6 +64,7 @@ export const Nested = () => {
   const [secondOpen, setSecondOpen] = useState(false);
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
+      Please update the background to see the modal (storybook bug).
       <Button
         onClick={(event: Event) => {
           event.stopPropagation();
@@ -96,10 +98,10 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("Primary Label 1", "Confirm")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setSecondOpen(true);
           }}
         />
@@ -125,10 +127,10 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("Primary Label 2", "I am sure")}
           secondaryLabel={text("Secondary Label", "Cancel")}
-          onClose={() => {
+          onSecondaryClick={() => {
             setSecondOpen(false);
           }}
-          onPrimary={() => {
+          onPrimaryClick={() => {
             setSecondOpen(false);
           }}
         />
