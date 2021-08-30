@@ -1,0 +1,113 @@
+@import "../../styles/typography.pcss";
+@import "../../styles/theme.pcss";
+
+.tabs {
+  white-space: wrap;
+  &--btn {
+    position: relative;
+    height: $container-03;
+    margin: 0 0.5rem;
+    padding: 0 1rem;
+    transition: $transition-01;
+    border: 1px solid transparent;
+    border-radius: $border-radius-2;
+    background-color: $tab-background;
+    color: $tab-font;
+
+    &:disabled {
+      color: $tab-disabled-font;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+
+    &-container {
+      width: 100%;
+      white-space: nowrap;
+    }
+
+    &-label {
+      transform: translateY(2px);
+      &::after {
+        content: attr(name);
+        display: block;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        font-weight: 600;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      transform: translate(0, 4px);
+      transition: $transition-01;
+      opacity: 0;
+      background-color: transparent;
+      background-color: $tab-background-hover-accent;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: $tab-background-hover;
+    }
+
+    &:focus-visible {
+      border: 1px solid $tab-focus;
+    }
+
+    &:active {
+      background-color: $tab-background-active;
+    }
+
+    &-selected {
+      position: relative;
+      color: $tab-font-selected;
+      pointer-events: none;
+      & > .typography {
+        font-weight: 600;
+      }
+      &::after {
+        transform: translate(0, 8px);
+        opacity: 1;
+        background-color: $tab-background-selected;
+      }
+    }
+  }
+  &--content {
+    width: 100%;
+    padding: 1.5rem;
+    color: white;
+
+    &-item {
+      transform: translate(0, -6px);
+      transition: $transition-02;
+      opacity: 0;
+      &__selected {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.responsivetabs {
+  &--tabs {
+    display: block;
+    @media screen and (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &--accordion {
+    display: block;
+    @media screen and (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+}

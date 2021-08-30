@@ -1,5 +1,6 @@
 import Button from "./components/Button/Button";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
+import Cookies from "./components/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SnackBar from "./components/SnackBar/SnackBar";
@@ -15,17 +16,22 @@ import Tooltip from "./components/Tooltip/Tooltip";
 import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
-import CookieModal from "./components/CookieModal/CookieModal";
 import Divider from "./components/Divider/Divider";
 import Footer from "./components/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
+import Tabs from "./components/Tabs/Tabs";
+import Tab from "./components/Tabs/Tab";
+import Accordion from "./components/Accordion/Accordion";
+import AccordionItem from "./components/Accordion/AccordionItem";
+import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
+import TextInput from "./components/TextInput/TextInput";
+import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";
 
 export {
   Button,
   Link,
   SnackBar,
-  CookieBanner,
   LoginForm,
   AspectRatio,
   CodeSnippet,
@@ -41,7 +47,17 @@ export {
   UserProfile,
   Modal,
   Footer,
-  CookieModal,
   Divider,
-  Checkbox
+  Checkbox,
+  Tabs,
+  Tab,
+  Accordion,
+  AccordionItem,
+  Cookies,
+  OptType,
+  CookieBanner,
+  CookieModal,
+  TextInput,
+  PasswordInput,
+  Dropdown
 };
