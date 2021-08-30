@@ -81,7 +81,7 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
-  const [selectedText, setSelectedText] = useState(null);
+  const [selectedText, setSelectedText] = useState();
   return (
     <>
       <Typography type="span" token="body-small" className="dropdown--label">
