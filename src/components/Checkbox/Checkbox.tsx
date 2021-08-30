@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
+import { IconSquare, IconSquareCheck } from "@tabler/icons";
 
 type CheckboxProps = {
   /**
@@ -11,6 +12,11 @@ type CheckboxProps = {
    * Checkbox ID
    */
   id?: string;
+
+  /**
+   * Children
+   */
+  children?: ReactNode;
 
   /**
    * Checkbox Value
@@ -38,6 +44,7 @@ const Checkbox = ({
   defaultChecked,
   label,
   className,
+  children,
   onChange,
   ...rest
 }: CheckboxProps) => {
@@ -54,7 +61,12 @@ const Checkbox = ({
         {...rest}
       />
       <label className="checkbox--label" htmlFor={id}>
-        {label}
+        <IconSquare size={20} stroke={1.5} className="checkbox--unchecked" />
+        <IconSquareCheck size={20} stroke={1.5} className="checkbox--checked" />
+        <div>
+          {label && <div className="checkbox--label-text">{label}</div>}
+          {children && <div className="checkbox--content">{children}</div>}
+        </div>
       </label>
     </div>
   );

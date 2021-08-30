@@ -44,14 +44,15 @@ const CookieSettingControl = ({
         }
         disabled={type === OptType.ESSENTIAL}
         onChange={onChange}
-      />
-      <Typography
-        type="text"
-        token="body-small"
-        className="cookiemodal--check-description"
       >
-        {description}
-      </Typography>
+        <Typography
+          type="text"
+          token="body-small"
+          className="cookiemodal--check-description"
+        >
+          {description}
+        </Typography>
+      </Checkbox>
     </div>
   );
 };
