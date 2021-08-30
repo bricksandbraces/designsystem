@@ -30,7 +30,8 @@ export const Default = () => {
           {
             id: "option-1",
             value: "option-1",
-            text: "Option 1"
+            text: "Option 1",
+            disabled: true
           },
           {
             id: "option-2",

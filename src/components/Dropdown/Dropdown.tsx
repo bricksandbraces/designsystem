@@ -24,9 +24,9 @@ type DropDownItem = {
   text?: string;
 
   /**
-   * Selected item
+   * Disabled item
    */
-  selected?: boolean;
+  disabled?: boolean;
 };
 
 type DropdownProps = {
@@ -44,6 +44,11 @@ type DropdownProps = {
    * Dropdown label
    */
   label?: string;
+
+  /**
+   * Disabled dropdown
+   */
+  disabled?: boolean;
 
   /**
    * Error
@@ -77,7 +82,8 @@ const Dropdown = ({
   error,
   errorText,
   warning,
-  warningText
+  warningText,
+  disabled
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -88,6 +94,7 @@ const Dropdown = ({
         {label}
       </Typography>
       <button
+        disabled={disabled}
         aria-expanded={open}
         className={cx(
           "dropdown",
@@ -143,6 +150,7 @@ const Dropdown = ({
               // eslint-disable-next-line react/no-array-index-key
               key={i}
               className={cx("dropdown--menu-item", {
+                "dropdown--menu-item__disabled": item.disabled,
                 "dropdown--large": size === "large",
                 "dropdown--small": size === "small",
                 "dropdown--default": size === "default",
