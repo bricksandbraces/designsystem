@@ -42,9 +42,9 @@ const Checkbox = ({
   ...rest
 }: CheckboxProps) => {
   return (
-    <div className={cx("form-check checkbox", className)}>
+    <div className={cx("checkbox", className)}>
       <input
-        className="form-check-input"
+        className="checkbox--input"
         type="checkbox"
         value={value}
         id={id}
@@ -53,7 +53,7 @@ const Checkbox = ({
         onChange={onChange}
         {...rest}
       />
-      <label className="form-check-label" htmlFor={id}>
+      <label className="checkbox--label" htmlFor={id}>
         {label}
       </label>
     </div>
