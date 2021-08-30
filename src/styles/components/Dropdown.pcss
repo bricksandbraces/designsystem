@@ -11,11 +11,23 @@
   width: 100%;
   max-width: 256px;
   padding: 0 16px;
+  overflow: hidden;
   transition: $transition-01;
   border: 1px solid $dropdown-border;
   border-radius: $border-radius-2;
   background-color: $dropdown-background;
   color: $dropdown-font;
+  white-space: nowrap;
+
+  & > span {
+    display: block;
+    width: 85%;
+    min-width: 0;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   &:focus-visible {
     border-color: $dropdown-focus;
@@ -48,6 +60,48 @@
     }
   }
 
+  &--error {
+    border-color: $textinput-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textinput-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--label {
+    @mixin type--label;
+
+    display: block;
+    margin-bottom: $spacing-03;
+    color: $dropdown-label-font;
+  }
+
   &--menu {
     visibility: hidden;
     width: 100%;
@@ -73,6 +127,7 @@
       justify-content: space-between;
       width: 100%;
       transition: $transition-01;
+      border: 1px solid transparent;
       border-radius: $border-radius-2;
       color: $dropdown-item-font;
 
@@ -87,8 +142,9 @@
         background-color: #4a00e0;
       }
 
-      &:not(:last-child) > &__text {
-        border-bottom: 1px solid $dropdown-divider;
+      &:focus-visible {
+        border-color: $focus;
+        outline: 0;
       }
 
       &__selected {
@@ -105,6 +161,7 @@
 
         & > span {
           display: block;
+          width: 85%;
           min-width: 0;
           overflow: hidden;
           text-overflow: ellipsis;
