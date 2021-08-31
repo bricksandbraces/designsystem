@@ -1,5 +1,5 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import Typography from "../Typography/Typography";
 import Checkbox from "./Checkbox";
 
@@ -13,7 +13,26 @@ export const Default = () => {
         <Checkbox
           label={text("Label", "Checkbox label")}
           id="checkbox-2"
-          disabled={boolean("Checkbox 2 disabled", false)}
+          defaultChecked
+        />
+      </div>
+    </div>
+  );
+};
+
+export const Controlled = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Checkbox label={text("Label", "Checkbox label")} id="checkbox" />
+        <Checkbox
+          label={text("Label", "Checkbox label")}
+          id="checkbox-2"
+          checked={checked}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+            setChecked(event.target.checked);
+          }}
         />
       </div>
     </div>
@@ -33,7 +52,7 @@ export const WithChildren = () => {
           <Typography
             type="span"
             token="body-small"
-            style={{ marginTop: "8px", display: "block"}}
+            style={{ marginTop: "8px", display: "block" }}
           >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
