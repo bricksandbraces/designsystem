@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -7,6 +7,7 @@ import {
 } from "@tabler/icons";
 import Typography from "../Typography/Typography";
 import { findNextItem } from "../../helpers/arrayUtilities";
+import useControlled from "../../hooks/useControlled";
 
 type DropdownItem = {
   /**
@@ -72,9 +73,27 @@ type DropdownProps = {
    * Dropdown items
    */
   items: DropdownItem[];
+
+  /**
+   * Controlled index of the selected dropdown item
+   */
+  selectedIndex?: number;
+
+  /**
+   * Uncontrolled default index of the selected dropdown item
+   */
+  defaultSelectedIndex?: number;
+
+  /**
+   * OnChange Function for listeners or value change requests in controlled mode
+   */
+  onChange?: (newSelectedIndex: number | null) => void;
 };
 
 const Dropdown = ({
+  selectedIndex,
+  defaultSelectedIndex,
+  onChange,
   size,
   label,
   className,
@@ -86,17 +105,39 @@ const Dropdown = ({
   warningText,
   disabled
 }: DropdownProps) => {
+  const controlled = useControlled(selectedIndex);
+
   const ulRef = useRef<HTMLUListElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+
+  const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(
+    // eslint-disable-next-line no-nested-ternary
+    selectedIndex != null || defaultSelectedIndex != null
+      ? controlled
+        ? items[selectedIndex as number]
+        : items[defaultSelectedIndex as number]
+      : null
+  );
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<string>();
-  const [selectedText, setSelectedText] = useState<string>();
+
+  const selectIndex = (index: number | null) => {
+    if (!controlled) {
+      setSelectedItem(index == null ? null : items[index]);
+    }
+    onChange?.(index);
+  };
+
+  useEffect(() => {
+    if (controlled) {
+      setSelectedItem(selectedIndex == null ? null : items[selectedIndex]);
+    }
+  }, [selectedIndex]);
 
   const focusListItem = (index: number) => {
     (ulRef.current?.children[index].children[0] as HTMLDivElement).focus();
   };
 
-  const handleKeyPressOnItem = (key: string, item: DropdownItem, i: number) => {
+  const handleKeyPressOnItem = (key: string, i: number) => {
     if (key === "ArrowUp" || key === "ArrowDown") {
       // find the next item that is not disabled. Start from the beginning again.
       const { index: newIndex } = findNextItem(
@@ -112,8 +153,7 @@ const Dropdown = ({
       setOpen(false);
       btnRef.current?.focus();
     } else if (key === " " || key === "Enter") {
-      setSelectedValue(item.value);
-      setSelectedText(item.text);
+      selectIndex(i);
       btnRef.current?.focus();
     }
   };
@@ -144,9 +184,9 @@ const Dropdown = ({
           type="span"
           token="body-small"
           className="dropdown--title"
-          title={selectedText}
+          title={selectedItem?.text}
         >
-          {selectedValue == null ? title : selectedText}
+          {selectedItem == null ? title : selectedItem?.text}
         </Typography>
         <IconChevronDown
           size={16}
@@ -179,7 +219,7 @@ const Dropdown = ({
               key={item.value}
               className={cx(`dropdown--menu-item dropdown--${size}`, {
                 "dropdown--menu-item__disabled": item.disabled,
-                "dropdown--menu-item__selected": selectedValue === item.value
+                "dropdown--menu-item__selected": selectedItem === item.value
               })}
               id={item.id}
               value={item.value}
@@ -190,12 +230,11 @@ const Dropdown = ({
                 className="dropdown--menu-item-interactible"
                 tabIndex={item.disabled || !open ? -1 : 0}
                 onClick={() => {
-                  setSelectedValue(item.value);
+                  selectIndex(i);
                   setOpen(false);
-                  setSelectedText(item.text);
                 }}
                 onKeyDown={(event: React.KeyboardEvent) =>
-                  handleKeyPressOnItem(event.key, item, i)
+                  handleKeyPressOnItem(event.key, i)
                 }
               >
                 <div className="dropdown--menu-item__text" role="button">
