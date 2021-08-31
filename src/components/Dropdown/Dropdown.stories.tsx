@@ -75,7 +75,6 @@ export const Controlled = () => {
         items={sampleItemConfig}
         selectedIndex={selectedIndex}
         onChange={(newIndex) => {
-          console.log(newIndex);
           setSelectedIndex(newIndex ?? 0);
         }}
       />
