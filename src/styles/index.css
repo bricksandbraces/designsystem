@@ -28,6 +28,7 @@
 @import "./components/TextArea.pcss";
 @import "./components/Tabs.pcss";
 @import "./components/Accordion.pcss";
+@import "./components/Badge.pcss";
 
 * {
   box-sizing: border-box;

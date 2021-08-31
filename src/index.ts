@@ -26,6 +26,7 @@ import AccordionItem from "./components/Accordion/AccordionItem";
 import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
 import TextInput from "./components/TextInput/TextInput";
 import PasswordInput from "./components/PasswordInput/PasswordInput";
+import Badge from "./components/Badge/Badge";
 
 export {
   Button,
@@ -57,5 +58,6 @@ export {
   CookieBanner,
   CookieModal,
   TextInput,
-  PasswordInput
+  PasswordInput,
+  Badge
 };
