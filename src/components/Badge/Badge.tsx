@@ -59,7 +59,7 @@ const Badge = ({
           aria-label={title}
           type="button"
           className={cx(
-            `badge badge--${colorType} badge--${colorType}-interactive`,
+            `badge badge--interactive badge--${colorType} badge--${colorType}-interactive`,
             className
           )}
         >
@@ -70,7 +70,13 @@ const Badge = ({
           </div>
         </button>
       ) : (
-        <div className={cx(`badge badge--${colorType}`, className)}>
+        <div
+          className={cx(
+            `badge badge--${colorType}`,
+            { "badge--interactive": onClose },
+            className
+          )}
+        >
           <div className="badge--content">
             <Typography type="span" token="label">
               {children}
