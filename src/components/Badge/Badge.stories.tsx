@@ -23,7 +23,7 @@ export const Default = () => {
     <div style={{ padding: "32px" }}>
       <Badge
         title="Button"
-        type={select("Color (type)", typeOptions, defaultType) as any}
+        colorType={select("Color (type)", typeOptions, defaultType) as any}
       >
         Badge
       </Badge>
@@ -37,7 +37,7 @@ export const WithClose = () => {
       <Badge
         title="Button"
         onClose={() => {}}
-        type={select("Color (type)", typeOptions, defaultType) as any}
+        colorType={select("Color (type)", typeOptions, defaultType) as any}
       >
         Badge
       </Badge>
@@ -51,7 +51,7 @@ export const Interactive = () => {
       <Badge
         title="Button"
         onClick={() => {}}
-        type={select("Color (type)", typeOptions, defaultType) as any}
+        colorType={select("Color (type)", typeOptions, defaultType) as any}
       >
         Badge
       </Badge>

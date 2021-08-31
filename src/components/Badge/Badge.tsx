@@ -17,12 +17,12 @@ type BadgeProps = {
   /**
    * Title
    */
-  title: string;
+  title?: string;
 
   /**
    * Type
    */
-  type?:
+  colorType?:
     | "red"
     | "yellow"
     | "purple"
@@ -49,37 +49,18 @@ const Badge = ({
   className,
   onClose,
   onClick,
-  type = "warm-gray",
-  title = "clear"
+  colorType = "warm-gray",
+  title
 }: BadgeProps) => {
   return (
     <>
       {onClick ? (
         <button
           aria-label={title}
+          title={title}
           type="button"
           className={cx(
-            "badge",
-            {
-              "badge--red": type === "red",
-              "badge--red-interactive": type === "red" && onClick,
-              "badge--green": type === "green",
-              "badge--green-interactive": type === "green" && onClick,
-              "badge--orange": type === "orange",
-              "badge--orange-interactive": type === "orange" && onClick,
-              "badge--yellow": type === "yellow",
-              "badge--yellow-interactive": type === "yellow" && onClick,
-              "badge--purple": type === "purple",
-              "badge--purple-interactive": type === "purple" && onClick,
-              "badge--cyan": type === "cyan",
-              "badge--cyan-interactive": type === "cyan" && onClick,
-              "badge--blue": type === "blue",
-              "badge--blue-interactive": type === "blue" && onClick,
-              "badge--warm-gray": type === "warm-gray",
-              "badge--warm-gray-interactive": type === "warm-gray" && onClick,
-              "badge--cold-gray": type === "cold-gray",
-              "badge--cold-gray-interactive": type === "green" && onClick
-            },
+            `badge badge--${colorType} badge--${colorType}-interactive`,
             className
           )}
         >
@@ -90,23 +71,7 @@ const Badge = ({
           </div>
         </button>
       ) : (
-        <div
-          className={cx(
-            "badge badge--red",
-            {
-              "badge--red": type === "red",
-              "badge--green": type === "green",
-              "badge--orange": type === "orange",
-              "badge--yellow": type === "yellow",
-              "badge--purple": type === "purple",
-              "badge--cyan": type === "cyan",
-              "badge--blue": type === "blue",
-              "badge--warm-gray": type === "warm-gray",
-              "badge--cold-gray": type === "cold-gray"
-            },
-            className
-          )}
-        >
+        <div className={cx(`badge badge--${colorType}`, className)}>
           <div className="badge--content">
             <Typography type="span" token="label">
               {children}
@@ -117,6 +82,7 @@ const Badge = ({
                 tab-index={0}
                 className="badge--close"
                 aria-label={title}
+                title={title}
                 onClick={onClose}
               >
                 <IconX size={12} stroke={2} strokeLinejoin="miter" />
