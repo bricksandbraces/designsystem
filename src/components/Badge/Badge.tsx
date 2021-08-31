@@ -57,7 +57,6 @@ const Badge = ({
       {onClick ? (
         <button
           aria-label={title}
-          title={title}
           type="button"
           className={cx(
             `badge badge--${colorType} badge--${colorType}-interactive`,
@@ -81,7 +80,6 @@ const Badge = ({
                 type="button"
                 tab-index={0}
                 className="badge--close"
-                aria-label={title}
                 title={title}
                 onClick={onClose}
               >
