@@ -15,7 +15,7 @@ const ratio = {
 
 const defaultRatio = "1x1";
 
-export const AspectRatioComponent = () => {
+export const Default = () => {
   return (
     <Grid>
       <Column sm={1} md={2} lg={4} xlg={4}>
