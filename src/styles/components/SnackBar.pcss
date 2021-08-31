@@ -3,6 +3,7 @@
 
 .snackbar {
   display: flex;
+  visibility: hidden;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -20,6 +21,7 @@
   font-size: 0.75rem;
 
   &--open {
+    visibility: visible;
     transform: translate(0, -6px);
     opacity: 1;
   }
