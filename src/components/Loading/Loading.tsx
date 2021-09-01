@@ -1,7 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import Button from "../Button/Button";
-import Link from "../Link/Link";
 
 type LoadingProps = {
   /**
