@@ -1,0 +1,100 @@
+@import "../../styles/theme.pcss";
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes isloading {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  &--container {
+    display: flex;
+    justify-content: space-between;
+    animation: rotate 0.75s cubic-bezier(0.6, 0.1, 0, 1) infinite;
+  }
+
+  &--isloading {
+    animation: isloading $transition-01;
+  }
+
+  &--disabled {
+    & > svg > .loading--stroke {
+      stroke: $disabled-text;
+    }
+  }
+
+  &--inline {
+    width: $container-00;
+    height: $container-00;
+
+    & > svg > circle {
+      stroke-width: 15;
+    }
+  }
+
+  &--small {
+    width: $container-01;
+    height: $container-01;
+
+    & > svg > circle {
+      stroke-width: 15;
+    }
+  }
+
+  &--default {
+    width: $container-03;
+    height: $container-03;
+
+    & > svg > circle {
+      stroke-width: 12;
+    }
+  }
+
+  &--large {
+    width: $container-06;
+    height: $container-06;
+  }
+
+  &--svg {
+    fill: transparent;
+  }
+  &--stroke {
+    stroke-width: 10px;
+    stroke-linecap: round;
+    stroke-dasharray: 180;
+    stroke: white;
+  }
+
+  &--overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $overlay;
+  }
+
+  &--dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background: white;
+  }
+}

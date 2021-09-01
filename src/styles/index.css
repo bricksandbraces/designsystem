@@ -29,6 +29,7 @@
 @import "./components/Tabs.pcss";
 @import "./components/Accordion.pcss";
 @import "./components/Badge.pcss";
+@import "./components/Loading.pcss";
 
 * {
   box-sizing: border-box;
