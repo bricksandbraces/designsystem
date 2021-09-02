@@ -231,7 +231,8 @@ const Dropdown = ({
                 key={item.value}
                 className={cx(`dropdown--menu-item dropdown--${size}`, {
                   "dropdown--menu-item__disabled": item.disabled,
-                  "dropdown--menu-item__selected": selectedItem === item.value
+                  "dropdown--menu-item__selected":
+                    selectedItem.value === item.value
                 })}
                 id={item.id}
                 value={item.value}
