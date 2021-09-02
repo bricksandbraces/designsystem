@@ -63,6 +63,11 @@ type TextInputProps = {
   value?: string;
 
   /**
+   * Value
+   */
+  fluid?: boolean;
+
+  /**
    * OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -76,6 +81,7 @@ type TextInputProps = {
 const TextInput = (
   {
     id,
+    fluid,
     className,
     label,
     placeholder,
@@ -105,8 +111,8 @@ const TextInput = (
   }, [value]);
 
   return (
-    <div className="textinput">
-      {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
+    <div className={cx("textinput", { "textinput--fluid": fluid })}>
+      {label && !fluid && <FormLabel htmlFor={id}>{label}</FormLabel>}
       <div className="textinput--input-container">
         <input
           id={id}
@@ -114,9 +120,9 @@ const TextInput = (
           className={cx(
             "textinput--input",
             {
-              "textinput--large": size === "large",
-              "textinput--default": size === "default" || undefined,
-              "textinput--small": size === "small",
+              "textinput--large": size === "large" && !fluid,
+              "textinput--default": (size === "default" && !fluid) || undefined,
+              "textinput--small": size === "small" && !fluid,
               "textinput--error":
                 (error || errorText) && !(warning || warningText),
               "textinput--warning":
@@ -125,7 +131,7 @@ const TextInput = (
             className
           )}
           type={type}
-          placeholder={placeholder}
+          placeholder={!fluid ? placeholder : ""}
           autoComplete={autoComplete}
           value={textValue}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -135,6 +141,15 @@ const TextInput = (
             onChange?.(event);
           }}
         />
+        {fluid && (
+          <label
+            className={cx("textinput--fluid-label", {
+              "textinput--fluid-label__value": textValue !== ""
+            })}
+          >
+            {placeholder}
+          </label>
+        )}
         {children}
       </div>
       {errorText && !warningText && (
