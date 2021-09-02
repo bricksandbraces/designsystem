@@ -8,6 +8,7 @@ import {
 import Typography from "../Typography/Typography";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import useControlled from "../../hooks/useControlled";
+import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 
 type DropdownItem = {
   /**
@@ -137,8 +138,13 @@ const Dropdown = ({
     (ulRef.current?.children[index].children[0] as HTMLDivElement).focus();
   };
 
-  const handleKeyPressOnItem = (key: string, i: number) => {
+  const handleKeyPressOnItem = (
+    event: React.KeyboardEvent,
+    key: string,
+    i: number
+  ) => {
     if (key === "ArrowUp" || key === "ArrowDown") {
+      event.preventDefault();
       // find the next item that is not disabled. Start from the beginning again.
       const { index: newIndex } = findNextItem(
         items,
@@ -207,44 +213,51 @@ const Dropdown = ({
           {warningText}
         </div>
       )}
-      <ul
-        role="menu"
-        className={cx("dropdown--menu", { "dropdown--menu-open": open })}
-        aria-hidden={!open}
+      <OutsideClickListener
+        onClickOutside={() => {
+          setOpen(false);
+        }}
+        disabled={!open}
         ref={ulRef}
       >
-        {items.map((item, i) => {
-          return (
-            <li
-              key={item.value}
-              className={cx(`dropdown--menu-item dropdown--${size}`, {
-                "dropdown--menu-item__disabled": item.disabled,
-                "dropdown--menu-item__selected": selectedItem === item.value
-              })}
-              id={item.id}
-              value={item.value}
-              title={item.text}
-            >
-              <div
-                role="button"
-                className="dropdown--menu-item__interactible"
-                tabIndex={item.disabled || !open ? -1 : 0}
-                onClick={() => {
-                  selectIndex(i);
-                  setOpen(false);
-                }}
-                onKeyDown={(event: React.KeyboardEvent) =>
-                  handleKeyPressOnItem(event.key, i)
-                }
+        <ul
+          role="menu"
+          className={cx("dropdown--menu", { "dropdown--menu-open": open })}
+          aria-hidden={!open}
+        >
+          {items.map((item, i) => {
+            return (
+              <li
+                key={item.value}
+                className={cx(`dropdown--menu-item dropdown--${size}`, {
+                  "dropdown--menu-item__disabled": item.disabled,
+                  "dropdown--menu-item__selected": selectedItem === item.value
+                })}
+                id={item.id}
+                value={item.value}
+                title={item.text}
               >
-                <div className="dropdown--menu-item__text" role="button">
-                  <span title={item.text}>{item.text}</span>
+                <div
+                  role="button"
+                  className="dropdown--menu-item__interactible"
+                  tabIndex={item.disabled || !open ? -1 : 0}
+                  onClick={() => {
+                    selectIndex(i);
+                    setOpen(false);
+                  }}
+                  onKeyDown={(event: React.KeyboardEvent) =>
+                    handleKeyPressOnItem(event, event.key, i)
+                  }
+                >
+                  <div className="dropdown--menu-item__text" role="button">
+                    <span title={item.text}>{item.text}</span>
+                  </div>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </OutsideClickListener>
     </>
   );
 };
