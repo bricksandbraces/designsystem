@@ -1,4 +1,5 @@
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { forwardRef, ReactElement, useEffect, useRef } from "react";
+import mergeRefs from "react-merge-refs";
 
 type OutsideClickListenerProps = {
   children: ReactElement<any, string>;
@@ -6,11 +7,10 @@ type OutsideClickListenerProps = {
   onClickOutside: (event: any) => void;
 };
 
-const OutsideClickListener = ({
-  children,
-  disabled = false,
-  onClickOutside
-}: OutsideClickListenerProps) => {
+const OutsideClickListener = (
+  { children, disabled = false, onClickOutside }: OutsideClickListenerProps,
+  ref: ForwardedRef<any>
+) => {
   const elementRef = useRef<HTMLElement>();
 
   const handleGlobalClick = (event: Event) => {
@@ -35,8 +35,8 @@ const OutsideClickListener = ({
   }, [disabled]);
 
   return React.cloneElement(children, {
-    ref: elementRef
+    ref: mergeRefs([elementRef, ref])
   });
 };
 
-export default OutsideClickListener;
+export default forwardRef<any, any>(OutsideClickListener);
