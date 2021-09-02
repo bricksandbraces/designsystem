@@ -9,6 +9,7 @@ import Typography from "../Typography/Typography";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import useControlled from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
+import FormLabel from "../FormLabel/FormLabel";
 
 type DropdownItem = {
   /**
@@ -166,10 +167,9 @@ const Dropdown = ({
 
   return (
     <>
-      <Typography type="span" token="body-small" className="dropdown--label">
-        {label}
-      </Typography>
+      <FormLabel htmlFor="dropdown-toggle-button">{label}</FormLabel>
       <button
+        id="dropdown-toggle-button"
         disabled={disabled}
         ref={btnRef}
         aria-expanded={open}

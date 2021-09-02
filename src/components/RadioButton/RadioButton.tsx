@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 
-type CheckboxProps = {
+type RadioButtonProps = {
   /**
    * React className
    */
   className?: string;
 
   /**
-   * Checkbox ID
+   * RadioButton ID
    */
   id?: string;
 
@@ -18,14 +18,19 @@ type CheckboxProps = {
   children?: ReactNode;
 
   /**
-   * Checkbox Value
+   * RadioButton Value
    */
   value?: string;
 
   /**
-   * Checkbox Label
+   * RadioButton Label
    */
   label?: string;
+
+  /**
+   * RadioButton Name
+   */
+  name?: string;
 
   /**
    * Checked values
@@ -36,33 +41,35 @@ type CheckboxProps = {
   disabled?: boolean;
 };
 
-const Checkbox = ({
+const RadioButton = ({
   id,
   value,
   checked,
+  name,
   defaultChecked,
   label,
   className,
   children,
   onChange,
   ...rest
-}: CheckboxProps) => {
+}: RadioButtonProps) => {
   return (
-    <div className={cx("checkbox", className)}>
+    <div className={cx("radiobutton", className)}>
       <input
         tabIndex={0}
-        className="checkbox--input"
-        type="checkbox"
+        className="radiobutton--input"
+        type="radio"
         value={value}
+        name={name}
         id={id}
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
         {...rest}
       />
-      <label className="checkbox--label" htmlFor={id}>
+      <label className="radiobutton--label" htmlFor={id}>
         <svg
-          className="checkbox--check"
+          className="radiobutton--selected"
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -73,17 +80,22 @@ const Checkbox = ({
           strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <rect x="4" y="4" width="16" height="16" rx="2" />
-          <path d="M9 12l2 2l4 -4" className="checkbox--check-mark" />
+          <circle cx="12" cy="12" r="9" />
+          <circle
+            cx="12"
+            cy="12"
+            r="3"
+            fill="currentColor"
+            className="radiobutton--selected-mark"
+          />
         </svg>
-
         <div>
-          {label && <div className="checkbox--label-text">{label}</div>}
-          {children && <div className="checkbox--content">{children}</div>}
+          {label && <div className="radiobutton--label-text">{label}</div>}
+          {children && <div className="radiobutton--content">{children}</div>}
         </div>
       </label>
     </div>
   );
 };
 
-export default Checkbox;
+export default RadioButton;

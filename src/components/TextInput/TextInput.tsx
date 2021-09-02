@@ -2,6 +2,7 @@ import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
+import FormLabel from "../FormLabel/FormLabel";
 
 type TextInputProps = {
   /**
@@ -105,11 +106,7 @@ const TextInput = (
 
   return (
     <div className="textinput">
-      {label && (
-        <label htmlFor={id} className="textinput--label">
-          {label}
-        </label>
-      )}
+      {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
       <div className="textinput--input-container">
         <input
           id={id}
