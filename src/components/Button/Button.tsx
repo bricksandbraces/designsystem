@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode, FocusEvent } from "react";
 import cx from "classnames";
+import Loading from "../Loading/Loading";
 
 export type ButtonProps = {
   /** Unique identifier for your button */
@@ -32,6 +33,9 @@ export type ButtonProps = {
 
   /** Specify the role of the button */
   role?: string;
+
+  /** Specify the Loading description of the button */
+  loadingDescription?: string;
 
   /** Hide the button */
   hidden?: boolean;
@@ -92,6 +96,7 @@ const Button = (
     href,
     className,
     renderIcon,
+    loadingDescription = "Loading",
     ...rest
   }: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
@@ -121,9 +126,12 @@ const Button = (
         {...rest}
       >
         {isLoading && (
-          <div className="spinner-border loading" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <Loading
+            isLoading
+            loadingDescription={loadingDescription}
+            disabled={disabled}
+            size="inline"
+          />
         )}
         <div
           className={cx("button--label", {
@@ -157,9 +165,12 @@ const Button = (
         {...rest}
       >
         {isLoading && (
-          <div className="spinner-border loading" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <Loading
+            isLoading
+            loadingDescription={loadingDescription}
+            disabled={disabled}
+            size="inline"
+          />
         )}
         <div
           className={cx("button--label", {

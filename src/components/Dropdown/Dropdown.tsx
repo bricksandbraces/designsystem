@@ -227,7 +227,7 @@ const Dropdown = ({
             >
               <div
                 role="button"
-                className="dropdown--menu-item-interactible"
+                className="dropdown--menu-item__interactible"
                 tabIndex={item.disabled || !open ? -1 : 0}
                 onClick={() => {
                   selectIndex(i);
