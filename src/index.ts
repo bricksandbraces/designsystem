@@ -27,6 +27,7 @@ import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
 import TextInput from "./components/TextInput/TextInput";
 import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Badge from "./components/Badge/Badge";
+import Loading from "./components/Loading/Loading";
 
 export {
   Button,
@@ -59,5 +60,6 @@ export {
   CookieModal,
   TextInput,
   PasswordInput,
-  Badge
+  Badge,
+  Loading
 };
