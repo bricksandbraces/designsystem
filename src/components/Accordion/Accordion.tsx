@@ -57,15 +57,16 @@ const Accordion = ({
   );
   useEffect(() => {
     if (controlled) {
-      const newAnimations = openIndices?.map((openItemIndex) => {
+      const newOpenIndices = openIndices ?? [];
+      const newAnimations = React.Children.map(children, (_, childIndex) => {
         if (
-          openIndexList.includes(openItemIndex) !==
-          openIndices.includes(openItemIndex)
+          openIndexList.includes(childIndex) !==
+          newOpenIndices.includes(childIndex)
         ) {
-          if (openIndices.includes(openItemIndex)) {
-            return AnimationType.COLLAPSE;
+          if (newOpenIndices.includes(childIndex)) {
+            return AnimationType.EXPAND;
           }
-          return AnimationType.EXPAND;
+          return AnimationType.COLLAPSE;
         }
         return AnimationType.NONE;
       });
