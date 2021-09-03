@@ -232,7 +232,7 @@ const Dropdown = ({
                 className={cx(`dropdown--menu-item dropdown--${size}`, {
                   "dropdown--menu-item__disabled": item.disabled,
                   "dropdown--menu-item__selected":
-                    selectedItem.value === item.value
+                    selectedItem?.value === item.value
                 })}
                 id={item.id}
                 value={item.value}
