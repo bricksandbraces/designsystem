@@ -35,6 +35,11 @@ type TypographyProps = {
   className?: string;
 
   /**
+   * Title
+   */
+  title?: string;
+
+  /**
    * React inline styles for the typography component
    */
   style?: any;
