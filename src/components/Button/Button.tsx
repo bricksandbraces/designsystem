@@ -71,8 +71,11 @@ const kindStyles: Record<string, Record<string, string>> = {
   primary: {
     "": "button--primary"
   },
-  outline: {
-    "": "button--outline"
+  secondary: {
+    "": "button--secondary"
+  },
+  tertiary: {
+    "": "button--tertiary"
   },
   danger: {
     "": "button--danger"

@@ -56,20 +56,6 @@
     align-items: center;
   }
 
-  &--outline {
-    border: $border $interactive-primary;
-
-    &:hover {
-      border: $border $interactive-primary;
-      background-color: $interactive-primary-accent-hover;
-    }
-
-    &:active {
-      border: $border $interactive-primary;
-      background-color: $interactive-primary-accent-active;
-    }
-  }
-
   &--primary {
     border: $border $interactive-primary;
     background-color: $interactive-primary;
@@ -82,6 +68,35 @@
     &:active {
       border: $border $interactive-primary-active;
       background-color: $interactive-primary-active;
+    }
+  }
+
+  &--secondary {
+    border: $border $interactive-secondary;
+    background-color: $interactive-secondary;
+
+    &:hover {
+      border: $border $interactive-secondary-hover;
+      background-color: $interactive-secondary-hover;
+    }
+
+    &:active {
+      border: $border $interactive-secondary-active;
+      background-color: $interactive-secondary-active;
+    }
+  }
+
+  &--tertiary {
+    border: $border $interactive-primary;
+
+    &:hover {
+      border: $border $interactive-primary;
+      background-color: $interactive-primary-accent-hover;
+    }
+
+    &:active {
+      border: $border $interactive-primary;
+      background-color: $interactive-primary-accent-active;
     }
   }
 
@@ -118,21 +133,23 @@
 
 .button.button--ghost:focus-visible,
 .button.button--primary:focus-visible,
+.button.button--secondary:focus-visible,
 .button.button--danger:focus-visible,
-.button.button--outline:focus-visible {
+.button.button--tertiary:focus-visible {
   border: $border $focus;
   outline: 0;
 }
 
 .button.button--ghost.button--disabled,
-.button.button--primary.button--disabled {
+.button.button--primary.button--disabled,
+.button.button--secondary.button--disabled {
   border: $border $disabled-container;
   background-color: $disabled-container;
   color: $disabled-text;
   pointer-events: none;
 }
 
-.button.button--outline.button--disabled,
+.button.button--tertiary.button--disabled,
 .button.button--danger.button--disabled {
   border: $border $disabled-container;
   color: $disabled-text;
