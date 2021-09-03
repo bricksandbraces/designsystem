@@ -18,8 +18,8 @@
     display: block;
     width: 0;
     height: 1px;
-    transition: width 0.3s ease-in-out;
-    background: $link-font;
+    transition: width $transition-02;
+    background: currentColor;
     pointer-events: none;
   }
 
@@ -33,6 +33,11 @@
 
   &:focus-visible {
     outline: 1px solid white;
+  }
+
+  &--inherit {
+    font-size: inherit;
+    line-height: inherit;
   }
 
   &--label {
@@ -50,30 +55,23 @@
 }
 
 .link.link--inline {
-  transition: $transition-01;
   font-size: inherit;
+  line-height: inherit;
 
   &::after {
     content: "";
     display: block;
     width: 100%;
     height: 1px;
-    transition: $transition-01;
-    background: $link-font;
+    background: currentColor;
     pointer-events: none;
   }
 
   &:hover {
     color: $link-inline-hover;
-    &::after {
-      background-color: $link-inline-hover;
-    }
   }
 
   &:active {
     color: $link-inline-active;
-    &::after {
-      background-color: $link-inline-active;
-    }
   }
 }

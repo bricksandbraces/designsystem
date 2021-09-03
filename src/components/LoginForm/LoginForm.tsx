@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TextInput from "../TextInput/TextInput";
 import PasswordInput from "../PasswordInput/PasswordInput";
+import Link from "../Link/Link";
+import Typography from "../Typography/Typography";
 
 type LoginFormData = {
   email?: string;
@@ -88,7 +90,17 @@ const LoginForm = ({
           onChange?.({ email, password: event.target.value }, event);
         }}
         autoComplete="off"
-      />
+      >
+        <Typography
+          type="span"
+          token="label"
+          className="loginform--password-link"
+        >
+          <Link href="#" inheritSize>
+            Password vergessen?
+          </Link>
+        </Typography>
+      </PasswordInput>
     </>
   );
 };

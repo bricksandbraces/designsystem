@@ -3,7 +3,6 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import Button from "../Button/Button";
 import Checkbox from "../Checkbox/Checkbox";
-import Link from "../Link/Link";
 
 export default { title: "Web/LoginForm", decorators: [withKnobs] };
 
@@ -23,10 +22,7 @@ export const Default = () => (
         invalidPassword={boolean("Invalid password", false)}
       />
       <div style={{ paddingTop: "20px", display: "flex" }}>
-        <div style={{ marginRight: "16px" }}>
-          <Checkbox label="Keep me signed in" id="checkbox" />
-        </div>
-        <Link href="#">Password vergessen?</Link>
+        <Checkbox label="Keep me signed in" id="checkbox" />
       </div>
       <div style={{ paddingTop: "32px" }}>
         <Button
