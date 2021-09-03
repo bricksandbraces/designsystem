@@ -29,6 +29,7 @@ import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Badge from "./components/Badge/Badge";
 import Loading from "./components/Loading/Loading";
+import LanguageSwitch from "./components/LanguageSwitch/LanguageSwitch";
 
 export {
   Button,
@@ -63,5 +64,6 @@ export {
   PasswordInput,
   Dropdown,
   Badge,
-  Loading
+  Loading,
+  LanguageSwitch
 };
