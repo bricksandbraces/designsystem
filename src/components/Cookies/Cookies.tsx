@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import Cookies from "js-cookie";
+import { useCookie } from "react-use";
 import CookieBanner from "../CookieBanner/CookieBanner";
 import useConstant from "../../hooks/useConstant";
 // eslint-disable-next-line import/no-cycle
@@ -62,7 +62,15 @@ const CookiesComponent = ({
   onClose,
   onSettingsSubmit
 }: CookieModalProps) => {
-  const [cookieBannerOpen, setCookieBannerOpen] = useState<boolean>(false);
+  const [cachedSettings, setCookieSettings, removeCookieSettings] =
+    useCookie("cookieSettings");
+  const [cachedRevision, setCookieRevision, removeCookieRevision] =
+    useCookie("cookieRevision");
+  const [cookieConsent, setCookieConsent, removeCookieConsent] =
+    useCookie("cookieConsent");
+  const [cookieBannerOpen, setCookieBannerOpen] = useState<boolean>(
+    cookieConsent !== "true"
+  );
   const [cookieModalOpen, setCookieModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
   // cached version of the ref to that the user can't change it after init
@@ -85,24 +93,21 @@ const CookiesComponent = ({
   >([]);
 
   const persistSettings = (settingsToPersist: CookieSettingWithState[]) => {
-    Cookies.set("cookieSettings", settingsToPersist);
-    Cookies.set("cookieRevision", `${initialRevision}`);
+    setCookieSettings(JSON.stringify(settingsToPersist));
+    setCookieRevision(`${initialRevision}`);
   };
 
   useEffect(() => {
-    const cachedRevision = Cookies.getJSON("cookieRevision");
-
     // if there has been a new revision of settings released, all former settings are being dropped.
     if (initialRevision > parseInt(cachedRevision ?? "1")) {
-      Cookies.remove("cookieRevision");
-      Cookies.remove("cookieSettings");
-      Cookies.remove("cookieConsent");
+      removeCookieRevision();
+      removeCookieSettings();
+      removeCookieConsent();
     }
 
     // if the revision matches cookies will be loaded into the settings state
-    const cachedSettings = Cookies.getJSON("cookieSettings");
     if (cachedSettings) {
-      setEditingSettings(cachedSettings);
+      setEditingSettings(JSON.parse(cachedSettings ?? "[]") || []);
       setCookieBannerOpen(false);
     } else {
       // else the defaults should be persisted
@@ -115,12 +120,12 @@ const CookiesComponent = ({
   const close = () => {
     // when closed, keep persisted cookies.
     // if no cookies were persisted, save the initialSettings
-    if (Cookies.getJSON("cookieSettings") == null) {
+    if (cachedSettings == null) {
       persistSettings(initialSettings);
     }
     setCookieModalOpen(false);
 
-    Cookies.set("cookieConsent", "true");
+    setCookieConsent("true");
     setCookieBannerOpen(false);
 
     onClose?.();
