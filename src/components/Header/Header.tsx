@@ -6,6 +6,7 @@ import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
 import Typography from "../Typography/Typography";
+import LanguageSwitch from "../LanguageSwitch/LanguageSwitch";
 
 type LinkItem = {
   /**

@@ -1,5 +1,4 @@
-import React, { ReactNode, useState } from "react";
-import cx from "classnames";
+import React from "react";
 
 type LanguageSwitchItems = {
   /**
@@ -63,38 +62,29 @@ const LanguageSwitch = ({
   onChange,
   ...rest
 }: LanguageSwitchProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(items[0].label);
   return (
     <form>
       <fieldset>
-        <input
-          key={items[0].id}
-          type="radio"
-          name="langswitch"
-          value={value}
-          id={items[0].id}
-          checked
-          defaultChecked={items[0].defaultLang}
-          onChange={() => {
-            setSelectedLanguage(items[0].label);
-          }}
-          {...rest}
-        />
-        <input
-          key={items[1].id}
-          type="radio"
-          name="langswitch"
-          value={value}
-          id={items[1].id}
-          checked={checked}
-          defaultChecked={items[1].defaultLang}
-          onChange={() => {
-            setSelectedLanguage(items[1].label);
-          }}
-          {...rest}
-        />
-
-        <span>{selectedLanguage}</span>
+        <label className="language-switch">
+          <input
+            className="language-switch--input"
+            tabIndex={0}
+            type="checkbox"
+            value={value}
+            id={id}
+            checked={checked}
+            defaultChecked={defaultChecked}
+            onChange={onChange}
+            {...rest}
+          />
+          <div className="language-switch--slider">
+            <div className="language-switch--lang">
+              <span className="language-switch--lang-item">DE</span>
+              <span className="language-switch--lang-item__divider" />
+              <span className="language-switch--lang-item">EN</span>
+            </div>
+          </div>
+        </label>
       </fieldset>
     </form>
   );

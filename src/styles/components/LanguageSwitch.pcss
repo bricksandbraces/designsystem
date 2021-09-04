@@ -1,6 +1,85 @@
 @import "../../styles/typography.pcss";
 @import "../../styles/theme.pcss";
 
-.languageswitch {
-  display: block;
+.language-switch {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 48px;
+
+  &--input {
+    display: block;
+    width: 0;
+    max-width: 0;
+    height: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  &--slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  &--lang {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transform: translateY(1px);
+    pointer-events: none;
+
+    &-item {
+      pointer-events: none;
+      &__divider {
+        content: "";
+        width: 2px;
+        height: 12px;
+      }
+
+      &:nth-child(1) {
+        transform: scale(1);
+        transition: $transition-01;
+        color: $languageswitch-active;
+        font-weight: 700;
+      }
+
+      &:nth-child(3) {
+        transform: scale(0.7);
+        transition: $transition-01;
+        color: $languageswitch-inactive;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+input:checked + .language-switch--slider {
+  & > div > .language-switch--lang-item {
+    &:nth-child(1) {
+      transform: scale(0.7);
+      transition: $transition-01;
+      color: $languageswitch-inactive;
+      font-weight: 500;
+    }
+
+    &:nth-child(3) {
+      transform: scale(1);
+      transition: $transition-01;
+      color: $languageswitch-active;
+      font-weight: 700;
+    }
+  }
+}
+
+input:focus-visible + .language-switch--slider {
+  border-color: $focus;
 }
