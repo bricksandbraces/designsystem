@@ -4,6 +4,9 @@
   "eslint.alwaysShowStatus": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true

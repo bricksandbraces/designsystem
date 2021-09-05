@@ -31,6 +31,8 @@
 @import "./components/Accordion.pcss";
 @import "./components/Badge.pcss";
 @import "./components/Loading.pcss";
+@import "./components/DataTable.pcss";
+@import "./components/Search.pcss";
 
 * {
   box-sizing: border-box;

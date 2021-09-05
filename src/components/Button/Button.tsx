@@ -101,47 +101,48 @@ const Button = (
   }: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ) => (
-  <div
-    className={cx({ "button--notallowed": isLoading || disabled }, className)}
-  >
+  <>
     {href ? (
-      <a
-        href={href}
-        ref={ref as ForwardedRef<HTMLAnchorElement>}
-        className={cx(
-          "button",
-          {
-            "button--large": size === "large",
-            "button--small": size === "small",
-            "button--default": size === "default" || undefined,
-            "icon-only": iconOnly,
-            "button--disabled": disabled,
-            "button--fluid": fluid && !iconOnly,
-            "with-icon-right": withIconRight && !iconOnly,
-            "with-icon-left": withIconLeft && !iconOnly,
-            "button--loading": isLoading
-          },
-          kindStyles[kind][""]
-        )}
-        {...rest}
-      >
-        {isLoading && (
-          <Loading
-            isLoading
-            loadingDescription={loadingDescription}
-            disabled={disabled}
-            size="inline"
-          />
-        )}
-        <div
-          className={cx("button--label", {
-            "button--hidden": isLoading
-          })}
+      <div className={cx({ "button--notallowed": isLoading || disabled })}>
+        <a
+          href={href}
+          ref={ref as ForwardedRef<HTMLAnchorElement>}
+          className={cx(
+            "button",
+            {
+              "button--large": size === "large",
+              "button--small": size === "small",
+              "button--default": size === "default" || undefined,
+              "icon-only": iconOnly,
+              "button--disabled": disabled,
+              "button--fluid": fluid && !iconOnly,
+              "with-icon-right": withIconRight && !iconOnly,
+              "with-icon-left": withIconLeft && !iconOnly,
+              "button--loading": isLoading
+            },
+            className,
+            kindStyles[kind][""]
+          )}
+          {...rest}
         >
-          {(withIconRight || withIconLeft || iconOnly) && renderIcon}
-          {!iconOnly && children}
-        </div>
-      </a>
+          {isLoading && (
+            <Loading
+              isLoading
+              loadingDescription={loadingDescription}
+              disabled={disabled}
+              size="inline"
+            />
+          )}
+          <div
+            className={cx("button--label", {
+              "button--hidden": isLoading
+            })}
+          >
+            {(withIconRight || withIconLeft || iconOnly) && renderIcon}
+            {!iconOnly && children}
+          </div>
+        </a>
+      </div>
     ) : (
       <button
         type="button"
@@ -159,6 +160,7 @@ const Button = (
             "with-icon-left": withIconLeft && !iconOnly,
             "button--loading": isLoading
           },
+          className,
           kindStyles[kind][""]
         )}
         disabled={disabled}
@@ -182,7 +184,7 @@ const Button = (
         </div>
       </button>
     )}
-  </div>
+  </>
 );
 
 export default forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(

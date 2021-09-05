@@ -1,0 +1,64 @@
+@import "../../styles/theme.pcss";
+@import "../../styles/typography.pcss";
+
+.datatable {
+  &--container {
+    width: 100%;
+    table-layout: fixed;
+    border: 1px solid $datatable-border;
+    border-radius: 2px;
+    background-color: $datatable-background;
+    & > * {
+      color: white;
+    }
+  }
+
+  &--table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  &--small > table {
+    & > thead > tr,
+    > tbody > tr {
+      height: $container-02;
+    }
+  }
+
+  &--default > table {
+    & > thead > tr,
+    & > tbody > tr {
+      height: $container-03;
+    }
+  }
+
+  &--large > table {
+    & > thead > tr,
+    & > tbody > tr {
+      height: $container-04;
+    }
+  }
+
+  & > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      padding: 0 $spacing-04;
+    }
+  }
+
+  &--head {
+    &-cell {
+      &__label {
+        @mixin type--heading-00;
+
+        color: $datatable-header-label;
+      }
+    }
+  }
+
+  &--cell {
+    @mixin type--body-small;
+
+    color: $datatable-row-item;
+  }
+}

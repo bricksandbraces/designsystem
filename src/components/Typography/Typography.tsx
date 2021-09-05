@@ -20,6 +20,7 @@ type TypographyProps = {
     | "label"
     | "body"
     | "body-small"
+    | "heading-00"
     | "heading-01"
     | "heading-02"
     | "heading-03"

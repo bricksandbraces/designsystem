@@ -29,6 +29,15 @@ import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Badge from "./components/Badge/Badge";
 import Loading from "./components/Loading/Loading";
+import Search from "./components/Search/Search";
+import Table from "./components/DataTable/Table";
+import TableHead from "./components/DataTable/TableHead";
+import TableHeadCell from "./components/DataTable/TableHeadCell";
+import TableRow from "./components/DataTable/TableRow";
+import TableCell from "./components/DataTable/TableCell";
+import TableContainer from "./components/DataTable/TableContainer";
+import TableBody from "./components/DataTable/TableBody";
+import { HeaderData , RowData } from "./components/DataTable/DataTable";
 
 export {
   Button,
@@ -63,5 +72,15 @@ export {
   PasswordInput,
   Dropdown,
   Badge,
-  Loading
+  Loading,
+  Search,
+  Table,
+  TableCell,
+  TableBody,
+  TableContainer,
+  TableRow,
+  TableHeadCell,
+  TableHead
 };
+
+export type { HeaderData, RowData };

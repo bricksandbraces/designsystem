@@ -12,7 +12,7 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
-const sampleItemConfig = object("Items", [
+const sampleItemConfig = [
   {
     id: "option-0",
     value: "option-0",
@@ -44,7 +44,7 @@ const sampleItemConfig = object("Items", [
     value: "option-5",
     text: "Option 5"
   }
-]);
+];
 
 export const Uncontrolled = () => {
   return (
@@ -56,7 +56,7 @@ export const Uncontrolled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultSelectedIndex={3}
-        items={sampleItemConfig}
+        items={object("Items", sampleItemConfig)}
       />
     </div>
   );
@@ -72,7 +72,7 @@ export const Controlled = () => {
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        items={sampleItemConfig}
+        items={object("Items", sampleItemConfig)}
         selectedIndex={selectedIndex}
         onChange={(newIndex) => {
           setSelectedIndex(newIndex ?? 0);
