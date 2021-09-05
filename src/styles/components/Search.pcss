@@ -2,22 +2,133 @@
 @import "../../styles/theme.pcss";
 @import "../../styles/typography.pcss";
 
+@keyframes showContent {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .search {
   @mixin type--body-small;
 
   display: flex;
   position: relative;
 
+  &--box {
+    margin: 0;
+    padding: 0;
+    transition: background-color $transition-01, border-color $transition-01,
+      padding $transition-01, margin $transition-01;
+    border: 1px solid transparent;
+    outline: 0;
+    background-color: transparent;
+
+    &-open {
+      margin: calc(($spacing-04) * -1);
+      padding: $spacing-04;
+      border-radius: 2px;
+      border-color: $search-border;
+      background-color: $search-box-background;
+      color: $search-font;
+
+      & > .search--box-content {
+        display: block;
+        animation: showContent 0.15s ease-in-out;
+      }
+    }
+
+    &-content {
+      @mixin type--body-small;
+
+      display: none;
+      padding: $spacing-04 0 0 0;
+
+      &__badges {
+        padding: 0 0 $spacing-03 0;
+
+        & > * {
+          margin-right: $spacing-03;
+          margin-bottom: $spacing-03;
+        }
+      }
+
+      &__results {
+        color: $search-results-font;
+
+        &-item {
+          display: flex;
+          align-items: center;
+          padding: 0 $spacing-04;
+          transition: background-color $transition-01;
+          border-radius: 2px;
+
+          &:hover {
+            background-color: $search-box-background-hover;
+            color: $search-results-font;
+          }
+        }
+      }
+
+      &__recent {
+        color: $search-recent-font;
+
+        &-icon {
+          margin-right: $spacing-04;
+          color: $search-recent-icon;
+        }
+
+        &-item {
+          display: flex;
+          align-items: center;
+          padding: 0 $spacing-04;
+          transition: background-color $transition-01;
+          border-radius: 2px;
+
+          &:hover {
+            background-color: $search-box-background-hover;
+            color: $search-recent-font;
+          }
+        }
+      }
+    }
+  }
+
   &--default {
     height: $container-03;
+
+    & + .search--box-content > div {
+      & > .search--box-content__recent-item,
+      & > .search--box-content__results-item {
+        height: $container-03;
+      }
+    }
   }
 
   &--large {
     height: $container-04;
+
+    & + .search--box-content > div {
+      & > .search--box-content__recent-item,
+      & > .search--box-content__results-item {
+        height: $container-04;
+      }
+    }
   }
 
   &--small {
     height: $container-02;
+
+    & + .search--box-content > div {
+      & > .search--box-content__recent-item,
+      & > .search--box-content__results-item {
+        height: $container-02;
+      }
+    }
   }
 
   &--label {
