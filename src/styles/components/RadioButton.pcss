@@ -7,6 +7,12 @@
   margin-bottom: 0.25rem;
   color: $radiobutton-font;
 
+  &--group {
+    &-legend {
+      @mixin type--label;
+    }
+  }
+
   &--label {
     @mixin type--body-small;
 
@@ -61,4 +67,9 @@
   & * {
     color: $radiobutton-disabled;
   }
+}
+
+.radiobutton input[type="radio"]:focus-visible + .radiobutton--label > svg {
+  border: 1px solid $focus;
+  border-radius: 50%;
 }

@@ -2,6 +2,7 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Typography from "../Typography/Typography";
 import RadioButton from "./RadioButton";
+import RadioButtonGroup from "./RadioButtonGroup";
 
 export default { title: "Components/RadioButton", decorators: [withKnobs] };
 
@@ -10,7 +11,7 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <form>
-          <fieldset>
+          <RadioButtonGroup name="1" legendLabel="RadioButtons">
             <RadioButton
               label={text("Label", "RadioButton label")}
               id="checkbox"
@@ -22,7 +23,7 @@ export const Default = () => {
               id="checkbox-2"
               name="1"
             />
-          </fieldset>
+          </RadioButtonGroup>
         </form>
       </div>
     </div>

@@ -30,6 +30,8 @@ import Dropdown from "./components/Dropdown/Dropdown";
 import Badge from "./components/Badge/Badge";
 import Loading from "./components/Loading/Loading";
 import RadioButton from "./components/RadioButton/RadioButton";
+import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
+import FormLabel from "./components/FormLabel/FormLabel";
 
 export {
   Button,
@@ -65,5 +67,7 @@ export {
   Dropdown,
   Badge,
   Loading,
-  RadioButton
+  RadioButton,
+  RadioButtonGroup,
+  FormLabel
 };
