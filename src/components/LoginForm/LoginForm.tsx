@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import cx from "classnames";
+import TextInput from "../TextInput/TextInput";
+import PasswordInput from "../PasswordInput/PasswordInput";
+import Link from "../Link/Link";
+import Typography from "../Typography/Typography";
+import useControlled from "../../hooks/useControlled";
 
 type LoginFormData = {
   email?: string;
@@ -43,70 +47,64 @@ const LoginForm = ({
   invalidEmail,
   onChange
 }: LoginFormProps) => {
+  const controlled = useControlled(value);
+
   const [email, setEmail] = useState(value?.email ?? defaultValue?.email ?? "");
   const [password, setPassword] = useState(
     value?.password ?? defaultValue?.password ?? ""
   );
 
   useEffect(() => {
-    setEmail(value?.email ?? "");
-    setPassword(value?.password ?? "");
+    if (controlled) {
+      setEmail(value?.email ?? "");
+      setPassword(value?.password ?? "");
+    }
   }, [value]);
 
   return (
-    <div className="form fluid">
-      <div
-        className={cx("form-floating fluid", { "form-invalid": invalidEmail })}
+    <>
+      <TextInput
+        className="loginform--email"
+        fluid
+        type="email"
+        error={invalidEmail}
+        id="loginEmail"
+        placeholder="name@example.com"
+        value={email}
+        onChange={(event) => {
+          if (!controlled) {
+            setEmail(event.target.value);
+          }
+          onChange?.({ email: event.target.value, password }, event);
+        }}
+        autoComplete="off"
+      />
+      <PasswordInput
+        className="loginform--password"
+        error={invalidPassword}
+        fluid
+        id="loginPassword"
+        placeholder="Passwort"
+        value={password}
+        onChange={(event) => {
+          if (!controlled) {
+            setPassword(event.target.value);
+          }
+          onChange?.({ email, password: event.target.value }, event);
+        }}
+        autoComplete="off"
       >
-        <input
-          type="email"
-          className={cx("form-control fluid", { "form-invalid": invalidEmail })}
-          id="loginEmail"
-          placeholder="name@example.com"
-          value={email}
-          onChange={(event) => {
-            // if uncontrolled
-            if (!value) {
-              setEmail(event.target.value);
-            }
-            onChange?.({ email: event.target.value, password }, event);
-          }}
-          autoComplete="off"
-        />
-        <label htmlFor="loginEmail" className="form-label">
-          E-Mail-Adresse
-        </label>
-      </div>
-      <div
-        className={cx("form-floating fluid", {
-          "form-invalid": invalidPassword
-        })}
-      >
-        <input
-          type="password"
-          className={cx("form-control fluid", {
-            "form-invalid": invalidPassword
-          })}
-          id="loginPassword"
-          placeholder="Passwort"
-          value={password}
-          onChange={(event) => {
-            // if uncontrolled
-            if (!value) {
-              setPassword(event.target.value);
-            }
-            onChange?.({ email, password: event.target.value }, event);
-          }}
-          autoComplete="off"
-        />
-        <label htmlFor="loginPassword" className="form-label">
-          Passwort
-        </label>
-        <a href="#" target="_blank" className="form-link">
-          Passwort vergessen?
-        </a>
-      </div>
-    </div>
+        <Typography
+          type="span"
+          token="label"
+          className="loginform--password-link"
+        >
+          <Link href="#" inheritSize>
+            Password vergessen?
+          </Link>
+        </Typography>
+      </PasswordInput>
+    </>
   );
 };
 

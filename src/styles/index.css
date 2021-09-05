@@ -31,6 +31,8 @@
 @import "./components/Accordion.pcss";
 @import "./components/Badge.pcss";
 @import "./components/Loading.pcss";
+@import "./components/RadioButton.pcss";
+@import "./components/FormLabel.pcss";
 
 * {
   box-sizing: border-box;

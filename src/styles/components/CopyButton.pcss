@@ -3,9 +3,23 @@
   position: relative;
   justify-content: center;
   width: max-content;
+
+  & > div > button > div > .icon.icon-tabler.icon-tabler-check {
+    position: absolute;
+  }
 }
 
 .copybutton.copybutton--copied > .tooltip--text {
   visibility: visible;
   opacity: 1;
+}
+
+.copybutton.copybutton--copied {
+  & > div > button > .button--label {
+    justify-content: center;
+    & > span {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
 }

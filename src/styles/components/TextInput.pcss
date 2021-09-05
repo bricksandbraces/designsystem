@@ -5,6 +5,49 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  &--fluid {
+    & > div > .textinput--input {
+      height: $container-05;
+      padding-top: 20px;
+
+      &:focus + .textinput--fluid-label {
+        @mixin type--label;
+
+        transform: translateY(-10px);
+      }
+    }
+
+    & > div > .textinput--togglepassword {
+      & .button.icon-only.button--ghost {
+        min-width: calc($container-01);
+        max-width: calc($container-01);
+        min-height: calc($container-01);
+        max-height: calc($container-01);
+        margin-top: 8px;
+        margin-right: 8px;
+        border-radius: 2px;
+      }
+    }
+
+    &-label {
+      @mixin type--body-small;
+
+      position: absolute;
+      top: calc($spacing-04 + 6px);
+      left: calc($spacing-04 + 1px);
+      transition: $transition-01;
+      color: $textinput-fluid-label-font;
+      pointer-events: none;
+
+      &__value {
+        @mixin type--label;
+
+        transform: translateY(-10px);
+      }
+    }
+  }
+
   &--input {
     @mixin type--body-small;
 
@@ -35,6 +78,37 @@
     position: absolute;
     top: 0;
     right: 0;
+
+    & .button.icon-only.button--ghost {
+      margin-top: 1px;
+      margin-right: 1px;
+      margin-bottom: 1px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 1px;
+      border-bottom-right-radius: 1px;
+      border-bottom-left-radius: 0;
+    }
+
+    & .button.icon-only.button--default {
+      min-width: calc($container-03 - 2px);
+      max-width: calc($container-03 - 2px);
+      min-height: calc($container-03 - 2px);
+      max-height: calc($container-03 - 2px);
+    }
+
+    & .button.icon-only.button--small {
+      min-width: calc($container-02 - 2px);
+      max-width: calc($container-02 - 2px);
+      min-height: calc($container-02 - 2px);
+      max-height: calc($container-02 - 2px);
+    }
+
+    & .button.icon-only.button--large {
+      min-width: calc($container-04 - 2px);
+      max-width: calc($container-04 - 2px);
+      min-height: calc($container-04 - 2px);
+      max-height: calc($container-04 - 2px);
+    }
   }
 
   &--default {
@@ -43,6 +117,10 @@
 
   &--large {
     height: $container-04;
+  }
+
+  &--small {
+    height: $container-02;
   }
 
   &--error {
@@ -77,16 +155,6 @@
         margin-right: $spacing-02;
       }
     }
-  }
-
-  &--small {
-    height: $container-02;
-  }
-  &--label {
-    @mixin type--label;
-
-    margin-bottom: $spacing-03;
-    color: $textinput-label-font;
   }
 }
 
