@@ -1,4 +1,4 @@
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import FormLabel from "./FormLabel";
 

@@ -10,7 +10,7 @@ type CheckboxProps = {
   /**
    * Checkbox ID
    */
-  id?: string;
+  id: string;
 
   /**
    * Children

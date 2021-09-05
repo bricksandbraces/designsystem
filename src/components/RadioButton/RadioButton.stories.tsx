@@ -111,8 +111,8 @@ export const AsGroupUncontrolled = () => {
             name={text("Name", "radio-grop-demo")}
             defaultValue="coffee2"
           >
-            <RadioButton value="coffee1" label="Coffee" />
-            <RadioButton value="coffee2" label="Espresso" />
+            <RadioButton id="c1" value="coffee1" label="Coffee" />
+            <RadioButton id="c2" value="coffee2" label="Espresso" />
           </RadioButtonGroup>
         </form>
       </div>
@@ -135,8 +135,8 @@ export const AsGroupControlled = () => {
               setSelectedValue(newValue);
             }}
           >
-            <RadioButton value="coffee1" label="Coffee" />
-            <RadioButton value="coffee2" label="Espresso" />
+            <RadioButton id="c3" value="coffee1" label="Coffee" />
+            <RadioButton id="c42" value="coffee2" label="Espresso" />
           </RadioButtonGroup>
         </form>
       </div>

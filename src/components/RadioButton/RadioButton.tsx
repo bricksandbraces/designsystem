@@ -10,7 +10,7 @@ export type RadioButtonProps = {
   /**
    * RadioButton ID
    */
-  id?: string;
+  id: string;
 
   /**
    * Children

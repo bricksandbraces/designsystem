@@ -22,7 +22,7 @@ export const Default = () => (
         invalidPassword={boolean("Invalid password", false)}
       />
       <div style={{ paddingTop: "20px", display: "flex" }}>
-        <Checkbox label="Keep me signed in" id="checkbox" />
+        <Checkbox value="remember" label="Keep me signed in" id="checkbox" />
       </div>
       <div style={{ paddingTop: "32px" }}>
         <Button
