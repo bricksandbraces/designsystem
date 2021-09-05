@@ -1,7 +1,6 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { IconClock, IconSearch, IconX } from "@tabler/icons";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 import Badge from "../Badge/Badge";
