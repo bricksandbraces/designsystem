@@ -3,6 +3,7 @@ import TextInput from "../TextInput/TextInput";
 import PasswordInput from "../PasswordInput/PasswordInput";
 import Link from "../Link/Link";
 import Typography from "../Typography/Typography";
+import useControlled from "../../hooks/useControlled";
 
 type LoginFormData = {
   email?: string;
@@ -46,14 +47,18 @@ const LoginForm = ({
   invalidEmail,
   onChange
 }: LoginFormProps) => {
+  const controlled = useControlled(value);
+
   const [email, setEmail] = useState(value?.email ?? defaultValue?.email ?? "");
   const [password, setPassword] = useState(
     value?.password ?? defaultValue?.password ?? ""
   );
 
   useEffect(() => {
-    setEmail(value?.email ?? "");
-    setPassword(value?.password ?? "");
+    if (controlled) {
+      setEmail(value?.email ?? "");
+      setPassword(value?.password ?? "");
+    }
   }, [value]);
 
   return (
@@ -67,8 +72,7 @@ const LoginForm = ({
         placeholder="name@example.com"
         value={email}
         onChange={(event) => {
-          // if uncontrolled
-          if (!value) {
+          if (!controlled) {
             setEmail(event.target.value);
           }
           onChange?.({ email: event.target.value, password }, event);
@@ -83,8 +87,7 @@ const LoginForm = ({
         placeholder="Passwort"
         value={password}
         onChange={(event) => {
-          // if uncontrolled
-          if (!value) {
+          if (!controlled) {
             setPassword(event.target.value);
           }
           onChange?.({ email, password: event.target.value }, event);
