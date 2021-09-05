@@ -16,11 +16,13 @@ export const Default = () => {
               label={text("Label", "RadioButton label")}
               id="checkbox"
               name="1"
+              value="value-1"
               defaultChecked
             />
             <RadioButton
               label={text("Label", "RadioButton label")}
               id="checkbox-2"
+              value="value-2"
               name="1"
             />
           </RadioButtonGroup>
@@ -39,11 +41,13 @@ export const Controlled = () => {
           <fieldset>
             <RadioButton
               label={text("Label", "RadioButton label")}
+              value="value-1"
               id="checkbox"
               name="1"
             />
             <RadioButton
               label={text("Label", "RadioButton label")}
+              value="value-2"
               id="checkbox-2"
               name="1"
               checked={checked}
@@ -66,11 +70,13 @@ export const WithChildren = () => {
           <fieldset>
             <RadioButton
               label={text("Label", "RadioButton label")}
+              value="value-1"
               id="checkbox"
               name="1"
             />
             <RadioButton
               label={text("Label", "RadioButton label")}
+              value="value-2"
               id="checkbox-2"
               disabled={boolean("RadioButton 2 disabled", false)}
               name="1"
@@ -88,6 +94,50 @@ export const WithChildren = () => {
               </Typography>
             </RadioButton>
           </fieldset>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export const AsGroupUncontrolled = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <form>
+          <RadioButtonGroup
+            disabled={boolean("Disabled", false)}
+            legendLabel={text("Legend", "Legend Label")}
+            name={text("Name", "radio-grop-demo")}
+            defaultValue="coffee2"
+          >
+            <RadioButton value="coffee1" label="Coffee" />
+            <RadioButton value="coffee2" label="Espresso" />
+          </RadioButtonGroup>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export const AsGroupControlled = () => {
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <form>
+          <RadioButtonGroup
+            disabled={boolean("Disabled", false)}
+            legendLabel={text("Legend", "Legend Label")}
+            name={text("Name", "radio-grop-demo")}
+            value={selectedValue}
+            onChange={(newValue) => {
+              setSelectedValue(newValue);
+            }}
+          >
+            <RadioButton value="coffee1" label="Coffee" />
+            <RadioButton value="coffee2" label="Espresso" />
+          </RadioButtonGroup>
         </form>
       </div>
     </div>

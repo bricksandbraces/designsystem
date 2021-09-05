@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 
-type RadioButtonProps = {
+export type RadioButtonProps = {
   /**
    * React className
    */
@@ -20,7 +20,7 @@ type RadioButtonProps = {
   /**
    * RadioButton Value
    */
-  value?: string;
+  value: string;
 
   /**
    * RadioButton Label

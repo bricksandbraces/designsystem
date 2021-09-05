@@ -20,7 +20,7 @@ type CheckboxProps = {
   /**
    * Checkbox Value
    */
-  value?: string;
+  value: string;
 
   /**
    * Checkbox Label
