@@ -67,7 +67,7 @@ const CopyButton = ({
           onClick?.(event);
         }}
       >
-        {showState && <IconCheck size={16} color="#7FD55D" />}
+        {showState && <IconCheck className="copybutton--icon" size={16} color="#7FD55D" />}
         <span>Copy</span>
       </Button>
       <span
