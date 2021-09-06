@@ -39,6 +39,9 @@ import TableCell from "./components/DataTable/TableCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
 import { HeaderData, RowData } from "./components/DataTable/DataTable";
+import RadioButton from "./components/RadioButton/RadioButton";
+import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
+import FormLabel from "./components/FormLabel/FormLabel";
 
 export {
   Button,
@@ -75,13 +78,17 @@ export {
   Badge,
   Loading,
   Search,
+  SearchInput,
   Table,
   TableCell,
   TableBody,
   TableContainer,
   TableRow,
   TableHeadCell,
-  TableHead
+  TableHead,
+  RadioButton,
+  RadioButtonGroup,
+  FormLabel
 };
 
 export type { HeaderData, RowData };

@@ -1,8 +1,8 @@
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { IconArrowRight } from "@tabler/icons";
 import LoginForm from "./LoginForm";
 import Button from "../Button/Button";
+import Checkbox from "../Checkbox/Checkbox";
 
 export default { title: "Web/LoginForm", decorators: [withKnobs] };
 
@@ -21,14 +21,15 @@ export const Default = () => (
         invalidEmail={boolean("Invalid Email", false)}
         invalidPassword={boolean("Invalid password", false)}
       />
-      <div style={{ paddingTop: "36px" }}>
+      <div style={{ paddingTop: "20px", display: "flex" }}>
+        <Checkbox value="remember" label="Keep me signed in" id="checkbox" />
+      </div>
+      <div style={{ paddingTop: "32px" }}>
         <Button
           isLoading={boolean("is Loading?", false)}
           disabled={boolean("Disabled", false)}
           fluid
-          size="default"
-          withIconRight
-          renderIcon={<IconArrowRight />}
+          size="large"
         >
           Login
         </Button>

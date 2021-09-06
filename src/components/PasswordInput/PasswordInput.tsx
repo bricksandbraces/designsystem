@@ -57,6 +57,11 @@ type PasswordInputProps = {
   value?: string;
 
   /**
+   * Fluid variant
+   */
+  fluid?: boolean;
+
+  /**
    * OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;

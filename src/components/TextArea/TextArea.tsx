@@ -2,6 +2,7 @@ import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
+import FormLabel from "../FormLabel/FormLabel";
 
 type TextAreaProps = {
   /**
@@ -106,11 +107,7 @@ const TextArea = (
   return (
     <div className="textarea">
       <div className="textarea--top">
-        {label && (
-          <label htmlFor={id} className="textarea--label">
-            {label}
-          </label>
-        )}
+        {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
         {characterLimit && (
           <div
             className={cx("textarea--char-counter", {

@@ -7,7 +7,8 @@ export default { title: "Components/Button", decorators: [withKnobs] };
 
 const options = {
   Primary: "primary",
-  Outline: "outline",
+  Secondary: "secondary",
+  Tertiary: "tertiary",
   Danger: "danger",
   Ghost: "ghost"
 };

@@ -23,6 +23,11 @@ type LinkProps = {
   inline?: boolean;
 
   /**
+   * Inherit size e.g. from Typography component .
+   */
+  inheritSize?: boolean;
+
+  /**
    * React className
    */
   className?: string;
@@ -38,13 +43,18 @@ const Link = ({
   href,
   target,
   inline,
+  inheritSize,
   onClick,
   className,
   ...rest
 }: LinkProps) => {
   return onClick ? (
     <button
-      className={cx("link", { "link--inline": inline }, className)}
+      className={cx(
+        "link",
+        { "link--inline": inline, "link--inherit": inheritSize },
+        className
+      )}
       {...rest}
       onClick={onClick}
     >
@@ -52,7 +62,11 @@ const Link = ({
     </button>
   ) : (
     <a
-      className={cx("link", { "link--inline": inline }, className)}
+      className={cx(
+        "link",
+        { "link--inline": inline, "link--inherit": inheritSize },
+        className
+      )}
       href={href}
       target={target}
       {...rest}
