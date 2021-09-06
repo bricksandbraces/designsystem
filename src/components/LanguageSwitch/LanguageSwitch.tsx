@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import cx from "classnames";
-import { findNextItem } from "../../helpers/arrayUtilities";
+import mergeRefs from "react-merge-refs";
 import useControlled from "../../hooks/useControlled";
 
 type LanguageSwitchItem = {
@@ -34,15 +34,15 @@ type LanguageSwitchProps = {
   /**
    * LanguageSwitch Value (Controlled)
    */
-  index?: number;
+  value?: string;
 
   /**
    * LanguageSwitch Default Value (Uncontrolled)
    */
-  defaultIndex?: number;
+  defaultValue?: string;
 
   onChange?: (
-    newIndex: number,
+    newValue: string,
     event: React.MouseEvent<HTMLInputElement, globalThis.MouseEvent>
   ) => void;
   disabled?: boolean;
@@ -53,24 +53,29 @@ type LanguageSwitchProps = {
   items: LanguageSwitchItem[];
 };
 
-const LanguageSwitch = ({
-  id,
-  className,
-  items,
-  index,
-  defaultIndex,
-  onChange,
-  ...rest
-}: LanguageSwitchProps) => {
-  const controlled = useControlled(index);
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    (controlled ? index : defaultIndex) ?? 0
+const LanguageSwitch = (
+  {
+    id,
+    className,
+    items,
+    value,
+    defaultValue,
+    onChange,
+    ...rest
+  }: LanguageSwitchProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
+  const controlled = useControlled(value);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [selectedValue, setSelectedValue] = useState<string>(
+    (controlled ? value : defaultValue) ?? items[0].value
   );
   useEffect(() => {
-    if (!controlled) {
-      setSelectedIndex(index ?? 0);
+    if (controlled) {
+      setSelectedValue(value ?? items[0].value);
     }
-  }, [index]);
+  }, [value]);
+
   return (
     <form>
       <fieldset>
@@ -78,17 +83,27 @@ const LanguageSwitch = ({
           <input
             className="language-switch--input"
             tabIndex={0}
+            ref={mergeRefs([ref, inputRef])}
             type="select"
-            value={items[selectedIndex].value}
+            value={selectedValue}
             id={id}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                inputRef.current?.click();
+              }
+            }}
             onChange={() => {}}
             onClick={(event) => {
-              const newIndex =
-                findNextItem(items, () => true, 0, true).index ?? 0;
+              const currentIndex =
+                items.findIndex((el) => el.value === selectedValue) ?? 0;
+              const nextIndex =
+                currentIndex === items.length - 1 ? 0 : currentIndex + 1;
+              const newValue = items[nextIndex].value;
               if (!controlled) {
-                setSelectedIndex(newIndex);
+                setSelectedValue(newValue);
               }
-              onChange?.(newIndex, event);
+              onChange?.(newValue, event);
             }}
             {...rest}
           />
@@ -100,7 +115,7 @@ const LanguageSwitch = ({
                     <span
                       className={cx("language-switch--lang-item", {
                         "language-switch--lang-item__selected":
-                          selectedIndex === i
+                          selectedValue === item.value
                       })}
                     >
                       {item.label}
@@ -119,4 +134,6 @@ const LanguageSwitch = ({
   );
 };
 
-export default LanguageSwitch;
+export default forwardRef<HTMLInputElement, LanguageSwitchProps>(
+  LanguageSwitch
+);

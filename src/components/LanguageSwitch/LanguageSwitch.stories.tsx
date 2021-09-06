@@ -9,10 +9,10 @@ export const Uncontrolled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <LanguageSwitch
-          defaultIndex={1}
+          defaultValue="Deutsch"
           items={object("Link data", [
             { id: "1", label: "EN", value: "English" },
-            { id: "1", label: "DE", value: "Deutsch" }
+            { id: "2", label: "DE", value: "Deutsch" }
           ])}
           id="checkbox"
         />
@@ -22,19 +22,19 @@ export const Uncontrolled = () => {
 };
 
 export const Controlled = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [selectedValue, setSelectedValue] = useState<string>("Deutsch");
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <LanguageSwitch
-          index={selectedIndex}
+          value={selectedValue}
           items={object("Link data", [
             { id: "1", label: "EN", value: "English" },
-            { id: "1", label: "DE", value: "Deutsch" }
+            { id: "2", label: "DE", value: "Deutsch" }
           ])}
           id="checkbox-2"
-          onChange={(newIndex) => {
-            setSelectedIndex(newIndex);
+          onChange={(newValue) => {
+            setSelectedValue(newValue);
           }}
         />
       </div>
