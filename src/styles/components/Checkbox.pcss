@@ -65,6 +65,12 @@
   }
 }
 
-.checkbox--input[type="checkbox"]:focus + .checkbox--label > svg {
-  outline: 1px solid $focus;
+.checkbox--input[type="checkbox"] + .checkbox--label > svg {
+  transition: border-color $transition-01;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.checkbox--input[type="checkbox"]:focus-visible + .checkbox--label > svg {
+  border-color: $focus;
 }
