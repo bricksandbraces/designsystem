@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState, ReactNode } from "react";
 import { IconClock, IconSearch, IconX } from "@tabler/icons";
 import cx from "classnames";
 import Button from "../Button/Button";
@@ -38,44 +38,14 @@ type SearchResultItem = {
 
 type SearchProps = {
   /**
-   * Search size
+   * Children
    */
-  size?: "large" | "small" | "default";
+  children?: ReactNode;
 
   /**
-   * Search id
+   * Open search box
    */
-  id: string;
-
-  /**
-   * Search label
-   */
-  label: string;
-
-  /**
-   * Search placeholder
-   */
-  placeholder?: string;
-
-  /**
-   * Search Value
-   */
-  value?: string;
-
-  /**
-   * Clear Button Label
-   */
-  clearLabel?: string;
-
-  /**
-   * Search Button Label
-   */
-  searchLabel?: string;
-
-  /**
-   * Default Value
-   */
-  defaultValue?: string;
+  open?: boolean;
 
   /**
    * Show Search Results
@@ -96,109 +66,23 @@ type SearchProps = {
    * Search Badges
    */
   searchBadgeItems?: SearchBadgeItem[];
-
-  /**
-   * OnChange Function
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-
-  /**
-   * onSearch Function
-   */
-  onSearch?: (event: any) => void;
 };
 
 const Search = ({
-  id,
-  value,
-  clearLabel = "Clear search results",
-  searchLabel = "Go!",
-  label = "Search",
-  size = "default",
-  placeholder = "Search",
-  defaultValue,
+  children,
+  open,
   showResults,
   searchResultItems,
   searchRecentItems,
-  searchBadgeItems,
-  onSearch,
-  onChange
+  searchBadgeItems
 }: SearchProps) => {
-  const controlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
-  );
-
-  const [searchboxOpen, setSearchboxOpen] = useState(textValue !== "");
-  useEffect(() => {
-    if (controlled) {
-      setTextValue(value ?? "");
-    }
-  }, [value]);
   return (
     <div
       className={cx("search--box", {
-        "search--box-open": showResults && searchboxOpen
+        "search--box-open": showResults && open
       })}
     >
-      <div
-        role="search"
-        aria-labelledby={`${id}-search`}
-        className={cx(`search search--${size}`)}
-      >
-        <label id={`${id}-search`} htmlFor={id} className="search--label">
-          {label}
-        </label>
-        <input
-          role="searchbox"
-          onFocus={() => {
-            setSearchboxOpen(true);
-          }}
-          onBlur={() => {
-            setSearchboxOpen(textValue !== "");
-          }}
-          autoComplete="off"
-          type="text"
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            if (!controlled) {
-              setTextValue(event.target.value);
-            }
-            onChange?.(event);
-          }}
-          className="search--input"
-          id={id}
-          placeholder={placeholder}
-          value={textValue}
-        />
-        <div className="search--buttons">
-          {textValue !== "" && (
-            <Button
-              onClick={() => {
-                setTextValue("");
-              }}
-              kind="ghost"
-              size={size}
-              iconOnly
-              renderIcon={<IconX />}
-              className="search--close"
-              type="button"
-              aria-label={clearLabel}
-            />
-          )}
-          <Button
-            onClick={onSearch}
-            iconOnly={!searchLabel}
-            renderIcon={<IconSearch />}
-            kind="primary"
-            size={size}
-            className="search--go"
-            type="button"
-            aria-label={searchLabel}
-          >
-            {searchLabel}
-          </Button>
-        </div>
-      </div>
+      {children}
       <div className="search--box-content">
         {searchBadgeItems && (
           <div className="search--box-content__badges">
