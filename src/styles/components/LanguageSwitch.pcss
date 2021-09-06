@@ -38,25 +38,23 @@
     pointer-events: none;
 
     &-item {
+      transform: scale(0.7);
+      transition: $transition-01;
+      color: $languageswitch-inactive;
+      font-weight: 500;
       pointer-events: none;
+
       &__divider {
         content: "";
         width: 2px;
         height: 12px;
       }
 
-      &:nth-child(1) {
+      &__selected {
         transform: scale(1);
         transition: $transition-01;
         color: $languageswitch-active;
         font-weight: 700;
-      }
-
-      &:nth-child(3) {
-        transform: scale(0.7);
-        transition: $transition-01;
-        color: $languageswitch-inactive;
-        font-weight: 500;
       }
     }
   }

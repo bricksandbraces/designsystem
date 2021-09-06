@@ -1,25 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import cx from "classnames";
+import { findNextItem } from "../../helpers/arrayUtilities";
+import useControlled from "../../hooks/useControlled";
 
-type LanguageSwitchItems = {
+type LanguageSwitchItem = {
   /**
    * LanguageSwitch ID
    */
   id: string;
 
   /**
-   * LanguageSwitch Label
+   * LanguageSwitch label
    */
   label: string;
 
   /**
-   * LanguageSwitch Label Name
+   * LanguageSwitch value
    */
-  langName: string;
-
-  /**
-   * Default language
-   */
-  defaultLang?: boolean;
+  value: string;
 };
 
 type LanguageSwitchProps = {
@@ -34,34 +32,45 @@ type LanguageSwitchProps = {
   id?: string;
 
   /**
-   * LanguageSwitch Value
+   * LanguageSwitch Value (Controlled)
    */
-  value?: string;
+  index?: number;
 
   /**
-   * Checked values
+   * LanguageSwitch Default Value (Uncontrolled)
    */
-  checked?: boolean;
-  defaultChecked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  defaultIndex?: number;
+
+  onChange?: (
+    newIndex: number,
+    event: React.MouseEvent<HTMLInputElement, globalThis.MouseEvent>
+  ) => void;
   disabled?: boolean;
 
   /**
    * LanguageSwitch Items
    */
-  items: LanguageSwitchItems[];
+  items: LanguageSwitchItem[];
 };
 
 const LanguageSwitch = ({
   id,
-  value,
-  checked,
-  defaultChecked,
   className,
   items,
+  index,
+  defaultIndex,
   onChange,
   ...rest
 }: LanguageSwitchProps) => {
+  const controlled = useControlled(index);
+  const [selectedIndex, setSelectedIndex] = useState<number>(
+    (controlled ? index : defaultIndex) ?? 0
+  );
+  useEffect(() => {
+    if (!controlled) {
+      setSelectedIndex(index ?? 0);
+    }
+  }, [index]);
   return (
     <form>
       <fieldset>
@@ -69,19 +78,39 @@ const LanguageSwitch = ({
           <input
             className="language-switch--input"
             tabIndex={0}
-            type="checkbox"
-            value={value}
+            type="select"
+            value={items[selectedIndex].value}
             id={id}
-            checked={checked}
-            defaultChecked={defaultChecked}
-            onChange={onChange}
+            onChange={() => {}}
+            onClick={(event) => {
+              const newIndex =
+                findNextItem(items, () => true, 0, true).index ?? 0;
+              if (!controlled) {
+                setSelectedIndex(newIndex);
+              }
+              onChange?.(newIndex, event);
+            }}
             {...rest}
           />
           <div className="language-switch--slider">
             <div className="language-switch--lang">
-              <span className="language-switch--lang-item">DE</span>
-              <span className="language-switch--lang-item__divider" />
-              <span className="language-switch--lang-item">EN</span>
+              {items.map((item, i) => {
+                return (
+                  <React.Fragment key={item.id}>
+                    <span
+                      className={cx("language-switch--lang-item", {
+                        "language-switch--lang-item__selected":
+                          selectedIndex === i
+                      })}
+                    >
+                      {item.label}
+                    </span>
+                    {i !== items.length - 1 && (
+                      <span className="language-switch--lang-item__divider" />
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </label>

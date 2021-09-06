@@ -1,17 +1,18 @@
-import { boolean, object, text, withKnobs } from "@storybook/addon-knobs";
-import React, { ChangeEvent, useState } from "react";
+import { object, withKnobs } from "@storybook/addon-knobs";
+import React, { useState } from "react";
 import LanguageSwitch from "./LanguageSwitch";
 
 export default { title: "Components/LanguageSwitch", decorators: [withKnobs] };
 
-export const Default = () => {
+export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <LanguageSwitch
+          defaultIndex={1}
           items={object("Link data", [
-            { id: "1", label: "EN", langName: "English", defaultLang: true },
-            { id: "1", label: "DE", langName: "Deutsch" }
+            { id: "1", label: "EN", value: "English" },
+            { id: "1", label: "DE", value: "Deutsch" }
           ])}
           id="checkbox"
         />
@@ -21,16 +22,20 @@ export const Default = () => {
 };
 
 export const Controlled = () => {
-  const [checked, setChecked] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <LanguageSwitch
+          index={selectedIndex}
           items={object("Link data", [
-            { id: "1", label: "EN", langName: "English" },
-            { id: "1", label: "DE", langName: "Deutsch" }
+            { id: "1", label: "EN", value: "English" },
+            { id: "1", label: "DE", value: "Deutsch" }
           ])}
-          id="checkbox"
+          id="checkbox-2"
+          onChange={(newIndex) => {
+            setSelectedIndex(newIndex);
+          }}
         />
       </div>
     </div>
