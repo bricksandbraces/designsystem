@@ -57,6 +57,11 @@ type PasswordInputProps = {
   value?: string;
 
   /**
+   * Fluid variant
+   */
+  fluid?: boolean;
+
+  /**
    * OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -67,12 +72,15 @@ type PasswordInputProps = {
   children?: React.ReactNode;
 };
 
-const PasswordInput = ({ size, children, ...rest }: PasswordInputProps) => {
+const PasswordInput = (
+  { size, children, ...rest }: PasswordInputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   const [passwordType, setPasswordType] = useState<"password" | "text">(
     "password"
   );
   return (
-    <TextInput {...rest} size={size} type={passwordType}>
+    <TextInput {...rest} ref={ref} size={size} type={passwordType}>
       <Button
         aria-controls="password"
         aria-expanded={passwordType !== "password"}

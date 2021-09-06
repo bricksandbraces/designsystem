@@ -32,6 +32,8 @@
 @import "./components/Badge.pcss";
 @import "./components/Loading.pcss";
 @import "./components/LanguageSwitch.pcss";
+@import "./components/RadioButton.pcss";
+@import "./components/FormLabel.pcss";
 
 * {
   box-sizing: border-box;

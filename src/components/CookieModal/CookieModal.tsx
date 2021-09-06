@@ -38,6 +38,7 @@ const CookieSettingControl = ({
     <div className="cookiemodal--check">
       <Checkbox
         label={label}
+        value={label.toLowerCase()}
         id={id}
         checked={
           checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)

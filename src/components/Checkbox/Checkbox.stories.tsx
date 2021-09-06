@@ -9,11 +9,16 @@ export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Checkbox label={text("Label", "Checkbox label")} id="checkbox" />
+        <Checkbox
+          label={text("Label", "Checkbox label")}
+          id="checkbox"
+          value="c1"
+        />
         <Checkbox
           label={text("Label", "Checkbox label")}
           id="checkbox-2"
           defaultChecked
+          value="c2"
         />
       </div>
     </div>
@@ -25,7 +30,11 @@ export const Controlled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Checkbox label={text("Label", "Checkbox label")} id="checkbox" />
+        <Checkbox
+          label={text("Label", "Checkbox label")}
+          id="checkbox"
+          value="c1"
+        />
         <Checkbox
           label={text("Label", "Checkbox label")}
           id="checkbox-2"
@@ -33,6 +42,7 @@ export const Controlled = () => {
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setChecked(event.target.checked);
           }}
+          value="c2"
         />
       </div>
     </div>
@@ -43,11 +53,16 @@ export const WithChildren = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Checkbox label={text("Label", "Checkbox label")} id="checkbox" />
+        <Checkbox
+          label={text("Label", "Checkbox label")}
+          id="checkbox"
+          value="c1"
+        />
         <Checkbox
           label={text("Label", "Checkbox label")}
           id="checkbox-2"
           disabled={boolean("Checkbox 2 disabled", false)}
+          value="c2"
         >
           <Typography
             type="span"

@@ -10,7 +10,7 @@ type TypographyProps = {
   /**
    * Type to use
    */
-  type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "text" | "span";
+  type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "text" | "span" | "label";
 
   /**
    * token to use
@@ -43,6 +43,11 @@ type TypographyProps = {
    * React inline styles for the typography component
    */
   style?: any;
+
+  /**
+   * HTML for label
+   */
+  htmlFor?: string;
 
   name?: string;
 };
@@ -119,6 +124,14 @@ const Typography = ({
         >
           {children}
         </span>
+      )}
+      {type === "label" && (
+        <label
+          className={cx(`typography typography--${token}`, className)}
+          {...rest}
+        >
+          {children}
+        </label>
       )}
     </>
   );

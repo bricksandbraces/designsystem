@@ -1,4 +1,4 @@
-import { select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import TextInput from "./TextInput";
 
@@ -16,6 +16,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
+        fluid={boolean("Fluid variant?", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
@@ -34,6 +35,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
+        fluid={boolean("Fluid variant?", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
