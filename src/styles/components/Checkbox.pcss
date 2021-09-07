@@ -15,9 +15,11 @@
   }
 
   &--input {
+    display: block;
     position: absolute;
     width: 0;
     height: 0;
+    max-height: 0;
     opacity: 0;
     cursor: pointer;
   }
@@ -41,12 +43,22 @@
   & > .checkbox--check-mark {
     visibility: hidden;
   }
+
+  & > .checkbox--check-box {
+    fill: transparent;
+  }
 }
 
 .checkbox input[type="checkbox"]:checked + label > .checkbox--check {
   color: $white;
   & > .checkbox--check-mark {
     visibility: visible;
+    stroke-width: 2px;
+    color: $black;
+  }
+
+  & > .checkbox--check-box {
+    fill: $white;
   }
 }
 

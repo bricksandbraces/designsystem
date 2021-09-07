@@ -47,32 +47,34 @@ export const DefaultPlainTable = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  {(object("Headers", defaultHeaders) as HeaderData).map(
-                    (header) => (
-                      <TableHeadCell key={header.key} title={header.title} />
-                    )
-                  )}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {object("Rows", defaultRows).map((row) => (
-                  <TableRow key={row.id}>
+          <div className="datatable datatable--default">
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
                     {(object("Headers", defaultHeaders) as HeaderData).map(
                       (header) => (
-                        <TableCell key={`${row.id}-${header.key}`}>
-                          {row[header.key]}
-                        </TableCell>
+                        <TableHeadCell key={header.key} title={header.title} />
                       )
                     )}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {object("Rows", defaultRows).map((row) => (
+                    <TableRow key={row.id}>
+                      {(object("Headers", defaultHeaders) as HeaderData).map(
+                        (header) => (
+                          <TableCell key={`${row.id}-${header.key}`}>
+                            {row[header.key]}
+                          </TableCell>
+                        )
+                      )}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
         </Column>
       </Grid>
     </div>

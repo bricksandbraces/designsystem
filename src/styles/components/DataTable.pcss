@@ -16,42 +16,95 @@
   &--table {
     width: 100%;
     table-layout: fixed;
+    border-spacing: 4px;
+    border-collapse: separate;
   }
 
-  &--small > table {
-    & > thead > tr,
-    > tbody > tr {
-      height: $container-02;
+  & > div > div > table {
+    & > thead > tr {
+      border-bottom: 1px solid $datatable-border;
+      & > th {
+        & > div > {
+          @mixin type--label;
+        }
+
+        border-radius: 2px;
+        outline: 0;
+        background-color: $datatable-header-background;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: $datatable-header-background-hover;
+        }
+
+        &:active {
+          background-color: $datatable-header-background-active;
+        }
+
+        &:focus-visible {
+          border-radius: 2px;
+          outline: 1px solid $focus;
+        }
+      }
     }
-  }
-
-  &--default > table {
-    & > thead > tr,
     & > tbody > tr {
-      height: $container-03;
+      background-color: $datatable-cell-background;
+      &:hover {
+        background-color: $datatable-cell-background-hover;
+      }
+      &:active {
+        background-color: $datatable-cell-background-active;
+      }
+      & > td {
+        height: $container-02;
+        min-height: $container-02;
+        max-height: $container-02;
+        padding: 0 $spacing-04;
+      }
     }
   }
 
-  &--large > table {
-    & > thead > tr,
-    & > tbody > tr {
-      height: $container-04;
-    }
-  }
-
-  & > table {
+  &--small > div > div > table {
     & > thead > tr > th,
     & > tbody > tr > td {
+      height: $container-02;
+      min-height: $container-02;
+      max-height: $container-02;
       padding: 0 $spacing-04;
+      border-radius: 2px;
+    }
+  }
+
+  &--default > div > div > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      height: $container-03;
+      min-height: $container-03;
+      max-height: $container-03;
+      padding: 0 $spacing-04;
+      border-radius: 2px;
+    }
+  }
+  &--large > div > div > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      height: $container-04;
+      min-height: $container-04;
+      max-height: $container-04;
+      padding: 0 $spacing-04;
+      border-radius: 2px;
     }
   }
 
   &--head {
     &-cell {
       &__label {
-        @mixin type--heading-00;
+        @mixin type--label;
 
         color: $datatable-header-label;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08rem;
       }
     }
   }
