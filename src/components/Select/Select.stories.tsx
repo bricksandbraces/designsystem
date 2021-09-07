@@ -18,7 +18,6 @@ export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
-        disabled
         title={text("Title", "Select title")}
         label={text("Label", "Select label")}
         size={select("Size", sizeOptions, defaultSize) as any}
