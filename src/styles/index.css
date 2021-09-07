@@ -34,6 +34,7 @@
 @import "./components/LanguageSwitch.pcss";
 @import "./components/RadioButton.pcss";
 @import "./components/FormLabel.pcss";
+@import "./components/Select.pcss";
 
 * {
   box-sizing: border-box;

@@ -166,7 +166,7 @@ const Dropdown = ({
   };
 
   return (
-    <>
+    <div className="dropdown--wrapper">
       <FormLabel htmlFor="dropdown-toggle-button">{label}</FormLabel>
       <button
         id="dropdown-toggle-button"
@@ -259,7 +259,7 @@ const Dropdown = ({
           })}
         </ul>
       </OutsideClickListener>
-    </>
+    </div>
   );
 };
 
