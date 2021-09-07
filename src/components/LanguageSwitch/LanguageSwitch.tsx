@@ -41,10 +41,7 @@ type LanguageSwitchProps = {
    */
   defaultValue?: string;
 
-  onChange?: (
-    newValue: string,
-    event: React.MouseEvent<HTMLInputElement, globalThis.MouseEvent>
-  ) => void;
+  onChange?: (newValue: string) => void;
   disabled?: boolean;
 
   /**
@@ -66,7 +63,7 @@ const LanguageSwitch = (
   ref: ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const innerRef = useRef<HTMLInputElement>(null);
   const [selectedValue, setSelectedValue] = useState<string>(
     (controlled ? value : defaultValue) ?? items[0].value
   );
@@ -80,21 +77,17 @@ const LanguageSwitch = (
     <form>
       <fieldset>
         <label className="language-switch">
-          <input
-            className="language-switch--input"
+          <div
+            ref={mergeRefs([ref, innerRef])}
             tabIndex={0}
-            ref={mergeRefs([ref, inputRef])}
-            type="select"
-            value={selectedValue}
-            id={id}
+            role="button"
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                inputRef.current?.click();
+                innerRef.current?.click();
               }
             }}
-            onChange={() => {}}
-            onClick={(event) => {
+            onClick={() => {
               const currentIndex =
                 items.findIndex((el) => el.value === selectedValue) ?? 0;
               const nextIndex =
@@ -103,29 +96,38 @@ const LanguageSwitch = (
               if (!controlled) {
                 setSelectedValue(newValue);
               }
-              onChange?.(newValue, event);
+              onChange?.(newValue);
             }}
-            {...rest}
-          />
-          <div className="language-switch--slider">
-            <div className="language-switch--lang">
-              {items.map((item, i) => {
-                return (
-                  <React.Fragment key={item.id}>
-                    <span
-                      className={cx("language-switch--lang-item", {
-                        "language-switch--lang-item__selected":
-                          selectedValue === item.value
-                      })}
-                    >
-                      {item.label}
-                    </span>
-                    {i !== items.length - 1 && (
-                      <span className="language-switch--lang-item__divider" />
-                    )}
-                  </React.Fragment>
-                );
-              })}
+          >
+            <input
+              className="language-switch--input"
+              tabIndex={-1}
+              type="select"
+              value={selectedValue}
+              id={id}
+              onChange={() => {}}
+              {...rest}
+            />
+            <div className="language-switch--slider">
+              <div className="language-switch--lang">
+                {items.map((item, i) => {
+                  return (
+                    <React.Fragment key={item.id}>
+                      <span
+                        className={cx("language-switch--lang-item", {
+                          "language-switch--lang-item__selected":
+                            selectedValue === item.value
+                        })}
+                      >
+                        {item.label}
+                      </span>
+                      {i !== items.length - 1 && (
+                        <span className="language-switch--lang-item__divider" />
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </label>
