@@ -4,7 +4,12 @@
 .dropdown {
   @mixin type--body-small;
 
-  display: flex;
+  &--wrapper {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  display: inline-flex;
   position: relative;
   align-items: center;
   justify-content: space-between;

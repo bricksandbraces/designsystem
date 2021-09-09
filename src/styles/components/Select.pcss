@@ -1,0 +1,121 @@
+@import "../../styles/theme.pcss";
+@import "../../styles/typography.pcss";
+
+.select {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+
+  &--input {
+    &-wrapper {
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+    }
+
+    &-icon {
+      position: absolute;
+      right: $spacing-04;
+      color: $select-font;
+    }
+
+    @mixin type--body-small;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 48px 0 16px;
+    overflow: hidden;
+    transition: $transition-01;
+    border: 1px solid $select-border;
+    border-radius: $border-radius-2;
+    outline: 0;
+    background-color: $select-background;
+    color: $select-font;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:hover {
+      background-color: $select-hover;
+    }
+
+    &:active {
+      background-color: $select-active;
+    }
+
+    &:focus-visible {
+      border-color: $select-focus;
+    }
+
+    &:disabled {
+      & + .select--input-icon {
+        color: $select-disabled-text;
+        pointer-events: none;
+      }
+
+      border-color: $select-disabled-container;
+      background-color: $select-disabled-container;
+      color: $select-disabled-text;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: $select-disabled-container;
+      }
+
+      &:active {
+        background-color: $select-disabled-container;
+      }
+    }
+  }
+
+  &--default {
+    height: $container-03;
+  }
+
+  &--large {
+    height: $container-04;
+  }
+
+  &--small {
+    height: $container-02;
+  }
+
+  &--error {
+    border-color: $textinput-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textinput-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+}
