@@ -1,18 +1,39 @@
-import React, { ReactNode } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import FormLabel from "../FormLabel/FormLabel";
+import useControlled from "../../hooks/useControlled";
+
+type SelectOptionGroup = { group: string; options: SelectOption[] };
+
+type SelectOption = {
+  value: string;
+  text: string;
+};
 
 type SelectProps = {
+  /** Options data for the selectable items */
+  options: (SelectOption | SelectOptionGroup)[];
+
+  /**
+   * Controlled selected value
+   */
+  value?: string;
+
+  /**
+   * Uncontrolled default selected value
+   */
+  defaultValue?: string;
+
+  /**
+   * onChange with new value
+   */
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+
   /**
    * React className
    */
   className?: string;
-
-  /**
-   * React className
-   */
-  children?: ReactNode;
 
   /**
    * Select size
@@ -40,25 +61,44 @@ type SelectProps = {
    */
   warning?: boolean;
   warningText?: string;
-
-  /**
-   * Select title
-   */
-  title: string;
 };
 
 const Select = ({
-  children,
   size,
   label,
   className,
-  title,
   error,
   errorText,
   warning,
   warningText,
-  disabled
+  disabled,
+  options,
+  value,
+  defaultValue,
+  onChange
 }: SelectProps) => {
+  const controlled = useControlled(value);
+  const [selectedValue, setSelectedValue] = useState<string>(
+    (controlled ? value : defaultValue) ?? (options[0] as SelectOption).value
+  );
+  useEffect(() => {
+    if (controlled) {
+      setSelectedValue(value ?? "");
+    }
+  }, [value]);
+
+  const renderOption = (option: SelectOption) => {
+    return (
+      <option
+        key={option.value}
+        value={option.value}
+        selected={option.value === selectedValue}
+      >
+        {option.text}
+      </option>
+    );
+  };
+
   return (
     <div className={cx("select", className)}>
       <FormLabel htmlFor="select-toggle-button">{label}</FormLabel>
@@ -70,9 +110,27 @@ const Select = ({
           })}
           id="select-toggle-button"
           disabled={disabled}
+          onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+            if (!controlled) {
+              setSelectedValue(event.target.value);
+            }
+            onChange?.(event);
+          }}
         >
-          <option value="">{title}</option>
-          {children}
+          {options.map((option) => {
+            if ((option as SelectOptionGroup).group != null) {
+              const optionGroup = option as SelectOptionGroup;
+              return (
+                <optgroup
+                  key={`${optionGroup.group}-group`}
+                  label={optionGroup.group}
+                >
+                  {optionGroup.options.map(renderOption)}
+                </optgroup>
+              );
+            }
+            return renderOption(option as SelectOption);
+          })}
         </select>
         <svg
           className="select--input-icon"

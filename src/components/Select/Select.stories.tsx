@@ -1,8 +1,6 @@
-import { select, text, withKnobs } from "@storybook/addon-knobs";
-import React from "react";
+import { object, select, text, withKnobs } from "@storybook/addon-knobs";
+import React, { useState } from "react";
 import Select from "./Select";
-import SelectItem from "./SelectItem";
-import SelectItemGroup from "./SelectItemGroup";
 
 export default { title: "Components/Select", decorators: [withKnobs] };
 
@@ -14,25 +12,47 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
+const options = [
+  { value: "", text: "Please select an option" },
+  { value: "coffee", text: "Coffee" },
+  {
+    group: "With Milk",
+    options: [
+      { value: "latte macchiato", text: "Latte Macchiato" },
+      { value: "cappucino", text: "Cappucino" }
+    ]
+  },
+  { value: "espresso", text: "Espresso" }
+];
+
 export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
-        title={text("Title", "Select title")}
-        label={text("Label", "Select label")}
+        label={text("Label", "Label")}
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-      >
-        <SelectItem value="option-1" text="Option 1" />
-        <SelectItem value="option-2" text="Option 2" />
-        <SelectItem value="option-3" text="Option 3" />
-        <SelectItemGroup label="Opt Group">
-          <SelectItem value="option-4" text="Option 4" />
-          <SelectItem value="option-5" text="Option 5" />
-          <SelectItem value="option-6" text="Option 6" />
-        </SelectItemGroup>
-      </Select>
+        options={object("Options", options) as any}
+        defaultValue="cappucino"
+      />
+    </div>
+  );
+};
+
+export const Controlled = () => {
+  const [value, setValue] = useState("espresso");
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <Select
+        label={text("Label", "Label")}
+        size={select("Size", sizeOptions, defaultSize) as any}
+        warningText={text("warningText", "")}
+        errorText={text("errorText", "")}
+        options={object("Options", options) as any}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
     </div>
   );
 };
