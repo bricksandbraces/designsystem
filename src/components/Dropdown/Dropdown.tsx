@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -20,12 +20,12 @@ type DropdownItem = {
   /**
    * Dropdown Value
    */
-  value?: string;
+  value: string;
 
   /**
    * Checkbox Label
    */
-  text?: string;
+  text: string;
 
   /**
    * Disabled item
@@ -77,24 +77,29 @@ type DropdownProps = {
   items: DropdownItem[];
 
   /**
-   * Controlled index of the selected dropdown item
+   * Controlled value of the selected dropdown item
    */
-  selectedIndex?: number;
+  value?: string | null;
 
   /**
-   * Uncontrolled default index of the selected dropdown item
+   * Uncontrolled default value of the selected dropdown item
    */
-  defaultSelectedIndex?: number;
+  defaultValue?: string | null;
 
   /**
    * OnChange Function for listeners or value change requests in controlled mode
    */
-  onChange?: (newSelectedIndex: number | null) => void;
+  onChange?: (
+    newValue: string | null,
+    event:
+      | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      | React.KeyboardEvent<HTMLDivElement>
+  ) => void;
 };
 
 const Dropdown = ({
-  selectedIndex,
-  defaultSelectedIndex,
+  value,
+  defaultValue,
   onChange,
   size,
   label,
@@ -107,41 +112,44 @@ const Dropdown = ({
   warningText,
   disabled
 }: DropdownProps) => {
-  const controlled = useControlled(selectedIndex);
+  const controlled = useControlled(value);
 
   const ulRef = useRef<HTMLUListElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
-  const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(
-    // eslint-disable-next-line no-nested-ternary
-    selectedIndex != null || defaultSelectedIndex != null
-      ? controlled
-        ? items[selectedIndex as number]
-        : items[defaultSelectedIndex as number]
-      : null
+  const [selectedValue, setSelectedValue] = useState<string | null>(
+    (controlled ? value : defaultValue) ?? null
   );
+  const selectedText =
+    items.filter((el) => el.value === selectedValue)[0]?.text ?? "";
   const [open, setOpen] = useState(false);
 
-  const selectIndex = (index: number | null) => {
+  const selectValue = (
+    newValue: string | null,
+    event:
+      | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      | React.KeyboardEvent<HTMLDivElement>
+  ) => {
     if (!controlled) {
-      setSelectedItem(index == null ? null : items[index]);
+      setSelectedValue(newValue);
     }
-    onChange?.(index);
+    onChange?.(newValue, event);
   };
 
   useEffect(() => {
     if (controlled) {
-      setSelectedItem(selectedIndex == null ? null : items[selectedIndex]);
+      setSelectedValue(value ?? null);
     }
-  }, [selectedIndex]);
+  }, [value]);
 
   const focusListItem = (index: number) => {
     (ulRef.current?.children[index].children[0] as HTMLDivElement).focus();
   };
 
   const handleKeyPressOnItem = (
-    event: React.KeyboardEvent,
+    event: React.KeyboardEvent<HTMLDivElement>,
     key: string,
+    valueToSelect: string,
     i: number
   ) => {
     if (key === "ArrowUp" || key === "ArrowDown") {
@@ -160,7 +168,7 @@ const Dropdown = ({
       setOpen(false);
       btnRef.current?.focus();
     } else if (key === " " || key === "Enter") {
-      selectIndex(i);
+      selectValue(valueToSelect, event);
       btnRef.current?.focus();
     }
   };
@@ -190,9 +198,9 @@ const Dropdown = ({
           type="span"
           token="body-small"
           className="dropdown--title"
-          title={selectedItem?.text}
+          title={selectedText}
         >
-          {selectedItem == null ? title : selectedItem?.text}
+          {selectedValue == null ? title : selectedText}
         </Typography>
         <IconChevronDown
           size={16}
@@ -231,8 +239,7 @@ const Dropdown = ({
                 key={item.value}
                 className={cx(`dropdown--menu-item dropdown--${size}`, {
                   "dropdown--menu-item__disabled": item.disabled,
-                  "dropdown--menu-item__selected":
-                    selectedItem?.value === item.value
+                  "dropdown--menu-item__selected": selectedValue === item.value
                 })}
                 id={item.id}
                 value={item.value}
@@ -242,12 +249,12 @@ const Dropdown = ({
                   role="button"
                   className="dropdown--menu-item__interactible"
                   tabIndex={item.disabled || !open ? -1 : 0}
-                  onClick={() => {
-                    selectIndex(i);
+                  onClick={(event) => {
+                    selectValue(item.value, event);
                     setOpen(false);
                   }}
-                  onKeyDown={(event: React.KeyboardEvent) =>
-                    handleKeyPressOnItem(event, event.key, i)
+                  onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) =>
+                    handleKeyPressOnItem(event, event.key, item.value, i)
                   }
                 >
                   <div className="dropdown--menu-item__text" role="button">
