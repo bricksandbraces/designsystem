@@ -20,7 +20,7 @@ export const Uncontrolled = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <Avatar
             size={select("Size", sizeOptions, defaultSize) as any}
-            userCount={number("Number", 3)}
+            userCount={number("userCount", 3)}
             avatarItems={object("Avatars", [
               {
                 id: "1",
