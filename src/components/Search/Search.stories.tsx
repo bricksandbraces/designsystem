@@ -22,7 +22,7 @@ export const Default = () => {
   return (
     <div style={{ padding: "32px" }}>
       <Search
-        id={text("id", "search-1")}
+        id={text("id", "search-1") as any}
         showResults={boolean("Show Results", false)}
         searchRecentItems={object("Recent Items", [
           { href: "#", label: "User profile" },
