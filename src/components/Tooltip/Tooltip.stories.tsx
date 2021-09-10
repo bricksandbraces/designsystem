@@ -1,4 +1,4 @@
-import { text, select, withKnobs } from "@storybook/addon-knobs";
+import { text, select, withKnobs, boolean } from "@storybook/addon-knobs";
 import React from "react";
 import Tooltip from "./Tooltip";
 
@@ -26,6 +26,7 @@ export const Default = () => {
       }}
     >
       <Tooltip
+        withCaret={boolean("withCaret", false)}
         position={
           select("Tooltip position", positioning, defaultPosition) as any
         }

@@ -8,15 +8,31 @@
     align-items: center;
     justify-content: center;
     color: $tooltip-font;
+  }
 
+  &--disabled {
     &:hover > .tooltip--text {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &--visible {
+    &-hover {
+      &:hover > .tooltip--text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    & > .tooltip--text {
       visibility: visible;
       opacity: 1;
     }
   }
 
   &--text {
-    @mixin type--body-small;
+    @mixin type--label;
 
     display: inline-flex;
     visibility: hidden;
@@ -25,7 +41,7 @@
     flex-wrap: nowrap;
     align-items: center;
     width: max-content;
-    height: $container-02;
+    height: $container-01;
     padding: 0 12px;
     transition: $transition-01;
     border: $border $tooltip-border;
@@ -36,119 +52,106 @@
     text-align: center;
     white-space: nowrap;
     user-select: none;
+
+    &.tooltip--caret {
+      @mixin type--body-small;
+
+      height: $container-02;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border: $border $tooltip-border;
+        border-radius: $border-radius-2;
+        background-color: $tooltip-background;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        border: $border transparent;
+        background-color: $tooltip-background;
+      }
+    }
   }
 
   &--bottom {
     top: 48px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: -4px;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      transform: translate(-50%) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 12px;
-      height: 5px;
-      transform: translate(-50%);
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
   }
 
   &--top {
     bottom: 48px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      transform: translate(-50%) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 12px;
-      height: 5px;
-      transform: translate(-50%);
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
   }
 
   &--left {
     right: calc(100% + 24px);
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 40%;
-      right: -4px;
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 5px;
-      height: 30px;
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
   }
 
   &--right {
     left: calc(100% + 24px);
+  }
+}
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 40%;
-      left: -4px;
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
+.tooltip--caret.tooltip--bottom {
+  &::before {
+    top: -4px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+  }
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 30px;
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
+  &::after {
+    top: 0;
+    left: 50%;
+    width: 12px;
+    height: 5px;
+    transform: translate(-50%);
+  }
+}
+
+.tooltip--caret.tooltip--top {
+  &::before {
+    bottom: -4px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+  }
+
+  &::after {
+    bottom: 0;
+    left: 50%;
+    width: 12px;
+    height: 5px;
+    transform: translate(-50%);
+  }
+}
+
+.tooltip--caret.tooltip--left {
+  &::before {
+    top: 40%;
+    right: -4px;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 30px;
+  }
+}
+
+.tooltip--caret.tooltip--right {
+  &::before {
+    top: 40%;
+    left: -4px;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 30px;
   }
 }

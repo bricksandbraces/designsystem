@@ -22,6 +22,10 @@
     color: $white;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &--small {
     min-height: $container-02;
     max-height: $container-02;
@@ -146,7 +150,6 @@
   border: $border $disabled-container;
   background-color: $disabled-container;
   color: $disabled-text;
-  pointer-events: none;
 }
 
 .button.button--tertiary.button--disabled,

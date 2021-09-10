@@ -21,6 +21,11 @@ export type CopyButtonProps = {
   tooltipLabel: string;
 
   /**
+   * Label of Button
+   */
+  label: string;
+
+  /**
    * Sets the timeout after which the tooltip should hide.
    */
   timeout?: number;
@@ -38,8 +43,9 @@ export type CopyButtonProps = {
 
 const CopyButton = ({
   tooltipPosition,
-  tooltipLabel,
+  tooltipLabel = "Copied",
   onClick,
+  label = "Copy",
   className,
   timeout,
   valueToCopy
@@ -47,40 +53,32 @@ const CopyButton = ({
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
-    <div
+    <Button
       className={cx(
         "copybutton",
         { "copybutton--copied": showState },
         className
       )}
+      showTooltip
+      withCaret
+      tooltipOpen={showState}
+      tooltipPosition={tooltipPosition}
+      tooltipLabel={tooltipLabel}
+      kind="secondary"
+      size="small"
+      renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
+      onClick={(event) => {
+        setShowState(true);
+        copyToClipboard(valueToCopy);
+        setTimeout(() => {
+          setShowState(false);
+        }, timeout ?? 2000);
+        onClick?.(event);
+      }}
     >
-      <Button
-        kind="secondary"
-        size="small"
-        renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
-        onClick={(event) => {
-          setShowState(true);
-          copyToClipboard(valueToCopy);
-          setTimeout(() => {
-            setShowState(false);
-          }, timeout ?? 2000);
-          onClick?.(event);
-        }}
-      >
-        {showState && <IconCheck size={16} color="#7FD55D" />}
-        <span>Copy</span>
-      </Button>
-      <span
-        className={cx("tooltip--text", {
-          "tooltip--top": tooltipPosition === "top",
-          "tooltip--bottom": tooltipPosition === "bottom",
-          "tooltip--left": tooltipPosition === "left",
-          "tooltip--right": tooltipPosition === "right"
-        })}
-      >
-        {tooltipLabel}
-      </span>
-    </div>
+      {showState && <IconCheck size={16} color="#7FD55D" />}
+      <span>{label}</span>
+    </Button>
   );
 };
 

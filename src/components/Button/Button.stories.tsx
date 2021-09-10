@@ -23,17 +23,26 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
+const iconOptions = {
+  NoIcon: "",
+  IconOnly: "only",
+  Right: "right",
+  Left: "left"
+};
+
+const defaultIcon = "";
+
 export const Default = () => (
-  <div style={{ width: "100vw", height: "100vh" }}>
+  <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
       <Button
         kind={select("Kind", options, defaultValue) as any}
-        renderIcon={<IconLayoutGridAdd />}
         size={select("Size", sizeOptions, defaultSize) as any}
+        icon={select("Icon", iconOptions, defaultIcon) as any}
+        showTooltip={boolean("show Tooltip", false)}
+        tooltipLabel={text("Tooltip Label", "Label")}
         fluid={boolean("Fluid", false)}
-        withIconRight={boolean("with Icon right", false)}
-        withIconLeft={boolean("with Icon left", false)}
-        iconOnly={boolean("Icon only", false)}
+        renderIcon={<IconLayoutGridAdd />}
         isLoading={boolean("is Loading?", false)}
         disabled={boolean("Disabled", false)}
       >
