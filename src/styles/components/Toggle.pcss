@@ -1,0 +1,93 @@
+@import "../typography.pcss";
+@import "../theme.pcss";
+
+.toggle {
+  display: inline-flex;
+  min-height: 1rem;
+  margin-bottom: 0.25rem;
+  color: $toggle-font;
+
+  &--label {
+    @mixin type--body-small;
+
+    display: inline-flex;
+    cursor: pointer;
+  }
+
+  &--input {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    max-height: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &--checked {
+    width: 8px;
+    height: 8px;
+    margin-left: 5px;
+    stroke-width: 3px;
+  }
+
+  &--switch {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    width: $container-02;
+    min-width: $container-02;
+    height: $container-00;
+    min-height: $container-00;
+    margin-right: $spacing-04;
+    transform: translate(2px, 2px);
+    transition: background-color $transition-01;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background-color: white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      transition: transform $transition-01;
+      border-radius: 50%;
+      background-color: $warm-gray-80;
+    }
+  }
+}
+
+/* Switch */
+
+.toggle input[type="checkbox"] + label > .toggle--switch {
+  background-color: $toggle;
+}
+
+.toggle input[type="checkbox"]:checked + label > .toggle--switch {
+  background-color: $toggle-checked;
+
+  &::before {
+    transform: translateX(16px);
+    background-color: $white;
+  }
+}
+
+/* Disabled */
+
+.toggle--input[type="checkbox"]:disabled + label {
+  color: $toggle-disabled;
+  cursor: not-allowed;
+
+  & > .toggle--switch {
+    background-color: $toggle-disabled;
+
+    &::before {
+      background-color: $warm-gray-40;
+    }
+  }
+}
+
+.toggle--input[type="checkbox"]:focus-visible + .toggle--label > span {
+  border: 1px solid $focus;
+}

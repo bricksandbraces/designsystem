@@ -35,6 +35,7 @@
 @import "./components/RadioButton.pcss";
 @import "./components/FormLabel.pcss";
 @import "./components/Select.pcss";
+@import "./components/Toggle.pcss";
 
 * {
   box-sizing: border-box;
