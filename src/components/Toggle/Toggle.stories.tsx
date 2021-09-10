@@ -1,6 +1,5 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Checkbox from "../Checkbox/Checkbox";
 import Typography from "../Typography/Typography";
 import Toggle from "./Toggle";
 
