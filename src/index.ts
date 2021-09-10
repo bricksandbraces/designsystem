@@ -35,6 +35,7 @@ import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
 import FormLabel from "./components/FormLabel/FormLabel";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
+import Skeleton from "./components/Skeleton/Skeleton";
 
 export {
   Button,
@@ -74,5 +75,7 @@ export {
   RadioButton,
   RadioButtonGroup,
   FormLabel,
-  Select
+  Select,
+  Toggle,
+  Skeleton
 };
