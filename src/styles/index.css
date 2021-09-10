@@ -37,6 +37,7 @@
 @import "./components/Select.pcss";
 @import "./components/Toggle.pcss";
 @import "./components/Skeleton.pcss";
+@import "./components/Avatar.pcss";
 
 * {
   box-sizing: border-box;

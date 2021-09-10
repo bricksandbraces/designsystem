@@ -36,6 +36,7 @@ import FormLabel from "./components/FormLabel/FormLabel";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/Skeleton";
+import Avatar from "./components/Avatar/Avatar";
 
 export {
   Button,
@@ -77,5 +78,6 @@ export {
   FormLabel,
   Select,
   Toggle,
-  Skeleton
+  Skeleton,
+  Avatar
 };
