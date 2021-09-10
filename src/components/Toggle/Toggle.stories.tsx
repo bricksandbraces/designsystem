@@ -15,11 +15,6 @@ export const Default = () => {
           id="checkbox"
           value="c1"
         />
-        <Checkbox
-          label={text("Label", "Toggle label")}
-          id="checkbox 1"
-          value="c3"
-        />
         <Toggle
           label={text("Label", "Toggle label")}
           id="checkbox-2"
