@@ -11,16 +11,17 @@ const positioning = {
   Bottom: "bottom"
 };
 
-const defaultPosition = "top";
+const defaultPosition = "bottom";
 
 export const Default = () => {
   const valueToCopy = "Lynxes are awesome";
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <span style={{ display: "flex", alignItems: "center" }}>
         <span style={{ paddingRight: "24px" }}>{valueToCopy}</span>
         <CopyButton
-          tooltipLabel={text("Label", "Copied!")}
+          tooltipLabel={text("Tooltip Label", "Copied!")}
+          label={text("Button Label", "Copy")}
           tooltipPosition={
             select("Positioning", positioning, defaultPosition) as any
           }

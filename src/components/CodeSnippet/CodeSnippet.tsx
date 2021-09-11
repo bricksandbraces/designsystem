@@ -30,10 +30,11 @@ const CodeSnippet = ({
       <div className="codesnippet--container-overlay" />
       <CopyButton
         valueToCopy={code}
+        label="Copy"
         tooltipPosition="bottom"
         onClick={() => {}}
         tooltipLabel="Copied!"
-        className={cx("codesnippet--container-button", {
+        wrapperClassName={cx("codesnippet--container-button", {
           "codesnippet--container-button__inline": inline
         })}
       />
