@@ -27,7 +27,7 @@ export const Default = () => (
   <div style={{ width: "100vw", height: "100vh" }}>
     <div style={{ width: "405px" }}>
       <Button
-        kind={select("Kind", options, defaultValue)}
+        kind={select("Kind", options, defaultValue) as any}
         renderIcon={<IconLayoutGridAdd />}
         size={select("Size", sizeOptions, defaultSize) as any}
         fluid={boolean("Fluid", false)}

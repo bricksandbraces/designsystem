@@ -43,7 +43,9 @@ type LanguageSwitchProps = {
 
   onChange?: (
     newValue: string,
-    event: React.MouseEvent<HTMLInputElement, globalThis.MouseEvent>
+    event:
+      | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      | React.KeyboardEvent
   ) => void;
   disabled?: boolean;
 
@@ -76,38 +78,47 @@ const LanguageSwitch = (
     }
   }, [value]);
 
+  const handleClick = (
+    event:
+      | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      | React.KeyboardEvent
+  ) => {
+    const currentIndex =
+      items.findIndex((el) => el.value === selectedValue) ?? 0;
+    const nextIndex = currentIndex === items.length - 1 ? 0 : currentIndex + 1;
+    const newValue = items[nextIndex].value;
+    if (!controlled) {
+      setSelectedValue(newValue);
+    }
+    onChange?.(newValue, event);
+  };
+
   return (
     <form>
       <fieldset>
         <label className="language-switch">
           <input
             className="language-switch--input"
-            tabIndex={0}
+            tabIndex={-1}
             ref={mergeRefs([ref, inputRef])}
-            type="select"
+            type="hidden"
             value={selectedValue}
             id={id}
+            {...rest}
+          />
+          <div
+            className="language-switch--slider"
+            tabIndex={0}
+            role="button"
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                inputRef.current?.click();
+                handleClick(event);
               }
             }}
             onChange={() => {}}
-            onClick={(event) => {
-              const currentIndex =
-                items.findIndex((el) => el.value === selectedValue) ?? 0;
-              const nextIndex =
-                currentIndex === items.length - 1 ? 0 : currentIndex + 1;
-              const newValue = items[nextIndex].value;
-              if (!controlled) {
-                setSelectedValue(newValue);
-              }
-              onChange?.(newValue, event);
-            }}
-            {...rest}
-          />
-          <div className="language-switch--slider">
+            onClick={handleClick}
+          >
             <div className="language-switch--lang">
               {items.map((item, i) => {
                 return (

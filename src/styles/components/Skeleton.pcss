@@ -1,0 +1,48 @@
+@import "../theme.pcss";
+
+@keyframes loading {
+  0%,
+  100% {
+    background-color: $skeleton-01;
+  }
+
+  50% {
+    background-color: $skeleton-02;
+  }
+}
+
+.skeleton {
+  width: 128px;
+  animation: loading $transition-04 infinite;
+  border-radius: 2px;
+
+  &--default {
+    height: $container-03;
+  }
+
+  &--large {
+    height: $container-04;
+  }
+
+  &--small {
+    height: $container-02;
+  }
+
+  &--circle.skeleton--small {
+    width: $container-02;
+    height: $container-02;
+    border-radius: 50%;
+  }
+
+  &--circle.skeleton--default {
+    width: $container-03;
+    height: $container-03;
+    border-radius: 50%;
+  }
+
+  &--circle.skeleton--large {
+    width: $container-04;
+    height: $container-04;
+    border-radius: 50%;
+  }
+}

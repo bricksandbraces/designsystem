@@ -55,7 +55,6 @@ export const Uncontrolled = () => {
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        defaultSelectedIndex={3}
         items={object("Items", sampleItemConfig)}
       />
     </div>
@@ -63,7 +62,7 @@ export const Uncontrolled = () => {
 };
 
 export const Controlled = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Dropdown
@@ -73,9 +72,9 @@ export const Controlled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         items={object("Items", sampleItemConfig)}
-        selectedIndex={selectedIndex}
-        onChange={(newIndex) => {
-          setSelectedIndex(newIndex ?? 0);
+        value={selectedValue}
+        onChange={(newValue) => {
+          setSelectedValue(newValue);
         }}
       />
     </div>

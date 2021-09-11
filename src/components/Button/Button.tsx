@@ -10,7 +10,7 @@ export type ButtonProps = {
   children?: ReactNode;
 
   /** Specify button kind */
-  kind?: string;
+  kind?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
 
   /** Specify if inline or not */
   inline?: boolean;
