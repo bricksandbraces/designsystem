@@ -9,17 +9,15 @@ Awesome designsystem for the Bricks & Braces brand.
 At first, install the dependencies:
 
 ```bash
-yarn add bootstrap @openbricksandbraces/designsystem
+yarn add @openbricksandbraces/designsystem
 ```
 
 Then, import the styles from your main / application component (App.tsx on create-react-app):
 
 ```javascript
 import React from 'react';
-// Look, first import bootstrap, then bricksandbraces styles
-import "bootstrap/dist/css/bootstrap.min.css"
-import "@openbricksandbraces/designsystem/lib/styles/dist/index.css"
 
+import "@openbricksandbraces/designsystem/lib/styles/dist/index.css"
 import './App.css';
 ...
 ```
@@ -73,13 +71,13 @@ At first, install husky using `yarn husky install`.
 
 To start storybook and show all components, simply run:
 
-```
+```bash
 yarn storybook
 ```
 
 ### Other commands
 
-```
+```bash
 yarn test
 yarn format:check
 yarn format:fix

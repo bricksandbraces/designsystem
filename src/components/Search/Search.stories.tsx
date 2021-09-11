@@ -37,7 +37,7 @@ export const SearchInputWithSubmit = () => {
 export const SearchInputWithoutSubmit = () => {
   return (
     <div style={{ padding: "32px" }}>
-      <SearchInput id="search-1" label="Search" withSubmit={false} />
+      <SearchInput id="search-2" label="Search" withSubmit={false} />
     </div>
   );
 };

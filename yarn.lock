@@ -2054,7 +2054,6 @@ __metadata:
     "@storybook/react": ^6.3.7
     "@storybook/theming": ^6.3.7
     "@tabler/icons": ^1.41.2
-    "@types/bootstrap": ^5.1.0
     "@types/enzyme": ^3.10.9
     "@types/jest": ^27.0.0
     "@types/node": ^16.4.14
@@ -2067,7 +2066,6 @@ __metadata:
     "@wojtekmaj/enzyme-adapter-react-17": ^0.6.3
     autoprefixer: ^10.3.1
     babel-loader: ^8.2.2
-    bootstrap: ^5.1.0
     classnames: ^2.3.1
     copyfiles: ^2.4.1
     cssnano: ^5.0.7
@@ -2169,7 +2167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0, @popperjs/core@npm:^2.9.2, @popperjs/core@npm:^2.9.3":
+"@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0, @popperjs/core@npm:^2.9.3":
   version: 2.9.3
   resolution: "@popperjs/core@npm:2.9.3"
   checksum: cf7381686820f04cb75aacef5373bac43b9b33eaea3387203650c3a89150dc407caf2e0c637184b2f82d83bba352a297d5a3569d1784158593a1e6e2a2af12a2
@@ -3580,16 +3578,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bootstrap@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@types/bootstrap@npm:5.1.0"
-  dependencies:
-    "@popperjs/core": ^2.9.2
-    "@types/jquery": "*"
-  checksum: 34614d2fa39d38b13d49d8eb81a50c4b69842c0c2f83c349afb0530aea313cd5527d6bdb57e8c85ec4e2e1671bd3845dfcc8fd6aa8d616aa30b3292694472aec
-  languageName: node
-  linkType: hard
-
 "@types/braces@npm:*":
   version: 3.0.1
   resolution: "@types/braces@npm:3.0.1"
@@ -3740,15 +3728,6 @@ __metadata:
     jest-diff: ^26.0.0
     pretty-format: ^26.0.0
   checksum: 4cfc87d4538f75ed804ab11bffa2a78b80c9aed2896904d45172a9447ded52a697f2ef0c4c4d9762057f0d3592a3773fa9fdb98cde0fc12f3ec4a2e4b0d512db
-  languageName: node
-  linkType: hard
-
-"@types/jquery@npm:*":
-  version: 3.5.6
-  resolution: "@types/jquery@npm:3.5.6"
-  dependencies:
-    "@types/sizzle": "*"
-  checksum: b59c43f42ad94cb428c8708e1c0e9589a4e2cf8ca38a34528630081de2b715f0760d02e73171934896573a6e817c45c9ded725ae13e9f8d33509f67ae4f1bd01
   languageName: node
   linkType: hard
 
@@ -3970,13 +3949,6 @@ __metadata:
   version: 0.16.2
   resolution: "@types/scheduler@npm:0.16.2"
   checksum: e78d1bb50ca9321a76826c0f5a5ed7f1b6e995597127993cad658bd18d7f7de4324cd7efdfd0140079ee212a05774bbbd95eecfdf72370d14023acb99b841a30
-  languageName: node
-  linkType: hard
-
-"@types/sizzle@npm:*":
-  version: 2.3.3
-  resolution: "@types/sizzle@npm:2.3.3"
-  checksum: 8f019f9e1b110b4fdfc08f8a3a8b8b87118a11f3ba11e159541b17f17498c0ef95e8efa0b818c9fed6911041f6b71ef8d44cf8c1c83b4cbb7bd14e4248892f4c
   languageName: node
   linkType: hard
 
@@ -5663,15 +5635,6 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: e827963c416fdb1dbcd57e066a43c40829518f4dcdc9f58ed04519daeebb610adacbb6cf102518bda9f08be593c5b1b49a83e36bf6b7d91b3403f7e35510eeae
-  languageName: node
-  linkType: hard
-
-"bootstrap@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "bootstrap@npm:5.1.0"
-  peerDependencies:
-    "@popperjs/core": ^2.9.3
-  checksum: 0400dfa3e07726e07131d9fbc0b14acb2a602fd4ba17ef9bd32758b588a120419b61c1569efa3751a18c57beea9d1c386d487e001224aba82f0e3e032b92f136
   languageName: node
   linkType: hard
 
