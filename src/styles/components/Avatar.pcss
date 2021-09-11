@@ -1,15 +1,33 @@
 @import "../theme.pcss";
 
 .avatar {
-  overflow: hidden;
-  border-radius: 50%;
-  box-shadow: rgb(0, 0, 0) 0 0 0 2px, rgba(0, 0, 0, 0.25) 4px 0 6px 2px;
+  position: relative;
+  background-color: transparent;
+
+  &--container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform $transition-01, filter $transition-01;
+    border-radius: 50%;
+    box-shadow: $avatar-border 0 0 0 1px, $avatar-border 0 0 4px 2px;
+
+    &:hover {
+      transform: scale(1.025);
+      filter: brightness(0.75);
+    }
+  }
 
   &--default {
     width: $container-03;
     max-width: $container-03;
     height: $container-03;
     max-height: $container-03;
+
+    & > .avatar--status {
+      width: calc($container-03 / 4);
+      height: calc($container-03 / 4);
+    }
   }
 
   &--large {
@@ -17,6 +35,11 @@
     max-width: $container-04;
     height: $container-04;
     max-height: $container-04;
+
+    & > .avatar--status {
+      width: calc($container-04 / 4);
+      height: calc($container-04 / 4);
+    }
   }
 
   &--small {
@@ -24,6 +47,11 @@
     max-width: $container-02;
     height: $container-02;
     max-height: $container-02;
+
+    & > .avatar--status {
+      width: calc($container-02 / 4);
+      height: calc($container-02 / 4);
+    }
   }
 
   &--img {
@@ -40,12 +68,44 @@
     color: $avatar-icon;
   }
 
+  &--status {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-2px, 0);
+    border-radius: 50%;
+
+    &-active {
+      background-color: $success;
+    }
+
+    &-inactive {
+      background-color: $warm-gray-30;
+    }
+  }
+
   &--list {
+    
+  }
+
+  &--group {
     display: inline-flex;
     align-items: center;
     margin: 0;
     padding: 0;
     list-style: none;
+
+    &-usercount {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 50%;
+
+      & > span {
+        color: $white;
+      }
+    }
 
     &-item {
       &:nth-child(1) {

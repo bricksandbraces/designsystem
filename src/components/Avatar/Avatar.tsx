@@ -1,9 +1,19 @@
-import { IconUser } from "@tabler/icons";
 import React from "react";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
+import { IconUser } from "@tabler/icons";
 
-type AvatarItem = {
+type AvatarProps = {
+  /**
+   * Classnames for the parent element
+   */
+  className?: string;
+
+  /** Avatar size */
+  size?: "large" | "default" | "small";
+
+  /** Avatar status */
+  status?: "active" | "inactive";
+
   /**
    * Id
    */
@@ -20,91 +30,29 @@ type AvatarItem = {
   imgUrl?: string;
 };
 
-type AvatarProps = {
-  /**
-   * Type
-   */
-  type?: "single" | "multiple";
-
-  /**
-   * Classnames for the parent element
-   */
-  className?: string;
-
-  /**
-   * User Count
-   */
-  userCount?: number;
-
-  /** Avatar size */
-  size?: "large" | "default" | "small";
-
-  /** Avatar size */
-  avatarItems: AvatarItem[];
-};
-
 const Avatar = ({
-  type = "single",
-  avatarItems,
   size = "default",
   className,
-  userCount
+  name,
+  status,
+  id,
+  imgUrl
 }: AvatarProps) => {
-  const calculatedUserCount = userCount && userCount - 3;
   return (
-    <>
-      {type === "single" ? (
-        <div
-          className={cx(`avatar avatar--${type} avatar--${size}`, className)}
-        >
-          <img
-            src="https://randomuser.me/api/portraits/women/49.jpg"
-            className="avatar--img"
-            alt="Linda"
-          />
-        </div>
-      ) : (
-        <ul className="avatar--list">
-          {avatarItems
-            .map((avatar) => {
-              return (
-                <li key={avatar.id} className="avatar--list-item">
-                  <div
-                    className={cx(
-                      `avatar avatar--${type} avatar--${size}`,
-                      className
-                    )}
-                  >
-                    {avatar.imgUrl ? (
-                      <img
-                        src={avatar.imgUrl}
-                        className="avatar--img"
-                        alt={avatar.name}
-                      />
-                    ) : (
-                      <div className="avatar--icon">
-                        <IconUser size={20} />
-                      </div>
-                    )}
-                  </div>
-                </li>
-              );
-            })
-            .slice(0, 3)}
-          {userCount && userCount > 3 && (
-            <li className="avatar--list-item">
-              <Typography
-                token="body-small"
-                type="span"
-                className="avatar--usercount"
-              >
-                + {calculatedUserCount}
-              </Typography>
-            </li>
-          )}
-        </ul>
+    <div className={cx(`avatar avatar--${size}`, className)}>
+      {status && (
+        <span className={cx("avatar--status", `avatar--status-${status}`)} />
       )}
-    </>
+      <div className="avatar--container">
+        {imgUrl ? (
+          <img id={id} src={imgUrl} className="avatar--img" alt={name} />
+        ) : (
+          <span className="avatar--icon">
+            <IconUser />
+          </span>
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -37,6 +37,7 @@ import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/Skeleton";
 import Avatar from "./components/Avatar/Avatar";
+import AvatarGroup from "./components/Avatar/AvatarGrpup";
 
 export {
   Button,
@@ -79,5 +80,6 @@ export {
   Select,
   Toggle,
   Skeleton,
-  Avatar
+  Avatar,
+  AvatarGroup
 };
