@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import useControlled from "../../hooks/useControlled";
 
-type TooltipProps = {
+type TooltipContainerProps = {
   /**
    * Label that is shown.
    */
@@ -22,32 +22,14 @@ type TooltipProps = {
    * Disables the tooltip when the children is disabled
    */
   disabled?: boolean;
-
-  /**
-   * Gives tooltip a caret
-   */
-  withCaret?: boolean;
-
-  /**
-   * Position of tooltip.
-   */
-  position: "top" | "bottom" | "left" | "right";
-
-  /**
-   * Label of tooltip.
-   */
-  label: string;
 };
 
-const Tooltip = ({
+const TooltipContainer = ({
   children,
   className,
-  position,
   open,
-  label,
-  withCaret,
   disabled
-}: TooltipProps) => {
+}: TooltipContainerProps) => {
   const controlled = useControlled(open);
   return (
     <div
@@ -58,19 +40,8 @@ const Tooltip = ({
       })}
     >
       {children}
-      <span
-        className={cx("tooltip--text", {
-          "tooltip--caret": withCaret,
-          "tooltip--top": position === "top",
-          "tooltip--bottom": position === "bottom",
-          "tooltip--left": position === "left",
-          "tooltip--right": position === "right"
-        })}
-      >
-        {label}
-      </span>
     </div>
   );
 };
 
-export default Tooltip;
+export default TooltipContainer;

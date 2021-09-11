@@ -12,7 +12,7 @@ import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
-import Tooltip from "./components/Tooltip/Tooltip";
+import Tooltip from "./components/Tooltip/ComposedTooltip";
 import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";

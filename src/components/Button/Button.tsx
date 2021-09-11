@@ -1,7 +1,6 @@
 import React, { forwardRef, ReactNode, FocusEvent } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
-import Tooltip from "../Tooltip/Tooltip";
 
 export type ButtonProps = {
   /** Unique identifier for your button */
@@ -42,8 +41,8 @@ export type ButtonProps = {
   size?: "large" | "default" | "small";
 
   /** Render icon */
-  icon?: "right" | "left" | "only";
-  renderIcon?: ReactNode;
+  icon?: ReactNode;
+  iconPosition?: "right" | "left" | "only";
 
   /** Set the button loading */
   isLoading?: boolean;
@@ -54,8 +53,8 @@ export type ButtonProps = {
   /** Enables tooltip */
   showTooltip?: boolean;
 
-  /** Shows caret for tooltip */
-  withCaret?: boolean;
+  /** Shows Icon */
+  withIcon?: boolean;
 
   /** Tooltip label */
   tooltipLabel?: string;
@@ -74,19 +73,15 @@ const Button = (
   {
     kind = "primary",
     size = "default",
-    showTooltip = false,
-    tooltipLabel = "Label",
-    tooltipPosition = "bottom",
-    tooltipOpen = false,
     disabled,
     isLoading,
-    withCaret,
     icon,
+    withIcon,
+    className,
+    iconPosition,
     children,
     fluid,
     href,
-    className,
-    renderIcon,
     loadingDescription = "Loading",
     ...rest
   }: ButtonProps,
@@ -94,92 +89,74 @@ const Button = (
 ) => (
   <>
     {href ? (
-      <Tooltip
-        label={tooltipLabel}
-        withCaret={withCaret}
-        position={tooltipPosition}
-        open={tooltipOpen}
-        disabled={disabled || (!showTooltip && icon !== "only")}
+      <a
+        href={href}
+        ref={ref as ForwardedRef<HTMLAnchorElement>}
         className={cx(
+          `button button--${size} button--${kind}`,
           {
-            "button--notallowed": isLoading || disabled,
-            "button--fluid": fluid && icon !== "only"
+            "button--disabled": disabled,
+            "button--fluid": fluid,
+            "with-icon-right": icon && iconPosition === "right",
+            "with-icon-left": icon && iconPosition === "left",
+            "button--loading": isLoading
           },
           className
         )}
+        {...rest}
       >
-        <a
-          href={href}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
-          className={cx(`button button--${size} button--${kind}`, {
-            "icon-only": icon === "only",
-            "button--disabled": disabled,
-            "button--fluid": fluid && icon !== "only",
-            "with-icon-right": icon === "right",
-            "with-icon-left": icon === "left",
-            "button--loading": isLoading
+        {isLoading && (
+          <Loading
+            isLoading
+            loadingDescription={loadingDescription}
+            disabled={disabled}
+            size="inline"
+          />
+        )}
+        <div
+          className={cx("button--label", {
+            "button--hidden": isLoading
           })}
-          {...rest}
         >
-          {isLoading && (
-            <Loading
-              isLoading
-              loadingDescription={loadingDescription}
-              disabled={disabled}
-              size="inline"
-            />
-          )}
-          <div
-            className={cx("button--label", {
-              "button--hidden": isLoading
-            })}
-          >
-            {icon && renderIcon}
-            {icon !== "only" && children}
-          </div>
-        </a>
-      </Tooltip>
+          {children ? iconPosition && icon : icon}
+          {children}
+        </div>
+      </a>
     ) : (
-      <Tooltip
-        label={tooltipLabel}
-        withCaret={withCaret}
-        position={tooltipPosition}
-        open={tooltipOpen}
-        disabled={disabled || (!showTooltip && icon !== "only")}
-        className={cx({ "button--fluid": fluid && icon !== "only" }, className)}
-      >
-        <button
-          type="button"
-          ref={ref as ForwardedRef<HTMLButtonElement>}
-          className={cx(`button button--${size} button--${kind}`, {
-            "icon-only": icon === "only",
+      <button
+        type="button"
+        ref={ref as ForwardedRef<HTMLButtonElement>}
+        className={cx(
+          `button button--${size} button--${kind}`,
+          {
             "button--disabled": disabled,
-            "button--fluid": fluid && icon !== "only",
-            "with-icon-right": icon === "right",
-            "with-icon-left": icon === "left",
+            "button--fluid": fluid,
+            "with-icon-right": icon && iconPosition === "right",
+            "with-icon-left": icon && iconPosition === "left",
             "button--loading": isLoading
+          },
+          className
+        )}
+        disabled={disabled}
+        {...rest}
+      >
+        {isLoading && (
+          <Loading
+            isLoading
+            loadingDescription={loadingDescription}
+            disabled={disabled}
+            size="inline"
+          />
+        )}
+        <div
+          className={cx("button--label", {
+            "button--hidden": isLoading
           })}
-          disabled={disabled}
-          {...rest}
         >
-          {isLoading && (
-            <Loading
-              isLoading
-              loadingDescription={loadingDescription}
-              disabled={disabled}
-              size="inline"
-            />
-          )}
-          <div
-            className={cx("button--label", {
-              "button--hidden": isLoading
-            })}
-          >
-            {icon && renderIcon}
-            {icon !== "only" && children}
-          </div>
-        </button>
-      </Tooltip>
+          {children ? iconPosition && icon : icon}
+          {children}
+        </div>
+      </button>
     )}
   </>
 );

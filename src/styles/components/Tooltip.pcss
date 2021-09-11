@@ -12,6 +12,7 @@
 
   &--disabled {
     &:hover > .tooltip--text {
+      display: none;
       visibility: hidden;
       opacity: 0;
     }
@@ -20,13 +21,17 @@
   &--visible {
     &-hover {
       &:hover > .tooltip--text {
+        display: inline-flex;
         visibility: visible;
+        transform: translateY(0);
         opacity: 1;
       }
     }
 
     & > .tooltip--text {
+      display: inline-flex;
       visibility: visible;
+      transform: translateY(0);
       opacity: 1;
     }
   }
@@ -43,7 +48,9 @@
     width: max-content;
     height: $container-01;
     padding: 0 12px;
-    transition: $transition-01;
+    transform: translateY(2px);
+    transition: visibility $transition-01, opacity $transition-01,
+      transform $transition-01;
     border: $border $tooltip-border;
     border-radius: $border-radius-2;
     opacity: 0;

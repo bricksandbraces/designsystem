@@ -1,7 +1,7 @@
 import { text, select, withKnobs, boolean } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Button } from "../..";
-import Tooltip from "./Tooltip";
+import ComposedTooltip from "./ComposedTooltip";
 
 export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
@@ -26,15 +26,15 @@ export const DefaultOnHover = () => {
         alignItems: "center"
       }}
     >
-      <Tooltip
+      <ComposedTooltip
         withCaret={boolean("withCaret", false)}
-        position={
+        tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
         }
-        label={text("Tooltip label", "This is a tooltip")}
+        tooltipLabel={text("Tooltip label", "This is a tooltip")}
       >
         Hover me
-      </Tooltip>
+      </ComposedTooltip>
     </div>
   );
 };
@@ -52,12 +52,12 @@ export const Controlled = () => {
         alignItems: "center"
       }}
     >
-      <Tooltip
+      <ComposedTooltip
         withCaret={boolean("withCaret", false)}
-        position={
+        tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
         }
-        label={text("Tooltip label", "This is a tooltip")}
+        tooltipLabel={text("Tooltip label", "This is a tooltip")}
         open={open}
       >
         <Button
@@ -68,7 +68,7 @@ export const Controlled = () => {
         >
           Toggle Tooltip
         </Button>
-      </Tooltip>
+      </ComposedTooltip>
     </div>
   );
 };

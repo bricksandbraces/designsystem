@@ -163,6 +163,13 @@
   min-width: $container-03;
   max-width: $container-03;
   padding: 0;
+
+  &:focus + .tooltip--text {
+    display: inline-flex;
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .icon-only.button--large {
