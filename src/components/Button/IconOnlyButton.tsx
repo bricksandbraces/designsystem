@@ -4,7 +4,7 @@ import Button from "./Button";
 import TooltipText from "../Tooltip/HoverTooltipText";
 import TooltipContainer from "../Tooltip/TooltipTrigger";
 
-export type ButtonProps = {
+export type IconOnlyButtonProps = {
   /** Unique identifier for your button */
   id?: string;
 
@@ -13,6 +13,7 @@ export type ButtonProps = {
 
   /** Specify an optional className to be added to your button */
   className?: string;
+  wrapperClassName?: string;
 
   /** Use the button as an anchor link. Sets component wrapping type to 'a' instead of 'button'. */
   href?: string;
@@ -62,13 +63,14 @@ const IconOnlyButton = ({
   tooltipPosition = "bottom",
   disabled,
   isLoading,
+  wrapperClassName,
   href,
   className,
   icon,
   loadingDescription = "Loading",
   ...rest
-}: ButtonProps) => (
-  <TooltipContainer>
+}: IconOnlyButtonProps) => (
+  <TooltipContainer className={cx(wrapperClassName)}>
     <Button
       className={cx("icon-only", className)}
       href={href}

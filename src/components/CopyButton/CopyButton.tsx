@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
 import { IconCopy, IconCheck } from "@tabler/icons";
-import Button from "../Button/Button";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 export type CopyButtonProps = {
   /**
@@ -34,6 +34,7 @@ export type CopyButtonProps = {
    * Classname
    */
   className?: string;
+  wrapperClassName?: string;
 
   /**
    * Value to copy
@@ -42,31 +43,29 @@ export type CopyButtonProps = {
 };
 
 const CopyButton = ({
-  tooltipPosition,
   tooltipLabel = "Copied",
   onClick,
   label = "Copy",
   className,
   timeout,
+  wrapperClassName,
   valueToCopy
 }: CopyButtonProps) => {
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
-    <Button
+    <IconOnlyButton
       className={cx(
         "copybutton",
         { "copybutton--copied": showState },
         className
       )}
-      showTooltip
-      withCaret
-      tooltipOpen={showState}
-      tooltipPosition={tooltipPosition}
-      tooltipLabel={tooltipLabel}
-      kind="secondary"
+      wrapperClassName={wrapperClassName}
+      kind="ghost"
+      tooltipLabel={showState ? tooltipLabel : label}
+      tooltipPosition="bottom"
       size="small"
-      renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
+      icon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       onClick={(event) => {
         setShowState(true);
         copyToClipboard(valueToCopy);
@@ -75,10 +74,7 @@ const CopyButton = ({
         }, timeout ?? 2000);
         onClick?.(event);
       }}
-    >
-      {showState && <IconCheck size={16} color="#7FD55D" />}
-      <span>{label}</span>
-    </Button>
+    />
   );
 };
 
