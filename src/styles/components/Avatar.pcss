@@ -10,11 +10,10 @@
     overflow: hidden;
     transition: transform $transition-01, filter $transition-01;
     border-radius: 50%;
-    box-shadow: $avatar-border 0 0 0 1px, $avatar-border 0 0 4px 2px;
+    box-shadow: $avatar-border 0 0 0 3px, $avatar-border 0 0 4px 2px;
 
     &:hover {
       transform: scale(1.025);
-      filter: brightness(0.75);
     }
   }
 
@@ -27,6 +26,13 @@
     & > .avatar--status {
       width: calc($container-03 / 4);
       height: calc($container-03 / 4);
+    }
+
+    & .avatar--container {
+      width: $container-03;
+      max-width: $container-03;
+      height: $container-03;
+      max-height: $container-03;
     }
   }
 
@@ -86,7 +92,6 @@
   }
 
   &--list {
-    
   }
 
   &--group {

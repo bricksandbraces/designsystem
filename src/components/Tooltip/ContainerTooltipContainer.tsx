@@ -10,7 +10,7 @@ type ContainerTooltipContainerProps = {
   /**
    * Position of tooltip.
    */
-  tooltipPosition: "top" | "bottom" | "left" | "right";
+  tooltipPosition: "top" | "bottom";
 
   /**
    * Children of tooltip.
@@ -21,17 +21,17 @@ type ContainerTooltipContainerProps = {
 const ContainerTooltipContainer = ({
   tooltipPosition,
   children,
-  withCaret
+  withCaret,
+  ...rest
 }: ContainerTooltipContainerProps) => {
   return (
     <div
       className={cx("tooltip--container", {
         "tooltip--caret": withCaret,
         "tooltip--top": tooltipPosition === "top",
-        "tooltip--bottom": tooltipPosition === "bottom",
-        "tooltip--left": tooltipPosition === "left",
-        "tooltip--right": tooltipPosition === "right"
+        "tooltip--bottom": tooltipPosition === "bottom"
       })}
+      {...rest}
     >
       {children}
     </div>

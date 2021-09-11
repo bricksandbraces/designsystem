@@ -12,7 +12,14 @@ import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
-import Tooltip from "./components/Tooltip/HoverTooltip";
+import HoverTooltip from "./components/Tooltip/HoverTooltip";
+import ComposedContainerTooltip from "./components/Tooltip/ComposedContainerTooltip";
+import ContainerTooltipBody from "./components/Tooltip/ContainerTooltipBody";
+import ContainerTooltipHeader from "./components/Tooltip/ContainerTooltipHeader";
+import ContainerTooltipFooter from "./components/Tooltip/ContainerTooltipFooter";
+import ContainerTooltipIcon from "./components/Tooltip/ContainerTooltipIcon";
+import HoverTooltipText from "./components/Tooltip/HoverTooltipText";
+import TooltipTrigger from "./components/Tooltip/TooltipTrigger";
 import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
@@ -37,9 +44,17 @@ import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/Skeleton";
 import Avatar from "./components/Avatar/Avatar";
-import AvatarGroup from "./components/Avatar/AvatarGrpup";
+import AvatarGroup from "./components/Avatar/AvatarGroup";
 
 export {
+  HoverTooltip,
+  ComposedContainerTooltip,
+  ContainerTooltipBody,
+  ContainerTooltipHeader,
+  ContainerTooltipFooter,
+  ContainerTooltipIcon,
+  HoverTooltipText,
+  TooltipTrigger,
   Button,
   Link,
   SnackBar,
@@ -53,7 +68,6 @@ export {
   LeadSpace,
   Logo,
   SideNav,
-  Tooltip,
   Typography,
   UserProfile,
   Modal,

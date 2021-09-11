@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { useMeasure } from "react-use";
 import useControlled from "../../hooks/useControlled";
 
 type TooltipTriggerProps = {
@@ -28,16 +29,25 @@ const TooltipTrigger = ({
   children,
   className,
   open,
-  disabled
+  disabled,
+  ...rest
 }: TooltipTriggerProps) => {
   const controlled = useControlled(open);
+  const [ref, { height }] = useMeasure();
+  const calculatedHeight = `${height + 16}px`;
+  const style = {
+    "--tooltip-container-height": calculatedHeight
+  } as React.CSSProperties;
   return (
     <div
+      ref={ref}
+      style={style}
       className={cx(className, "tooltip--trigger", {
         "tooltip--visible-hover": !controlled,
         "tooltip--visible": controlled && open,
         "tooltip--disabled": disabled
       })}
+      {...rest}
     >
       {children}
     </div>

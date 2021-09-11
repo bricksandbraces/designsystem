@@ -27,6 +27,14 @@
     align-items: center;
     justify-content: center;
     color: $tooltip-font;
+
+    & > .tooltip--bottom {
+      top: var(--tooltip-container-height);
+    }
+
+    & > .tooltip--top {
+      bottom: var(--tooltip-container-height);
+    }
   }
 
   &--disabled {
