@@ -5,8 +5,9 @@ import {
   text,
   withKnobs
 } from "@storybook/addon-knobs";
-import React from "react";
+import React, { useState } from "react";
 import Search from "./Search";
+import SearchInput from "./SearchInput";
 
 export default { title: "Components/Search", decorators: [withKnobs] };
 
@@ -17,6 +18,44 @@ const sizeOptions = {
 };
 
 const defaultSize = "default";
+
+export const SearchInputWithSubmit = () => {
+  const [submittedValue, handleSubmit] = useState<string | null>(null);
+  return (
+    <div style={{ padding: "32px" }}>
+      <SearchInput
+        id="search-1"
+        label="Search"
+        submitLabel="Go!"
+        onSubmit={(valueToSubmit) => handleSubmit(valueToSubmit)}
+      />
+      Submitted value: {submittedValue}
+    </div>
+  );
+};
+
+export const SearchInputWithoutSubmit = () => {
+  return (
+    <div style={{ padding: "32px" }}>
+      <SearchInput id="search-1" label="Search" withSubmit={false} />
+    </div>
+  );
+};
+
+export const Controlled = () => {
+  const [value, setValue] = useState("");
+  return (
+    <div style={{ padding: "32px" }}>
+      <SearchInput
+        id="search-1"
+        label="Search"
+        withSubmit={false}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+    </div>
+  );
+};
 
 export const Default = () => {
   return (

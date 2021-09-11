@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { IconClock, IconSearch, IconX } from "@tabler/icons";
+import { IconSearch, IconX } from "@tabler/icons";
 import cx from "classnames";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
-import Badge from "../Badge/Badge";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
 
-type SearchInputInputProps = {
+type SearchInputProps = {
   /**
    * SearchInput size
    */
@@ -27,44 +27,19 @@ type SearchInputInputProps = {
   placeholder?: string;
 
   /**
-   * SearchInput Value
-   */
-  value?: string;
-
-  /**
    * Clear Button Label
    */
   clearLabel?: string;
 
   /**
-   * SearchInput Button Label
-   */
-  searchLabel?: string;
-
-  /**
-   * Default Value
+   * Default Value (Uncontrolled)
    */
   defaultValue?: string;
 
   /**
-   * Show SearchInput Results
+   * Value (Controlled)
    */
-  showResults?: boolean;
-
-  /**
-   * SearchInput Results
-   */
-  searchResultItems?: SearchInputResultItem[];
-
-  /**
-   * SearchInput Recent
-   */
-  searchRecentItems?: SearchInputRecentItem[];
-
-  /**
-   * SearchInput Badges
-   */
-  searchBadgeItems?: SearchInputBadgeItem[];
+  value?: string;
 
   /**
    * OnChange Function
@@ -72,24 +47,46 @@ type SearchInputInputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
+   * Defaults to true. If false, the submit button is being dropped.
+   */
+  withSubmit?: boolean;
+
+  /**
+   * Submit Button Label
+   */
+  submitLabel?: string;
+
+  /**
+   * Submit
+   */
+  submitIcon?: React.ReactNode;
+
+  /**
    * onSearch Function
    */
-  onSearch?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
+  onSubmit?: (
+    submittedValue: string,
+    event:
+      | React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+      | React.KeyboardEvent<HTMLInputElement>
+  ) => void;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
 };
 
 const SearchInput = ({
   id,
   value,
   clearLabel = "Clear search results",
-  searchLabel = "Go!",
+
   label = "Search",
   size = "default",
   placeholder = "Search",
+  withSubmit = true,
+  submitLabel = "Go!",
+  submitIcon = <IconSearch />,
   defaultValue,
-  showResults,
-  onSearch,
+  onSubmit,
   onFocus,
   onBlur,
   onChange
@@ -125,13 +122,16 @@ const SearchInput = ({
           }
           onChange?.(event);
         }}
+        onKeyDown={filterForKeys(["Enter"], (event) =>
+          onSubmit?.(textValue, event)
+        )}
         className="search--input"
         id={id}
         placeholder={placeholder}
         value={textValue}
       />
       <div className="search--buttons">
-        {textValue !== "" && (
+        {!!textValue && (
           <Button
             onClick={() => {
               setTextValue("");
@@ -145,18 +145,20 @@ const SearchInput = ({
             aria-label={clearLabel}
           />
         )}
-        <Button
-          onClick={onSearch}
-          iconOnly={!searchLabel}
-          renderIcon={<IconSearch />}
-          kind="primary"
-          size={size}
-          className="search--go"
-          type="button"
-          aria-label={searchLabel}
-        >
-          {searchLabel}
-        </Button>
+        {withSubmit && (
+          <Button
+            onClick={(event) => onSubmit?.(textValue, event)}
+            iconOnly={!submitLabel}
+            renderIcon={submitIcon}
+            kind="primary"
+            size={size}
+            className="search--go"
+            type="button"
+            aria-label={submitLabel}
+          >
+            {submitLabel}
+          </Button>
+        )}
       </div>
     </div>
   );
