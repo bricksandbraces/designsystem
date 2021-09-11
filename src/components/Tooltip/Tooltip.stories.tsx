@@ -1,7 +1,11 @@
 import { text, select, withKnobs, boolean } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Button } from "../..";
-import ComposedTooltip from "./ComposedTooltip";
+import HoverTooltip from "./HoverTooltip";
+import ComposedContainerTooltip from "./ComposedContainerTooltip";
+import ContainerTooltipFooter from "./ContainerTooltipFooter";
+import ContainerTooltipHeader from "./ContainerTooltipHeader";
+import ContainerTooltipBody from "./ContainerTooltipBody";
 
 export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
@@ -26,7 +30,7 @@ export const DefaultOnHover = () => {
         alignItems: "center"
       }}
     >
-      <ComposedTooltip
+      <HoverTooltip
         withCaret={boolean("withCaret", false)}
         tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
@@ -34,7 +38,7 @@ export const DefaultOnHover = () => {
         tooltipLabel={text("Tooltip label", "This is a tooltip")}
       >
         Hover me
-      </ComposedTooltip>
+      </HoverTooltip>
     </div>
   );
 };
@@ -51,7 +55,7 @@ export const WithCaretOnHover = () => {
         alignItems: "center"
       }}
     >
-      <ComposedTooltip
+      <HoverTooltip
         withCaret
         tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
@@ -59,7 +63,7 @@ export const WithCaretOnHover = () => {
         tooltipLabel={text("Tooltip label", "This is a tooltip")}
       >
         Hover me
-      </ComposedTooltip>
+      </HoverTooltip>
     </div>
   );
 };
@@ -77,7 +81,7 @@ export const Controlled = () => {
         alignItems: "center"
       }}
     >
-      <ComposedTooltip
+      <HoverTooltip
         withCaret={boolean("withCaret", false)}
         tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
@@ -93,7 +97,33 @@ export const Controlled = () => {
         >
           Toggle Tooltip
         </Button>
-      </ComposedTooltip>
+      </HoverTooltip>
+    </div>
+  );
+};
+
+export const WithContainer = () => {
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "64px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <ComposedContainerTooltip tooltipPosition="bottom">
+        <ContainerTooltipHeader>Tooltip Container</ContainerTooltipHeader>
+        <ContainerTooltipBody>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor.
+        </ContainerTooltipBody>
+        <ContainerTooltipFooter>
+          <Button size="small">Delete</Button>
+        </ContainerTooltipFooter>
+      </ComposedContainerTooltip>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { ReactNode, FocusEvent } from "react";
 import cx from "classnames";
 import Button from "./Button";
-import TooltipText from "../Tooltip/TooltipText";
-import TooltipContainer from "../Tooltip/TooltipContainer";
+import TooltipText from "../Tooltip/HoverTooltipText";
+import TooltipContainer from "../Tooltip/TooltipTrigger";
 
 export type ButtonProps = {
   /** Unique identifier for your button */

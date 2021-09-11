@@ -2,7 +2,26 @@
 @import "../typography.pcss";
 
 .tooltip {
-  &--container {
+  &--icon {
+    display: inline-flex;
+    padding: 6px;
+    transition: background-color $transition-01, border-color $transition-01;
+    border: 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: transparent;
+    color: $white;
+
+    &:hover {
+      background-color: $warm-gray-10;
+    }
+
+    &:focus {
+      border-color: $white;
+    }
+  }
+
+  &--trigger {
     display: inline-flex;
     position: relative;
     align-items: center;
@@ -34,6 +53,82 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    & > .tooltip--container {
+      display: inline-flex;
+      visibility: visible;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &--container {
+    @mixin type--label;
+
+    display: inline-flex;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    width: $container-07;
+    transform: translateY(2px);
+    transition: visibility $transition-01, opacity $transition-01,
+      transform $transition-01;
+    border: $border $tooltip-border;
+    border-radius: $border-radius-2;
+    opacity: 0;
+    background-color: $tooltip-background;
+    color: $tooltip-font;
+
+    &.tooltip--caret {
+      @mixin type--body-small;
+
+      max-height: $container-07;
+      padding: 12px 32px 12px 12px;
+    }
+
+    &-footer {
+      display: inline-flex;
+      width: 100%;
+      margin-top: $spacing-03;
+    }
+
+    &-header {
+      @mixin type--body-small;
+
+      display: inline-flex;
+      width: 100%;
+      margin-bottom: $spacing-03;
+      font-weight: 600;
+    }
+
+    &-body {
+      @mixin type--body-small;
+
+      display: inline-flex;
+      width: 100%;
+      margin-bottom: $spacing-03;
+    }
+  }
+
+  &--caret {
+    &::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: $border $tooltip-border;
+      border-radius: $border-radius-2;
+      background-color: $tooltip-background;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      border: $border transparent;
+      background-color: $tooltip-background;
+    }
   }
 
   &--text {
@@ -64,23 +159,6 @@
       @mixin type--body-small;
 
       height: $container-02;
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        border: $border $tooltip-border;
-        border-radius: $border-radius-2;
-        background-color: $tooltip-background;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        border: $border transparent;
-        background-color: $tooltip-background;
-      }
     }
   }
 

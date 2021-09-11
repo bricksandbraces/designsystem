@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 
-type TooltipTextProps = {
+type HoverTooltipTextProps = {
   /**
    * Gives tooltip a caret
    */
@@ -18,11 +18,11 @@ type TooltipTextProps = {
   tooltipLabel: string;
 };
 
-const TooltipText = ({
+const HoverTooltipText = ({
   tooltipPosition,
   tooltipLabel,
   withCaret
-}: TooltipTextProps) => {
+}: HoverTooltipTextProps) => {
   return (
     <span
       className={cx("tooltip--text", {
@@ -38,4 +38,4 @@ const TooltipText = ({
   );
 };
 
-export default TooltipText;
+export default HoverTooltipText;

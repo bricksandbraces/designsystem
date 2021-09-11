@@ -2,14 +2,14 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import useControlled from "../../hooks/useControlled";
 
-type TooltipContainerProps = {
+type TooltipTriggerProps = {
   /**
    * Label that is shown.
    */
   children: ReactNode;
 
   /**
-   * DOM class names for the container
+   * DOM class names for the trigger
    */
   className?: string;
 
@@ -24,16 +24,16 @@ type TooltipContainerProps = {
   disabled?: boolean;
 };
 
-const TooltipContainer = ({
+const TooltipTrigger = ({
   children,
   className,
   open,
   disabled
-}: TooltipContainerProps) => {
+}: TooltipTriggerProps) => {
   const controlled = useControlled(open);
   return (
     <div
-      className={cx(className, "tooltip--container", {
+      className={cx(className, "tooltip--trigger", {
         "tooltip--visible-hover": !controlled,
         "tooltip--visible": controlled && open,
         "tooltip--disabled": disabled
@@ -44,4 +44,4 @@ const TooltipContainer = ({
   );
 };
 
-export default TooltipContainer;
+export default TooltipTrigger;

@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
-import TooltipContainer from "./TooltipContainer";
-import TooltipText from "./TooltipText";
+import TooltipTrigger from "./TooltipTrigger";
+import HoverTooltipText from "./HoverTooltipText";
 
-type ComposedTooltipProps = {
+type HoverTooltipProps = {
   /**
    * Label that is shown.
    */
@@ -40,7 +40,7 @@ type ComposedTooltipProps = {
   tooltipLabel: string;
 };
 
-const ComposedTooltip = ({
+const HoverTooltip = ({
   children,
   className,
   tooltipPosition,
@@ -48,17 +48,17 @@ const ComposedTooltip = ({
   tooltipLabel,
   withCaret,
   disabled
-}: ComposedTooltipProps) => {
+}: HoverTooltipProps) => {
   return (
-    <TooltipContainer className={cx(className)} disabled={disabled} open={open}>
+    <TooltipTrigger className={cx(className)} disabled={disabled} open={open}>
       {children}
-      <TooltipText
+      <HoverTooltipText
         tooltipLabel={tooltipLabel}
         tooltipPosition={tooltipPosition}
         withCaret={withCaret}
       />
-    </TooltipContainer>
+    </TooltipTrigger>
   );
 };
 
-export default ComposedTooltip;
+export default HoverTooltip;
