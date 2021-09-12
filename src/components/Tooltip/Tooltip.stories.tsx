@@ -114,7 +114,11 @@ export const WithContainer = () => {
         alignItems: "center"
       }}
     >
-      <ComposedContainerTooltip tooltipPosition="bottom">
+      <ComposedContainerTooltip
+        tooltipPosition={
+          select("Tooltip position", positioning, defaultPosition) as any
+        }
+      >
         <ContainerTooltipHeader>Tooltip Container</ContainerTooltipHeader>
         <ContainerTooltipBody>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam

@@ -10,7 +10,7 @@ type ContainerTooltipContainerProps = {
   /**
    * Position of tooltip.
    */
-  tooltipPosition: "top" | "bottom";
+  tooltipPosition: "top" | "bottom" | "left" | "right";
 
   /**
    * Children of tooltip.
@@ -29,11 +29,16 @@ const ContainerTooltipContainer = ({
       className={cx("tooltip--container", {
         "tooltip--caret": withCaret,
         "tooltip--top": tooltipPosition === "top",
-        "tooltip--bottom": tooltipPosition === "bottom"
+        "tooltip--bottom": tooltipPosition === "bottom",
+        "tooltip--left": tooltipPosition === "left",
+        "tooltip--right": tooltipPosition === "right"
       })}
       {...rest}
     >
       {children}
+      <div className="tooltip--caret-container">
+        <div className="tooltip--caret-new" />
+      </div>
     </div>
   );
 };
