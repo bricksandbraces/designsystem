@@ -20,11 +20,6 @@ type HoverTooltipProps = {
   open?: boolean;
 
   /**
-   * Disables the tooltip when the children is disabled
-   */
-  disabled?: boolean;
-
-  /**
    * Gives tooltip a caret
    */
   withCaret?: boolean;
@@ -46,11 +41,10 @@ const HoverTooltip = ({
   tooltipPosition,
   open,
   tooltipLabel,
-  withCaret,
-  disabled
+  withCaret
 }: HoverTooltipProps) => {
   return (
-    <TooltipTrigger className={cx(className)} disabled={disabled} open={open}>
+    <TooltipTrigger className={cx(className)} open={open}>
       {children}
       <HoverTooltipText
         tooltipLabel={tooltipLabel}

@@ -27,7 +27,6 @@ const ContainerTooltipContainer = ({
   return (
     <div
       className={cx("tooltip--container", {
-        "tooltip--caret": withCaret,
         "tooltip--top": tooltipPosition === "top",
         "tooltip--bottom": tooltipPosition === "bottom",
         "tooltip--left": tooltipPosition === "left",
@@ -37,7 +36,7 @@ const ContainerTooltipContainer = ({
     >
       {children}
       <div className="tooltip--caret-container">
-        <div className="tooltip--caret-new" />
+        <div className="tooltip--caret" />
       </div>
     </div>
   );

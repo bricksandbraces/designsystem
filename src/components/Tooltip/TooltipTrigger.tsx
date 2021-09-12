@@ -18,18 +18,12 @@ type TooltipTriggerProps = {
    * Controlls the open state of the tooltip manually
    */
   open?: boolean;
-
-  /**
-   * Disables the tooltip when the children is disabled
-   */
-  disabled?: boolean;
 };
 
 const TooltipTrigger = ({
   children,
   className,
   open,
-  disabled,
   ...rest
 }: TooltipTriggerProps) => {
   const controlled = useControlled(open);
@@ -43,9 +37,8 @@ const TooltipTrigger = ({
       ref={ref}
       style={style}
       className={cx(className, "tooltip--trigger", {
-        "tooltip--visible-hover": !controlled,
-        "tooltip--visible": controlled && open,
-        "tooltip--disabled": disabled
+        "tooltip--visible-onhover": !controlled,
+        "tooltip--visible": controlled && open
       })}
       {...rest}
     >

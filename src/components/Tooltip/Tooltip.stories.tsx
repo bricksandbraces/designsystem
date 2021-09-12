@@ -31,7 +31,6 @@ export const DefaultOnHover = () => {
       }}
     >
       <HoverTooltip
-        withCaret={boolean("withCaret", false)}
         tooltipPosition={
           select("Tooltip position", positioning, defaultPosition) as any
         }

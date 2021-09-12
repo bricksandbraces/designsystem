@@ -24,9 +24,9 @@ const HoverTooltipText = ({
   withCaret
 }: HoverTooltipTextProps) => {
   return (
-    <span
-      className={cx("tooltip--text", {
-        "tooltip--caret": withCaret,
+    <div
+      className={cx("tooltip--hover", {
+        "tooltip--with-caret": withCaret,
         "tooltip--top": tooltipPosition === "top",
         "tooltip--bottom": tooltipPosition === "bottom",
         "tooltip--left": tooltipPosition === "left",
@@ -34,7 +34,12 @@ const HoverTooltipText = ({
       })}
     >
       {tooltipLabel}
-    </span>
+      {withCaret && (
+        <div className="tooltip--caret-container">
+          <div className="tooltip--caret" />
+        </div>
+      )}
+    </div>
   );
 };
 

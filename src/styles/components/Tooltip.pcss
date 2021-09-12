@@ -1,12 +1,193 @@
 @import "../theme.pcss";
 @import "../typography.pcss";
 
+/* Tooltip Animation */
+
+@keyframes animation-tooltip {
+  from {
+    visibility: hidden;
+    transform: translateY(2px);
+    opacity: 0;
+  }
+  to {
+    visibility: visibile;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .tooltip {
-  &--icon {
+  &--container {
+    @mixin type--body-small;
+
     display: inline-flex;
-    padding: 6px;
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 10;
+    flex-wrap: wrap;
+    width: $container-07;
+    max-height: $container-07;
+    padding: 12px 32px 12px 12px;
+    transform: translateY(2px);
+    animation: animation-tooltip $transition-01;
+    border: $border $tooltip-border;
+    border-radius: 2px;
+    opacity: 0;
+    background-color: $tooltip-background;
+    color: $tooltip-font;
+
+    &-footer {
+      display: inline-flex;
+      width: 100%;
+      margin-top: $spacing-04;
+    }
+
+    &-header {
+      @mixin type--body-small;
+
+      display: inline-flex;
+      width: 100%;
+      margin-bottom: $spacing-03;
+    }
+
+    &-body {
+      @mixin type--body-small;
+
+      display: inline-flex;
+      width: 100%;
+    }
+  }
+
+  &--container > .tooltip--caret-container,
+  &--hover > .tooltip--caret-container {
+    display: flex;
+    position: absolute;
+
+    &::after {
+      content: "";
+      position: absolute;
+      border: $border transparent;
+      background-color: $tooltip-background;
+    }
+
+    & > .tooltip--caret {
+      width: 8px;
+      min-width: 8px;
+      height: 8px;
+      min-height: 8px;
+      border: $border $tooltip-border;
+      border-radius: $border-radius-2;
+      background-color: $tooltip-background;
+    }
+  }
+
+  &--container.tooltip--right,
+  &--hover.tooltip--right {
+    & > .tooltip--caret-container {
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: flex-end;
+      width: 0;
+      height: 100%;
+
+      &::after {
+        width: 8px;
+        height: 10px;
+        transform: translateX(8px);
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateX(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--left,
+  &--hover.tooltip--left {
+    & > .tooltip--caret-container {
+      top: 0;
+      right: 0;
+      align-items: center;
+      justify-content: flex-end;
+      width: 0;
+      height: 100%;
+
+      &::after {
+        width: 8px;
+        height: 10px;
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateX(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--bottom,
+  &--hover.tooltip--bottom {
+    & > .tooltip--caret-container {
+      top: 0;
+      left: 0;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      height: 0;
+
+      &::after {
+        width: 10px;
+        height: 8px;
+        transform: translateY(8px);
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--top,
+  &--hover.tooltip--top {
+    & > .tooltip--caret-container {
+      bottom: 0;
+      left: 0;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      height: 0;
+
+      &::after {
+        width: 10px;
+        height: 8px;
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--btn {
+    display: inline-flex;
+    padding: 2px;
     transition: background-color $transition-01, border-color $transition-01;
-    border: 0;
     border: 1px solid transparent;
     border-radius: 2px;
     background-color: transparent;
@@ -18,6 +199,35 @@
 
     &:focus {
       border-color: $white;
+    }
+  }
+
+  &--hover {
+    @mixin type--label;
+
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 10;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: max-content;
+    height: $container-01;
+    padding: 0 12px;
+    animation: animation-tooltip $transition-01;
+    border: $border $tooltip-border;
+    border-radius: $border-radius-2;
+    opacity: 0;
+    background-color: $tooltip-background;
+    color: $tooltip-font;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+
+    &.tooltip--with-caret {
+      @mixin type--body-small;
+
+      height: $container-02;
     }
   }
 
@@ -35,19 +245,19 @@
     & > .tooltip--top {
       bottom: var(--tooltip-container-height);
     }
-  }
 
-  &--disabled {
-    &:hover > .tooltip--text {
-      display: none;
-      visibility: hidden;
-      opacity: 0;
+    & > .tooltip--left {
+      right: calc(100% + 16px);
+    }
+
+    & > .tooltip--right {
+      left: calc(100% + 16px);
     }
   }
 
   &--visible {
-    &-hover {
-      &:hover > .tooltip--text {
+    &-onhover {
+      &:hover > .tooltip--hover {
         display: inline-flex;
         visibility: visible;
         transform: translateY(0);
@@ -55,7 +265,7 @@
       }
     }
 
-    & > .tooltip--text {
+    & > .tooltip--hover {
       display: inline-flex;
       visibility: visible;
       transform: translateY(0);
@@ -67,234 +277,6 @@
       visibility: visible;
       transform: translateY(0);
       opacity: 1;
-    }
-  }
-
-  &--container {
-    @mixin type--label;
-
-    display: inline-flex;
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    flex-wrap: wrap;
-    align-items: center;
-    width: $container-07;
-    transform: translateY(2px);
-    transition: visibility $transition-01, opacity $transition-01,
-      transform $transition-01;
-    border: $border $tooltip-border;
-    border-radius: $border-radius-2;
-    opacity: 0;
-    background-color: $tooltip-background;
-    color: $tooltip-font;
-
-    &.tooltip--caret {
-      @mixin type--body-small;
-
-      max-height: $container-07;
-      padding: 12px 32px 12px 12px;
-    }
-
-    &-footer {
-      display: inline-flex;
-      width: 100%;
-      margin-top: $spacing-03;
-    }
-
-    &-header {
-      @mixin type--body-small;
-
-      display: inline-flex;
-      width: 100%;
-      margin-bottom: $spacing-03;
-    }
-
-    &-body {
-      @mixin type--body-small;
-
-      display: inline-flex;
-      width: 100%;
-      margin-bottom: $spacing-03;
-    }
-  }
-
-  &--text {
-    @mixin type--label;
-
-    display: inline-flex;
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    flex-wrap: nowrap;
-    align-items: center;
-    width: max-content;
-    height: $container-01;
-    padding: 0 12px;
-    transform: translateY(2px);
-    transition: visibility $transition-01, opacity $transition-01,
-      transform $transition-01;
-    border: $border $tooltip-border;
-    border-radius: $border-radius-2;
-    opacity: 0;
-    background-color: $tooltip-background;
-    color: $tooltip-font;
-    text-align: center;
-    white-space: nowrap;
-    user-select: none;
-
-    &.tooltip--caret {
-      @mixin type--body-small;
-
-      height: $container-02;
-    }
-  }
-
-  &--bottom {
-    top: 48px;
-  }
-
-  &--top {
-    bottom: 48px;
-  }
-
-  &--left {
-    right: calc(100% + 24px);
-  }
-
-  &--right {
-    left: calc(100% + 24px);
-  }
-}
-
-.tooltip--caret.tooltip--bottom {
-  & > .tooltip--caret-container {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
-    height: 0;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 8px;
-      transform: translateY(8px);
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
-
-    & > .tooltip--caret-new {
-      width: 8px;
-      min-width: 8px;
-      height: 8px;
-      min-height: 8px;
-      transform: translateY(4px) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-  }
-}
-
-.tooltip--caret.tooltip--top {
-  & > .tooltip--caret-container {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
-    height: 0;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 8px;
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
-
-    & > .tooltip--caret-new {
-      width: 8px;
-      min-width: 8px;
-      height: 8px;
-      min-height: 8px;
-      transform: translateY(4px) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-  }
-}
-
-.tooltip--caret.tooltip--left {
-  & > .tooltip--caret-container {
-    display: flex;
-    position: absolute;
-    right: 0;
-    align-items: center;
-    justify-content: flex-end;
-    width: 0;
-    height: 100%;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 10px;
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
-
-    & > .tooltip--caret-new {
-      width: 8px;
-      min-width: 8px;
-      height: 8px;
-      min-height: 8px;
-      transform: translateX(4px) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-  }
-}
-
-.tooltip--caret.tooltip--right {
-  & > .tooltip--caret-container {
-    display: flex;
-    position: absolute;
-    left: 0;
-    align-items: center;
-    justify-content: flex-end;
-    width: 0;
-    height: 100%;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 10px;
-      transform: translateX(8px);
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
-
-    & > .tooltip--caret-new {
-      width: 8px;
-      min-width: 8px;
-      height: 8px;
-      min-height: 8px;
-      transform: translateX(4px) rotate(45deg);
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
     }
   }
 }
