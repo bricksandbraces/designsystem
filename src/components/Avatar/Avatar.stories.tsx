@@ -9,6 +9,7 @@ import React from "react";
 import Avatar from "./Avatar";
 import { Grid, Column } from "../Grid/Grid";
 import AvatarGroup from "./AvatarGroup";
+import AvatarList from "./AvatarList";
 
 export default { title: "Components/Avatar", decorators: [withKnobs] };
 
@@ -47,7 +48,42 @@ export const Single = () => {
   );
 };
 
-export const Group = () => {
+export const GroupWithoutCount = () => {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <AvatarGroup
+            size={select("Size", sizeOptions, defaultSize) as any}
+            avatarItems={object("Avatars", [
+              {
+                id: "1",
+                name: "Dominic Müller",
+                imgUrl: "https://randomuser.me/api/portraits/men/74.jpg"
+              },
+              {
+                id: "2",
+                name: "Tom Mustermann"
+              },
+              {
+                id: "3",
+                name: "Jana Slavic",
+                imgUrl: "https://randomuser.me/api/portraits/women/88.jpg"
+              },
+              {
+                id: "4",
+                name: "Maria Hulahoop",
+                imgUrl: "https://randomuser.me/api/portraits/women/23.jpg"
+              }
+            ])}
+          />
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const GroupWithCount = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -79,6 +115,40 @@ export const Group = () => {
           />
         </Column>
       </Grid>
+    </div>
+  );
+};
+
+export const GroupList = () => {
+  return (
+    <div style={{ margin: "16px" }}>
+      <AvatarList
+        avatarItems={object("Avatars", [
+          {
+            id: "1",
+            name: "Dominic Müller",
+            imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
+            additionalInformation: "22. September 2021"
+          },
+          {
+            id: "2",
+            name: "Tom Mustermann",
+            additionalInformation: "09. August 2021"
+          },
+          {
+            id: "3",
+            name: "Jana Slavic",
+            imgUrl: "https://randomuser.me/api/portraits/women/88.jpg",
+            additionalInformation: "21. September 2021"
+          },
+          {
+            id: "4",
+            name: "Maria Hulahoop",
+            imgUrl: "https://randomuser.me/api/portraits/women/23.jpg",
+            additionalInformation: "Today, 18:55"
+          }
+        ])}
+      />
     </div>
   );
 };

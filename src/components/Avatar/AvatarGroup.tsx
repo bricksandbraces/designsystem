@@ -1,7 +1,9 @@
 import React from "react";
 import cx from "classnames";
+import { IconUsers } from "@tabler/icons";
 import Typography from "../Typography/Typography";
 import Avatar from "./Avatar";
+import Button from "../Button/Button";
 
 type AvatarGroupItem = {
   /**
@@ -44,7 +46,6 @@ const AvatarGroup = ({
   className,
   userCount
 }: AvatarGroupProps) => {
-  const calculatedUserCount = userCount && userCount - 3;
   return (
     <ul className={cx("avatar avatar--group", className)}>
       {avatarItems
@@ -65,9 +66,15 @@ const AvatarGroup = ({
         <li
           className={`avatar--group-item avatar--group-usercount avatar--${size}`}
         >
-          <Typography token="label" type="span">
-            + {calculatedUserCount}
-          </Typography>
+          <Button
+            className="avatar--group-btn"
+            size={size}
+            kind="secondary"
+            iconPosition="left"
+            icon={<IconUsers />}
+          >
+            {userCount}
+          </Button>
         </li>
       )}
     </ul>

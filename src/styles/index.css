@@ -38,6 +38,7 @@
 @import "./components/Toggle.pcss";
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
+@import "./components/FloatingPanel.pcss";
 
 * {
   box-sizing: border-box;

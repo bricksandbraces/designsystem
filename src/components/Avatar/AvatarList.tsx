@@ -1,9 +1,11 @@
 import React from "react";
 import cx from "classnames";
+import { IconShare, IconUser, IconUserX } from "@tabler/icons";
 import Typography from "../Typography/Typography";
-import Avatar from "./Avatar";
+import FloatingPanel from "../ComponentUtilities/FloatingPanel";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
-type AvatarGroupItem = {
+type AvatarListItem = {
   /**
    * Id
    */
@@ -18,9 +20,14 @@ type AvatarGroupItem = {
    * Image of the avatar
    */
   imgUrl?: string;
+
+  /**
+   * Additional information
+   */
+  additionalInformation?: string;
 };
 
-type AvatarGroupProps = {
+type AvatarListProps = {
   /**
    * Classnames for the parent element
    */
@@ -31,47 +38,86 @@ type AvatarGroupProps = {
    */
   userCount?: number;
 
-  /** AvatarGroup size */
+  /** AvatarList size */
   size?: "large" | "default" | "small";
 
-  /** AvatarGroup size */
-  avatarItems: AvatarGroupItem[];
+  /** AvatarList size */
+  avatarItems: AvatarListItem[];
 };
 
-const AvatarGroup = ({
+const AvatarList = ({
   avatarItems,
   size = "default",
   className,
   userCount
-}: AvatarGroupProps) => {
+}: AvatarListProps) => {
   const calculatedUserCount = userCount && userCount - 3;
   return (
-    <ul className={cx("avatar avatar--list", className)}>
-      {avatarItems
-        .map((avatar) => {
+    <FloatingPanel>
+      <ul className={cx("avatar--list", className)}>
+        {avatarItems.map((avatar) => {
           return (
             <li key={avatar.id} className="avatar--list-item">
-              <Avatar
-                size={size}
-                id={avatar.id}
-                name={avatar.name}
-                imgUrl={avatar.imgUrl}
-              />
+              <div className="avatar--list-item__avatar">
+                {avatar.imgUrl ? (
+                  <img
+                    id={avatar.id}
+                    src={avatar.imgUrl}
+                    className="avatar--img"
+                    title={`${avatar.name} Avatar`}
+                    alt={avatar.name}
+                  />
+                ) : (
+                  <span className="avatar--icon">
+                    <IconUser />
+                  </span>
+                )}
+              </div>
+              <div className="avatar--list-item__container">
+                <div className="avatar--list-item__text">
+                  <Typography
+                    token="body-small"
+                    type="text"
+                    className="avatar--list-item__text-heading"
+                  >
+                    {avatar.name}
+                  </Typography>
+                  <Typography
+                    token="label"
+                    type="text"
+                    className="avatar--list-item__text-body"
+                  >
+                    {avatar.additionalInformation}
+                  </Typography>
+                </div>
+                <div className="avatar--list-item__container-actions">
+                  <IconOnlyButton
+                    icon={<IconShare />}
+                    size="small"
+                    kind="secondary"
+                  />
+                  <IconOnlyButton
+                    icon={<IconUserX />}
+                    size="small"
+                    kind="secondary"
+                  />
+                </div>
+              </div>
             </li>
           );
-        })
-        .slice(0, 3)}
-      {userCount && userCount > 3 && (
-        <li
-          className={`avatar--list-item avatar--list-usercount avatar--${size}`}
-        >
-          <Typography token="label" type="span">
-            + {calculatedUserCount}
-          </Typography>
-        </li>
-      )}
-    </ul>
+        })}
+        {userCount && userCount > 3 && (
+          <li
+            className={`avatar--list-item avatar--list-usercount avatar--${size}`}
+          >
+            <Typography token="label" type="span">
+              + {calculatedUserCount}
+            </Typography>
+          </li>
+        )}
+      </ul>
+    </FloatingPanel>
   );
 };
 
-export default AvatarGroup;
+export default AvatarList;

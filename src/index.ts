@@ -45,6 +45,7 @@ import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/Skeleton";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
+import FloatingPanel from "./components/ComponentUtilities/FloatingPanel";
 
 export {
   HoverTooltip,
@@ -95,5 +96,6 @@ export {
   Toggle,
   Skeleton,
   Avatar,
-  AvatarGroup
+  AvatarGroup,
+  FloatingPanel
 };
