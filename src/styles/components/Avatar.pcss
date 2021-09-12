@@ -1,5 +1,17 @@
 @import "../theme.pcss";
 
+@keyframes animation-avatar-action {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visibile;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .avatar {
   position: relative;
   background-color: transparent;
@@ -111,6 +123,11 @@
     padding: 0;
     list-style: none;
 
+    &-panel {
+      width: 100%;
+      max-width: 402px;
+    }
+
     &-item {
       display: flex;
       align-items: center;
@@ -122,6 +139,10 @@
 
       &:hover {
         background-color: $avatar-background;
+
+        & > div > .avatar--list-item__container-actions {
+          display: inline-block;
+        }
       }
 
       &__container {
@@ -131,7 +152,10 @@
         width: 100%;
 
         &-actions {
-          & > div > button {
+          display: none;
+          animation: animation-avatar-action $transition-01;
+          white-space: nowrap;
+          & > div {
             margin-left: $spacing-03;
           }
         }
@@ -150,13 +174,24 @@
       }
 
       &__text {
+        width: 100%;
         margin-left: $spacing-05;
 
         &-heading {
+          width: 100%;
+          max-width: calc($container-05 * 3);
+          overflow: hidden;
           color: $white;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
         &-body {
+          width: 100%;
+          max-width: $container-07;
+          overflow: hidden;
           color: $warm-gray-60;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }

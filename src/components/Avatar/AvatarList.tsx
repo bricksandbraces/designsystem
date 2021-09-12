@@ -1,9 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
-import { IconShare, IconUser, IconUserX } from "@tabler/icons";
+import { IconUser } from "@tabler/icons";
 import Typography from "../Typography/Typography";
 import FloatingPanel from "../ComponentUtilities/FloatingPanel";
-import IconOnlyButton from "../Button/IconOnlyButton";
 
 type AvatarListItem = {
   /**
@@ -34,26 +33,17 @@ type AvatarListProps = {
   className?: string;
 
   /**
-   * User Count
+   * Action items for List
    */
-  userCount?: number;
-
-  /** AvatarList size */
-  size?: "large" | "default" | "small";
+  actions?: ReactNode;
 
   /** AvatarList size */
   avatarItems: AvatarListItem[];
 };
 
-const AvatarList = ({
-  avatarItems,
-  size = "default",
-  className,
-  userCount
-}: AvatarListProps) => {
-  const calculatedUserCount = userCount && userCount - 3;
+const AvatarList = ({ avatarItems, className, actions }: AvatarListProps) => {
   return (
-    <FloatingPanel>
+    <FloatingPanel className="avatar--list-panel">
       <ul className={cx("avatar--list", className)}>
         {avatarItems.map((avatar) => {
           return (
@@ -90,31 +80,15 @@ const AvatarList = ({
                     {avatar.additionalInformation}
                   </Typography>
                 </div>
-                <div className="avatar--list-item__container-actions">
-                  <IconOnlyButton
-                    icon={<IconShare />}
-                    size="small"
-                    kind="secondary"
-                  />
-                  <IconOnlyButton
-                    icon={<IconUserX />}
-                    size="small"
-                    kind="secondary"
-                  />
-                </div>
+                {actions && (
+                  <div className="avatar--list-item__container-actions">
+                    {actions}
+                  </div>
+                )}
               </div>
             </li>
           );
         })}
-        {userCount && userCount > 3 && (
-          <li
-            className={`avatar--list-item avatar--list-usercount avatar--${size}`}
-          >
-            <Typography token="label" type="span">
-              + {calculatedUserCount}
-            </Typography>
-          </li>
-        )}
       </ul>
     </FloatingPanel>
   );
