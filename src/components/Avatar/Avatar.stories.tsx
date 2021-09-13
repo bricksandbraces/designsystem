@@ -6,10 +6,12 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React from "react";
+import { IconUser } from "@tabler/icons";
 import Avatar from "./Avatar";
 import { Grid, Column } from "../Grid/Grid";
 import AvatarGroup from "./AvatarGroup";
 import AvatarList from "./AvatarList";
+import AvatarWithTooltip from "./AvatarWithTooltip";
 
 export default { title: "Components/Avatar", decorators: [withKnobs] };
 
@@ -21,26 +23,18 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
-const statusOptions = {
-  NoStatus: "",
-  Active: "active",
-  inactive: "inactive"
-};
-
-const defaultStatus = "";
-
-export const Single = () => {
+export const Default = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
           <Avatar
-            status={
-              select("Status Options", statusOptions, defaultStatus) as any
-            }
-            id={text("Id", "1")}
             name={text("Name", "Erika Musterfrau")}
             size={select("Size", sizeOptions, defaultSize) as any}
+            imgUrl={text(
+              "imgUrl",
+              "https://randomuser.me/api/portraits/men/74.jpg"
+            )}
           />
         </Column>
       </Grid>
@@ -48,71 +42,135 @@ export const Single = () => {
   );
 };
 
-export const GroupWithoutCount = () => {
+export const WithLetter = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <AvatarGroup
+          <Avatar
+            name={text("Name", "Erika Musterfrau")}
             size={select("Size", sizeOptions, defaultSize) as any}
-            avatarItems={object("Avatars", [
-              {
-                id: "1",
-                name: "Dominic Müller",
-                imgUrl: "https://randomuser.me/api/portraits/men/74.jpg"
-              },
-              {
-                id: "2",
-                name: "Tom Mustermann"
-              },
-              {
-                id: "3",
-                name: "Jana Slavic",
-                imgUrl: "https://randomuser.me/api/portraits/women/88.jpg"
-              },
-              {
-                id: "4",
-                name: "Maria Hulahoop",
-                imgUrl: "https://randomuser.me/api/portraits/women/23.jpg"
-              }
-            ])}
-          />
+          >
+            E
+          </Avatar>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const GroupWithCount = () => {
+export const WithIcon = () => {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <Avatar
+            name={text("Name", "Erika Musterfrau")}
+            size={select("Size", sizeOptions, defaultSize) as any}
+          >
+            <IconUser />
+          </Avatar>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const Group = () => {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <AvatarGroup size={select("Size", sizeOptions, defaultSize) as any}>
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+            >
+              <IconUser />
+            </Avatar>
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+            >
+              <IconUser />
+            </Avatar>
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+            >
+              <IconUser />
+            </Avatar>
+          </AvatarGroup>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const GroupWithTrigger = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
           <AvatarGroup
+            withListTrigger
             size={select("Size", sizeOptions, defaultSize) as any}
-            userCount={number("userCount", 4)}
-            avatarItems={object("Avatars", [
-              {
-                id: "1",
-                name: "Dominic Müller",
-                imgUrl: "https://randomuser.me/api/portraits/men/74.jpg"
-              },
-              {
-                id: "2",
-                name: "Tom Mustermann"
-              },
-              {
-                id: "3",
-                name: "Jana Slavic",
-                imgUrl: "https://randomuser.me/api/portraits/women/88.jpg"
-              },
-              {
-                id: "4",
-                name: "Maria Hulahoop",
-                imgUrl: "https://randomuser.me/api/portraits/women/23.jpg"
-              }
-            ])}
-          />
+            userCount={4}
+          >
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+            >
+              <IconUser />
+            </Avatar>
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+            >
+              <IconUser />
+            </Avatar>
+            <Avatar
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+            >
+              <IconUser />
+            </Avatar>
+          </AvatarGroup>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const GroupWithTooltip = () => {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <AvatarGroup
+            withListTrigger
+            size={select("Size", sizeOptions, defaultSize) as any}
+            userCount={4}
+          >
+            <AvatarWithTooltip
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+            >
+              <IconUser />
+            </AvatarWithTooltip>
+            <AvatarWithTooltip
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+            >
+              <IconUser />
+            </AvatarWithTooltip>
+            <AvatarWithTooltip
+              name={text("Name", "Erika Musterfrau")}
+              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+            >
+              <IconUser />
+            </AvatarWithTooltip>
+          </AvatarGroup>
         </Column>
       </Grid>
     </div>

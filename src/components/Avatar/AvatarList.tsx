@@ -3,6 +3,7 @@ import cx from "classnames";
 import { IconUser } from "@tabler/icons";
 import Typography from "../Typography/Typography";
 import FloatingPanel from "../ComponentUtilities/FloatingPanel";
+import Avatar from "./Avatar";
 
 type AvatarListItem = {
   /**
@@ -48,21 +49,7 @@ const AvatarList = ({ avatarItems, className, actions }: AvatarListProps) => {
         {avatarItems.map((avatar) => {
           return (
             <li key={avatar.id} className="avatar--list-item">
-              <div className="avatar--list-item__avatar">
-                {avatar.imgUrl ? (
-                  <img
-                    id={avatar.id}
-                    src={avatar.imgUrl}
-                    className="avatar--img"
-                    title={`${avatar.name} Avatar`}
-                    alt={avatar.name}
-                  />
-                ) : (
-                  <span className="avatar--icon">
-                    <IconUser />
-                  </span>
-                )}
-              </div>
+              <Avatar name={avatar.name} imgUrl={avatar.imgUrl} />
               <div className="avatar--list-item__container">
                 <div className="avatar--list-item__text">
                   <Typography

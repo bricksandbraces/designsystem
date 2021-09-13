@@ -34,7 +34,7 @@ const TooltipTrigger = ({
   } as React.CSSProperties;
   return (
     <div
-      ref={ref}
+      ref={ref as any}
       style={style}
       className={cx(className, "tooltip--trigger", {
         "tooltip--visible-onhover": !controlled,
