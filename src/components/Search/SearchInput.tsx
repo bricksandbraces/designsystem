@@ -4,6 +4,7 @@ import cx from "classnames";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type SearchInputProps = {
   /**
@@ -132,33 +133,42 @@ const SearchInput = ({
       />
       <div className="search--buttons">
         {!!textValue && (
-          <Button
+          <IconOnlyButton
             onClick={() => {
               setTextValue("");
             }}
             kind="ghost"
             size={size}
-            iconOnly
-            renderIcon={<IconX />}
+            icon={<IconX />}
             className="search--close"
             type="button"
             aria-label={clearLabel}
           />
         )}
-        {withSubmit && (
-          <Button
-            onClick={(event) => onSubmit?.(textValue, event)}
-            iconOnly={!submitLabel}
-            renderIcon={submitIcon}
-            kind="primary"
-            size={size}
-            className="search--go"
-            type="button"
-            aria-label={submitLabel}
-          >
-            {submitLabel}
-          </Button>
-        )}
+        {withSubmit &&
+          (submitLabel ? (
+            <Button
+              onClick={(event) => onSubmit?.(textValue, event)}
+              icon={submitIcon}
+              kind="primary"
+              size={size}
+              className="search--go"
+              type="button"
+              aria-label={submitLabel}
+            >
+              {submitLabel}
+            </Button>
+          ) : (
+            <IconOnlyButton
+              onClick={(event) => onSubmit?.(textValue, event)}
+              kind="primary"
+              size={size}
+              icon={<IconSearch />}
+              className="search--go"
+              type="button"
+              aria-label="Search"
+            />
+          ))}
       </div>
     </div>
   );

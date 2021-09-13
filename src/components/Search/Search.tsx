@@ -4,6 +4,7 @@ import cx from "classnames";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 import Badge from "../Badge/Badge";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type SearchRecentItem = {
   /**
@@ -172,31 +173,41 @@ const Search = ({
         />
         <div className="search--buttons">
           {textValue !== "" && (
-            <Button
+            <IconOnlyButton
               onClick={() => {
                 setTextValue("");
               }}
               kind="ghost"
               size={size}
-              iconOnly
-              renderIcon={<IconX />}
+              icon={<IconX />}
               className="search--close"
               type="button"
               aria-label={clearLabel}
             />
           )}
-          <Button
-            onClick={onSearch}
-            iconOnly={!searchLabel}
-            renderIcon={<IconSearch />}
-            kind="primary"
-            size={size}
-            className="search--go"
-            type="button"
-            aria-label={searchLabel}
-          >
-            {searchLabel}
-          </Button>
+          {searchLabel ? (
+            <Button
+              onClick={onSearch}
+              kind="primary"
+              size={size}
+              icon={<IconSearch />}
+              className="search--go"
+              type="button"
+              aria-label={searchLabel}
+            >
+              {searchLabel}
+            </Button>
+          ) : (
+            <IconOnlyButton
+              onClick={onSearch}
+              kind="primary"
+              size={size}
+              icon={<IconSearch />}
+              className="search--go"
+              type="button"
+              aria-label={searchLabel}
+            />
+          )}
         </div>
       </div>
       <div className="search--box-content">
