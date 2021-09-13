@@ -12,12 +12,6 @@ export type ButtonProps = {
   /** Specify button kind */
   kind?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
 
-  /** Specify if inline or not */
-  inline?: boolean;
-
-  /** Specify an optional HTML title attribute */
-  title?: string;
-
   /** Specify an optional className to be added to your button */
   className?: string;
 
@@ -28,6 +22,9 @@ export type ButtonProps = {
   onClick?: (event: any) => void;
   onHover?: (event: any) => void;
 
+  /** Triggered when the event receives focus */
+  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+
   /** Specify the type of the button */
   type?: "button" | "submit" | "reset";
 
@@ -37,17 +34,15 @@ export type ButtonProps = {
   /** Specify the Loading description of the button */
   loadingDescription?: string;
 
-  /** Hide the button */
-  hidden?: boolean;
-
   /** Set the button disabled */
   disabled?: boolean;
 
   /** Button size */
   size?: "large" | "default" | "small";
 
-  /** Set the button to icon only button */
-  iconOnly?: boolean;
+  /** Render icon */
+  icon?: ReactNode;
+  iconPosition?: "right" | "left" | "only";
 
   /** Set the button loading */
   isLoading?: boolean;
@@ -55,50 +50,38 @@ export type ButtonProps = {
   /** Set the button fluid */
   fluid?: boolean;
 
-  /** Set the icon position and icon */
-  withIconRight?: boolean;
-  withIconLeft?: boolean;
-  renderIcon?: ReactNode;
+  /** Enables tooltip */
+  showTooltip?: boolean;
+
+  /** Shows Icon */
+  withIcon?: boolean;
+
+  /** Tooltip label */
+  tooltipLabel?: string;
+
+  /** Tooltip label */
+  tooltipPosition?: "top" | "bottom" | "left" | "right";
+
+  /** Tooltip open */
+  tooltipOpen?: boolean;
 
   /** Automatically focus the button */
   autoFocus?: boolean;
-
-  /** Triggered when the event receives focus */
-  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
-};
-
-const kindStyles: Record<string, Record<string, string>> = {
-  primary: {
-    "": "button--primary"
-  },
-  secondary: {
-    "": "button--secondary"
-  },
-  tertiary: {
-    "": "button--tertiary"
-  },
-  danger: {
-    "": "button--danger"
-  },
-  ghost: {
-    "": "button--ghost"
-  }
 };
 
 const Button = (
   {
     kind = "primary",
-    size,
+    size = "default",
     disabled,
     isLoading,
-    iconOnly,
+    icon,
+    withIcon,
+    className,
+    iconPosition,
     children,
-    withIconRight,
-    withIconLeft,
     fluid,
     href,
-    className,
-    renderIcon,
     loadingDescription = "Loading",
     ...rest
   }: ButtonProps,
@@ -106,65 +89,53 @@ const Button = (
 ) => (
   <>
     {href ? (
-      <div className={cx({ "button--notallowed": isLoading || disabled })}>
-        <a
-          href={href}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
-          className={cx(
-            "button",
-            {
-              "button--large": size === "large",
-              "button--small": size === "small",
-              "button--default": size === "default" || undefined,
-              "icon-only": iconOnly,
-              "button--disabled": disabled,
-              "button--fluid": fluid && !iconOnly,
-              "with-icon-right": withIconRight && !iconOnly,
-              "with-icon-left": withIconLeft && !iconOnly,
-              "button--loading": isLoading
-            },
-            className,
-            kindStyles[kind][""]
-          )}
-          {...rest}
+      <a
+        href={href}
+        ref={ref as ForwardedRef<HTMLAnchorElement>}
+        className={cx(
+          `button button--${size} button--${kind}`,
+          {
+            "button--disabled": disabled,
+            "button--fluid": fluid,
+            "with-icon-right": icon && iconPosition === "right",
+            "with-icon-left": icon && iconPosition === "left",
+            "button--loading": isLoading
+          },
+          className
+        )}
+        {...rest}
+      >
+        {isLoading && (
+          <Loading
+            isLoading
+            loadingDescription={loadingDescription}
+            disabled={disabled}
+            size="inline"
+          />
+        )}
+        <div
+          className={cx("button--label", {
+            "button--hidden": isLoading
+          })}
         >
-          {isLoading && (
-            <Loading
-              isLoading
-              loadingDescription={loadingDescription}
-              disabled={disabled}
-              size="inline"
-            />
-          )}
-          <div
-            className={cx("button--label", {
-              "button--hidden": isLoading
-            })}
-          >
-            {(withIconRight || withIconLeft || iconOnly) && renderIcon}
-            {!iconOnly && children}
-          </div>
-        </a>
-      </div>
+          {children ? iconPosition && icon : icon}
+          {children}
+        </div>
+      </a>
     ) : (
       <button
         type="button"
         ref={ref as ForwardedRef<HTMLButtonElement>}
         className={cx(
-          "button",
+          `button button--${size} button--${kind}`,
           {
-            "button--large": size === "large",
-            "button--small": size === "small",
-            "button--default": size === "default" || undefined,
-            "icon-only": iconOnly,
             "button--disabled": disabled,
-            "button--fluid": fluid && !iconOnly,
-            "with-icon-right": withIconRight && !iconOnly,
-            "with-icon-left": withIconLeft && !iconOnly,
+            "button--fluid": fluid,
+            "with-icon-right": icon && iconPosition === "right",
+            "with-icon-left": icon && iconPosition === "left",
             "button--loading": isLoading
           },
-          className,
-          kindStyles[kind][""]
+          className
         )}
         disabled={disabled}
         {...rest}
@@ -182,8 +153,8 @@ const Button = (
             "button--hidden": isLoading
           })}
         >
-          {(withIconRight || withIconLeft || iconOnly) && renderIcon}
-          {!iconOnly && children}
+          {children ? iconPosition && icon : icon}
+          {children}
         </div>
       </button>
     )}

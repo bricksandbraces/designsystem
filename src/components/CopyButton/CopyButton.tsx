@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
 import { IconCopy, IconCheck } from "@tabler/icons";
-import Button from "../Button/Button";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 export type CopyButtonProps = {
   /**
@@ -21,6 +21,11 @@ export type CopyButtonProps = {
   tooltipLabel: string;
 
   /**
+   * Label of Button
+   */
+  label: string;
+
+  /**
    * Sets the timeout after which the tooltip should hide.
    */
   timeout?: number;
@@ -29,6 +34,7 @@ export type CopyButtonProps = {
    * Classname
    */
   className?: string;
+  wrapperClassName?: string;
 
   /**
    * Value to copy
@@ -37,50 +43,38 @@ export type CopyButtonProps = {
 };
 
 const CopyButton = ({
-  tooltipPosition,
-  tooltipLabel,
+  tooltipLabel = "Copied",
   onClick,
+  label = "Copy",
   className,
   timeout,
+  wrapperClassName,
   valueToCopy
 }: CopyButtonProps) => {
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
-    <div
+    <IconOnlyButton
       className={cx(
         "copybutton",
         { "copybutton--copied": showState },
         className
       )}
-    >
-      <Button
-        kind="secondary"
-        size="small"
-        renderIcon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
-        onClick={(event) => {
-          setShowState(true);
-          copyToClipboard(valueToCopy);
-          setTimeout(() => {
-            setShowState(false);
-          }, timeout ?? 2000);
-          onClick?.(event);
-        }}
-      >
-        {showState && <IconCheck className="copybutton--icon" size={16} color="#7FD55D" />}
-        <span>Copy</span>
-      </Button>
-      <span
-        className={cx("tooltip--text", {
-          "tooltip--top": tooltipPosition === "top",
-          "tooltip--bottom": tooltipPosition === "bottom",
-          "tooltip--left": tooltipPosition === "left",
-          "tooltip--right": tooltipPosition === "right"
-        })}
-      >
-        {tooltipLabel}
-      </span>
-    </div>
+      wrapperClassName={wrapperClassName}
+      kind="ghost"
+      tooltipLabel={showState ? tooltipLabel : label}
+      tooltipPosition="bottom"
+      size="small"
+      icon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
+      onClick={(event) => {
+        setShowState(true);
+        copyToClipboard(valueToCopy);
+        setTimeout(() => {
+          setShowState(false);
+        }, timeout ?? 2000);
+        onClick?.(event);
+      }}
+    />
   );
 };
 
