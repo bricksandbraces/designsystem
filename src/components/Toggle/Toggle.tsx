@@ -25,7 +25,7 @@ type ToggleProps = {
   /**
    * Toggle size
    */
-  size?: "small" | "default";
+  small?: boolean;
 
   /**
    * Toggle Label
@@ -45,7 +45,7 @@ const Toggle = ({
   id,
   value,
   checked,
-  size = "default",
+  small,
   defaultChecked,
   label,
   className,
@@ -54,7 +54,13 @@ const Toggle = ({
   ...rest
 }: ToggleProps) => {
   return (
-    <div className={cx(`toggle toggle--${size}`, className)}>
+    <div
+      className={cx(
+        "toggle",
+        { "toggle--default": !small, "toggle--small": small },
+        className
+      )}
+    >
       <input
         tabIndex={0}
         className="toggle--input"

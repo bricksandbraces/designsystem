@@ -10,13 +10,13 @@ export const Small = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Toggle
-          size="small"
+          small
           label={text("Label", "Toggle label")}
           id="checkbox"
           value="c1"
         />
         <Toggle
-          size="small"
+          small
           label={text("Label", "Toggle label")}
           id="checkbox-2"
           defaultChecked
