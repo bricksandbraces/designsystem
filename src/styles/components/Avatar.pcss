@@ -92,7 +92,14 @@
 
     &-panel {
       width: 100%;
-      max-width: 402px;
+      max-width: max-content;
+    }
+
+    &-children {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      padding: 12px;
     }
 
     &-item {
@@ -106,10 +113,6 @@
 
       &:hover {
         background-color: $avatar-background;
-
-        & > div > .avatar--list-item__container-actions {
-          display: inline-block;
-        }
       }
 
       &__container {
@@ -119,8 +122,6 @@
         width: 100%;
 
         &-actions {
-          display: none;
-          animation: animation-avatar-action $transition-01;
           white-space: nowrap;
           & > div {
             margin-left: $spacing-03;
@@ -130,6 +131,7 @@
 
       &__text {
         width: 100%;
+        margin-right: $spacing-10;
         margin-left: $spacing-05;
 
         &-heading {

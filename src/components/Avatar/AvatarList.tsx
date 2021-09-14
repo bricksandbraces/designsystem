@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
-import { IconUser } from "@tabler/icons";
 import Typography from "../Typography/Typography";
 import FloatingPanel from "../ComponentUtilities/FloatingPanel";
 import Avatar from "./Avatar";
@@ -36,13 +35,23 @@ type AvatarListProps = {
   /**
    * Action items for List
    */
-  actions?: ReactNode;
+  avatarActions?: ReactNode;
+
+  /**
+   * Children
+   */
+  children?: ReactNode;
 
   /** AvatarList size */
   avatarItems: AvatarListItem[];
 };
 
-const AvatarList = ({ avatarItems, className, actions }: AvatarListProps) => {
+const AvatarList = ({
+  avatarItems,
+  className,
+  children,
+  avatarActions
+}: AvatarListProps) => {
   return (
     <FloatingPanel className="avatar--list-panel">
       <ul className={cx("avatar--list", className)}>
@@ -67,9 +76,9 @@ const AvatarList = ({ avatarItems, className, actions }: AvatarListProps) => {
                     {avatar.additionalInformation}
                   </Typography>
                 </div>
-                {actions && (
+                {avatarActions && (
                   <div className="avatar--list-item__container-actions">
-                    {actions}
+                    {avatarActions}
                   </div>
                 )}
               </div>
@@ -77,6 +86,7 @@ const AvatarList = ({ avatarItems, className, actions }: AvatarListProps) => {
           );
         })}
       </ul>
+      {children && <div className="avatar--list-children">{children}</div>}
     </FloatingPanel>
   );
 };
