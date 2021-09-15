@@ -80,18 +80,21 @@ export const Group = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <AvatarGroup size={select("Size", sizeOptions, defaultSize) as any}>
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
             >
               <IconUser />
             </Avatar>
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
             >
               <IconUser />
             </Avatar>
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
             >
@@ -111,22 +114,25 @@ export const GroupWithTrigger = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <AvatarGroup
             withListTrigger
-            size={select("Size", sizeOptions, defaultSize) as any}
             userCount={4}
+            size={select("Size", sizeOptions, defaultSize) as any}
           >
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
             >
               <IconUser />
             </Avatar>
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
             >
               <IconUser />
             </Avatar>
             <Avatar
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
             >
@@ -146,22 +152,25 @@ export const GroupWithTooltip = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <AvatarGroup
             withListTrigger
-            size={select("Size", sizeOptions, defaultSize) as any}
             userCount={4}
+            size={select("Size", sizeOptions, defaultSize) as any}
           >
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
             >
               <IconUser />
             </AvatarWithTooltip>
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
             >
               <IconUser />
             </AvatarWithTooltip>
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
             >
@@ -182,22 +191,25 @@ export const GroupWithAddButton = () => {
           <AvatarGroup
             withListTrigger
             withAddButton
-            size={select("Size", sizeOptions, defaultSize) as any}
             userCount={4}
+            size={select("Size", sizeOptions, defaultSize) as any}
           >
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
             >
               <IconUser />
             </AvatarWithTooltip>
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
             >
               <IconUser />
             </AvatarWithTooltip>
             <AvatarWithTooltip
+              size={select("Size", sizeOptions, defaultSize) as any}
               name={text("Name", "Erika Musterfrau")}
               imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
             >

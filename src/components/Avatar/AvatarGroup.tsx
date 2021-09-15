@@ -48,23 +48,27 @@ const AvatarGroup = ({
     <div className={cx("avatar--group", className)}>
       {children}
       {withAddButton && (
-        <IconOnlyButton
-          className="avatar--group-btn"
-          size={size}
-          kind="primary"
-          icon={<IconPlus />}
-        />
+        <div>
+          <IconOnlyButton
+            className="avatar--group-btn"
+            size={size}
+            kind="primary"
+            icon={<IconPlus />}
+          />
+        </div>
       )}
       {withListTrigger && (
-        <Button
-          className="avatar--group-btn"
-          size={size}
-          kind="secondary"
-          iconPosition="left"
-          icon={<IconUsers />}
-        >
-          {userCount}
-        </Button>
+        <div>
+          <Button
+            className="avatar--group-btn"
+            size={size}
+            kind="secondary"
+            iconPosition="left"
+            icon={<IconUsers />}
+          >
+            {userCount}
+          </Button>
+        </div>
       )}
     </div>
   );
