@@ -165,6 +165,8 @@ const Search = ({
     href?: string;
     onClick?: (event: React.KeyboardEvent) => void;
   }[];
+  const badgesLength = badges?.length ?? 0;
+  const recentsLength = recents?.length ?? 0;
   const focusedItem = focusedIndex != null ? overallArray[focusedIndex] : null;
 
   const updateTextForFocusedItemIndex = (newFocusedIndex: number | null) => {
@@ -250,6 +252,9 @@ const Search = ({
             return (
               <Badge
                 key={i}
+                onHover={() => {
+                  updateTextForFocusedItemIndex(i);
+                }}
                 tabIndex={-1}
                 onClick={(event) => {
                   if (item.onClick) {
@@ -267,7 +272,14 @@ const Search = ({
           {recents?.map((item, i) => {
             // todo: handle artificial focus state onHover and render selection
             return (
-              <SearchRecentItem key={i} label={item.label} href={item.href} />
+              <SearchRecentItem
+                key={i}
+                onHover={() => {
+                  updateTextForFocusedItemIndex(badgesLength + i);
+                }}
+                label={item.label}
+                href={item.href}
+              />
             );
           })}
         </div>
@@ -275,7 +287,16 @@ const Search = ({
           {results?.map((item, i) => {
             // todo: handle artificial focus state onHover and render selection
             return (
-              <SearchResultItem key={i} label={item.label} href={item.href} />
+              <SearchResultItem
+                key={i}
+                onHover={() => {
+                  updateTextForFocusedItemIndex(
+                    badgesLength + recentsLength + i
+                  );
+                }}
+                label={item.label}
+                href={item.href}
+              />
             );
           })}
         </div>
