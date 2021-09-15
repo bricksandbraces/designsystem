@@ -3,7 +3,6 @@ import { IconSearch, IconX } from "@tabler/icons";
 import cx from "classnames";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
-import { filterForKeys } from "../../helpers/keyboardUtilities";
 import IconOnlyButton from "../Button/IconOnlyButton";
 
 type SearchInputProps = {
@@ -73,6 +72,8 @@ type SearchInputProps = {
   ) => void;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onClickInput?: React.MouseEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
 };
 
 const SearchInput = ({
@@ -88,9 +89,11 @@ const SearchInput = ({
   submitIcon = <IconSearch />,
   defaultValue,
   onSubmit,
+  onClickInput,
   onFocus,
   onBlur,
-  onChange
+  onChange,
+  onKeyDown
 }: SearchInputProps) => {
   const controlled = useControlled(value);
   const [textValue, setTextValue] = useState<string>(
@@ -115,6 +118,7 @@ const SearchInput = ({
         role="searchbox"
         onFocus={onFocus}
         onBlur={onBlur}
+        onClick={onClickInput}
         autoComplete="off"
         type="text"
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -123,9 +127,12 @@ const SearchInput = ({
           }
           onChange?.(event);
         }}
-        onKeyDown={filterForKeys(["Enter"], (event) =>
-          onSubmit?.(textValue, event)
-        )}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            onSubmit?.(textValue, event);
+          }
+          onKeyDown?.(event);
+        }}
         className="search--input"
         id={id}
         placeholder={placeholder}

@@ -18,6 +18,8 @@ export type IconOnlyButtonProps = {
   /** Use the button as an anchor link. Sets component wrapping type to 'a' instead of 'button'. */
   href?: string;
 
+  title?: string;
+
   /** Provide the click handler for the button */
   onClick?: (event: any) => void;
   onHover?: (event: any) => void;

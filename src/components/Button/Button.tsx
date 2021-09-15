@@ -50,6 +50,8 @@ export type ButtonProps = {
   /** Set the button fluid */
   fluid?: boolean;
 
+  title?: string;
+
   /** Enables tooltip */
   showTooltip?: boolean;
 
