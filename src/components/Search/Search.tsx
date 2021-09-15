@@ -167,6 +167,13 @@ const Search = ({
   }[];
   const focusedItem = focusedIndex != null ? overallArray[focusedIndex] : null;
 
+  const updateTextForFocusedItemIndex = (newFocusedIndex: number | null) => {
+    if (!focusedItem?.onClick) {
+      setTextValue(focusedItem?.label ?? "");
+    }
+    setFocusedIndex(newFocusedIndex);
+  };
+
   const handleVerticalKeyboardNavigation: React.KeyboardEventHandler = (
     event
   ) => {
@@ -187,7 +194,9 @@ const Search = ({
           newFocusedIndex =
             focusedIndex + 1 >= overallArray.length ? 0 : focusedIndex + 1;
         }
-        setFocusedIndex(newFocusedIndex);
+
+        updateTextForFocusedItemIndex(newFocusedIndex);
+
         onItemFocusChange?.(newFocusedIndex);
       }
     } else if (event.key === "Enter") {
@@ -237,6 +246,7 @@ const Search = ({
       <div className="search--box-content">
         <div className="search--box-content__badges">
           {badges?.map((item, i) => {
+            // todo: handle artificial focus state onHover and render selection
             return (
               <Badge
                 key={i}
@@ -255,6 +265,7 @@ const Search = ({
         </div>
         <div className="search--box-content__recent">
           {recents?.map((item, i) => {
+            // todo: handle artificial focus state onHover and render selection
             return (
               <SearchRecentItem key={i} label={item.label} href={item.href} />
             );
@@ -262,6 +273,7 @@ const Search = ({
         </div>
         <div className="search--box-content__results">
           {results?.map((item, i) => {
+            // todo: handle artificial focus state onHover and render selection
             return (
               <SearchResultItem key={i} label={item.label} href={item.href} />
             );
