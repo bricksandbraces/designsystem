@@ -1,11 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
 import useControlled from "../../hooks/useControlled";
-import Badge, { BadgeColor } from "../Badge/Badge";
+import { BadgeColor } from "../Badge/Badge";
 import SearchResultItem, { SearchResultItemProps } from "./SearchResultItem";
 import SearchRecentItem, { SearchRecentItemProps } from "./SearchRecentItem";
 import SearchInput from "./SearchInput";
 import SearchContainer from "./SeachContainer";
+import Button from "../Button/Button";
 
 type SearchBadgeItem = {
   /**
@@ -165,14 +166,15 @@ const Search = ({
     href?: string;
     onClick?: (event: React.KeyboardEvent) => void;
   }[];
-  const badgesLength = badges?.length ?? 0;
+  const badgesOffset = badges?.length ?? 0;
   const recentsLength = recents?.length ?? 0;
+
   const focusedItem = focusedIndex != null ? overallArray[focusedIndex] : null;
 
   const updateTextForFocusedItemIndex = (newFocusedIndex: number | null) => {
-    if (!focusedItem?.onClick) {
-      setTextValue(focusedItem?.label ?? "");
-    }
+    const newFocusedItem =
+      newFocusedIndex != null ? overallArray[newFocusedIndex] : null;
+    setTextValue(newFocusedItem?.label ?? "");
     setFocusedIndex(newFocusedIndex);
   };
 
@@ -204,11 +206,8 @@ const Search = ({
     } else if (event.key === "Enter") {
       setContainerOpen(false);
 
-      // if an item is focused and enter is pressed the label should be used as textValue. Exception for buttons
       if (focusedItemIndex != null) {
-        if (!focusedItem?.onClick) {
-          setTextValue(focusedItem?.label ?? "");
-        }
+        setTextValue(focusedItem?.label ?? "");
         setFocusedIndex(null);
       }
 
@@ -225,6 +224,7 @@ const Search = ({
         submitLabel={submitLabel}
         onClickInput={(event) => {
           setContainerOpen(true);
+          setFocusedIndex(null);
           onClick?.(event);
         }}
         onFocus={onFocus}
@@ -237,6 +237,10 @@ const Search = ({
           if (!valueControlled) {
             setTextValue(event.target.value);
           }
+          // reset the focus on every change
+          if (!focusControlled) {
+            setFocusedIndex(null);
+          }
           onChange?.(event);
         }}
         onKeyDown={handleVerticalKeyboardNavigation}
@@ -248,34 +252,35 @@ const Search = ({
       <div className="search--box-content">
         <div className="search--box-content__badges">
           {badges?.map((item, i) => {
-            // todo: handle artificial focus state onHover and render selection
             return (
-              <Badge
+              <Button
                 key={i}
-                onHover={() => {
-                  updateTextForFocusedItemIndex(i);
+                kind="secondary"
+                onMouseEnter={() => {
+                  setFocusedIndex(i);
                 }}
                 tabIndex={-1}
+                size="small"
                 onClick={(event) => {
                   if (item.onClick) {
                     item.onClick(event);
                   }
                 }}
-                colorType={item.color ?? "warm-gray"}
               >
                 {item.label}
-              </Badge>
+              </Button>
             );
           })}
         </div>
         <div className="search--box-content__recent">
           {recents?.map((item, i) => {
-            // todo: handle artificial focus state onHover and render selection
+            const absIndex = badgesOffset + i;
             return (
               <SearchRecentItem
                 key={i}
-                onHover={() => {
-                  updateTextForFocusedItemIndex(badgesLength + i);
+                artificialFocus={absIndex === focusedIndex}
+                onMouseEnter={() => {
+                  setFocusedIndex(absIndex);
                 }}
                 label={item.label}
                 href={item.href}
@@ -285,14 +290,13 @@ const Search = ({
         </div>
         <div className="search--box-content__results">
           {results?.map((item, i) => {
-            // todo: handle artificial focus state onHover and render selection
+            const absIndex = badgesOffset + recentsLength + i;
             return (
               <SearchResultItem
                 key={i}
-                onHover={() => {
-                  updateTextForFocusedItemIndex(
-                    badgesLength + recentsLength + i
-                  );
+                artificialFocus={absIndex === focusedIndex}
+                onMouseEnter={() => {
+                  setFocusedIndex(absIndex);
                 }}
                 label={item.label}
                 href={item.href}

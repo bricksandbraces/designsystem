@@ -66,7 +66,7 @@ export const Nested = () => {
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
       Please update the background to see the modal (storybook bug).
       <Button
-        onClick={(event: Event) => {
+        onClick={(event) => {
           event.stopPropagation();
           setOpen(true);
         }}

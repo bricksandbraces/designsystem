@@ -67,7 +67,10 @@ type SearchInputProps = {
   onSubmit?: (
     submittedValue: string,
     event:
-      | React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+      | React.MouseEvent<
+          HTMLButtonElement | HTMLAnchorElement,
+          globalThis.MouseEvent
+        >
       | React.KeyboardEvent<HTMLInputElement>
   ) => void;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;

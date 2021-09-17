@@ -1,4 +1,4 @@
-import React, { ReactNode, FocusEvent } from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
 import Button from "./Button";
 import TooltipText from "../Tooltip/HoverTooltipText";
@@ -21,11 +21,15 @@ export type IconOnlyButtonProps = {
   title?: string;
 
   /** Provide the click handler for the button */
-  onClick?: (event: any) => void;
-  onHover?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+
+  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 
   /** Triggered when the event receives focus */
-  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+  onFocus?: React.FocusEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  /** Triggered when the event drops focus */
+  onBlur?: React.FocusEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 
   /** Specify the type of the button */
   type?: "button" | "submit" | "reset";
