@@ -39,6 +39,7 @@
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
 @import "./components/FloatingPanel.pcss";
+@import "./components/RangeInput.pcss";
 
 * {
   box-sizing: border-box;

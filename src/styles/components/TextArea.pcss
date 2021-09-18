@@ -37,9 +37,15 @@
 
     &:focus {
       border-color: $textarea-focus;
+
+      &::placeholder {
+        transform: translateX(2px);
+        opacity: 0;
+      }
     }
 
     &::placeholder {
+      transition: $transition-01;
       color: $textarea-placeholder;
     }
 

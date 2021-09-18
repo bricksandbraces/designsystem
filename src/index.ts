@@ -46,6 +46,7 @@ import Skeleton from "./components/Skeleton/Skeleton";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
 import FloatingPanel from "./components/ComponentUtilities/FloatingPanel";
+import RangeInput from "./components/RangeInput/RangeInput";
 
 export {
   HoverTooltip,
@@ -97,5 +98,6 @@ export {
   Skeleton,
   Avatar,
   AvatarGroup,
-  FloatingPanel
+  FloatingPanel,
+  RangeInput
 };
