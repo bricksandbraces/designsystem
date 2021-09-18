@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
-import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type PasswordInputProps = {
   /**
@@ -81,15 +81,16 @@ const PasswordInput = (
   );
   return (
     <TextInput {...rest} ref={ref} size={size} type={passwordType}>
-      <Button
+      <IconOnlyButton
         aria-controls="password"
         aria-expanded={passwordType !== "password"}
-        title={passwordType === "password" ? "Show password" : "Hide password"}
+        tooltipLabel={
+          passwordType === "password" ? "Show password" : "Hide password"
+        }
         size={size}
         className="textinput--togglepassword"
         type="button"
         kind="ghost"
-        iconOnly
         onClick={() => {
           if (passwordType === "password") {
             setPasswordType("text");
@@ -97,7 +98,7 @@ const PasswordInput = (
             setPasswordType("password");
           }
         }}
-        renderIcon={passwordType === "password" ? <IconEye /> : <IconEyeOff />}
+        icon={passwordType === "password" ? <IconEye /> : <IconEyeOff />}
       />
       {children}
     </TextInput>

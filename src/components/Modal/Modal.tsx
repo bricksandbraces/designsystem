@@ -5,9 +5,9 @@ import FocusLock from "react-focus-lock";
 import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
 import mergeRefs from "react-merge-refs";
-import Button from "../Button/Button";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import useMounted from "../../hooks/useMounted";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type ModalProps = {
   /**
@@ -114,10 +114,9 @@ const Modal = (
                 })}
                 disabled={!open}
               >
-                <Button
+                <IconOnlyButton
                   kind="ghost"
-                  renderIcon={<IconX />}
-                  iconOnly
+                  icon={<IconX />}
                   className="modal--close"
                   onClick={(event: any) => {
                     onClose?.(event);

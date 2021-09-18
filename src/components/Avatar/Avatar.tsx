@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
-import { IconUser } from "@tabler/icons";
+import TooltipTrigger from "../Tooltip/TooltipTrigger";
+import HoverTooltipText from "../Tooltip/HoverTooltipText";
 
 type AvatarProps = {
   /**
@@ -17,6 +18,11 @@ type AvatarProps = {
   size?: "large" | "default" | "small";
 
   /**
+   * The tooltip text to display. Wraps the component into a tooltip container if present.
+   */
+  tooltipLabel?: string;
+
+  /**
    * Name of the avatar
    */
   name?: string;
@@ -31,19 +37,34 @@ const Avatar = ({
   size = "default",
   className,
   name,
+  tooltipLabel,
   imgUrl,
-  children = <IconUser size={20} />
+  children
 }: AvatarProps) => {
-  return (
+  const avatar = (
     <div className={cx(`avatar avatar--${size}`, className)}>
       <div className="avatar--container">
-        {imgUrl ? (
-          <img src={imgUrl} className="avatar--img" alt={name} />
-        ) : (
-          <span className="avatar--icon">{children}</span>
-        )}
+        {imgUrl && <img src={imgUrl} className="avatar--img" alt={name} />}
+        <span className="avatar--icon">
+          {children}
+          {!children &&
+            !imgUrl &&
+            name
+              ?.split(" ")
+              .map((str) => str[0] ?? "")
+              .join(" ")}
+        </span>
       </div>
     </div>
+  );
+
+  return tooltipLabel ? (
+    <TooltipTrigger>
+      {avatar}
+      <HoverTooltipText tooltipPosition="bottom" tooltipLabel={tooltipLabel} />
+    </TooltipTrigger>
+  ) : (
+    avatar
   );
 };
 
