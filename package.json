@@ -19,14 +19,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.com"
   },
-  "browserslist": [
-    "last 2 versions",
-    "not IE 11",
-    "not dead",
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
+  "browserslist": "last 2 versions",
   "engines": {
     "node": ">=16.X"
   },
@@ -110,6 +103,7 @@
     "postcss-import": "^14.0.2",
     "postcss-mixins": "^8.1.0",
     "postcss-nested": "^5.0.6",
+    "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-simple-vars": "^6.0.3",
     "postcss-size": "^4.0.1",

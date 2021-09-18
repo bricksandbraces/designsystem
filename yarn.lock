@@ -1495,6 +1495,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/normalize.css@npm:*":
+  version: 12.0.0
+  resolution: "@csstools/normalize.css@npm:12.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40csstools%2Fnormalize.css%2F-%2Fnormalize.css-12.0.0.tgz"
+  checksum: b94c9d39e77d58ad8f9a79df57b127b0a9677d980ca7b6b89243edf32c535fa76bcfd247ef9baa1dee5b8a3ef925c1c8ecee67d021d838be083d1544276af5d1
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.3
   resolution: "@discoveryjs/json-ext@npm:0.5.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40discoveryjs%2Fjson-ext%2F-%2Fjson-ext-0.5.3.tgz"
@@ -2099,6 +2106,7 @@ __metadata:
     postcss-import: ^14.0.2
     postcss-mixins: ^8.1.0
     postcss-nested: ^5.0.6
+    postcss-normalize: ^10.0.1
     postcss-preset-env: ^6.7.0
     postcss-simple-vars: ^6.0.3
     postcss-size: ^4.0.1
@@ -14575,6 +14583,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"postcss-browser-comments@npm:^4":
+  version: 4.0.0
+  resolution: "postcss-browser-comments@npm:4.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-browser-comments%2F-%2Fpostcss-browser-comments-4.0.0.tgz"
+  peerDependencies:
+    browserslist: ">=4"
+    postcss: ">=8"
+  checksum: 767c048a35deeb5af337926a0888728d865bdf5def1ab180fa364c6e28bca8fd88e72805be8e34c9c90ca59f35fcbeb809a2c90f195fe9a0cbed4bf876becac1
+  languageName: node
+  linkType: hard
+
 "postcss-calc@npm:^8.0.0":
   version: 8.0.0
   resolution: "postcss-calc@npm:8.0.0"
@@ -15266,6 +15284,20 @@ fsevents@^1.2.7:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 3cc76516771d4e8a256ce6375ed123743f12f25a5fbaa28318607fbc06736525ff00f123e6add05ac8f5e92922762e196c4a970fd695711e2b398749585ca0c7
+  languageName: node
+  linkType: hard
+
+"postcss-normalize@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "postcss-normalize@npm:10.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-normalize%2F-%2Fpostcss-normalize-10.0.1.tgz"
+  dependencies:
+    "@csstools/normalize.css": "*"
+    postcss-browser-comments: ^4
+    sanitize.css: "*"
+  peerDependencies:
+    browserslist: ">= 4"
+    postcss: ">= 8"
+  checksum: 90e5c3ca4abe70c45431a7cb7427085ecae29913b1fc880f46c3299a9f5aea71aa018645f115cf2ee0eef728353cda5124b330da640cd00197d2efc9bc828ef8
   languageName: node
   linkType: hard
 
@@ -17283,6 +17315,13 @@ resolve@^2.0.0-next.3:
   bin:
     sane: ./src/cli.js
   checksum: e384e252021b1afef7459e994fe3ea79d114a0e7d23a03e660444abf15a2b4c50ce7eac2810b2c289e857c618d96fb35ee66356ebd4d6cb97cb11b54b2b29600
+  languageName: node
+  linkType: hard
+
+"sanitize.css@npm:*":
+  version: 13.0.0
+  resolution: "sanitize.css@npm:13.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsanitize.css%2F-%2Fsanitize.css-13.0.0.tgz"
+  checksum: 0aa77e3d5ad9ae9bd47c84041e923abb1a72cd086e5e04b3e22dd5fa1de2ab8e8dae4d41329447bae293ef9312f8a17678c83e1b2e4135053e62e97013f519af
   languageName: node
   linkType: hard
 
