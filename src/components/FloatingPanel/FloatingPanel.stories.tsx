@@ -3,7 +3,7 @@ import React from "react";
 import FloatingPanel from "./FloatingPanel";
 
 export default {
-  title: "Components/ComponentUtilities",
+  title: "Utilities/FloatingPanel",
   decorators: [withKnobs]
 };
 

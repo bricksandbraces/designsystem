@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
-import FloatingPanel from "../ComponentUtilities/FloatingPanel";
+import FloatingPanel from "../FloatingPanel/FloatingPanel";
 import Avatar from "./Avatar";
 
 type AvatarListItem = {
