@@ -26,6 +26,49 @@
     cursor: not-allowed;
   }
 
+  &--group {
+    white-space: nowrap;
+
+    &-divider {
+      & > div:not(:last-child) > button::before {
+        content: "";
+        position: absolute;
+        right: -1px;
+        width: 1px;
+        height: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &:hover {
+        & > div:not(:last-child) > button::before {
+          display: none;
+        }
+      }
+    }
+
+    & > div:not(:last-child) > .button--tertiary {
+      border-right: 0;
+
+      & > .button--label {
+        transform: translateX(-1px);
+      }
+    }
+
+    & > div > button {
+      border-radius: 0;
+    }
+
+    & > div:first-child > button {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    & > div:last-child > button {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
   &--small {
     min-height: $container-02;
     max-height: $container-02;
