@@ -13,7 +13,11 @@ type FloatingPanelProps = {
   children: ReactNode;
 };
 
-const FloatingPanel = ({ className, children, ...rest }: FloatingPanelProps) => {
+const FloatingPanel = ({
+  className,
+  children,
+  ...rest
+}: FloatingPanelProps) => {
   return (
     <div className={cx("floatingpanel", className)} {...rest}>
       {children}

@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from "react";
 import TooltipTrigger from "./TooltipTrigger";
 import ContainerTooltipIcon from "./ContainerTooltipIcon";
 import ContainerTooltipContainer from "./ContainerTooltipContainer";
-import { useMeasure } from "react-use";
 
 type ComposedContainerTooltipProps = {
   /**
@@ -28,10 +27,7 @@ const ComposedContainerTooltip = ({
           setOpen(!open);
         }}
       />
-      <ContainerTooltipContainer
-        tooltipPosition={tooltipPosition}
-        withCaret
-      >
+      <ContainerTooltipContainer tooltipPosition={tooltipPosition} withCaret>
         {children}
       </ContainerTooltipContainer>
     </TooltipTrigger>
