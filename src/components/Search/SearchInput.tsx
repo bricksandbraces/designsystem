@@ -75,8 +75,8 @@ type SearchInputProps = {
   ) => void;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  onClickInput?: React.MouseEventHandler;
-  onKeyDown?: React.KeyboardEventHandler;
+  onClickInput?: React.MouseEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
 const SearchInput = ({

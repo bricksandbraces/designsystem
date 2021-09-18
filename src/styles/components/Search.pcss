@@ -52,47 +52,38 @@
         display: flex;
         padding: 0 0 $spacing-03 0;
 
+        &__manual-hover {
+          border: $border $interactive-secondary-hover;
+          background-color: $interactive-secondary-hover;
+        }
+
         & > * {
           margin-right: $spacing-03;
           margin-bottom: $spacing-03;
         }
       }
 
-      &__results {
-        color: $search-results-font;
+      &__list-item {
+        display: flex;
+        align-items: center;
+        padding: 0 $spacing-04;
+        transition: background-color $transition-01;
+        border-radius: 2px;
 
-        &-item {
-          display: flex;
-          align-items: center;
-          padding: 0 $spacing-04;
-          transition: background-color $transition-01;
-          border-radius: 2px;
-          &__marked {
-            background-color: $search-box-background-hover;
-            color: $search-recent-font;
-          }
+        &__manual-hover {
+          background-color: $search-box-background-hover;
+          color: $search-recent-font;
         }
-      }
-
-      &__recent {
-        color: $search-recent-font;
-
-        &-icon {
-          margin-right: $spacing-04;
-          color: $search-recent-icon;
-        }
-
-        &-item {
-          display: flex;
-          align-items: center;
-          padding: 0 $spacing-04;
-          transition: background-color $transition-01;
-          border-radius: 2px;
-
-          &__marked {
-            background-color: $search-box-background-hover;
-            color: $search-recent-font;
+        &--recent {
+          &-icon {
+            margin-right: $spacing-04;
+            color: $search-recent-icon;
           }
+
+          color: $search-recent-font;
+        }
+        &--result {
+          color: $search-results-font;
         }
       }
     }

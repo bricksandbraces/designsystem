@@ -1,9 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
+import cx from "classnames";
 import useControlled from "../../hooks/useControlled";
 import { BadgeColor } from "../Badge/Badge";
-import SearchResultItem, { SearchResultItemProps } from "./SearchResultItem";
-import SearchRecentItem, { SearchRecentItemProps } from "./SearchRecentItem";
+import SearchListItem, {
+  SearchListItemProps,
+  SearchListItemType
+} from "./SearchListItem";
 import SearchInput from "./SearchInput";
 import SearchContainer from "./SeachContainer";
 import Button from "../Button/Button";
@@ -63,12 +66,12 @@ type SearchProps = {
   /**
    * Search Results
    */
-  results?: SearchResultItemProps[];
+  results?: Omit<SearchListItemProps, "type">[];
 
   /**
    * Search Recent
    */
-  recents?: SearchRecentItemProps[];
+  recents?: Omit<SearchListItemProps, "type">[];
 
   /**
    * Search Badges
@@ -80,7 +83,8 @@ type SearchProps = {
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
    * onSearch Function. Null if clicked on a badge without href but with onClick
@@ -92,6 +96,7 @@ type SearchProps = {
   onFocus?: React.FocusEventHandler;
   onBlur?: React.FocusEventHandler;
 
+  /** A focus state for the list elements that combines selection via hover and keyboard events. Separate to the classic DOM focus events. */
   focusedItemIndex?: number;
   defaultFocusedItemIndex?: number;
   onItemFocusChange?: (newFocusedItemIndex: number) => void;
@@ -108,6 +113,7 @@ const Search = ({
   onFocus,
   onBlur,
   onClick,
+  onKeyDown,
 
   clearLabel = "Clear search results",
   submitLabel = "Go!",
@@ -157,25 +163,25 @@ const Search = ({
     }
   }, [focusedItemIndex]);
 
+  // Concat all search list items (Button + SearchListItem [both types]) to easily access an item via absolute index
   const overallArray = [
     ...(badges ?? []),
     ...(recents ?? []),
     ...(results ?? [])
   ] as {
-    label?: string;
+    label: string;
     href?: string;
     onClick?: (event: React.KeyboardEvent) => void;
   }[];
-  const badgesOffset = badges?.length ?? 0;
-  const recentsLength = recents?.length ?? 0;
 
+  /** the currently focused items props */
   const focusedItem = focusedIndex != null ? overallArray[focusedIndex] : null;
 
-  const updateTextForFocusedItemIndex = (newFocusedIndex: number | null) => {
+  const updateFocusIndexAndTextValue = (newFocusedIndex: number | null) => {
     const newFocusedItem =
       newFocusedIndex != null ? overallArray[newFocusedIndex] : null;
-    setTextValue(newFocusedItem?.label ?? "");
-    setFocusedIndex(newFocusedIndex);
+    if (!valueControlled) setTextValue(newFocusedItem?.label ?? "");
+    if (!focusControlled) setFocusedIndex(newFocusedIndex);
   };
 
   const handleVerticalKeyboardNavigation: React.KeyboardEventHandler = (
@@ -185,7 +191,7 @@ const Search = ({
     const up = event.key === "ArrowUp";
     if (navigation) {
       event.preventDefault();
-      setContainerOpen(true);
+      if (!openControlled) setContainerOpen(true);
 
       if (!focusControlled) {
         let newFocusedIndex;
@@ -199,21 +205,33 @@ const Search = ({
             focusedIndex + 1 >= overallArray.length ? 0 : focusedIndex + 1;
         }
 
-        updateTextForFocusedItemIndex(newFocusedIndex);
+        updateFocusIndexAndTextValue(newFocusedIndex);
 
         onItemFocusChange?.(newFocusedIndex);
       }
     } else if (event.key === "Enter") {
-      setContainerOpen(false);
+      if (openControlled) {
+        setContainerOpen(false);
+      }
 
       if (focusedItemIndex != null) {
-        setTextValue(focusedItem?.label ?? "");
-        setFocusedIndex(null);
+        if (!valueControlled) setTextValue(focusedItem?.label ?? "");
+        if (!focusControlled) setFocusedIndex(null);
       }
 
       onSubmit?.(textValue, event);
     }
   };
+
+  // combine recent with result as their component is the same
+  const searchListItems = (recents ?? [])
+    .map((item) => ({ ...item, type: SearchListItemType.RECENT }))
+    .concat(
+      (results ?? []).map((item) => ({
+        ...item,
+        type: SearchListItemType.RESULT
+      }))
+    );
 
   return (
     <SearchContainer open={containerOpen}>
@@ -223,17 +241,26 @@ const Search = ({
         clearLabel={clearLabel}
         submitLabel={submitLabel}
         onClickInput={(event) => {
-          setContainerOpen(true);
-          setFocusedIndex(null);
+          if (!openControlled) {
+            setContainerOpen(true);
+          }
+          if (!focusControlled) {
+            setFocusedIndex(null);
+          }
           onClick?.(event);
         }}
         onFocus={onFocus}
         onBlur={(event) => {
-          setContainerOpen(false);
+          // todo: only close the container if the blur was on the webpage (not outside the window)
+          if (!openControlled) {
+            setContainerOpen(false);
+          }
           onBlur?.(event);
         }}
         onChange={(event) => {
-          setContainerOpen(true);
+          if (!openControlled) {
+            setContainerOpen(true);
+          }
           if (!valueControlled) {
             setTextValue(event.target.value);
           }
@@ -243,7 +270,10 @@ const Search = ({
           }
           onChange?.(event);
         }}
-        onKeyDown={handleVerticalKeyboardNavigation}
+        onKeyDown={(event) => {
+          handleVerticalKeyboardNavigation(event);
+          onKeyDown?.(event);
+        }}
         onSubmit={onSubmit}
         placeholder={placeholder}
         size={size}
@@ -255,51 +285,38 @@ const Search = ({
             return (
               <Button
                 key={i}
+                className={cx({
+                  "search--box-content__badges__manual-hover": i === focusedIndex
+                })}
                 kind="secondary"
                 onMouseEnter={() => {
                   setFocusedIndex(i);
                 }}
                 tabIndex={-1}
                 size="small"
-                onClick={(event) => {
-                  if (item.onClick) {
-                    item.onClick(event);
-                  }
-                }}
+                onClick={item.onClick}
               >
                 {item.label}
               </Button>
             );
           })}
         </div>
-        <div className="search--box-content__recent">
-          {recents?.map((item, i) => {
-            const absIndex = badgesOffset + i;
+        <div className="">
+          {searchListItems.map((item, i) => {
+            const absIndex = (badges?.length ?? 0) + i;
             return (
-              <SearchRecentItem
+              <SearchListItem
+                type={item.type}
                 key={i}
-                artificialFocus={absIndex === focusedIndex}
                 onMouseEnter={() => {
                   setFocusedIndex(absIndex);
                 }}
-                label={item.label}
-                href={item.href}
-              />
-            );
-          })}
-        </div>
-        <div className="search--box-content__results">
-          {results?.map((item, i) => {
-            const absIndex = badgesOffset + recentsLength + i;
-            return (
-              <SearchResultItem
-                key={i}
-                artificialFocus={absIndex === focusedIndex}
-                onMouseEnter={() => {
-                  setFocusedIndex(absIndex);
+                onClick={() => {
+                  updateFocusIndexAndTextValue(absIndex);
                 }}
                 label={item.label}
                 href={item.href}
+                manuallyHovered={absIndex === focusedIndex}
               />
             );
           })}
