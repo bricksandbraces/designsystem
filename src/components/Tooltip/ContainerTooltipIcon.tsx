@@ -8,11 +8,6 @@ type ContainerTooltipIconProps = {
    */
   className?: string;
 
-  /**
-   * Disables the tooltip when the children is disabled
-   */
-  disabled?: boolean;
-
   /** Provide the click handler for the button */
   onClick?: (event: any) => void;
   onHover?: (event: any) => void;
@@ -20,11 +15,10 @@ type ContainerTooltipIconProps = {
 
 const ContainerTooltipIcon = ({
   className,
-  disabled,
   ...rest
 }: ContainerTooltipIconProps) => {
   return (
-    <button className={cx(className, "tooltip--icon")} {...rest}>
+    <button className={cx(className, "tooltip--btn")} {...rest}>
       <IconInfoCircle size={16} />
     </button>
   );
