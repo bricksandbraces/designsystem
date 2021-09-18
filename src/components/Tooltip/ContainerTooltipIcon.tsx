@@ -18,7 +18,11 @@ type ContainerTooltipIconProps = {
   onHover?: (event: any) => void;
 };
 
-const ContainerTooltipIcon = ({ className, disabled, ...rest }: ContainerTooltipIconProps) => {
+const ContainerTooltipIcon = ({
+  className,
+  disabled,
+  ...rest
+}: ContainerTooltipIconProps) => {
   return (
     <button className={cx(className, "tooltip--icon")} {...rest}>
       <IconInfoCircle size={16} />

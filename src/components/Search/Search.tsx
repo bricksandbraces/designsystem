@@ -286,7 +286,8 @@ const Search = ({
               <Button
                 key={i}
                 className={cx({
-                  "search--box-content__badges__manual-hover": i === focusedIndex
+                  "search--box-content__badges__manual-hover":
+                    i === focusedIndex
                 })}
                 kind="secondary"
                 onMouseEnter={() => {
