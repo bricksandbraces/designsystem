@@ -128,8 +128,8 @@ const LeadSpace = ({
                         size="large"
                         kind={i === 0 ? "primary" : "ghost"}
                         href={cta.href}
-                        withIconRight
-                        renderIcon={cta.showChevron && <IconChevronRight />}
+                        iconPosition="right"
+                        icon={cta.showChevron && <IconChevronRight />}
                       >
                         {cta.label}
                       </Button>

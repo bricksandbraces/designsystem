@@ -1,0 +1,178 @@
+@import "../theme.pcss";
+
+.avatar {
+  position: relative;
+  background-color: transparent;
+
+  &--container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform $transition-01, filter $transition-01;
+    border-radius: 50%;
+  }
+
+  &--default {
+    width: $container-03;
+    min-width: $container-03;
+    max-width: $container-03;
+    height: $container-03;
+    min-height: $container-03;
+    max-height: $container-03;
+
+    & > div > .avatar--container {
+      width: $container-03;
+      min-width: $container-03;
+      max-width: $container-03;
+      height: $container-03;
+      min-height: $container-03;
+      max-height: $container-03;
+    }
+  }
+
+  &--large {
+    width: $container-04;
+    min-width: $container-04;
+    max-width: $container-04;
+    height: $container-04;
+    min-height: $container-04;
+    max-height: $container-04;
+
+    & > div > .avatar--container {
+      width: $container-04;
+      min-width: $container-04;
+      max-width: $container-04;
+      height: $container-04;
+      min-height: $container-04;
+      max-height: $container-04;
+    }
+  }
+
+  &--small {
+    width: $container-02;
+    min-width: $container-02;
+    max-width: $container-02;
+    height: $container-02;
+    min-height: $container-02;
+    max-height: $container-02;
+
+    & > div > .avatar--container {
+      width: $container-02;
+      min-width: $container-02;
+      max-width: $container-02;
+      height: $container-02;
+      min-height: $container-02;
+      max-height: $container-02;
+    }
+  }
+
+  &--img {
+    width: 100%;
+  }
+
+  &--icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $avatar-icon-background;
+    color: $white;
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-panel {
+      width: 100%;
+      max-width: max-content;
+    }
+
+    &-children {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      padding: 12px;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      height: $container-04;
+      max-height: $container-04;
+      padding: 0 12px;
+      transition: background-color $transition-01;
+      border-radius: 2px;
+
+      &:hover {
+        background-color: $avatar-background;
+      }
+
+      &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        &-actions {
+          white-space: nowrap;
+          & > div {
+            margin-left: $spacing-03;
+          }
+        }
+      }
+
+      &__text {
+        width: 100%;
+        margin-right: $spacing-10;
+        margin-left: $spacing-05;
+
+        &-heading {
+          width: 100%;
+          max-width: calc($container-05 * 3);
+          overflow: hidden;
+          color: $white;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &-body {
+          width: 100%;
+          max-width: $container-07;
+          overflow: hidden;
+          color: $warm-gray-60;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  &--group {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > .avatar:not(:first-child),
+    & > div:not(:first-child) > .avatar {
+      margin-left: -12px;
+
+      & > .avatar--container {
+        box-shadow: $avatar-border 0 0 0 3px;
+      }
+    }
+
+    &-btn {
+      margin-left: 12px;
+      border-radius: 25px;
+    }
+  }
+}

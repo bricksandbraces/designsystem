@@ -1,9 +1,6 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import {
-  Icon3dCubeSphere,
-  IconLayoutGridAdd
-} from "@tabler/icons";
+import { Icon3dCubeSphere, IconLayoutGridAdd } from "@tabler/icons";
 import Button from "./Button";
 import IconOnlyButton from "./IconOnlyButton";
 
