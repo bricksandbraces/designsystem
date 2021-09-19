@@ -89,11 +89,7 @@ const Select = ({
 
   const renderOption = (option: SelectOption) => {
     return (
-      <option
-        key={option.value}
-        value={option.value}
-        selected={option.value === selectedValue}
-      >
+      <option key={option.value} value={option.value}>
         {option.text}
       </option>
     );
@@ -116,6 +112,7 @@ const Select = ({
             }
             onChange?.(event);
           }}
+          value={selectedValue}
         >
           {options.map((option) => {
             if ((option as SelectOptionGroup).group != null) {

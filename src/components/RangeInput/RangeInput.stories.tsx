@@ -1,4 +1,4 @@
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import RangeInput from "./RangeInput";
 
@@ -14,6 +14,7 @@ export const Default = () => {
           min={30}
           max={50}
           defaultValue={40}
+          hideTextInput={boolean("hideTextInput", false)}
         />
       </div>
     </div>
@@ -34,6 +35,7 @@ export const Controlled = () => {
           onChange={(newValue) => {
             setValue(newValue);
           }}
+          hideTextInput={boolean("hideTextInput", false)}
         />
       </div>
     </div>
