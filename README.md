@@ -73,13 +73,13 @@ At first, install husky using `yarn husky install`.
 
 To start storybook and show all components, simply run:
 
-```
+```bash
 yarn storybook
 ```
 
 ### Other commands
 
-```
+```bash
 yarn test
 yarn format:check
 yarn format:fix
