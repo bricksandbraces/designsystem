@@ -3,6 +3,7 @@ import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
 import FormLabel from "../FormLabel/FormLabel";
+import { prefix } from "../../settings";
 
 type TextInputProps = {
   /**
@@ -111,21 +112,26 @@ const TextInput = (
   }, [value]);
 
   return (
-    <div className={cx("textinput", { "textinput--fluid": fluid })}>
+    <div
+      className={cx(`${prefix}--textinput`, {
+        [`${prefix}--textinput--fluid`]: fluid
+      })}
+    >
       {label && !fluid && <FormLabel htmlFor={id}>{label}</FormLabel>}
-      <div className="textinput--input-container">
+      <div className={`${prefix}--textinput--input-container`}>
         <input
           id={id}
           ref={ref}
           className={cx(
-            "textinput--input",
+            `${prefix}--textinput--input`,
             {
-              "textinput--large": size === "large" && !fluid,
-              "textinput--default": (size === "default" && !fluid) || undefined,
-              "textinput--small": size === "small" && !fluid,
-              "textinput--error":
+              [`${prefix}--textinput--large`]: size === "large" && !fluid,
+              [`${prefix}--textinput--default`]:
+                (size === "default" && !fluid) || undefined,
+              [`${prefix}--textinput--small`]: size === "small" && !fluid,
+              [`${prefix}--textinput--error`]:
                 (error || errorText) && !(warning || warningText),
-              "textinput--warning":
+              [`${prefix}--textinput--warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -143,8 +149,8 @@ const TextInput = (
         />
         {fluid && (
           <label
-            className={cx("textinput--fluid-label", {
-              "textinput--fluid-label__value": textValue !== ""
+            className={cx(`${prefix}--textinput--fluid-label`, {
+              [`${prefix}--textinput--fluid-label__value`]: textValue !== ""
             })}
           >
             {placeholder}
@@ -153,14 +159,14 @@ const TextInput = (
         {children}
       </div>
       {errorText && !warningText && (
-        <div className="textinput--error-text">
+        <div className={`${prefix}--textinput--error-text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className="textinput--warning-text">
+        <div className={`${prefix}--textinput--warning-text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}

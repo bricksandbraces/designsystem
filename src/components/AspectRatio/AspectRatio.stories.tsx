@@ -2,6 +2,7 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import AspectRatio from "./AspectRatio";
 import { Grid, Column } from "../Grid/Grid";
+import { prefix } from "../../settings";
 
 export default { title: "Components/AspectRatio", decorators: [withKnobs] };
 
@@ -20,22 +21,22 @@ export const Default = () => {
     <Grid>
       <Column sm={1} md={2} lg={4} xlg={4}>
         <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className="grid--example">Content</div>
+          <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
         <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className="grid--example">Content</div>
+          <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
         <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className="grid--example">Content</div>
+          <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
       </Column>
       <Column sm={1} md={2} lg={4} xlg={4}>
         <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className="grid--example">Content</div>
+          <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
       </Column>
     </Grid>

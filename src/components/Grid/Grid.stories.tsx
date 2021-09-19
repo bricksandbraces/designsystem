@@ -1,5 +1,6 @@
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
+import { prefix } from "../../settings";
 import { Grid, Column } from "./Grid";
 
 export default { title: "Components/Grid", decorators: [withKnobs] };
@@ -8,16 +9,16 @@ export const Auto = () => {
   return (
     <Grid>
       <Column defaultColumn>
-        <div className="grid--example">Column 1</div>
+        <div className={`${prefix}--grid--example`}>Column 1</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 2</div>
+        <div className={`${prefix}--grid--example`}>Column 2</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 3</div>
+        <div className={`${prefix}--grid--example`}>Column 3</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 4</div>
+        <div className={`${prefix}--grid--example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -27,16 +28,16 @@ export const FullWidth = () => {
   return (
     <Grid fullWidth>
       <Column defaultColumn>
-        <div className="grid--example">Column 1</div>
+        <div className={`${prefix}--grid--example`}>Column 1</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 2</div>
+        <div className={`${prefix}--grid--example`}>Column 2</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 3</div>
+        <div className={`${prefix}--grid--example`}>Column 3</div>
       </Column>
       <Column defaultColumn>
-        <div className="grid--example">Column 4</div>
+        <div className={`${prefix}--grid--example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -46,16 +47,16 @@ export const ResponsiveBreakpoints = () => {
   return (
     <Grid>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 1</div>
+        <div className={`${prefix}--grid--example`}>Column 1</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 2</div>
+        <div className={`${prefix}--grid--example`}>Column 2</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 3</div>
+        <div className={`${prefix}--grid--example`}>Column 3</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 4</div>
+        <div className={`${prefix}--grid--example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -65,16 +66,16 @@ export const narrow = () => {
   return (
     <Grid narrow>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 1</div>
+        <div className={`${prefix}--grid--example`}>Column 1</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 2</div>
+        <div className={`${prefix}--grid--example`}>Column 2</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 3</div>
+        <div className={`${prefix}--grid--example`}>Column 3</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 4</div>
+        <div className={`${prefix}--grid--example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -84,16 +85,16 @@ export const condensed = () => {
   return (
     <Grid condensed>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 1</div>
+        <div className={`${prefix}--grid--example`}>Column 1</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 2</div>
+        <div className={`${prefix}--grid--example`}>Column 2</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 3</div>
+        <div className={`${prefix}--grid--example`}>Column 3</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className="grid--example">Column 4</div>
+        <div className={`${prefix}--grid--example`}>Column 4</div>
       </Column>
     </Grid>
   );

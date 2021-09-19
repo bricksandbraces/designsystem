@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { prefix } from "../../settings";
 
 type ModalBodyProps = {
   /**
@@ -9,8 +10,8 @@ type ModalBodyProps = {
 
 const ModalBody = ({ children }: ModalBodyProps) => {
   return (
-    <div className="modal--body">
-      <div className="modal--body-content">{children}</div>
+    <div className={`${prefix}--modal--body`}>
+      <div className={`${prefix}--modal--body-content`}>{children}</div>
     </div>
   );
 };

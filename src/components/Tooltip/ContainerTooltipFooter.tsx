@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type ContainerTooltipFooterProps = {
   /**
@@ -18,7 +19,9 @@ const ContainerTooltipFooter = ({
   className
 }: ContainerTooltipFooterProps) => {
   return (
-    <div className={cx(className, "tooltip--container-footer")}>{children}</div>
+    <div className={cx(className, `${prefix}--tooltip--container-footer`)}>
+      {children}
+    </div>
   );
 };
 

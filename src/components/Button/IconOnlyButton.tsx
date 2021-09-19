@@ -3,6 +3,7 @@ import cx from "classnames";
 import Button from "./Button";
 import TooltipText from "../Tooltip/HoverTooltipText";
 import TooltipContainer from "../Tooltip/TooltipTrigger";
+import { prefix } from "../../settings";
 
 export type IconOnlyButtonProps = {
   /** Unique identifier for your button */
@@ -72,7 +73,7 @@ const IconOnlyButton = ({
 }: IconOnlyButtonProps) => (
   <TooltipContainer className={cx(wrapperClassName)}>
     <Button
-      className={cx("icon-only", className)}
+      className={cx(`${prefix}--icon-only`, className)}
       href={href}
       kind={kind}
       size={size}
