@@ -52,7 +52,7 @@ const Avatar = ({
             name
               ?.split(" ")
               .map((str) => str[0] ?? "")
-              .join(" ")}
+              .join()}
         </span>
       </div>
     </div>
