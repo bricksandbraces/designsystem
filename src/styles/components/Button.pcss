@@ -36,6 +36,7 @@
             opacity: 0;
           }
         }
+
         &::before {
           content: "";
           position: absolute;
@@ -45,7 +46,24 @@
           transition: ;
           transition: $transition-01;
           opacity: 1;
-          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      & > div:not(:last-child) > .button--primary {
+        &::before {
+          background-color: $interactive-primary-hover;
+        }
+      }
+
+      & > div:not(:last-child) > .button--secondary {
+        &::before {
+          background-color: $interactive-secondary-hover;
+        }
+      }
+
+      & > div:not(:last-child) > .button--ghost {
+        &::before {
+          background-color: $interactive-ghost-hover;
         }
       }
     }
