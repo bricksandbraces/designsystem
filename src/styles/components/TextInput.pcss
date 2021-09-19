@@ -1,25 +1,26 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.textinput {
+.$(prefix)--textinput {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 
   &--fluid {
-    & > div > .textinput--input {
+    & > div > .$(prefix)--textinput--input {
       height: $container-05;
       padding-top: 20px;
 
-      &:focus + .textinput--fluid-label {
+      &:focus + .$(prefix)--textinput--fluid-label {
         @mixin type--label;
 
         transform: translateY(-10px);
       }
     }
 
-    & > div > .textinput--togglepassword {
-      & .button.icon-only.button--ghost {
+    & > div > .$(prefix)--textinput--togglepassword {
+      & .$(prefix)--button.icon-only.button--ghost {
         min-width: calc($container-01);
         max-width: calc($container-01);
         min-height: calc($container-01);
@@ -79,7 +80,7 @@
     top: 0;
     right: 0;
 
-    & .button.icon-only.button--ghost {
+    & .$(prefix)--button.icon-only.button--ghost {
       margin-top: 1px;
       margin-right: 1px;
       margin-bottom: 1px;
@@ -89,21 +90,21 @@
       border-bottom-left-radius: 0;
     }
 
-    & .button.icon-only.button--default {
+    & .$(prefix)--button.icon-only.button--default {
       min-width: calc($container-03 - 2px);
       max-width: calc($container-03 - 2px);
       min-height: calc($container-03 - 2px);
       max-height: calc($container-03 - 2px);
     }
 
-    & .button.icon-only.button--small {
+    & .$(prefix)--button.icon-only.button--small {
       min-width: calc($container-02 - 2px);
       max-width: calc($container-02 - 2px);
       min-height: calc($container-02 - 2px);
       max-height: calc($container-02 - 2px);
     }
 
-    & .button.icon-only.button--large {
+    & .$(prefix)--button.icon-only.button--large {
       min-width: calc($container-04 - 2px);
       max-width: calc($container-04 - 2px);
       min-height: calc($container-04 - 2px);

@@ -1,6 +1,7 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 
-.userprofile {
+.$(prefix)--userprofile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +119,7 @@
     border: 1px solid rgba(74, 0, 224, 1);
   }
 
-  &:hover > .userprofile-avatar {
+  &:hover > .$(prefix)--userprofile-avatar {
     transform: scale(0.9);
   }
 
@@ -126,20 +127,21 @@
     border: 1px solid white;
   }
 
-  &:active > .userprofile-avatar {
+  &:active > .$(prefix)--userprofile-avatar {
     box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.1);
   }
 }
 
-.userprofile.userprofile--open {
+.$(prefix)--userprofile.$(prefix)--userprofile--open {
   border: 1px solid rgba(74, 0, 224, 1);
 }
 
-.userprofile:focus-visible.userprofile--open {
+.$(prefix)--userprofile:focus-visible.$(prefix)--userprofile--open {
   border: 1px solid white;
 }
 
-.userprofile.userprofile--open > .userprofile--avatar {
+.$(prefix)--userprofile.$(prefix)--userprofile--open
+  > .$(prefix)--userprofile--avatar {
   transform: scale(0.9);
   box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.25);
 }

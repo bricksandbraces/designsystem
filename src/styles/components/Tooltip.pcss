@@ -1,3 +1,4 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 @import "../typography.pcss";
 
@@ -16,7 +17,7 @@
   }
 }
 
-.tooltip {
+.$(prefix)--tooltip {
   &--container {
     @mixin type--body-small;
 
@@ -59,8 +60,8 @@
     }
   }
 
-  &--container > .tooltip--caret-container,
-  &--hover > .tooltip--caret-container {
+  &--container > .$(prefix)--tooltip--caret-container,
+  &--hover > .$(prefix)--tooltip--caret-container {
     display: flex;
     position: absolute;
 
@@ -71,7 +72,7 @@
       background-color: $tooltip-background;
     }
 
-    & > .tooltip--caret {
+    & > .$(prefix)--tooltip--caret {
       width: 8px;
       min-width: 8px;
       height: 8px;
@@ -82,9 +83,9 @@
     }
   }
 
-  &--container.tooltip--right,
-  &--hover.tooltip--right {
-    & > .tooltip--caret-container {
+  &--container.$(prefix)--tooltip--right,
+  &--hover.$(prefix)--tooltip--right {
+    & > .$(prefix)--tooltip--caret-container {
       top: 0;
       left: 0;
       align-items: center;
@@ -98,7 +99,7 @@
         transform: translateX(8px);
       }
 
-      & > .tooltip--caret {
+      & > .$(prefix)--tooltip--caret {
         width: 8px;
         min-width: 8px;
         height: 8px;
@@ -108,9 +109,9 @@
     }
   }
 
-  &--container.tooltip--left,
-  &--hover.tooltip--left {
-    & > .tooltip--caret-container {
+  &--container.$(prefix)--tooltip--left,
+  &--hover.$(prefix)--tooltip--left {
+    & > .$(prefix)--tooltip--caret-container {
       top: 0;
       right: 0;
       align-items: center;
@@ -123,7 +124,7 @@
         height: 10px;
       }
 
-      & > .tooltip--caret {
+      & > .$(prefix)--tooltip--caret {
         width: 8px;
         min-width: 8px;
         height: 8px;
@@ -133,9 +134,9 @@
     }
   }
 
-  &--container.tooltip--bottom,
-  &--hover.tooltip--bottom {
-    & > .tooltip--caret-container {
+  &--container.$(prefix)--tooltip--bottom,
+  &--hover.$(prefix)--tooltip--bottom {
+    & > .$(prefix)--tooltip--caret-container {
       top: 0;
       left: 0;
       align-items: flex-end;
@@ -149,7 +150,7 @@
         transform: translateY(8px);
       }
 
-      & > .tooltip--caret {
+      & > .$(prefix)--tooltip--caret {
         width: 8px;
         min-width: 8px;
         height: 8px;
@@ -159,9 +160,9 @@
     }
   }
 
-  &--container.tooltip--top,
-  &--hover.tooltip--top {
-    & > .tooltip--caret-container {
+  &--container.$(prefix)--tooltip--top,
+  &--hover.$(prefix)--tooltip--top {
+    & > .$(prefix)--tooltip--caret-container {
       bottom: 0;
       left: 0;
       align-items: flex-end;
@@ -174,7 +175,7 @@
         height: 8px;
       }
 
-      & > .tooltip--caret {
+      & > .$(prefix)--tooltip--caret {
         width: 8px;
         min-width: 8px;
         height: 8px;
@@ -224,7 +225,7 @@
     white-space: nowrap;
     user-select: none;
 
-    &.tooltip--with-caret {
+    &.$(prefix)--tooltip--with-caret {
       @mixin type--body-small;
 
       height: $container-02;
@@ -238,26 +239,26 @@
     justify-content: center;
     color: $tooltip-font;
 
-    & > .tooltip--bottom {
+    & > .$(prefix)--tooltip--bottom {
       top: var(--tooltip-container-height);
     }
 
-    & > .tooltip--top {
+    & > .$(prefix)--tooltip--top {
       bottom: var(--tooltip-container-height);
     }
 
-    & > .tooltip--left {
+    & > .$(prefix)--tooltip--left {
       right: calc(100% + 16px);
     }
 
-    & > .tooltip--right {
+    & > .$(prefix)--tooltip--right {
       left: calc(100% + 16px);
     }
   }
 
   &--visible {
     &-onhover {
-      &:hover > .tooltip--hover {
+      &:hover > .$(prefix)--tooltip--hover {
         display: inline-flex;
         visibility: visible;
         transform: translateY(0);
@@ -265,14 +266,14 @@
       }
     }
 
-    & > .tooltip--hover {
+    & > .$(prefix)--tooltip--hover {
       display: inline-flex;
       visibility: visible;
       transform: translateY(0);
       opacity: 1;
     }
 
-    & > .tooltip--container {
+    & > .$(prefix)--tooltip--container {
       display: inline-flex;
       visibility: visible;
       transform: translateY(0);

@@ -1,8 +1,9 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../colors.pcss";
 @import "../theme.pcss";
 
-.header {
+.$(prefix)--header {
   position: fixed;
   z-index: 10;
   top: 0;
@@ -79,7 +80,7 @@
       justify-content: flex-end;
     }
 
-    &-container.header--column > div {
+    &-container.$(prefix)--header--column > div {
       width: max-content;
     }
   }
@@ -133,6 +134,12 @@
   }
 }
 
-.header + .leadspace > div > div > div > div > .leadspace--content {
+.$(prefix)--header
+  + .$(prefix)--leadspace
+  > div
+  > div
+  > div
+  > div
+  > .$(prefix)--leadspace--content {
   padding-top: 64px;
 }

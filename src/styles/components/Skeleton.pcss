@@ -1,3 +1,4 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 
 @keyframes loading {
@@ -11,7 +12,7 @@
   }
 }
 
-.skeleton {
+.$(prefix)--skeleton {
   width: 128px;
   animation: loading $transition-04 infinite;
   border-radius: 2px;
@@ -28,19 +29,19 @@
     height: $container-02;
   }
 
-  &--circle.skeleton--small {
+  &--circle.$(prefix)--skeleton--small {
     width: $container-02;
     height: $container-02;
     border-radius: 50%;
   }
 
-  &--circle.skeleton--default {
+  &--circle.$(prefix)--skeleton--default {
     width: $container-03;
     height: $container-03;
     border-radius: 50%;
   }
 
-  &--circle.skeleton--large {
+  &--circle.$(prefix)--skeleton--large {
     width: $container-04;
     height: $container-04;
     border-radius: 50%;

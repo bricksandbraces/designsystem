@@ -1,72 +1,77 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 
-.accordion {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  color: $accordion-font;
-  &--heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: $container-04;
-    padding: 0 $spacing-04;
-    border: 1px solid transparent;
-    border-radius: $border-radius-2;
-    outline: 0;
-    background-color: transparent;
+.$(prefix) {
+  &--accordion {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
     color: $accordion-font;
-
-    &:hover {
-      background-color: $accordion-background-hover;
-    }
-
-    &:focus {
-      border-color: $accordion-focus;
+    &--heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: $container-04;
+      padding: 0 $spacing-04;
+      border: 1px solid transparent;
+      border-radius: $border-radius-2;
       outline: 0;
-    }
+      background-color: transparent;
+      color: $accordion-font;
 
-    &:focus-visible {
-      border-color: $accordion-focus;
-      outline: 0;
-    }
+      &:hover {
+        background-color: $accordion-background-hover;
+      }
 
-    &:disabled {
-      background-color: inherit;
-      color: $accordion-disabled-font;
-      cursor: not-allowed;
-    }
+      &:focus {
+        border-color: $accordion-focus;
+        outline: 0;
+      }
 
-    &-icon {
-      transition: $transition-01;
-    }
-  }
+      &:focus-visible {
+        border-color: $accordion-focus;
+        outline: 0;
+      }
 
-  &--item {
-    box-sizing: content-box;
-    height: 100%;
-    max-height: $container-04;
-    overflow: hidden;
-    transition: $transition-03;
-    border-top: 1px solid $accordion-border;
+      &:disabled {
+        background-color: inherit;
+        color: $accordion-disabled-font;
+        cursor: not-allowed;
+      }
 
-    &:last-child {
-      border-bottom: 1px solid $accordion-border;
-    }
-
-    &-open {
-      & > .accordion--heading > .accordion--heading-icon {
-        transform: rotate(180deg);
+      &-icon {
+        transition: $transition-01;
       }
     }
-  }
 
-  &--content {
-    display: none;
-    width: 80%;
-    height: 100%;
-    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+    &--item {
+      box-sizing: content-box;
+      height: 100%;
+      max-height: $container-04;
+      overflow: hidden;
+      transition: $transition-03;
+      border-top: 1px solid $accordion-border;
+
+      &:last-child {
+        border-bottom: 1px solid $accordion-border;
+      }
+
+      &-open {
+        &
+          > .$(prefix)--accordion--heading
+          > .$(prefix)--accordion--heading-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &--content {
+      display: none;
+      width: 80%;
+      height: 100%;
+      padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+    }
   }
 }
 
@@ -81,15 +86,15 @@
   }
 }
 
-.accordion--item-expand > .accordion--content {
+.$(prefix)--accordion--item-expand > .$(prefix)--accordion--content {
   animation-name: accordionTransitionIn;
   animation-duration: 0.15s;
 }
 
-.accordion--item-open > .accordion--content {
+.$(prefix)--accordion--item-open > .$(prefix)--accordion--content {
   display: block;
 }
 
-.accordion--item-open.accordion--item {
+.$(prefix)--accordion--item-open.$(prefix)--accordion--item {
   max-height: inherit;
 }
