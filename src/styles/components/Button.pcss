@@ -26,6 +26,71 @@
     cursor: not-allowed;
   }
 
+  &--group {
+    white-space: nowrap;
+
+    &-divider {
+      & > div:not(:last-child) > button {
+        &:hover {
+          &::before {
+            opacity: 0;
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: -1px;
+          width: 1px;
+          height: 50%;
+          transition: ;
+          transition: $transition-01;
+          opacity: 1;
+        }
+      }
+
+      & > div:not(:last-child) > .button--primary {
+        &::before {
+          background-color: $interactive-primary-hover;
+        }
+      }
+
+      & > div:not(:last-child) > .button--secondary {
+        &::before {
+          background-color: $interactive-secondary-hover;
+        }
+      }
+
+      & > div:not(:last-child) > .button--ghost {
+        &::before {
+          background-color: $interactive-ghost-hover;
+        }
+      }
+    }
+
+    & > div:not(:last-child) > .button--tertiary {
+      border-right: 0;
+
+      & > .button--label {
+        transform: translateX(-1px);
+      }
+    }
+
+    & > div > button {
+      border-radius: 0;
+    }
+
+    & > div:first-child > button {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    & > div:last-child > button {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
   &--small {
     min-height: $container-02;
     max-height: $container-02;
