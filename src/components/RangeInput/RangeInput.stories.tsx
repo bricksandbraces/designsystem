@@ -31,8 +31,8 @@ export const Controlled = () => {
           min={30}
           max={50}
           value={value}
-          onChange={(event) => {
-            setValue((event.target.value as any) * 1);
+          onChange={(newValue) => {
+            setValue(newValue);
           }}
         />
       </div>
