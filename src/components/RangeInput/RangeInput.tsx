@@ -1,7 +1,6 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
-import TextInput from "../TextInput/TextInput";
-import FormLabel from "../FormLabel/FormLabel";
+import useControlled from "../../hooks/useControlled";
 
 type RangeInputProps = {
   /**
@@ -15,16 +14,6 @@ type RangeInputProps = {
   id: string;
 
   /**
-   * Children
-   */
-  children?: ReactNode;
-
-  /**
-   * RangeInput Value
-   */
-  value: string;
-
-  /**
    * RangeInput Min
    */
   min: number;
@@ -34,53 +23,67 @@ type RangeInputProps = {
    */
   max: number;
 
+  /** Step for the thumb on the track. Default is 1. */
+  step?: number;
+
   /**
    * RangeInput Label
    */
-  label?: string;
+  label: string;
 
   /**
-   * Checked values
+   * RangeInput value (controlled)
    */
-  checked?: boolean;
-  defaultChecked?: boolean;
+  value?: number;
+  /**
+   * RangeInput default value (uncontrolled)
+   */
+  defaultValue?: number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
   disabled?: boolean;
 };
 
 const RangeInput = ({
   id,
   value,
+  defaultValue,
+  label,
   min,
   max,
-  checked,
-  defaultChecked,
-  label,
+  step = 1,
+  disabled,
   className,
-  children,
-  onChange,
-  ...rest
+  onChange
 }: RangeInputProps) => {
+  const controlled = useControlled(value);
+  const [localValue, setLocalValue] = useState<number>(
+    (controlled ? value ?? min : defaultValue ?? min) * 1
+  );
   return (
-    <div className="range--container">
-      <div className="range">
-        <div className="range--thumb" tabIndex={0} />
-        <div className="range--track" />
-        <div
-          className="range--track-filled"
-          style={{ transform: "translate(0%, -50%) scaleX(0)" }}
-        />
+    <div className={cx("range-input--container", className)}>
+      <label className="range-input--label" htmlFor={id}>
+        {label}
+      </label>
+      <div className="range-input--slider-container">
+        <div className="range-input--slider">
+          <span className="range-input--slider-container">{min}</span>
+          <div className="range-input--slider--thumb" />
+          <div className="range-input--slider--track" />
+          <div className="range-input--slider--track-filled" />
+          <span>{max}</span>
+        </div>
         <input
-          aria-label="range"
-          id="range"
-          className="range--input"
-          type="range"
-          step="1"
-          min="0"
-          max="100"
+          className="range-input--range-input"
+          type="number"
+          disabled={disabled}
+          id={id}
+          step={step}
+          min={max}
+          max={min}
+          value={localValue}
         />
       </div>
-      <TextInput />
     </div>
   );
 };

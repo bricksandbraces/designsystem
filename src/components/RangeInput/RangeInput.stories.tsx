@@ -1,6 +1,5 @@
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import React, { ChangeEvent, useState } from "react";
-import Typography from "../Typography/Typography";
+import { withKnobs } from "@storybook/addon-knobs";
+import React, { useState } from "react";
 import RangeInput from "./RangeInput";
 
 export default { title: "Components/RangeInput", decorators: [withKnobs] };
@@ -10,10 +9,11 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
-          label={text("Label", "RangeInput label")}
           id="checkbox"
+          label="Slider"
           min={30}
           max={50}
+          defaultValue={40}
         />
       </div>
     </div>
@@ -21,15 +21,19 @@ export const Default = () => {
 };
 
 export const Controlled = () => {
-  const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState<number>(40);
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
-          label={text("Label", "RangeInput label")}
           id="checkbox"
+          label="Slider"
           min={30}
           max={50}
+          value={value}
+          onChange={(event) => {
+            setValue((event.target.value as any) * 1);
+          }}
         />
       </div>
     </div>

@@ -45,8 +45,8 @@ import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/Skeleton";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
-import FloatingPanel from "./components/ComponentUtilities/FloatingPanel";
 import RangeInput from "./components/RangeInput/RangeInput";
+import FloatingPanel from "./components/FloatingPanel/FloatingPanel";
 
 export {
   HoverTooltip,
@@ -90,6 +90,7 @@ export {
   Badge,
   Loading,
   LanguageSwitch,
+  FloatingPanel,
   RadioButton,
   RadioButtonGroup,
   FormLabel,
@@ -98,6 +99,5 @@ export {
   Skeleton,
   Avatar,
   AvatarGroup,
-  FloatingPanel,
   RangeInput
 };
