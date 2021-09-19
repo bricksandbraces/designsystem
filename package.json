@@ -45,6 +45,7 @@
     "react-dom": "^17.X"
   },
   "dependencies": {
+    "@openbricksandbraces/eloguent": "^0.1.1",
     "@popperjs/core": "^2.9.3",
     "@storybook/addon-a11y": "^6.3.7",
     "@storybook/addon-actions": "^6.3.7",
