@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 export type ButtonGroupProps = {
   /**
@@ -28,8 +29,8 @@ const ButtonGroup = ({
 }: ButtonGroupProps) => (
   <div
     className={cx(
-      "button--group",
-      { "button--group-divider": withDivider },
+      `${prefix}--button--group`,
+      { [`${prefix}--button--group-divider`]: withDivider },
       className
     )}
   >

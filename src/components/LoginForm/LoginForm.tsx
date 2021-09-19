@@ -4,6 +4,7 @@ import PasswordInput from "../PasswordInput/PasswordInput";
 import Link from "../Link/Link";
 import Typography from "../Typography/Typography";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 type LoginFormData = {
   email?: string;
@@ -64,7 +65,7 @@ const LoginForm = ({
   return (
     <>
       <TextInput
-        className="loginform--email"
+        className={`${prefix}--loginform--email`}
         fluid
         type="email"
         error={invalidEmail}
@@ -80,7 +81,7 @@ const LoginForm = ({
         autoComplete="off"
       />
       <PasswordInput
-        className="loginform--password"
+        className={`${prefix}--loginform--password`}
         error={invalidPassword}
         fluid
         id="loginPassword"
@@ -97,7 +98,7 @@ const LoginForm = ({
         <Typography
           type="span"
           token="label"
-          className="loginform--password-link"
+          className={`${prefix}--loginform--password-link`}
         >
           <Link href="#" inheritSize>
             Password vergessen?

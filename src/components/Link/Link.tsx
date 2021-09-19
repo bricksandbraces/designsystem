@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type LinkProps = {
   /**
@@ -51,27 +52,33 @@ const Link = ({
   return onClick ? (
     <button
       className={cx(
-        "link",
-        { "link--inline": inline, "link--inherit": inheritSize },
+        `${prefix}--link`,
+        {
+          [`${prefix}--link--inline`]: inline,
+          [`${prefix}--link--inherit`]: inheritSize
+        },
         className
       )}
       {...rest}
       onClick={onClick}
     >
-      <div className="link--label">{children}</div>
+      <div className={`${prefix}--link--label`}>{children}</div>
     </button>
   ) : (
     <a
       className={cx(
-        "link",
-        { "link--inline": inline, "link--inherit": inheritSize },
+        `${prefix}--link`,
+        {
+          [`${prefix}--link--inline`]: inline,
+          [`${prefix}--link--inherit`]: inheritSize
+        },
         className
       )}
       href={href}
       target={target}
       {...rest}
     >
-      <div className="link--label">{children}</div>
+      <div className={`${prefix}--link--label`}>{children}</div>
     </a>
   );
 };

@@ -4,6 +4,7 @@ import { IconArrowNarrowRight } from "@tabler/icons";
 import Logo from "../Logo/Logo";
 import UserProfile from "../UserProfile/UserProfile";
 import SideNavItem from "./SideNavItem";
+import { prefix } from "../../settings";
 
 type SideNavProps = {
   /**
@@ -20,12 +21,16 @@ type SideNavProps = {
 const SideNav = ({ children, basePath }: SideNavProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cx("sidenav", { "sidenav--open": open })}>
+    <div
+      className={cx(`${prefix}--sidenav`, {
+        [`${prefix}--sidenav--open`]: open
+      })}
+    >
       <SideNavItem
         href={basePath}
         label="Bark"
         renderIcon={<Logo kind="logomark" size="xsmall" variant="white" />}
-        className="sidenav--logo"
+        className={`${prefix}--sidenav--logo`}
       />
 
       <SideNavItem
@@ -38,20 +43,20 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
             color="white"
             stroke={2}
             strokeLinejoin="miter"
-            className={cx("sidenav--menuicon", {
-              "sidenav--menuicon-open": open
+            className={cx(`${prefix}--sidenav--menuicon`, {
+              [`${prefix}--sidenav--menuicon-open`]: open
             })}
           />
         }
       />
-      <hr className="sidenav--divider" />
-      <div className="sidenav--items">{children}</div>
-      <p className="sidenav--appinfo">
+      <hr className={`${prefix}--sidenav--divider`} />
+      <div className={`${prefix}--sidenav--items`}>{children}</div>
+      <p className={`${prefix}--sidenav--appinfo`}>
         &#169; 2021 BRICKS &amp; BRACES BARK
         <br />
         v.0.1 Release 1
       </p>
-      <div className="sidenav--user">
+      <div className={`${prefix}--sidenav--user`}>
         <UserProfile
           name="Hendrik Ulbrich"
           subName="@hendrikU"

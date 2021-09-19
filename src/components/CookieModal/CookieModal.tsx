@@ -1,4 +1,5 @@
 import React, { ChangeEvent, forwardRef } from "react";
+import { prefix } from "../../settings";
 import Checkbox from "../Checkbox/Checkbox";
 import Modal from "../Modal/Modal";
 import ModalBody from "../Modal/ModalBody";
@@ -35,7 +36,7 @@ const CookieSettingControl = ({
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }) => {
   return (
-    <div className="cookiemodal--check">
+    <div className={`${prefix}--cookiemodal--check`}>
       <Checkbox
         label={label}
         value={label.toLowerCase()}
@@ -49,7 +50,7 @@ const CookieSettingControl = ({
         <Typography
           type="text"
           token="body-small"
-          className="cookiemodal--check-description"
+          className={`${prefix}--cookiemodal--check-description`}
         >
           {description}
         </Typography>
@@ -102,7 +103,7 @@ const CookieModal = (
     >
       <ModalHeader headline={headline} />
       <ModalBody>
-        <Typography type="text" token="body-small" className="">
+        <Typography type="text" token="body-small">
           {intro}
         </Typography>
         {settings.map((setting, i) => {

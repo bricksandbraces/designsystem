@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type FloatingPanelProps = {
   /**
@@ -19,7 +20,7 @@ const FloatingPanel = ({
   ...rest
 }: FloatingPanelProps) => {
   return (
-    <div className={cx("floatingpanel", className)} {...rest}>
+    <div className={cx(`${prefix}--floatingpanel`, className)} {...rest}>
       {children}
     </div>
   );

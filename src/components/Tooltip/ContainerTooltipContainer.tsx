@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type ContainerTooltipContainerProps = {
   /**
@@ -26,17 +27,17 @@ const ContainerTooltipContainer = ({
 }: ContainerTooltipContainerProps) => {
   return (
     <div
-      className={cx("tooltip--container", {
-        "tooltip--top": tooltipPosition === "top",
-        "tooltip--bottom": tooltipPosition === "bottom",
-        "tooltip--left": tooltipPosition === "left",
-        "tooltip--right": tooltipPosition === "right"
+      className={cx(`${prefix}--tooltip--container`, {
+        [`${prefix}--tooltip--top`]: tooltipPosition === "top",
+        [`${prefix}--tooltip--bottom`]: tooltipPosition === "bottom",
+        [`${prefix}--tooltip--left`]: tooltipPosition === "left",
+        [`${prefix}--tooltip--right`]: tooltipPosition === "right"
       })}
       {...rest}
     >
       {children}
-      <div className="tooltip--caret-container">
-        <div className="tooltip--caret" />
+      <div className={`${prefix}--tooltip--caret-container`}>
+        <div className={`${prefix}--tooltip--caret`} />
       </div>
     </div>
   );

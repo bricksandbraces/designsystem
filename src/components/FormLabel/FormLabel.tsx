@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
+import { prefix } from "../../settings";
 
 type FormLabelProps = {
   /**
@@ -25,7 +26,7 @@ const FormLabel = ({ children, htmlFor, className }: FormLabelProps) => {
       type="label"
       token="label"
       htmlFor={htmlFor}
-      className={cx("formlabel", className)}
+      className={cx(`${prefix}--formlabel`, className)}
     >
       {children}
     </Typography>

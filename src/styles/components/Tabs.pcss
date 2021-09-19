@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.tabs {
+.$(prefix)--tabs {
   white-space: wrap;
   &--btn {
     position: relative;
@@ -96,7 +97,7 @@
   }
 }
 
-.responsivetabs {
+.$(prefix)--responsivetabs {
   &--tabs {
     display: block;
     @media screen and (max-width: $breakpoint-md) {

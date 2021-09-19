@@ -6,6 +6,7 @@ import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
 import Typography from "../Typography/Typography";
+import { prefix } from "../../settings";
 
 type LinkItem = {
   /**
@@ -38,15 +39,24 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
 
   return (
     <>
-      <div className={cx("header--mobile", { "header--mobile-visible": open })}>
+      <div
+        className={cx(`${prefix}--header--mobile`, {
+          [`${prefix}--header--mobile-visible`]: open
+        })}
+      >
         <Grid narrow>
-          <Column md={7} mdOffset={1} sm={4} className="header--mobile-list">
+          <Column
+            md={7}
+            mdOffset={1}
+            sm={4}
+            className={`${prefix}--header--mobile-list`}
+          >
             {linkItems?.map((link, i) => {
               return (
                 <a
                   // eslint-disable-next-line react/no-array-index-key
                   key={`header-${i}-${link.href}`}
-                  className="header--mobile-list__item"
+                  className={`${prefix}--header--mobile-list__item`}
                   href={link.href}
                   onClick={() => {
                     setOpen(!open);
@@ -61,8 +71,12 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
           </Column>
         </Grid>
       </div>
-      <header className={cx("header", { "header--small": small })}>
-        <Grid narrow className="header--grid">
+      <header
+        className={cx(`${prefix}--header`, {
+          [`${prefix}--header--small`]: small
+        })}
+      >
+        <Grid narrow className={`${prefix}--header--grid`}>
           <Column
             md={3}
             mdOffset={1}
@@ -70,9 +84,9 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             lgOffset={2}
             xlg={3}
             xlgOffset={2}
-            className="header--column"
+            className={`${prefix}--header--column`}
           >
-            <a href={baseUrl} className="header--logo">
+            <a href={baseUrl} className={`${prefix}--header--logo`}>
               <Logo
                 variant="white"
                 size="xsmall"
@@ -87,16 +101,16 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             lgOffset={8}
             xlg={6}
             xlgOffset={8}
-            className="header--column"
+            className={`${prefix}--header--column`}
           >
-            <div className="header--linksection">
+            <div className={`${prefix}--header--linksection`}>
               {linkItems?.map((link, i) => {
                 return (
                   <Link
                     // eslint-disable-next-line react/no-array-index-key
                     key={`header-linksection-${i}-${link.href}`}
                     href={link.href}
-                    className="header--linksection-item"
+                    className={`${prefix}--header--linksection-item`}
                   >
                     {link.label}
                   </Link>
@@ -109,11 +123,11 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             mdOffset={7}
             sm={1}
             smOffset={3}
-            className="header--column header--menubutton-container"
+            className={`${prefix}--header--column ${prefix}--header--menubutton-container`}
           >
             <button
               type="button"
-              className="header--menubutton"
+              className={`${prefix}--header--menubutton`}
               onClick={() => {
                 setOpen(!open);
               }}

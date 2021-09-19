@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.language-switch {
+.$(prefix)--language-switch {
   display: inline-block;
   position: relative;
   width: 80px;
@@ -69,8 +70,8 @@
   }
 }
 
-input:checked + .language-switch--slider {
-  & > div > .language-switch--lang-item {
+input:checked + .$(prefix)--language-switch--slider {
+  & > div > .$(prefix)--language-switch--lang-item {
     &:nth-child(1) {
       transform: scale(0.7);
       transition: $transition-01;
@@ -87,6 +88,6 @@ input:checked + .language-switch--slider {
   }
 }
 
-input:focus-visible + .language-switch--slider {
+input:focus-visible + .$(prefix)--language-switch--slider {
   border-color: $focus;
 }

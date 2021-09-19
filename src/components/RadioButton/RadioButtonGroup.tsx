@@ -1,7 +1,9 @@
 import React, { ChangeEvent, ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
+import { assert } from "@openbricksandbraces/eloguent";
 import { RadioButtonProps } from "./RadioButton";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 type RadioButtonGroupProps = {
   /**
@@ -77,12 +79,14 @@ const RadioButtonGroup = ({
   return (
     <fieldset
       id={id}
-      className={cx("radiobutton--group", className)}
+      className={cx(`${prefix}--radiobutton--group`, className)}
       name={name}
       disabled={disabled}
     >
       {legendLabel && (
-        <legend className="radiobutton--group-legend formlabel">
+        <legend
+          className={`${prefix}--radiobutton--group-legend ${prefix}--formlabel`}
+        >
           {legendLabel}
         </legend>
       )}
@@ -90,8 +94,7 @@ const RadioButtonGroup = ({
         if (!React.isValidElement<RadioButtonProps>(child)) {
           return child;
         }
-        // eslint-disable-next-line no-console
-        console.assert(
+        assert(
           child.props.checked === undefined &&
             child.props.defaultChecked === undefined,
           "You provided either checked or defaultChecked property to the RadioButton while it is a child of the RadioButtonGroup. That is illegal. While using a RadioButtonGroup you have to manage its value only on the group as those properties are being ignored on the child elements."

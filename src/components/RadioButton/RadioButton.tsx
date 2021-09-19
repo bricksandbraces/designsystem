@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 export type RadioButtonProps = {
   /**
@@ -54,10 +55,10 @@ const RadioButton = ({
   ...rest
 }: RadioButtonProps) => {
   return (
-    <div className={cx("radiobutton", className)}>
+    <div className={cx(`${prefix}--radiobutton`, className)}>
       <input
         tabIndex={0}
-        className="radiobutton--input"
+        className={`${prefix}--radiobutton--input`}
         type="radio"
         value={value}
         name={name}
@@ -67,9 +68,9 @@ const RadioButton = ({
         onChange={onChange}
         {...rest}
       />
-      <label className="radiobutton--label" htmlFor={id}>
+      <label className={`${prefix}--radiobutton--label`} htmlFor={id}>
         <svg
-          className="radiobutton--selected"
+          className={`${prefix}--radiobutton--selected`}
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -86,12 +87,16 @@ const RadioButton = ({
             cy="12"
             r="3"
             fill="currentColor"
-            className="radiobutton--selected-mark"
+            className={`${prefix}--radiobutton--selected-mark`}
           />
         </svg>
         <div>
-          {label && <div className="radiobutton--label-text">{label}</div>}
-          {children && <div className="radiobutton--content">{children}</div>}
+          {label && (
+            <div className={`${prefix}--radiobutton--label-text`}>{label}</div>
+          )}
+          {children && (
+            <div className={`${prefix}--radiobutton--content`}>{children}</div>
+          )}
         </div>
       </label>
     </div>

@@ -2,6 +2,7 @@ import React, { useState, ReactNode, useRef, useEffect } from "react";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
 import { TabProps } from "./Tab";
+import { prefix } from "../../settings";
 
 type TabsProps = {
   /**
@@ -48,8 +49,8 @@ const Tabs = ({
   }, [index]);
 
   return (
-    <div className={cx("tabs", className)}>
-      <div className="tabs--btn-container">
+    <div className={cx(`${prefix}--tabs`, className)}>
+      <div className={`${prefix}--tabs--btn-container`}>
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<TabProps>(child)) {
             return child;
@@ -64,8 +65,8 @@ const Tabs = ({
                 tabIndex={0}
                 // eslint-disable-next-line react/no-array-index-key
                 key={i}
-                className={cx("tabs--btn", {
-                  "tabs--btn-selected": selectedIndex === i
+                className={cx(`${prefix}--tabs--btn`, {
+                  [`${prefix}--tabs--btn-selected`]: selectedIndex === i
                 })}
                 onClick={() => {
                   if (!controlled) {
@@ -78,7 +79,7 @@ const Tabs = ({
                   type="text"
                   token="body-small"
                   name={props.title}
-                  className="tabs--btn-label"
+                  className={`${prefix}--tabs--btn-label`}
                 >
                   {props.title}
                 </Typography>
@@ -87,7 +88,7 @@ const Tabs = ({
           );
         })}
       </div>
-      <div className="tabs--content">
+      <div className={`${prefix}--tabs--content`}>
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<TabProps>(child)) {
             return child;
@@ -97,8 +98,9 @@ const Tabs = ({
           return (
             props && (
               <div
-                className={cx("tabs--content-item", {
-                  "tabs--content-item__selected": selectedIndex === i
+                className={cx(`${prefix}--tabs--content-item`, {
+                  [`${prefix}--tabs--content-item__selected`]:
+                    selectedIndex === i
                 })}
               >
                 {selectedIndex === i && props.children}

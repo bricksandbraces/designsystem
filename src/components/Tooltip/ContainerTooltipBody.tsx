@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type ContainerTooltipBodyProps = {
   /**
@@ -18,7 +19,9 @@ const ContainerTooltipBody = ({
   className
 }: ContainerTooltipBodyProps) => {
   return (
-    <div className={cx(className, "tooltip--container-body")}>{children}</div>
+    <div className={cx(className, `${prefix}--tooltip--container-body`)}>
+      {children}
+    </div>
   );
 };
 

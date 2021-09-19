@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
+import { prefix } from "../../settings";
 
 type BadgeProps = {
   /**
@@ -59,11 +60,11 @@ const Badge = ({
           aria-label={title}
           type="button"
           className={cx(
-            `badge badge--interactive badge--${colorType} badge--${colorType}-interactive`,
+            `${prefix}--badge ${prefix}--badge--interactive ${prefix}--badge--${colorType} ${prefix}--badge--${colorType}-interactive`,
             className
           )}
         >
-          <div className="badge--content">
+          <div className={`${prefix}--badge--content`}>
             <Typography type="span" token="label">
               {children}
             </Typography>
@@ -72,12 +73,12 @@ const Badge = ({
       ) : (
         <div
           className={cx(
-            `badge badge--${colorType}`,
-            { "badge--interactive": onClose },
+            `${prefix}--badge ${prefix}--badge--${colorType}`,
+            { [`${prefix}--badge--interactive`]: onClose },
             className
           )}
         >
-          <div className="badge--content">
+          <div className={`${prefix}--badge--content`}>
             <Typography type="span" token="label">
               {children}
             </Typography>
@@ -85,7 +86,7 @@ const Badge = ({
               <button
                 type="button"
                 tab-index={0}
-                className="badge--close"
+                className={`${prefix}--badge--close`}
                 title={title}
                 onClick={onClose}
               >

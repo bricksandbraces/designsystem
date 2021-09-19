@@ -3,6 +3,7 @@ import cx from "classnames";
 import { IconPlus, IconUsers } from "@tabler/icons";
 import Button from "../Button/Button";
 import IconOnlyButton from "../Button/IconOnlyButton";
+import { prefix } from "../../settings";
 
 type AvatarGroupProps = {
   /**
@@ -55,11 +56,11 @@ const AvatarGroup = ({
 }: AvatarGroupProps) => {
   const avatarAmount = React.Children.count(children);
   return (
-    <div className={cx("avatar--group", className)}>
+    <div className={cx(`${prefix}--avatar--group`, className)}>
       {React.Children.toArray(children).slice(0, itemsToDisplay)}
       {withAddButton && (
         <IconOnlyButton
-          className="avatar--group-btn"
+          className={`${prefix}--avatar--group-btn`}
           size={size}
           kind="primary"
           icon={<IconPlus />}
@@ -68,7 +69,7 @@ const AvatarGroup = ({
       )}
       {itemsToDisplay && avatarAmount > itemsToDisplay && handleMoreClick && (
         <Button
-          className="avatar--group-btn"
+          className={`${prefix}--avatar--group-btn`}
           size={size}
           kind="secondary"
           iconPosition="left"

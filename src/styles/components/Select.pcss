@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../../styles/theme.pcss";
 @import "../../styles/typography.pcss";
 
-.select {
+.$(prefix)--select {
   display: inline-flex;
   flex-direction: column;
   width: 100%;
@@ -53,7 +54,7 @@
     }
 
     &:disabled {
-      & + .select--input-icon {
+      & + .$(prefix)--select--input-icon {
         color: $select-disabled-text;
         pointer-events: none;
       }

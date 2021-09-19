@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 @import "../typography.pcss";
 
-.dropdown {
+.$(prefix)--dropdown {
   @mixin type--body-small;
 
   &--wrapper {
@@ -175,7 +176,7 @@
         }
       }
 
-      &__disabled.dropdown--menu-item {
+      &__disabled.$(prefix)--dropdown--menu-item {
         border-color: $dropdown-disabled-container;
         background-color: $dropdown-disabled-container;
         color: $dropdown-disabled-text;
@@ -227,19 +228,19 @@
   }
 }
 
-.dropdown--menu-item.dropdown--menu-item__selected {
+.$(prefix)--dropdown--menu-item.$(prefix)--dropdown--menu-item__selected {
   &::before {
     opacity: 1;
   }
 }
-.dropdown--small + .dropdown--menu {
+.$(prefix)--dropdown--small + .$(prefix)--dropdown--menu {
   max-height: calc($container-02 * 5.5 + 8px);
 }
 
-.dropdown--default + .dropdown--menu {
+.$(prefix)--dropdown--default + .$(prefix)--dropdown--menu {
   max-height: calc($container-03 * 5.5 + 8px);
 }
 
-.dropdown--large + .dropdown--menu {
+.$(prefix)--dropdown--large + .$(prefix)--dropdown--menu {
   max-height: calc($container-04 * 5.5 + 8px);
 }

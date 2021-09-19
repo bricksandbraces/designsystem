@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { useMeasure } from "react-use";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 type TooltipTriggerProps = {
   /**
@@ -36,9 +37,9 @@ const TooltipTrigger = ({
     <div
       ref={ref as any}
       style={style}
-      className={cx(className, "tooltip--trigger", {
-        "tooltip--visible-onhover": !controlled,
-        "tooltip--visible": controlled && open
+      className={cx(className, `${prefix}--tooltip--trigger`, {
+        [`${prefix}--tooltip--visible-onhover`]: !controlled,
+        [`${prefix}--tooltip--visible`]: controlled && open
       })}
       {...rest}
     >
