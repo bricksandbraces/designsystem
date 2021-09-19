@@ -1,4 +1,10 @@
-import { object, select, text, withKnobs } from "@storybook/addon-knobs";
+import {
+  number,
+  object,
+  select,
+  text,
+  withKnobs
+} from "@storybook/addon-knobs";
 import React from "react";
 import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons";
 import Avatar from "./Avatar";
@@ -110,7 +116,7 @@ export const GroupWithTrigger = () => {
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
           <AvatarGroup
-            itemsToDisplay={3}
+            itemsToDisplay={number("Items to display", 2)}
             handleMoreClick={() => {}}
             size={select("Size", sizeOptions, defaultSize) as any}
           >
