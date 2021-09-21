@@ -2055,6 +2055,7 @@ __metadata:
     "@storybook/react": ^6.3.7
     "@storybook/theming": ^6.3.7
     "@tabler/icons": ^1.41.2
+    "@tippyjs/react": ^4.2.5
     "@types/bootstrap": ^5.1.0
     "@types/enzyme": ^3.10.9
     "@types/jest": ^27.0.0
@@ -2117,6 +2118,8 @@ __metadata:
     stylelint-config-property-sort-order-smacss: ^7.1.0
     stylelint-config-standard: ^22.0.0
     stylelint-prettier: ^1.2.0
+    tippy: ^0.0.0
+    tippy.js: ^6.3.1
     ts-jest: ^27.0.4
     typescript: ^4.3.5
     webpack: ^5.50.0
@@ -2181,6 +2184,13 @@ __metadata:
   version: 2.9.3
   resolution: "@popperjs/core@npm:2.9.3"
   checksum: cf7381686820f04cb75aacef5373bac43b9b33eaea3387203650c3a89150dc407caf2e0c637184b2f82d83bba352a297d5a3569d1784158593a1e6e2a2af12a2
+  languageName: node
+  linkType: hard
+
+"@popperjs/core@npm:^2.8.3":
+  version: 2.10.1
+  resolution: "@popperjs/core@npm:2.10.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.10.1.tgz"
+  checksum: cdf655cd0574260142bfdde1f31d76e1d2d7fe89cf1958563cf2c15516e5cde469a1785cb2cb0ef502eed60a852aea4ede0df35d9f318c429455af0aa7b3bd05
   languageName: node
   linkType: hard
 
@@ -3530,6 +3540,18 @@ __metadata:
     react: ^16.x || 17.x
     react-dom: ^16.x || 17.x
   checksum: c6953e130d02ea82aa6260377142e62c5802070e1f7e318695c610aa5b7925f1d87900b48ee71e85f39b317faaf0b1367adc51f1b7da477c6b155ea999884668
+  languageName: node
+  linkType: hard
+
+"@tippyjs/react@npm:^4.2.5":
+  version: 4.2.5
+  resolution: "@tippyjs/react@npm:4.2.5::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40tippyjs%2Freact%2F-%2Freact-4.2.5.tgz"
+  dependencies:
+    tippy.js: ^6.3.1
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: f886801245bb9d24b3017b706c4054f37abf753d153f484d22872c5b7b3304c2cf5b866f4d1780279205d0d5fb605ce099aa2d45e207efb1f4f5635b0ce63abb
   languageName: node
   linkType: hard
 
@@ -18714,6 +18736,22 @@ resolve@^2.0.0-next.3:
   version: 0.3.0
   resolution: "timsort@npm:0.3.0"
   checksum: d8300c3ecf1a3751413de82b04ad283b461ab6fb1041820c825d13b4ae74526e2101ab5fb84c57a0c6e1f4d7f67173b5d8754ed8bb7447c6a9ce1db8562eb82c
+  languageName: node
+  linkType: hard
+
+"tippy.js@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "tippy.js@npm:6.3.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Ftippy.js%2F-%2Ftippy.js-6.3.1.tgz"
+  dependencies:
+    "@popperjs/core": ^2.8.3
+  checksum: e4194c42424bafe98919776bbacb5bd67ead5ca0d45126823c9e494d22d67ce1b09000aa18c84f36fc051071149656cecabb8dedb7adf598ea9372542fe11920
+  languageName: node
+  linkType: hard
+
+"tippy@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "tippy@npm:0.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Ftippy%2F-%2Ftippy-0.0.0.tgz"
+  checksum: c8366c1c373f320bb35d40a11c6b089866225bce3daee9090c9bbbcb14ae2d21a168cb3f602bfa8e544a7b594980341ced3f6a81b002376a8f0803fb02329081
   languageName: node
   linkType: hard
 
