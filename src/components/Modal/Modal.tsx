@@ -128,7 +128,9 @@ const Modal = (
                 <IconOnlyButton
                   kind="ghost"
                   icon={<IconX />}
-                  className="modal--close"
+                  wrapperClassName="modal--close"
+                  tooltipPosition="left"
+                  tooltipLabel="Close"
                   onClick={(event) => {
                     onClose?.(event);
                   }}
