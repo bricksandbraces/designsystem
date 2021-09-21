@@ -7,8 +7,12 @@ type TTooltipProps = {
   children: ReactElement<any, string | JSXElementConstructor<any>>;
 } & Omit<TippyProps, "content">;
 
-const TTooltip = ({ children, ...props }: TTooltipProps) => {
-  return <Tippy {...props}>{children}</Tippy>;
+const TTooltip = ({ children, tooltipContent, ...props }: TTooltipProps) => {
+  return (
+    <Tippy {...props} content={tooltipContent}>
+      {children}
+    </Tippy>
+  );
 };
 
 export default TTooltip;
