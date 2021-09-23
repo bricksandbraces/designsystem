@@ -5,6 +5,28 @@ import Toggle from "./Toggle";
 
 export default { title: "Components/Toggle", decorators: [withKnobs] };
 
+export const Small = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Toggle
+          small
+          label={text("Label", "Toggle label")}
+          id="checkbox"
+          value="c1"
+        />
+        <Toggle
+          small
+          label={text("Label", "Toggle label")}
+          id="checkbox-2"
+          defaultChecked
+          value="c2"
+        />
+      </div>
+    </div>
+  );
+};
+
 export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>

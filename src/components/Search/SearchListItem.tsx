@@ -44,6 +44,7 @@ const SearchListItem = (
     <a
       ref={ref}
       className={cx(
+        "search--box-content__list-item",
         {
           "search--box-content__list-item--recent":
             type === SearchListItemType.RECENT,

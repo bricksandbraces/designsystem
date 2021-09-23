@@ -1,97 +1,46 @@
 @import "../theme.pcss";
 @import "../typography.pcss";
 
+/* Tooltip Animation */
+
+@keyframes animation-tooltip {
+  from {
+    visibility: hidden;
+    transform: translateY(2px);
+    opacity: 0;
+  }
+  to {
+    visibility: visibile;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .tooltip {
-  &--icon {
-    display: inline-flex;
-    padding: 6px;
-    transition: background-color $transition-01, border-color $transition-01;
-    border: 0;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    background-color: transparent;
-    color: $white;
-
-    &:hover {
-      background-color: $warm-gray-10;
-    }
-
-    &:focus {
-      border-color: $white;
-    }
-  }
-
-  &--trigger {
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    color: $tooltip-font;
-  }
-
-  &--disabled {
-    &:hover > .tooltip--text {
-      display: none;
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
-
-  &--visible {
-    &-hover {
-      &:hover > .tooltip--text {
-        display: inline-flex;
-        visibility: visible;
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    & > .tooltip--text {
-      display: inline-flex;
-      visibility: visible;
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    & > .tooltip--container {
-      display: inline-flex;
-      visibility: visible;
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
   &--container {
-    @mixin type--label;
+    @mixin type--body-small;
 
     display: inline-flex;
+    display: none;
     visibility: hidden;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     flex-wrap: wrap;
-    align-items: center;
     width: $container-07;
+    max-height: $container-07;
+    padding: 12px 32px 12px 12px;
     transform: translateY(2px);
-    transition: visibility $transition-01, opacity $transition-01,
-      transform $transition-01;
+    animation: animation-tooltip $transition-01;
     border: $border $tooltip-border;
-    border-radius: $border-radius-2;
+    border-radius: 2px;
     opacity: 0;
     background-color: $tooltip-background;
     color: $tooltip-font;
 
-    &.tooltip--caret {
-      @mixin type--body-small;
-
-      max-height: $container-07;
-      padding: 12px 32px 12px 12px;
-    }
-
     &-footer {
       display: inline-flex;
       width: 100%;
-      margin-top: $spacing-03;
+      margin-top: $spacing-04;
     }
 
     &-header {
@@ -107,20 +56,13 @@
 
       display: inline-flex;
       width: 100%;
-      margin-bottom: $spacing-03;
     }
   }
 
-  &--caret {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
+  &--container > .tooltip--caret-container,
+  &--hover > .tooltip--caret-container {
+    display: flex;
+    position: absolute;
 
     &::after {
       content: "";
@@ -128,23 +70,151 @@
       border: $border transparent;
       background-color: $tooltip-background;
     }
+
+    & > .tooltip--caret {
+      width: 8px;
+      min-width: 8px;
+      height: 8px;
+      min-height: 8px;
+      border: $border $tooltip-border;
+      border-radius: $border-radius-2;
+      background-color: $tooltip-background;
+    }
   }
 
-  &--text {
+  &--container.tooltip--right,
+  &--hover.tooltip--right {
+    & > .tooltip--caret-container {
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: flex-end;
+      width: 0;
+      height: 100%;
+
+      &::after {
+        width: 8px;
+        height: 10px;
+        transform: translateX(8px);
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateX(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--left,
+  &--hover.tooltip--left {
+    & > .tooltip--caret-container {
+      top: 0;
+      right: 0;
+      align-items: center;
+      justify-content: flex-end;
+      width: 0;
+      height: 100%;
+
+      &::after {
+        width: 8px;
+        height: 10px;
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateX(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--bottom,
+  &--hover.tooltip--bottom {
+    & > .tooltip--caret-container {
+      top: 0;
+      left: 0;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      height: 0;
+
+      &::after {
+        width: 10px;
+        height: 8px;
+        transform: translateY(8px);
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--container.tooltip--top,
+  &--hover.tooltip--top {
+    & > .tooltip--caret-container {
+      bottom: 0;
+      left: 0;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      height: 0;
+
+      &::after {
+        width: 10px;
+        height: 8px;
+      }
+
+      & > .tooltip--caret {
+        width: 8px;
+        min-width: 8px;
+        height: 8px;
+        min-height: 8px;
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+  }
+
+  &--btn {
+    display: inline-flex;
+    padding: 2px;
+    transition: background-color $transition-01, border-color $transition-01;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: transparent;
+    color: $white;
+
+    &:hover {
+      background-color: $warm-gray-10;
+    }
+
+    &:focus {
+      border-color: $white;
+    }
+  }
+
+  &--hover {
     @mixin type--label;
 
-    display: inline-flex;
+    display: none;
     visibility: hidden;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     flex-wrap: nowrap;
     align-items: center;
     width: max-content;
     height: $container-01;
     padding: 0 12px;
-    transform: translateY(2px);
-    transition: visibility $transition-01, opacity $transition-01,
-      transform $transition-01;
+    animation: animation-tooltip $transition-01;
     border: $border $tooltip-border;
     border-radius: $border-radius-2;
     opacity: 0;
@@ -154,88 +224,59 @@
     white-space: nowrap;
     user-select: none;
 
-    &.tooltip--caret {
+    &.tooltip--with-caret {
       @mixin type--body-small;
 
       height: $container-02;
     }
   }
 
-  &--bottom {
-    top: 48px;
+  &--trigger {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    color: $tooltip-font;
+
+    & > .tooltip--bottom {
+      top: var(--tooltip-container-height);
+    }
+
+    & > .tooltip--top {
+      bottom: var(--tooltip-container-height);
+    }
+
+    & > .tooltip--left {
+      right: calc(100% + 16px);
+    }
+
+    & > .tooltip--right {
+      left: calc(100% + 16px);
+    }
   }
 
-  &--top {
-    bottom: 48px;
-  }
+  &--visible {
+    &-onhover {
+      &:hover > .tooltip--hover {
+        display: inline-flex;
+        visibility: visible;
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-  &--left {
-    right: calc(100% + 24px);
-  }
+    & > .tooltip--hover {
+      display: inline-flex;
+      visibility: visible;
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-  &--right {
-    left: calc(100% + 24px);
-  }
-}
-
-.tooltip--caret.tooltip--bottom {
-  &::before {
-    top: -4px;
-    left: 50%;
-    transform: translate(-50%) rotate(45deg);
-  }
-
-  &::after {
-    top: 0;
-    left: 50%;
-    width: 12px;
-    height: 5px;
-    transform: translate(-50%);
-  }
-}
-
-.tooltip--caret.tooltip--top {
-  &::before {
-    bottom: -4px;
-    left: 50%;
-    transform: translate(-50%) rotate(45deg);
-  }
-
-  &::after {
-    bottom: 0;
-    left: 50%;
-    width: 12px;
-    height: 5px;
-    transform: translate(-50%);
-  }
-}
-
-.tooltip--caret.tooltip--left {
-  &::before {
-    top: 40%;
-    right: -4px;
-    transform: rotate(45deg);
-  }
-
-  &::after {
-    top: 0;
-    right: 0;
-    width: 5px;
-    height: 30px;
-  }
-}
-
-.tooltip--caret.tooltip--right {
-  &::before {
-    top: 40%;
-    left: -4px;
-    transform: rotate(45deg);
-  }
-
-  &::after {
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 30px;
+    & > .tooltip--container {
+      display: inline-flex;
+      visibility: visible;
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }

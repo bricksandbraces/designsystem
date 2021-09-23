@@ -12,6 +12,7 @@
 
     display: inline-flex;
     cursor: pointer;
+    user-select: none;
   }
 
   &--input {
@@ -24,38 +25,82 @@
     cursor: pointer;
   }
 
-  &--checked {
-    width: 8px;
-    height: 8px;
-    margin-left: 5px;
-    transition: opacity $transition-01;
-    stroke-width: 3px;
-    opacity: 0;
+  &--small {
+    & > label > .toggle--switch {
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      width: $container-02;
+      min-width: $container-02;
+      height: $container-00;
+      min-height: $container-00;
+      margin-right: $spacing-04;
+      transform: translate(2px, 2px);
+      transition: background-color $transition-01;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      background-color: white;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        transition: transform $transition-01, background-color $transition-01;
+        border-radius: 50%;
+        background-color: $warm-gray-80;
+      }
+
+      & > .toggle--checked {
+        width: 8px;
+        height: 8px;
+        margin-left: 5px;
+        transition: opacity $transition-01;
+        stroke-width: 3px;
+        opacity: 0;
+      }
+    }
   }
 
-  &--switch {
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-    width: $container-02;
-    min-width: $container-02;
-    height: $container-00;
-    min-height: $container-00;
-    margin-right: $spacing-04;
-    transform: translate(2px, 2px);
-    transition: background-color $transition-01;
-    border: 1px solid transparent;
-    border-radius: 16px;
-    background-color: white;
+  &--default {
+    & > label > .toggle--switch {
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      width: $container-03;
+      min-width: $container-03;
+      height: $container-01;
+      min-height: $container-01;
+      margin-right: $spacing-04;
+      transform: translate(2px, 2px);
+      transition: background-color $transition-01;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      background-color: white;
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      transition: transform $transition-01, background-color $transition-01;
-      border-radius: 50%;
-      background-color: $warm-gray-80;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        transition: transform $transition-01, background-color $transition-01;
+        border-radius: 50%;
+        background-color: $warm-gray-80;
+      }
+
+      & > .toggle--checked {
+        display: none;
+        width: 8px;
+        height: 8px;
+        margin-left: 5px;
+        transition: opacity $transition-01;
+        stroke-width: 3px;
+        opacity: 0;
+      }
+
+      & + div > .toggle--label-text {
+        transform: translateY(3px);
+      }
     }
   }
 }

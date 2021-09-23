@@ -94,8 +94,8 @@ const LanguageSwitch = (
   };
 
   return (
-    <form>
-      <fieldset>
+    <form className="language-switch--form">
+      <fieldset className="language-switch--fieldset">
         <label className="language-switch">
           <input
             className="language-switch--input"
