@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type SkeletonProps = {
   /**
@@ -22,8 +23,8 @@ const Skeleton = ({ size = "default", circle, className }: SkeletonProps) => {
   return (
     <div
       className={cx(
-        `skeleton skeleton--${size}`,
-        { "skeleton--circle": circle },
+        `${prefix}--skeleton ${prefix}--skeleton--${size}`,
+        { [`${prefix}--skeleton--circle`]: circle },
         className
       )}
     />

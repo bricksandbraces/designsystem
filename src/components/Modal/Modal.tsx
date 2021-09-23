@@ -14,6 +14,7 @@ import mergeRefs from "react-merge-refs";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import useMounted from "../../hooks/useMounted";
 import IconOnlyButton from "../Button/IconOnlyButton";
+import { prefix } from "../../settings";
 
 type ModalProps = {
   /**
@@ -105,9 +106,9 @@ const Modal = (
         ReactDOM.createPortal(
           <div
             ref={mergeRefs([modalRef, ref])}
-            className={cx("modal", {
-              "modal--open": open,
-              "modal--with-divider": withDivider
+            className={cx(`${prefix}--modal`, {
+              [`${prefix}--modal--open`]: open,
+              [`${prefix}--modal--with-divider`]: withDivider
             })}
           >
             <OutsideClickListener
@@ -117,21 +118,20 @@ const Modal = (
               }}
             >
               <FocusLock
-                className={cx("modal--container", {
-                  "modal--container-small": size === "sm",
-                  "modal--container-medium": size === "md",
-                  "modal--container-large": size === "lg",
-                  "modal--container-xlarge": size === "xlg"
+                className={cx(`${prefix}--modal--container`, {
+                  [`${prefix}--modal--container-small`]: size === "sm",
+                  [`${prefix}--modal--container-medium`]: size === "md",
+                  [`${prefix}--modal--container-large`]: size === "lg",
+                  [`${prefix}--modal--container-xlarge`]: size === "xlg"
                 })}
                 disabled={!open}
               >
                 <IconOnlyButton
                   kind="ghost"
                   icon={<IconX />}
-                  wrapperClassName="modal--close"
+                  wrapperClassName={`${prefix}--modal--close`}
                   tooltipPosition="left"
-                  tooltipLabel="Close"
-                  onClick={(event) => {
+                  onClick={(event: any) => {
                     onClose?.(event);
                   }}
                   data-autofocus={autoFocus}

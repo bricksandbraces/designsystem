@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import Typography from "../Typography/Typography";
 import { AccordionItemProps } from "./AccordionItem";
+import { prefix } from "../../settings";
 
 type AccordionProps = {
   /**
@@ -75,7 +76,7 @@ const Accordion = ({
     }
   }, [openIndices]);
   return (
-    <ul className={cx("accordion", className)}>
+    <ul className={cx(`${prefix}--accordion`, className)}>
       {React.Children.map(children, (child, i) => {
         if (!React.isValidElement<AccordionItemProps>(child)) {
           return child;
@@ -88,12 +89,12 @@ const Accordion = ({
             <li
               // eslint-disable-next-line react/no-array-index-key
               key={i}
-              className={cx("accordion--item", {
-                "accordion--item-collapse":
+              className={cx(`${prefix}--accordion--item`, {
+                [`${prefix}--accordion--item-collapse`]:
                   itemAnimations[i] === AnimationType.COLLAPSE && open,
-                "accordion--item-expand":
+                [`${prefix}--accordion--item-expand`]:
                   itemAnimations[i] === AnimationType.EXPAND && open,
-                "accordion--item-open": open
+                [`${prefix}--accordion--item-open`]: open
               })}
               onAnimationEnd={() => {
                 setAnimationForItem(i, AnimationType.NONE);
@@ -101,7 +102,7 @@ const Accordion = ({
             >
               <button
                 disabled={props.disabled}
-                className="accordion--heading"
+                className={`${prefix}--accordion--heading`}
                 onClick={() => {
                   if (!controlled) {
                     if (openIndexList.includes(i)) {
@@ -122,19 +123,19 @@ const Accordion = ({
                 <Typography
                   type="span"
                   token="body-small"
-                  className="accordion--heading-title"
+                  className={`${prefix}--accordion--heading-title`}
                 >
                   {props.title}
                 </Typography>
                 <IconChevronDown
-                  className="accordion--heading-icon"
+                  className={`${prefix}--accordion--heading-icon`}
                   size={16}
                 />
               </button>
               <Typography
                 type="text"
                 token="body-small"
-                className="accordion--content"
+                className={`${prefix}--accordion--content`}
               >
                 {props.children}
               </Typography>

@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import mergeRefs from "react-merge-refs";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 type LanguageSwitchItem = {
   /**
@@ -94,11 +95,11 @@ const LanguageSwitch = (
   };
 
   return (
-    <form className="language-switch--form">
-      <fieldset className="language-switch--fieldset">
-        <label className="language-switch">
+    <form className={`${prefix}--language-switch--form`}>
+      <fieldset className={`${prefix}--language-switch--fieldset`}>
+        <label className={`${prefix}--language-switch`}>
           <input
-            className="language-switch--input"
+            className={`${prefix}--language-switch--input`}
             tabIndex={-1}
             ref={mergeRefs([ref, inputRef])}
             type="hidden"
@@ -107,7 +108,7 @@ const LanguageSwitch = (
             {...rest}
           />
           <div
-            className="language-switch--slider"
+            className={`${prefix}--language-switch--slider`}
             tabIndex={0}
             role="button"
             onKeyDown={(event) => {
@@ -119,20 +120,22 @@ const LanguageSwitch = (
             onChange={() => {}}
             onClick={handleClick}
           >
-            <div className="language-switch--lang">
+            <div className={`${prefix}--language-switch--lang`}>
               {items.map((item, i) => {
                 return (
                   <React.Fragment key={item.id}>
                     <span
-                      className={cx("language-switch--lang-item", {
-                        "language-switch--lang-item__selected":
+                      className={cx(`${prefix}--language-switch--lang-item`, {
+                        [`${prefix}--language-switch--lang-item__selected`]:
                           selectedValue === item.value
                       })}
                     >
                       {item.label}
                     </span>
                     {i !== items.length - 1 && (
-                      <span className="language-switch--lang-item__divider" />
+                      <span
+                        className={`${prefix}--language-switch--lang-item__divider`}
+                      />
                     )}
                   </React.Fragment>
                 );

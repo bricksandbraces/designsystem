@@ -1,4 +1,5 @@
 import React from "react";
+import { prefix } from "../../settings";
 import Typography from "../Typography/Typography";
 
 type ModalHeaderProps = {
@@ -11,18 +12,18 @@ type ModalHeaderProps = {
 
 const ModalHeader = ({ headline, subheadline }: ModalHeaderProps) => {
   return (
-    <div className="modal--header">
+    <div className={`${prefix}--modal--header`}>
       <Typography
         type="text"
         token="heading-02"
-        className="modal--header-headline"
+        className={`${prefix}--modal--header-headline`}
       >
         {headline}
       </Typography>
       <Typography
         type="text"
         token="body-small"
-        className="modal--header-subheadline"
+        className={`${prefix}--modal--header-subheadline`}
       >
         {subheadline}
       </Typography>

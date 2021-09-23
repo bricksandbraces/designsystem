@@ -1,170 +1,238 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 @import "../typography.pcss";
 
-.button {
-  @mixin type--body-small;
+.$(prefix) {
+  &--button {
+    @mixin type--body-small;
 
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  min-height: $container-03;
-  max-height: $container-03;
-  padding: 0 16px;
-  transition: $transition-01;
-  border-radius: $border-radius-2;
-  background-color: transparent;
-  color: $white;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: $white;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-
-  &--small {
-    min-height: $container-02;
-    max-height: $container-02;
-  }
-
-  &--large {
-    min-height: $container-04;
-    max-height: $container-04;
-  }
-  &--fluid {
-    width: 100%;
-  }
-
-  &--loading {
-    pointer-events: none;
-
-    & > .loading {
-      position: absolute;
-    }
-  }
-
-  &--hidden {
-    opacity: 0;
-  }
-
-  &--notallowed {
-    cursor: not-allowed;
-  }
-
-  &--label {
     display: flex;
+    position: relative;
     align-items: center;
-  }
-
-  &--primary {
-    border: $border $interactive-primary;
-    background-color: $interactive-primary;
-
-    &:hover {
-      border: $border $interactive-primary-hover;
-      background-color: $interactive-primary-hover;
-    }
-
-    &:active {
-      border: $border $interactive-primary-active;
-      background-color: $interactive-primary-active;
-    }
-  }
-
-  &--secondary {
-    border: $border $interactive-secondary;
-    background-color: $interactive-secondary;
-
-    &:hover {
-      border: $border $interactive-secondary-hover;
-      background-color: $interactive-secondary-hover;
-    }
-
-    &:active {
-      border: $border $interactive-secondary-active;
-      background-color: $interactive-secondary-active;
-    }
-  }
-
-  &--tertiary {
-    border: $border $interactive-primary;
-
-    &:hover {
-      border: $border $interactive-primary;
-      background-color: $interactive-primary-accent-hover;
-    }
-
-    &:active {
-      border: $border $interactive-primary;
-      background-color: $interactive-primary-accent-active;
-    }
-  }
-
-  &--ghost {
-    border: $border transparent;
+    justify-content: center;
+    min-height: $container-03;
+    max-height: $container-03;
+    padding: 0 16px;
+    transition: $transition-01;
+    border-radius: $border-radius-2;
     background-color: transparent;
+    color: $white;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
+      color: $white;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &--group {
+      white-space: nowrap;
+
+      &-divider {
+        & > div:not(:last-child) > button {
+          &:hover {
+            &::before {
+              opacity: 0;
+            }
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            right: -1px;
+            width: 1px;
+            height: 50%;
+            transition: ;
+            transition: $transition-01;
+            opacity: 1;
+          }
+        }
+
+        & > div:not(:last-child) > .$(prefix)--button--primary {
+          &::before {
+            background-color: $interactive-primary-hover;
+          }
+        }
+
+        & > div:not(:last-child) > .$(prefix)--button--secondary {
+          &::before {
+            background-color: $interactive-secondary-hover;
+          }
+        }
+
+        & > div:not(:last-child) > .$(prefix)--button--ghost {
+          &::before {
+            background-color: $interactive-ghost-hover;
+          }
+        }
+      }
+
+      & > div:not(:last-child) > .$(prefix)--button--tertiary {
+        border-right: 0;
+
+        & > .$(prefix)--button--label {
+          transform: translateX(-1px);
+        }
+      }
+
+      & > div > button {
+        border-radius: 0;
+      }
+
+      & > div:first-child > button {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      & > div:last-child > button {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+    }
+
+    &--small {
+      min-height: $container-02;
+      max-height: $container-02;
+    }
+
+    &--large {
+      min-height: $container-04;
+      max-height: $container-04;
+    }
+    &--fluid {
+      width: 100%;
+    }
+
+    &--loading {
+      pointer-events: none;
+
+      & > .$(prefix)--loading {
+        position: absolute;
+      }
+    }
+
+    &--hidden {
+      opacity: 0;
+    }
+
+    &--notallowed {
+      cursor: not-allowed;
+    }
+
+    &--label {
+      display: flex;
+      align-items: center;
+    }
+
+    &--primary {
+      border: $border $interactive-primary;
+      background-color: $interactive-primary;
+
+      &:hover {
+        border: $border $interactive-primary-hover;
+        background-color: $interactive-primary-hover;
+      }
+
+      &:active {
+        border: $border $interactive-primary-active;
+        background-color: $interactive-primary-active;
+      }
+    }
+
+    &--secondary {
+      border: $border $interactive-secondary;
+      background-color: $interactive-secondary;
+
+      &:hover {
+        border: $border $interactive-secondary-hover;
+        background-color: $interactive-secondary-hover;
+      }
+
+      &:active {
+        border: $border $interactive-secondary-active;
+        background-color: $interactive-secondary-active;
+      }
+    }
+
+    &--tertiary {
+      border: $border $interactive-primary;
+
+      &:hover {
+        border: $border $interactive-primary;
+        background-color: $interactive-primary-accent-hover;
+      }
+
+      &:active {
+        border: $border $interactive-primary;
+        background-color: $interactive-primary-accent-active;
+      }
+    }
+
+    &--ghost {
       border: $border transparent;
-      background-color: $interactive-ghost-hover;
+      background-color: transparent;
+
+      &:hover {
+        border: $border transparent;
+        background-color: $interactive-ghost-hover;
+      }
+
+      &:active {
+        border: $border transparent;
+        background-color: $interactive-ghost-active;
+      }
     }
 
-    &:active {
-      border: $border transparent;
-      background-color: $interactive-ghost-active;
-    }
-  }
-
-  &--danger {
-    border: $border $danger;
-    color: $danger;
-
-    &:hover {
+    &--danger {
       border: $border $danger;
-      background-color: $danger-accent-hover;
-    }
+      color: $danger;
 
-    &:active {
-      border: $border $danger;
-      background-color: $danger-accent-active;
+      &:hover {
+        border: $border $danger;
+        background-color: $danger-accent-hover;
+      }
+
+      &:active {
+        border: $border $danger;
+        background-color: $danger-accent-active;
+      }
     }
   }
 }
 
-.button.button--ghost:focus-visible,
-.button.button--primary:focus-visible,
-.button.button--secondary:focus-visible,
-.button.button--danger:focus-visible,
-.button.button--tertiary:focus-visible {
+.$(prefix)--button.$(prefix)--button--ghost:focus-visible,
+.$(prefix)--button.$(prefix)--button--primary:focus-visible,
+.$(prefix)--button.$(prefix)--button--secondary:focus-visible,
+.$(prefix)--button.$(prefix)--button--danger:focus-visible,
+.$(prefix)--button.$(prefix)--button--tertiary:focus-visible {
   border: $border $focus;
   outline: 0;
 }
 
-.button.button--ghost.button--disabled,
-.button.button--primary.button--disabled,
-.button.button--secondary.button--disabled {
+.$(prefix)--button.$(prefix)--button--ghost.$(prefix)--button--disabled,
+.$(prefix)--button.$(prefix)--button--primary.$(prefix)--button--disabled,
+.$(prefix)--button.$(prefix)--button--secondary.$(prefix)--button--disabled {
   border: $border $disabled-container;
   background-color: $disabled-container;
   color: $disabled-text;
 }
 
-.button.button--tertiary.button--disabled,
-.button.button--danger.button--disabled {
+.$(prefix)--button.$(prefix)--button--tertiary.$(prefix)--button--disabled,
+.$(prefix)--button.$(prefix)--button--danger.$(prefix)--button--disabled {
   border: $border $disabled-container;
   color: $disabled-text;
   pointer-events: none;
 }
 
-.icon-only {
+.$(prefix)--icon-only {
   min-width: $container-03;
   max-width: $container-03;
   padding: 0;
 
-  &:focus + .tooltip--text {
+  &:focus + .$(prefix)--tooltip--text {
     display: inline-flex;
     visibility: visible;
     transform: translateY(0);
@@ -172,57 +240,57 @@
   }
 }
 
-.icon-only.button--large {
+.$(prefix)--icon-only.$(prefix)--button--large {
   min-width: $container-04;
   max-width: $container-04;
 }
 
-.icon-only.button--small {
+.$(prefix)--icon-only.$(prefix)--button--small {
   min-width: $container-02;
   max-width: $container-02;
 }
 
-.with-icon-left > .button--label {
+.$(prefix)--with-icon-left > .$(prefix)--button--label {
   flex-direction: row;
 }
 
-.with-icon-right > .button--label {
+.$(prefix)--with-icon-right > .$(prefix)--button--label {
   flex-direction: row-reverse;
 }
 
-.icon-only > div > svg {
+.$(prefix)--icon-only > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   stroke-width: 2px;
 }
 
-.with-icon-left > div > svg {
+.$(prefix)--with-icon-left > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   margin-right: 6px;
   stroke-width: 2px;
 }
 
-.with-icon-right > div > svg {
+.$(prefix)--with-icon-right > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   margin-left: 6px;
   stroke-width: 2px;
 }
 
-.button--fluid.with-icon-left > div > svg {
+.$(prefix)--button--fluid.$(prefix)--with-icon-left > div > svg {
   position: absolute;
   left: 20px;
   margin-right: 0;
 }
 
-.button--fluid.with-icon-right > div > svg {
+.$(prefix)--button--fluid.$(prefix)--with-icon-right > div > svg {
   position: absolute;
   right: 20px;
   margin-right: 0;
 }
 
-.spinner-border.loading {
+.$(prefix)--spinner-border.$(prefix)--loading {
   position: absolute;
   width: 14px;
   height: 14px;

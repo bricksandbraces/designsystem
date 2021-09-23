@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.toggle {
+.$(prefix)--toggle {
   display: flex;
   min-height: 1rem;
   margin-bottom: 0.5rem;
@@ -26,7 +27,7 @@
   }
 
   &--small {
-    & > label > .toggle--switch {
+    & > label > .$(prefix)--toggle--switch {
       display: inline-flex;
       position: relative;
       align-items: center;
@@ -51,7 +52,7 @@
         background-color: $warm-gray-80;
       }
 
-      & > .toggle--checked {
+      & > .$(prefix)--toggle--checked {
         width: 8px;
         height: 8px;
         margin-left: 5px;
@@ -63,7 +64,7 @@
   }
 
   &--default {
-    & > label > .toggle--switch {
+    & > label > .$(prefix)--toggle--switch {
       display: inline-flex;
       position: relative;
       align-items: center;
@@ -88,7 +89,7 @@
         background-color: $warm-gray-80;
       }
 
-      & > .toggle--checked {
+      & > .$(prefix)--toggle--checked {
         display: none;
         width: 8px;
         height: 8px;
@@ -98,7 +99,7 @@
         opacity: 0;
       }
 
-      & + div > .toggle--label-text {
+      & + div > .$(prefix)--toggle--label-text {
         transform: translateY(3px);
       }
     }
@@ -107,14 +108,17 @@
 
 /* Switch */
 
-.toggle input[type="checkbox"] + label > .toggle--switch {
+.$(prefix)--toggle input[type="checkbox"] + label > .$(prefix)--toggle--switch {
   background-color: $toggle;
 }
 
-.toggle input[type="checkbox"]:checked + label > .toggle--switch {
+.$(prefix)--toggle
+  input[type="checkbox"]:checked
+  + label
+  > .$(prefix)--toggle--switch {
   background-color: $toggle-checked;
 
-  & > .toggle--checked {
+  & > .$(prefix)--toggle--checked {
     opacity: 1;
   }
 
@@ -126,11 +130,11 @@
 
 /* Disabled */
 
-.toggle--input[type="checkbox"]:disabled + label {
+.$(prefix)--toggle--input[type="checkbox"]:disabled + label {
   color: $toggle-disabled;
   cursor: not-allowed;
 
-  & > .toggle--switch {
+  & > .$(prefix)--toggle--switch {
     background-color: $toggle-disabled;
 
     &::before {
@@ -139,6 +143,8 @@
   }
 }
 
-.toggle--input[type="checkbox"]:focus-visible + .toggle--label > span {
+.$(prefix)--toggle--input[type="checkbox"]:focus-visible
+  + .$(prefix)--toggle--label
+  > span {
   box-shadow: 0 0 0 1px white;
 }

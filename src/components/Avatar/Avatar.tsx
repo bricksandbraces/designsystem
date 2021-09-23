@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import TooltipTrigger from "../Tooltip/TooltipTrigger";
 import HoverTooltipText from "../Tooltip/HoverTooltipText";
+import { prefix } from "../../settings";
 
 type AvatarProps = {
   /**
@@ -42,17 +43,21 @@ const Avatar = ({
   children
 }: AvatarProps) => {
   const avatar = (
-    <div className={cx(`avatar avatar--${size}`, className)}>
-      <div className="avatar--container">
-        {imgUrl && <img src={imgUrl} className="avatar--img" alt={name} />}
-        <span className="avatar--icon">
+    <div
+      className={cx(`${prefix}--avatar ${prefix}--avatar--${size}`, className)}
+    >
+      <div className={`${prefix}--avatar--container`}>
+        {imgUrl && (
+          <img src={imgUrl} className={`${prefix}--avatar--img`} alt={name} />
+        )}
+        <span className={`${prefix}--avatar--icon`}>
           {children}
           {!children &&
             !imgUrl &&
             name
               ?.split(" ")
               .map((str) => str[0] ?? "")
-              .join(" ")}
+              .join("")}
         </span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type LoadingProps = {
   /**
@@ -46,24 +47,33 @@ const Loading = ({
       {isLoading && (
         <div
           className={cx(
-            "loading",
+            `${prefix}--loading`,
             {
-              "loading--overlay": withOverlay,
-              "loading--isloading": isLoading
+              [`${prefix}--loading--overlay`]: withOverlay,
+              [`${prefix}--loading--isloading`]: isLoading
             },
             className
           )}
         >
           <div
-            className={cx("loading--container", `loading--${size}`, {
-              "loading--disabled": disabled
-            })}
+            className={cx(
+              `${prefix}--loading--container`,
+              `${prefix}--loading--${size}`,
+              {
+                [`${prefix}--loading--disabled`]: disabled
+              }
+            )}
             role="status"
             aria-live={isLoading ? "assertive" : "off"}
           >
-            <svg className="loading--svg" viewBox="0 0 100 100">
+            <svg className={`${prefix}--loading--svg`} viewBox="0 0 100 100">
               <title>{loadingDescription}</title>
-              <circle className="loading--stroke" cx="50%" cy="50%" r="40" />
+              <circle
+                className={`${prefix}--loading--stroke`}
+                cx="50%"
+                cy="50%"
+                r="40"
+              />
             </svg>
           </div>
         </div>

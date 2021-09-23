@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import CopyButton from "../CopyButton/CopyButton";
+import { prefix } from "../../settings";
 
 export type CodeSnippetProps = {
   /**
@@ -16,18 +17,21 @@ export type CodeSnippetProps = {
 
 const CodeSnippet = ({ code, className, ...rest }: CodeSnippetProps) => {
   return (
-    <div className={cx("codesnippet--container", className)} {...rest}>
-      <div className="codesnippet--container-overlay" />
+    <div
+      className={cx(`${prefix}--codesnippet--container`, className)}
+      {...rest}
+    >
+      <div className={`${prefix}--codesnippet--container-overlay`} />
       <CopyButton
         valueToCopy={code}
         label="Copy"
         onClick={() => {}}
         labelCopied="Copied!"
-        className={cx("codesnippet--container-button")}
+        className={cx(`${prefix}--codesnippet--container-button`)}
       />
-      <div className={cx("codesnippet--innercontainer")}>
-        <pre className="codesnippet--pre">
-          <code className={cx("codesnippet--code")}>{code}</code>
+      <div className={cx(`${prefix}--codesnippet--innercontainer`)}>
+        <pre className={`${prefix}--codesnippet--pre`}>
+          <code className={cx(`${prefix}--codesnippet--code`)}>{code}</code>
         </pre>
       </div>
     </div>

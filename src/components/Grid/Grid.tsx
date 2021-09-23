@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type GridProps = {
   /**
@@ -83,11 +84,11 @@ export const Grid = ({
     <div
       columncount={childrenCount}
       className={cx(
-        "grid--container",
+        `${prefix}--grid--container`,
         {
-          "grid--fullwidth": fullWidth,
-          "grid--container-no-gutter": narrow,
-          "grid--container-no-gutter__left": condensed
+          [`${prefix}--grid--fullwidth`]: fullWidth,
+          [`${prefix}--grid--container-no-gutter`]: narrow,
+          [`${prefix}--grid--container-no-gutter__left`]: condensed
         },
         className
       )}
@@ -117,17 +118,17 @@ export const Column = ({
   return (
     <div
       className={cx(
-        span && `grid--col-${span}`,
-        offset && `grid--col-${span}__offset-${offset}`,
-        sm && sm <= 4 && `grid--col-sm__${sm}`,
-        smOffset && `grid--col-sm__${sm}__offset-${smOffset}`,
-        md && md <= 8 && `grid--col-md__${md}`,
-        mdOffset && `grid--col-md__${md}__offset-${mdOffset}`,
-        lg && lg <= 16 && `grid--col-lg__${lg}`,
-        lgOffset && `grid--col-lg__${lg}__offset-${lgOffset}`,
-        xlg && xlg <= 16 && `grid--col-xlg__${xlg}`,
-        xlgOffset && `grid--col-xlg__${xlg}__offset-${xlgOffset}`,
-        { "grid--col": defaultColumn },
+        span && `${prefix}--grid--col-${span}`,
+        offset && `${prefix}--grid--col-${span}__offset-${offset}`,
+        sm && sm <= 4 && `${prefix}--grid--col-sm__${sm}`,
+        smOffset && `${prefix}--grid--col-sm__${sm}__offset-${smOffset}`,
+        md && md <= 8 && `${prefix}--grid--col-md__${md}`,
+        mdOffset && `${prefix}--grid--col-md__${md}__offset-${mdOffset}`,
+        lg && lg <= 16 && `${prefix}--grid--col-lg__${lg}`,
+        lgOffset && `${prefix}--grid--col-lg__${lg}__offset-${lgOffset}`,
+        xlg && xlg <= 16 && `${prefix}--grid--col-xlg__${xlg}`,
+        xlgOffset && `${prefix}--grid--col-xlg__${xlg}__offset-${xlgOffset}`,
+        { [`${prefix}--grid--col`]: defaultColumn },
         className
       )}
       {...rest}

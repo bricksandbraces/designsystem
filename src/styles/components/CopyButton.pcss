@@ -1,4 +1,6 @@
-.copybutton {
+@import "../prefix.pcss";
+
+.$(prefix)--copybutton {
   display: flex;
   position: relative;
   justify-content: center;
@@ -9,8 +11,8 @@
   }
 }
 
-.copybutton.copybutton--copied {
-  & > button > .button--label {
+.$(prefix)--copybutton.$(prefix)--copybutton--copied {
+  & > button > .$(prefix)--button--label {
     justify-content: center;
     & > span {
       visibility: hidden;

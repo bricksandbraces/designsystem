@@ -1,46 +1,52 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.checkbox {
-  display: flex;
-  min-height: 1rem;
-  margin-bottom: 0.5rem;
-  color: $checkbox-font;
+.$(prefix) {
+  &--checkbox {
+    display: flex;
+    min-height: 1rem;
+    margin-bottom: 0.5rem;
+    color: $checkbox-font;
 
-  &--label {
-    @mixin type--body-small;
+    &--label {
+      @mixin type--body-small;
 
-    display: inline-flex;
-    cursor: pointer;
-  }
+      display: inline-flex;
+      cursor: pointer;
+    }
 
-  &--input {
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    max-height: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
+    &--input {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      max-height: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
 
-  &--check {
-    display: inline-block;
-    min-width: 20px;
-    min-height: 20px;
-    margin-right: $spacing-03;
-    color: $warm-gray-30;
+    &--check {
+      display: inline-block;
+      min-width: 20px;
+      min-height: 20px;
+      margin-right: $spacing-03;
+      color: $warm-gray-30;
 
-    &-mark {
-      color: $white;
+      &-mark {
+        color: $white;
+      }
     }
   }
 }
 
 /* Checkmark */
 
-.checkbox input[type="checkbox"] + label > .checkbox--check {
-  & > .checkbox--check-mark {
+.$(prefix)--checkbox
+  input[type="checkbox"]
+  + label
+  > .$(prefix)--checkbox--check {
+  & > .$(prefix)--checkbox--check-mark {
     visibility: hidden;
   }
 
@@ -49,26 +55,30 @@
   }
 }
 
-.checkbox input[type="checkbox"]:checked + label > .checkbox--check {
+.$(prefix)--checkbox
+  input[type="checkbox"]:checked
+  + label
+  > .$(prefix)--checkbox--check {
   color: $white;
-  & > .checkbox--check-mark {
+  & > .$(prefix)--checkbox--check-mark {
     visibility: visible;
     stroke-width: 2px;
     color: $black;
   }
 
-  & > .checkbox--check-box {
+  & > .$(prefix)--checkbox--check-box {
     fill: $white;
   }
 }
 
 /* Disabled */
 
-.checkbox--input[type="checkbox"]:disabled + .checkbox--label {
+.$(prefix)--checkbox--input[type="checkbox"]:disabled
+  + .$(prefix)--checkbox--label {
   color: $checkbox-disabled;
   cursor: not-allowed;
 
-  & > .checkbox--check {
+  & > .$(prefix)--checkbox--check {
     color: $checkbox-disabled;
   }
 
@@ -77,12 +87,8 @@
   }
 }
 
-.checkbox--input[type="checkbox"] + .checkbox--label > svg {
-  transition: border-color $transition-01;
-  border: 1px solid transparent;
-  border-radius: 2px;
-}
-
-.checkbox--input[type="checkbox"]:focus-visible + .checkbox--label > svg {
-  border-color: $focus;
+.$(prefix)--checkbox--input[type="checkbox"]:focus
+  + .$(prefix)--checkbox--label
+  > svg {
+  outline: 1px solid $focus;
 }

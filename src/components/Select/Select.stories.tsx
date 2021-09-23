@@ -29,6 +29,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
+        id="some-select"
         label={text("Label", "Label")}
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
@@ -45,6 +46,7 @@ export const Controlled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
+        id="some-dropdown"
         label={text("Label", "Label")}
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}

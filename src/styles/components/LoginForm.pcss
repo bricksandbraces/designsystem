@@ -1,14 +1,15 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 
-.loginform {
-  &--email.textinput--input {
+.$(prefix)--loginform {
+  &--email.$(prefix)--textinput--input {
     border-bottom: 1px solid transparent;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
-  &--password.textinput--input {
+  &--password.$(prefix)--textinput--input {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 2px;

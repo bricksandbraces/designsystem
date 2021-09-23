@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Typography from "../Typography/Typography";
 import Link from "../Link/Link";
+import { prefix } from "../../settings";
 
 type LinkItem = {
   /**
@@ -49,8 +50,8 @@ const Footer = ({
 }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="footer">
-      <Grid narrow className="footer--grid">
+    <footer className={`${prefix}--footer`}>
+      <Grid narrow className={`${prefix}--footer--grid`}>
         <Column
           sm={4}
           md={6}
@@ -60,7 +61,7 @@ const Footer = ({
           xlg={12}
           xlgOffset={2}
         >
-          <hr className="footer--divider" />
+          <hr className={`${prefix}--footer--divider`} />
         </Column>
         <Column
           sm={3}
@@ -70,28 +71,32 @@ const Footer = ({
           lgOffset={2}
           xlg={4}
           xlgOffset={2}
-          className="footer--column"
+          className={`${prefix}--footer--column`}
         >
-          <a className="footer--logo" href={baseUrl}>
+          <a className={`${prefix}--footer--logo`} href={baseUrl}>
             <Logo
-              className="footer--logo-logomark"
+              className={`${prefix}--footer--logo-logomark`}
               variant="white"
               size="medium"
               kind="logomark"
             />
           </a>
-          <Typography type="text" token="label" className="footer--logo-label">
+          <Typography
+            type="text"
+            token="label"
+            className={`${prefix}--footer--logo-label`}
+          >
             &copy; {currentYear} BRICKS &amp; BRACES
           </Typography>
           {(description || descriptionLink) && (
             <Typography
               type="text"
               token="label"
-              className="footer--logo-cookies"
+              className={`${prefix}--footer--logo-cookies`}
             >
               {description}
               {descriptionLink && (
-                <div className="footer--logo-link">
+                <div className={`${prefix}--footer--logo-link`}>
                   <Link
                     href={descriptionLink.href}
                     onClick={descriptionLink.onClick}
@@ -112,16 +117,16 @@ const Footer = ({
           lgOffset={8}
           xlg={6}
           xlgOffset={8}
-          className="footer--column"
+          className={`${prefix}--footer--column`}
         >
-          <div className="footer--linksection">
+          <div className={`${prefix}--footer--linksection`}>
             {linkItems?.map((link, i) => {
               return (
                 <Link
                   // eslint-disable-next-line react/no-array-index-key
                   key={`footer-${i}-${link.href}`}
                   href={link.href}
-                  className="footer--linksection-item"
+                  className={`${prefix}--footer--linksection-item`}
                 >
                   {link.label}
                 </Link>

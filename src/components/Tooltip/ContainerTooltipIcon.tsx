@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { IconInfoCircle } from "@tabler/icons";
+import { prefix } from "../../settings";
 
 type ContainerTooltipIconProps = {
   /**
@@ -18,7 +19,7 @@ const ContainerTooltipIcon = ({
   ...rest
 }: ContainerTooltipIconProps) => {
   return (
-    <button className={cx(className, "tooltip--btn")} {...rest}>
+    <button className={cx(className, `${prefix}--tooltip--btn`)} {...rest}>
       <IconInfoCircle size={16} />
     </button>
   );

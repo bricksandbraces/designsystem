@@ -1,3 +1,4 @@
+@import "../prefix.pcss";
 @import "../theme.pcss";
 
 @keyframes rotate {
@@ -20,7 +21,7 @@
   }
 }
 
-.loading {
+.$(prefix)--loading {
   &--container {
     display: flex;
     justify-content: space-between;
@@ -32,7 +33,7 @@
   }
 
   &--disabled {
-    & > svg > .loading--stroke {
+    & > svg > .$(prefix)--loading--stroke {
       stroke: $disabled-text;
     }
   }

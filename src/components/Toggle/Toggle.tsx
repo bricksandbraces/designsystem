@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type ToggleProps = {
   /**
@@ -56,14 +57,17 @@ const Toggle = ({
   return (
     <div
       className={cx(
-        "toggle",
-        { "toggle--default": !small, "toggle--small": small },
+        `${prefix}--toggle`,
+        {
+          [`${prefix}--toggle--default`]: !small,
+          [`${prefix}--toggle--small`]: small
+        },
         className
       )}
     >
       <input
         tabIndex={0}
-        className="toggle--input"
+        className={`${prefix}--toggle--input`}
         type="checkbox"
         value={value}
         id={id}
@@ -72,10 +76,10 @@ const Toggle = ({
         onChange={onChange}
         {...rest}
       />
-      <label className="toggle--label" htmlFor={id}>
-        <span className="toggle--switch">
+      <label className={`${prefix}--toggle--label`} htmlFor={id}>
+        <span className={`${prefix}--toggle--switch`}>
           <svg
-            className="toggle--checked"
+            className={`${prefix}--toggle--checked`}
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -90,8 +94,12 @@ const Toggle = ({
           </svg>
         </span>
         <div>
-          {label && <div className="toggle--label-text">{label}</div>}
-          {children && <div className="toggle--content">{children}</div>}
+          {label && (
+            <div className={`${prefix}--toggle--label-text`}>{label}</div>
+          )}
+          {children && (
+            <div className={`${prefix}--toggle--content`}>{children}</div>
+          )}
         </div>
       </label>
     </div>

@@ -2,6 +2,7 @@ import React, { forwardRef, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
 import TextInput from "../TextInput/TextInput";
 import IconOnlyButton from "../Button/IconOnlyButton";
+import { prefix } from "../../settings";
 
 type PasswordInputProps = {
   /**
@@ -88,7 +89,7 @@ const PasswordInput = (
           passwordType === "password" ? "Show password" : "Hide password"
         }
         size={size}
-        wrapperClassName="textinput--togglepassword"
+        wrapperClassName={`${prefix}--textinput--togglepassword`}
         type="button"
         kind="ghost"
         onClick={() => {

@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.radiobutton {
+.$(prefix)--radiobutton {
   display: flex;
   min-height: 1rem;
   margin-bottom: 0.5rem;
@@ -43,24 +44,29 @@
 
 /* Selected Mark */
 
-.radiobutton
+.$(prefix)--radiobutton
   input[type="radio"]
   + label
-  > .radiobutton--selected
-  > .radiobutton--selected-mark {
+  > .$(prefix)--radiobutton--selected
+  > .$(prefix)--radiobutton--selected-mark {
   visibility: hidden;
 }
 
-.radiobutton input[type="radio"]:checked + label > .radiobutton--selected {
+.$(prefix)--radiobutton
+  input[type="radio"]:checked
+  + label
+  > .$(prefix)--radiobutton--selected {
   color: $white;
-  & > .radiobutton--selected-mark {
+  & > .$(prefix)--radiobutton--selected-mark {
     visibility: visible;
   }
 }
 
 /* Disabled */
 
-.radiobutton input[type="radio"]:disabled + .radiobutton--label {
+.$(prefix)--radiobutton
+  input[type="radio"]:disabled
+  + .$(prefix)--radiobutton--label {
   color: $radiobutton-disabled;
   cursor: not-allowed;
 
@@ -69,9 +75,11 @@
   }
 }
 
-.radiobutton input[type="radio"] + .radiobutton--label > svg {
-  transition: border-color $transition-01;
-  border: 1px solid transparent;
+.$(prefix)--radiobutton
+  input[type="radio"]:focus-visible
+  + .$(prefix)--radiobutton--label
+  > svg {
+  border: 1px solid $focus;
   border-radius: 50%;
 }
 

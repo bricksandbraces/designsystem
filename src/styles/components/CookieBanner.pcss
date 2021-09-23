@@ -1,7 +1,8 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.cookiebanner {
+.$(prefix)--cookiebanner {
   @mixin type--body-small;
 
   display: flex;
@@ -42,12 +43,12 @@
   }
 }
 
-.cookiebanner > div > .button {
+.$(prefix)--cookiebanner > div > .$(prefix)--button {
   margin: 14px 0;
 }
 
 @media screen and (max-width: 671px) {
-  .cookiebanner {
+  .$(prefix)--cookiebanner {
     padding: 24px;
 
     &--label {
@@ -55,11 +56,11 @@
     }
   }
 
-  .cookiebanner > div {
+  .$(prefix)--cookiebanner > div {
     width: 100%;
   }
 
-  .cookiebanner > div > .button {
+  .$(prefix)--cookiebanner > div > .$(prefix)--button {
     width: 100%;
     margin: 14px 0 0 0;
   }

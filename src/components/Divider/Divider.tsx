@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type DividerProps = {
   /**
@@ -27,15 +28,16 @@ const Divider = ({ kind, margin = true, size, className }: DividerProps) => {
   return (
     <hr
       className={cx(
-        "divider",
+        `${prefix}--divider`,
         {
-          "divider--default": kind === "default" || kind === undefined,
-          "divider--thin": size === "thin" || kind === undefined,
-          "divider--thicker": size === "thicker",
-          "divider--thick": size === "thick",
-          "divider--subtle": kind === "subtle",
-          "divider--explicit": kind === "explicit",
-          "divider--margin": margin
+          [`${prefix}--divider--default`]:
+            kind === "default" || kind === undefined,
+          [`${prefix}--divider--thin`]: size === "thin" || kind === undefined,
+          [`${prefix}--divider--thicker`]: size === "thicker",
+          [`${prefix}--divider--thick`]: size === "thick",
+          [`${prefix}--divider--subtle`]: kind === "subtle",
+          [`${prefix}--divider--explicit`]: kind === "explicit",
+          [`${prefix}--divider--margin`]: margin
         },
         className
       )}

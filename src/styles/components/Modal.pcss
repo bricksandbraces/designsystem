@@ -1,8 +1,9 @@
+@import "../prefix.pcss";
 @import "../typography.pcss";
 @import "../colors.pcss";
 @import "../theme.pcss";
 
-.modal {
+.$(prefix)--modal {
   display: flex;
   visibility: hidden;
   position: fixed;
@@ -21,7 +22,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    & > .button {
+    & > .$(prefix)--button {
       color: $modal-close;
     }
   }
@@ -139,29 +140,33 @@
   }
 }
 
-.modal--container-small > div > .modal--body-content {
+.$(prefix)--modal--container-small > div > .$(prefix)--modal--body-content {
   padding: 0 1.5rem;
 }
 
-.modal--container-small > .modal--footer {
+.$(prefix)--modal--container-small > .$(prefix)--modal--footer {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.modal--container-small > .modal--footer > .modal--footer-primary {
+.$(prefix)--modal--container-small
+  > .$(prefix)--modal--footer
+  > .$(prefix)--modal--footer-primary {
   width: 100%;
 }
 
-.modal--container-small > .modal--footer > .modal--footer-ghost {
+.$(prefix)--modal--container-small
+  > .$(prefix)--modal--footer
+  > .$(prefix)--modal--footer-ghost {
   width: 100%;
   margin: 0 0 1rem 0;
 }
 
-.modal--with-divider > div > .modal--header {
+.$(prefix)--modal--with-divider > div > .$(prefix)--modal--header {
   border-bottom: 1px solid $warm-gray-20;
 }
 
-.modal--with-divider > div > div > .modal--body-content {
+.$(prefix)--modal--with-divider > div > div > .$(prefix)--modal--body-content {
   padding: 1.5rem 6rem 1.5rem 1.5rem;
 
   @media screen and (max-width: $breakpoint-md) {
@@ -169,16 +174,19 @@
   }
 }
 
-.modal--with-divider > .modal--container-small > div > .modal--body-content {
+.$(prefix)--modal--with-divider
+  > .$(prefix)--modal--container-small
+  > div
+  > .$(prefix)--modal--body-content {
   padding: 1.5rem;
 }
 
-.modal--with-divider > div > .modal--footer {
+.$(prefix)--modal--with-divider > div > .$(prefix)--modal--footer {
   margin: 0;
   border-top: 1px solid $warm-gray-20;
 }
 
-.modal--open > .modal--container {
+.$(prefix)--modal--open > .$(prefix)--modal--container {
   visibility: visible;
   transform: translate(0, 0);
   opacity: 1;

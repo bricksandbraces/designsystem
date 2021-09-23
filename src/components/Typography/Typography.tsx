@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type TypographyProps = {
   /**
@@ -64,7 +65,10 @@ const Typography = ({
     <>
       {type === "h1" && (
         <h1
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -72,7 +76,10 @@ const Typography = ({
       )}
       {type === "h2" && (
         <h2
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -80,7 +87,10 @@ const Typography = ({
       )}
       {type === "h3" && (
         <h3
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -88,7 +98,10 @@ const Typography = ({
       )}
       {type === "h4" && (
         <h4
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -96,7 +109,10 @@ const Typography = ({
       )}
       {type === "h5" && (
         <h5
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -104,7 +120,10 @@ const Typography = ({
       )}
       {type === "h6" && (
         <h6
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -112,7 +131,10 @@ const Typography = ({
       )}
       {type === "text" && (
         <div
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -120,7 +142,10 @@ const Typography = ({
       )}
       {type === "span" && (
         <span
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
@@ -128,7 +153,10 @@ const Typography = ({
       )}
       {type === "label" && (
         <label
-          className={cx(`typography typography--${token}`, className)}
+          className={cx(
+            `${prefix}--typography ${prefix}--typography--${token}`,
+            className
+          )}
           {...rest}
         >
           {children}
