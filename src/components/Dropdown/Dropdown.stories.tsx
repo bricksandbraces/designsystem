@@ -56,7 +56,6 @@ export const Uncontrolled = () => {
         size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        defaultValue={null}
         items={object("Items", sampleItemConfig)}
       />
     </div>

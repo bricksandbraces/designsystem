@@ -95,8 +95,8 @@ const LanguageSwitch = (
   };
 
   return (
-    <form>
-      <fieldset>
+    <form className={`${prefix}--language-switch--form`}>
+      <fieldset className={`${prefix}--language-switch--fieldset`}>
         <label className={`${prefix}--language-switch`}>
           <input
             className={`${prefix}--language-switch--input`}

@@ -2,6 +2,7 @@
 
 # config
 *.config.js
+*.config.cjs
 config/
 
 # <<<<<<<<<<< General >>>>>>>>>>>>>>

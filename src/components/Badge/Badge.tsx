@@ -4,6 +4,17 @@ import cx from "classnames";
 import Typography from "../Typography/Typography";
 import { prefix } from "../../settings";
 
+export type BadgeColor =
+  | "red"
+  | "yellow"
+  | "purple"
+  | "warm-gray"
+  | "cold-gray"
+  | "cyan"
+  | "blue"
+  | "orange"
+  | "green";
+
 type BadgeProps = {
   /**
    * Message that is shown.
@@ -23,16 +34,9 @@ type BadgeProps = {
   /**
    * Type
    */
-  colorType?:
-    | "red"
-    | "yellow"
-    | "purple"
-    | "warm-gray"
-    | "cold-gray"
-    | "cyan"
-    | "blue"
-    | "orange"
-    | "green";
+  colorType?: BadgeColor;
+
+  tabIndex?: number;
 
   /**
    * onClose function
@@ -48,6 +52,7 @@ type BadgeProps = {
 const Badge = ({
   children,
   className,
+  tabIndex,
   onClose,
   onClick,
   colorType = "warm-gray",
@@ -59,6 +64,7 @@ const Badge = ({
         <button
           aria-label={title}
           type="button"
+          tabIndex={tabIndex}
           className={cx(
             `${prefix}--badge ${prefix}--badge--interactive ${prefix}--badge--${colorType} ${prefix}--badge--${colorType}-interactive`,
             className
@@ -72,6 +78,7 @@ const Badge = ({
         </button>
       ) : (
         <div
+          tabIndex={tabIndex}
           className={cx(
             `${prefix}--badge ${prefix}--badge--${colorType}`,
             { [`${prefix}--badge--interactive`]: onClose },
