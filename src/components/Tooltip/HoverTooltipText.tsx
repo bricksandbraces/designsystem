@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type HoverTooltipTextProps = {
   /**
@@ -25,18 +26,18 @@ const HoverTooltipText = ({
 }: HoverTooltipTextProps) => {
   return (
     <div
-      className={cx("tooltip--hover", {
-        "tooltip--with-caret": withCaret,
-        "tooltip--top": tooltipPosition === "top",
-        "tooltip--bottom": tooltipPosition === "bottom",
-        "tooltip--left": tooltipPosition === "left",
-        "tooltip--right": tooltipPosition === "right"
+      className={cx(`${prefix}--tooltip--hover`, {
+        [`${prefix}--tooltip--with-caret`]: withCaret,
+        [`${prefix}--tooltip--top`]: tooltipPosition === "top",
+        [`${prefix}--tooltip--bottom`]: tooltipPosition === "bottom",
+        [`${prefix}--tooltip--left`]: tooltipPosition === "left",
+        [`${prefix}--tooltip--right`]: tooltipPosition === "right"
       })}
     >
       {tooltipLabel}
       {withCaret && (
-        <div className="tooltip--caret-container">
-          <div className="tooltip--caret" />
+        <div className={`${prefix}--tooltip--caret-container`}>
+          <div className={`${prefix}--tooltip--caret`} />
         </div>
       )}
     </div>

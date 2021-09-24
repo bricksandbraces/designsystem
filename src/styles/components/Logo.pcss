@@ -1,6 +1,7 @@
+@import "../prefix.pcss";
 @import "../colors.pcss";
 
-.logo {
+.$(prefix)--logo {
   &--black {
     fill: #000;
   }
@@ -14,26 +15,26 @@
   }
 }
 
-.logo > path {
+.$(prefix)--logo > path {
   transition: 0.3s ease-in-out;
 }
 
-.logo.logo--xsmall {
+.$(prefix)--logo.$(prefix)--logo--xsmall {
   height: 16px;
 }
 
-.logo.logo--small {
+.$(prefix)--logo.$(prefix)--logo--small {
   height: 32px;
 }
 
-.logo.logo--medium {
+.$(prefix)--logo.$(prefix)--logo--medium {
   height: 48px;
 }
 
-.logo.logo--large {
+.$(prefix)--logo.$(prefix)--logo--large {
   height: 64px;
 }
 
-.logo.logo--xlarge {
+.$(prefix)--logo.$(prefix)--logo--xlarge {
   height: 96px;
 }

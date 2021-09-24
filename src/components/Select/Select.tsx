@@ -3,6 +3,7 @@ import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import FormLabel from "../FormLabel/FormLabel";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 type SelectOptionGroup = { group: string; options: SelectOption[] };
 
@@ -12,8 +13,15 @@ type SelectOption = {
 };
 
 type SelectProps = {
-  /** Options data for the selectable items */
+  /**
+   * Options data for the selectable items
+   * */
   options: (SelectOption | SelectOptionGroup)[];
+
+  /**
+   * Mandatory id
+   */
+  id: string;
 
   /**
    * Controlled selected value
@@ -51,20 +59,29 @@ type SelectProps = {
   disabled?: boolean;
 
   /**
-   * Error
+   * True if error state is present
    */
   error?: boolean;
+
+  /**
+   * The error text to display
+   */
   errorText?: string;
 
   /**
-   * Warning
+   * True if warning state is present
    */
   warning?: boolean;
+
+  /**
+   * The warning text to display
+   */
   warningText?: string;
 };
 
 const Select = ({
   size,
+  id,
   label,
   className,
   error,
@@ -96,15 +113,16 @@ const Select = ({
   };
 
   return (
-    <div className={cx("select", className)}>
-      <FormLabel htmlFor="select-toggle-button">{label}</FormLabel>
-      <div className={cx("select--input-wrapper")}>
+    <div className={cx(`${prefix}--select`, className)}>
+      <FormLabel htmlFor={id}>{label}</FormLabel>
+      <div className={cx(`${prefix}--select--input-wrapper`)}>
         <select
-          className={cx(`select--input select--${size}`, {
-            "select--error": error || errorText,
-            "select--warning": !(error || errorText) && (warning || warningText)
+          className={cx(`${prefix}--select--input ${prefix}--select--${size}`, {
+            [`${prefix}--select--error`]: error || errorText,
+            [`${prefix}--select--warning`]:
+              !(error || errorText) && (warning || warningText)
           })}
-          id="select-toggle-button"
+          id={id}
           disabled={disabled}
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
             if (!controlled) {
@@ -130,7 +148,7 @@ const Select = ({
           })}
         </select>
         <svg
-          className="select--input-icon"
+          className={`${prefix}--select--input-icon`}
           width="16"
           height="16"
           viewBox="0 0 24 24"
@@ -145,14 +163,14 @@ const Select = ({
         </svg>
       </div>
       {errorText && !warningText && (
-        <div className="select--error-text">
+        <div className={`${prefix}--select--error-text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className="select--warning-text">
+        <div className={`${prefix}--select--warning-text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}

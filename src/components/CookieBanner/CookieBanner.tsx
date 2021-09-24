@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import Button from "../Button/Button";
 import Link from "../Link/Link";
+import { prefix } from "../../settings";
 
 type CookieBannerProps = {
   /**
@@ -50,8 +51,12 @@ const CookieBanner = ({
   onLinkClick
 }: CookieBannerProps) => {
   return (
-    <div className={cx("cookiebanner", { "cookiebanner--open": open })}>
-      <div className="cookiebanner--label">
+    <div
+      className={cx(`${prefix}--cookiebanner`, {
+        [`${prefix}--cookiebanner--open`]: open
+      })}
+    >
+      <div className={`${prefix}--cookiebanner--label`}>
         <p>{label}</p>
         {linkLabel && (
           <Link

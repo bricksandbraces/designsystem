@@ -2047,6 +2047,7 @@ __metadata:
   resolution: "@openbricksandbraces/designsystem@workspace:."
   dependencies:
     "@babel/core": ^7.15.0
+    "@openbricksandbraces/eloguent": ^0.1.2
     "@popperjs/core": ^2.9.3
     "@storybook/addon-a11y": ^6.3.7
     "@storybook/addon-actions": ^6.3.7
@@ -2135,6 +2136,13 @@ __metadata:
     react-dom: ^17.X
   languageName: unknown
   linkType: soft
+
+"@openbricksandbraces/eloguent@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@openbricksandbraces/eloguent@npm:0.1.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40openbricksandbraces%2Feloguent%2F-%2Feloguent-0.1.2.tgz"
+  checksum: a127b3ddf2d74c1f985cc803f9110575e8493c240976e056e651ad2e6456e8a72a6d51038dc60d096eb6d12a9c544d789d5194ae267b5d35371285d21e69bc87
+  languageName: node
+  linkType: hard
 
 "@pmmmwh/react-refresh-webpack-plugin@npm:^0.4.3":
   version: 0.4.3

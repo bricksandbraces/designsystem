@@ -1,9 +1,10 @@
+@import "../prefix.pcss";
 @import "../colors.pcss";
 @import "../theme.pcss";
 
 /* Default Lead Space */
 
-.leadspace {
+.$(prefix)--leadspace {
   position: relative;
   z-index: 1;
   background-position: center;
@@ -61,7 +62,7 @@
 }
 
 @media screen and (max-width: $breakpoint-md) {
-  .leadspace {
+  .$(prefix)--leadspace {
     height: 416px;
 
     &::before {
@@ -89,17 +90,20 @@
 }
 
 @media screen and (min-width: $breakpoint-md) {
-  .leadspace {
+  .$(prefix)--leadspace {
     height: 480px;
   }
 }
 
 @media screen and (min-width: $breakpoint-lg) {
-  .leadspace {
+  .$(prefix)--leadspace {
     height: 672px;
   }
 }
 
+/*
+  TODO: Remove id selcetor.
+*/
 #leadspace {
   .typography {
     margin-bottom: 64px;
@@ -157,6 +161,10 @@
 
 /* Lead Space Video */
 
+/*
+  TODO: Remove id selector
+*/
+
 #leadspace--video {
   position: absolute;
   z-index: 1;
@@ -177,7 +185,7 @@
   }
 }
 
-.leadspace.leadspace--video-player::before {
+.$(prefix)--leadspace.$(prefix)--leadspace--video-player::before {
   content: "";
   position: absolute;
   z-index: 2;
@@ -188,14 +196,14 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.leadspace--grid.leadspace--video {
+.$(prefix)--leadspace--grid.$(prefix)--leadspace--video {
   position: relative;
   z-index: 2;
   top: 0;
   width: 100%;
 }
 
-.leadspace--video-controls {
+.$(prefix)--leadspace--video-controls {
   display: flex;
   position: absolute;
   z-index: 4;
@@ -228,14 +236,14 @@
   }
 }
 
-.leadspace--video-controls > svg {
+.$(prefix)--leadspace--video-controls > svg {
   width: 20px;
   height: 20px;
   stroke: $white;
 }
 
 @media screen and (max-width: $breakpoint-md) {
-  .leadspace--video-controls {
+  .$(prefix)--leadspace--video-controls {
     right: 16px;
     bottom: -48px;
   }

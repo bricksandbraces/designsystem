@@ -1,4 +1,5 @@
 import React from "react";
+import { prefix } from "../../settings";
 import Button from "../Button/Button";
 
 type ModalFooterProps = {
@@ -27,12 +28,12 @@ const ModalFooter = ({
 }: ModalFooterProps) => {
   return (
     <>
-      <div className="modal--footer">
+      <div className={`${prefix}--modal--footer`}>
         {secondaryLabel && (
           <Button
             fluid
             kind="ghost"
-            className="modal--footer-ghost"
+            className={`${prefix}--modal--footer-ghost`}
             onClick={onSecondaryClick}
           >
             {secondaryLabel}
@@ -40,7 +41,7 @@ const ModalFooter = ({
         )}
         <Button
           fluid
-          className="modal--footer-primary"
+          className={`${prefix}--modal--footer-primary`}
           onClick={onPrimaryClick}
         >
           {primaryLabel}

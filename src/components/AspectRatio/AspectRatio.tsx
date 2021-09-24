@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type AspectRatioProps = {
   /**
@@ -26,7 +27,10 @@ const AspectRatio = ({
 }: AspectRatioProps) => {
   return (
     <div
-      className={cx(`aspect-ratio aspect-ratio--${ratio}`, className)}
+      className={cx(
+        `${prefix}--aspect-ratio ${prefix}--aspect-ratio--${ratio}`,
+        className
+      )}
       {...rest}
     >
       {children}

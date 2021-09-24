@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Tabs from "./Tabs";
 import Accordion from "../Accordion/Accordion";
+import { prefix } from "../../settings";
 
 type ResonsiveTabsProps = {
   /**
@@ -36,7 +37,7 @@ const ResponsiveTabs = ({
         onChange={onChange}
         index={index}
         defaultIndex={defaultIndex}
-        className="responsivetabs--tabs"
+        className={`${prefix}--responsivetabs--tabs`}
       >
         {children}
       </Tabs>
@@ -46,7 +47,7 @@ const ResponsiveTabs = ({
         }
         openIndices={index === undefined ? undefined : [index]}
         onChange={onChange}
-        className="responsivetabs--accordion"
+        className={`${prefix}--responsivetabs--accordion`}
       >
         {children}
       </Accordion>

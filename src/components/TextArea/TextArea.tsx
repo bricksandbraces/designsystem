@@ -3,6 +3,7 @@ import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
 import FormLabel from "../FormLabel/FormLabel";
+import { prefix } from "../../settings";
 
 type TextAreaProps = {
   /**
@@ -105,13 +106,13 @@ const TextArea = (
   }, [value]);
 
   return (
-    <div className="textarea">
-      <div className="textarea--top">
+    <div className={`${prefix}--textarea`}>
+      <div className={`${prefix}--textarea--top`}>
         {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
         {characterLimit && (
           <div
-            className={cx("textarea--char-counter", {
-              "textarea--char-counter__exceeded":
+            className={cx(`${prefix}--textarea--char-counter`, {
+              [`${prefix}--textarea--char-counter__exceeded`]:
                 textValue.length > characterLimit
             })}
           >
@@ -119,18 +120,18 @@ const TextArea = (
           </div>
         )}
       </div>
-      <div className="textarea--input-container">
+      <div className={`${prefix}--textarea--input-container`}>
         <textarea
           maxLength={maxLength}
           id={id}
           ref={ref}
           className={cx(
-            "textarea--input",
+            `${prefix}--textarea--input`,
             {
-              "textarea--error":
+              [`${prefix}--textarea--error`]:
                 ((error || errorText) && !(warning || warningText)) ||
                 (characterLimit && textValue.length > characterLimit),
-              "textarea--warning":
+              [`${prefix}--textarea--warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -148,13 +149,13 @@ const TextArea = (
       </div>
       {/* Error text or character limit exceeded. Error text overwrites character limit */}
       {(errorText || (characterLimit && textValue.length > characterLimit)) && (
-        <div className="textinput--error-text">
+        <div className={`${prefix}--textinput--error-text`}>
           <IconAlertCircle size={16} />
           {errorText || characterLimitExceededText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className="textinput--warning-text">
+        <div className={`${prefix}--textinput--warning-text`}>
           <IconAlertTriangle size={16} />
           {warningText}
         </div>

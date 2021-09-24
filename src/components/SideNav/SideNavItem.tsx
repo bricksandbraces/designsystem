@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type SideNavItemProps = {
   /**
@@ -47,26 +48,26 @@ const SideNavItem = ({
         <a
           href={href}
           className={cx(
-            "sidenav--item",
+            `${prefix}--sidenav--item`,
             {
-              "sidenav--item-selected": selected
+              [`${prefix}--sidenav--item-selected`]: selected
             },
             className
           )}
         >
-          <div className="sidenav--item-icon">{renderIcon}</div>
-          <div className="sidenav--item-label">{label}</div>
+          <div className={`${prefix}--sidenav--item-icon`}>{renderIcon}</div>
+          <div className={`${prefix}--sidenav--item-label`}>{label}</div>
         </a>
       ) : (
         <button
           type="button"
           onClick={onClick}
-          className={cx("sidenav--item", {
-            "sidenav--item-selected": selected
+          className={cx(`${prefix}--sidenav--item`, {
+            [`${prefix}--sidenav--item-selected`]: selected
           })}
         >
-          <div className="sidenav--item-icon">{renderIcon}</div>
-          <div className="sidenav--item-label">{label}</div>
+          <div className={`${prefix}--sidenav--item-icon`}>{renderIcon}</div>
+          <div className={`${prefix}--sidenav--item-label`}>{label}</div>
         </button>
       )}
     </>

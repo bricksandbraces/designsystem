@@ -7,6 +7,7 @@ import {
   IconX
 } from "@tabler/icons";
 import cx from "classnames";
+import { prefix } from "../../settings";
 
 type SnackBarProps = {
   /**
@@ -32,24 +33,24 @@ type SnackBarProps = {
 
 const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
   return (
-    <div className="snackbar--container">
+    <div className={`${prefix}--snackbar--container`}>
       <div
-        className={cx("snackbar", {
-          "snackbar--open": open,
-          "snackbar--danger": messageType === "danger",
-          "snackbar--success": messageType === "success",
-          "snackbar--info": messageType === "info",
-          "snackbar--warning": messageType === "warning"
+        className={cx(`${prefix}--snackbar`, {
+          [`${prefix}--snackbar--open`]: open,
+          [`${prefix}--snackbar--danger`]: messageType === "danger",
+          [`${prefix}--snackbar--success`]: messageType === "success",
+          [`${prefix}--snackbar--info`]: messageType === "info",
+          [`${prefix}--snackbar--warning`]: messageType === "warning"
         })}
       >
-        <span className="snackbar--content">
+        <span className={`${prefix}--snackbar--content`}>
           {messageType === "danger" && (
             <IconForbid
               size={16}
               color="#ff8080"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar--icon"
+              className={`${prefix}--snackbar--icon`}
             />
           )}
           {messageType === "success" && (
@@ -58,7 +59,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
               color="#a4fe80"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar--icon"
+              className={`${prefix}--snackbar--icon`}
             />
           )}
           {messageType === "info" && (
@@ -67,7 +68,7 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
               color="#80aaff"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar--icon"
+              className={`${prefix}--snackbar--icon`}
             />
           )}
           {messageType === "warning" && (
@@ -76,12 +77,16 @@ const SnackBar = ({ message, messageType, open, onClose }: SnackBarProps) => {
               color="#ffe180"
               stroke={2}
               strokeLinejoin="miter"
-              className="snackbar--icon"
+              className={`${prefix}--snackbar--icon`}
             />
           )}
-          <p className="snackbar--message">{message}</p>
+          <p className={`${prefix}--snackbar--message`}>{message}</p>
         </span>
-        <button type="button" className="snackbar--close" onClick={onClose}>
+        <button
+          type="button"
+          className={`${prefix}--snackbar--close`}
+          onClick={onClose}
+        >
           <IconX size={16} stroke={2} strokeLinejoin="miter" />
         </button>
       </div>

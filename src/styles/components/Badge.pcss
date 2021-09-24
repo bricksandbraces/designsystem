@@ -1,198 +1,201 @@
 @import "../colors.pcss";
 @import "../theme.pcss";
 @import "../typography.pcss";
+@import "../prefix.pcss";
 
-.badge {
-  @mixin type--label;
+.$(prefix) {
+  &--badge {
+    @mixin type--label;
 
-  height: $container-01;
-  padding: 2px 1px;
-  transition: $transition-01;
-  border: 1px solid;
-  border-radius: 2px;
-  outline: 0;
-
-  &:focus-visible {
-    border-color: $focus;
-  }
-
-  &--interactive {
-    padding: 1px;
-  }
-
-  &--red {
-    border-color: $badge-red-border;
-    background-color: $badge-red-background;
-    color: $badge-red-font;
-
-    &-interactive {
-      &:hover {
-        background-color: $badge-red-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-red-background-active;
-      }
-    }
-  }
-
-  &--green {
-    border-color: $badge-green-border;
-    background-color: $badge-green-background;
-    color: $badge-green-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-green-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-green-background-active;
-      }
-    }
-  }
-
-  &--yellow {
-    border-color: $badge-yellow-border;
-    background-color: $badge-yellow-background;
-    color: $badge-yellow-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-yellow-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-yellow-background-active;
-      }
-    }
-  }
-
-  &--orange {
-    border-color: $badge-orange-border;
-    background-color: $badge-orange-background;
-    color: $badge-orange-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-orange-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-orange-background-active;
-      }
-    }
-  }
-
-  &--blue {
-    border-color: $badge-blue-border;
-    background-color: $badge-blue-background;
-    color: $badge-blue-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-blue-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-blue-background-active;
-      }
-    }
-  }
-
-  &--warm-gray {
-    border-color: $badge-warmgray-border;
-    background-color: $badge-warmgray-background;
-    color: $badge-warmgray-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-warmgray-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-warmgray-background-active;
-      }
-    }
-  }
-
-  &--cold-gray {
-    border-color: $badge-coldgray-border;
-    background-color: $badge-coldgray-background;
-    color: $badge-coldgray-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-coldgray-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-coldgray-background-active;
-      }
-    }
-  }
-
-  &--purple {
-    border-color: $badge-purple-border;
-    background-color: $badge-purple-background;
-    color: $badge-purple-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-purple-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-purple-background-active;
-      }
-    }
-  }
-
-  &--cyan {
-    border-color: $badge-cyan-border;
-    background-color: $badge-cyan-background;
-    color: $badge-cyan-font;
-    &-interactive {
-      &:hover {
-        background-color: $badge-cyan-background-hover;
-      }
-
-      &:active {
-        background-color: $badge-cyan-background-active;
-      }
-    }
-  }
-
-  &--content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    & > span {
-      padding: 0 $spacing-03;
-    }
-  }
-
-  &--close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    padding: 0;
+    height: $container-01;
+    padding: 2px 1px;
     transition: $transition-01;
-    border: 0;
-    border-radius: 1px;
+    border: 1px solid;
+    border-radius: 2px;
     outline: 0;
-    background-color: transparent;
-    color: inherit;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    &:active {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
 
     &:focus-visible {
-      border: 1px solid $focus;
+      border-color: $focus;
     }
 
-    &:focus:not(:focus-visible) {
-      border: 1px solid $focus;
+    &--interactive {
+      padding: 1px;
+    }
+
+    &--red {
+      border-color: $badge-red-border;
+      background-color: $badge-red-background;
+      color: $badge-red-font;
+
+      &-interactive {
+        &:hover {
+          background-color: $badge-red-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-red-background-active;
+        }
+      }
+    }
+
+    &--green {
+      border-color: $badge-green-border;
+      background-color: $badge-green-background;
+      color: $badge-green-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-green-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-green-background-active;
+        }
+      }
+    }
+
+    &--yellow {
+      border-color: $badge-yellow-border;
+      background-color: $badge-yellow-background;
+      color: $badge-yellow-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-yellow-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-yellow-background-active;
+        }
+      }
+    }
+
+    &--orange {
+      border-color: $badge-orange-border;
+      background-color: $badge-orange-background;
+      color: $badge-orange-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-orange-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-orange-background-active;
+        }
+      }
+    }
+
+    &--blue {
+      border-color: $badge-blue-border;
+      background-color: $badge-blue-background;
+      color: $badge-blue-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-blue-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-blue-background-active;
+        }
+      }
+    }
+
+    &--warm-gray {
+      border-color: $badge-warmgray-border;
+      background-color: $badge-warmgray-background;
+      color: $badge-warmgray-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-warmgray-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-warmgray-background-active;
+        }
+      }
+    }
+
+    &--cold-gray {
+      border-color: $badge-coldgray-border;
+      background-color: $badge-coldgray-background;
+      color: $badge-coldgray-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-coldgray-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-coldgray-background-active;
+        }
+      }
+    }
+
+    &--purple {
+      border-color: $badge-purple-border;
+      background-color: $badge-purple-background;
+      color: $badge-purple-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-purple-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-purple-background-active;
+        }
+      }
+    }
+
+    &--cyan {
+      border-color: $badge-cyan-border;
+      background-color: $badge-cyan-background;
+      color: $badge-cyan-font;
+      &-interactive {
+        &:hover {
+          background-color: $badge-cyan-background-hover;
+        }
+
+        &:active {
+          background-color: $badge-cyan-background-active;
+        }
+      }
+    }
+
+    &--content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      & > span {
+        padding: 0 $spacing-03;
+      }
+    }
+
+    &--close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      transition: $transition-01;
+      border: 0;
+      border-radius: 1px;
+      outline: 0;
+      background-color: transparent;
+      color: inherit;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      &:active {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &:focus-visible {
+        border: 1px solid $focus;
+      }
+
+      &:focus:not(:focus-visible) {
+        border: 1px solid $focus;
+      }
     }
   }
 }

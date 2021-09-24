@@ -3,6 +3,7 @@ import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
 import { IconCopy, IconCheck } from "@tabler/icons";
 import Button from "../Button/Button";
+import { prefix } from "../../settings";
 
 export type CopyButtonProps = {
   /**
@@ -49,14 +50,15 @@ const CopyButton = ({
   return (
     <Button
       className={cx(
-        "copybutton",
-        { "copybutton--copied": showState },
+        `${prefix}--copybutton`,
+        { [`${prefix}--copybutton--copied`]: showState },
         className
       )}
       kind="secondary"
       withIcon
       iconPosition="right"
       size="small"
+      // TODO: adjust color to be extended from a config
       icon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       onClick={(event) => {
         setShowState(true);

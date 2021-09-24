@@ -8,6 +8,7 @@ import {
 import { Grid, Column } from "../Grid/Grid";
 import Typography from "../Typography/Typography";
 import Button from "../Button/Button";
+import { prefix } from "../../settings";
 
 type CtaItem = {
   /**
@@ -59,7 +60,9 @@ const LeadSpace = ({
   return (
     <section
       id="leadspace"
-      className={cx("leadspace", { "leadspace--video-player": videoUrl })}
+      className={cx(`${prefix}--leadspace`, {
+        [`${prefix}--leadspace--video-player`]: videoUrl
+      })}
       style={{
         backgroundImage: `url(${backgroundImage})`
       }}
@@ -79,7 +82,7 @@ const LeadSpace = ({
             <source src={videoUrl} type="video/mp4" />
           </video>
           <button
-            className="leadspace--video-controls"
+            className={`${prefix}--leadspace--video-controls`}
             type="button"
             aria-label={videoPlay ? "Pause video" : "Play video"}
             onClick={() => {
@@ -98,7 +101,9 @@ const LeadSpace = ({
       )}
       <Grid
         narrow
-        className={cx("leadspace--grid", { "leadspace--video": videoUrl })}
+        className={cx(`${prefix}--leadspace--grid`, {
+          [`${prefix}--leadspace--video`]: videoUrl
+        })}
       >
         <Column
           sm={4}
@@ -109,17 +114,17 @@ const LeadSpace = ({
           lgOffset={2}
           xlg={6}
           xlgOffset={2}
-          className="leadspace--column"
+          className={`${prefix}--leadspace--column`}
         >
-          <div className="leadspace--container">
-            <div className="leadspace--content">
+          <div className={`${prefix}--leadspace--container`}>
+            <div className={`${prefix}--leadspace--content`}>
               {title && (
                 <Typography type="h1" token="heading-06">
                   {title}
                 </Typography>
               )}
               {ctaItems && (
-                <div className="leadspace--content-buttongroup">
+                <div className={`${prefix}--leadspace--content-buttongroup`}>
                   {ctaItems?.map((cta, i) => {
                     return (
                       <Button
