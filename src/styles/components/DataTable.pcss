@@ -1,0 +1,129 @@
+@import "../../styles/theme.pcss";
+@import "../../styles/typography.pcss";
+
+.datatable {
+  &--container {
+    width: 100%;
+    table-layout: fixed;
+    border: 1px solid $datatable-border;
+    border-radius: 2px;
+    background-color: $datatable-background;
+    & > * {
+      color: white;
+    }
+  }
+
+  &--table {
+    width: calc(100% - 8px);
+    margin: 4px;
+    table-layout: fixed;
+  }
+
+  & > div > div > table {
+    & > thead > tr {
+      & > th {
+        & > div > {
+          @mixin type--label;
+        }
+
+        border-radius: 2px;
+        outline: 0;
+        background-color: $datatable-header-background;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: $datatable-header-background-hover;
+        }
+
+        &:active {
+          background-color: $datatable-header-background-active;
+        }
+
+        &:focus-visible {
+          border-radius: 2px;
+          outline: 1px solid $focus;
+        }
+      }
+    }
+    & > tbody > tr {
+      background-color: $datatable-cell-background;
+      &:hover {
+        background-color: $datatable-cell-background-hover;
+      }
+      &:active {
+        background-color: $datatable-cell-background-active;
+      }
+      & > td {
+        height: $container-02;
+        min-height: $container-02;
+        max-height: $container-02;
+        padding: 0 $spacing-04;
+
+        &:first-child {
+          border-top-left-radius: 2px;
+          border-bottom-left-radius: 2px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+        }
+      }
+    }
+  }
+
+  &--small > div > div > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      height: $container-02;
+      min-height: $container-02;
+      max-height: $container-02;
+      padding: 0 $spacing-04;
+    }
+  }
+
+  &--default > div > div > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      height: $container-03;
+      min-height: $container-03;
+      max-height: $container-03;
+      padding: 0 $spacing-04;
+    }
+  }
+  &--large > div > div > table {
+    & > thead > tr > th,
+    & > tbody > tr > td {
+      height: $container-04;
+      min-height: $container-04;
+      max-height: $container-04;
+      padding: 0 $spacing-04;
+      border-radius: 2px;
+    }
+  }
+
+  &--head {
+    &-divider {
+      width: calc(100% + 10px);
+      margin: 3px 0;
+      transform: translateX(-5px);
+    }
+
+    &-cell {
+      &__label {
+        @mixin type--label;
+
+        color: $datatable-header-label;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08rem;
+      }
+    }
+  }
+
+  &--cell {
+    @mixin type--body-small;
+
+    color: $datatable-row-item;
+  }
+}

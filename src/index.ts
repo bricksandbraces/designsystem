@@ -36,6 +36,16 @@ import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Badge from "./components/Badge/Badge";
 import Loading from "./components/Loading/Loading";
+import Search from "./components/Search/Search";
+import SearchInput from "./components/Search/SearchInput";
+import Table from "./components/DataTable/Table";
+import TableHead from "./components/DataTable/TableHead";
+import TableHeadCell from "./components/DataTable/TableHeadCell";
+import TableRow from "./components/DataTable/TableRow";
+import TableCell from "./components/DataTable/TableCell";
+import TableContainer from "./components/DataTable/TableContainer";
+import TableBody from "./components/DataTable/TableBody";
+import { HeaderData, RowData } from "./components/DataTable/DataTable";
 import LanguageSwitch from "./components/LanguageSwitch/LanguageSwitch";
 import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
@@ -89,6 +99,15 @@ export {
   Dropdown,
   Badge,
   Loading,
+  Search,
+  SearchInput,
+  Table,
+  TableCell,
+  TableBody,
+  TableContainer,
+  TableRow,
+  TableHeadCell,
+  TableHead,
   LanguageSwitch,
   RadioButton,
   RadioButtonGroup,
@@ -101,3 +120,5 @@ export {
   FloatingPanel,
   ButtonGroup
 };
+
+export type { HeaderData, RowData };

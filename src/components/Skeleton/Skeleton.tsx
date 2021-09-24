@@ -23,7 +23,7 @@ const Skeleton = ({ size = "default", circle, className }: SkeletonProps) => {
   return (
     <div
       className={cx(
-        `${prefix}--skeleton ${prefix}skeleton--${size}`,
+        `${prefix}--skeleton ${prefix}--skeleton--${size}`,
         { [`${prefix}--skeleton--circle`]: circle },
         className
       )}

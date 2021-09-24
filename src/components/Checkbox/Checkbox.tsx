@@ -74,7 +74,14 @@ const Checkbox = ({
           strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <rect
+            x="4"
+            y="4"
+            width="16"
+            height="16"
+            rx="2"
+            className={`${prefix}--checkbox--check-box`}
+          />
           <path
             d="M9 12l2 2l4 -4"
             className={`${prefix}--checkbox--check-mark`}

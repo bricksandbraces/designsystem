@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import { KeyboardEvent } from "react";
 
-function filterForKeys(
+function filterForKeys<T>(
   keys: string[],
-  callback?: (event: KeyboardEvent) => void
-): (event: KeyboardEvent) => void {
-  return (event: KeyboardEvent) => {
+  callback?: (event: KeyboardEvent<T>) => void
+): (event: KeyboardEvent<T>) => void {
+  return (event: KeyboardEvent<T>) => {
     if (keys.includes(event.key)) {
       callback?.(event);
     }
