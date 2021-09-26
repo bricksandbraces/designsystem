@@ -4,6 +4,7 @@ import { Grid, Column } from "../Grid/Grid";
 import Typography from "../Typography/Typography";
 import Link from "../Link/Link";
 import { prefix } from "../../settings";
+import { idfy } from "../../helpers/arrayUtilities";
 
 type LinkItem = {
   /**
@@ -49,6 +50,7 @@ const Footer = ({
   descriptionLink
 }: FooterProps) => {
   const currentYear = new Date().getFullYear();
+  const indexedLinkItems = idfy(linkItems);
   return (
     <footer className={`${prefix}--footer`}>
       <Grid narrow className={`${prefix}--footer--grid`}>
@@ -120,11 +122,10 @@ const Footer = ({
           className={`${prefix}--footer--column`}
         >
           <div className={`${prefix}--footer--linksection`}>
-            {linkItems?.map((link, i) => {
+            {indexedLinkItems?.map((link) => {
               return (
                 <Link
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`footer-${i}-${link.href}`}
+                  key={link.id}
                   href={link.href}
                   className={`${prefix}--footer--linksection-item`}
                 >

@@ -1,3 +1,18 @@
+import hash from "object-hash";
+import { useEffect, useRef } from "react";
+
+/**
+ * Helper function used for up/down navigation on an array list.
+ * Searches for the next item meeting a given condition in a direction of an array.
+ * If the direction does not find an item meeting the condition then the half of the array will be searched (from the same direction).
+ *
+ * @param array The array to search in
+ * @param filterPredicate The condition the element
+ * @param sliceIndex Defining which half should be searched first
+ * @param upwards True if the search should use the direction increasing the index.
+ *
+ * @returns If no elmeent matches the condition, empty object is returned. Else: `{ item?: T; index?: number }`
+ */
 const findNextItem = <T,>(
   array: Array<T>,
   filterPredicate: (item: T) => boolean,
@@ -30,5 +45,56 @@ const findNextItem = <T,>(
       );
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { findNextItem };
+export type IdentifiableObject = { [key: string]: any; id: string };
+
+/**
+ * Prepares an array for react key indexing.
+ * Returns a lifecycle-persisted array with id prop that only changes if the array changes.
+ *
+ * @param arr the array to index
+ * @param generateId optional key generation function for even more efficient key inference
+ * @returns the original array with id key as additional properties
+ */
+const idfy = (
+  arr?: Record<string, any>[],
+  generateId?: (el: Record<string, any>) => string
+) => {
+  const generateDefaultId = (
+    el: Record<string, any>,
+    lastArr?: IdentifiableObject[]
+  ): string => {
+    const existingElement = lastArr?.find((el2) => el === el2);
+    if (existingElement) {
+      return existingElement.id;
+    }
+    return hash(el ?? null);
+  };
+
+  const prepareArray = (
+    lastArray?: IdentifiableObject[]
+  ): IdentifiableObject[] => {
+    // fallback: if all of the elements already have id's, on need to generate new.
+    if (arr?.every((el) => el?.id)) {
+      return arr as IdentifiableObject[];
+    }
+    // native id's will be used first, custom generation function second, else default generation function
+    return (
+      arr?.map((el) => ({
+        ...el,
+        id: el?.id
+          ? el.id
+          : generateId?.(el) ?? generateDefaultId(el, lastArray)
+      })) ?? []
+    );
+  };
+
+  const arrRef = useRef<IdentifiableObject[]>(prepareArray());
+
+  useEffect(() => {
+    arrRef.current = prepareArray(arrRef.current);
+  }, [arr]);
+
+  return arrRef.current;
+};
+
+export { findNextItem, idfy };

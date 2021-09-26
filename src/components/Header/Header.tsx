@@ -7,6 +7,7 @@ import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
 import Typography from "../Typography/Typography";
 import { prefix } from "../../settings";
+import { idfy } from "../../helpers/arrayUtilities";
 
 type LinkItem = {
   /**
@@ -36,6 +37,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const { x, y } = useWindowScroll();
   const small = y > 64 && x === 0;
+  const indexedLinkItems = idfy(linkItems);
 
   return (
     <>
@@ -51,11 +53,10 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             sm={4}
             className={`${prefix}--header--mobile-list`}
           >
-            {linkItems?.map((link, i) => {
+            {indexedLinkItems?.map((link) => {
               return (
                 <a
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`header-${i}-${link.href}`}
+                  key={link.id}
                   className={`${prefix}--header--mobile-list__item`}
                   href={link.href}
                   onClick={() => {
@@ -104,11 +105,10 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
             className={`${prefix}--header--column`}
           >
             <div className={`${prefix}--header--linksection`}>
-              {linkItems?.map((link, i) => {
+              {indexedLinkItems?.map((link) => {
                 return (
                   <Link
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`header-linksection-${i}-${link.href}`}
+                    key={link.id}
                     href={link.href}
                     className={`${prefix}--header--linksection-item`}
                   >

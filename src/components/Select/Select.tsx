@@ -106,11 +106,7 @@ const Select = ({
 
   const renderOption = (option: SelectOption) => {
     return (
-      <option
-        key={option.value}
-        value={option.value}
-        selected={option.value === selectedValue}
-      >
+      <option key={option.value} value={option.value}>
         {option.text}
       </option>
     );
@@ -128,6 +124,7 @@ const Select = ({
           })}
           id={id}
           disabled={disabled}
+          value={selectedValue}
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
             if (!controlled) {
               setSelectedValue(event.target.value);

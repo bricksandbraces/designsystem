@@ -87,8 +87,7 @@ const Accordion = ({
         return (
           props && (
             <li
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
+              key={child.key}
               className={cx(`${prefix}--accordion--item`, {
                 [`${prefix}--accordion--item-collapse`]:
                   itemAnimations[i] === AnimationType.COLLAPSE && open,
