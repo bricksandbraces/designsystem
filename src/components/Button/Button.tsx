@@ -3,6 +3,8 @@ import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
 
+type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
+
 export type ButtonProps = {
   /** Unique identifier for your button */
   id?: string;
@@ -20,11 +22,14 @@ export type ButtonProps = {
   href?: string;
 
   /** Provide the click handler for the button */
-  onClick?: (event: any) => void;
-  onHover?: (event: any) => void;
+  onClick?: React.MouseEventHandler<ButtonOrAnchor>;
+  /** Provide a listener for the mouseenter event */
+  onMouseEnter?: React.MouseEventHandler<ButtonOrAnchor>;
+  /** Provide a listener for the mouseleave event */
+  onMouseLeave?: React.MouseEventHandler<ButtonOrAnchor>;
 
   /** Triggered when the event receives focus */
-  onFocus?: (event: FocusEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<ButtonOrAnchor>) => void;
 
   /** Specify the type of the button */
   type?: "button" | "submit" | "reset";
@@ -51,6 +56,8 @@ export type ButtonProps = {
   /** Set the button fluid */
   fluid?: boolean;
 
+  title?: string;
+
   /** Enables tooltip */
   showTooltip?: boolean;
 
@@ -68,6 +75,11 @@ export type ButtonProps = {
 
   /** Automatically focus the button */
   autoFocus?: boolean;
+
+  /**
+   * Tab index for the button
+   */
+  tabIndex?: number;
 };
 
 const Button = (
@@ -86,7 +98,7 @@ const Button = (
     loadingDescription = "Loading",
     ...rest
   }: ButtonProps,
-  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+  ref: ForwardedRef<ButtonOrAnchor>
 ) => (
   <>
     {href ? (
@@ -162,6 +174,4 @@ const Button = (
   </>
 );
 
-export default forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  Button
-);
+export default forwardRef<ButtonOrAnchor, ButtonProps>(Button);

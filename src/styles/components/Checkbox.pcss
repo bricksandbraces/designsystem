@@ -49,6 +49,10 @@
   & > .$(prefix)--checkbox--check-mark {
     visibility: hidden;
   }
+
+  & > .checkbox--check-box {
+    fill: transparent;
+  }
 }
 
 .$(prefix)--checkbox
@@ -58,6 +62,12 @@
   color: $white;
   & > .$(prefix)--checkbox--check-mark {
     visibility: visible;
+    stroke-width: 2px;
+    color: $black;
+  }
+
+  & > .$(prefix)--checkbox--check-box {
+    fill: $white;
   }
 }
 

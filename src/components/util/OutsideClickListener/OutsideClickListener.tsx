@@ -4,7 +4,7 @@ import mergeRefs from "react-merge-refs";
 type OutsideClickListenerProps = {
   children: ReactElement<any, string>;
   disabled?: boolean;
-  onClickOutside: (event: any) => void;
+  onClickOutside: (event: MouseEvent) => void;
 };
 
 const OutsideClickListener = (
@@ -13,7 +13,7 @@ const OutsideClickListener = (
 ) => {
   const elementRef = useRef<HTMLElement>();
 
-  const handleGlobalClick = (event: Event) => {
+  const handleGlobalClick = (event: MouseEvent) => {
     const { current } = elementRef;
 
     if (
