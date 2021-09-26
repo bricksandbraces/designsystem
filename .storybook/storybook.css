@@ -3,3 +3,30 @@
 .sb-show-main.sb-main-padded {
   padding: 0;
 }
+
+.sb-intro {
+  padding: 2rem;
+
+  &--container {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+        135deg,
+        rgba(13, 13, 13, 1),
+        rgba(13, 13, 13, 0)
+      ),
+      url("https://isd-image-bucket.s3.au-syd.cloud-object-storage.appdomain.cloud/bbds.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &--headline {
+    margin-top: 2rem;
+    color: white;
+  }
+
+  &--subline {
+    margin-top: 1rem;
+    color: white;
+  }
+}
