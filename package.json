@@ -55,6 +55,7 @@
     "@storybook/react": "^6.3.8",
     "@storybook/theming": "^6.3.8",
     "@tabler/icons": "^1.41.2",
+    "@tippyjs/react": "^4.2.5",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "classnames": "^2.3.1",
     "cssnano": "^5.0.7",
@@ -69,6 +70,7 @@
     "serve": "^12.0.0",
     "storybook": "^6.3.8",
     "storybook-dark-mode": "^1.0.8",
+    "tippy.js": "^6.3.1",
     "webpack-bundle-analyzer": "^4.4.2"
   },
   "devDependencies": {
