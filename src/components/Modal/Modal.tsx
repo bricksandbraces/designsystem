@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
-import React, { forwardRef, ReactNode, useEffect, useRef } from "react";
+import React, {
+  forwardRef,
+  MouseEvent,
+  ReactNode,
+  useEffect,
+  useRef
+} from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
 import { IconX } from "@tabler/icons";
@@ -34,7 +40,12 @@ type ModalProps = {
   /**
    * OnClose
    */
-  onClose?: (event: any) => void;
+  onClose?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | KeyboardEvent
+      | MouseEvent
+  ) => void;
 
   /**
    * Determines whether the modal should be closed when the user clicks outside of the modal.
@@ -102,7 +113,7 @@ const Modal = (
           >
             <OutsideClickListener
               disabled={!closeOnOutsideClick || !open}
-              onClickOutside={(event: any) => {
+              onClickOutside={(event: MouseEvent) => {
                 onClose?.(event);
               }}
             >
@@ -118,7 +129,8 @@ const Modal = (
                 <IconOnlyButton
                   kind="ghost"
                   icon={<IconX />}
-                  className={`${prefix}--modal--close`}
+                  wrapperClassName={`${prefix}--modal--close`}
+                  tooltipPosition="left"
                   onClick={(event: any) => {
                     onClose?.(event);
                   }}
