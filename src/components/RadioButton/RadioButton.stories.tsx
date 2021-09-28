@@ -1,6 +1,6 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Typography from "../Typography/Typography";
+import Body from "../Typography/Body";
 import RadioButton from "./RadioButton";
 import RadioButtonGroup from "./RadioButtonGroup";
 
@@ -81,17 +81,13 @@ export const WithChildren = () => {
               disabled={boolean("RadioButton 2 disabled", false)}
               name="1"
             >
-              <Typography
-                type="span"
-                token="body-small"
-                style={{ marginTop: "8px", display: "block" }}
-              >
+              <Body type="b1" style={{ marginTop: "8px", display: "block" }}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et
                 justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
                 takimata sanctus est Lorem ipsum dolor sit amet.
-              </Typography>
+              </Body>
             </RadioButton>
           </fieldset>
         </form>

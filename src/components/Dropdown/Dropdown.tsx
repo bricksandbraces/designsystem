@@ -5,12 +5,12 @@ import {
   IconAlertTriangle,
   IconChevronDown
 } from "@tabler/icons";
-import Typography from "../Typography/Typography";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import useControlled from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
+import Body from "../Typography/Body";
 
 type DropdownItem = {
   /**
@@ -201,14 +201,13 @@ const Dropdown = ({
           setOpen(!open);
         }}
       >
-        <Typography
-          type="span"
-          token="body-small"
+        <Body
+          type="b1"
           className={`${prefix}--dropdown--title`}
           title={selectedText}
         >
           {selectedValue == null ? title : selectedText}
-        </Typography>
+        </Body>
         <IconChevronDown
           size={16}
           className={cx(`${prefix}--dropdown--icon`, {

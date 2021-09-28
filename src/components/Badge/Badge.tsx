@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
 import { prefix } from "../../settings";
+import Label from "../Typography/Label";
 
 export type BadgeColor =
   | "red"
@@ -71,9 +71,7 @@ const Badge = ({
           )}
         >
           <div className={`${prefix}--badge--content`}>
-            <Typography type="span" token="label">
-              {children}
-            </Typography>
+            <Label>{children}</Label>
           </div>
         </button>
       ) : (
@@ -86,9 +84,7 @@ const Badge = ({
           )}
         >
           <div className={`${prefix}--badge--content`}>
-            <Typography type="span" token="label">
-              {children}
-            </Typography>
+            <Label>{children}</Label>
             {onClose && (
               <button
                 type="button"

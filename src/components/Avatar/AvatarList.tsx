@@ -1,9 +1,10 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
 import FloatingPanel from "../FloatingPanel/FloatingPanel";
 import Avatar from "./Avatar";
 import { prefix } from "../../settings";
+import Body from "../Typography/Body";
+import Label from "../Typography/Label";
 
 type AvatarListItem = {
   /**
@@ -62,20 +63,15 @@ const AvatarList = ({
               <Avatar name={avatar.name} imgUrl={avatar.imgUrl} />
               <div className={`${prefix}--avatar--list-item__container`}>
                 <div className={`${prefix}--avatar--list-item__text`}>
-                  <Typography
-                    token="body-small"
-                    type="text"
+                  <Body
+                    type="b1"
                     className={`${prefix}--avatar--list-item__text-heading`}
                   >
                     {avatar.name}
-                  </Typography>
-                  <Typography
-                    token="label"
-                    type="text"
-                    className={`${prefix}--avatar--list-item__text-body`}
-                  >
+                  </Body>
+                  <Label className={`${prefix}--avatar--list-item__text-body`}>
                     {avatar.additionalInformation}
-                  </Typography>
+                  </Label>
                 </div>
                 {avatarActions && (
                   <div

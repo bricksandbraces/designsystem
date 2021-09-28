@@ -1,6 +1,6 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Typography from "../Typography/Typography";
+import Body from "../Typography/Body";
 import Toggle from "./Toggle";
 
 export default { title: "Components/Toggle", decorators: [withKnobs] };
@@ -86,17 +86,13 @@ export const WithChildren = () => {
           disabled={boolean("Toggle 2 disabled", false)}
           value="c2"
         >
-          <Typography
-            type="span"
-            token="body-small"
-            style={{ marginTop: "8px", display: "block" }}
-          >
+          <Body type="b1" style={{ marginTop: "8px", display: "block" }}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
             et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
             Lorem ipsum dolor sit amet.
-          </Typography>
+          </Body>
         </Toggle>
       </div>
     </div>

@@ -5,7 +5,7 @@ import Modal from "../Modal/Modal";
 import ModalBody from "../Modal/ModalBody";
 import ModalFooter from "../Modal/ModalFooter";
 import ModalHeader from "../Modal/ModalHeader";
-import Typography from "../Typography/Typography";
+import Body from "../Typography/Body";
 
 export enum OptType {
   OPT_IN,
@@ -47,13 +47,9 @@ const CookieSettingControl = ({
         disabled={type === OptType.ESSENTIAL}
         onChange={onChange}
       >
-        <Typography
-          type="text"
-          token="body-small"
-          className={`${prefix}--cookiemodal--check-description`}
-        >
+        <Body type="b1" className={`${prefix}--cookiemodal--check-description`}>
           {description}
-        </Typography>
+        </Body>
       </Checkbox>
     </div>
   );
@@ -103,9 +99,7 @@ const CookieModal = (
     >
       <ModalHeader headline={headline} />
       <ModalBody>
-        <Typography type="text" token="body-small">
-          {intro}
-        </Typography>
+        <Body type="b1">{intro}</Body>
         {settings.map((setting, i) => {
           return (
             <CookieSettingControl

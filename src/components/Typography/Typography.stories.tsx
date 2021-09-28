@@ -1,11 +1,11 @@
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Typography from "./Typography";
+import Headline from "./Headline";
+import Body from "./Body";
 
 export default { title: "Components/Typography", decorators: [withKnobs] };
 
 const type = {
-  Text: "text",
   H1: "h1",
   H2: "h2",
   H3: "h3",
@@ -14,33 +14,28 @@ const type = {
   H6: "h6"
 };
 
-const defaultType = "text";
-
-const token = {
-  footnote: "footnote",
-  label: "label",
-  "body-small": "body-small",
-  body: "body",
-  "heading-01": "heading-01",
-  "heading-02": "heading-02",
-  "heading-03": "heading-03",
-  "heading-04": "heading-04",
-  "heading-05": "heading-05",
-  "heading-06": "heading-06",
-  "display-01": "display-01",
-  "display-02": "display-02"
-};
-
-const defaultToken = "body";
+const defaultType = "h1";
 
 export const Playground = () => {
   return (
-    <Typography
-      style={{ color: "white" }}
-      type={select("Type", type, defaultType) as any}
-      token={select("Token", token, defaultToken) as any}
-    >
-      {text("Text", "Dogs bark louder at night.")}
-    </Typography>
+    <div style={{ maxWidth: "405px", color: "white", margin: "32px" }}>
+      <Headline
+        style={{ color: "white" }}
+        type={select("Type", type, defaultType) as any}
+      >
+        {text("Text", "Dogs bark louder at night.")}
+      </Headline>
+      <Body type="b1">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </Body>
+    </div>
   );
 };
