@@ -45,7 +45,13 @@ const findNextItem = <T,>(
       );
 };
 
-export type IdentifiableObject = { [key: string]: any; id: string };
+export type IdentifiableObject<T extends Record<string, any>> = T & {
+  id: string;
+};
+
+function idfy<T extends number | string | boolean>(
+  arr?: T[]
+): IdentifiableObject<T>[] {}
 
 /**
  * Prepares an array for react key indexing.
@@ -55,13 +61,13 @@ export type IdentifiableObject = { [key: string]: any; id: string };
  * @param generateId optional key generation function for even more efficient key inference
  * @returns the original array with id key as additional properties
  */
-const idfy = (
-  arr?: Record<string, any>[],
-  generateId?: (el: Record<string, any>) => string
-) => {
+function idfy<T extends Record<string, any>>(
+  arr?: T[],
+  generateId?: (el: T) => string
+): IdentifiableObject<T>[] {
   const generateDefaultId = (
-    el: Record<string, any>,
-    lastArr?: IdentifiableObject[]
+    el: T,
+    lastArr?: IdentifiableObject<T>[]
   ): string => {
     const existingElement = lastArr?.find((el2) => el === el2);
     if (existingElement) {
@@ -71,11 +77,11 @@ const idfy = (
   };
 
   const prepareArray = (
-    lastArray?: IdentifiableObject[]
-  ): IdentifiableObject[] => {
+    lastArray?: IdentifiableObject<T>[]
+  ): IdentifiableObject<T>[] => {
     // fallback: if all of the elements already have id's, on need to generate new.
     if (arr?.every((el) => el?.id)) {
-      return arr as IdentifiableObject[];
+      return arr as IdentifiableObject<T>[];
     }
     // native id's will be used first, custom generation function second, else default generation function
     return (
@@ -88,13 +94,13 @@ const idfy = (
     );
   };
 
-  const arrRef = useRef<IdentifiableObject[]>(prepareArray());
+  const arrRef = useRef<IdentifiableObject<T>[]>(prepareArray());
 
   useEffect(() => {
     arrRef.current = prepareArray(arrRef.current);
   }, [arr]);
 
   return arrRef.current;
-};
+}
 
 export { findNextItem, idfy };

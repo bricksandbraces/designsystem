@@ -3,8 +3,37 @@ import React, { useState } from "react";
 import Accordion from "./Accordion";
 import { Grid, Column } from "../Grid/Grid";
 import AccordionItem from "./AccordionItem";
+import { idfy } from "../../helpers/arrayUtilities";
 
 export default { title: "Components/Accordion", decorators: [withKnobs] };
+
+export const MyComponent = () => {
+  const arr = [0, 1, 2, 2, 3];
+  return (
+    <ul>
+      {arr.map((el) => {
+        return <p key={el}>{el}</p>;
+      })}
+    </ul>
+  );
+};
+
+export const PrimitiveIdfy = () => {
+  const arr = [0, 1, 2, 2, 3];
+  const indexedArr = idfy(
+    arr.map((el, i) => ({
+      el,
+      i: arr.filter((el2) => el2 === el).length > 1 ? i : undefined
+    }))
+  );
+  return (
+    <ul>
+      {indexedArr.map((el) => {
+        return <p key={el.id}>{el.el}</p>;
+      })}
+    </ul>
+  );
+};
 
 export const Uncontrolled = () => {
   return (
