@@ -64,7 +64,7 @@ const AvatarList = ({
               <div className={`${prefix}--avatar--list-item__container`}>
                 <div className={`${prefix}--avatar--list-item__text`}>
                   <Body
-                    type="b1"
+                    type="b2"
                     className={`${prefix}--avatar--list-item__text-heading`}
                   >
                     {avatar.name}

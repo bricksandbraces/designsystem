@@ -14,10 +14,10 @@ type ModalHeaderProps = {
 const ModalHeader = ({ headline, subheadline }: ModalHeaderProps) => {
   return (
     <div className={`${prefix}--modal--header`}>
-      <Headline type="h5" className={`${prefix}--modal--header-headline`}>
+      <Headline type="h4" className={`${prefix}--modal--header-headline`}>
         {headline}
       </Headline>
-      <Body type="b1" className={`${prefix}--modal--header-subheadline`}>
+      <Body type="b2" className={`${prefix}--modal--header-subheadline`}>
         {subheadline}
       </Body>
     </div>

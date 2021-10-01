@@ -202,7 +202,7 @@ const Dropdown = ({
         }}
       >
         <Body
-          type="b1"
+          type="b2"
           className={`${prefix}--dropdown--title`}
           title={selectedText}
         >

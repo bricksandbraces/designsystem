@@ -121,7 +121,7 @@ const Accordion = ({
                 }}
               >
                 <Body
-                  type="b1"
+                  type="b2"
                   className={`${prefix}--accordion--heading-title`}
                 >
                   {props.title}
@@ -131,7 +131,7 @@ const Accordion = ({
                   size={16}
                 />
               </button>
-              <Body type="b1" className={`${prefix}--accordion--content`}>
+              <Body type="b2" className={`${prefix}--accordion--content`}>
                 {props.children}
               </Body>
             </li>

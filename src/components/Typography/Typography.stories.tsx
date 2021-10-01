@@ -1,40 +1,61 @@
-import { select, text, withKnobs } from "@storybook/addon-knobs";
+import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Headline from "./Headline";
 import Body from "./Body";
+import Label from "./Label";
+import Caption from "./Caption";
+import Marketing from "./Marketing";
+import Quote from "./Quote";
 
 export default { title: "Components/Typography", decorators: [withKnobs] };
 
-const type = {
-  H1: "h1",
-  H2: "h2",
-  H3: "h3",
-  H4: "h4",
-  H5: "h5",
-  H6: "h6"
+const quoteType = {
+  q1: "q1",
+  q2: "q2"
 };
 
-const defaultType = "h1";
+const defaultQuoteType = "q1";
 
-export const Playground = () => {
+export const Headlines = () => {
   return (
-    <div style={{ maxWidth: "405px", color: "white", margin: "32px" }}>
-      <Headline
-        style={{ color: "white" }}
-        type={select("Type", type, defaultType) as any}
-      >
-        {text("Text", "Dogs bark louder at night.")}
-      </Headline>
-      <Body type="b1">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet.
+    <div style={{ color: "white", margin: "32px" }}>
+      <Headline type="h1">This is Headline 1</Headline>
+      <Headline type="h2">This is Headline 2</Headline>
+      <Headline type="h3">This is Headline 3</Headline>
+      <Headline type="h4">This is Headline 4</Headline>
+      <Headline type="h5">This is Headline 5</Headline>
+      <Headline type="h6">This is Headline 6</Headline>
+    </div>
+  );
+};
+
+export const MarketingHeadlines = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Marketing type="m1">This is a Marketing Heading 1</Marketing>
+      <Marketing type="m2">This is a Marketing Heading 2</Marketing>
+    </div>
+  );
+};
+
+export const QuoteType = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Quote type={select("type", quoteType, defaultQuoteType) as any}>
+        This is a Marketing quote that can be used on websites.
+      </Quote>
+    </div>
+  );
+};
+
+export const BodyType = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Body type="b2">
+        Hello. I am a body text. I am a B1 body text. Nice to meet you.
+      </Body>
+      <Body type="b2">
+        Hello. I am a body text. I am a B2 body text. Nice to meet you.
       </Body>
     </div>
   );

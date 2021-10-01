@@ -76,7 +76,7 @@ const Tabs = ({
                 }}
               >
                 <Body
-                  type="b1"
+                  type="b2"
                   name={props.title}
                   className={`${prefix}--tabs--btn-label`}
                 >
