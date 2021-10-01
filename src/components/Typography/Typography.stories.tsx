@@ -51,12 +51,21 @@ export const QuoteType = () => {
 export const BodyType = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
-      <Body type="b2">
+      <Body type="b1">
         Hello. I am a body text. I am a B1 body text. Nice to meet you.
       </Body>
       <Body type="b2">
         Hello. I am a body text. I am a B2 body text. Nice to meet you.
       </Body>
+    </div>
+  );
+};
+
+export const LabelAndCaption = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Label>Hello. I am a Label.</Label>
+      <Caption>Hello. I am a Caption.</Caption>
     </div>
   );
 };
