@@ -1,6 +1,198 @@
 @import "./colors.pcss";
 
-/* Spacings & Sizes */
+/* Colors */
+
+/* -- Root Colors -- */
+
+$color--app-01: $warm-gray-10;
+$color--app-02: $warm-gray-20;
+$color--app-03: $warm-gray-40;
+$color--app-04: $warm-gray-50;
+$color--app-05: $white;
+$color--app-background: $black;
+
+/* -- Background Colors -- */
+
+$color--background: $warm-gray-10;
+$color--hover: $warm-gray-15;
+$color--active: $warm-gray-20;
+$color--focus: $white;
+$color--decoration: $purple-40;
+$color--disabled: $warm-gray-10;
+$color--selected: $purple-40;
+$color--unselected: transparent;
+$color--light: $warm-gray-15;
+$color--transparent: transparent;
+
+/* -- Icon Colors -- */
+
+$color--icon-subtle: $warm-gray-50;
+$color--icon-default: $warm-gray-80;
+$color--icon-harsh: $white;
+
+/* -- Border Colors -- */
+
+$color--border-subtle: $warm-gray-10;
+$color--border-default: $warm-gray-15;
+$color--border-harsh: $warm-gray-20;
+$color--border-contrast: rgba(255, 255, 255, 0.05);
+
+/* -- Divider Colors -- */
+
+$color--divider-subtle: $warm-gray-10;
+$color--divider-default: $warm-gray-15;
+$color--divider-harsh: $warm-gray-20;
+
+/* -- Font Colors -- */
+
+$color--font-selected: $white;
+$color--font-unselected: $warm-gray-60;
+$color--font-text-01: $white;
+$color--font-text-02: $warm-gray-80;
+$color--font-label: $warm-gray-70;
+$color--font-helper: $warm-gray-60;
+$color--font-placeholder: $warm-gray-40;
+$color--font-disabled: $warm-gray-20;
+$color--font-warning: $yellow-50;
+$color--font-success: $green-50;
+$color--font-info: $blue-50;
+$color--font-danger: $red-50;
+
+/* -- Button & Interactive Colors -- */
+
+$color--primary-enabled: $purple-40;
+$color--primary-hover: $purple-45;
+$color--primary-active: $purple-50;
+$color--secondary-enabled: $warm-gray-10;
+$color--secondary-hover: $warm-gray-15;
+$color--secondary-active: $warm-gray-20;
+$color--tertiary-enabled: $purple-40;
+$color--tertiary-hover: $purple-45;
+$color--tertiary-active: $purple-50;
+$color--ghost-enabled: transparent;
+$color--ghost-hover: rgba(255, 255, 255, 0.1);
+$color--ghost-active: rgba(255, 255, 255, 0.15);
+$color--warning-enabled: $yellow-50;
+$color--warning_alt-enabled: $yellow-10;
+$color--warning-hover: $yellow-55;
+$color--warning-active: $yellow-60;
+$color--info-enabled: $blue-50;
+$color--info_alt-enabled: $blue-10;
+$color--info-hover: $blue-55;
+$color--info-active: $blue-60;
+$color--success-enabled: $green-50;
+$color--success_alt-enabled: $green-10;
+$color--success-hover: $green-55;
+$color--success-active: $green-60;
+$color--danger-enabled: $red-50;
+$color--danger_alt-enabled: $red-10;
+$color--danger-hover: $red-55;
+$color--danger-active: $red-60;
+
+/* Sizes */
+
+/* -- Container Sizes -- */
+
+$size--container-01: 1rem;
+$size--container-02: 1.5rem;
+$size--container-03: 2rem;
+$size--container-04: 2.5rem;
+$size--container-05: 3rem;
+$size--container-06: 4rem;
+$size--container-07: 8rem;
+$size--container-08: 16rem;
+
+/* -- Spacing Sizes -- */
+
+$size--spacing-01: 0.125rem;
+$size--spacing-02: 0.25rem;
+$size--spacing-03: 0.5rem;
+$size--spacing-04: 0.75rem;
+$size--spacing-05: 1rem;
+$size--spacing-06: 1.5rem;
+$size--spacing-07: 2rem;
+$size--spacing-08: 2.5rem;
+$size--spacing-09: 3rem;
+$size--spacing-10: 4rem;
+$size--spacing-11: 6rem;
+$size--spacing-12: 8rem;
+$size--spacing-13: 16rem;
+
+/* -- Breakpoint Sizes -- */
+
+$size--breakpoint-sm: 20rem;
+$size--breakpoint-md: 42rem;
+$size--breakpoint-lg: 68rem;
+$size--breakpoint-xlg: 82rem;
+$size--breakpoint-max: 99rem;
+
+/* Component Properties */
+
+/* -- Border Radius -- */
+
+$component--radius-subtle: 0.0625rem;
+$component--radius-default: 0.125rem;
+$component--radius-harsh: 0.5rem;
+
+/* -- Box Shadow -- */
+
+$component--shadow-subtle: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+$component--shadow-default: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+$component--shadow-harsh: 0 6px 16px 0 rgba(0, 0, 0, 0.4);
+
+/* -- Overlay -- */
+
+$component--overlay: rgba(0, 0, 0, 0.6);
+
+/* Transitions */
+
+/* -- Static Transitions -- */
+
+$transition--app-01: 0.15s ease-in-out;
+$transition--app-02: 0.3s ease-in-out;
+$transition--app-03: 0.45s ease-in-out;
+
+/* -- Keyframe Transitions -- */
+
+@keyframes accordionTransitionIn {
+  0% {
+    padding: 0 $size--spacing-05 $size--spacing-05 $size--spacing-05;
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  100% {
+    padding: $size--spacing-05 $size--spacing-05 $size--spacing-05
+      $size--spacing-05;
+    opacity: 1;
+  }
+}
+
+/* Type Scale */
+
+$font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
+  roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+/* Learn more under https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
+
+$font--label: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
+$font--caption: clamp(0.625rem, 0.625rem + 0vw, 0.625rem);
+$font--body-01: clamp(1rem, 1rem + 0vw, 1rem);
+$font--body-02: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+$font--headline-06: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+$font--headline-05: clamp(1rem, 1rem + 0vw, 1rem);
+$font--headline-04: clamp(1.2rem, 1.17rem + 0.16vw, 1.33rem);
+$font--headline-03: clamp(1.44rem, 1.36rem + 0.4vw, 1.78rem);
+$font--headline-02: clamp(1.73rem, 1.58rem + 0.75vw, 2.37rem);
+$font--headline-01: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
+$font--marketing-01: clamp(2.99rem, 2.37rem + 3.09vw, 5.61rem);
+$font--marketing-02: clamp(2.49rem, 2.08rem + 2.02vw, 4.21rem);
+$font--quote: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
+
+/* LEGACY --> TO DELETE BEFORE MERGE INTO MAIN */
 
 $container-00: 16px;
 $container-01: 24px;
@@ -30,8 +222,6 @@ $spacing-11: 96px;
 $spacing-12: 128px;
 $spacing-13: 156px;
 
-/* Border & Radius */
-
 $border: 1px solid;
 
 $border-radius-2: 2px;
@@ -39,12 +229,9 @@ $border-radius-4: 4px;
 $border-radius-8: 8px;
 $border-radius-16: 16px;
 
-/* Type Scale */
-
 $font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
   roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
-/* Learn more under https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
 $font--label: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
 $font--caption: clamp(0.625rem, 0.625rem + 0vw, 0.625rem);
 $font--body-01: clamp(1rem, 1rem + 0vw, 1rem);
@@ -59,22 +246,16 @@ $font--marketing-01: clamp(2.99rem, 2.37rem + 3.09vw, 5.61rem);
 $font--marketing-02: clamp(2.49rem, 2.08rem + 2.02vw, 4.21rem);
 $font--quote: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
 
-/* Transition */
-
 $transition-01: 0.15s ease-in-out;
 $transition-02: 0.3s ease-in-out;
 $transition-03: 0.45s ease-in-out;
 $transition-04: 2.5s ease-in-out;
-
-/* Breakpoints */
 
 $breakpoint-sm: 320px;
 $breakpoint-md: 672px;
 $breakpoint-lg: 1088px;
 $breakpoint-xlg: 1312px;
 $breakpoint-max: 1584px;
-
-/* Colors */
 
 $overlay: rgba(0, 0, 0, 0.6);
 

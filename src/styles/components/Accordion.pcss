@@ -3,98 +3,106 @@
 
 .$(prefix) {
   &--accordion {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    color: $accordion-font;
-    &--heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: $container-04;
-      padding: 0 $spacing-04;
-      border: 1px solid transparent;
-      border-radius: $border-radius-2;
-      outline: 0;
-      background-color: transparent;
-      color: $accordion-font;
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
 
-      &:hover {
-        background-color: $accordion-background-hover;
-      }
+      &__item {
+        box-sizing: content-box;
+        height: 100%;
+        max-height: $size--container-05;
+        overflow: hidden;
+        transition: max-height $transition--app-01;
+        border-top: 1px solid $color--border-default;
+        border-right: 1px solid $color--border-default;
+        border-left: 1px solid $color--border-default;
+        background-color: $color--background;
 
-      &:focus {
-        border-color: $accordion-focus;
-        outline: 0;
-      }
+        &:first-child {
+          border-top-left-radius: $component--radius-default;
+          border-top-right-radius: $component--radius-default;
+        }
 
-      &:focus-visible {
-        border-color: $accordion-focus;
-        outline: 0;
-      }
+        &:last-child {
+          border-bottom: 1px solid $color--border-default;
+          border-bottom-right-radius: $component--radius-default;
+          border-bottom-left-radius: $component--radius-default;
+        }
 
-      &:disabled {
-        background-color: inherit;
-        color: $accordion-disabled-font;
-        cursor: not-allowed;
-      }
+        &-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: $size--container-05;
+          padding: 0 $size--spacing-05;
+          transition: background-color $transition--app-01;
+          border: 1px solid $color--transparent;
+          outline: 0;
+          background-color: $color--transparent;
+          color: $color--font-text-01;
 
-      &-icon {
-        transition: $transition-01;
-      }
-    }
+          &:hover {
+            background-color: $color--hover;
+          }
 
-    &--item {
-      box-sizing: content-box;
-      height: 100%;
-      max-height: $container-04;
-      overflow: hidden;
-      transition: $transition-03;
-      border-top: 1px solid $accordion-border;
+          &:focus-visible {
+            border-radius: $component--radius-default;
+            border-color: $color--focus;
+          }
 
-      &:last-child {
-        border-bottom: 1px solid $accordion-border;
-      }
+          &:disabled {
+            background-color: $color--disabled;
+            color: $color--font-disabled;
+            cursor: not-allowed;
+          }
 
-      &-open {
-        &
-          > .$(prefix)--accordion--heading
-          > .$(prefix)--accordion--heading-icon {
-          transform: rotate(180deg);
+          &--headline {
+            @mixin type--body-02;
+
+            margin: 0;
+          }
+
+          &--icon {
+            transition: transform $transition--app-01;
+          }
+        }
+
+        &-content {
+          @mixin type--body-02;
+
+          display: block;
+          width: 80%;
+          height: 100%;
+          margin: 0;
+          padding: $size--spacing-04 $size--spacing-05 $size--spacing-05
+            $size--spacing-05;
+          color: $color--font-text-02;
+        }
+
+        &-open {
+          &
+            > .$(prefix)--accordion-list__item-title
+            > .$(prefix)--accordion-list__item-title--icon {
+            transform: rotate(180deg);
+          }
+
+          & > .$(prefix)--accordion-list__item-content {
+            display: block;
+          }
+        }
+
+        &-open.$(prefix)--accordion-list__item {
+          max-height: inherit;
+        }
+
+        &-expand {
+          & > .$(prefix)--accordion-list__item-content {
+            animation: accordionTransitionIn $transition--app-01;
+          }
         }
       }
     }
-
-    &--content {
-      display: none;
-      width: 80%;
-      height: 100%;
-      padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
-    }
   }
-}
-
-@keyframes accordionTransitionIn {
-  from {
-    padding: 0 $spacing-04 $spacing-04 $spacing-04;
-    opacity: 0;
-  }
-  to {
-    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
-    opacity: 1;
-  }
-}
-
-.$(prefix)--accordion--item-expand > .$(prefix)--accordion--content {
-  animation-name: accordionTransitionIn;
-  animation-duration: 0.15s;
-}
-
-.$(prefix)--accordion--item-open > .$(prefix)--accordion--content {
-  display: block;
-}
-
-.$(prefix)--accordion--item-open.$(prefix)--accordion--item {
-  max-height: inherit;
 }
