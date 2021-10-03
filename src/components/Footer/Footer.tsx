@@ -1,10 +1,10 @@
 import React from "react";
 import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
-import Typography from "../Typography/Typography";
 import Link from "../Link/Link";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
+import Label from "../Typography/Label";
 
 type LinkItem = {
   /**
@@ -83,19 +83,11 @@ const Footer = ({
               kind="logomark"
             />
           </a>
-          <Typography
-            type="text"
-            token="label"
-            className={`${prefix}--footer--logo-label`}
-          >
+          <Label className={`${prefix}--footer--logo-label`}>
             &copy; {currentYear} BRICKS &amp; BRACES
-          </Typography>
+          </Label>
           {(description || descriptionLink) && (
-            <Typography
-              type="text"
-              token="label"
-              className={`${prefix}--footer--logo-cookies`}
-            >
+            <Label className={`${prefix}--footer--logo-cookies`}>
               {description}
               {descriptionLink && (
                 <div className={`${prefix}--footer--logo-link`}>
@@ -108,7 +100,7 @@ const Footer = ({
                   </Link>
                 </div>
               )}
-            </Typography>
+            </Label>
           )}
         </Column>
         <Column

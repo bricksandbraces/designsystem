@@ -6,10 +6,10 @@ import {
   IconPlayerPlay
 } from "@tabler/icons";
 import { Grid, Column } from "../Grid/Grid";
-import Typography from "../Typography/Typography";
 import Button from "../Button/Button";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
+import Headline from "../Typography/Headline";
 
 type CtaItem = {
   /**
@@ -120,11 +120,7 @@ const LeadSpace = ({
         >
           <div className={`${prefix}--leadspace--container`}>
             <div className={`${prefix}--leadspace--content`}>
-              {title && (
-                <Typography type="h1" token="heading-06">
-                  {title}
-                </Typography>
-              )}
+              {title && <Headline type="h1">{title}</Headline>}
               {ctaItems && (
                 <div className={`${prefix}--leadspace--content-buttongroup`}>
                   {indexedCtaItems?.map((cta, i) => {

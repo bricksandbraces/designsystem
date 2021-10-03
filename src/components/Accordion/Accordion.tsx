@@ -1,9 +1,9 @@
 import { IconChevronDown } from "@tabler/icons";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
 import { AccordionItemProps } from "./AccordionItem";
 import { prefix } from "../../settings";
+import Body from "../Typography/Body";
 
 type AccordionProps = {
   /**
@@ -119,25 +119,20 @@ const Accordion = ({
                   onChange?.(i);
                 }}
               >
-                <Typography
-                  type="span"
-                  token="body-small"
+                <Body
+                  type="b2"
                   className={`${prefix}--accordion--heading-title`}
                 >
                   {props.title}
-                </Typography>
+                </Body>
                 <IconChevronDown
                   className={`${prefix}--accordion--heading-icon`}
                   size={16}
                 />
               </button>
-              <Typography
-                type="text"
-                token="body-small"
-                className={`${prefix}--accordion--content`}
-              >
+              <Body type="b2" className={`${prefix}--accordion--content`}>
                 {props.children}
-              </Typography>
+              </Body>
             </li>
           )
         );

@@ -5,9 +5,9 @@ import { useWindowScroll } from "react-use";
 import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
-import Typography from "../Typography/Typography";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
+import Headline from "../Typography/Headline";
 
 type LinkItem = {
   /**
@@ -63,9 +63,7 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
                     setOpen(!open);
                   }}
                 >
-                  <Typography type="text" token="heading-06">
-                    {link.label}
-                  </Typography>
+                  <Headline type="h1">{link.label}</Headline>
                 </a>
               );
             })}

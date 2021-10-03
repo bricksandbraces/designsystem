@@ -16,6 +16,6 @@
     "isolatedModules": true,
     "jsx": "react"
   },
-  "include": ["src"],
+  "include": ["src", ".storybook/Components/Intro"],
   "exclude": ["node_modules", "lib"]
 }
