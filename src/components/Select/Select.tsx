@@ -131,6 +131,7 @@ const Select = ({
             }
             onChange?.(event);
           }}
+          value={selectedValue}
         >
           {options.map((option) => {
             if ((option as SelectOptionGroup).group != null) {

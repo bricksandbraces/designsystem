@@ -43,6 +43,7 @@
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
 @import "./components/FloatingPanel.pcss";
+@import "./components/RangeInput.pcss";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  = Global customization of Bricks and Braces opionionated CSS. =
