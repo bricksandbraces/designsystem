@@ -2077,6 +2077,7 @@ __metadata:
     "@types/react": ^17.0.17
     "@types/react-dom": ^17.0.9
     "@types/react-outside-click-handler": ^1.3.0
+    "@types/uuid": ^8.3.1
     "@typescript-eslint/eslint-plugin": ^4.29.1
     "@typescript-eslint/parser": ^4.29.1
     "@wojtekmaj/enzyme-adapter-react-17": ^0.6.3
@@ -2134,6 +2135,7 @@ __metadata:
     stylelint-prettier: ^1.2.0
     ts-jest: ^27.0.4
     typescript: ^4.3.5
+    uuid: ^8.3.2
     webpack: ^5.50.0
     webpack-bundle-analyzer: ^4.4.2
   peerDependencies:
@@ -4193,6 +4195,13 @@ __metadata:
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 0b98b3b1e21cb316cc68dcc73e960233a80771ebf477cf6cf58d43b181a3d586edd4eeab994f1885eebefec9acc97c9b97c067dfe9ef7ff1d65786c564594d0b
+  languageName: node
+  linkType: hard
+
+"@types/uuid@npm:^8.3.1":
+  version: 8.3.1
+  resolution: "@types/uuid@npm:8.3.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40types%2Fuuid%2F-%2Fuuid-8.3.1.tgz"
+  checksum: 5864be83031f5836be985187ecebb2769936bf223bad896dac381f1a0fdd2ae239f448263196f752d62a4ecc8563817d6d94e329eb2099a28e743ab206e7bfea
   languageName: node
   linkType: hard
 
@@ -19760,6 +19769,15 @@ typescript@^4.3.5:
   bin:
     uuid: ./bin/uuid
   checksum: 1ce3f37e214d6d0dc94a6a9663a0365013ace66bc3fd5b203e6f5d2eeb978aaee1192367222386345d30b4c6a447928c501121aa84c637724bf105ef57284949
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^8.3.2":
+  version: 8.3.2
+  resolution: "uuid@npm:8.3.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fuuid%2F-%2Fuuid-8.3.2.tgz"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: aed2bcef341f95635f308fea8831fb9038b18c485fe7e71feb89d2e05602dfecad0cb6f2246fae096d4da425cca6e8a71056f28abd97ad98cf770a2018853248
   languageName: node
   linkType: hard
 
