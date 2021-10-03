@@ -12,7 +12,7 @@ type LabelProps = {
    * Classnames
    */
   className?: string;
-} & React.HTMLAttributes<HTMLLabelElement>;
+} & React.LabelHTMLAttributes<HTMLLabelElement>;
 
 const Label = ({ children, className, ...rest }: LabelProps) => {
   return (

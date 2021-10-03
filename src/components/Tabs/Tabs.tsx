@@ -75,11 +75,7 @@ const Tabs = ({
                   onChange?.(i);
                 }}
               >
-                <Body
-                  type="b2"
-                  name={props.title}
-                  className={`${prefix}--tabs--btn-label`}
-                >
+                <Body type="b2" className={`${prefix}--tabs--btn-label`}>
                   {props.title}
                 </Body>
               </button>
