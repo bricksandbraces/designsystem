@@ -15,15 +15,12 @@ export const Default = () => {
             <RadioButton
               label={text("Label", "RadioButton label")}
               id="checkbox"
-              name="1"
               value="value-1"
-              defaultChecked
             />
             <RadioButton
               label={text("Label", "RadioButton label")}
               id="checkbox-2"
               value="value-2"
-              name="1"
             />
           </RadioButtonGroup>
         </form>

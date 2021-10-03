@@ -63,7 +63,7 @@ const LoginForm = ({
   }, [value]);
 
   return (
-    <>
+    <form>
       <TextInput
         className={`${prefix}--loginform--email`}
         fluid
@@ -101,7 +101,7 @@ const LoginForm = ({
           </Link>
         </Label>
       </PasswordInput>
-    </>
+    </form>
   );
 };
 

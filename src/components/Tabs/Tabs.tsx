@@ -63,8 +63,7 @@ const Tabs = ({
                 disabled={props.disabled}
                 type="button"
                 tabIndex={0}
-                // eslint-disable-next-line react/no-array-index-key
-                key={i}
+                key={child.key}
                 className={cx(`${prefix}--tabs--btn`, {
                   [`${prefix}--tabs--btn-selected`]: selectedIndex === i
                 })}

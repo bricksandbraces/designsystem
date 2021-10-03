@@ -3,6 +3,7 @@ import cx from "classnames";
 import Link from "../Link/Link";
 import Button from "../Button/Button";
 import { prefix } from "../../settings";
+import { idfy } from "../../helpers/arrayUtilities";
 
 type LinkItem = {
   /**
@@ -51,6 +52,7 @@ const UserProfile = ({
   onLogout
 }: UserProfileProps) => {
   const [open, setOpen] = useState(false);
+  const indexedLinks = idfy(links);
   return (
     <>
       <button
@@ -88,14 +90,13 @@ const UserProfile = ({
           <div>
             <p className={`${prefix}--userprofile--name`}>{name}</p>
             <p className={`${prefix}--userprofile--subname`}>{subName}</p>
-            {links && (
+            {indexedLinks && (
               <div className={`${prefix}--userprofile--linklist`}>
-                {links
-                  .map((link, i) => {
+                {indexedLinks
+                  .map((link) => {
                     return (
                       <div
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={`profile-links-${i}-${link.href}`}
+                        key={link.id}
                         className={`${prefix}--userprofile--link`}
                       >
                         <Link href={link.href}>{link.label}</Link>

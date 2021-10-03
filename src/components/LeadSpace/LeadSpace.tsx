@@ -8,6 +8,7 @@ import {
 import { Grid, Column } from "../Grid/Grid";
 import Button from "../Button/Button";
 import { prefix } from "../../settings";
+import { idfy } from "../../helpers/arrayUtilities";
 import Headline from "../Typography/Headline";
 
 type CtaItem = {
@@ -57,6 +58,7 @@ const LeadSpace = ({
 }: LeadSpaceProps) => {
   const video = useRef<HTMLVideoElement>(null);
   const [videoPlay, setVideoPlay] = useState(true);
+  const indexedCtaItems = idfy(ctaItems);
   return (
     <section
       id="leadspace"
@@ -121,11 +123,10 @@ const LeadSpace = ({
               {title && <Headline type="h1">{title}</Headline>}
               {ctaItems && (
                 <div className={`${prefix}--leadspace--content-buttongroup`}>
-                  {ctaItems?.map((cta, i) => {
+                  {indexedCtaItems?.map((cta, i) => {
                     return (
                       <Button
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={`lead-${i}-${cta.href}`}
+                        key={cta.id}
                         size="large"
                         kind={i === 0 ? "primary" : "ghost"}
                         href={cta.href}

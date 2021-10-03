@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import useControlled from "../../hooks/useControlled";
@@ -10,6 +9,7 @@ import SearchListItem, {
 import SearchInput from "./SearchInput";
 import SearchContainer from "./SeachContainer";
 import Button from "../Button/Button";
+import { idfy } from "../../helpers/arrayUtilities";
 
 type SearchBadgeItem = {
   /**
@@ -130,6 +130,8 @@ const Search = ({
   badges,
   onSubmit
 }: SearchProps) => {
+  const indexedBadges = idfy(badges);
+
   // |- - textValue
   const valueControlled = useControlled(value);
   const [textValue, setTextValue] = useState<string>(
@@ -165,7 +167,7 @@ const Search = ({
 
   // Concat all search list items (Button + SearchListItem [both types]) to easily access an item via absolute index
   const overallArray = [
-    ...(badges ?? []),
+    ...(indexedBadges ?? []),
     ...(recents ?? []),
     ...(results ?? [])
   ] as {
@@ -224,14 +226,16 @@ const Search = ({
   };
 
   // combine recent with result as their component is the same
-  const searchListItems = (recents ?? [])
-    .map((item) => ({ ...item, type: SearchListItemType.RECENT }))
-    .concat(
-      (results ?? []).map((item) => ({
-        ...item,
-        type: SearchListItemType.RESULT
-      }))
-    );
+  const searchListItems = idfy(
+    (recents ?? [])
+      .map((item) => ({ ...item, type: SearchListItemType.RECENT }))
+      .concat(
+        (results ?? []).map((item) => ({
+          ...item,
+          type: SearchListItemType.RESULT
+        }))
+      )
+  );
 
   return (
     <SearchContainer open={containerOpen}>
@@ -281,10 +285,10 @@ const Search = ({
       />
       <div className="search--box-content">
         <div className="search--box-content__badges">
-          {badges?.map((item, i) => {
+          {indexedBadges?.map((item, i) => {
             return (
               <Button
-                key={i}
+                key={item.id}
                 className={cx({
                   "search--box-content__badges__manual-hover":
                     i === focusedIndex
@@ -302,13 +306,13 @@ const Search = ({
             );
           })}
         </div>
-        <div className="">
+        <div>
           {searchListItems.map((item, i) => {
-            const absIndex = (badges?.length ?? 0) + i;
+            const absIndex = (indexedBadges?.length ?? 0) + i;
             return (
               <SearchListItem
                 type={item.type}
-                key={i}
+                key={item.id}
                 onMouseEnter={() => {
                   setFocusedIndex(absIndex);
                 }}

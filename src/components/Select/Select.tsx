@@ -124,6 +124,7 @@ const Select = ({
           })}
           id={id}
           disabled={disabled}
+          value={selectedValue}
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
             if (!controlled) {
               setSelectedValue(event.target.value);
