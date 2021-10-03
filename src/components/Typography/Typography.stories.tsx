@@ -1,46 +1,71 @@
-import { select, text, withKnobs } from "@storybook/addon-knobs";
+import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Typography from "./Typography";
+import Headline from "./Headline";
+import Body from "./Body";
+import Label from "./Label";
+import Caption from "./Caption";
+import Marketing from "./Marketing";
+import Quote from "./Quote";
 
 export default { title: "Components/Typography", decorators: [withKnobs] };
 
-const type = {
-  Text: "text",
-  H1: "h1",
-  H2: "h2",
-  H3: "h3",
-  H4: "h4",
-  H5: "h5",
-  H6: "h6"
+const quoteType = {
+  q1: "q1",
+  q2: "q2"
 };
 
-const defaultType = "text";
+const defaultQuoteType = "q1";
 
-const token = {
-  footnote: "footnote",
-  label: "label",
-  "body-small": "body-small",
-  body: "body",
-  "heading-01": "heading-01",
-  "heading-02": "heading-02",
-  "heading-03": "heading-03",
-  "heading-04": "heading-04",
-  "heading-05": "heading-05",
-  "heading-06": "heading-06",
-  "display-01": "display-01",
-  "display-02": "display-02"
-};
-
-const defaultToken = "body";
-
-export const Playground = () => {
+export const Headlines = () => {
   return (
-    <Typography
-      style={{ color: "white" }}
-      type={select("Type", type, defaultType) as any}
-      token={select("Token", token, defaultToken) as any}
-    >
-      {text("Text", "Dogs bark louder at night.")}
-    </Typography>
+    <div style={{ color: "white", margin: "32px" }}>
+      <Headline type="h1">This is Headline 1</Headline>
+      <Headline type="h2">This is Headline 2</Headline>
+      <Headline type="h3">This is Headline 3</Headline>
+      <Headline type="h4">This is Headline 4</Headline>
+      <Headline type="h5">This is Headline 5</Headline>
+      <Headline type="h6">This is Headline 6</Headline>
+    </div>
+  );
+};
+
+export const MarketingHeadlines = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Marketing type="m1">This is a Marketing Heading 1</Marketing>
+      <Marketing type="m2">This is a Marketing Heading 2</Marketing>
+    </div>
+  );
+};
+
+export const QuoteType = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Quote type={select("type", quoteType, defaultQuoteType) as any}>
+        This is a Marketing quote that can be used on websites.
+      </Quote>
+    </div>
+  );
+};
+
+export const BodyType = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Body type="b1">
+        Hello. I am a body text. I am a B1 body text. Nice to meet you.
+      </Body>
+      <Body type="b2">
+        Hello. I am a body text. I am a B2 body text. Nice to meet you.
+      </Body>
+    </div>
+  );
+};
+
+export const LabelAndCaption = () => {
+  return (
+    <div style={{ color: "white", margin: "32px" }}>
+      <Label>Hello. I am a Label.</Label>
+      <Caption>Hello. I am a Caption.</Caption>
+    </div>
   );
 };

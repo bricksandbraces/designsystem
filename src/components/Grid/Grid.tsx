@@ -82,7 +82,7 @@ export const Grid = ({
   const childrenCount = React.Children.count(children);
   return (
     <div
-      columncount={childrenCount}
+      data-columncount={childrenCount}
       className={cx(
         `${prefix}--grid--container`,
         {
