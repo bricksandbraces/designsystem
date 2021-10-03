@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 
 type LabelProps = {
   /**
-   * Aspect Ratio Children
+   * React children
    */
   children?: ReactNode;
 
@@ -12,38 +12,19 @@ type LabelProps = {
    * Classnames
    */
   className?: string;
-
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
+} & React.HTMLAttributes<HTMLLabelElement>;
 
 const Label = ({ children, className, ...rest }: LabelProps) => {
   return (
-    <>
-      <p
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--label`,
-          className
-        )}
-        {...rest}
-      >
-        {children}
-      </p>
-    </>
+    <label
+      className={cx(
+        `${prefix}--typography ${prefix}--typography--label`,
+        className
+      )}
+      {...rest}
+    >
+      {children}
+    </label>
   );
 };
 

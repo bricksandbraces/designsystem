@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 
 type BodyProps = {
   /**
-   * Aspect Ratio Children
+   * React children
    */
   children?: ReactNode;
 
@@ -17,38 +17,19 @@ type BodyProps = {
    * Classnames
    */
   className?: string;
-
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
+} & React.HTMLAttributes<HTMLParagraphElement>;
 
 const Body = ({ children, className, type, ...rest }: BodyProps) => {
   return (
-    <>
-      <p
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--${type}`,
-          className
-        )}
-        {...rest}
-      >
-        {children}
-      </p>
-    </>
+    <p
+      className={cx(
+        `${prefix}--typography ${prefix}--typography--${type}`,
+        className
+      )}
+      {...rest}
+    >
+      {children}
+    </p>
   );
 };
 

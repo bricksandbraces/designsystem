@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 
 type HeadlineProps = {
   /**
-   * Aspect Ratio Children
+   * React children
    */
   children?: ReactNode;
 
@@ -17,95 +17,25 @@ type HeadlineProps = {
    * Classnames
    */
   className?: string;
+} & React.HTMLAttributes<HTMLHeadingElement>;
 
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
-
-const Headline = ({ children, className, type, ...rest }: HeadlineProps) => {
+const Headline = ({
+  children,
+  className,
+  type = "h1",
+  ...rest
+}: HeadlineProps) => {
+  const Element: any = React.createElement(type).type;
   return (
-    <>
-      {type === "h1" && (
-        <h1
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h1>
+    <Element
+      className={cx(
+        `${prefix}--typography ${prefix}--typography--${type}`,
+        className
       )}
-      {type === "h2" && (
-        <h2
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h2>
-      )}
-      {type === "h3" && (
-        <h3
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h3>
-      )}
-      {type === "h4" && (
-        <h4
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h4>
-      )}
-      {type === "h5" && (
-        <h5
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h5>
-      )}
-      {type === "h6" && (
-        <h6
-          className={cx(
-            `${prefix}--typography ${prefix}--typography--${type}`,
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </h6>
-      )}
-    </>
+      {...rest}
+    >
+      {children}
+    </Element>
   );
 };
 

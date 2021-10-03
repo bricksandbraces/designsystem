@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 
 type MarketingProps = {
   /**
-   * Aspect Ratio Children
+   * React children
    */
   children?: ReactNode;
 
@@ -17,38 +17,19 @@ type MarketingProps = {
    * Classnames
    */
   className?: string;
-
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
+} & React.HTMLAttributes<HTMLParagraphElement>;
 
 const Marketing = ({ children, className, type, ...rest }: MarketingProps) => {
   return (
-    <>
-      <p
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--${type}`,
-          className
-        )}
-        {...rest}
-      >
-        {children}
-      </p>
-    </>
+    <p
+      className={cx(
+        `${prefix}--typography ${prefix}--typography--${type}`,
+        className
+      )}
+      {...rest}
+    >
+      {children}
+    </p>
   );
 };
 

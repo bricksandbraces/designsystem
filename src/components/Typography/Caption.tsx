@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 
 type CaptionProps = {
   /**
-   * Aspect Ratio Children
+   * React children
    */
   children?: ReactNode;
 
@@ -12,38 +12,19 @@ type CaptionProps = {
    * Classnames
    */
   className?: string;
-
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
+} & React.HTMLAttributes<HTMLParagraphElement>;
 
 const Caption = ({ children, className, ...rest }: CaptionProps) => {
   return (
-    <>
-      <p
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--caption`,
-          className
-        )}
-        {...rest}
-      >
-        {children}
-      </p>
-    </>
+    <p
+      className={cx(
+        `${prefix}--typography ${prefix}--typography--caption`,
+        className
+      )}
+      {...rest}
+    >
+      {children}
+    </p>
   );
 };
 
