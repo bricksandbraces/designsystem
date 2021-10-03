@@ -20,7 +20,6 @@ import ContainerTooltipFooter from "./components/Tooltip/ContainerTooltipFooter"
 import ContainerTooltipIcon from "./components/Tooltip/ContainerTooltipIcon";
 import HoverTooltipText from "./components/Tooltip/HoverTooltipText";
 import TooltipTrigger from "./components/Tooltip/TooltipTrigger";
-import Typography from "./components/Typography/Typography";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
@@ -81,7 +80,6 @@ export {
   LeadSpace,
   Logo,
   SideNav,
-  Typography,
   UserProfile,
   Modal,
   Footer,

@@ -1,11 +1,8 @@
 @import "./theme.pcss";
 
-$font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
-  roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
-@define-mixin type--footnote {
+@define-mixin type--caption {
   font-family: $font-family;
-  font-size: 9px;
+  font-size: $font--caption;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
@@ -13,132 +10,104 @@ $font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
 
 @define-mixin type--label {
   font-family: $font-family;
-  font-size: 12px;
+  font-size: $font--label;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
 }
 
-@define-mixin type--body-small {
+@define-mixin type--body-01 {
   font-family: $font-family;
-  font-size: 14px;
+  font-size: $font--body-01;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
 }
 
-@define-mixin type--body {
+@define-mixin type--body-02 {
   font-family: $font-family;
-  font-size: 16px;
+  font-size: $font--body-02;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
 }
 
-@define-mixin type--heading-00 {
+@define-mixin type--headline-06 {
   font-family: $font-family;
-  font-size: 14px;
+  font-size: $font--headline-06;
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
 }
 
-@define-mixin type--heading-01 {
+@define-mixin type--headline-05 {
   font-family: $font-family;
-  font-size: 16px;
+  font-size: $font--headline-05;
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
 }
 
-@define-mixin type--heading-02 {
+@define-mixin type--headline-04 {
   font-family: $font-family;
-  font-size: 21px;
+  font-size: $font--headline-04;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
 }
 
-@define-mixin type--heading-03 {
+@define-mixin type--headline-03 {
   font-family: $font-family;
-  font-size: 28px;
+  font-size: $font--headline-03;
   font-style: normal;
   font-weight: 300;
   line-height: 140%;
 }
 
-@define-mixin type--heading-04 {
+@define-mixin type--headline-02 {
   font-family: $font-family;
-  font-size: 38px;
+  font-size: $font--headline-02;
   font-style: normal;
   font-weight: 300;
   line-height: 120%;
 }
 
-@define-mixin type--heading-05 {
+@define-mixin type--headline-01 {
   font-family: $font-family;
-  font-size: 51px;
+  font-size: $font--headline-01;
   font-style: normal;
   font-weight: 300;
   line-height: 120%;
 }
 
-@define-mixin type--heading-06 {
+@define-mixin type--marketing-01 {
   font-family: $font-family;
-  font-size: 67px;
+  font-size: $font--marketing-01;
   font-style: normal;
   font-weight: 200;
-  line-height: 120%;
-
-  @media screen and (max-width: $breakpoint-md) {
-    font-size: 51px;
-  }
-
-  @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-    font-size: 55px;
-  }
-
-  @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
-    font-size: 61px;
-  }
+  line-height: 150%;
 }
 
-@define-mixin type--display-01 {
+@define-mixin type--marketing-02 {
   font-family: $font-family;
-  font-size: 90px;
+  font-size: $font--marketing-02;
   font-style: normal;
   font-weight: 200;
-  line-height: 120%;
-
-  @media screen and (max-width: $breakpoint-md) {
-    font-size: 72px;
-  }
-
-  @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-    font-size: 78px;
-  }
-
-  @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
-    font-size: 84px;
-  }
+  line-height: 150%;
 }
 
-@define-mixin type--display-02 {
+@define-mixin type--quote-01 {
   font-family: $font-family;
-  font-size: 120px;
+  font-size: $font--quote;
   font-style: normal;
   font-weight: 200;
-  line-height: 120%;
+  line-height: 150%;
+}
 
-  @media screen and (max-width: $breakpoint-md) {
-    font-size: 102px;
-  }
-
-  @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-    font-size: 108px;
-  }
-
-  @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
-    font-size: 114px;
-  }
+@define-mixin type--quote-02 {
+  font-family: $font-family;
+  font-size: $font--quote;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
 }

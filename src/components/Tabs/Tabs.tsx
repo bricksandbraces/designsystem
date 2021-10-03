@@ -1,8 +1,8 @@
 import React, { useState, ReactNode, useRef, useEffect } from "react";
 import cx from "classnames";
-import Typography from "../Typography/Typography";
 import { TabProps } from "./Tab";
 import { prefix } from "../../settings";
+import Body from "../Typography/Body";
 
 type TabsProps = {
   /**
@@ -75,14 +75,9 @@ const Tabs = ({
                   onChange?.(i);
                 }}
               >
-                <Typography
-                  type="text"
-                  token="body-small"
-                  name={props.title}
-                  className={`${prefix}--tabs--btn-label`}
-                >
+                <Body type="b2" className={`${prefix}--tabs--btn-label`}>
                   {props.title}
-                </Typography>
+                </Body>
               </button>
             )
           );
