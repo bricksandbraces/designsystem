@@ -1,93 +1,91 @@
-@import "./colors.pcss";
-
 /* Colors */
 
 /* -- Root Colors -- */
 
-$color--app-01: $warm-gray-10;
-$color--app-02: $warm-gray-20;
-$color--app-03: $warm-gray-40;
-$color--app-04: $warm-gray-50;
+$color--app-01: $cold-gray-900;
+$color--app-02: $cold-gray-800;
+$color--app-03: $cold-gray-600;
+$color--app-04: $cold-gray-500;
 $color--app-05: $white;
 $color--app-background: $black;
 
 /* -- Background Colors -- */
 
-$color--background: $warm-gray-10;
-$color--hover: $warm-gray-15;
-$color--active: $warm-gray-20;
+$color--background: $cold-gray-900;
+$color--hover: rgba($cold-gray-700;, 0.05);
+$color--active: rgba($cold-gray-700;, 0.1);
 $color--focus: $white;
-$color--decoration: $purple-40;
-$color--disabled: $warm-gray-10;
-$color--selected: $purple-40;
+$color--decoration: $purple-400;
+$color--disabled: $cold-gray-900;
+$color--selected: $purple-400;
 $color--unselected: transparent;
-$color--light: $warm-gray-15;
+$color--light: $cold-gray-800;
 $color--transparent: transparent;
 
 /* -- Icon Colors -- */
 
-$color--icon-subtle: $warm-gray-50;
-$color--icon-default: $warm-gray-80;
+$color--icon-subtle: $cold-gray-400;
+$color--icon-default: $cold-gray-200;
 $color--icon-harsh: $white;
 
 /* -- Border Colors -- */
 
-$color--border-subtle: $warm-gray-10;
-$color--border-default: $warm-gray-15;
-$color--border-harsh: $warm-gray-20;
-$color--border-contrast: rgba(255, 255, 255, 0.05);
+$color--border-subtle: rgba($white, 0.025);
+$color--border-default: rgba($white, 0.05);
+$color--border-harsh: rgba($white, 0.1);
 
 /* -- Divider Colors -- */
 
-$color--divider-subtle: $warm-gray-10;
-$color--divider-default: $warm-gray-15;
-$color--divider-harsh: $warm-gray-20;
+$color--divider-subtle: $cold-gray-900;
+$color--divider-default: $cold-gray-800;
+$color--divider-harsh: $cold-gray-600;
 
 /* -- Font Colors -- */
 
 $color--font-selected: $white;
-$color--font-unselected: $warm-gray-60;
+$color--font-unselected: $cold-gray-600;
 $color--font-text-01: $white;
-$color--font-text-02: $warm-gray-80;
-$color--font-label: $warm-gray-70;
-$color--font-helper: $warm-gray-60;
-$color--font-placeholder: $warm-gray-40;
-$color--font-disabled: $warm-gray-20;
-$color--font-warning: $yellow-50;
-$color--font-success: $green-50;
-$color--font-info: $blue-50;
-$color--font-danger: $red-50;
+$color--font-text-02: $cold-gray-200;
+$color--font-text-03: $cold-gray-400;
+$color--font-label: $cold-gray-200;
+$color--font-caption: $cold-gray-200;
+$color--font-placeholder: $cold-gray-400;
+$color--font-disabled: $cold-gray-600;
+$color--font-warning: $yellow-400;
+$color--font-success: $green-400;
+$color--font-info: $blue-400;
+$color--font-danger: $red-400;
 
 /* -- Button & Interactive Colors -- */
 
-$color--primary-enabled: $purple-40;
-$color--primary-hover: $purple-45;
-$color--primary-active: $purple-50;
-$color--secondary-enabled: $warm-gray-10;
-$color--secondary-hover: $warm-gray-15;
-$color--secondary-active: $warm-gray-20;
-$color--tertiary-enabled: $purple-40;
-$color--tertiary-hover: $purple-45;
-$color--tertiary-active: $purple-50;
+$color--primary-enabled: $purple-400;
+$color--primary-hover: $purple-500;
+$color--primary-active: $purple-600;
+$color--secondary-enabled: $cold-gray-900;
+$color--secondary-hover: $cold-gray-800;
+$color--secondary-active: $cold-gray-700;
+$color--tertiary-enabled: $white;
+$color--tertiary-hover: $cold-gray-100;
+$color--tertiary-active: $cold-gray-200;
 $color--ghost-enabled: transparent;
 $color--ghost-hover: rgba(255, 255, 255, 0.1);
-$color--ghost-active: rgba(255, 255, 255, 0.15);
-$color--warning-enabled: $yellow-50;
-$color--warning_alt-enabled: $yellow-10;
-$color--warning-hover: $yellow-55;
-$color--warning-active: $yellow-60;
-$color--info-enabled: $blue-50;
-$color--info_alt-enabled: $blue-10;
-$color--info-hover: $blue-55;
-$color--info-active: $blue-60;
-$color--success-enabled: $green-50;
-$color--success_alt-enabled: $green-10;
-$color--success-hover: $green-55;
-$color--success-active: $green-60;
-$color--danger-enabled: $red-50;
-$color--danger_alt-enabled: $red-10;
-$color--danger-hover: $red-55;
-$color--danger-active: $red-60;
+$color--ghost-active: rgba(255, 255, 255, 0.2);
+$color--warning-enabled: $yellow-400;
+$color--warning_alt-enabled: $yellow-900;
+$color--warning-hover: $yellow-500;
+$color--warning-active: $yellow-600;
+$color--info-enabled: $blue-400;
+$color--info_alt-enabled: $blue-900;
+$color--info-hover: $blue-500;
+$color--info-active: $blue-600;
+$color--success-enabled: $green-400;
+$color--success_alt-enabled: $green-900;
+$color--success-hover: $green-500;
+$color--success-active: $green-600;
+$color--danger-enabled: $red-400;
+$color--danger_alt-enabled: $red-900;
+$color--danger-hover: $red-500;
+$color--danger-active: $red-600;
 
 /* Sizes */
 
@@ -160,12 +158,8 @@ $transition--app-03: 0.45s ease-in-out;
     opacity: 0;
   }
 
-  25% {
-    opacity: 0;
-  }
-
   100% {
-    padding: $size--spacing-05 $size--spacing-05 $size--spacing-05
+    padding: $size--spacing-04 $size--spacing-05 $size--spacing-05
       $size--spacing-05;
     opacity: 1;
   }
@@ -263,9 +257,9 @@ $interactive-primary: $purple-40;
 $interactive-primary-hover: $purple-45;
 $interactive-primary-active: $purple-50;
 
-$interactive-secondary: $warm-gray-10;
-$interactive-secondary-hover: $warm-gray-15;
-$interactive-secondary-active: $warm-gray-20;
+$interactive-secondary: $cold-gray-10;
+$interactive-secondary-hover: $cold-gray-15;
+$interactive-secondary-active: $cold-gray-20;
 
 $interactive-primary-accent: $purple-10;
 $interactive-primary-accent-hover: $purple-15;
@@ -275,8 +269,8 @@ $interactive-ghost: rgba(255, 255, 255, 0.05);
 $interactive-ghost-hover: rgba(255, 255, 255, 0.1);
 $interactive-ghost-active: rgba(255, 255, 255, 0.15);
 
-$disabled-container: $warm-gray-10;
-$disabled-text: $warm-gray-20;
+$disabled-container: $cold-gray-10;
+$disabled-text: $cold-gray-20;
 
 $focus: $white;
 
@@ -300,47 +294,47 @@ $info-accent: $blue-10;
 $info-accent-hover: $blue-15;
 $info-accent-active: $blue-20;
 
-$modal-background: $warm-gray-10;
+$modal-background: $cold-gray-10;
 $modal-overlay: rgba(0, 0, 0, 0.6);
-$modal-close: $warm-gray-50;
-$modal-headline: $warm-gray-90;
-$modal-subheadline: $warm-gray-70;
+$modal-close: $cold-gray-50;
+$modal-headline: $cold-gray-90;
+$modal-subheadline: $cold-gray-70;
 $modal-content: $white;
 
 $checkbox-font: $white;
 $checkbox-checked: $white;
 $checkbox-focus: $white;
-$checkbox-disabled: $warm-gray-25;
-$checkbox-children-font: $warm-gray-70;
+$checkbox-disabled: $cold-gray-25;
+$checkbox-children-font: $cold-gray-70;
 
 $toggle-font: $white;
-$toggle: $warm-gray-25;
+$toggle: $cold-gray-25;
 $toggle-checked: $purple-40;
 $toggle-focus: $white;
-$toggle-disabled: $warm-gray-25;
-$toggle-children-font: $warm-gray-70;
+$toggle-disabled: $cold-gray-25;
+$toggle-children-font: $cold-gray-70;
 
-$tooltip-border: $warm-gray-15;
-$tooltip-background: $warm-gray-10;
+$tooltip-border: $cold-gray-15;
+$tooltip-background: $cold-gray-10;
 $tooltip-font: $white;
 
-$divider-subtle: $warm-gray-15;
-$divider-default: $warm-gray-30;
-$divider-explicit: $warm-gray-70;
+$divider-subtle: $cold-gray-15;
+$divider-default: $cold-gray-30;
+$divider-explicit: $cold-gray-70;
 
 $link-font: $white;
 $link-inline-hover: $purple-80;
 $link-inline-active: $purple-75;
 
 $textinput-font: $white;
-$textinput-fluid-label-font: $warm-gray-70;
+$textinput-fluid-label-font: $cold-gray-70;
 $textinput-disabled-font: $disabled-text;
 $textinput-disabled-background: $disabled-container;
 $textinput-disabled-border: $disabled-container;
-$textinput-border: $warm-gray-15;
+$textinput-border: $cold-gray-15;
 $textinput-focus: $focus;
-$textinput-placeholder: $warm-gray-60;
-$textinput-background: $warm-gray-10;
+$textinput-placeholder: $cold-gray-60;
+$textinput-background: $cold-gray-10;
 $textinput-border-error: $red-60;
 $textinput-font-error: $red-60;
 $textinput-icon-error: $red-60;
@@ -353,10 +347,10 @@ $textarea-font: $white;
 $textarea-disabled-font: $disabled-text;
 $textarea-disabled-background: $disabled-container;
 $textarea-disabled-border: $disabled-container;
-$textarea-border: $warm-gray-15;
+$textarea-border: $cold-gray-15;
 $textarea-focus: $focus;
-$textarea-placeholder: $warm-gray-60;
-$textarea-background: $warm-gray-10;
+$textarea-placeholder: $cold-gray-60;
+$textarea-background: $cold-gray-10;
 $textarea-border-error: $red-60;
 $textarea-font-error: $red-60;
 $textarea-icon-error: $red-60;
@@ -364,49 +358,49 @@ $textarea-border-warning: $yellow-60;
 $textarea-font-warning: $yellow-60;
 $textarea-icon-warning: $yellow-60;
 
-$dropdown-background: $warm-gray-10;
-$dropdown-hover: $warm-gray-15;
-$dropdown-active: $warm-gray-20;
-$dropdown-border: $warm-gray-15;
+$dropdown-background: $cold-gray-10;
+$dropdown-hover: $cold-gray-15;
+$dropdown-active: $cold-gray-20;
+$dropdown-border: $cold-gray-15;
 $dropdown-font: $white;
 $dropdown-focus: $white;
 $dropdown-selected: $purple-40;
-$dropdown-item-font: $warm-gray-70;
+$dropdown-item-font: $cold-gray-70;
 $dropdown-item-selected-font: $white;
-$dropdown-divider: $warm-gray-15;
+$dropdown-divider: $cold-gray-15;
 $dropdown-disabled-container: $disabled-container;
 $dropdown-disabled-text: $disabled-text;
-$dropdown-divider: $warm-gray-15;
+$dropdown-divider: $cold-gray-15;
 
-$select-background: $warm-gray-10;
-$select-hover: $warm-gray-15;
-$select-active: $warm-gray-20;
-$select-border: $warm-gray-15;
+$select-background: $cold-gray-10;
+$select-hover: $cold-gray-15;
+$select-active: $cold-gray-20;
+$select-border: $cold-gray-15;
 $select-font: $white;
 $select-focus: $white;
 $select-selected: $purple-40;
-$select-item-font: $warm-gray-70;
+$select-item-font: $cold-gray-70;
 $select-item-selected-font: $white;
-$select-divider: $warm-gray-15;
+$select-divider: $cold-gray-15;
 $select-disabled-container: $disabled-container;
 $select-disabled-text: $disabled-text;
-$select-divider: $warm-gray-15;
+$select-divider: $cold-gray-15;
 
-$tab-font: $warm-gray-60;
+$tab-font: $cold-gray-60;
 $tab-background: transparent;
-$tab-background-hover: $warm-gray-15;
-$tab-background-hover-accent: $warm-gray-25;
-$tab-background-active: $warm-gray-20;
+$tab-background-hover: $cold-gray-15;
+$tab-background-hover-accent: $cold-gray-25;
+$tab-background-active: $cold-gray-20;
 $tab-background-selected: $purple-40;
 $tab-font-selected: $white;
 $tab-focus: $white;
 $tab-disabled-font: $disabled-text;
 
 $accordion-font: $white;
-$accordion-border: $warm-gray-15;
+$accordion-border: $cold-gray-15;
 $accordion-focus: $focus;
 $accordion-disabled-font: $disabled-text;
-$accordion-background-hover: $warm-gray-15;
+$accordion-background-hover: $cold-gray-15;
 
 $badge-red-background: $red-10;
 $badge-red-background-hover: $red-15;
@@ -414,11 +408,11 @@ $badge-red-background-active: $red-20;
 $badge-red-border: $red-15;
 $badge-red-font: $red-75;
 
-$badge-warmgray-background: $warm-gray-10;
-$badge-warmgray-background-hover: $warm-gray-15;
-$badge-warmgray-background-active: $warm-gray-20;
-$badge-warmgray-border: $warm-gray-15;
-$badge-warmgray-font: $warm-gray-75;
+$badge-warmgray-background: $cold-gray-10;
+$badge-warmgray-background-hover: $cold-gray-15;
+$badge-warmgray-background-active: $cold-gray-20;
+$badge-warmgray-border: $cold-gray-15;
+$badge-warmgray-font: $cold-gray-75;
 
 $badge-coldgray-background: $cold-gray-10;
 $badge-coldgray-background-hover: $cold-gray-15;
@@ -462,48 +456,48 @@ $badge-orange-background-active: $orange-20;
 $badge-orange-border: $orange-15;
 $badge-orange-font: $orange-75;
 
-$datatable-background: $warm-gray-10;
-$datatable-header-background: $warm-gray-10;
-$datatable-header-background-hover: $warm-gray-15;
-$datatable-header-background-active: $warm-gray-20;
-$datatable-cell-background: $warm-gray-10;
-$datatable-cell-background-hover: $warm-gray-15;
-$datatable-cell-background-active: $warm-gray-20;
-$datatable-border: $warm-gray-15;
+$datatable-background: $cold-gray-10;
+$datatable-header-background: $cold-gray-10;
+$datatable-header-background-hover: $cold-gray-15;
+$datatable-header-background-active: $cold-gray-20;
+$datatable-cell-background: $cold-gray-10;
+$datatable-cell-background-hover: $cold-gray-15;
+$datatable-cell-background-active: $cold-gray-20;
+$datatable-border: $cold-gray-15;
 $datatable-header-label: $white;
 $datatable-row-item: $white;
 
-$search-background: $warm-gray-10;
-$search-border: $warm-gray-15;
+$search-background: $cold-gray-10;
+$search-border: $cold-gray-15;
 $search-font: $white;
-$search-placeholder: $warm-gray-60;
+$search-placeholder: $cold-gray-60;
 $search-results-font: $white;
 $search-recent-font: $purple-70;
-$search-box-background: $warm-gray-05;
-$search-box-background-hover: $warm-gray-10;
-$search-box-background-active: $warm-gray-15;
+$search-box-background: $cold-gray-05;
+$search-box-background-hover: $cold-gray-10;
+$search-box-background-active: $cold-gray-15;
 $search-recent-icon: $purple-70;
-$search-divider: $warm-gray-15;
+$search-divider: $cold-gray-15;
 $languageswitch-active: $white;
-$languageswitch-inactive: $warm-gray-60;
-$formlabel-font: $warm-gray-80;
+$languageswitch-inactive: $cold-gray-60;
+$formlabel-font: $cold-gray-80;
 
 $radiobutton-font: $white;
 $radiobutton-checked: $white;
 $radiobutton-focus: $white;
-$radiobutton-disabled: $warm-gray-25;
-$radiobutton-children-font: $warm-gray-70;
+$radiobutton-disabled: $cold-gray-25;
+$radiobutton-children-font: $cold-gray-70;
 
-$skeleton-01: $warm-gray-10;
-$skeleton-02: $warm-gray-20;
+$skeleton-01: $cold-gray-10;
+$skeleton-02: $cold-gray-20;
 
-$avatar-color: $warm-gray-60;
-$avatar-background: $warm-gray-20;
-$avatar-icon: $warm-gray-40;
-$avatar-icon-background: $warm-gray-30;
-$avatar-border: $warm-gray-05;
-$avatar-panel-border: $warm-gray-20;
+$avatar-color: $cold-gray-60;
+$avatar-background: $cold-gray-20;
+$avatar-icon: $cold-gray-40;
+$avatar-icon-background: $cold-gray-30;
+$avatar-border: $cold-gray-05;
+$avatar-panel-border: $cold-gray-20;
 
-$floatingpanel-background: $warm-gray-10;
-$floatingpanel-border: $warm-gray-15;
+$floatingpanel-background: $cold-gray-10;
+$floatingpanel-border: $cold-gray-15;
 $floatingpanel-color: $white;

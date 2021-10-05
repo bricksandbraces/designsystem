@@ -63,6 +63,7 @@
     "enzyme-to-json": "^3.6.2",
     "lodash": "^4.17.21",
     "object-hash": "^2.2.0",
+    "postcss-rgb": "^1.0.0",
     "rc-slider": "^9.7.2",
     "react-focus-lock": "^2.5.2",
     "react-merge-refs": "^1.1.0",
