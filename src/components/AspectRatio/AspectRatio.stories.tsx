@@ -18,27 +18,20 @@ const defaultRatio = "1x1";
 
 export const Default = () => {
   return (
-    <Grid>
-      <Column sm={1} md={2} lg={4} xlg={4}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100vw",
+        height: "100vh"
+      }}
+    >
+      <div style={{ width: "256px" }}>
         <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
           <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-    </Grid>
+      </div>
+    </div>
   );
 };
