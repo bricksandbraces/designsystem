@@ -8,12 +8,12 @@ module.exports = (ctx) => ({
     require("postcss-mixins"),
     require("postcss-nested"),
     require("postcss-simple-vars"),
+    require("postcss-rgb"),
     require("postcss-utilities"),
     require("postcss-calc"),
     require("postcss-viewport-height-correction"),
     require("postcss-size"),
     require("autoprefixer"),
-    require("postcss-rgb"),
     ctx.env === "production" ? require("cssnano") : false
   ]
 });

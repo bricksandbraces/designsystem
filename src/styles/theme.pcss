@@ -1,7 +1,8 @@
+@import "colors.pcss";
+
 /* Colors */
 
 /* -- Root Colors -- */
-
 $color--app-01: $cold-gray-900;
 $color--app-02: $cold-gray-800;
 $color--app-03: $cold-gray-600;
@@ -12,11 +13,13 @@ $color--app-background: $black;
 /* -- Background Colors -- */
 
 $color--background: $cold-gray-900;
-$color--hover: rgba($cold-gray-700;, 0.05);
-$color--active: rgba($cold-gray-700;, 0.1);
+$color--hover: rgba($cold-gray-700, 0.05);
+
+/* $color--active: rgba($cold-gray-700, 0.1); */
+$color--active: rgba(#484951, 0.1);
 $color--focus: $white;
 $color--decoration: $purple-400;
-$color--disabled: $cold-gray-900;
+$color--disabled: rgba(#484951, 0.3);
 $color--selected: $purple-400;
 $color--unselected: transparent;
 $color--light: $cold-gray-800;
@@ -132,6 +135,10 @@ $component--radius-subtle: 0.0625rem;
 $component--radius-default: 0.125rem;
 $component--radius-harsh: 0.5rem;
 
+/* -- Component Inside Padding -- */
+
+$component--padding-inside: 0.25rem;
+
 /* -- Box Shadow -- */
 
 $component--shadow-subtle: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
@@ -154,13 +161,13 @@ $transition--app-03: 0.45s ease-in-out;
 
 @keyframes accordionTransitionIn {
   0% {
-    padding: 0 $size--spacing-05 $size--spacing-05 $size--spacing-05;
+    padding: 0 $size--spacing-04 $size--spacing-06 $size--spacing-04;
     opacity: 0;
   }
 
   100% {
-    padding: $size--spacing-04 $size--spacing-05 $size--spacing-05
-      $size--spacing-05;
+    padding: $size--spacing-04 $size--spacing-04 $size--spacing-06
+      $size--spacing-04;
     opacity: 1;
   }
 }

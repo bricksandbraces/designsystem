@@ -2116,7 +2116,9 @@ __metadata:
     postcss: ^8.3.6
     postcss-calc: ^8.0.0
     postcss-cli: ^8.3.1
+    postcss-color-alpha: ^2.0.0
     postcss-flexbugs-fixes: ^5.0.2
+    postcss-hexrgba: ^2.0.1
     postcss-import: ^14.0.2
     postcss-mixins: ^8.1.0
     postcss-nested: ^5.0.6
@@ -6725,6 +6727,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color-convert@npm:^1.8.2":
+  version: 1.9.3
+  resolution: "color-convert@npm:1.9.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-convert%2F-%2Fcolor-convert-1.9.3.tgz"
+  dependencies:
+    color-name: 1.1.3
+  checksum: 5f244daa3d1fe1f216d48878c550465067d15268688308554e613b7640a068f96588096d51f0b98b68f15d6ff6bb8ad24e172582ac8c0ad43fa4d3da60fd1b79
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
@@ -6750,10 +6761,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color-name@npm:^1.0.0":
+  version: 1.1.4
+  resolution: "color-name@npm:1.1.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-name%2F-%2Fcolor-name-1.1.4.tgz"
+  checksum: 3e1c9a4dee12eada307436f61614dd11fe300469db2b83f80c8b7a7cd8a1015f0f18dd13403f018927b249003777ff60baba4a03c65f12e6bddc0dfd9642021f
+  languageName: node
+  linkType: hard
+
 "color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: 3e1c9a4dee12eada307436f61614dd11fe300469db2b83f80c8b7a7cd8a1015f0f18dd13403f018927b249003777ff60baba4a03c65f12e6bddc0dfd9642021f
+  languageName: node
+  linkType: hard
+
+"color-string@npm:^1.4.0":
+  version: 1.6.0
+  resolution: "color-string@npm:1.6.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-string%2F-%2Fcolor-string-1.6.0.tgz"
+  dependencies:
+    color-name: ^1.0.0
+    simple-swizzle: ^0.2.2
+  checksum: d48692037a6d38bd1deb91886a075d8af82e4e8269c5ab33eadf174d8aa5e82753a2f3edfe6749e24e48898ea2eb76df706b603c65a721e10ddc57c5d6a078cf
+  languageName: node
+  linkType: hard
+
+"color@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "color@npm:1.0.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor%2F-%2Fcolor-1.0.3.tgz"
+  dependencies:
+    color-convert: ^1.8.2
+    color-string: ^1.4.0
+  checksum: 4fb289c9d3482efa4279f754b539b8cb90a4afec63bc96d64476c0ffac8b998fedb233e3ab8461a2e6ad4de57388f421c11a035e3ff9a65d3247157894251602
   languageName: node
   linkType: hard
 
@@ -10926,6 +10964,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"is-arrayish@npm:^0.3.1":
+  version: 0.3.2
+  resolution: "is-arrayish@npm:0.3.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fis-arrayish%2F-%2Fis-arrayish-0.3.2.tgz"
+  checksum: 0687b6b8f2443a45116ce25d8b11979591af625bd8a7515f5d8de2fcb80979655bc9d1cbbd2146c34f2728a234d1ea81d397e06f1ae3feb02c8f6df16766a4a0
+  languageName: node
+  linkType: hard
+
 "is-bigint@npm:^1.0.1":
   version: 1.0.3
   resolution: "is-bigint@npm:1.0.3"
@@ -14775,6 +14820,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"postcss-color-alpha@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "postcss-color-alpha@npm:2.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-color-alpha%2F-%2Fpostcss-color-alpha-2.0.0.tgz"
+  dependencies:
+    color: ^1.0.3
+    postcss: ^6.0.1
+    postcss-message-helpers: ^2.0.0
+  checksum: b5f306aa9b43177e48aa3a51d663b21c82e2a80f7dc083731e182cd7ce1a5dcae00660c6251a402dbbbaf0c72d72447c0af52bf38c1ed80e57a2c198f795f994
+  languageName: node
+  linkType: hard
+
 "postcss-color-functional-notation@npm:^2.0.1":
   version: 2.0.1
   resolution: "postcss-color-functional-notation@npm:2.0.1"
@@ -15001,6 +15057,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"postcss-hexrgba@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "postcss-hexrgba@npm:2.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-hexrgba%2F-%2Fpostcss-hexrgba-2.0.1.tgz"
+  dependencies:
+    postcss: ^7.0.14
+    postcss-value-parser: ^4.1.0
+  checksum: 3dc59c6c928405695a2d346b7781ff88487a535d5cf69c7bd673f4418f4bd9280f35555a7c8f87c3e63a02dbbf66a741df4261d49a21495e0b3410abe88ec601
+  languageName: node
+  linkType: hard
+
 "postcss-html@npm:^0.36.0":
   version: 0.36.0
   resolution: "postcss-html@npm:0.36.0"
@@ -15157,6 +15223,13 @@ fsevents@^1.2.7:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 07b28781a38ef0131a7e3f99400971f3e32a47fc5db7da3c83df6141b7cd8356708c40e6b34526117a795d7ad7a5686fce9e56fef657cb77566256f8cd4abb47
+  languageName: node
+  linkType: hard
+
+"postcss-message-helpers@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "postcss-message-helpers@npm:2.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-message-helpers%2F-%2Fpostcss-message-helpers-2.0.0.tgz"
+  checksum: 98af693b48a5618be3b248be10567db4661352535768e829d617dd86f0c0f9ac61267597f0e41349c72f5c504707d3ea8095239f39ded915d6100c775e42dbdd
   languageName: node
   linkType: hard
 
@@ -15796,7 +15869,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^6.0.19, postcss@npm:^6.0.5":
+"postcss@npm:^6.0.1, postcss@npm:^6.0.19, postcss@npm:^6.0.5":
   version: 6.0.23
   resolution: "postcss@npm:6.0.23::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss%2F-%2Fpostcss-6.0.23.tgz"
   dependencies:
@@ -17969,6 +18042,15 @@ resolve@^2.0.0-next.3:
   version: 3.0.3
   resolution: "signal-exit@npm:3.0.3"
   checksum: f8f3fec95c8d1f9ad7e3cce07e1195f84e7a85cdcb4e825e8a2b76aa5406a039083d2bc9662b3cf40e6948262f41277047d20e6fbd58c77edced0b18fab647d8
+  languageName: node
+  linkType: hard
+
+"simple-swizzle@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "simple-swizzle@npm:0.2.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsimple-swizzle%2F-%2Fsimple-swizzle-0.2.2.tgz"
+  dependencies:
+    is-arrayish: ^0.3.1
+  checksum: a5a2c1c86cea94f42ab843508e7c68b5bbfd15acb08056d600ac2e9c7f7c41bc417e71160ea3034a5411d3cce186c801f7a56badfb3a854906ce163120318875
   languageName: node
   linkType: hard
 
