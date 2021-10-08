@@ -56,11 +56,11 @@ const AvatarGroup = ({
 }: AvatarGroupProps) => {
   const avatarAmount = React.Children.count(children);
   return (
-    <div className={cx(`${prefix}--avatar--group`, className)}>
+    <div className={cx(`${prefix}--avatar-group`, className)}>
       {React.Children.toArray(children).slice(0, itemsToDisplay)}
       {withAddButton && (
         <IconOnlyButton
-          className={`${prefix}--avatar--group-btn`}
+          className={`${prefix}--avatar-group__btn`}
           size={size}
           kind="primary"
           icon={<IconPlus />}
@@ -69,7 +69,7 @@ const AvatarGroup = ({
       )}
       {itemsToDisplay && avatarAmount > itemsToDisplay && handleMoreClick && (
         <Button
-          className={`${prefix}--avatar--group-btn`}
+          className={`${prefix}--avatar-group__btn`}
           size={size}
           kind="secondary"
           iconPosition="left"

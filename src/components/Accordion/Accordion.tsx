@@ -11,6 +11,11 @@ type AccordionProps = {
   children?: ReactNode;
 
   /**
+   * Accordion Size
+   */
+  size?: "large" | "default" | "small";
+
+  /**
    * Accordion ClassName
    */
   className?: string;
@@ -39,6 +44,7 @@ const Accordion = ({
   className,
   wrapperClassName,
   onChange,
+  size = "default",
   defaultOpenIndices,
   openIndices
 }: AccordionProps) => {
@@ -81,7 +87,12 @@ const Accordion = ({
     }
   }, [openIndices]);
   return (
-    <div className={cx(`${prefix}--accordion`, wrapperClassName)}>
+    <div
+      className={cx(
+        `${prefix}--accordion ${prefix}--accordion-${size} `,
+        wrapperClassName
+      )}
+    >
       <ul className={cx(`${prefix}--accordion-list`, className)}>
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<AccordionItemProps>(child)) {

@@ -27,7 +27,7 @@ export const Default = () => {
       }}
     >
       <div style={{ width: "256px" }}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
+        <AspectRatio ratio={select("ratio", ratio, defaultRatio) as any}>
           <div className={`${prefix}--grid--example`}>Content</div>
         </AspectRatio>
       </div>
