@@ -7,49 +7,43 @@ import { prefix } from "../../settings";
 
 type AvatarGroupProps = {
   /**
-   * Classnames for the parent element
+   * AvatarGroup ClassNames
    */
   className?: string;
 
   /**
-   * Accepts a set of avatars as react children
+   * AvatarGroup Children
    */
   children?: ReactNode;
   /**
-   * AvatarGroup size
+   * AvatarGroup Size
    */
   size?: "large" | "default" | "small";
 
   /**
-   * Define the amount of items to display
+   * AvatarGroup Items to display
    */
   itemsToDisplay?: number;
 
   /**
-   * Render a add button when the handler is present
+   * AvatarGroup Add Button
    */
   handleAddClick?: React.MouseEventHandler<
     HTMLAnchorElement | HTMLButtonElement
   >;
 
   /**
-   * Render a trigger button when the handler is present
+   * AvatarGroup Trigger Button for List
    */
   handleMoreClick?: React.MouseEventHandler<
     HTMLAnchorElement | HTMLButtonElement
   >;
-
-  /**
-   * Add Button
-   */
-  withAddButton?: boolean;
 };
 
 const AvatarGroup = ({
   size = "default",
   handleAddClick,
   handleMoreClick,
-  withAddButton,
   className,
   itemsToDisplay,
   children
@@ -57,8 +51,11 @@ const AvatarGroup = ({
   const avatarAmount = React.Children.count(children);
   return (
     <div className={cx(`${prefix}--avatar-group`, className)}>
-      {React.Children.toArray(children).slice(0, itemsToDisplay)}
-      {withAddButton && (
+      <div className={cx(`${prefix}--avatar-group__container`, className)}>
+        {React.Children.toArray(children).slice(0, itemsToDisplay)}
+      </div>
+
+      {handleAddClick && (
         <IconOnlyButton
           className={`${prefix}--avatar-group__btn`}
           size={size}

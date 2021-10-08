@@ -21,11 +21,6 @@ type AccordionProps = {
   className?: string;
 
   /**
-   * Accordion WrapperClassName
-   */
-  wrapperClassName?: string;
-
-  /**
    * Accordion OnChange Function delivering the toggled index
    */
   onChange?: (selectedIndex: number) => void;
@@ -42,7 +37,6 @@ enum AnimationType {
 const Accordion = ({
   children,
   className,
-  wrapperClassName,
   onChange,
   size = "default",
   defaultOpenIndices,
@@ -90,10 +84,10 @@ const Accordion = ({
     <div
       className={cx(
         `${prefix}--accordion ${prefix}--accordion-${size} `,
-        wrapperClassName
+        className
       )}
     >
-      <ul className={cx(`${prefix}--accordion-list`, className)}>
+      <ul className={cx(`${prefix}--accordion-list`)}>
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<AccordionItemProps>(child)) {
             return child;

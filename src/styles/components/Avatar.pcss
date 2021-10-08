@@ -3,15 +3,10 @@
 
 .$(prefix) {
   &--avatar {
-    position: relative;
-    background-color: transparent;
-
-    &-container {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: 50%;
-    }
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
 
     &-default {
       width: $size--container-05;
@@ -101,113 +96,97 @@
       margin: 0;
       padding: 0;
       list-style: none;
+      gap: $size--spacing-04;
 
-      & > .$(prefix)--avatar:not(:first-child),
-      & > div:not(:first-child) > .$(prefix)--avatar {
-        margin-left: calc($size--spacing-04 * -1);
+      & > .$(prefix)--avatar-group__container {
+        display: inline-flex;
+        & > .$(prefix)--avatar-container:not(:first-child),
+        & > div:not(:first-child) > .$(prefix)--avatar-container {
+          margin-left: calc($size--spacing-04 * -1);
 
-        & > .$(prefix)--avatar-container {
-          box-shadow: $color--background 0 0 0 3px;
+          & > .$(prefix)--avatar {
+            box-shadow: $color--background 0 0 0 0.1875rem;
+          }
         }
       }
 
       &__btn {
-        margin-left: $size--spacing-04;
-        border-radius: 25px;
+        border-radius: $size--container-05;
       }
     }
-  }
-}
-
-/* &--list {
+    &-list {
       margin: 0;
       padding: 0;
       list-style: none;
 
-      &-panel {
+      &__panel {
         width: 100%;
         max-width: max-content;
       }
 
-      &-children {
+      &__children {
         display: flex;
         align-items: center;
-        margin-top: $spacing-02;
-        padding: 12px;
+        margin-top: $size--spacing-02;
+        padding: $size--spacing-04;
+        gap: $size--spacing-05;
       }
 
-      &-item {
+      &__item {
         display: flex;
         align-items: center;
         height: $size--container-06;
         max-height: $size--container-06;
-        padding: 0 12px;
-        transition: background-color $transition-01;
-        border-radius: 2px;
+        padding: 0 $size--spacing-04;
+        transition: background-color $transition--app-01;
+        border-radius: $component--radius-default;
 
         &:hover {
-          background-color: $avatar-background;
+          background-color: $color--hover;
         }
 
-        &__container {
+        &-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
 
-          &-actions {
-            white-space: nowrap;
-            & > div {
-              margin-left: $spacing-03;
-            }
+          &--actions {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: $size--spacing-03;
           }
         }
 
-        &__text {
+        &-text {
           width: 100%;
-          margin-right: $spacing-10;
-          margin-left: $spacing-05;
+          margin-right: $size--spacing-12;
+          margin-left: $size--spacing-05;
 
-          &-heading {
+          &--heading {
+            @mixin type--body-02;
+
             width: 100%;
-            max-width: calc($container-05 * 3);
+            max-width: calc($size--container-05 * 3);
+            margin: 0;
             overflow: hidden;
-            color: $white;
+            color: $color--font-text-01;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-          &-body {
+          &--body {
+            @mixin type--label;
+
             width: 100%;
-            max-width: $container-07;
+            max-width: $size--container-07;
+            margin: 0;
             overflow: hidden;
-            color: $warm-gray-60;
+            color: $color--font-text-03;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
         }
-      }
-    }
-
-    &--group {
-      display: inline-flex;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      & > .$(prefix)--avatar:not(:first-child),
-      & > div:not(:first-child) > .avatar {
-        margin-left: -12px;
-
-        & > .avatar--container {
-          box-shadow: $avatar-border 0 0 0 3px;
-        }
-      }
-
-      &-btn {
-        margin-left: 12px;
-        border-radius: 25px;
       }
     }
   }
-} */
+}

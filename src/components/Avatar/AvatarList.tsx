@@ -3,48 +3,48 @@ import cx from "classnames";
 import FloatingPanel from "../FloatingPanel/FloatingPanel";
 import Avatar from "./Avatar";
 import { prefix } from "../../settings";
-import Body from "../Typography/Body";
-import Label from "../Typography/Label";
 
 type AvatarListItem = {
   /**
-   * Id
+   * AvatarListItem Id
    */
   id: string;
 
   /**
-   * Name of the avatar
+   * AvatarListItem Name
    */
   name: string;
 
   /**
-   * Image of the avatar
+   * AvatarListItem Image URL
    */
   imgUrl?: string;
 
   /**
-   * Additional information
+   * AvatarListItem Additional Information
    */
   additionalInformation?: string;
 };
 
 type AvatarListProps = {
   /**
-   * Classnames for the parent element
+   * AvatarList ClassName
    */
   className?: string;
 
   /**
-   * Action items for List
+   * AvatarList Action Items
    */
   avatarActions?: ReactNode;
 
   /**
-   * Children
+   * AvatarList Children
    */
   children?: ReactNode;
 
-  /** AvatarList size */
+  /** 
+   * AvatarList Items 
+   */
   avatarItems: AvatarListItem[];
 };
 
@@ -55,27 +55,24 @@ const AvatarList = ({
   avatarActions
 }: AvatarListProps) => {
   return (
-    <FloatingPanel className={`${prefix}--avatar--list-panel`}>
-      <ul className={cx(`${prefix}--avatar--list`, className)}>
+    <FloatingPanel className={`${prefix}--avatar-list__panel`}>
+      <ul className={cx(`${prefix}--avatar-list`, className)}>
         {avatarItems.map((avatar) => {
           return (
-            <li key={avatar.id} className={`${prefix}--avatar--list-item`}>
+            <li key={avatar.id} className={`${prefix}--avatar-list__item`}>
               <Avatar name={avatar.name} imgUrl={avatar.imgUrl} />
-              <div className={`${prefix}--avatar--list-item__container`}>
-                <div className={`${prefix}--avatar--list-item__text`}>
-                  <Body
-                    type="b2"
-                    className={`${prefix}--avatar--list-item__text-heading`}
-                  >
+              <div className={`${prefix}--avatar-list__item-container`}>
+                <div className={`${prefix}--avatar-list__item-text`}>
+                  <p className={`${prefix}--avatar-list__item-text--heading`}>
                     {avatar.name}
-                  </Body>
-                  <Label className={`${prefix}--avatar--list-item__text-body`}>
+                  </p>
+                  <p className={`${prefix}--avatar-list__item-text--body`}>
                     {avatar.additionalInformation}
-                  </Label>
+                  </p>
                 </div>
                 {avatarActions && (
                   <div
-                    className={`${prefix}--avatar--list-item__container-actions`}
+                    className={`${prefix}--avatar-list__item-container--actions`}
                   >
                     {avatarActions}
                   </div>
@@ -86,7 +83,7 @@ const AvatarList = ({
         })}
       </ul>
       {children && (
-        <div className={`${prefix}--avatar--list-children`}>{children}</div>
+        <div className={`${prefix}--avatar-list__children`}>{children}</div>
       )}
     </FloatingPanel>
   );
