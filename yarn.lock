@@ -2116,15 +2116,13 @@ __metadata:
     postcss: ^8.3.6
     postcss-calc: ^8.0.0
     postcss-cli: ^8.3.1
-    postcss-color-alpha: ^2.0.0
     postcss-flexbugs-fixes: ^5.0.2
-    postcss-hexrgba: ^2.0.1
+    postcss-hexrgba: "github:hudochenkov/postcss-hexrgba#migrate-to-postcss-8"
     postcss-import: ^14.0.2
     postcss-mixins: ^8.1.0
     postcss-nested: ^5.0.6
     postcss-normalize: ^10.0.1
     postcss-preset-env: ^6.7.0
-    postcss-rgb: ^1.0.0
     postcss-simple-vars: ^6.0.3
     postcss-size: ^4.0.1
     postcss-utilities: ^0.8.4
@@ -6727,15 +6725,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-convert@npm:^1.8.2":
-  version: 1.9.3
-  resolution: "color-convert@npm:1.9.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-convert%2F-%2Fcolor-convert-1.9.3.tgz"
-  dependencies:
-    color-name: 1.1.3
-  checksum: 5f244daa3d1fe1f216d48878c550465067d15268688308554e613b7640a068f96588096d51f0b98b68f15d6ff6bb8ad24e172582ac8c0ad43fa4d3da60fd1b79
-  languageName: node
-  linkType: hard
-
 "color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
@@ -6761,37 +6750,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-name@npm:^1.0.0":
-  version: 1.1.4
-  resolution: "color-name@npm:1.1.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-name%2F-%2Fcolor-name-1.1.4.tgz"
-  checksum: 3e1c9a4dee12eada307436f61614dd11fe300469db2b83f80c8b7a7cd8a1015f0f18dd13403f018927b249003777ff60baba4a03c65f12e6bddc0dfd9642021f
-  languageName: node
-  linkType: hard
-
 "color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: 3e1c9a4dee12eada307436f61614dd11fe300469db2b83f80c8b7a7cd8a1015f0f18dd13403f018927b249003777ff60baba4a03c65f12e6bddc0dfd9642021f
-  languageName: node
-  linkType: hard
-
-"color-string@npm:^1.4.0":
-  version: 1.6.0
-  resolution: "color-string@npm:1.6.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor-string%2F-%2Fcolor-string-1.6.0.tgz"
-  dependencies:
-    color-name: ^1.0.0
-    simple-swizzle: ^0.2.2
-  checksum: d48692037a6d38bd1deb91886a075d8af82e4e8269c5ab33eadf174d8aa5e82753a2f3edfe6749e24e48898ea2eb76df706b603c65a721e10ddc57c5d6a078cf
-  languageName: node
-  linkType: hard
-
-"color@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "color@npm:1.0.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcolor%2F-%2Fcolor-1.0.3.tgz"
-  dependencies:
-    color-convert: ^1.8.2
-    color-string: ^1.4.0
-  checksum: 4fb289c9d3482efa4279f754b539b8cb90a4afec63bc96d64476c0ffac8b998fedb233e3ab8461a2e6ad4de57388f421c11a035e3ff9a65d3247157894251602
   languageName: node
   linkType: hard
 
@@ -6864,13 +6826,6 @@ __metadata:
   version: 1.0.1
   resolution: "commondir@npm:1.0.1"
   checksum: 98f18ad14f0ea38e0866db365bc8496f2a74250cf47ec96b94913e1b0574c99b4ff837a9f05dbc68d82505fd06b52dfba4f6bbe6fbda43094296cfaf33b475a0
-  languageName: node
-  linkType: hard
-
-"complex.js@npm:2.0.4":
-  version: 2.0.4
-  resolution: "complex.js@npm:2.0.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcomplex.js%2F-%2Fcomplex.js-2.0.4.tgz"
-  checksum: be987a3fc8b8f54234ab52e2eff429454a9980bd061ddf222f18ce671913f6cee9767b310d2b66c3aef232b655dded1242f7281dd8e3cbcb7804b4cb73fc204c
   languageName: node
   linkType: hard
 
@@ -7637,13 +7592,6 @@ __metadata:
   version: 1.2.0
   resolution: "decamelize@npm:1.2.0"
   checksum: 8ca9d03ea8ac07920f4504e219d18edff2491bdd0a3e05a1e5ca2e9a0bf6333564231de3528b01d5e76c40a38c37bbc1e09cb5a0424714f53dd615ed78ced464
-  languageName: node
-  linkType: hard
-
-"decimal.js@npm:9.0.1":
-  version: 9.0.1
-  resolution: "decimal.js@npm:9.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fdecimal.js%2F-%2Fdecimal.js-9.0.1.tgz"
-  checksum: 20a2b53693748050fd78575f2eacfe7d8ab8a73fae1e24d4688e55fdf5a55221ae6fcddd511e70f2bb47bc78903fa9031629be0601718d3ee82f849c6be8b6bd
   languageName: node
   linkType: hard
 
@@ -8544,13 +8492,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-latex@npm:^1.0.0":
-  version: 1.2.0
-  resolution: "escape-latex@npm:1.2.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fescape-latex%2F-%2Fescape-latex-1.2.0.tgz"
-  checksum: d8012eb447a373f61270138f9acd749566f24b42f6727c2cc80254f0e678e83a7cf20c14ec45887f80173be2aad15a80d396ca2f4a53edd857a769faebc409fb
-  languageName: node
-  linkType: hard
-
 "escape-string-regexp@npm:2.0.0, escape-string-regexp@npm:^2.0.0":
   version: 2.0.0
   resolution: "escape-string-regexp@npm:2.0.0"
@@ -8953,13 +8894,6 @@ __metadata:
     node-gyp: latest
     safe-buffer: ^5.1.1
   checksum: 529ceee780657a04e2b19ecbb685473f12aae05d5f9f794e36044f5ea602e1a0ba42bff4e1b7544a8a4164fbd9c585e69398b114f9925448d02c31c52c95cf26
-  languageName: node
-  linkType: hard
-
-"exact-regex@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "exact-regex@npm:1.0.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fexact-regex%2F-%2Fexact-regex-1.0.3.tgz"
-  checksum: cbb0321e732d4bd56001e5d68f3b8e9127ad1a68feedf1a8ece6dc28625ef33a2c5b1fad00c44c46d853138ad45556ea026c8d3957f6277ddb260c2aaf33eb3b
   languageName: node
   linkType: hard
 
@@ -9565,13 +9499,6 @@ __metadata:
   version: 0.2.0
   resolution: "forwarded@npm:0.2.0"
   checksum: 1e84548d8ffb072d7edd4c5375ce71e2631c28efcd1084c4578f1a71dd6c4b0d58a6ddcdc923514766030cf38068258971a919e91ffa472460ec0f6dac7209ea
-  languageName: node
-  linkType: hard
-
-"fraction.js@npm:4.0.4":
-  version: 4.0.4
-  resolution: "fraction.js@npm:4.0.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Ffraction.js%2F-%2Ffraction.js-4.0.4.tgz"
-  checksum: 45326e396163e7d4fa14298efe3a53d6a33cf606ec432cc709716132a23f1e149e7325fd52f84368f172af5a157ab4f0630a70100c63b7d259910c7db09df406
   languageName: node
   linkType: hard
 
@@ -10964,13 +10891,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-arrayish@npm:^0.3.1":
-  version: 0.3.2
-  resolution: "is-arrayish@npm:0.3.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fis-arrayish%2F-%2Fis-arrayish-0.3.2.tgz"
-  checksum: 0687b6b8f2443a45116ce25d8b11979591af625bd8a7515f5d8de2fcb80979655bc9d1cbbd2146c34f2728a234d1ea81d397e06f1ae3feb02c8f6df16766a4a0
-  languageName: node
-  linkType: hard
-
 "is-bigint@npm:^1.0.1":
   version: 1.0.3
   resolution: "is-bigint@npm:1.0.3"
@@ -11627,13 +11547,6 @@ fsevents@^1.2.7:
     es-get-iterator: ^1.0.2
     iterate-iterator: ^1.0.1
   checksum: 7c0bef59ead553a2d1b7957954a514e180e3155765606c5e8cfb09518860c7b81aa0675c987352f506dd779b2366cd2b5e4cd249f7cf0a965b86c916e669608e
-  languageName: node
-  linkType: hard
-
-"javascript-natural-sort@npm:0.7.1":
-  version: 0.7.1
-  resolution: "javascript-natural-sort@npm:0.7.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fjavascript-natural-sort%2F-%2Fjavascript-natural-sort-0.7.1.tgz"
-  checksum: f097317419cf0be44aa491a3a7b7c8dfa3590852e994641afb6ea4a7e57e5dae58d9198dd5fa0b98585f296f91f534100825e734f9b69cef65728819f50d701b
   languageName: node
   linkType: hard
 
@@ -13037,24 +12950,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mathjs@npm:^3.16.4":
-  version: 3.20.2
-  resolution: "mathjs@npm:3.20.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fmathjs%2F-%2Fmathjs-3.20.2.tgz"
-  dependencies:
-    complex.js: 2.0.4
-    decimal.js: 9.0.1
-    escape-latex: ^1.0.0
-    fraction.js: 4.0.4
-    javascript-natural-sort: 0.7.1
-    seed-random: 2.2.0
-    tiny-emitter: 2.0.2
-    typed-function: 0.10.7
-  bin:
-    mathjs: ./bin/cli.js
-  checksum: 64f9d5371563c3e5f69b9d15cabbbf8f5e422d9a481d32952e4ea3bcb782d7d06fa2e75d83cf9e6d7424c0ecc2dfd85b40a29ec97508d57461111613a306ada4
-  languageName: node
-  linkType: hard
-
 "mathml-tag-names@npm:^2.1.3":
   version: 2.1.3
   resolution: "mathml-tag-names@npm:2.1.3"
@@ -14217,13 +14112,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"overwrite-object@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "overwrite-object@npm:1.0.5::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Foverwrite-object%2F-%2Foverwrite-object-1.0.5.tgz"
-  checksum: fb2c2df0291347c4a25d87dc483706837fc2242dd15a5e21593b0a95898f3a5bb1e3a97893873e40d3788125e86366f7b4b441ed5c213dee94f292db3642b2ef
-  languageName: node
-  linkType: hard
-
 "p-all@npm:^2.1.0":
   version: 2.1.0
   resolution: "p-all@npm:2.1.0"
@@ -14820,17 +14708,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-color-alpha@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "postcss-color-alpha@npm:2.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-color-alpha%2F-%2Fpostcss-color-alpha-2.0.0.tgz"
-  dependencies:
-    color: ^1.0.3
-    postcss: ^6.0.1
-    postcss-message-helpers: ^2.0.0
-  checksum: b5f306aa9b43177e48aa3a51d663b21c82e2a80f7dc083731e182cd7ce1a5dcae00660c6251a402dbbbaf0c72d72447c0af52bf38c1ed80e57a2c198f795f994
-  languageName: node
-  linkType: hard
-
 "postcss-color-functional-notation@npm:^2.0.1":
   version: 2.0.1
   resolution: "postcss-color-functional-notation@npm:2.0.1"
@@ -15057,13 +14934,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-hexrgba@npm:^2.0.1":
+"postcss-hexrgba@github:hudochenkov/postcss-hexrgba#migrate-to-postcss-8":
   version: 2.0.1
-  resolution: "postcss-hexrgba@npm:2.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-hexrgba%2F-%2Fpostcss-hexrgba-2.0.1.tgz"
+  resolution: "postcss-hexrgba@https://github.com/hudochenkov/postcss-hexrgba.git#commit=17522c4bc49af32c38469c3cb65e55b6aa369ea1"
   dependencies:
-    postcss: ^7.0.14
     postcss-value-parser: ^4.1.0
-  checksum: 3dc59c6c928405695a2d346b7781ff88487a535d5cf69c7bd673f4418f4bd9280f35555a7c8f87c3e63a02dbbf66a741df4261d49a21495e0b3410abe88ec601
+  peerDependencies:
+    postcss: ^8.1.4
+  checksum: 84cb16e1ab00f1df7564c848a0509c9a0fa17f403dd5969ad472666cba46840639ff4d6348615961a1c675bebb96c9a4ddc4050e6a80561b51aaceb978a379aa
   languageName: node
   linkType: hard
 
@@ -15223,13 +15101,6 @@ fsevents@^1.2.7:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 07b28781a38ef0131a7e3f99400971f3e32a47fc5db7da3c83df6141b7cd8356708c40e6b34526117a795d7ad7a5686fce9e56fef657cb77566256f8cd4abb47
-  languageName: node
-  linkType: hard
-
-"postcss-message-helpers@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "postcss-message-helpers@npm:2.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-message-helpers%2F-%2Fpostcss-message-helpers-2.0.0.tgz"
-  checksum: 98af693b48a5618be3b248be10567db4661352535768e829d617dd86f0c0f9ac61267597f0e41349c72f5c504707d3ea8095239f39ded915d6100c775e42dbdd
   languageName: node
   linkType: hard
 
@@ -15560,19 +15431,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-plugin-utilities@npm:^2.0.0":
-  version: 2.2.9
-  resolution: "postcss-plugin-utilities@npm:2.2.9::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-plugin-utilities%2F-%2Fpostcss-plugin-utilities-2.2.9.tgz"
-  dependencies:
-    exact-regex: ^1.0.3
-    mathjs: ^3.16.4
-    overwrite-object: ^1.0.5
-    postcss: ^6.0.19
-    postcss-value-parser: ^3.3.0
-  checksum: b34e584e490e1e9d3c8b1d3b85e1d7c4aac881848fef49a2c175de7097d0af3e969e03e94a4f711dc6c14d0f0ec937aa3086a62181382a0d9931166666c6beed
-  languageName: node
-  linkType: hard
-
 "postcss-preset-env@npm:^6.7.0":
   version: 6.7.0
   resolution: "postcss-preset-env@npm:6.7.0"
@@ -15681,16 +15539,6 @@ fsevents@^1.2.7:
   version: 0.1.1
   resolution: "postcss-resolve-nested-selector@npm:0.1.1"
   checksum: 59393a39f6cca58a5622b71afd2210a189f80e57ec8649c66c616d1215d58844a70031c69cbe70404a3576726fb979a3ae99686ac968e5e1903c669295c3bcf5
-  languageName: node
-  linkType: hard
-
-"postcss-rgb@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "postcss-rgb@npm:1.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-rgb%2F-%2Fpostcss-rgb-1.0.0.tgz"
-  dependencies:
-    postcss: ^6.0.5
-    postcss-plugin-utilities: ^2.0.0
-  checksum: d90f6487972af0ea44a2bc24175d681bd36501ced0d16aab8583d9089998d1402b9d29a802598b127256118742924cc3b908d9715ade11a631198284eb109edf
   languageName: node
   linkType: hard
 
@@ -15835,13 +15683,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^3.3.0":
-  version: 3.3.1
-  resolution: "postcss-value-parser@npm:3.3.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-value-parser%2F-%2Fpostcss-value-parser-3.3.1.tgz"
-  checksum: 834603f6bd822846cc20b1f95e648dea67353eb506898cc5fb540b32e9a956c1030754b9503270eb00c61c3734409d7ec94fba2b4f0a89954bc855bad7e9267c
-  languageName: node
-  linkType: hard
-
 "postcss-value-parser@npm:^4.0.0, postcss-value-parser@npm:^4.0.2, postcss-value-parser@npm:^4.1.0":
   version: 4.1.0
   resolution: "postcss-value-parser@npm:4.1.0"
@@ -15866,17 +15707,6 @@ fsevents@^1.2.7:
   dependencies:
     postcss: ^7.0.18
   checksum: 9729a3569ce8b6413543aca7950578aa452e0bdaf3856d426c134516558cae80f774c951a3600459e89532a813834df85ab99cc8b916f1e5d7844ffacf971e47
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^6.0.1, postcss@npm:^6.0.19, postcss@npm:^6.0.5":
-  version: 6.0.23
-  resolution: "postcss@npm:6.0.23::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss%2F-%2Fpostcss-6.0.23.tgz"
-  dependencies:
-    chalk: ^2.4.1
-    source-map: ^0.6.1
-    supports-color: ^5.4.0
-  checksum: 9b61abdfb366491debc6a633ba3703ae43c674b6c1c64def54e131c8ec01862fc95b3271bde221db805389fc76c3b3f1447b5a9c1d0b332c53cfcc9bfe1b1fa6
   languageName: node
   linkType: hard
 
@@ -17745,13 +17575,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"seed-random@npm:2.2.0":
-  version: 2.2.0
-  resolution: "seed-random@npm:2.2.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fseed-random%2F-%2Fseed-random-2.2.0.tgz"
-  checksum: 61cb57e7d8c5fa8d0597ab2f3a696f4517fc05f0aecac6a60895724704f90bfa4afc257e938bf7d83d5421b5d9e3f97c8b39a3b706318999102473d74aa436e9
-  languageName: node
-  linkType: hard
-
 "semver-diff@npm:^3.1.1":
   version: 3.1.1
   resolution: "semver-diff@npm:3.1.1"
@@ -18042,15 +17865,6 @@ resolve@^2.0.0-next.3:
   version: 3.0.3
   resolution: "signal-exit@npm:3.0.3"
   checksum: f8f3fec95c8d1f9ad7e3cce07e1195f84e7a85cdcb4e825e8a2b76aa5406a039083d2bc9662b3cf40e6948262f41277047d20e6fbd58c77edced0b18fab647d8
-  languageName: node
-  linkType: hard
-
-"simple-swizzle@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "simple-swizzle@npm:0.2.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsimple-swizzle%2F-%2Fsimple-swizzle-0.2.2.tgz"
-  dependencies:
-    is-arrayish: ^0.3.1
-  checksum: a5a2c1c86cea94f42ab843508e7c68b5bbfd15acb08056d600ac2e9c7f7c41bc417e71160ea3034a5411d3cce186c801f7a56badfb3a854906ce163120318875
   languageName: node
   linkType: hard
 
@@ -18948,15 +18762,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^5.4.0":
-  version: 5.5.0
-  resolution: "supports-color@npm:5.5.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsupports-color%2F-%2Fsupports-color-5.5.0.tgz"
-  dependencies:
-    has-flag: ^3.0.0
-  checksum: edacee6425498440744c418be94b0660181aad2a1828bcf2be85c42bd385da2fd8b2b358d9b62b0c5b03ff5cd3e992458d7b8f879d9fb42f2201fe05a4848a29
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^6.1.0":
   version: 6.1.0
   resolution: "supports-color@npm:6.1.0"
@@ -19265,13 +19070,6 @@ resolve@^2.0.0-next.3:
   version: 0.3.0
   resolution: "timsort@npm:0.3.0"
   checksum: d8300c3ecf1a3751413de82b04ad283b461ab6fb1041820c825d13b4ae74526e2101ab5fb84c57a0c6e1f4d7f67173b5d8754ed8bb7447c6a9ce1db8562eb82c
-  languageName: node
-  linkType: hard
-
-"tiny-emitter@npm:2.0.2":
-  version: 2.0.2
-  resolution: "tiny-emitter@npm:2.0.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Ftiny-emitter%2F-%2Ftiny-emitter-2.0.2.tgz"
-  checksum: 07d4b13a4a466a7a76115b22958df8d977f95b2f71875a1254d67c9f522067534a9855857959b93855b9f578671db45955c7fa9a55e241e85a685e17084e8306
   languageName: node
   linkType: hard
 
@@ -19595,13 +19393,6 @@ resolve@^2.0.0-next.3:
     media-typer: 0.3.0
     mime-types: ~2.1.24
   checksum: 20a3514f1d835c979237995129d1f8c564325301e3a8f1c732bcbe1d7fa0ca1f65994e41a79e9030d79f31e5459bb9be5c377848fcb477cb3049a661b3713d74
-  languageName: node
-  linkType: hard
-
-"typed-function@npm:0.10.7":
-  version: 0.10.7
-  resolution: "typed-function@npm:0.10.7::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Ftyped-function%2F-%2Ftyped-function-0.10.7.tgz"
-  checksum: 6dc8aaf6743999adb566939babcc54db8e0ecf9a1ba6ec10f53f1890cccace7953208a6b8c1b55b975d974d33b2f595b606e5b8a556328bde07a8308a96707f2
   languageName: node
   linkType: hard
 
