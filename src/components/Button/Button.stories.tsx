@@ -20,7 +20,6 @@ const options = {
   Primary: "primary",
   Secondary: "secondary",
   Tertiary: "tertiary",
-  Danger: "danger",
   Ghost: "ghost"
 };
 

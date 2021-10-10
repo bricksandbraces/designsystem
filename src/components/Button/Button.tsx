@@ -106,13 +106,13 @@ const Button = (
         href={href}
         ref={ref as ForwardedRef<HTMLAnchorElement>}
         className={cx(
-          `${prefix}--button ${prefix}--button--${size} ${prefix}--button--${kind}`,
+          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
           {
-            [`${prefix}--button--disabled`]: disabled,
-            [`${prefix}--button--fluid`]: fluid,
-            [`${prefix}--with-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--with-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button--loading`]: isLoading
+            [`${prefix}--button-disabled`]: disabled,
+            [`${prefix}--button-fluid`]: fluid,
+            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
+            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
+            [`${prefix}--button-loading`]: isLoading
           },
           className
         )}
@@ -127,8 +127,8 @@ const Button = (
           />
         )}
         <div
-          className={cx(`${prefix}--button--label`, {
-            [`${prefix}--button--hidden`]: isLoading
+          className={cx(`${prefix}--button-label`, {
+            [`${prefix}--button-hidden`]: isLoading
           })}
         >
           {children ? iconPosition && icon : icon}
@@ -140,13 +140,13 @@ const Button = (
         type="button"
         ref={ref as ForwardedRef<HTMLButtonElement>}
         className={cx(
-          `${prefix}--button ${prefix}--button--${size} ${prefix}--button--${kind}`,
+          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
           {
-            [`${prefix}--button--disabled`]: disabled,
-            [`${prefix}--button--fluid`]: fluid,
-            [`${prefix}--with-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--with-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button--loading`]: isLoading
+            [`${prefix}--button-disabled`]: disabled,
+            [`${prefix}--button-fluid`]: fluid,
+            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
+            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
+            [`${prefix}--button-loading`]: isLoading
           },
           className
         )}
@@ -162,8 +162,8 @@ const Button = (
           />
         )}
         <div
-          className={cx(`${prefix}--button--label`, {
-            [`${prefix}--button--hidden`]: isLoading
+          className={cx(`${prefix}--button-label`, {
+            [`${prefix}--button-hidden`]: isLoading
           })}
         >
           {children ? iconPosition && icon : icon}
