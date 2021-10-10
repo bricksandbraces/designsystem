@@ -1,16 +1,17 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import Button from "./Button";
-import TooltipText from "../Tooltip/HoverTooltipText";
-import TooltipContainer from "../Tooltip/TooltipTrigger";
 import { prefix } from "../../settings";
+import TTooltip from "../TTooltip/TTooltip";
 
 export type IconOnlyButtonProps = {
   /** Unique identifier for your button */
   id?: string;
 
   /** Specify button kind */
-  kind?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
+  kind?: "primary" | "secondary" | "tertiary" | "ghost";
+
+  danger?: boolean;
 
   /** Specify an optional className to be added to your button */
   className?: string;
@@ -66,8 +67,8 @@ export type IconOnlyButtonProps = {
 const IconOnlyButton = ({
   kind = "primary",
   size = "default",
+  danger,
   tooltipLabel = "Tooltip Label",
-  tooltipPosition = "bottom",
   disabled,
   isLoading,
   wrapperClassName,
@@ -77,12 +78,17 @@ const IconOnlyButton = ({
   loadingDescription = "Loading",
   ...rest
 }: IconOnlyButtonProps) => (
-  <TooltipContainer className={cx(wrapperClassName)}>
+  <TTooltip
+    tooltipContent={tooltipLabel}
+    placement="bottom"
+    disabled={disabled}
+  >
     <Button
-      className={cx(`${prefix}--icon-only`, className)}
+      className={cx(`${prefix}--button-icon-only`, className)}
       href={href}
       kind={kind}
       size={size}
+      danger={danger}
       withIcon
       icon={icon}
       isLoading={isLoading}
@@ -90,11 +96,7 @@ const IconOnlyButton = ({
       disabled={disabled}
       {...rest}
     />
-    <TooltipText
-      tooltipLabel={tooltipLabel}
-      tooltipPosition={tooltipPosition}
-    />
-  </TooltipContainer>
+  </TTooltip>
 );
 
 export default IconOnlyButton;

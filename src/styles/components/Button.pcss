@@ -155,7 +155,7 @@
         }
       }
 
-      & > div:not(:last-child) > .$(prefix)--button-tertiary {
+      & > .$(prefix)--button-tertiary:not(:last-child) {
         border-right: 0;
 
         & > .$(prefix)--button--label {
@@ -163,16 +163,16 @@
         }
       }
 
-      & > div > button {
+      & > button {
         border-radius: 0;
       }
 
-      & > div:first-child > button {
+      & > button:first-child {
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
       }
 
-      & > div:last-child > button {
+      & > button:last-child {
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
       }
@@ -180,33 +180,87 @@
   }
 }
 
-.$(prefix)--button.$(prefix)--button--ghost:focus-visible,
-.$(prefix)--button.$(prefix)--button--primary:focus-visible,
-.$(prefix)--button.$(prefix)--button--secondary:focus-visible,
-.$(prefix)--button.$(prefix)--button--danger:focus-visible,
-.$(prefix)--button.$(prefix)--button--tertiary:focus-visible {
-  border: $border $focus;
+.$(prefix)--button.$(prefix)--button-ghost:focus-visible,
+.$(prefix)--button.$(prefix)--button-primary:focus-visible,
+.$(prefix)--button.$(prefix)--button-secondary:focus-visible {
+  border-color: $color--focus;
   outline: 0;
 }
 
-.$(prefix)--button.$(prefix)--button--ghost.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--primary.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--secondary.$(prefix)--button--disabled {
-  border: $border $disabled-container;
-  background-color: $disabled-container;
-  color: $disabled-text;
+.$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
+  border-color: $color--focus;
+  outline: 0;
+  background-color: $color--tertiary-hover;
+  box-shadow: inset 0 0 0 0.0625rem $black,
+    inset 0 0 0 0.0125rem $color--tertiary-hover;
+  color: $color--font-text-inverse;
 }
 
-.$(prefix)--button.$(prefix)--button--tertiary.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--danger.$(prefix)--button--disabled {
-  border: $border $disabled-container;
-  color: $disabled-text;
-  pointer-events: none;
+.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-disabled,
+.$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-disabled,
+.$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-disabled {
+  border-color: $color--disabled;
+  background-color: $color--disabled;
+  color: $color--font-disabled;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: $color--disabled;
+    background-color: $color--disabled;
+    color: $color--font-disabled;
+  }
 }
 
-.$(prefix)--icon-only {
-  min-width: $container-03;
-  max-width: $container-03;
+.$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-disabled {
+  border-color: $color--disabled;
+  color: $color--font-disabled;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: $color--disabled;
+    background-color: inherit;
+    color: $color--font-disabled;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger,
+.$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-danger,
+.$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-danger {
+  background-color: $color--danger-enabled;
+
+  &:hover {
+    background-color: $color--danger-hover;
+  }
+
+  &:active {
+    background-color: $color--danger-active;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-danger {
+  border-color: $color--danger-enabled;
+  color: $color--danger-enabled;
+
+  &:hover {
+    border-color: $color--danger-hover;
+    background-color: $color--danger-hover;
+    color: $color--font-text-01;
+  }
+
+  &:active {
+    border-color: $color--danger-active;
+    background-color: $color--danger-active;
+    color: $color--font-text-01;
+  }
+}
+
+.$(prefix)--button-icon-only.$(prefix)--button-default {
+  min-width: $size--container-05;
+  max-width: $size--container-05;
   padding: 0;
 
   &:focus + .$(prefix)--tooltip--text {
@@ -217,51 +271,53 @@
   }
 }
 
-.$(prefix)--icon-only.$(prefix)--button--large {
-  min-width: $container-04;
-  max-width: $container-04;
+.$(prefix)--button-icon-only.$(prefix)--button-large {
+  min-width: $size--container-06;
+  max-width: $size--container-06;
+  padding: 0;
 }
 
-.$(prefix)--icon-only.$(prefix)--button--small {
-  min-width: $container-02;
-  max-width: $container-02;
+.$(prefix)--button-icon-only.$(prefix)--button-small {
+  min-width: $size--container-03;
+  max-width: $size--container-03;
+  padding: 0;
 }
 
-.$(prefix)--with-icon-left > .$(prefix)--button--label {
+.$(prefix)--button-icon-left > .$(prefix)--button-label {
   flex-direction: row;
 }
 
-.$(prefix)--with-icon-right > .$(prefix)--button--label {
+.$(prefix)--button-icon-right > .$(prefix)--button-label {
   flex-direction: row-reverse;
 }
 
-.$(prefix)--icon-only > div > svg {
+.$(prefix)--button-icon-only > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   stroke-width: 2px;
 }
 
-.$(prefix)--with-icon-left > div > svg {
+.$(prefix)--button-icon-left > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   margin-right: 6px;
   stroke-width: 2px;
 }
 
-.$(prefix)--with-icon-right > div > svg {
+.$(prefix)--button-icon-right > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
   margin-left: 6px;
   stroke-width: 2px;
 }
 
-.$(prefix)--button--fluid.$(prefix)--with-icon-left > div > svg {
+.$(prefix)--button-fluid.$(prefix)--button-icon-left > div > svg {
   position: absolute;
   left: 20px;
   margin-right: 0;
 }
 
-.$(prefix)--button--fluid.$(prefix)--with-icon-right > div > svg {
+.$(prefix)--button-fluid.$(prefix)--button-icon-right > div > svg {
   position: absolute;
   right: 20px;
   margin-right: 0;

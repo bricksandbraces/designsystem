@@ -13,7 +13,10 @@ export type ButtonProps = {
   children?: ReactNode;
 
   /** Specify button kind */
-  kind?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
+  kind?: "primary" | "secondary" | "tertiary" | "ghost";
+
+  /** Danger */
+  danger?: boolean;
 
   /** Specify an optional className to be added to your button */
   className?: string;
@@ -86,6 +89,7 @@ const Button = (
   {
     kind = "primary",
     size = "default",
+    danger,
     disabled,
     isLoading,
     icon,
@@ -112,7 +116,8 @@ const Button = (
             [`${prefix}--button-fluid`]: fluid,
             [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
             [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading
+            [`${prefix}--button-loading`]: isLoading,
+            [`${prefix}--button-danger`]: danger
           },
           className
         )}
@@ -146,7 +151,8 @@ const Button = (
             [`${prefix}--button-fluid`]: fluid,
             [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
             [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading
+            [`${prefix}--button-loading`]: isLoading,
+            [`${prefix}--button-danger`]: danger
           },
           className
         )}

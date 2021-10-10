@@ -47,6 +47,7 @@ export const Default = () => (
         kind={select("Kind", options, defaultValue) as any}
         size={select("Size", sizeOptions, defaultSize) as any}
         fluid={boolean("Fluid", false)}
+        danger={boolean("danger", false)}
         isLoading={boolean("is Loading?", false)}
         disabled={boolean("Disabled", false)}
       >
@@ -61,6 +62,7 @@ export const WithIcon = () => (
     <div style={{ width: "405px" }}>
       <Button
         kind={select("Kind", options, defaultValue) as any}
+        danger={boolean("danger", false)}
         size={select("Size", sizeOptions, defaultSize) as any}
         iconPosition={
           select(
@@ -84,6 +86,7 @@ export const WithIconOnly = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
       <IconOnlyButton
+        danger={boolean("danger", false)}
         kind={select("Kind", options, defaultValue) as any}
         size={select("Size", sizeOptions, defaultSize) as any}
         tooltipLabel={text("Tooltip Label", "Label") as any}
@@ -100,6 +103,7 @@ export const IconOnlyGroup = () => (
     <div style={{ width: "405px" }}>
       <ButtonGroup withDivider={boolean("withDivider", false)}>
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Align Left"
@@ -108,6 +112,7 @@ export const IconOnlyGroup = () => (
           disabled={boolean("Disabled", false)}
         />
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Center"
@@ -116,6 +121,7 @@ export const IconOnlyGroup = () => (
           disabled={boolean("Disabled", false)}
         />
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Align Right"
@@ -124,6 +130,7 @@ export const IconOnlyGroup = () => (
           disabled={boolean("Disabled", false)}
         />
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Bold"
@@ -132,6 +139,7 @@ export const IconOnlyGroup = () => (
           disabled={boolean("Disabled", false)}
         />
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Italic"
@@ -140,6 +148,7 @@ export const IconOnlyGroup = () => (
           disabled={boolean("Disabled", false)}
         />
         <IconOnlyButton
+          danger={boolean("danger", false)}
           kind={select("Kind", options, defaultValue) as any}
           size={select("Size", sizeOptions, defaultSize) as any}
           tooltipLabel="Underline"
