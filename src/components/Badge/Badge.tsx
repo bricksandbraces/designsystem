@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
 
 export type BadgeColor =
   | "red"
@@ -17,34 +16,37 @@ export type BadgeColor =
 
 type BadgeProps = {
   /**
-   * Message that is shown.
+   * Badge Message
    */
   children?: string | ReactNode;
 
   /**
-   * ClassName
+   * Badge ClassName
    */
   className?: string;
 
   /**
-   * Title
+   * Badge Title
    */
   title?: string;
 
   /**
-   * Type
+   * Badge Type
    */
   colorType?: BadgeColor;
 
+  /**
+   * Badge TabIndex
+   */
   tabIndex?: number;
 
   /**
-   * onClose function
+   * Badge onClose Function
    */
   onClose?: (event: any) => void;
 
   /**
-   * onClick Function
+   * Badge onClick Function
    */
   onClick?: (event: any) => void;
 };
@@ -66,30 +68,29 @@ const Badge = ({
           type="button"
           tabIndex={tabIndex}
           className={cx(
-            `${prefix}--badge ${prefix}--badge--interactive ${prefix}--badge--${colorType} ${prefix}--badge--${colorType}-interactive`,
+            `${prefix}--badge ${prefix}--badge-${colorType}`,
             className
           )}
         >
-          <div className={`${prefix}--badge--content`}>
-            <Label>{children}</Label>
+          <div className={`${prefix}--badge-content`}>
+            <p>{children}</p>
           </div>
         </button>
       ) : (
         <div
           tabIndex={tabIndex}
           className={cx(
-            `${prefix}--badge ${prefix}--badge--${colorType}`,
-            { [`${prefix}--badge--interactive`]: onClose },
+            `${prefix}--badge ${prefix}--badge-${colorType}`,
             className
           )}
         >
-          <div className={`${prefix}--badge--content`}>
-            <Label>{children}</Label>
+          <div className={`${prefix}--badge-content`}>
+            <p>{children}</p>
             {onClose && (
               <button
                 type="button"
                 tab-index={0}
-                className={`${prefix}--badge--close`}
+                className={`${prefix}--badge-close`}
                 title={title}
                 onClick={onClose}
               >
