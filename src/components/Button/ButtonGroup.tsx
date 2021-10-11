@@ -30,7 +30,7 @@ const ButtonGroup = ({
   <div
     className={cx(
       `${prefix}--button-group`,
-      { [`${prefix}--button-group-divider`]: withDivider },
+      { [`${prefix}--button-group__divider`]: withDivider },
       className
     )}
   >

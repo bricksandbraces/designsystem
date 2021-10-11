@@ -10,7 +10,7 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    padding: 0 16px;
+    padding: 0 $size--spacing-05;
     transition: background-color $transition--app-01,
       border-color $transition--app-01, color $transition--app-01;
     border: 0.0625rem solid;
@@ -116,41 +116,24 @@
     &-group {
       white-space: nowrap;
 
-      &-divider {
-        & > div:not(:last-child) > button {
-          &:hover {
-            &::before {
-              opacity: 0;
-            }
-          }
-
+      &__divider {
+        & > .$(prefix)--button:not(:last-child) {
           &::before {
             content: "";
             position: absolute;
-            right: -1px;
-            width: 1px;
+            right: -0.0625rem;
+            width: 0.0625rem;
             height: 50%;
             transition: ;
             transition: $transition-01;
             opacity: 1;
+            background-color: $color--divider-dark;
           }
-        }
 
-        & > div:not(:last-child) > .$(prefix)--button-primary {
-          &::before {
-            background-color: $interactive-primary-hover;
-          }
-        }
-
-        & > div:not(:last-child) > .$(prefix)--button-secondary {
-          &::before {
-            background-color: $interactive-secondary-hover;
-          }
-        }
-
-        & > div:not(:last-child) > .$(prefix)--button-ghost {
-          &::before {
-            background-color: $interactive-ghost-hover;
+          &:hover {
+            &::before {
+              opacity: 0;
+            }
           }
         }
       }
@@ -158,8 +141,14 @@
       & > .$(prefix)--button-tertiary:not(:last-child) {
         border-right: 0;
 
-        & > .$(prefix)--button--label {
-          transform: translateX(-1px);
+        & > .$(prefix)--button-label {
+          transform: translateX(-0.0625rem);
+        }
+      }
+
+      & > .$(prefix)--button-ghost:not(:last-child) {
+        &::before {
+          background-color: $color--divider-light;
         }
       }
 
@@ -168,13 +157,13 @@
       }
 
       & > button:first-child {
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
+        border-top-left-radius: $component--radius-default;
+        border-bottom-left-radius: $component--radius-default;
       }
 
       & > button:last-child {
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
+        border-top-right-radius: $component--radius-default;
+        border-bottom-right-radius: $component--radius-default;
       }
     }
   }
@@ -294,39 +283,39 @@
 .$(prefix)--button-icon-only > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  stroke-width: 2px;
+  stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-left > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  margin-right: 6px;
-  stroke-width: 2px;
+  margin-right: $size--spacing-03;
+  stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-right > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  margin-left: 6px;
-  stroke-width: 2px;
+  margin-left: $size--spacing-03;
+  stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-fluid.$(prefix)--button-icon-left > div > svg {
   position: absolute;
-  left: 20px;
+  left: $size--spacing-06;
   margin-right: 0;
 }
 
 .$(prefix)--button-fluid.$(prefix)--button-icon-right > div > svg {
   position: absolute;
-  right: 20px;
+  right: $size--spacing-06;
   margin-right: 0;
 }
 
 .$(prefix)--spinner-border.$(prefix)--loading {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 2px solid currentColor;
+  width: $size--container-01;
+  height: $size--container-01;
+  border: 0.125rem solid currentColor;
   border-right-color: transparent;
 }
