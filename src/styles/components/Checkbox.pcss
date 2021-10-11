@@ -9,6 +9,96 @@
     margin-bottom: 0.5rem;
     color: $color--font-text-01;
 
+    &
+      > .$(prefix)--checkbox-input[type="checkbox"]
+      + label
+      > .$(prefix)--checkbox-check {
+      & > .$(prefix)--checkbox-check__mark {
+        visibility: hidden;
+      }
+
+      & > .$(prefix)--checkbox-check__box {
+        fill: $color--background;
+      }
+    }
+
+    &
+      > .$(prefix)--checkbox-input[type="checkbox"]:disabled
+      + .$(prefix)--checkbox-label {
+      cursor: not-allowed;
+
+      & > .$(prefix)--checkbox-check {
+        & > .$(prefix)--checkbox-check__box {
+          fill: transparent;
+        }
+        & > .$(prefix)--checkbox-check__mark {
+          stroke: $color--font-disabled;
+        }
+      }
+
+      & * {
+        color: $color--font-disabled;
+      }
+    }
+
+    & > [type="checkbox"]:checked + label > .$(prefix)--checkbox-check {
+      color: $color--app-05;
+      & > .$(prefix)--checkbox-check__mark {
+        visibility: visible;
+        stroke-width: 0.125rem;
+        color: $color--app-01;
+      }
+
+      & > .$(prefix)--checkbox-check__box {
+        fill: $color--app-05;
+      }
+    }
+
+    &
+      > .$(prefix)--checkbox-input[type="checkbox"]:focus-visible
+      + .$(prefix)--checkbox-label
+      > svg {
+      outline: 0.0625rem solid $color--focus;
+    }
+
+    &-readonly {
+      color: $color--font-readonly;
+
+      &
+        > .$(prefix)--checkbox-input[type="checkbox"]
+        + label
+        > .$(prefix)--checkbox-check
+        > .$(prefix)--checkbox-check__box {
+        stroke: $color--readonly;
+        fill: transparent;
+      }
+
+      &
+        > .$(prefix)--checkbox-input[type="checkbox"]:checked
+        + label
+        > .$(prefix)--checkbox-check
+        > .$(prefix)--checkbox-check__box {
+        stroke: $color--readonly;
+        fill: $color--readonly;
+      }
+
+      & > input,
+      label {
+        pointer-events: none;
+        user-select: none;
+      }
+
+      & > label > .$(prefix)--checkbox-check {
+        & > .$(prefix)--checkbox-check__box {
+          stroke: $color--readonly;
+        }
+
+        & > .$(prefix)--checkbox-check__mark {
+          stroke: $color--font-readonly;
+        }
+      }
+    }
+
     &-label {
       @mixin type--body-02;
 
@@ -35,59 +125,4 @@
       color: $color--app-03;
     }
   }
-}
-
-/* Checkmark */
-
-.$(prefix)--checkbox
-  input[type="checkbox"]
-  + label
-  > .$(prefix)--checkbox-check {
-  & > .$(prefix)--checkbox-check__mark {
-    visibility: hidden;
-  }
-
-  & > .$(prefix)--checkbox-check__box {
-    fill: transparent;
-  }
-}
-
-.$(prefix)--checkbox-input[type="checkbox"]:disabled
-  + .$(prefix)--checkbox-label {
-  cursor: not-allowed;
-
-  & > .$(prefix)--checkbox-check {
-    & > .$(prefix)--checkbox-check__box {
-      fill: $color--disabled;
-    }
-    & > .$(prefix)--checkbox-check__mark {
-      stroke: $color--font-disabled;
-    }
-  }
-
-  & * {
-    color: $color--font-disabled;
-  }
-}
-
-.$(prefix)--checkbox
-  input[type="checkbox"]:checked
-  + label
-  > .$(prefix)--checkbox-check {
-  color: $color--app-05;
-  & > .$(prefix)--checkbox-check__mark {
-    visibility: visible;
-    stroke-width: 0.125rem;
-    color: $color--app-01;
-  }
-
-  & > .$(prefix)--checkbox-check__box {
-    fill: $color--app-05;
-  }
-}
-
-.$(prefix)--checkbox-input[type="checkbox"]:focus-visible
-  + .$(prefix)--checkbox-label
-  > svg {
-  outline: 0.0625rem solid $color--focus;
 }

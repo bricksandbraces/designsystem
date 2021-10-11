@@ -10,12 +10,12 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
         />
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox-2"
           defaultChecked
           value="c2"
@@ -31,12 +31,12 @@ export const Controlled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
         />
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox-2"
           checked={checked}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -54,14 +54,15 @@ export const WithChildren = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
         />
         <Checkbox
-          label={text("Label", "Checkbox label")}
+          label={text("label", "Checkbox label")}
           id="checkbox-2"
-          disabled={boolean("Checkbox 2 disabled", false)}
+          readOnly={boolean("readOnly (Checkbox 2)", false)}
+          disabled={boolean("disabled (Checkbox 2)", false)}
           value="c2"
         >
           <Body type="b2" style={{ marginTop: "8px", display: "block" }}>

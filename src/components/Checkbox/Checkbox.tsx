@@ -24,6 +24,11 @@ type CheckboxProps = {
   label?: string;
 
   /**
+   * Checkbox Read-Only
+   */
+  readOnly?: boolean;
+
+  /**
    * Checked values
    */
   checked?: boolean;
@@ -39,13 +44,20 @@ const Checkbox = ({
   checked,
   defaultChecked,
   label,
+  readOnly,
   className,
   children,
   onChange,
   ...rest
 }: CheckboxProps) => {
   return (
-    <div className={cx(`${prefix}--checkbox`, className)}>
+    <div
+      className={cx(
+        `${prefix}--checkbox`,
+        { [`${prefix}--checkbox-readonly`]: readOnly },
+        className
+      )}
+    >
       <input
         tabIndex={0}
         className={`${prefix}--checkbox-input`}
