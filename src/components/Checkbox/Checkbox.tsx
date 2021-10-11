@@ -4,24 +4,19 @@ import { prefix } from "../../settings";
 
 type CheckboxProps = {
   /**
-   * React className
+   * Checkbox ClassName
    */
   className?: string;
 
   /**
-   * Checkbox ID
+   * Checkbox Id
    */
   id: string;
 
   /**
-   * Children
+   * Checkbox Children
    */
   children?: ReactNode;
-
-  /**
-   * Checkbox Value
-   */
-  value: string;
 
   /**
    * Checkbox Label
@@ -35,6 +30,7 @@ type CheckboxProps = {
   defaultChecked?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
+  value: string;
 };
 
 const Checkbox = ({
@@ -52,7 +48,7 @@ const Checkbox = ({
     <div className={cx(`${prefix}--checkbox`, className)}>
       <input
         tabIndex={0}
-        className={`${prefix}--checkbox--input`}
+        className={`${prefix}--checkbox-input`}
         type="checkbox"
         value={value}
         id={id}
@@ -61,9 +57,9 @@ const Checkbox = ({
         onChange={onChange}
         {...rest}
       />
-      <label className={`${prefix}--checkbox--label`} htmlFor={id}>
+      <label className={`${prefix}--checkbox-label`} htmlFor={id}>
         <svg
-          className={`${prefix}--checkbox--check`}
+          className={`${prefix}--checkbox-check`}
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -80,20 +76,20 @@ const Checkbox = ({
             width="16"
             height="16"
             rx="2"
-            className={`${prefix}--checkbox--check-box`}
+            className={`${prefix}--checkbox-check__box`}
           />
           <path
             d="M9 12l2 2l4 -4"
-            className={`${prefix}--checkbox--check-mark`}
+            className={`${prefix}--checkbox-check__mark`}
           />
         </svg>
 
         <div>
           {label && (
-            <div className={`${prefix}--checkbox--label-text`}>{label}</div>
+            <div className={`${prefix}--checkbox-label__text`}>{label}</div>
           )}
           {children && (
-            <div className={`${prefix}--checkbox--content`}>{children}</div>
+            <div className={`${prefix}--checkbox-content`}>{children}</div>
           )}
         </div>
       </label>
