@@ -5,62 +5,104 @@ import { prefix } from "../../settings";
 import TTooltip from "../TTooltip/TTooltip";
 
 export type IconOnlyButtonProps = {
-  /** Unique identifier for your button */
+  /**
+   * Button Id
+   */
   id?: string;
 
-  /** Specify button kind */
+  /**
+   * Button Children
+   */
+  children?: ReactNode;
+
+  /**
+   * Button Kind
+   */
   kind?: "primary" | "secondary" | "tertiary" | "ghost";
 
+  /**
+   * Danger
+   */
   danger?: boolean;
 
-  /** Specify an optional className to be added to your button */
+  /**
+   * Button ClassName
+   */
   className?: string;
-  wrapperClassName?: string;
 
-  /** Use the button as an anchor link. Sets component wrapping type to 'a' instead of 'button'. */
+  /**
+   * Button Href (sets the button to anchor)
+   */
   href?: string;
 
-  title?: string;
-
-  /** Provide the click handler for the button */
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-
-  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-
-  /** Triggered when the event receives focus */
-  onFocus?: React.FocusEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  /** Triggered when the event drops focus */
-  onBlur?: React.FocusEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-
-  /** Specify the type of the button */
+  /**
+   * Button type
+   */
   type?: "button" | "submit" | "reset";
 
-  /** Specify the role of the button */
+  /**
+   * Button role
+   */
   role?: string;
 
-  /** Specify the Loading description of the button */
+  /**
+   * Button loadingDescription
+   */
   loadingDescription?: string;
 
-  /** Set the button disabled */
+  /**
+   * Button disabled
+   */
   disabled?: boolean;
 
-  /** Button size */
+  /**
+   * Button size
+   */
   size?: "large" | "default" | "small";
 
-  /** Render icon */
-  icon: ReactNode;
+  /**
+   * Button icon
+   */
+  icon?: ReactNode;
 
-  /** Set the button loading */
+  /**
+   * Button iconPosition
+   */
+  iconPosition?: "right" | "left";
+
+  /**
+   * Button fluid
+   */
+  fluid?: boolean;
+
+  /**
+   * Button title
+   */
+  title?: string;
+
+  /**
+   * Tab index for the button
+   */
+  tabIndex?: number;
+
+  /**
+   * Button isLoading
+   */
   isLoading?: boolean;
 
-  /** Tooltip label */
+  /**
+   * Button Tooltip label
+   */
   tooltipLabel?: string;
 
-  /** Tooltip label position */
+  /**
+   * Button Tooltip label position
+   */
   tooltipPosition?: "top" | "bottom" | "left" | "right";
 
-  /** Automatically focus the button */
+  /**
+   * Automatically focus the button
+   */
   autoFocus?: boolean;
 };
 
@@ -71,7 +113,6 @@ const IconOnlyButton = ({
   tooltipLabel = "Tooltip Label",
   disabled,
   isLoading,
-  wrapperClassName,
   href,
   className,
   icon,
@@ -89,7 +130,6 @@ const IconOnlyButton = ({
       kind={kind}
       size={size}
       danger={danger}
-      withIcon
       icon={icon}
       isLoading={isLoading}
       loadingDescription={loadingDescription}

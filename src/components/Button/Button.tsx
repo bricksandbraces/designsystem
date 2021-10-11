@@ -6,77 +6,109 @@ import { prefix } from "../../settings";
 type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
 
 export type ButtonProps = {
-  /** Unique identifier for your button */
+  /**
+   * Button Id
+   */
   id?: string;
 
-  /** Specify the content of your button */
+  /**
+   * Button Children
+   */
   children?: ReactNode;
 
-  /** Specify button kind */
+  /**
+   * Button Kind
+   */
   kind?: "primary" | "secondary" | "tertiary" | "ghost";
 
-  /** Danger */
+  /**
+   * Danger
+   */
   danger?: boolean;
 
-  /** Specify an optional className to be added to your button */
+  /**
+   * Button ClassName
+   */
   className?: string;
 
-  /** Use the button as an anchor link. Sets component wrapping type to 'a' instead of 'button'. */
+  /**
+   * Button Href (sets the button to anchor)
+   */
   href?: string;
 
-  /** Provide the click handler for the button */
+  /**
+   * Button onClick
+   */
   onClick?: React.MouseEventHandler<ButtonOrAnchor>;
-  /** Provide a listener for the mouseenter event */
+
+  /**
+   * Button onMouseEnter
+   */
   onMouseEnter?: React.MouseEventHandler<ButtonOrAnchor>;
-  /** Provide a listener for the mouseleave event */
+
+  /**
+   * Button onMouseLeace
+   */
   onMouseLeave?: React.MouseEventHandler<ButtonOrAnchor>;
 
-  /** Triggered when the event receives focus */
+  /**
+   * Button onFocus
+   */
   onFocus?: (event: FocusEvent<ButtonOrAnchor>) => void;
 
-  /** Specify the type of the button */
+  /**
+   * Button type
+   */
   type?: "button" | "submit" | "reset";
 
-  /** Specify the role of the button */
+  /**
+   * Button role
+   */
   role?: string;
 
-  /** Specify the Loading description of the button */
+  /**
+   * Button loadingDescription
+   */
   loadingDescription?: string;
 
-  /** Set the button disabled */
+  /**
+   * Button disabled
+   */
   disabled?: boolean;
 
-  /** Button size */
+  /**
+   * Button size
+   */
   size?: "large" | "default" | "small";
 
-  /** Render icon */
+  /**
+   * Button icon
+   */
   icon?: ReactNode;
-  iconPosition?: "right" | "left" | "only";
 
-  /** Set the button loading */
+  /**
+   * Button iconPosition
+   */
+  iconPosition?: "right" | "left";
+
+  /**
+   * Button loading
+   */
   isLoading?: boolean;
 
-  /** Set the button fluid */
+  /**
+   * Button fluid
+   */
   fluid?: boolean;
 
+  /**
+   * Button title
+   */
   title?: string;
 
-  /** Enables tooltip */
-  showTooltip?: boolean;
-
-  /** Shows Icon */
-  withIcon?: boolean;
-
-  /** Tooltip label */
-  tooltipLabel?: string;
-
-  /** Tooltip label */
-  tooltipPosition?: "top" | "bottom" | "left" | "right";
-
-  /** Tooltip open */
-  tooltipOpen?: boolean;
-
-  /** Automatically focus the button */
+  /** 
+   * Automatically focus the button 
+   */
   autoFocus?: boolean;
 
   /**
@@ -93,7 +125,6 @@ const Button = (
     disabled,
     isLoading,
     icon,
-    withIcon,
     className,
     iconPosition,
     children,
