@@ -37,20 +37,21 @@ const Avatar = ({
   return (
     <div className={cx(`${prefix}--avatar-container`, className)}>
       <div className={cx(`${prefix}--avatar ${prefix}--avatar-${size}`)}>
-        {imgUrl && (
+        {imgUrl ? (
           <img src={imgUrl} className={`${prefix}--avatar-img`} alt={name} />
+        ) : (
+          <span className={`${prefix}--avatar-alt`}>
+            {children}
+            <p className={`${prefix}--avatar-alt__text`}>
+              {!children &&
+                !imgUrl &&
+                name
+                  ?.split(" ")
+                  .map((str) => str[0] ?? "")
+                  .join("")}
+            </p>
+          </span>
         )}
-        <span className={`${prefix}--avatar-alt`}>
-          {children}
-          <p className={`${prefix}--avatar-alt__text`}>
-            {!children &&
-              !imgUrl &&
-              name
-                ?.split(" ")
-                .map((str) => str[0] ?? "")
-                .join("")}
-          </p>
-        </span>
       </div>
     </div>
   );

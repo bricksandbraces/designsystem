@@ -5,19 +5,22 @@
 .$(prefix) {
   &--accordion {
     &-small > ul > li,
-    &-small > ul > li > button {
+    &-small > ul > li > button,
+    &-small > .$(prefix)--skeleton {
       min-height: $size--container-03;
       max-height: $size--container-03;
     }
 
     &-default > ul > li,
-    &-default > ul > li > button {
+    &-default > ul > li > button,
+    &-default > .$(prefix)--skeleton {
       min-height: $size--container-05;
       max-height: $size--container-05;
     }
 
     &-large > ul > li,
-    &-large > ul > li > button {
+    &-large > ul > li > button,
+    &-large > .$(prefix)--skeleton {
       min-height: $size--container-06;
       max-height: $size--container-06;
     }
@@ -118,6 +121,21 @@
             animation: accordionTransitionIn $transition--app-01;
           }
         }
+      }
+    }
+  }
+  &--accordion.$(prefix)--skeleton {
+    padding: $component--padding-inside;
+    gap: $component--padding-inside;
+
+    & > .$(prefix)--skeleton-static {
+      box-sizing: content-box;
+      justify-content: space-between;
+      padding: 0 $size--spacing-04;
+
+      & > svg {
+        transform: translateX(-1px);
+        stroke: $color--skeleton-02;
       }
     }
   }

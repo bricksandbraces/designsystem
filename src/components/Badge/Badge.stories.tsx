@@ -1,6 +1,7 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Badge from "./Badge";
+import BadgeSkeleton from "./BadgeSkeleton";
 
 export default { title: "Components/Badge", decorators: [withKnobs] };
 
@@ -55,6 +56,16 @@ export const Interactive = () => {
       >
         Badge
       </Badge>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ padding: "32px", display: "flex", gap: "8px" }}>
+      <BadgeSkeleton />
+      <BadgeSkeleton />
+      <BadgeSkeleton />
     </div>
   );
 };

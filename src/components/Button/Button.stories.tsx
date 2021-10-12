@@ -13,6 +13,8 @@ import {
 import Button from "./Button";
 import IconOnlyButton from "./IconOnlyButton";
 import ButtonGroup from "./ButtonGroup";
+import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
+import ButtonSkeleton from "./ButtonSkeleton";
 
 export default { title: "Components/Button", decorators: [withKnobs] };
 
@@ -145,6 +147,17 @@ export const IconOnlyGroup = () => (
           icon={<IconUnderline />}
         />
       </ButtonGroup>
+    </div>
+  </div>
+);
+
+export const Skeleton = () => (
+  <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+    <div style={{ width: "405px", display: "flex", gap: "24px" }}>
+      <IconOnlyButtonSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
+      <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
     </div>
   </div>
 );

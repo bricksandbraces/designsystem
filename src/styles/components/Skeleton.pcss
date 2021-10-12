@@ -4,46 +4,53 @@
 @keyframes loading {
   0%,
   100% {
-    background-color: $skeleton-01;
+    background-color: $color--skeleton-01;
+    color: $color--skeleton-01;
   }
 
   50% {
-    background-color: $skeleton-02;
+    background-color: $color--skeleton-02;
+    color: $color--skeleton-02;
   }
 }
 
 .$(prefix)--skeleton {
-  width: 128px;
-  animation: loading $transition-04 infinite;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 $size--spacing-05;
+  border: 1px solid currentColor;
   border-radius: 2px;
 
-  &--default {
-    height: $container-03;
+  &-animated {
+    animation: loading $transition-04 infinite;
   }
 
-  &--large {
-    height: $container-04;
+  &-static {
+    background-color: $color--skeleton-03;
+    color: $color--skeleton-03;
   }
 
-  &--small {
-    height: $container-02;
+  &-fullwidth {
+    min-width: 100%;
+    max-width: 100%;
   }
 
-  &--circle.$(prefix)--skeleton--small {
-    width: $container-02;
-    height: $container-02;
-    border-radius: 50%;
-  }
+  &-text {
+    border-radius: 1px;
+    opacity: 25%;
+    background-color: $color--skeleton-03;
 
-  &--circle.$(prefix)--skeleton--default {
-    width: $container-03;
-    height: $container-03;
-    border-radius: 50%;
-  }
+    &__small {
+      height: calc($size--container-01 / 2);
+    }
 
-  &--circle.$(prefix)--skeleton--large {
-    width: $container-04;
-    height: $container-04;
-    border-radius: 50%;
+    &__default {
+      height: $size--container-01;
+    }
+
+    &__large {
+      height: $size--container-02;
+    }
   }
 }

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Accordion from "./Accordion";
 import { Grid, Column } from "../Grid/Grid";
 import AccordionItem from "./AccordionItem";
+import AccordionSkeleton from "./AccordionSkeleton";
 
 export default { title: "Components/Accordion", decorators: [withKnobs] };
 
@@ -57,6 +58,20 @@ export const Controlled = () => {
             <AccordionItem title="Title 2">Content 2</AccordionItem>
             <AccordionItem title="Title 3">Content 3</AccordionItem>
           </Accordion>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ margin: "32px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <AccordionSkeleton
+            size={select("Size", sizeOptions, defaultSize) as any}
+          />
         </Column>
       </Grid>
     </div>

@@ -8,11 +8,12 @@ import {
 import React from "react";
 import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons";
 import Avatar from "./Avatar";
-import { Grid, Column } from "../Grid/Grid";
 import AvatarGroup from "./AvatarGroup";
 import AvatarList from "./AvatarList";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import Button from "../Button/Button";
+import AvatarSkeleton from "./AvatarSkeleton";
+import AvatarGroupSkeleton from "./AvatarGroupSkeleton";
 
 export default { title: "Components/Avatar", decorators: [withKnobs] };
 
@@ -27,18 +28,14 @@ const defaultSize = "default";
 export const Default = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <Avatar
-            name={text("name", "Erika Musterfrau")}
-            size={select("size", sizeOptions, defaultSize) as any}
-            imgUrl={text(
-              "imgUrl",
-              "https://randomuser.me/api/portraits/men/74.jpg"
-            )}
-          />
-        </Column>
-      </Grid>
+      <Avatar
+        name={text("name", "Erika Musterfrau")}
+        size={select("size", sizeOptions, defaultSize) as any}
+        imgUrl={text(
+          "imgUrl",
+          "https://randomuser.me/api/portraits/men/74.jpg"
+        )}
+      />
     </div>
   );
 };
@@ -46,14 +43,10 @@ export const Default = () => {
 export const WithLetter = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <Avatar
-            name={text("name", "Erika Musterfrau")}
-            size={select("size", sizeOptions, defaultSize) as any}
-          />
-        </Column>
-      </Grid>
+      <Avatar
+        name={text("name", "Erika Musterfrau")}
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };
@@ -61,16 +54,12 @@ export const WithLetter = () => {
 export const WithIcon = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <Avatar
-            name={text("name", "Erika Musterfrau")}
-            size={select("size", sizeOptions, defaultSize) as any}
-          >
-            <IconUser />
-          </Avatar>
-        </Column>
-      </Grid>
+      <Avatar
+        name={text("name", "Erika Musterfrau")}
+        size={select("size", sizeOptions, defaultSize) as any}
+      >
+        <IconUser />
+      </Avatar>
     </div>
   );
 };
@@ -78,33 +67,29 @@ export const WithIcon = () => {
 export const Group = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <AvatarGroup size={select("size", sizeOptions, defaultSize) as any}>
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name="Erika Musterfrau"
-              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name="Erika Musterfrau"
-              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name="Erika Musterfrau"
-              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
-            >
-              <IconUser />
-            </Avatar>
-          </AvatarGroup>
-        </Column>
-      </Grid>
+      <AvatarGroup size={select("size", sizeOptions, defaultSize) as any}>
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name="Erika Musterfrau"
+          imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name="Erika Musterfrau"
+          imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name="Erika Musterfrau"
+          imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+        >
+          <IconUser />
+        </Avatar>
+      </AvatarGroup>
     </div>
   );
 };
@@ -112,37 +97,33 @@ export const Group = () => {
 export const GroupWithTrigger = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <AvatarGroup
-            itemsToDisplay={number("Items to display", 2)}
-            handleMoreClick={() => {}}
-            size={select("size", sizeOptions, defaultSize) as any}
-          >
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              size={select("size", sizeOptions, defaultSize) as any}
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
-            >
-              <IconUser />
-            </Avatar>
-          </AvatarGroup>
-        </Column>
-      </Grid>
+      <AvatarGroup
+        itemsToDisplay={number("Items to display", 2)}
+        handleMoreClick={() => {}}
+        size={select("size", sizeOptions, defaultSize) as any}
+      >
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          size={select("size", sizeOptions, defaultSize) as any}
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+        >
+          <IconUser />
+        </Avatar>
+      </AvatarGroup>
     </div>
   );
 };
@@ -150,52 +131,48 @@ export const GroupWithTrigger = () => {
 export const GroupWithAddButton = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <AvatarGroup
-            itemsToDisplay={3}
-            handleMoreClick={() => {}}
-            handleAddClick={() => {}}
-            size={select("size", sizeOptions, defaultSize) as any}
-          >
-            <Avatar
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
-              size={select("size", sizeOptions, defaultSize) as any}
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
-              size={select("size", sizeOptions, defaultSize) as any}
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              name={text("Name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
-              size={select("size", sizeOptions, defaultSize) as any}
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
-              size={select("size", sizeOptions, defaultSize) as any}
-            >
-              <IconUser />
-            </Avatar>
-            <Avatar
-              name={text("name", "Erika Musterfrau")}
-              imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
-              size={select("size", sizeOptions, defaultSize) as any}
-            >
-              <IconUser />
-            </Avatar>
-          </AvatarGroup>
-        </Column>
-      </Grid>
+      <AvatarGroup
+        itemsToDisplay={3}
+        handleMoreClick={() => {}}
+        handleAddClick={() => {}}
+        size={select("size", sizeOptions, defaultSize) as any}
+      >
+        <Avatar
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
+          size={select("size", sizeOptions, defaultSize) as any}
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/88.jpg"
+          size={select("size", sizeOptions, defaultSize) as any}
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          name={text("Name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+          size={select("size", sizeOptions, defaultSize) as any}
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+          size={select("size", sizeOptions, defaultSize) as any}
+        >
+          <IconUser />
+        </Avatar>
+        <Avatar
+          name={text("name", "Erika Musterfrau")}
+          imgUrl="https://randomuser.me/api/portraits/women/48.jpg"
+          size={select("size", sizeOptions, defaultSize) as any}
+        >
+          <IconUser />
+        </Avatar>
+      </AvatarGroup>
     </div>
   );
 };
@@ -322,6 +299,17 @@ export const ListWithChildren = () => {
           kind="ghost"
         />
       </AvatarList>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ margin: "32px", display: "flex", gap: "16px" }}>
+      <AvatarSkeleton size={select("size", sizeOptions, defaultSize) as any} />
+      <AvatarGroupSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };
