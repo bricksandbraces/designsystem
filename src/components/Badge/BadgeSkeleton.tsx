@@ -2,7 +2,6 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonText from "../Skeleton/SkeletonText";
 
 type BadgeSkeletonProps = {
   /**
@@ -20,9 +19,7 @@ const BadgeSkeleton = ({ className }: BadgeSkeletonProps) => {
 
         className
       )}
-    >
-      <SkeletonText width="100%" size="small" />
-    </SkeletonAnimatedContainer>
+    />
   );
 };
 

@@ -38,6 +38,7 @@ const SkeletonAnimatedContainer = ({
       }
     >
       {children}
+      <div className={`${prefix}--skeleton-animated__wiper`} />
     </div>
   );
 };

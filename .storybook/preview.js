@@ -23,6 +23,7 @@ export const parameters = {
       { name: "white", value: "#ffffff" },
       { name: "dark", value: "#808080" },
       { name: "black", value: "#000000" },
+      { name: "app-bg", value: "#18181b" },
       {
         name: "random-img-background",
         value: 'url("https://picsum.photos/seed/picsum/1920/1080")'
