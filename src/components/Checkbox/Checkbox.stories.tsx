@@ -2,6 +2,7 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
 import Checkbox from "./Checkbox";
+import CheckboxSkeleton from "./CheckboxSkeleton";
 
 export default { title: "Components/Checkbox", decorators: [withKnobs] };
 
@@ -73,6 +74,17 @@ export const WithChildren = () => {
             Lorem ipsum dolor sit amet.
           </Body>
         </Checkbox>
+      </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <CheckboxSkeleton />
+        <CheckboxSkeleton />
       </div>
     </div>
   );

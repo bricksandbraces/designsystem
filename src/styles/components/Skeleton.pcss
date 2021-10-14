@@ -18,11 +18,14 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 0 $size--spacing-05;
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: 2px;
   cursor: progress;
+
+  &-container {
+    cursor: progress;
+  }
 
   &-animated {
     position: relative;
@@ -43,6 +46,20 @@
         $color--skeleton-01,
         rgba($color--skeleton-02, 0.25),
         $color--skeleton-01
+      );
+    }
+  }
+
+  &-animated.$(prefix)--skeleton-light {
+    opacity: 0.5;
+    background-color: $color--skeleton-02;
+
+    & > .$(prefix)--skeleton-animated__wiper {
+      background: linear-gradient(
+        90deg,
+        $color--skeleton-02,
+        rgba($color--skeleton-03, 0.25),
+        $color--skeleton-02
       );
     }
   }

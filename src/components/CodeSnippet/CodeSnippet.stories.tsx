@@ -1,11 +1,12 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CodeSnippet from "./CodeSnippet";
+import CodeSnippetSkeleton from "./CodeSnippetSkeleton";
 
 export default { title: "Components/CodeSnippet", decorators: [withKnobs] };
 
 export const Default = () => (
-  <>
+  <div style={{ padding: "32px" }}>
     <CodeSnippet
       code={`"scripts": {
     "build": "lerna run build --stream --prefix --npm-client yarn",
@@ -37,5 +38,11 @@ export const Default = () => (
     "@babel/runtime": "^7.10.0",
     "@commitlint/cli": "^8.3.5",`}
     />
-  </>
+  </div>
+);
+
+export const Skeleton = () => (
+  <div style={{ padding: "32px" }}>
+    <CodeSnippetSkeleton />
+  </div>
 );

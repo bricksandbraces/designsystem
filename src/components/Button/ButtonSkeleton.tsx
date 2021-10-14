@@ -5,21 +5,28 @@ import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 
 export type ButtonSkeletonProps = {
   /**
-   * Button ClassName
+   * ButtonSkeleton ClassName
    */
   className?: string;
 
   /**
-   * Button size
+   * ButtonSkeleton Size
    */
   size?: "large" | "default" | "small";
+
+  /**
+   * ButtonSkeleton Light
+   */
+  light?: boolean;
 };
 
 const ButtonSkeleton = ({
   size = "default",
+  light,
   className
 }: ButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
+    light={light}
     width={128}
     className={cx(
       `${prefix}--button-${size}`,

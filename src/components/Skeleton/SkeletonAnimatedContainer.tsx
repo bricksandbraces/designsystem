@@ -14,6 +14,11 @@ type SkeletonAnimatedContainerProps = {
   className?: string;
 
   /**
+   * light
+   */
+  light?: boolean;
+
+  /**
    * Width
    */
   width?: number | "100%" | "80%" | "50%";
@@ -21,6 +26,7 @@ type SkeletonAnimatedContainerProps = {
 
 const SkeletonAnimatedContainer = ({
   width,
+  light,
   children,
 
   className
@@ -29,6 +35,7 @@ const SkeletonAnimatedContainer = ({
     <div
       className={cx(
         `${prefix}--skeleton ${prefix}--skeleton-animated`,
+        { [`${prefix}--skeleton-light`]: light },
         className
       )}
       style={

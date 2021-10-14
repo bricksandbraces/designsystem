@@ -16,10 +16,6 @@
       & > .$(prefix)--checkbox-check__mark {
         visibility: hidden;
       }
-
-      & > .$(prefix)--checkbox-check__box {
-        fill: $color--background;
-      }
     }
 
     &
@@ -123,6 +119,24 @@
       margin-right: $size--spacing-03;
       transition: outline $transition--app-01;
       color: $color--app-03;
+    }
+  }
+
+  &--checkbox.$(prefix)--skeleton-container {
+    display: flex;
+    align-items: flex-start;
+    & > .$(prefix)--checkbox-check {
+      transform: translate(-1px, -2px);
+      stroke: $color--skeleton-02;
+    }
+    & > .$(prefix)--skeleton-animated.$(prefix)--checkbox {
+      margin: 0;
+    }
+    & > .$(prefix)--skeleton-animated {
+      border: 0;
+      &:first-child {
+        margin-right: $size--spacing-03;
+      }
     }
   }
 }

@@ -5,21 +5,28 @@ import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 
 export type IconOnlyButtonSkeletonProps = {
   /**
-   * Button ClassName
+   * IconOnlyButtonSkeleton ClassName
    */
   className?: string;
 
   /**
-   * Button size
+   * IconOnlyButtonSkeleton Size
    */
   size?: "large" | "default" | "small";
+
+  /**
+   * IconOnlyButtonSkeleton Light
+   */
+  light?: boolean;
 };
 
 const IconOnlyButtonSkeleton = ({
   size = "default",
+  light,
   className
 }: IconOnlyButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
+    light={light}
     className={cx(
       `${prefix}--button-icon-only ${prefix}--button-${size}`,
 
