@@ -2,7 +2,10 @@ import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import FormLabel from "./FormLabel";
 
-export default { title: "Components/FormLabel", decorators: [withKnobs] };
+export default {
+  title: "Components/Z_DEPRECATED_FormLabel",
+  decorators: [withKnobs]
+};
 
 export const Default = () => {
   return (

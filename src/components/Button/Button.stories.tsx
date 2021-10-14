@@ -16,7 +16,7 @@ import ButtonGroup from "./ButtonGroup";
 import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
 import ButtonSkeleton from "./ButtonSkeleton";
 
-export default { title: "Components/Button", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Button", decorators: [withKnobs] };
 
 const options = {
   Primary: "primary",

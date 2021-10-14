@@ -22,7 +22,7 @@
         align-items: center;
         justify-content: flex-end;
         width: 100%;
-        height: $size--container-05;
+        height: calc($size--field-small + ($size--spacing-03 * 2));
         padding: $size--spacing-03;
         border-top: 0.0625rem solid $color--border-default;
         background-color: rgba($color--background, 1);
@@ -31,7 +31,7 @@
     }
 
     &-innercontainer {
-      min-height: $size--container-05;
+      min-height: $size--field-default;
       max-height: $size--container-08;
       padding: $size--spacing-05 $size--spacing-05 $size--spacing-10
         $size--spacing-05;

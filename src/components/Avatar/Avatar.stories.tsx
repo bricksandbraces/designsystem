@@ -15,7 +15,7 @@ import Button from "../Button/Button";
 import AvatarSkeleton from "./AvatarSkeleton";
 import AvatarGroupSkeleton from "./AvatarGroupSkeleton";
 
-export default { title: "Components/Avatar", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Avatar", decorators: [withKnobs] };
 
 const sizeOptions = {
   Small: "small",

@@ -3,7 +3,10 @@ import React from "react";
 import AspectRatio from "./AspectRatio";
 import { prefix } from "../../settings";
 
-export default { title: "Components/AspectRatio", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_AspectRatio",
+  decorators: [withKnobs]
+};
 
 const ratio = {
   "1x1": "1x1",

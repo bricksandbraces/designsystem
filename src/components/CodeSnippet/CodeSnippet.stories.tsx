@@ -3,7 +3,10 @@ import React from "react";
 import CodeSnippet from "./CodeSnippet";
 import CodeSnippetSkeleton from "./CodeSnippetSkeleton";
 
-export default { title: "Components/CodeSnippet", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_CodeSnippet",
+  decorators: [withKnobs]
+};
 
 export const Default = () => (
   <div style={{ padding: "32px" }}>

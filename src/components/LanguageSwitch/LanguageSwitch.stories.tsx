@@ -2,7 +2,10 @@ import { object, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import LanguageSwitch from "./LanguageSwitch";
 
-export default { title: "Components/LanguageSwitch", decorators: [withKnobs] };
+export default {
+  title: "Components/Z_DEPRECATED_LanguageSwitch",
+  decorators: [withKnobs]
+};
 
 export const Uncontrolled = () => {
   return (

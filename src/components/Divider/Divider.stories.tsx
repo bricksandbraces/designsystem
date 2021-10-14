@@ -1,34 +1,22 @@
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Divider from "./Divider";
 
-export default { title: "Components/Divider", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Divider", decorators: [withKnobs] };
 
 const options = {
   subtle: "subtle",
   default: "default",
-  explicit: "explicit"
+  harsh: "harsh"
 };
 
 const defaultKind = "default";
 
-const sizeOptions = {
-  thin: "thin",
-  thicker: "thicker",
-  thick: "thick"
-};
-
-const defaultSizeValue = "thin";
-
 export const Default = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Divider
-          kind={select("Kind", options, defaultKind) as any}
-          size={select("Size", sizeOptions, defaultSizeValue) as any}
-          margin={boolean("Margin", true)}
-        />
+        <Divider type={select("type", options, defaultKind) as any} />
       </div>
     </div>
   );

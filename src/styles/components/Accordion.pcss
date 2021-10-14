@@ -10,22 +10,22 @@
     &-small > ul > li,
     &-small > ul > li > button,
     &-small > .$(prefix)--skeleton {
-      min-height: $size--container-03;
-      max-height: $size--container-03;
+      min-height: $size--field-small;
+      max-height: $size--field-small;
     }
 
     &-default > ul > li,
     &-default > ul > li > button,
     &-default > .$(prefix)--skeleton {
-      min-height: $size--container-05;
-      max-height: $size--container-05;
+      min-height: $size--field-default;
+      max-height: $size--field-default;
     }
 
     &-large > ul > li,
     &-large > ul > li > button,
     &-large > .$(prefix)--skeleton {
-      min-height: $size--container-06;
-      max-height: $size--container-06;
+      min-height: $size--field-large;
+      max-height: $size--field-large;
     }
 
     &-list {
@@ -39,7 +39,7 @@
       &__item {
         box-sizing: content-box;
         height: 100%;
-        max-height: $size--container-05;
+        max-height: $size--field-default;
         margin: $component--padding-inside;
         overflow: hidden;
         transition: max-height $transition--app-01;

@@ -4,7 +4,7 @@ import Body from "../Typography/Body";
 import Checkbox from "./Checkbox";
 import CheckboxSkeleton from "./CheckboxSkeleton";
 
-export default { title: "Components/Checkbox", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Checkbox", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
