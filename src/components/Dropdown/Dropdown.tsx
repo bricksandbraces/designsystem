@@ -8,77 +8,76 @@ import {
 import { findNextItem } from "../../helpers/arrayUtilities";
 import useControlled from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
-import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
-import Body from "../Typography/Body";
+import Label from "../Typography/Label";
 
 type DropdownItem = {
   /**
-   * Dropdown ID
+   * DropdownItem Id
    */
   id?: string;
 
   /**
-   * Dropdown Value
+   * DropdownItem Value
    */
   value: string;
 
   /**
-   * Checkbox Label
+   * DropdownItem Label
    */
   text: string;
 
   /**
-   * Disabled item
+   * DropdownItem Disabled
    */
   disabled?: boolean;
 };
 
 type DropdownProps = {
   /**
-   * Mandatory id
+   * Dropdown Id
    */
   id: string;
 
   /**
-   * React className
+   * Dropdown ClassName
    */
   className?: string;
 
   /**
-   * Dropdown size
+   * Dropdown Size
    */
   size?: "large" | "small" | "default";
 
   /**
-   * Dropdown label
+   * Dropdown Label
    */
   label?: string;
 
   /**
-   * Disabled dropdown
+   * Dropdown Disabled
    */
   disabled?: boolean;
 
   /**
-   * Error
+   * Dropdown Error
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * Warning
+   * Dropdown Warning
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * Dropdown title
+   * Dropdown Title
    */
   title: string;
 
   /**
-   * Dropdown items
+   * Dropdown Items
    */
   items: DropdownItem[];
 
@@ -181,49 +180,47 @@ const Dropdown = ({
   };
 
   return (
-    <div className={`${prefix}--dropdown--wrapper`}>
-      <FormLabel htmlFor={`${id}-toggle-button`}>{label}</FormLabel>
+    <div
+      className={cx(
+        `${prefix}--dropdown`,
+        {
+          [`${prefix}--dropdown-error`]: error || errorText,
+          [`${prefix}--dropdown-warning`]:
+            !(error || errorText) && (warning || warningText)
+        },
+        className
+      )}
+    >
+      <Label htmlFor={`${id}-toggle-button`}>{label}</Label>
       <button
         id={`${id}-toggle-button`}
         disabled={disabled}
         ref={btnRef}
         aria-expanded={open}
-        className={cx(
-          `${prefix}--dropdown ${prefix}--dropdown--${size}`,
-          {
-            [`${prefix}--drodown--error`]: error || errorText,
-            [`${prefix}--dropdown--warning`]:
-              !(error || errorText) && (warning || warningText)
-          },
-          className
-        )}
+        className={cx(`${prefix}--dropdown-${size} ${prefix}--dropdown-toggle`)}
         onClick={() => {
           setOpen(!open);
         }}
       >
-        <Body
-          type="b2"
-          className={`${prefix}--dropdown--title`}
-          title={selectedText}
-        >
+        <p className={`${prefix}--dropdown-toggle__title`} title={selectedText}>
           {selectedValue == null ? title : selectedText}
-        </Body>
+        </p>
         <IconChevronDown
           size={16}
-          className={cx(`${prefix}--dropdown--icon`, {
-            [`${prefix}--dropdown--icon-open`]: open
+          className={cx(`${prefix}--dropdown-icon`, {
+            [`${prefix}--dropdown-icon__open`]: open
           })}
         />
       </button>
       {errorText && !warningText && (
-        <div className={`${prefix}--dropdown--error-text`}>
+        <div className={`${prefix}--dropdown-error__text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--dropdown--warning-text`}>
+        <div className={`${prefix}--dropdown-warning__text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}
@@ -238,8 +235,8 @@ const Dropdown = ({
       >
         <ul
           role="menu"
-          className={cx(`${prefix}--dropdown--menu`, {
-            [`${prefix}--dropdown--menu-open`]: open
+          className={cx(`${prefix}--dropdown-menu`, {
+            [`${prefix}--dropdown-menu__open`]: open
           })}
           aria-hidden={!open}
         >
@@ -248,10 +245,10 @@ const Dropdown = ({
               <li
                 key={item.value}
                 className={cx(
-                  `${prefix}--dropdown--menu-item ${prefix}--dropdown--${size}`,
+                  `${prefix}--dropdown-menu__item ${prefix}--dropdown-${size}`,
                   {
-                    [`${prefix}--dropdown--menu-item__disabled`]: item.disabled,
-                    [`${prefix}--dropdown--menu-item__selected`]:
+                    [`${prefix}--dropdown-menu__item-disabled`]: item.disabled,
+                    [`${prefix}--dropdown-menu__item-selected`]:
                       selectedValue === item.value
                   }
                 )}
@@ -261,7 +258,7 @@ const Dropdown = ({
               >
                 <div
                   role="button"
-                  className={`${prefix}--dropdown--menu-item__interactible`}
+                  className={`${prefix}--dropdown-menu__item-interactible`}
                   tabIndex={item.disabled || !open ? -1 : 0}
                   onClick={(event) => {
                     selectValue(item.value, event);
@@ -272,7 +269,7 @@ const Dropdown = ({
                   }
                 >
                   <div
-                    className={`${prefix}--dropdown--menu-item__text`}
+                    className={`${prefix}--dropdown-menu__item-text`}
                     role="button"
                   >
                     <span title={item.text}>{item.text}</span>

@@ -1,5 +1,6 @@
 @import "../prefix.pcss";
 @import "../typography.pcss";
+@import "../theme.pcss";
 
 .$(prefix)--typography {
   &--caption {
@@ -8,6 +9,9 @@
 
   &--label {
     @mixin type--label;
+
+    margin-bottom: $size--spacing-03;
+    color: $color--font-text-03;
   }
 
   &--b1 {
