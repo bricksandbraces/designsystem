@@ -7,6 +7,7 @@ import {
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
+import DropdownSkeleton from "./DropdownSkeleton";
 
 export default { title: "Components/A_REFA_Dropdown", decorators: [withKnobs] };
 
@@ -87,6 +88,14 @@ export const Controlled = () => {
           setSelectedValue(newValue);
         }}
       />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <DropdownSkeleton />
     </div>
   );
 };

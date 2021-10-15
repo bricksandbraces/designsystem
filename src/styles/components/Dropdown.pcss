@@ -229,6 +229,17 @@
       }
     }
   }
+  &--dropdown.$(prefix)--skeleton {
+    align-items: flex-start;
+
+    & > .$(prefix)--skeleton {
+      justify-content: flex-end;
+      padding: 0 $size--spacing-05;
+      & > svg {
+        stroke: $color--skeleton-02;
+      }
+    }
+  }
 }
 
 .$(prefix)--dropdown-menu__item.$(prefix)--dropdown-menu__item-selected {
