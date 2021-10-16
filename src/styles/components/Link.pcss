@@ -2,81 +2,116 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--link {
-  @mixin type--body-02;
-
-  display: inline-block;
-  transform: translateY(0.0625rem);
-  border: 0;
-  outline: 0.0625rem solid transparent;
-  outline-offset: 2px;
-  background-color: transparent;
-  color: $link-font;
-  text-decoration: none;
-  vertical-align: baseline;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0.0625rem;
-    transition: width $transition-02, opacity $transition-02;
-    opacity: 0;
-    background: currentColor;
-    pointer-events: none;
-  }
-
-  &:hover {
-    color: $link-font;
-
-    &::after {
-      width: 100%;
-      opacity: 1;
-    }
-  }
-
-  &:focus-visible {
-    outline: 0.0625rem solid white;
-  }
-
-  &--inherit {
-    font-size: inherit;
-    line-height: inherit;
-  }
-
-  &--label {
-    display: flex;
-    flex-wrap: nowrap;
+.$(prefix) {
+  &--link {
+    display: inline-flex;
     align-items: center;
-    font-size: inherit;
-  }
+    transition: outline $transition--app-01;
+    border: 0;
+    outline: 0.0625rem solid transparent;
+    outline-offset: $size--spacing-01;
+    background-color: transparent;
+    color: $link-font;
+    text-decoration: none;
+    vertical-align: baseline;
 
-  &--label > svg {
-    width: 16px;
-    height: 16px;
-    margin-left: 6px;
+    &-small {
+      & > .$(prefix)--link-label {
+        @mixin type--label;
+      }
+
+      & > .$(prefix)--link-label + svg {
+        width: calc($size--container-01 * 0.75);
+        height: calc($size--container-01 * 0.75);
+      }
+    }
+
+    &-default {
+      & > .$(prefix)--link-label {
+        @mixin type--body-02;
+      }
+
+      & > .$(prefix)--link-label + svg {
+        width: $size--container-01;
+        height: $size--container-01;
+      }
+    }
+
+    &-large {
+      & > .$(prefix)--link-label {
+        @mixin type--body-01;
+      }
+
+      & > .$(prefix)--link-label + svg {
+        width: calc($size--container-01 * 1.25);
+        height: calc($size--container-01 * 1.25);
+      }
+    }
+
+    &:hover {
+      color: $link-font;
+
+      & > .$(prefix)--link-label {
+        &::after {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 0.0625rem solid white;
+    }
+
+    &-label {
+      display: flex;
+      position: relative;
+      align-items: center;
+      transition: color $transition--app-01;
+      font-size: inherit;
+      line-height: inherit;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0.0625rem;
+        transition: width $transition--app-02, opacity $transition--app-02,
+          background-color $transition--app-01;
+        opacity: 0;
+        background: currentColor;
+        pointer-events: none;
+      }
+    }
+
+    &-label + svg {
+      width: $size--container-01;
+      height: $size--container-01;
+      margin-left: $size--spacing-03;
+    }
   }
 }
 
-.$(prefix)--link.$(prefix)--link--inline {
+.$(prefix)--link.$(prefix)--link-inline {
   font-size: inherit;
   line-height: inherit;
 
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 0.0625rem;
-    opacity: 1;
-    background: currentColor;
-    pointer-events: none;
+  & > .$(prefix)--link-label {
+    color: $color--font-link;
+    &::after {
+      bottom: $size--spacing-01;
+      width: 100%;
+      opacity: 1;
+      background: currentColor;
+      pointer-events: none;
+    }
   }
 
   &:hover {
-    color: $link-inline-hover;
-  }
-
-  &:active {
-    color: $link-inline-active;
+    & > .$(prefix)--link-label {
+      color: $color--font-link-hover;
+    }
   }
 }

@@ -2,8 +2,8 @@ import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
-import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
+import Label from "../Typography/Label";
 
 type TextAreaProps = {
   /**
@@ -108,7 +108,7 @@ const TextArea = (
   return (
     <div className={`${prefix}--textarea`}>
       <div className={`${prefix}--textarea--top`}>
-        {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
+        {label && <Label htmlFor={id}>{label}</Label>}
         {characterLimit && (
           <div
             className={cx(`${prefix}--textarea--char-counter`, {

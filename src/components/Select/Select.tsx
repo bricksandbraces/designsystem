@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import FormLabel from "../FormLabel/FormLabel";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
+import Label from "../Typography/Label";
 
 type SelectOptionGroup = { group: string; options: SelectOption[] };
 
@@ -114,7 +114,7 @@ const Select = ({
 
   return (
     <div className={cx(`${prefix}--select`, className)}>
-      <FormLabel htmlFor={id}>{label}</FormLabel>
+      <Label htmlFor={id}>{label}</Label>
       <div className={cx(`${prefix}--select--input-wrapper`)}>
         <select
           className={cx(`${prefix}--select--input ${prefix}--select--${size}`, {

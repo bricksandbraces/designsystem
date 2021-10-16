@@ -1,22 +1,52 @@
-import { text, boolean, withKnobs } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { IconArrowNarrowRight } from "@tabler/icons";
 import React from "react";
+import Body from "../Typography/Body";
 import Link from "./Link";
 
-export default { title: "Components/Link", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Link", decorators: [withKnobs] };
+
+const sizeOptions = {
+  Large: "large",
+  Small: "small",
+  Default: "default"
+};
+
+const defaultSize = "default";
 
 export const Default = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Link
           href="https://google.de"
           target="_blank"
-          inline={boolean("Inline", false)}
+          icon={<IconArrowNarrowRight />}
+          size={select("size", sizeOptions, defaultSize) as any}
         >
-          {text("Link label", "Link text")}
-          <IconArrowNarrowRight />
+          {text("children", "Link text")}
         </Link>
+      </div>
+    </div>
+  );
+};
+
+export const Inline = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px", color: "white" }}>
+        <Body type="b2">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet.&nbsp;
+          <Link href="https://google.de" target="_blank" inline>
+            Stet clita kasd
+          </Link>
+          &nbsp;gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          amet.
+        </Body>
       </div>
     </div>
   );

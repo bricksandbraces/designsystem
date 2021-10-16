@@ -45,10 +45,8 @@ import TableCell from "./components/DataTable/TableCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
 import { HeaderData, RowData } from "./components/DataTable/DataTable";
-import LanguageSwitch from "./components/LanguageSwitch/LanguageSwitch";
 import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
-import FormLabel from "./components/FormLabel/FormLabel";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
 import Skeleton from "./components/Skeleton/SkeletonAnimatedContainer";
@@ -107,11 +105,9 @@ export {
   TableRow,
   TableHeadCell,
   TableHead,
-  LanguageSwitch,
   FloatingPanel,
   RadioButton,
   RadioButtonGroup,
-  FormLabel,
   Select,
   Toggle,
   Skeleton,

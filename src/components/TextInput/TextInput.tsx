@@ -2,8 +2,8 @@ import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
-import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
+import Label from "../Typography/Label";
 
 type TextInputProps = {
   /**
@@ -117,7 +117,7 @@ const TextInput = (
         [`${prefix}--textinput--fluid`]: fluid
       })}
     >
-      {label && !fluid && <FormLabel htmlFor={id}>{label}</FormLabel>}
+      {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--textinput--input-container`}>
         <input
           id={id}

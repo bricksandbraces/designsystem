@@ -107,7 +107,7 @@
         display: flex;
         align-items: center;
         margin-top: $size--spacing-03;
-        color: $color--danger;
+        color: $color--font-danger;
 
         & > svg {
           margin-right: $size--spacing-02;
@@ -124,7 +124,7 @@
         display: flex;
         align-items: center;
         margin-top: $size--spacing-03;
-        color: $color--warning;
+        color: $color--font-warning;
 
         & > svg {
           margin-right: $size--spacing-02;
@@ -231,11 +231,14 @@
   }
   &--dropdown.$(prefix)--skeleton {
     align-items: flex-start;
+    transform: translateY(0.0625rem);
 
     & > .$(prefix)--skeleton {
       justify-content: flex-end;
+      appearance: auto;
       padding: 0 $size--spacing-05;
       & > svg {
+        transform: translateX(-0.0625rem);
         stroke: $color--skeleton-02;
       }
     }
