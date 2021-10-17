@@ -10,15 +10,15 @@
     width: $size--container-08;
 
     &-default {
-      height: $container-03;
+      height: $size--container-04;
     }
 
     &-large {
-      height: $container-04;
+      height: $size--container-05;
     }
 
     &-small {
-      height: $container-02;
+      height: $size--container-03;
     }
 
     &-fluid {
@@ -29,7 +29,7 @@
         &:focus + .$(prefix)--numberinput-fluid__label {
           @mixin type--label;
 
-          transform: translateY(-10px);
+          transform: translateY(-0.625rem);
         }
       }
 
@@ -39,14 +39,14 @@
         position: absolute;
         top: calc($size--spacing-05 + 6px);
         left: calc($size--spacing-05 + 0.0625rem);
-        transition: $transition--app-01;
+        transition: transform $transition--app-01;
         color: $color--font-text-03;
         pointer-events: none;
 
         &-value {
           @mixin type--label;
 
-          transform: translateY(-10px);
+          transform: translateY(-0.625rem);
         }
       }
     }
@@ -54,6 +54,7 @@
     &-input {
       @mixin type--body-02;
 
+      width: 100%;
       padding: 0 $size--spacing-05;
       transition: border $transition--app-01;
       border: 0.0625rem solid $color--border-default;
@@ -62,18 +63,47 @@
       background-color: $color--background;
       color: $color--font-text-01;
 
+      &::placeholder {
+        transition: transform $transition--app-01, opacity $transition--app-01;
+        color: $color--font-placeholder;
+      }
+
       &:focus {
-        border-color: $color--focus;
+        border-color: $textinput-focus;
 
         &::placeholder {
-          transform: translateX(2px);
+          transform: translateX($size--spacing-01);
           opacity: 0;
         }
       }
 
-      &::placeholder {
-        transition: $transition--app-01;
-        color: $color--font-placeholder;
+      &:disabled {
+        border-color: $color--disabled;
+        background-color: $color--disabled;
+        color: $color--font-disabled;
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: $color--font-disabled;
+        }
+
+        & + label {
+          color: $color--font-disabled;
+        }
+      }
+
+      &[readonly] {
+        border-color: $color--readonly;
+        background-color: $color--readonly;
+        color: $color--font-readonly;
+
+        &::placeholder {
+          color: $color--font-readonly;
+        }
+
+        & + label {
+          color: $color--font-readonly;
+        }
       }
 
       &__container {
@@ -116,16 +146,5 @@
         }
       }
     }
-  }
-}
-
-input:disabled {
-  border-color: $textinput-disabled-border;
-  background-color: $textinput-disabled-background;
-  color: $textinput-disabled-font;
-  cursor: not-allowed;
-
-  &::placeholder {
-    color: $textinput-disabled-font;
   }
 }

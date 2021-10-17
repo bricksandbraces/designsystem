@@ -2,190 +2,213 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--textinput {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+.$(prefix) {
+  &--textinput {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: $size--container-08;
 
-  &--fluid {
-    & > div > .$(prefix)--textinput--input {
-      height: $container-05;
-      padding-top: 20px;
+    &-default {
+      height: $size--container-04;
+    }
 
-      &:focus + .$(prefix)--textinput--fluid-label {
-        @mixin type--label;
+    &-large {
+      height: $size--container-05;
+    }
 
-        transform: translateY(-10px);
+    &-small {
+      height: $size--container-03;
+    }
+
+    &-fluid {
+      & > div > .$(prefix)--textinput-input {
+        height: $size--container-06;
+        padding-top: calc($size--spacing-05 * 1.25);
+
+        &:focus + .$(prefix)--textinput--fluid-label {
+          @mixin type--label;
+
+          transform: translateY(-0.625rem);
+        }
+      }
+
+      &
+        > div
+        > .$(prefix)--textinput-togglepassword
+        > .$(prefix)--button.$(prefix)--icon-only.$(prefix)--button-ghost {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
+        margin-top: $size--spacing-03;
+        margin-right: $size--spacing-03;
+        border-radius: $component--radius-default;
+      }
+
+      &__label {
+        @mixin type--body-02;
+
+        position: absolute;
+        top: calc($size--spacing-05 + 6px);
+        left: calc($size--spacing-05 + 0.0625rem);
+        transition: transform $transition--app-01;
+        color: $color--font-text-03;
+        pointer-events: none;
+
+        &__value {
+          @mixin type--label;
+
+          transform: translateY(-0.625rem);
+        }
       }
     }
 
-    &
-      > div
-      > .$(prefix)--textinput--togglepassword
-      > .$(prefix)--button.$(prefix)--icon-only.$(prefix)--button--ghost {
-      min-width: calc($container-01);
-      max-width: calc($container-01);
-      min-height: calc($container-01);
-      max-height: calc($container-01);
-      margin-top: 8px;
-      margin-right: 8px;
-      border-radius: 2px;
-    }
-
-    &-label {
+    &-input {
       @mixin type--body-02;
 
-      position: absolute;
-      top: calc($spacing-04 + 6px);
-      left: calc($spacing-04 + 0.0625rem);
-      transition: $transition-01;
-      color: $textinput-fluid-label-font;
-      pointer-events: none;
-
-      &__value {
-        @mixin type--label;
-
-        transform: translateY(-10px);
-      }
-    }
-  }
-
-  &--input {
-    @mixin type--body-02;
-
-    padding: 0 16px;
-    transition: border $transition-01;
-    border: 0.0625rem solid $textinput-border;
-    border-radius: $border-radius-2;
-    outline: 0;
-    background-color: $textinput-background;
-    color: $textinput-font;
-
-    &:focus {
-      border-color: $textinput-focus;
+      width: 100%;
+      padding: 0 $size--spacing-05;
+      transition: border $transition--app-01;
+      border: 0.0625rem solid $color--border-default;
+      border-radius: $component--radius-default;
+      outline: 0;
+      background-color: $color--background;
+      color: $color--font-text-01;
 
       &::placeholder {
-        transform: translateX(2px);
-        opacity: 0;
+        transition: transform $transition--app-01, opacity $transition--app-01;
+        color: $color--font-placeholder;
+      }
+
+      &:focus {
+        border-color: $textinput-focus;
+
+        &::placeholder {
+          transform: translateX($size--spacing-01);
+          opacity: 0;
+        }
+      }
+
+      &:disabled {
+        border-color: $color--disabled;
+        background-color: $color--disabled;
+        color: $color--font-disabled;
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: $color--font-disabled;
+        }
+
+        & + label {
+          color: $color--font-disabled;
+        }
+      }
+
+      &[readonly] {
+        border-color: $color--readonly;
+        background-color: $color--readonly;
+        color: $color--font-readonly;
+
+        &::placeholder {
+          color: $color--font-readonly;
+        }
+
+        & + label {
+          color: $color--font-readonly;
+        }
+      }
+
+      &[type="password"] {
+        font-family: Arial, sans-serif;
+        letter-spacing: 2px;
+
+        &::placeholder {
+          @mixin type--body-02;
+
+          color: $textinput-disabled-font;
+          color: $textinput-placeholder;
+          letter-spacing: initial;
+        }
+      }
+
+      &-container {
+        display: flex;
+        position: relative;
+        flex-direction: column;
       }
     }
 
-    &::placeholder {
-      transition: $transition-01;
-      color: $textinput-placeholder;
-    }
+    &-togglepassword {
+      position: absolute;
+      top: 0;
+      right: 0;
 
-    &-container {
-      display: flex;
-      position: relative;
-      flex-direction: column;
-    }
-  }
+      &
+        .$(prefix)--button.$(prefix)--button-icon-only..$(prefix)--button-ghost {
+        margin-top: 0.0625rem;
+        margin-right: 0.0625rem;
+        margin-bottom: 0.0625rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0.0625rem;
+        border-bottom-right-radius: 0.0625rem;
+        border-bottom-left-radius: 0;
+      }
 
-  &--togglepassword {
-    position: absolute;
-    top: 0;
-    right: 0;
+      & .$(prefix)--button.icon-only.button--default {
+        min-width: calc($container-03 - 2px);
+        max-width: calc($container-03 - 2px);
+        min-height: calc($container-03 - 2px);
+        max-height: calc($container-03 - 2px);
+      }
 
-    & .$(prefix)--button.icon-only.button--ghost {
-      margin-top: 0.0625rem;
-      margin-right: 0.0625rem;
-      margin-bottom: 0.0625rem;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0.0625rem;
-      border-bottom-right-radius: 0.0625rem;
-      border-bottom-left-radius: 0;
-    }
+      & .$(prefix)--button.icon-only.button--small {
+        min-width: calc($container-02 - 2px);
+        max-width: calc($container-02 - 2px);
+        min-height: calc($container-02 - 2px);
+        max-height: calc($container-02 - 2px);
+      }
 
-    & .$(prefix)--button.icon-only.button--default {
-      min-width: calc($container-03 - 2px);
-      max-width: calc($container-03 - 2px);
-      min-height: calc($container-03 - 2px);
-      max-height: calc($container-03 - 2px);
-    }
-
-    & .$(prefix)--button.icon-only.button--small {
-      min-width: calc($container-02 - 2px);
-      max-width: calc($container-02 - 2px);
-      min-height: calc($container-02 - 2px);
-      max-height: calc($container-02 - 2px);
-    }
-
-    & .$(prefix)--button.icon-only.button--large {
-      min-width: calc($container-04 - 2px);
-      max-width: calc($container-04 - 2px);
-      min-height: calc($container-04 - 2px);
-      max-height: calc($container-04 - 2px);
-    }
-  }
-
-  &--default {
-    height: $container-03;
-  }
-
-  &--large {
-    height: $container-04;
-  }
-
-  &--small {
-    height: $container-02;
-  }
-
-  &--error {
-    border-color: $textinput-border-error;
-
-    &-text {
-      @mixin type--label;
-
-      display: flex;
-      align-items: center;
-      margin-top: $spacing-02;
-      color: $textinput-font-error;
-
-      & > svg {
-        margin-right: $spacing-02;
+      & .$(prefix)--button.icon-only.button--large {
+        min-width: calc($container-04 - 2px);
+        max-width: calc($container-04 - 2px);
+        min-height: calc($container-04 - 2px);
+        max-height: calc($container-04 - 2px);
       }
     }
-  }
 
-  &--warning {
-    border-color: $textinput-border-warning;
+    &-error {
+      border-color: $color--danger;
 
-    &-text {
-      @mixin type--label;
+      &__text {
+        @mixin type--label;
 
-      display: flex;
-      align-items: center;
-      margin-top: $spacing-02;
-      color: $textinput-font-warning;
+        display: flex;
+        align-items: center;
+        margin-top: $size--spacing-02;
+        color: $color--font-danger;
 
-      & > svg {
-        margin-right: $spacing-02;
+        & > svg {
+          margin-right: $size--spacing-02;
+        }
       }
     }
-  }
-}
 
-input:disabled {
-  border-color: $textinput-disabled-border;
-  background-color: $textinput-disabled-background;
-  color: $textinput-disabled-font;
-  cursor: not-allowed;
+    &-warning {
+      border-color: $color--warning;
 
-  &::placeholder {
-    color: $textinput-disabled-font;
-  }
-}
+      &__text {
+        @mixin type--label;
 
-input[type="password"] {
-  font-family: Arial, sans-serif;
-  letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+        margin-top: $size--spacing-02;
+        color: $color--font-warning;
 
-  &::placeholder {
-    @mixin type--body-02;
-
-    color: $textinput-disabled-font;
-    color: $textinput-placeholder;
-    letter-spacing: initial;
+        & > svg {
+          margin-right: $size--spacing-02;
+        }
+      }
+    }
   }
 }

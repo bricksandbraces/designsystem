@@ -6,7 +6,7 @@ import useControlled from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import TextInput from "../TextInput/TextInput";
+import NumberInput from "../NumberInput/NumberInput";
 
 type RangeInputProps = {
   /**
@@ -69,7 +69,7 @@ type RangeInputProps = {
   /**
    * RangeInput Hide TextInput
    */
-  hideTextInput?: boolean;
+  hideInput?: boolean;
 };
 
 const RangeInput = ({
@@ -84,7 +84,7 @@ const RangeInput = ({
   step = 1,
   marks,
   disabled,
-  hideTextInput,
+  hideInput,
   className,
   onChange
 }: RangeInputProps) => {
@@ -125,24 +125,25 @@ const RangeInput = ({
             {maxLabel ?? max}
           </span>
         </div>
-        <TextInput
-          className="range-input--range-input"
-          type={hideTextInput ? "hidden" : "number"}
-          disabled={disabled}
-          id={id}
-          min={min}
-          max={max}
-          step={step}
-          value={sliderValue}
-          onChange={(event) => {
-            const newValue = clamp((event.target.value as any) * 1, min, max);
-            if (!controlled) {
-              setLocalValue(newValue);
-            }
+        {!hideInput && (
+          <NumberInput
+            className="range-input--range-input"
+            disabled={disabled}
+            id={id}
+            min={min}
+            max={max}
+            step={step}
+            value={sliderValue}
+            onChange={(event) => {
+              const newValue = clamp((event.target.value as any) * 1, min, max);
+              if (!controlled) {
+                setLocalValue(newValue);
+              }
 
-            onChange?.(newValue);
-          }}
-        />
+              onChange?.(newValue);
+            }}
+          />
+        )}
       </div>
     </div>
   );

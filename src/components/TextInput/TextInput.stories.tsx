@@ -18,6 +18,8 @@ export const Uncontrolled = () => {
       <TextInput
         fluid={boolean("Fluid variant?", false)}
         warningText={text("warningText", "")}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
@@ -36,6 +38,8 @@ export const Controlled = () => {
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextInput
         fluid={boolean("Fluid variant?", false)}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}

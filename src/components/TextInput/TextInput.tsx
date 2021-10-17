@@ -12,34 +12,44 @@ type TextInputProps = {
   className?: string;
 
   /**
-   * Label
+   * TextInput Label
    */
   label?: string;
 
   /**
-   * Placeholder text
+   * TextInput Placeholder
    */
   placeholder?: string;
 
   /**
-   * Id
+   * TextInput Id
    */
   id?: string;
 
   /**
-   * Error state & text
+   * TextInput Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * TextInput ReadOnly
+   */
+  readOnly?: boolean;
+
+  /**
+   * TextInput Error State & Text
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * Error state & text
+   * TextInput Warning State & Text
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * Input Type
+   * TextInput Type
    */
   type?:
     | "password"
@@ -52,37 +62,37 @@ type TextInputProps = {
     | "hidden";
 
   /**
-   * Container size
+   * TextInput Size
    */
   size?: "default" | "small" | "large";
 
   /**
-   * Autocomplete
+   * TextInput AutoComplete
    */
   autoComplete?: "off" | "on";
 
   /**
-   * Default Value
+   * TextInput Default Value
    */
   defaultValue?: string;
 
   /**
-   * Value
+   * TextInput Value
    */
   value?: string;
 
   /**
-   * Value
+   * TextInput Fluid
    */
   fluid?: boolean;
 
   /**
-   * OnChange Function
+   * TextInput OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
-   * ReactChildren
+   * TextInput Children
    */
   children?: React.ReactNode;
 };
@@ -97,6 +107,8 @@ const TextInput = (
     type = "text",
     value,
     defaultValue,
+    disabled,
+    readOnly,
     autoComplete,
     onChange,
     error,
@@ -122,24 +134,25 @@ const TextInput = (
   return (
     <div
       className={cx(`${prefix}--textinput`, {
-        [`${prefix}--textinput--fluid`]: fluid
+        [`${prefix}--textinput-fluid`]: fluid
       })}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
-      <div className={`${prefix}--textinput--input-container`}>
+      <div className={`${prefix}--textinput-input__container`}>
         <input
           id={id}
           ref={ref}
+          disabled={disabled}
+          readOnly={readOnly}
           className={cx(
-            `${prefix}--textinput--input`,
+            `${prefix}--textinput-input`,
             {
-              [`${prefix}--textinput--large`]: size === "large" && !fluid,
-              [`${prefix}--textinput--default`]:
-                (size === "default" && !fluid) || undefined,
-              [`${prefix}--textinput--small`]: size === "small" && !fluid,
-              [`${prefix}--textinput--error`]:
+              [`${prefix}--textinput-large`]: size === "large" && !fluid,
+              [`${prefix}--textinput-default`]: size === "default" && !fluid,
+              [`${prefix}--textinput-small`]: size === "small" && !fluid,
+              [`${prefix}--textinput-error`]:
                 (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput--warning`]:
+              [`${prefix}--textinput-warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -157,8 +170,8 @@ const TextInput = (
         />
         {fluid && (
           <label
-            className={cx(`${prefix}--textinput--fluid-label`, {
-              [`${prefix}--textinput--fluid-label__value`]: textValue !== ""
+            className={cx(`${prefix}--textinput-fluid__label`, {
+              [`${prefix}--textinput--fluid__label-value`]: textValue !== ""
             })}
           >
             {placeholder}
@@ -167,14 +180,14 @@ const TextInput = (
         {children}
       </div>
       {errorText && !warningText && (
-        <div className={`${prefix}--textinput--error-text`}>
+        <div className={`${prefix}--textinput-error__text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--textinput--warning-text`}>
+        <div className={`${prefix}--textinput-warning__text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}

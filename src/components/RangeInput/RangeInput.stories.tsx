@@ -14,7 +14,7 @@ export const Default = () => {
           min={30}
           max={50}
           defaultValue={40}
-          hideTextInput={boolean("hideTextInput", false)}
+          hideInput={boolean("hideInput", false)}
         />
       </div>
     </div>
@@ -35,7 +35,7 @@ export const Controlled = () => {
           onChange={(newValue) => {
             setValue(newValue);
           }}
-          hideTextInput={boolean("hideTextInput", false)}
+          hideInput={boolean("hideInput", false)}
         />
       </div>
     </div>

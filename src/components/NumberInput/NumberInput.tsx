@@ -64,9 +64,24 @@ type NumberInputProps = {
   max?: number;
 
   /**
+   * NumberInput Step
+   */
+  step?: number;
+
+  /**
    * NumberInput Fluid
    */
   fluid?: boolean;
+
+  /**
+   * NumberInput Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * NumberInput ReadOnly
+   */
+  readOnly?: boolean;
 
   /**
    * NumberInput OnChange Function
@@ -89,10 +104,13 @@ const NumberInput = (
     value,
     defaultValue,
     onChange,
+    readOnly,
     min,
     max,
     error,
     errorText,
+    step,
+    disabled,
     warning,
     warningText,
     size = "default",
@@ -121,6 +139,9 @@ const NumberInput = (
       <div className={`${prefix}--numberinput-input__container`}>
         <input
           id={id}
+          disabled={disabled}
+          readOnly={readOnly}
+          step={step}
           ref={ref}
           min={min}
           max={max}

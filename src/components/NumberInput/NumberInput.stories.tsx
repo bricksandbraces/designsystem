@@ -2,7 +2,10 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import NumberInput from "./NumberInput";
 
-export default { title: "Components/NumberInput", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_NumberInput",
+  decorators: [withKnobs]
+};
 
 const sizeOptions = {
   Default: "default",
@@ -17,6 +20,8 @@ export const Uncontrolled = () => {
     <div style={{ height: "100vh", padding: "32px" }}>
       <NumberInput
         fluid={boolean("fluid", false)}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("size", sizeOptions, defaultSize) as any}
@@ -37,6 +42,8 @@ export const Controlled = () => {
     <div style={{ height: "100vh", padding: "32px" }}>
       <NumberInput
         fluid={boolean("fluid", false)}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("size", sizeOptions, defaultSize) as any}
@@ -48,7 +55,6 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.valueAsNumber);
-          console.log(value);
         }}
       />
     </div>
