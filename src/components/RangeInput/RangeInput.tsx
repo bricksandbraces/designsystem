@@ -62,9 +62,19 @@ type RangeInputProps = {
   onChange?: (newValue: number) => void;
 
   /**
+   * RangeInput Size
+   */
+  size?: "default" | "small" | "large";
+
+  /**
    * RangeInput Disabled
    */
   disabled?: boolean;
+
+  /**
+   * RangeInput ReadOnly
+   */
+  readOnly?: boolean;
 
   /**
    * RangeInput Hide TextInput
@@ -81,10 +91,12 @@ const RangeInput = ({
   minLabel,
   max,
   maxLabel,
+  size,
   step = 1,
   marks,
   disabled,
   hideInput,
+  readOnly,
   className,
   onChange
 }: RangeInputProps) => {
@@ -99,39 +111,29 @@ const RangeInput = ({
   }, [value]);
 
   return (
-    <div className={cx(`${prefix}--rangeinput`, className)}>
+    <div
+      className={cx(
+        `${prefix}--rangeinput`,
+        {
+          [`${prefix}--rangeinput-disabled`]: disabled,
+          [`${prefix}--rangeinput-readonly`]: readOnly
+        },
+        className
+      )}
+    >
       <Label htmlFor={id} id={`${id}-label`}>
         {label}
       </Label>
       <div className={cx(`${prefix}--rangeinput-container`)}>
-        <div className="range-input--slider-container">
-          <Slider
-            className={cx(`${prefix}--rangeinput-slider`)}
-            min={min}
-            max={max}
-            value={sliderValue}
-            step={step}
-            marks={marks}
-            onChange={(newValue) => {
-              if (!controlled) {
-                setLocalValue(newValue);
-              }
-
-              onChange?.(newValue);
-            }}
-          />
-          <span className={cx(`${prefix}--rangeinput-slider__label`)}>
-            {minLabel ?? min}
-            {maxLabel ?? max}
-          </span>
-        </div>
         {!hideInput && (
           <NumberInput
-            className="range-input--range-input"
+            className={cx(`${prefix}--rangeinput-numberinput`)}
             disabled={disabled}
             id={id}
+            size={size}
             min={min}
             max={max}
+            readOnly={readOnly}
             step={step}
             value={sliderValue}
             onChange={(event) => {
@@ -144,6 +146,30 @@ const RangeInput = ({
             }}
           />
         )}
+        <div className={cx(`${prefix}--rangeinput-slider__container`)}>
+          <span className={cx(`${prefix}--rangeinput-slider__label`)}>
+            {minLabel ?? min}
+          </span>
+          <Slider
+            className={cx(`${prefix}--rangeinput-slider`)}
+            min={min}
+            max={max}
+            disabled={disabled || readOnly}
+            value={sliderValue}
+            step={step}
+            marks={marks}
+            onChange={(newValue) => {
+              if (!controlled) {
+                setLocalValue(newValue);
+              }
+
+              onChange?.(newValue);
+            }}
+          />
+          <span className={cx(`${prefix}--rangeinput-slider__label`)}>
+            {maxLabel ?? max}
+          </span>
+        </div>
       </div>
     </div>
   );
