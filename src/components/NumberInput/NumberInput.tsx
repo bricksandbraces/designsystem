@@ -113,27 +113,27 @@ const NumberInput = (
 
   return (
     <div
-      className={cx(`${prefix}--textinput`, {
-        [`${prefix}--textinput--fluid`]: fluid
+      className={cx(`${prefix}--numberinput`, {
+        [`${prefix}--numberinput--fluid`]: fluid
       })}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
-      <div className={`${prefix}--textinput--input-container`}>
+      <div className={`${prefix}--numberinput--input-container`}>
         <input
           id={id}
           ref={ref}
           min={min}
           max={max}
           className={cx(
-            `${prefix}--textinput--input`,
+            `${prefix}--numberinput--input`,
             {
-              [`${prefix}--textinput--large`]: size === "large" && !fluid,
-              [`${prefix}--textinput--default`]:
+              [`${prefix}--numberinput--large`]: size === "large" && !fluid,
+              [`${prefix}--numberinput--default`]:
                 (size === "default" && !fluid) || undefined,
-              [`${prefix}--textinput--small`]: size === "small" && !fluid,
-              [`${prefix}--textinput--error`]:
+              [`${prefix}--numberinput--small`]: size === "small" && !fluid,
+              [`${prefix}--numberinput--error`]:
                 (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput--warning`]:
+              [`${prefix}--numberinput--warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -150,8 +150,8 @@ const NumberInput = (
         />
         {fluid && (
           <label
-            className={cx(`${prefix}--textinput--fluid-label`, {
-              [`${prefix}--textinput--fluid-label__value`]:
+            className={cx(`${prefix}--numberinput--fluid-label`, {
+              [`${prefix}--numberinput--fluid-label__value`]:
                 numberValue !== undefined
             })}
           >
@@ -161,14 +161,14 @@ const NumberInput = (
         {children}
       </div>
       {errorText && !warningText && (
-        <div className={`${prefix}--textinput--error-text`}>
+        <div className={`${prefix}--numberinput--error-text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--textinput--warning-text`}>
+        <div className={`${prefix}--numberinput--warning-text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}
