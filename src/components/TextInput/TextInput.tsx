@@ -133,9 +133,13 @@ const TextInput = (
 
   return (
     <div
-      className={cx(`${prefix}--textinput`, {
-        [`${prefix}--textinput-fluid`]: fluid
-      })}
+      className={cx(
+        `${prefix}--textinput`,
+        {
+          [`${prefix}--textinput-fluid`]: fluid
+        },
+        className
+      )}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--textinput-input__container`}>
@@ -144,19 +148,15 @@ const TextInput = (
           ref={ref}
           disabled={disabled}
           readOnly={readOnly}
-          className={cx(
-            `${prefix}--textinput-input`,
-            {
-              [`${prefix}--textinput-large`]: size === "large" && !fluid,
-              [`${prefix}--textinput-default`]: size === "default" && !fluid,
-              [`${prefix}--textinput-small`]: size === "small" && !fluid,
-              [`${prefix}--textinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--textinput-input`, {
+            [`${prefix}--textinput-large`]: size === "large" && !fluid,
+            [`${prefix}--textinput-default`]: size === "default" && !fluid,
+            [`${prefix}--textinput-small`]: size === "small" && !fluid,
+            [`${prefix}--textinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--textinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type={type}
           placeholder={!fluid ? placeholder : ""}
           autoComplete={autoComplete}
@@ -171,7 +171,7 @@ const TextInput = (
         {fluid && (
           <label
             className={cx(`${prefix}--textinput-fluid__label`, {
-              [`${prefix}--textinput--fluid__label-value`]: textValue !== ""
+              [`${prefix}--textinput-fluid__label-value`]: textValue !== ""
             })}
           >
             {placeholder}

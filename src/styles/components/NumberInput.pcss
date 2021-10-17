@@ -37,9 +37,10 @@
         @mixin type--body-02;
 
         position: absolute;
-        top: calc($size--spacing-05 + 6px);
+        top: calc($size--spacing-05 + 0.375rem);
         left: calc($size--spacing-05 + 0.0625rem);
-        transition: transform $transition--app-01;
+        transition: transform $transition--app-01, font-size $transition--app-01,
+          line-height $transition--app-01;
         color: $color--font-text-03;
         pointer-events: none;
 

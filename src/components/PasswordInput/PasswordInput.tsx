@@ -89,7 +89,7 @@ const PasswordInput = (
           passwordType === "password" ? "Show password" : "Hide password"
         }
         size={size}
-        wrapperClassName={`${prefix}--textinput--togglepassword`}
+        className={`${prefix}--textinput-togglepassword`}
         type="button"
         kind="ghost"
         onClick={() => {

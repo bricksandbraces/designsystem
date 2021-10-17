@@ -131,9 +131,13 @@ const NumberInput = (
 
   return (
     <div
-      className={cx(`${prefix}--numberinput`, {
-        [`${prefix}--numberinput-fluid`]: fluid
-      })}
+      className={cx(
+        `${prefix}--numberinput`,
+        {
+          [`${prefix}--numberinput-fluid`]: fluid
+        },
+        className
+      )}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--numberinput-input__container`}>
@@ -145,19 +149,15 @@ const NumberInput = (
           ref={ref}
           min={min}
           max={max}
-          className={cx(
-            `${prefix}--numberinput-input`,
-            {
-              [`${prefix}--numberinput-large`]: size === "large" && !fluid,
-              [`${prefix}--numberinput-default`]: size === "default" && !fluid,
-              [`${prefix}--numberinput-small`]: size === "small" && !fluid,
-              [`${prefix}--numberinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--numberinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--numberinput-input`, {
+            [`${prefix}--numberinput-large`]: size === "large" && !fluid,
+            [`${prefix}--numberinput-default`]: size === "default" && !fluid,
+            [`${prefix}--numberinput-small`]: size === "small" && !fluid,
+            [`${prefix}--numberinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--numberinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type="number"
           placeholder={!fluid ? placeholder : ""}
           value={numberValue}
