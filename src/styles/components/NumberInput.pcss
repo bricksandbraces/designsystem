@@ -2,17 +2,17 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--textinput {
+.$(prefix)--numberinput {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 
   &--fluid {
-    & > div > .$(prefix)--textinput--input {
+    & > div > .$(prefix)--numberinput--input {
       height: $container-05;
       padding-top: 20px;
 
-      &:focus + .$(prefix)--textinput--fluid-label {
+      &:focus + .$(prefix)--numberinput--fluid-label {
         @mixin type--label;
 
         transform: translateY(-10px);
@@ -21,7 +21,7 @@
 
     &
       > div
-      > .$(prefix)--textinput--togglepassword
+      > .$(prefix)--numberinput--togglepassword
       > .$(prefix)--button.$(prefix)--icon-only.$(prefix)--button--ghost {
       min-width: calc($container-01);
       max-width: calc($container-01);

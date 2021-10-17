@@ -1,4 +1,10 @@
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import {
+  boolean,
+  number,
+  select,
+  text,
+  withKnobs
+} from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import NumberInput from "./NumberInput";
 
@@ -21,9 +27,11 @@ export const Uncontrolled = () => {
         errorText={text("errorText", "")}
         size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "numberfield-01")}
+        min={0}
+        max={100}
+        defaultValue={50}
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter text...")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
       />
     </div>
   );
@@ -38,11 +46,12 @@ export const Controlled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("size", sizeOptions, defaultSize) as any}
+        min={0}
+        max={100}
         value={value}
         id={text("id", "numberfield-01")}
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter text...")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.valueAsNumber);
         }}

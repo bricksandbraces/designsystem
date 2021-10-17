@@ -1,5 +1,9 @@
-import React, { forwardRef } from "react";
-import TextInput from "../TextInput/TextInput";
+import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import cx from "classnames";
+import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import Label from "../Typography/Label";
 
 type NumberInputProps = {
   /**
@@ -40,12 +44,7 @@ type NumberInputProps = {
   size?: "default" | "small" | "large";
 
   /**
-   * NumberInput AutoComplete
-   */
-  autoComplete?: "off" | "on";
-
-  /**
-   * NumberInput Default Value
+   * NumberInput DefaultValue
    */
   defaultValue?: number;
 
@@ -53,6 +52,16 @@ type NumberInputProps = {
    * NumberInput Value
    */
   value?: number;
+
+  /**
+   * NumberInput Min
+   */
+  min?: number;
+
+  /**
+   * NumberInput Max
+   */
+  max?: number;
 
   /**
    * NumberInput Fluid
@@ -71,10 +80,102 @@ type NumberInputProps = {
 };
 
 const NumberInput = (
-  { size = "default", ...rest }: NumberInputProps,
+  {
+    id,
+    fluid,
+    className,
+    label,
+    placeholder,
+    value,
+    defaultValue,
+    onChange,
+    min,
+    max,
+    error,
+    errorText,
+    warning,
+    warningText,
+    size = "default",
+    children
+  }: NumberInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  return <TextInput {...rest} ref={ref} size={size} type="number" />;
+  const controlled = useControlled(value);
+  const [numberValue, setNumberValue] = useState<number>(
+    (controlled ? value : defaultValue) ?? undefined
+  );
+
+  useEffect(() => {
+    if (controlled) {
+      setNumberValue(value ?? undefined);
+    }
+  }, [value]);
+
+  return (
+    <div
+      className={cx(`${prefix}--textinput`, {
+        [`${prefix}--textinput--fluid`]: fluid
+      })}
+    >
+      {label && !fluid && <Label htmlFor={id}>{label}</Label>}
+      <div className={`${prefix}--textinput--input-container`}>
+        <input
+          id={id}
+          ref={ref}
+          min={min}
+          max={max}
+          className={cx(
+            `${prefix}--textinput--input`,
+            {
+              [`${prefix}--textinput--large`]: size === "large" && !fluid,
+              [`${prefix}--textinput--default`]:
+                (size === "default" && !fluid) || undefined,
+              [`${prefix}--textinput--small`]: size === "small" && !fluid,
+              [`${prefix}--textinput--error`]:
+                (error || errorText) && !(warning || warningText),
+              [`${prefix}--textinput--warning`]:
+                !(error || errorText) && (warning || warningText)
+            },
+            className
+          )}
+          type="number"
+          placeholder={!fluid ? placeholder : ""}
+          value={numberValue}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+            if (!controlled) {
+              setNumberValue(event.target.valueAsNumber);
+            }
+            onChange?.(event);
+          }}
+        />
+        {fluid && (
+          <label
+            className={cx(`${prefix}--textinput--fluid-label`, {
+              [`${prefix}--textinput--fluid-label__value`]:
+                numberValue !== undefined
+            })}
+          >
+            {placeholder}
+          </label>
+        )}
+        {children}
+      </div>
+      {errorText && !warningText && (
+        <div className={`${prefix}--textinput--error-text`}>
+          <IconAlertCircle size={16} />
+
+          {errorText}
+        </div>
+      )}
+      {warningText && !errorText && (
+        <div className={`${prefix}--textinput--warning-text`}>
+          <IconAlertTriangle size={16} />
+
+          {warningText}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default forwardRef<HTMLInputElement, NumberInputProps>(NumberInput);

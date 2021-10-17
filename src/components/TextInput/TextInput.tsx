@@ -64,12 +64,12 @@ type TextInputProps = {
   /**
    * Default Value
    */
-  defaultValue?: string | number;
+  defaultValue?: string;
 
   /**
    * Value
    */
-  value?: string | number;
+  value?: string;
 
   /**
    * Value
