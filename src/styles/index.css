@@ -38,6 +38,7 @@
 @import "./components/RadioButton.pcss";
 @import "./components/Select.pcss";
 @import "./components/Toggle.pcss";
+@import "./components/NumberInput.pcss";
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
 @import "./components/FloatingPanel.pcss";

@@ -4,10 +4,13 @@ import cx from "classnames";
 import "rc-slider/assets/index.css";
 import useControlled from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
+import { prefix } from "../../settings";
+import Label from "../Typography/Label";
+import TextInput from "../TextInput/TextInput";
 
 type RangeInputProps = {
   /**
-   * React className
+   * RangeInput ClassName
    */
   className?: string;
 
@@ -28,11 +31,13 @@ type RangeInputProps = {
   max: number;
   maxLabel?: string;
 
-  /** Step for the thumb on the track. Default is 1. */
+  /**
+   * Step for the Thumb on the Track. Default is 1.
+   */
   step?: number;
 
   /**
-   * marks for the slider
+   * Marks for the Slider
    */
   marks?: Record<number, React.ReactNode>;
 
@@ -42,17 +47,28 @@ type RangeInputProps = {
   label: string;
 
   /**
-   * RangeInput value (controlled)
+   * RangeInput Value (Controlled)
    */
   value?: number;
+
   /**
-   * RangeInput default value (uncontrolled)
+   * RangeInput Default Value (Uncontrolled)
    */
   defaultValue?: number;
+
+  /**
+   * RangeInput OnChange Function
+   */
   onChange?: (newValue: number) => void;
 
+  /**
+   * RangeInput Disabled
+   */
   disabled?: boolean;
 
+  /**
+   * RangeInput Hide TextInput
+   */
   hideTextInput?: boolean;
 };
 
@@ -83,17 +99,14 @@ const RangeInput = ({
   }, [value]);
 
   return (
-    <div className={cx("range-input--container", className)}>
-      <label className="range-input--label" htmlFor={id} id={`${id}-label`}>
+    <div className={cx(`${prefix}--rangeinput`, className)}>
+      <Label htmlFor={id} id={`${id}-label`}>
         {label}
-      </label>
-      <div className="range-input--input-container">
+      </Label>
+      <div className={cx(`${prefix}--rangeinput-container`)}>
         <div className="range-input--slider-container">
-          <span className="range-input--slider-label range-input--slider-label--min">
-            {minLabel ?? min}
-          </span>
           <Slider
-            className="range-input--slider"
+            className={cx(`${prefix}--rangeinput-slider`)}
             min={min}
             max={max}
             value={sliderValue}
@@ -107,11 +120,12 @@ const RangeInput = ({
               onChange?.(newValue);
             }}
           />
-          <span className="range-input--slider-label range-input--slider-label--max">
+          <span className={cx(`${prefix}--rangeinput-slider__label`)}>
+            {minLabel ?? min}
             {maxLabel ?? max}
           </span>
         </div>
-        <input
+        <TextInput
           className="range-input--range-input"
           type={hideTextInput ? "hidden" : "number"}
           disabled={disabled}

@@ -41,7 +41,15 @@ type TextInputProps = {
   /**
    * Input Type
    */
-  type?: "password" | "text" | "email" | "number" | "search" | "time" | "url";
+  type?:
+    | "password"
+    | "text"
+    | "email"
+    | "number"
+    | "search"
+    | "time"
+    | "url"
+    | "hidden";
 
   /**
    * Container size
@@ -56,12 +64,12 @@ type TextInputProps = {
   /**
    * Default Value
    */
-  defaultValue?: string;
+  defaultValue?: string | number;
 
   /**
    * Value
    */
-  value?: string;
+  value?: string | number;
 
   /**
    * Value

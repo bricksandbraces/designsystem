@@ -1,0 +1,191 @@
+@import "../prefix.pcss";
+@import "../typography.pcss";
+@import "../theme.pcss";
+
+.$(prefix)--textinput {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  &--fluid {
+    & > div > .$(prefix)--textinput--input {
+      height: $container-05;
+      padding-top: 20px;
+
+      &:focus + .$(prefix)--textinput--fluid-label {
+        @mixin type--label;
+
+        transform: translateY(-10px);
+      }
+    }
+
+    &
+      > div
+      > .$(prefix)--textinput--togglepassword
+      > .$(prefix)--button.$(prefix)--icon-only.$(prefix)--button--ghost {
+      min-width: calc($container-01);
+      max-width: calc($container-01);
+      min-height: calc($container-01);
+      max-height: calc($container-01);
+      margin-top: 8px;
+      margin-right: 8px;
+      border-radius: 2px;
+    }
+
+    &-label {
+      @mixin type--body-02;
+
+      position: absolute;
+      top: calc($spacing-04 + 6px);
+      left: calc($spacing-04 + 0.0625rem);
+      transition: $transition-01;
+      color: $textinput-fluid-label-font;
+      pointer-events: none;
+
+      &__value {
+        @mixin type--label;
+
+        transform: translateY(-10px);
+      }
+    }
+  }
+
+  &--input {
+    @mixin type--body-02;
+
+    padding: 0 16px;
+    transition: border $transition-01;
+    border: 0.0625rem solid $textinput-border;
+    border-radius: $border-radius-2;
+    outline: 0;
+    background-color: $textinput-background;
+    color: $textinput-font;
+
+    &:focus {
+      border-color: $textinput-focus;
+
+      &::placeholder {
+        transform: translateX(2px);
+        opacity: 0;
+      }
+    }
+
+    &::placeholder {
+      transition: $transition-01;
+      color: $textinput-placeholder;
+    }
+
+    &-container {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+    }
+  }
+
+  &--togglepassword {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    & .$(prefix)--button.icon-only.button--ghost {
+      margin-top: 0.0625rem;
+      margin-right: 0.0625rem;
+      margin-bottom: 0.0625rem;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0.0625rem;
+      border-bottom-right-radius: 0.0625rem;
+      border-bottom-left-radius: 0;
+    }
+
+    & .$(prefix)--button.icon-only.button--default {
+      min-width: calc($container-03 - 2px);
+      max-width: calc($container-03 - 2px);
+      min-height: calc($container-03 - 2px);
+      max-height: calc($container-03 - 2px);
+    }
+
+    & .$(prefix)--button.icon-only.button--small {
+      min-width: calc($container-02 - 2px);
+      max-width: calc($container-02 - 2px);
+      min-height: calc($container-02 - 2px);
+      max-height: calc($container-02 - 2px);
+    }
+
+    & .$(prefix)--button.icon-only.button--large {
+      min-width: calc($container-04 - 2px);
+      max-width: calc($container-04 - 2px);
+      min-height: calc($container-04 - 2px);
+      max-height: calc($container-04 - 2px);
+    }
+  }
+
+  &--default {
+    height: $container-03;
+  }
+
+  &--large {
+    height: $container-04;
+  }
+
+  &--small {
+    height: $container-02;
+  }
+
+  &--error {
+    border-color: $textinput-border-error;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-error;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+
+  &--warning {
+    border-color: $textinput-border-warning;
+
+    &-text {
+      @mixin type--label;
+
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-02;
+      color: $textinput-font-warning;
+
+      & > svg {
+        margin-right: $spacing-02;
+      }
+    }
+  }
+}
+
+input:disabled {
+  border-color: $textinput-disabled-border;
+  background-color: $textinput-disabled-background;
+  color: $textinput-disabled-font;
+  cursor: not-allowed;
+
+  &::placeholder {
+    color: $textinput-disabled-font;
+  }
+}
+
+input[type="password"] {
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+
+  &::placeholder {
+    @mixin type--body-02;
+
+    color: $textinput-disabled-font;
+    color: $textinput-placeholder;
+    letter-spacing: initial;
+  }
+}
