@@ -101,7 +101,7 @@ const NumberInput = (
   ref: ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
-  const [numberValue, setNumberValue] = useState<number>(
+  const [numberValue, setNumberValue] = useState<number | undefined>(
     (controlled ? value : defaultValue) ?? undefined
   );
 
@@ -114,26 +114,25 @@ const NumberInput = (
   return (
     <div
       className={cx(`${prefix}--numberinput`, {
-        [`${prefix}--numberinput--fluid`]: fluid
+        [`${prefix}--numberinput-fluid`]: fluid
       })}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
-      <div className={`${prefix}--numberinput--input-container`}>
+      <div className={`${prefix}--numberinput-input__container`}>
         <input
           id={id}
           ref={ref}
           min={min}
           max={max}
           className={cx(
-            `${prefix}--numberinput--input`,
+            `${prefix}--numberinput-input`,
             {
-              [`${prefix}--numberinput--large`]: size === "large" && !fluid,
-              [`${prefix}--numberinput--default`]:
-                (size === "default" && !fluid) || undefined,
-              [`${prefix}--numberinput--small`]: size === "small" && !fluid,
-              [`${prefix}--numberinput--error`]:
+              [`${prefix}--numberinput-large`]: size === "large" && !fluid,
+              [`${prefix}--numberinput-default`]: size === "default" && !fluid,
+              [`${prefix}--numberinput-small`]: size === "small" && !fluid,
+              [`${prefix}--numberinput-error`]:
                 (error || errorText) && !(warning || warningText),
-              [`${prefix}--numberinput--warning`]:
+              [`${prefix}--numberinput-warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -150,9 +149,9 @@ const NumberInput = (
         />
         {fluid && (
           <label
-            className={cx(`${prefix}--numberinput--fluid-label`, {
-              [`${prefix}--numberinput--fluid-label__value`]:
-                numberValue !== undefined
+            className={cx(`${prefix}--numberinput-fluid__label`, {
+              [`${prefix}--numberinput-fluid__label-value`]:
+                Number.isNaN(numberValue) === false
             })}
           >
             {placeholder}
@@ -161,14 +160,14 @@ const NumberInput = (
         {children}
       </div>
       {errorText && !warningText && (
-        <div className={`${prefix}--numberinput--error-text`}>
+        <div className={`${prefix}--numberinput-error__text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--numberinput--warning-text`}>
+        <div className={`${prefix}--numberinput-warning__text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}

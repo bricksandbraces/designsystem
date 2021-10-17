@@ -1,10 +1,4 @@
-import {
-  boolean,
-  number,
-  select,
-  text,
-  withKnobs
-} from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import NumberInput from "./NumberInput";
 
@@ -54,6 +48,7 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.valueAsNumber);
+          console.log(value);
         }}
       />
     </div>
