@@ -1,6 +1,13 @@
-import { object, select, text, withKnobs } from "@storybook/addon-knobs";
+import {
+  boolean,
+  object,
+  select,
+  text,
+  withKnobs
+} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Select from "./Select";
+import SelectSkeleton from "./SelectSkeleton";
 
 export default { title: "Components/Select", decorators: [withKnobs] };
 
@@ -30,11 +37,13 @@ export const Uncontrolled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
         id="some-select"
-        label={text("Label", "Label")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        label={text("label", "Label")}
+        size={select("size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        options={object("Options", options) as any}
+        options={object("options", options) as any}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         defaultValue="cappucino"
       />
     </div>
@@ -47,14 +56,24 @@ export const Controlled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
         id="some-dropdown"
-        label={text("Label", "Label")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        label={text("label", "Label")}
+        size={select("size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        options={object("Options", options) as any}
+        options={object("options", options) as any}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <SelectSkeleton />
     </div>
   );
 };

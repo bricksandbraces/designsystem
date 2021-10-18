@@ -123,10 +123,12 @@
   }
 
   &--checkbox.$(prefix)--skeleton-container {
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
     align-items: flex-start;
+    transform: translate(0, 0.125rem);
     & > .$(prefix)--checkbox-check {
-      transform: translate(-0.0625rem, -2px);
+      transform: translate(0, -0.125rem);
       stroke: $color--skeleton-02;
     }
     & > .$(prefix)--skeleton-animated.$(prefix)--checkbox {

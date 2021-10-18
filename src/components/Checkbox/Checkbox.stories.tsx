@@ -82,7 +82,14 @@ export const WithChildren = () => {
 export const Skeleton = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
+      <div
+        style={{
+          width: "405px",
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "column"
+        }}
+      >
         <CheckboxSkeleton />
         <CheckboxSkeleton />
       </div>
