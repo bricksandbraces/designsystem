@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import Slider from "rc-slider";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import SkeletonContainer from "../Skeleton/SkeletonContainer";

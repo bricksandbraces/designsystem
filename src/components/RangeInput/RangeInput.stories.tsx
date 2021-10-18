@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import RangeInput from "./RangeInput";
 import RangeInputSkeleton from "./RangeInputSkeleton";
 
-export default { title: "Components/RangeInput", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_RangeInput", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",
