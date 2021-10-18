@@ -1,6 +1,7 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import NumberInput from "./NumberInput";
+import NumberInputSkeleton from "./NumberInputSkeleton";
 
 export default {
   title: "Components/A_REFA_NumberInput",
@@ -57,6 +58,14 @@ export const Controlled = () => {
           setValue(event.target.valueAsNumber);
         }}
       />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <NumberInputSkeleton fluid={boolean("fluid", false)} />
     </div>
   );
 };

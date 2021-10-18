@@ -78,6 +78,10 @@
         align-items: center;
         width: $size--container-08;
         height: 100%;
+
+        & > .$(prefix)--skeleton {
+          margin-bottom: 0;
+        }
       }
 
       &__label {
@@ -95,6 +99,10 @@
         &:last-of-type {
           margin-left: $size--spacing-05;
         }
+      }
+
+      &.$(prefix)--skeleton {
+        height: 4px;
       }
     }
 
@@ -173,6 +181,7 @@
           }
 
           & > .rc-slider-handle {
+            display: none;
             opacity: 0;
           }
 
@@ -181,6 +190,9 @@
           }
         }
       }
+    }
+    &.$(prefix)--skeleton {
+      justify-content: flex-start;
     }
   }
 }

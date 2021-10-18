@@ -1,6 +1,7 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import TextInput from "./TextInput";
+import TextInputSkeleton from "./TextInputSkeleton";
 
 export default {
   title: "Components/A_REFA_TextInput",
@@ -55,6 +56,17 @@ export const Controlled = () => {
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.value);
         }}
+      />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <TextInputSkeleton
+        fluid={boolean("fluid", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>
   );

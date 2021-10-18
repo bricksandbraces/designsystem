@@ -230,13 +230,14 @@
     }
   }
   &--dropdown.$(prefix)--skeleton {
+    flex-direction: column;
     align-items: flex-start;
     transform: translateY(0.0625rem);
 
     & > .$(prefix)--skeleton {
       justify-content: flex-end;
-      appearance: auto;
       padding: 0 $size--spacing-05;
+      appearance: auto;
       & > svg {
         transform: translateX(-0.0625rem);
         stroke: $color--skeleton-02;

@@ -1,8 +1,12 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import PasswordInput from "./PasswordInput";
+import PasswordInputSkeleton from "./PasswordInputSkeleton";
 
-export default { title: "Components/A_REFA_PasswordInput", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_PasswordInput",
+  decorators: [withKnobs]
+};
 
 const sizeOptions = {
   Default: "default",
@@ -46,6 +50,17 @@ export const Controlled = () => {
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.value);
         }}
+      />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <PasswordInputSkeleton
+        fluid={boolean("fluid", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>
   );

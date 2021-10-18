@@ -1,6 +1,7 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import RangeInput from "./RangeInput";
+import RangeInputSkeleton from "./RangeInputSkeleton";
 
 export default { title: "Components/RangeInput", decorators: [withKnobs] };
 
@@ -52,6 +53,17 @@ export const Controlled = () => {
           hideInput={boolean("hideInput", false)}
         />
       </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <RangeInputSkeleton
+        hideInput={boolean("hideInput", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };
