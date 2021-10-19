@@ -95,6 +95,19 @@
       }
     }
 
+    &-readonly {
+      & > .$(prefix)--dropdown-toggle {
+        border-color: transparent;
+        background-color: $color--readonly;
+        color: $color--font-readonly;
+        pointer-events: none;
+      }
+
+      & > label {
+        pointer-events: none;
+      }
+    }
+
     &-wrapper {
       display: inline-flex;
       flex-direction: column;

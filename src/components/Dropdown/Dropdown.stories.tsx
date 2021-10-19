@@ -64,6 +64,7 @@ export const Uncontrolled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         items={object("items", sampleItemConfig)}
       />
     </div>
@@ -82,6 +83,7 @@ export const Controlled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         items={object("items", sampleItemConfig)}
         value={selectedValue}
         onChange={(newValue) => {

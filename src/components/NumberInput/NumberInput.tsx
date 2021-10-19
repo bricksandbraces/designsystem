@@ -150,9 +150,7 @@ const NumberInput = (
           min={min}
           max={max}
           className={cx(`${prefix}--numberinput-input`, {
-            [`${prefix}--numberinput-large`]: size === "large" && !fluid,
-            [`${prefix}--numberinput-default`]: size === "default" && !fluid,
-            [`${prefix}--numberinput-small`]: size === "small" && !fluid,
+            [`${prefix}--numberinput-${size}`]: !fluid,
             [`${prefix}--numberinput-error`]:
               (error || errorText) && !(warning || warningText),
             [`${prefix}--numberinput-warning`]:

@@ -149,9 +149,7 @@ const TextInput = (
           disabled={disabled}
           readOnly={readOnly}
           className={cx(`${prefix}--textinput-input`, {
-            [`${prefix}--textinput-large`]: size === "large" && !fluid,
-            [`${prefix}--textinput-default`]: size === "default" && !fluid,
-            [`${prefix}--textinput-small`]: size === "small" && !fluid,
+            [`${prefix}--textinput-${size}`]: !fluid,
             [`${prefix}--textinput-error`]:
               (error || errorText) && !(warning || warningText),
             [`${prefix}--textinput-warning`]:

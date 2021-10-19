@@ -21,51 +21,6 @@
       height: $size--container-03;
     }
 
-    &-fluid {
-      & > div > .$(prefix)--textinput-input {
-        height: $size--container-06;
-        padding-top: calc($size--spacing-05 * 1.25);
-
-        &:focus + .$(prefix)--textinput-fluid__label {
-          @mixin type--label;
-
-          transform: translateY(-0.625rem);
-        }
-      }
-
-      & > .$(prefix)--skeleton {
-        height: $size--container-06;
-      }
-
-      & > div > .$(prefix)--textinput-togglepassword {
-        min-width: $size--container-02;
-        max-width: $size--container-02;
-        min-height: $size--container-02;
-        max-height: $size--container-02;
-        margin-top: $size--spacing-03;
-        margin-right: $size--spacing-03;
-        border-radius: $component--radius-default;
-      }
-
-      &__label {
-        @mixin type--body-02;
-
-        position: absolute;
-        top: calc($size--spacing-05 + 0.375rem);
-        left: calc($size--spacing-05 + 0.0625rem);
-        transition: transform $transition--app-01, font-size $transition--app-01,
-          line-height $transition--app-01;
-        color: $color--font-text-03;
-        pointer-events: none;
-
-        &-value {
-          @mixin type--label;
-
-          transform: translateY(-0.625rem);
-        }
-      }
-    }
-
     &-input {
       @mixin type--body-02;
 
@@ -174,6 +129,53 @@
         max-width: calc($size--container-05 - $size--spacing-01);
         min-height: calc($size--container-05 - $size--spacing-01);
         max-height: calc($size--container-05 - $size--spacing-01);
+      }
+    }
+
+    &-fluid {
+      & > div > .$(prefix)--textinput-input {
+        height: $size--container-06;
+        padding-top: calc($size--spacing-05 * 1.25);
+
+        &:focus + .$(prefix)--textinput-fluid__label {
+          @mixin type--label;
+
+          transform: translateY(-0.625rem);
+        }
+      }
+
+      & > .$(prefix)--skeleton {
+        height: $size--container-06;
+      }
+
+      &
+        > div
+        > .$(prefix)--textinput-togglepassword.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+        min-width: $size--container-02;
+        max-width: $size--container-02;
+        min-height: $size--container-02;
+        max-height: $size--container-02;
+        margin-top: $size--spacing-03;
+        margin-right: $size--spacing-03;
+        border-radius: $component--radius-default;
+      }
+
+      &__label {
+        @mixin type--body-02;
+
+        position: absolute;
+        top: calc($size--spacing-05 + 0.375rem);
+        left: calc($size--spacing-05 + 0.0625rem);
+        transition: transform $transition--app-01, font-size $transition--app-01,
+          line-height $transition--app-01;
+        color: $color--font-text-03;
+        pointer-events: none;
+
+        &-value {
+          @mixin type--label;
+
+          transform: translateY(-0.625rem);
+        }
       }
     }
 

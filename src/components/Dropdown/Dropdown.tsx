@@ -60,6 +60,11 @@ type DropdownProps = {
   disabled?: boolean;
 
   /**
+   * Dropdown ReadOnly
+   */
+  readOnly?: boolean;
+
+  /**
    * Dropdown Error
    */
   error?: boolean;
@@ -116,7 +121,8 @@ const Dropdown = ({
   errorText,
   warning,
   warningText,
-  disabled
+  disabled,
+  readOnly
 }: DropdownProps) => {
   const controlled = useControlled(value);
 
@@ -186,7 +192,8 @@ const Dropdown = ({
         {
           [`${prefix}--dropdown-error`]: error || errorText,
           [`${prefix}--dropdown-warning`]:
-            !(error || errorText) && (warning || warningText)
+            !(error || errorText) && (warning || warningText),
+          [`${prefix}--dropdown-readonly`]:readOnly
         },
         className
       )}
