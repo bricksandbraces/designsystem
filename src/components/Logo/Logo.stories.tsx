@@ -2,16 +2,17 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Logo from "./Logo";
 
-export default { title: "Components/Logo", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Logo", decorators: [withKnobs] };
 
-const variantOptions = {
+const colorOptions = {
   Black: "black",
   White: "white"
 };
 
-const defaultVariant = "white";
+const defaultColor = "white";
 
 const sizeOptions = {
+  ExtraSmall: "xsmall",
   Small: "small",
   Medium: "medium",
   Large: "large",
@@ -20,20 +21,20 @@ const sizeOptions = {
 
 const defaultSize = "medium";
 
-const kindOptions = {
+const typeOptions = {
   LogoMark: "logomark",
   LogoType: "logotype"
 };
 
-const defaultKind = "logotype";
+const defaultType = "logotype";
 
 export const Default = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Logo
-        variant={select("Variant", variantOptions, defaultVariant) as any}
-        size={select("Size", sizeOptions, defaultSize) as any}
-        kind={select("kind", kindOptions, defaultKind) as any}
+        color={select("color", colorOptions, defaultColor) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
+        type={select("type", typeOptions, defaultType) as any}
       />
     </div>
   );
