@@ -7,10 +7,13 @@ module.exports = (ctx) => ({
     require("postcss-flexbugs-fixes"),
     require("postcss-mixins"),
     require("postcss-nested"),
-    require("postcss-simple-vars"),
+    require("postcss-each")({
+      plugins: {
+        beforeEach: [require("postcss-simple-vars"), require("postcss-calc")]
+      }
+    }),
     require("postcss-hexrgba"),
     require("postcss-utilities"),
-    require("postcss-calc"),
     require("postcss-viewport-height-correction"),
     require("postcss-size"),
     require("autoprefixer"),
