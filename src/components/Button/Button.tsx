@@ -106,8 +106,8 @@ export type ButtonProps = {
    */
   title?: string;
 
-  /** 
-   * Automatically focus the button 
+  /**
+   * Automatically focus the button
    */
   autoFocus?: boolean;
 
@@ -156,7 +156,7 @@ const Button = (
       >
         {isLoading && (
           <Loading
-            isLoading
+            active
             loadingDescription={loadingDescription}
             disabled={disabled}
             size="inline"
@@ -192,7 +192,7 @@ const Button = (
       >
         {isLoading && (
           <Loading
-            isLoading
+            active
             loadingDescription={loadingDescription}
             disabled={disabled}
             size="inline"

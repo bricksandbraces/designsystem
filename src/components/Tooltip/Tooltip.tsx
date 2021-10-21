@@ -6,7 +6,7 @@ import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type TooltipProps = {
+export type TooltipProps = {
   /**
    * Tooltip Children
    */
@@ -15,7 +15,7 @@ type TooltipProps = {
   /**
    * Tooltip Theme
    */
-  theme: "light" | "dark";
+  theme?: "light" | "dark";
 
   /**
    * Tooltip Content
@@ -25,7 +25,7 @@ type TooltipProps = {
 
 const Tooltip = ({
   children,
-  theme,
+  theme = "light",
   tooltipContent,
   ...props
 }: TooltipProps) => {
@@ -34,7 +34,6 @@ const Tooltip = ({
       className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
       arrow={roundArrow}
       animation="bbds-animation"
-      duration={150}
       theme={theme === "light" ? "bbds-light" : "bbds-dark"}
       {...props}
       content={tooltipContent}
