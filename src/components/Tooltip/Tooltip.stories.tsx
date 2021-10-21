@@ -1,132 +1,42 @@
-import { text, select, withKnobs, boolean } from "@storybook/addon-knobs";
-import React, { useState } from "react";
+import React from "react";
+import "tippy.js/dist/tippy.css";
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { IconOutlet } from "@tabler/icons";
 import { Button } from "../..";
-import HoverTooltip from "./HoverTooltip";
-import ComposedContainerTooltip from "./ComposedContainerTooltip";
-import ContainerTooltipFooter from "./ContainerTooltipFooter";
-import ContainerTooltipHeader from "./ContainerTooltipHeader";
-import ContainerTooltipBody from "./ContainerTooltipBody";
+import Tooltip from "./Tooltip";
+import ContainerTooltip from "./ContainerTooltip";
 
 export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
-const positioning = {
-  Left: "left",
-  Right: "right",
-  Top: "top",
-  Bottom: "bottom"
+const themeOptions = {
+  light: "light",
+  dark: "dark"
 };
 
-const defaultPosition = "top";
+const defaultTheme = "light";
 
-export const DefaultOnHover = () => {
+export const Default = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
+    <div style={{ padding: "32px" }}>
+      <Tooltip
+        theme={select("theme", themeOptions, defaultTheme) as any}
+        tooltipContent="You sneaky little thing."
       >
-        Hover me
-      </HoverTooltip>
+        <Button>Don`t you dare hovering me.</Button>
+      </Tooltip>
     </div>
   );
 };
 
-export const WithCaretOnHover = () => {
+export const Container = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        withCaret
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
+    <div style={{ padding: "32px" }}>
+      <ContainerTooltip
+        theme={select("theme", themeOptions, defaultTheme) as any}
+        tooltipContent="You sneaky little thing."
       >
-        Hover me
-      </HoverTooltip>
-    </div>
-  );
-};
-
-export const Controlled = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        withCaret={boolean("withCaret", false)}
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
-        open={open}
-      >
-        <Button
-          fluid
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          Toggle Tooltip
-        </Button>
-      </HoverTooltip>
-    </div>
-  );
-};
-
-export const WithContainer = () => {
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <ComposedContainerTooltip
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-      >
-        <ContainerTooltipHeader>Tooltip Container</ContainerTooltipHeader>
-        <ContainerTooltipBody>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor.
-        </ContainerTooltipBody>
-        <ContainerTooltipFooter>
-          <Button size="small">Delete</Button>
-        </ContainerTooltipFooter>
-      </ComposedContainerTooltip>
+        <IconOutlet color="white" size={16} />
+      </ContainerTooltip>
     </div>
   );
 };

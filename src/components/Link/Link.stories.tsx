@@ -40,12 +40,11 @@ export const Inline = () => {
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
           rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.&nbsp;
+          ipsum dolor sit amet.{" "}
           <Link href="https://google.de" target="_blank" inline>
             Stet clita kasd
-          </Link>
-          &nbsp;gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-          amet.
+          </Link>{" "}
+          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </Body>
       </div>
     </div>

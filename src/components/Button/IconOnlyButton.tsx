@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import Button from "./Button";
 import { prefix } from "../../settings";
-import TTooltip from "../TTooltip/TTooltip";
+import TTooltip from "../Tooltip/Tooltip";
 
 export type IconOnlyButtonProps = {
   /**
