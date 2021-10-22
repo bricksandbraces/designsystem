@@ -15,6 +15,11 @@ export type IconOnlyButtonGroupProps = {
   children: ReactNode;
 
   /**
+   * Tooltip Theme
+   */
+  theme?: "light" | "dark";
+
+  /**
    * IconOnlyButtonGroup Singleton Props
    */
   singletonProps?: Omit<TippyProps, "singleton">;
@@ -32,6 +37,7 @@ export type IconOnlyButtonGroupProps = {
 
 const IconOnlyButtonGroup = ({
   children,
+  theme = "light",
   singletonProps,
   singletonConfig,
   className
@@ -40,7 +46,14 @@ const IconOnlyButtonGroup = ({
 
   return (
     <div className={cx(`${prefix}--button-group`, className)}>
-      <Tippy {...singletonProps} singleton={source} />
+      <Tippy
+        className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
+        theme={theme === "light" ? "bbds-light" : "bbds-dark"}
+        {...singletonProps}
+        singleton={source}
+        trigger="click"
+        delay={1000}
+      />
       {React.Children.map(children, (child) => {
         if (!child) {
           return undefined;
@@ -55,6 +68,7 @@ const IconOnlyButtonGroup = ({
             tooltipProps={{
               tooltipContent: "",
               ...props.tooltipProps,
+              theme,
               singleton: target
             }}
           />
