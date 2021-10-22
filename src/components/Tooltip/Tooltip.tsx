@@ -1,9 +1,9 @@
 import React, { JSXElementConstructor, ReactElement } from "react";
 import Tippy, { TippyProps } from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
+import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 
 export type TooltipProps = {

@@ -8,6 +8,28 @@
   border: 0.0625rem solid;
   border-radius: $component--radius-default;
   box-shadow: $component--shadow-default;
+
+  & > .tippy-content {
+    padding: $size--spacing-02 $size--spacing-04;
+  }
+
+  &.$(prefix)--tooltip-container {
+    width: $size--container-08;
+    > .tippy-content {
+      padding: $size--spacing-04;
+
+      & > div > .$(prefix)--tooltip-container__title {
+        @mixin type--headline-06;
+
+        margin-bottom: $size--spacing-02;
+      }
+
+      & > div > .$(prefix)--tooltip-container__body {
+        @mixin type--body-02;
+      }
+    }
+  }
+
   & > .tippy-svg-arrow {
     & > svg > path {
       transform: translateY(0.125rem);

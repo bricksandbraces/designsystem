@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor, ReactElement } from "react";
+import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
 import Tippy, { TippyProps } from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { roundArrow } from "tippy.js";
@@ -18,15 +18,21 @@ type ContainerTooltipProps = {
   theme: "light" | "dark";
 
   /**
-   * ContainerTooltip Content
+   * ContainerTooltip Title
    */
-  tooltipContent: React.ReactNode;
+  title: string;
+
+  /**
+   * ContainerTooltip Body
+   */
+  body: ReactNode;
 } & Omit<TippyProps, "content">;
 
 const ContainerTooltip = ({
   children,
   theme,
-  tooltipContent,
+  title,
+  body,
   ...props
 }: ContainerTooltipProps) => {
   return (
@@ -38,9 +44,16 @@ const ContainerTooltip = ({
       duration={150}
       theme={theme === "light" ? "bbds-light" : "bbds-dark"}
       {...props}
-      content={tooltipContent}
+      content={
+        <>
+          <div className={cx(`${prefix}--tooltip-container__title`)}>
+            {title}
+          </div>
+          <div className={cx(`${prefix}--tooltip-container__body`)}>{body}</div>
+        </>
+      }
     >
-      <span role="button">{children}</span>
+      {children}
     </Tippy>
   );
 };

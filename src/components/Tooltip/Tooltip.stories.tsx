@@ -1,7 +1,6 @@
 import React from "react";
 import "tippy.js/dist/tippy.css";
 import { withKnobs, select } from "@storybook/addon-knobs";
-import { IconOutlet } from "@tabler/icons";
 import { Button } from "../..";
 import Tooltip from "./Tooltip";
 import ContainerTooltip from "./ContainerTooltip";
@@ -33,9 +32,16 @@ export const Container = () => {
     <div style={{ padding: "32px" }}>
       <ContainerTooltip
         theme={select("theme", themeOptions, defaultTheme) as any}
-        tooltipContent="You sneaky little thing."
+        title="You sneaky little thing."
+        body={
+          <>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua.
+          </>
+        }
       >
-        <IconOutlet color="white" size={16} />
+        <Button>Don`t you dare hovering me.</Button>
       </ContainerTooltip>
     </div>
   );
