@@ -5,6 +5,7 @@ import Tippy, {
   useSingleton,
   UseSingletonProps
 } from "@tippyjs/react";
+import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 import IconOnlyButton, { IconOnlyButtonProps } from "./IconOnlyButton";
 
@@ -51,7 +52,7 @@ const IconOnlyButtonGroup = ({
         theme={theme === "light" ? "bbds-light" : "bbds-dark"}
         {...singletonProps}
         singleton={source}
-        trigger="click"
+        arrow={roundArrow}
         delay={1000}
       />
       {React.Children.map(children, (child) => {

@@ -37,7 +37,7 @@ type ClickableTileProps = {
   /**
    * ClickableTile onFocus
    */
-  onFocus?: (event: FocusEvent<ButtonOrAnchor>) => void;
+  onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
 
   /**
    * ClickableTile Children

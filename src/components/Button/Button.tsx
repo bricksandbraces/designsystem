@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, FocusEvent } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
@@ -54,7 +54,7 @@ export type ButtonProps = {
   /**
    * Button onFocus
    */
-  onFocus?: (event: FocusEvent<ButtonOrAnchor>) => void;
+  onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
 
   /**
    * Button type
