@@ -6,7 +6,7 @@ import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type ContainerTooltipProps = {
+export type ContainerTooltipProps = {
   /**
    * ContainerTooltip Children
    */

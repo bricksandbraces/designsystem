@@ -26,6 +26,7 @@
 @import "./components/Checkbox.pcss";
 @import "./components/CookieModal.pcss";
 @import "./components/Divider.pcss";
+@import "./components/Tile.pcss";
 @import "./components/Dropdown.pcss";
 @import "./components/TextInput.pcss";
 @import "./components/TextArea.pcss";

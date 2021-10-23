@@ -3,7 +3,7 @@ import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
 
-type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
+export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
 
 export type ButtonProps = {
   /**
@@ -47,7 +47,7 @@ export type ButtonProps = {
   onMouseEnter?: React.MouseEventHandler<ButtonOrAnchor>;
 
   /**
-   * Button onMouseLeace
+   * Button onMouseLeave
    */
   onMouseLeave?: React.MouseEventHandler<ButtonOrAnchor>;
 

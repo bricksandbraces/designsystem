@@ -67,3 +67,13 @@
     opacity: 0;
   }
 }
+
+.$(prefix)--tooltip-icontrigger {
+  padding: 0;
+  transition: outline $transition--app-01;
+  background-color: transparent;
+
+  &:focus {
+    outline: 0.0625rem solid $color--focus;
+  }
+}
