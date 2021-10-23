@@ -6,69 +6,69 @@ import { prefix } from "../../settings";
 
 type PasswordInputProps = {
   /**
-   * TextInput ClassName
+   * PasswordInput ClassName
    */
   className?: string;
 
   /**
-   * Label
+   * PasswordInput Label
    */
   label?: string;
 
   /**
-   * Placeholder text
+   * PasswordInput Placeholder
    */
   placeholder?: string;
 
   /**
-   * Id
+   * PasswordInput Id
    */
   id?: string;
 
   /**
-   * Error state & text
+   * PasswordInput Error State & Text
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * Warning state & text
+   * PasswordInput Warning State & Text
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * Container size
+   * PasswordInput Size
    */
   size?: "default" | "small" | "large";
 
   /**
-   * Autocomplete
+   * PasswordInput AutoComplete
    */
   autoComplete?: "off" | "on";
 
   /**
-   * Default Value
+   * PasswordInput Default Value
    */
   defaultValue?: string;
 
   /**
-   * Value
+   * PasswordInput Value
    */
   value?: string;
 
   /**
-   * Fluid variant
+   * PasswordInput Fluid
    */
   fluid?: boolean;
 
   /**
-   * OnChange Function
+   * PasswordInput OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
-   * ReactChildren
+   * PasswordInput Children
    */
   children?: React.ReactNode;
 };
@@ -89,7 +89,7 @@ const PasswordInput = (
           passwordType === "password" ? "Show password" : "Hide password"
         }
         size={size}
-        wrapperClassName={`${prefix}--textinput--togglepassword`}
+        className={`${prefix}--textinput-togglepassword`}
         type="button"
         kind="ghost"
         onClick={() => {

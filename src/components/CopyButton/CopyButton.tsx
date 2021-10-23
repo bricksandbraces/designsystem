@@ -62,7 +62,9 @@ const CopyButton = ({
       )}
       kind="ghost"
       size={size}
-      tooltipLabel={showState ? tooltipLabelCopied : tooltipLabel}
+      tooltipProps={{
+        tooltipContent: showState ? tooltipLabelCopied : tooltipLabel
+      }}
       // TODO: adjust color to be extended from a config
       icon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
       onClick={(event) => {

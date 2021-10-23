@@ -3,7 +3,7 @@ import CookieBanner from "./components/CookieBanner/CookieBanner";
 import Cookies from "./components/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
-import SnackBar from "./components/SnackBar/SnackBar";
+import SnackBar from "./components/Notification/InlineNotification";
 import AspectRatio from "./components/AspectRatio/AspectRatio";
 import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
@@ -12,14 +12,6 @@ import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
-import HoverTooltip from "./components/Tooltip/HoverTooltip";
-import ComposedContainerTooltip from "./components/Tooltip/ComposedContainerTooltip";
-import ContainerTooltipBody from "./components/Tooltip/ContainerTooltipBody";
-import ContainerTooltipHeader from "./components/Tooltip/ContainerTooltipHeader";
-import ContainerTooltipFooter from "./components/Tooltip/ContainerTooltipFooter";
-import ContainerTooltipIcon from "./components/Tooltip/ContainerTooltipIcon";
-import HoverTooltipText from "./components/Tooltip/HoverTooltipText";
-import TooltipTrigger from "./components/Tooltip/TooltipTrigger";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
@@ -57,14 +49,6 @@ import FloatingPanel from "./components/FloatingPanel/FloatingPanel";
 import ButtonGroup from "./components/Button/ButtonGroup";
 
 export {
-  HoverTooltip,
-  ComposedContainerTooltip,
-  ContainerTooltipBody,
-  ContainerTooltipHeader,
-  ContainerTooltipFooter,
-  ContainerTooltipIcon,
-  HoverTooltipText,
-  TooltipTrigger,
   Button,
   Link,
   SnackBar,

@@ -1,20 +1,32 @@
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import RangeInput from "./RangeInput";
+import RangeInputSkeleton from "./RangeInputSkeleton";
 
-export default { title: "Components/RangeInput", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_RangeInput", decorators: [withKnobs] };
+
+const sizeOptions = {
+  Default: "default",
+  Small: "small",
+  Large: "large"
+};
+
+const defaultSize = "default";
 
 export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
+          size={select("size", sizeOptions, defaultSize) as any}
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
           id="checkbox"
           label="Slider"
           min={30}
           max={50}
           defaultValue={40}
-          hideTextInput={boolean("hideTextInput", false)}
+          hideInput={boolean("hideInput", false)}
         />
       </div>
     </div>
@@ -27,6 +39,9 @@ export const Controlled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
+          size={select("size", sizeOptions, defaultSize) as any}
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
           id="checkbox"
           label="Slider"
           min={30}
@@ -35,9 +50,20 @@ export const Controlled = () => {
           onChange={(newValue) => {
             setValue(newValue);
           }}
-          hideTextInput={boolean("hideTextInput", false)}
+          hideInput={boolean("hideInput", false)}
         />
       </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <RangeInputSkeleton
+        hideInput={boolean("hideInput", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };

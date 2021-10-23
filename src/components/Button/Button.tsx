@@ -1,9 +1,9 @@
-import React, { forwardRef, ReactNode, FocusEvent } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
 
-type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
+export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
 
 export type ButtonProps = {
   /**
@@ -47,14 +47,14 @@ export type ButtonProps = {
   onMouseEnter?: React.MouseEventHandler<ButtonOrAnchor>;
 
   /**
-   * Button onMouseLeace
+   * Button onMouseLeave
    */
   onMouseLeave?: React.MouseEventHandler<ButtonOrAnchor>;
 
   /**
    * Button onFocus
    */
-  onFocus?: (event: FocusEvent<ButtonOrAnchor>) => void;
+  onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
 
   /**
    * Button type
@@ -106,8 +106,8 @@ export type ButtonProps = {
    */
   title?: string;
 
-  /** 
-   * Automatically focus the button 
+  /**
+   * Automatically focus the button
    */
   autoFocus?: boolean;
 
@@ -156,7 +156,7 @@ const Button = (
       >
         {isLoading && (
           <Loading
-            isLoading
+            active
             loadingDescription={loadingDescription}
             disabled={disabled}
             size="inline"
@@ -192,7 +192,7 @@ const Button = (
       >
         {isLoading && (
           <Loading
-            isLoading
+            active
             loadingDescription={loadingDescription}
             disabled={disabled}
             size="inline"

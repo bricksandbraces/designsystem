@@ -216,13 +216,26 @@
   }
 }
 
-.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger,
 .$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-danger,
 .$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-danger {
   background-color: $color--danger;
 
   &:hover {
     background-color: $color--danger-hover;
+  }
+
+  &:active {
+    background-color: $color--danger-active;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
+  background-color: $color--transparent;
+  color: $color--danger;
+
+  &:hover {
+    background-color: $color--danger-hover;
+    color: $color--font-text-01;
   }
 
   &:active {

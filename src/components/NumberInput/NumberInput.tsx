@@ -5,171 +5,172 @@ import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 
-type TextInputProps = {
+type NumberInputProps = {
   /**
-   * TextInput ClassName
+   * NumberInput ClassName
    */
   className?: string;
 
   /**
-   * TextInput Label
+   * NumberInput Label
    */
   label?: string;
 
   /**
-   * TextInput Placeholder
+   * NumberInput Placeholder
    */
   placeholder?: string;
 
   /**
-   * TextInput Id
+   * NumberInput Id
    */
   id?: string;
 
   /**
-   * TextInput Disabled
-   */
-  disabled?: boolean;
-
-  /**
-   * TextInput ReadOnly
-   */
-  readOnly?: boolean;
-
-  /**
-   * TextInput Error State & Text
+   * NumberInput Error State & Text
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * TextInput Warning State & Text
+   * NumberInput Warning State & Text
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * TextInput Type
-   */
-  type?:
-    | "password"
-    | "text"
-    | "email"
-    | "number"
-    | "search"
-    | "time"
-    | "url"
-    | "hidden";
-
-  /**
-   * TextInput Size
+   * NumberInput Size
    */
   size?: "default" | "small" | "large";
 
   /**
-   * TextInput AutoComplete
+   * NumberInput DefaultValue
    */
-  autoComplete?: "off" | "on";
+  defaultValue?: number;
 
   /**
-   * TextInput Default Value
+   * NumberInput Value
    */
-  defaultValue?: string;
+  value?: number;
 
   /**
-   * TextInput Value
+   * NumberInput Min
    */
-  value?: string;
+  min?: number;
 
   /**
-   * TextInput Fluid
+   * NumberInput Max
+   */
+  max?: number;
+
+  /**
+   * NumberInput Step
+   */
+  step?: number;
+
+  /**
+   * NumberInput Fluid
    */
   fluid?: boolean;
 
   /**
-   * TextInput OnChange Function
+   * NumberInput Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * NumberInput ReadOnly
+   */
+  readOnly?: boolean;
+
+  /**
+   * NumberInput OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
-   * TextInput Children
+   * NumberInput Children
    */
   children?: React.ReactNode;
 };
 
-const TextInput = (
+const NumberInput = (
   {
     id,
     fluid,
     className,
     label,
     placeholder,
-    type = "text",
     value,
     defaultValue,
-    disabled,
-    readOnly,
-    autoComplete,
     onChange,
+    readOnly,
+    min,
+    max,
     error,
     errorText,
+    step,
+    disabled,
     warning,
     warningText,
     size = "default",
     children
-  }: TextInputProps,
+  }: NumberInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
+  const [numberValue, setNumberValue] = useState<number | undefined>(
+    (controlled ? value : defaultValue) ?? undefined
   );
 
   useEffect(() => {
     if (controlled) {
-      setTextValue(value ?? "");
+      setNumberValue(value ?? undefined);
     }
   }, [value]);
 
   return (
     <div
       className={cx(
-        `${prefix}--textinput`,
+        `${prefix}--numberinput`,
         {
-          [`${prefix}--textinput-fluid`]: fluid
+          [`${prefix}--numberinput-fluid`]: fluid
         },
         className
       )}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
-      <div className={`${prefix}--textinput-input__container`}>
+      <div className={`${prefix}--numberinput-input__container`}>
         <input
           id={id}
-          ref={ref}
           disabled={disabled}
           readOnly={readOnly}
-          className={cx(`${prefix}--textinput-input`, {
-            [`${prefix}--textinput-${size}`]: !fluid,
-            [`${prefix}--textinput-error`]:
+          step={step}
+          ref={ref}
+          min={min}
+          max={max}
+          className={cx(`${prefix}--numberinput-input`, {
+            [`${prefix}--numberinput-${size}`]: !fluid,
+            [`${prefix}--numberinput-error`]:
               (error || errorText) && !(warning || warningText),
-            [`${prefix}--textinput-warning`]:
+            [`${prefix}--numberinput-warning`]:
               !(error || errorText) && (warning || warningText)
           })}
-          type={type}
+          type="number"
           placeholder={!fluid ? placeholder : ""}
-          autoComplete={autoComplete}
-          value={textValue}
+          value={numberValue}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             if (!controlled) {
-              setTextValue(event.target.value);
+              setNumberValue(event.target.valueAsNumber);
             }
             onChange?.(event);
           }}
         />
         {fluid && (
           <label
-            className={cx(`${prefix}--textinput-fluid__label`, {
-              [`${prefix}--textinput-fluid__label-value`]: textValue !== ""
+            className={cx(`${prefix}--numberinput-fluid__label`, {
+              [`${prefix}--numberinput-fluid__label-value`]:
+                Number.isNaN(numberValue) === false
             })}
           >
             {placeholder}
@@ -178,14 +179,14 @@ const TextInput = (
         {children}
       </div>
       {errorText && !warningText && (
-        <div className={`${prefix}--textinput-error__text`}>
+        <div className={`${prefix}--numberinput-error__text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--textinput-warning__text`}>
+        <div className={`${prefix}--numberinput-warning__text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}
@@ -195,4 +196,4 @@ const TextInput = (
   );
 };
 
-export default forwardRef<HTMLInputElement, TextInputProps>(TextInput);
+export default forwardRef<HTMLInputElement, NumberInputProps>(NumberInput);

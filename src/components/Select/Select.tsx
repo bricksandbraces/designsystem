@@ -59,6 +59,11 @@ type SelectProps = {
   disabled?: boolean;
 
   /**
+   * Disabled select
+   */
+  readOnly?: boolean;
+
+  /**
    * True if error state is present
    */
   error?: boolean;
@@ -89,6 +94,7 @@ const Select = ({
   warning,
   warningText,
   disabled,
+  readOnly,
   options,
   value,
   defaultValue,
@@ -113,17 +119,23 @@ const Select = ({
   };
 
   return (
-    <div className={cx(`${prefix}--select`, className)}>
+    <div
+      className={cx(
+        `${prefix}--select`,
+        { [`${prefix}--select-readonly`]: readOnly },
+        className
+      )}
+    >
       <Label htmlFor={id}>{label}</Label>
-      <div className={cx(`${prefix}--select--input-wrapper`)}>
+      <div className={cx(`${prefix}--select-input__wrapper`)}>
         <select
-          className={cx(`${prefix}--select--input ${prefix}--select--${size}`, {
-            [`${prefix}--select--error`]: error || errorText,
-            [`${prefix}--select--warning`]:
+          className={cx(`${prefix}--select-input ${prefix}--select-${size}`, {
+            [`${prefix}--select-error`]: error || errorText,
+            [`${prefix}--select-warning`]:
               !(error || errorText) && (warning || warningText)
           })}
           id={id}
-          disabled={disabled}
+          disabled={disabled || readOnly}
           value={selectedValue}
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
             if (!controlled) {
@@ -148,7 +160,7 @@ const Select = ({
           })}
         </select>
         <svg
-          className={`${prefix}--select--input-icon`}
+          className={`${prefix}--select-input__icon`}
           width="16"
           height="16"
           viewBox="0 0 24 24"
@@ -163,14 +175,14 @@ const Select = ({
         </svg>
       </div>
       {errorText && !warningText && (
-        <div className={`${prefix}--select--error-text`}>
+        <div className={`${prefix}--select-error__text`}>
           <IconAlertCircle size={16} />
 
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--select--warning-text`}>
+        <div className={`${prefix}--select-warning__text`}>
           <IconAlertTriangle size={16} />
 
           {warningText}
