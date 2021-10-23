@@ -10,12 +10,11 @@ import {
   IconLayoutGridAdd,
   IconUnderline
 } from "@tabler/icons";
-import Tippy, { useSingleton } from "@tippyjs/react";
 import Button from "./Button";
 import IconOnlyButton from "./IconOnlyButton";
-import ButtonGroup from "./ButtonGroup";
 import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
 import ButtonSkeleton from "./ButtonSkeleton";
+import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
 
 export default { title: "Components/A_REFA_Button", decorators: [withKnobs] };
 
@@ -104,20 +103,16 @@ export const WithIconOnly = () => (
 );
 
 export const IconOnlyGroup = () => {
-  const [source, target] = useSingleton({});
-
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <ButtonGroup withDivider={boolean("withDivider", false)}>
-          <Tippy singleton={source} delay={1000} />
+        <IconOnlyButtonGroup singletonProps={{ delay: 9000 }}>
           <IconOnlyButton
             danger={boolean("danger", false)}
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Align Left",
-              singleton: target
+              tooltipContent: "Align Left"
             }}
             icon={<IconAlignLeft />}
           />
@@ -126,8 +121,7 @@ export const IconOnlyGroup = () => {
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Center",
-              singleton: target
+              tooltipContent: "Center"
             }}
             icon={<IconAlignCenter />}
           />
@@ -136,8 +130,7 @@ export const IconOnlyGroup = () => {
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Align Right",
-              singleton: target
+              tooltipContent: "Align Right"
             }}
             icon={<IconAlignRight />}
           />
@@ -146,8 +139,7 @@ export const IconOnlyGroup = () => {
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Bold",
-              singleton: target
+              tooltipContent: "Bold"
             }}
             icon={<IconBold />}
           />
@@ -156,8 +148,7 @@ export const IconOnlyGroup = () => {
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Italic",
-              singleton: target
+              tooltipContent: "Italic"
             }}
             icon={<IconItalic />}
           />
@@ -166,12 +157,11 @@ export const IconOnlyGroup = () => {
             kind={select("kind", options, defaultValue) as any}
             size={select("size", sizeOptions, defaultSize) as any}
             tooltipProps={{
-              tooltipContent: "Underline",
-              singleton: target
+              tooltipContent: "Underline"
             }}
             icon={<IconUnderline />}
           />
-        </ButtonGroup>
+        </IconOnlyButtonGroup>
       </div>
     </div>
   );
