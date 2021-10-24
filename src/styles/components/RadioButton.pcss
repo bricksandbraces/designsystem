@@ -16,6 +16,16 @@
     }
 
     & > [type="radio"]:checked + label {
+      background-image: radial-gradient(
+          at 14% 8%,
+          hsla(260, 100%, 60%, 1) 0,
+          transparent 50%
+        ),
+        radial-gradient(at 74% 17%, hsla(260, 100%, 50%, 1) 0, transparent 50%),
+        radial-gradient(at 76% 83%, hsla(0, 0%, 0%, 1) 0, transparent 100%),
+        radial-gradient(at 69% 61%, hsla(238, 100%, 38%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(240, 6%, 10%, 1) 0, transparent 50%),
+        radial-gradient(at 23% 58%, hsla(260, 100%, 40%, 1) 0, transparent 50%);
       color: $color--font-selected;
       & > .$(prefix)--radiobutton-selected {
         color: $color--decoration;

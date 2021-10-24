@@ -37,6 +37,7 @@
 @import "./components/DataTable.pcss";
 @import "./components/Search.pcss";
 @import "./components/RadioButton.pcss";
+@import "./components/RadioTile.pcss";
 @import "./components/Select.pcss";
 @import "./components/Toggle.pcss";
 @import "./components/NumberInput.pcss";
