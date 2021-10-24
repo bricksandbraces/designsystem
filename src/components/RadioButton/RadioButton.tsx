@@ -4,17 +4,17 @@ import { prefix } from "../../settings";
 
 export type RadioButtonProps = {
   /**
-   * React className
+   * RadioButton ClassName
    */
   className?: string;
 
   /**
-   * RadioButton ID
+   * RadioButton Id
    */
   id: string;
 
   /**
-   * Children
+   * RadioButton Children
    */
   children?: ReactNode;
 
@@ -34,12 +34,29 @@ export type RadioButtonProps = {
   name?: string;
 
   /**
-   * Checked values
+   * RadioButton Checked
    */
   checked?: boolean;
+
+  /**
+   * RadioButton DefaultChecked
+   */
   defaultChecked?: boolean;
+
+  /**
+   * RadioButton OnChange Function
+   */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  /**
+   * RadioButton Disabled
+   */
   disabled?: boolean;
+
+  /**
+   * RadioButton ReadOnly
+   */
+  readOnly?: boolean;
 };
 
 const RadioButton = ({
@@ -50,15 +67,26 @@ const RadioButton = ({
   defaultChecked,
   label,
   className,
+  readOnly,
+  disabled,
   children,
   onChange,
   ...rest
 }: RadioButtonProps) => {
   return (
-    <div className={cx(`${prefix}--radiobutton`, className)}>
+    <div
+      className={cx(
+        `${prefix}--radiobutton`,
+        {
+          [`${prefix}--radiobutton-readonly`]: readOnly,
+          [`${prefix}--radiobutton-disabled`]: disabled
+        },
+        className
+      )}
+    >
       <input
         tabIndex={0}
-        className={`${prefix}--radiobutton--input`}
+        className={`${prefix}--radiobutton-input`}
         type="radio"
         value={value}
         name={name}
@@ -68,9 +96,9 @@ const RadioButton = ({
         onChange={onChange}
         {...rest}
       />
-      <label className={`${prefix}--radiobutton--label`} htmlFor={id}>
+      <label className={`${prefix}--radiobutton-label`} htmlFor={id}>
         <svg
-          className={`${prefix}--radiobutton--selected`}
+          className={`${prefix}--radiobutton-selected`}
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -81,21 +109,19 @@ const RadioButton = ({
           strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <circle cx="12" cy="12" r="9" />
           <circle
             cx="12"
             cy="12"
-            r="3"
-            fill="currentColor"
-            className={`${prefix}--radiobutton--selected-mark`}
+            r="9"
+            className={`${prefix}--radiobutton-selected__box`}
           />
         </svg>
         <div>
           {label && (
-            <div className={`${prefix}--radiobutton--label-text`}>{label}</div>
+            <div className={`${prefix}--radiobutton-label__text`}>{label}</div>
           )}
           {children && (
-            <div className={`${prefix}--radiobutton--content`}>{children}</div>
+            <div className={`${prefix}--radiobutton-content`}>{children}</div>
           )}
         </div>
       </label>

@@ -7,7 +7,7 @@
     display: flex;
     min-height: 1rem;
     margin-bottom: 0.5rem;
-    color: $color--font-text-01;
+    color: $color--font-unselected;
 
     &
       > .$(prefix)--checkbox-input[type="checkbox"]
@@ -18,35 +18,20 @@
       }
     }
 
-    &
-      > .$(prefix)--checkbox-input[type="checkbox"]:disabled
-      + .$(prefix)--checkbox-label {
-      cursor: not-allowed;
-
-      & > .$(prefix)--checkbox-check {
-        & > .$(prefix)--checkbox-check__box {
-          fill: transparent;
-        }
+    & > [type="checkbox"]:checked + label {
+      color: $color--font-selected;
+      > .$(prefix)--checkbox-check {
+        color: $color--decoration;
         & > .$(prefix)--checkbox-check__mark {
-          stroke: $color--font-disabled;
+          visibility: visible;
+          stroke-width: 0.125rem;
+          color: $color--app-05;
         }
-      }
 
-      & * {
-        color: $color--font-disabled;
-      }
-    }
-
-    & > [type="checkbox"]:checked + label > .$(prefix)--checkbox-check {
-      color: $color--app-05;
-      & > .$(prefix)--checkbox-check__mark {
-        visibility: visible;
-        stroke-width: 0.125rem;
-        color: $color--app-01;
-      }
-
-      & > .$(prefix)--checkbox-check__box {
-        fill: $color--app-05;
+        & > .$(prefix)--checkbox-check__box {
+          border-color: $color--decoration;
+          fill: $color--decoration;
+        }
       }
     }
 
@@ -65,17 +50,16 @@
         + label
         > .$(prefix)--checkbox-check
         > .$(prefix)--checkbox-check__box {
-        stroke: $color--readonly;
+        stroke: $color--font-readonly;
         fill: transparent;
       }
 
-      &
-        > .$(prefix)--checkbox-input[type="checkbox"]:checked
-        + label
-        > .$(prefix)--checkbox-check
-        > .$(prefix)--checkbox-check__box {
-        stroke: $color--readonly;
-        fill: $color--readonly;
+      & > .$(prefix)--checkbox-input[type="checkbox"]:checked + label {
+        color: $color--font-readonly;
+        & > .$(prefix)--checkbox-check > .$(prefix)--checkbox-check__box {
+          stroke: $color--readonly;
+          fill: $color--readonly;
+        }
       }
 
       & > input,
@@ -91,6 +75,43 @@
 
         & > .$(prefix)--checkbox-check__mark {
           stroke: $color--font-readonly;
+        }
+      }
+    }
+
+    &-disabled {
+      color: $color--font-disabled;
+
+      &
+        > .$(prefix)--checkbox-input[type="checkbox"]
+        + label
+        > .$(prefix)--checkbox-check
+        > .$(prefix)--checkbox-check__box {
+        stroke: $color--font-disabled;
+        fill: transparent;
+      }
+
+      & > .$(prefix)--checkbox-input[type="checkbox"]:checked + label {
+        color: $color--font-disabled;
+        & > .$(prefix)--checkbox-check > .$(prefix)--checkbox-check__box {
+          stroke: $color--disabled;
+          fill: $color--disabled;
+        }
+      }
+
+      & > input,
+      label {
+        pointer-events: none;
+        user-select: none;
+      }
+
+      & > label > .$(prefix)--checkbox-check {
+        & > .$(prefix)--checkbox-check__box {
+          stroke: $color--disabled;
+        }
+
+        & > .$(prefix)--checkbox-check__mark {
+          stroke: $color--font-disabled;
         }
       }
     }
@@ -118,7 +139,7 @@
       min-height: calc($size--container-01 * 1.25);
       margin-right: $size--spacing-03;
       transition: outline $transition--app-01;
-      color: $color--app-03;
+      color: $color--font-unselected;
     }
   }
 

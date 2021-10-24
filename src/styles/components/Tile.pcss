@@ -30,6 +30,26 @@
         border-color: $color--focus;
       }
     }
+
+    &-disabled {
+      border-color: transparent;
+      background-color: $color--disabled;
+      color: $color--font-disabled;
+      pointer-events: none;
+      user-select: none;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-readonly {
+      border-color: transparent;
+      background-color: $color--readonly;
+      color: $color--font-readonly;
+      pointer-events: none;
+      user-select: none;
+    }
   }
 
   &--tile.$(prefix)--skeleton {

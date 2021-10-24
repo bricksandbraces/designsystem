@@ -1,4 +1,4 @@
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import ClickableTile from "./ClickableTile";
 import Tile from "./Tile";
@@ -10,7 +10,12 @@ export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Tile>Default Tile</Tile>
+        <Tile
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
+        >
+          Default Tile
+        </Tile>
       </div>
     </div>
   );
@@ -20,7 +25,12 @@ export const Clickable = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <ClickableTile target="_blank" href="#">
+        <ClickableTile
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
+          href={text("href", "#")}
+          target={text("target", "_blank")}
+        >
           Clickable Tile
         </ClickableTile>
       </div>

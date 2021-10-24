@@ -79,13 +79,13 @@ const RadioButtonGroup = ({
   return (
     <fieldset
       id={id}
-      className={cx(`${prefix}--radiobutton--group`, className)}
+      className={cx(`${prefix}--radiobutton-group`, className)}
       name={name}
       disabled={disabled}
     >
       {legendLabel && (
         <legend
-          className={`${prefix}--radiobutton--group-legend ${prefix}--formlabel`}
+          className={`${prefix}--radiobutton-group__legend ${prefix}--typography--label`}
         >
           {legendLabel}
         </legend>
