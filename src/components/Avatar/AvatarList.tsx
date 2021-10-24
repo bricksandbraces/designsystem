@@ -42,8 +42,8 @@ type AvatarListProps = {
    */
   children?: ReactNode;
 
-  /** 
-   * AvatarList Items 
+  /**
+   * AvatarList Items
    */
   avatarItems: AvatarListItem[];
 };
@@ -60,7 +60,7 @@ const AvatarList = ({
         {avatarItems.map((avatar) => {
           return (
             <li key={avatar.id} className={`${prefix}--avatar-list__item`}>
-              <Avatar name={avatar.name} imgUrl={avatar.imgUrl} />
+              <Avatar name={avatar.name} imgUrl={avatar.imgUrl} size="small" />
               <div className={`${prefix}--avatar-list__item-container`}>
                 <div className={`${prefix}--avatar-list__item-text`}>
                   <p className={`${prefix}--avatar-list__item-text--heading`}>

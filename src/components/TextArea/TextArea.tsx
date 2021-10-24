@@ -7,71 +7,81 @@ import Label from "../Typography/Label";
 
 type TextAreaProps = {
   /**
-   * TextInput ClassName
+   * TextArea ClassName
    */
   className?: string;
 
   /**
-   * Label
+   * TextArea Label
    */
   label?: string;
 
   /**
-   * Placeholder text
+   * TextArea Placeholder
    */
   placeholder?: string;
 
   /**
-   * Id
+   * TextArea Id
    */
   id?: string;
 
   /**
-   * Maximum length for the characters limit to display.
+   * TextArea Character Limit
    */
   characterLimit?: number;
 
   /**
-   * The text to display as error message if the input exceeds the given character limit.
+   * TextArea Character Limit Exceeded Text
    */
   characterLimitExceededText?: string;
 
   /**
-   * Maximum length set hard to the element so that user can't add more characters anymore.
+   * TextArea Maximum Length
    */
   maxLength?: number;
 
   /**
-   * Error state & text
+   * TextArea Error State & Text
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * Error state & text
+   * TextArea Warning State & Text
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * Default Value
+   * TextArea Default Value
    */
   defaultValue?: string;
 
   /**
-   * Value
+   * TextArea Value
    */
   value?: string;
 
   /**
-   * OnChange Function
+   * TextArea OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 
   /**
-   * ReactChildren
+   * TextArea Children
    */
   children?: React.ReactNode;
+
+  /**
+   * TextArea Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * TextArea ReadOnly
+   */
+  readOnly?: boolean;
 };
 
 const TextArea = (
@@ -86,6 +96,8 @@ const TextArea = (
     maxLength,
     className,
     label,
+    disabled,
+    readOnly,
     placeholder,
     value,
     defaultValue,
@@ -107,12 +119,12 @@ const TextArea = (
 
   return (
     <div className={`${prefix}--textarea`}>
-      <div className={`${prefix}--textarea--top`}>
+      <div className={`${prefix}--textarea-top`}>
         {label && <Label htmlFor={id}>{label}</Label>}
         {characterLimit && (
           <div
-            className={cx(`${prefix}--textarea--char-counter`, {
-              [`${prefix}--textarea--char-counter__exceeded`]:
+            className={cx(`${prefix}--textarea-charcounter`, {
+              [`${prefix}--textarea-charcounter__exceeded`]:
                 textValue.length > characterLimit
             })}
           >
@@ -120,18 +132,20 @@ const TextArea = (
           </div>
         )}
       </div>
-      <div className={`${prefix}--textarea--input-container`}>
+      <div className={`${prefix}--textarea-input__container`}>
         <textarea
           maxLength={maxLength}
           id={id}
+          readOnly={readOnly}
+          disabled={disabled}
           ref={ref}
           className={cx(
-            `${prefix}--textarea--input`,
+            `${prefix}--textarea-input`,
             {
-              [`${prefix}--textarea--error`]:
+              [`${prefix}--textarea-error`]:
                 ((error || errorText) && !(warning || warningText)) ||
                 (characterLimit && textValue.length > characterLimit),
-              [`${prefix}--textarea--warning`]:
+              [`${prefix}--textarea-warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className
@@ -149,13 +163,13 @@ const TextArea = (
       </div>
       {/* Error text or character limit exceeded. Error text overwrites character limit */}
       {(errorText || (characterLimit && textValue.length > characterLimit)) && (
-        <div className={`${prefix}--textinput--error-text`}>
+        <div className={`${prefix}--textinput-error__text`}>
           <IconAlertCircle size={16} />
           {errorText || characterLimitExceededText}
         </div>
       )}
       {warningText && !errorText && (
-        <div className={`${prefix}--textinput--warning-text`}>
+        <div className={`${prefix}--textinput-warning__text`}>
           <IconAlertTriangle size={16} />
           {warningText}
         </div>

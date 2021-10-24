@@ -1,8 +1,8 @@
-import { number, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import TextArea from "./TextArea";
 
-export default { title: "Components/TextArea", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_TextArea", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (
@@ -12,8 +12,10 @@ export const Uncontrolled = () => {
         errorText={text("errorText", "")}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
-        placeholder={text("Placeholder", "Enter text...")}
-        maxLength={number("Max Length", undefined as any)}
+        placeholder={text("placeholder", "Enter text...")}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
+        maxLength={number("maxLength", undefined as any)}
       />
     </div>
   );
@@ -29,11 +31,13 @@ export const Controlled = () => {
         value={value}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
-        placeholder={text("Placeholder", "Enter text...")}
+        placeholder={text("placeholder", "Enter text...")}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
           setValue(event.target.value);
         }}
-        maxLength={number("Max Length", undefined as any)}
+        maxLength={number("maxLength", undefined as any)}
       />
     </div>
   );
@@ -45,13 +49,15 @@ export const WithCharacterCounter = () => {
       <TextArea
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        defaultValue={text("Default Text", "Henlo")}
+        defaultValue={text("defaultValue", "Henlo")}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
-        placeholder={text("Placeholder", "Enter text...")}
-        characterLimit={number("Character Limit", 30)}
+        placeholder={text("placeholder", "Enter text...")}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
+        characterLimit={number("characterLimit", 30)}
         characterLimitExceededText={text(
-          "Character Limit Exceeded Text",
+          "characterLimitExceededText",
           "Ooops that is too long!"
         )}
       />

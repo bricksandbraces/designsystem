@@ -23,8 +23,7 @@ export const Default = () => {
     <div
       style={{
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        padding: "32px",
         width: "100vw",
         height: "100vh"
       }}
