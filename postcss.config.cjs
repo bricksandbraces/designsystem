@@ -5,11 +5,15 @@ module.exports = (ctx) => ({
     require("postcss-import")(require("postcss-normalize")().postcssImport()),
     require("postcss-preset-env"),
     require("postcss-flexbugs-fixes"),
-    require("postcss-mixins"),
-    require("postcss-nested"),
+
     require("postcss-each")({
       plugins: {
-        beforeEach: [require("postcss-simple-vars"), require("postcss-calc")]
+        beforeEach: [
+          require("postcss-mixins"),
+          require("postcss-nested"),
+          require("postcss-simple-vars"),
+          require("postcss-calc")
+        ]
       }
     }),
     require("postcss-hexrgba"),
