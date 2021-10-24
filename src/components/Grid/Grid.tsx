@@ -84,11 +84,11 @@ export const Grid = ({
     <div
       data-columncount={childrenCount}
       className={cx(
-        `${prefix}--grid--container`,
+        `${prefix}--grid-container`,
         {
-          [`${prefix}--grid--fullwidth`]: fullWidth,
-          [`${prefix}--grid--container-no-gutter`]: narrow,
-          [`${prefix}--grid--container-no-gutter__left`]: condensed
+          [`${prefix}--grid-fullwidth`]: fullWidth,
+          [`${prefix}--grid-container__no-gutter`]: narrow,
+          [`${prefix}--grid-container__no-gutter-left`]: condensed
         },
         className
       )}
@@ -118,17 +118,17 @@ export const Column = ({
   return (
     <div
       className={cx(
-        span && `${prefix}--grid--col-${span}`,
-        offset && `${prefix}--grid--col-${span}__offset-${offset}`,
-        sm && sm <= 4 && `${prefix}--grid--col-sm__${sm}`,
-        smOffset && `${prefix}--grid--col-sm__${sm}__offset-${smOffset}`,
-        md && md <= 8 && `${prefix}--grid--col-md__${md}`,
-        mdOffset && `${prefix}--grid--col-md__${md}__offset-${mdOffset}`,
-        lg && lg <= 16 && `${prefix}--grid--col-lg__${lg}`,
-        lgOffset && `${prefix}--grid--col-lg__${lg}__offset-${lgOffset}`,
-        xlg && xlg <= 16 && `${prefix}--grid--col-xlg__${xlg}`,
-        xlgOffset && `${prefix}--grid--col-xlg__${xlg}__offset-${xlgOffset}`,
-        { [`${prefix}--grid--col`]: defaultColumn },
+        span && `${prefix}--grid-col__${span}`,
+        offset && `${prefix}--grid-col__${span}-offset--${offset}`,
+        sm && sm <= 4 && `${prefix}--grid-col__sm-${sm}`,
+        smOffset && `${prefix}--grid-col__sm-${sm}--offset__${smOffset}`,
+        md && md <= 8 && `${prefix}--grid-col__md-${md}`,
+        mdOffset && `${prefix}--grid-col__md-${md}--offset__${mdOffset}`,
+        lg && lg <= 16 && `${prefix}--grid-col__lg-${lg}`,
+        lgOffset && `${prefix}--grid-col__lg-${lg}--offset__${lgOffset}`,
+        xlg && xlg <= 16 && `${prefix}--grid-col__xlg-${xlg}`,
+        xlgOffset && `${prefix}--grid-col__xlg-${xlg}--offset__${xlgOffset}`,
+        { [`${prefix}--grid-col`]: defaultColumn },
         className
       )}
       {...rest}
