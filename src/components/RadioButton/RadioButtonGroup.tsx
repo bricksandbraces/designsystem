@@ -85,7 +85,7 @@ const RadioButtonGroup = ({
     >
       {legendLabel && (
         <legend
-          className={`${prefix}--radiobutton-group__legend ${prefix}--typography--label`}
+          className={`${prefix}--radiobutton-group__legend ${prefix}--typography-label`}
         >
           {legendLabel}
         </legend>

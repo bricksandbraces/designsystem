@@ -41,7 +41,7 @@ const TextInputSkeleton = ({
         <SkeletonAnimatedContainer
           width={64}
           className={cx(
-            `${prefix}--typography--label`,
+            `${prefix}--typography-label`,
 
             className
           )}

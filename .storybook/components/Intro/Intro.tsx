@@ -11,7 +11,7 @@ const Intro = () => {
         <Headline type="h1" className="sb-intro--headline">
           Design System
         </Headline>
-        <Body type="b2" className="sb-intro--subline">
+        <Body type="body-02" className="sb-intro--subline">
           v.0.0.1 React Storybook
         </Body>
       </div>

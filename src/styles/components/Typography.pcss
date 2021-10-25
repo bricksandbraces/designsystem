@@ -2,77 +2,79 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--typography {
-  &--caption {
-    @mixin type--caption;
-  }
+.$(prefix) {
+  &--typography {
+    &-caption {
+      @mixin type--caption;
+    }
 
-  &--label {
-    @mixin type--label;
+    &-label {
+      @mixin type--label;
 
-    margin-bottom: $size--spacing-03;
-    color: $color--font-text-03;
-  }
+      margin-bottom: $size--spacing-03;
+      color: $color--font-text-03;
+    }
 
-  &--label.$(prefix)--skeleton {
-    align-self: flex-start;
-    height: calc($size--container-01 * 0.75);
-    margin-bottom: $size--spacing-04;
-  }
+    &-label.$(prefix)--skeleton {
+      align-self: flex-start;
+      height: calc($size--container-01 * 0.75);
+      margin-bottom: $size--spacing-04;
+    }
 
-  &--b1 {
-    @mixin type--body-01;
-  }
+    &-body-01 {
+      @mixin type--body-01;
+    }
 
-  &--b2 {
-    @mixin type--body-02;
-  }
+    &-body-02 {
+      @mixin type--body-02;
+    }
 
-  &--h1 {
-    @mixin type--headline-01;
-  }
+    &-h1 {
+      @mixin type--headline-01;
+    }
 
-  &--h2 {
-    @mixin type--headline-02;
-  }
+    &-h2 {
+      @mixin type--headline-02;
+    }
 
-  &--h3 {
-    @mixin type--headline-03;
-  }
+    &-h3 {
+      @mixin type--headline-03;
+    }
 
-  &--h4 {
-    @mixin type--headline-04;
-  }
+    &-h4 {
+      @mixin type--headline-04;
+    }
 
-  &--h5 {
-    @mixin type--headline-05;
-  }
+    &-h5 {
+      @mixin type--headline-05;
+    }
 
-  &--h6 {
-    @mixin type--headline-06;
-  }
+    &-h6 {
+      @mixin type--headline-06;
+    }
 
-  &--m1 {
-    @mixin type--marketing-01;
-  }
+    &-marketing-01 {
+      @mixin type--marketing-01;
+    }
 
-  &--m2 {
-    @mixin type--marketing-02;
-  }
+    &-marketing-02 {
+      @mixin type--marketing-02;
+    }
 
-  &--q1 {
-    @mixin type--quote-01;
-  }
+    &-quote-01 {
+      @mixin type--quote-01;
+    }
 
-  &--q2 {
-    @mixin type--quote-02;
-  }
+    &-quote-02 {
+      @mixin type--quote-02;
+    }
 
-  &--blockquote {
-    display: flex;
+    &-blockquote {
+      display: flex;
 
-    & > blockquote {
-      margin-left: 0.75rem;
+      & > blockquote {
+        margin-left: $size--spacing-04;
+      }
     }
   }
 }

@@ -85,7 +85,7 @@ const RadioTileGroup = ({
     >
       {legendLabel && (
         <legend
-          className={`${prefix}--radiotile-group__legend ${prefix}--typography--label`}
+          className={`${prefix}--radiotile-group__legend ${prefix}--typography-label`}
         >
           {legendLabel}
         </legend>

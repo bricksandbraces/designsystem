@@ -60,7 +60,7 @@ type ModalProps = {
 
 const Modal = (
   {
-    size,
+    size = "sm",
     open,
     onClose,
     closeOnOutsideClick = true,
@@ -107,8 +107,8 @@ const Modal = (
           <div
             ref={mergeRefs([modalRef, ref])}
             className={cx(`${prefix}--modal`, {
-              [`${prefix}--modal--open`]: open,
-              [`${prefix}--modal--with-divider`]: withDivider
+              [`${prefix}--modal-open`]: open,
+              [`${prefix}--modal-with-divider`]: withDivider
             })}
           >
             <OutsideClickListener
@@ -118,19 +118,16 @@ const Modal = (
               }}
             >
               <FocusLock
-                className={cx(`${prefix}--modal--container`, {
-                  [`${prefix}--modal--container-small`]: size === "sm",
-                  [`${prefix}--modal--container-medium`]: size === "md",
-                  [`${prefix}--modal--container-large`]: size === "lg",
-                  [`${prefix}--modal--container-xlarge`]: size === "xlg"
-                })}
+                className={cx(
+                  `${prefix}--modal-container ${prefix}--modal-container__${size}`
+                )}
                 disabled={!open}
               >
                 <IconOnlyButton
+                  hideTooltip
                   kind="ghost"
                   icon={<IconX />}
-                  wrapperClassName={`${prefix}--modal--close`}
-                  tooltipPosition="left"
+                  className={`${prefix}--modal-close`}
                   onClick={(event: any) => {
                     onClose?.(event);
                   }}

@@ -5,7 +5,10 @@ import RadioButton from "./RadioButton";
 import RadioButtonGroup from "./RadioButtonGroup";
 import RadioButtonSkeleton from "./RadioButtonSkeleton";
 
-export default { title: "Components/A_REFA_RadioButton", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_RadioButton",
+  decorators: [withKnobs]
+};
 
 export const Default = () => {
   return (
@@ -80,7 +83,10 @@ export const WithChildren = () => {
               disabled={boolean("disabled (Radio 2)", false)}
               name="1"
             >
-              <Body type="b2" style={{ marginTop: "8px", display: "block" }}>
+              <Body
+                type="body-02"
+                style={{ marginTop: "8px", display: "block" }}
+              >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et

@@ -4,20 +4,24 @@ import Button from "../Button/Button";
 
 type ModalFooterProps = {
   /**
-   * Text labels
+   * ModalFooter Primary Label
    */
-  secondaryLabel?: string;
   primaryLabel: string;
 
   /**
-   * OnSecondaryClick
-   */
-  onSecondaryClick?: (event: any) => void;
-
-  /**
-   * OnPrimaryClick
+   * ModalFooter OnPrimaryClick
    */
   onPrimaryClick: (event: any) => void;
+
+  /**
+   * ModalFooter Secondary Label
+   */
+  secondaryLabel?: string;
+
+  /**
+   * ModalFooter OnSecondaryClick
+   */
+  onSecondaryClick?: (event: any) => void;
 };
 
 const ModalFooter = ({
@@ -28,20 +32,18 @@ const ModalFooter = ({
 }: ModalFooterProps) => {
   return (
     <>
-      <div className={`${prefix}--modal--footer`}>
+      <div className={`${prefix}--modal-footer`}>
         {secondaryLabel && (
           <Button
-            fluid
-            kind="ghost"
-            className={`${prefix}--modal--footer-ghost`}
+            kind="secondary"
+            className={`${prefix}--modal-footer__secondary`}
             onClick={onSecondaryClick}
           >
             {secondaryLabel}
           </Button>
         )}
         <Button
-          fluid
-          className={`${prefix}--modal--footer-primary`}
+          className={`${prefix}--modal-footer__primary`}
           onClick={onPrimaryClick}
         >
           {primaryLabel}

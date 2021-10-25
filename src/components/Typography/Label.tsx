@@ -4,12 +4,12 @@ import { prefix } from "../../settings";
 
 type LabelProps = {
   /**
-   * React children
+   * Label Children
    */
   children?: ReactNode;
 
   /**
-   * Classnames
+   * Label ClassName
    */
   className?: string;
 } & React.LabelHTMLAttributes<HTMLLabelElement>;
@@ -18,7 +18,7 @@ const Label = ({ children, className, ...rest }: LabelProps) => {
   return (
     <label
       className={cx(
-        `${prefix}--typography ${prefix}--typography--label`,
+        `${prefix}--typography ${prefix}--typography-label`,
         className
       )}
       {...rest}

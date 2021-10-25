@@ -5,20 +5,24 @@ import Headline from "../Typography/Headline";
 
 type ModalHeaderProps = {
   /**
-   * Text labels
+   * ModalHeader Headline
    */
   headline: string;
-  subheadline?: string;
+
+  /**
+   * ModalHeader SubHeadline
+   */
+  subHeadline?: string;
 };
 
-const ModalHeader = ({ headline, subheadline }: ModalHeaderProps) => {
+const ModalHeader = ({ headline, subHeadline }: ModalHeaderProps) => {
   return (
-    <div className={`${prefix}--modal--header`}>
-      <Headline type="h4" className={`${prefix}--modal--header-headline`}>
+    <div className={`${prefix}--modal-header`}>
+      <Headline type="h4" className={`${prefix}--modal-header__headline`}>
         {headline}
       </Headline>
-      <Body type="b2" className={`${prefix}--modal--header-subheadline`}>
-        {subheadline}
+      <Body type="body-02" className={`${prefix}--modal-header__subheadline`}>
+        {subHeadline}
       </Body>
     </div>
   );
