@@ -18,27 +18,27 @@ import { prefix } from "../../settings";
 
 type ModalProps = {
   /**
-   * Size
+   * Modal Size
    */
   size?: "sm" | "md" | "lg" | "xlg";
 
   /**
-   * Open
+   * Modal Open
    */
   open: boolean;
 
   /**
-   * With Divider
+   * Modal WithDivider
    */
   withDivider?: boolean;
 
   /**
-   * Children
+   * Modal Children
    */
   children?: ReactNode;
 
   /**
-   * OnClose
+   * Modal OnClose
    */
   onClose?: (
     event:
@@ -48,12 +48,12 @@ type ModalProps = {
   ) => void;
 
   /**
-   * Determines whether the modal should be closed when the user clicks outside of the modal.
+   * DModal Close On OutsideClick
    */
   closeOnOutsideClick?: boolean;
 
   /**
-   * Automatically focus the close button of the modal
+   * Modal Autofocus Close Button
    */
   autoFocus?: boolean;
 };

@@ -3,7 +3,7 @@ import { prefix } from "../../settings";
 
 type ModalBodyProps = {
   /**
-   * Text labels
+   * ModalBody Children
    */
   children: ReactNode;
 };
