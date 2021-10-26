@@ -4,59 +4,34 @@ import { prefix } from "../../settings";
 
 type QuoteProps = {
   /**
-   * Aspect Ratio Children
+   * Quote Children
    */
   children?: ReactNode;
 
   /**
-   * Type to use
+   * Quote Type
    */
-  type?: "q1" | "q2";
+  type?: "quote-01" | "quote-02";
 
   /**
-   * Classnames
+   * Quote ClassName
    */
   className?: string;
-
-  /**
-   * Title
-   */
-  title?: string;
-
-  /**
-   * React inline styles for the typography component
-   */
-  style?: any;
-
-  /**
-   * HTML for label
-   */
-  htmlFor?: string;
-
-  name?: string;
-};
+} & React.HTMLAttributes<HTMLQuoteElement>;
 
 const Quote = ({ children, className, type, ...rest }: QuoteProps) => {
   return (
     <div
       className={cx(
-        `${prefix}--typography ${prefix}--typography--blockquote ${prefix}--typography--${type}`,
+        `${prefix}--typography ${prefix}--typography-blockquote ${prefix}--typography-${type}`,
         className
       )}
     >
-      <p
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--${type}`,
-          className
-        )}
-      >
+      <p className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}>
         &ldquo;
       </p>
       <blockquote
-        className={cx(
-          `${prefix}--typography ${prefix}--typography--${type}`,
-          className
-        )}
+        className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}
         {...rest}
       >
         {children}

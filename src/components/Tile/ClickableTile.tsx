@@ -20,6 +20,16 @@ type ClickableTileProps = {
   target?: string;
 
   /**
+   * ClickableTile Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * ClickableTile readOnly
+   */
+  readOnly?: boolean;
+
+  /**
    * ClickableTile onClick
    */
   onClick?: React.MouseEventHandler<ButtonOrAnchor>;
@@ -48,6 +58,8 @@ type ClickableTileProps = {
 const ClickableTile = ({
   children,
   className,
+  disabled,
+  readOnly,
   onClick,
   ...rest
 }: ClickableTileProps) => {
@@ -55,8 +67,13 @@ const ClickableTile = ({
     <>
       {onClick ? (
         <button
+          disabled={disabled}
           className={cx(
             `${prefix}--tile ${prefix}--tile-clickable`,
+            {
+              [`${prefix}--tile-disabled`]: disabled,
+              [`${prefix}--tile-readonly`]: readOnly
+            },
 
             className
           )}
@@ -66,8 +83,13 @@ const ClickableTile = ({
         </button>
       ) : (
         <a
+          aria-disabled={disabled}
           className={cx(
             `${prefix}--tile ${prefix}--tile-clickable`,
+            {
+              [`${prefix}--tile-disabled`]: disabled,
+              [`${prefix}--tile-readonly`]: readOnly
+            },
 
             className
           )}

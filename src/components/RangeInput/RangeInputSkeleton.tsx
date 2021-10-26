@@ -35,7 +35,7 @@ const RangeInputSkeleton = ({
     >
       <SkeletonAnimatedContainer
         width={64}
-        className={cx(`${prefix}--typography--label`)}
+        className={cx(`${prefix}--typography-label`)}
       />
       <div className={cx(`${prefix}--rangeinput-container`)}>
         {!hideInput && (
@@ -48,7 +48,7 @@ const RangeInputSkeleton = ({
           <SkeletonAnimatedContainer
             width={24}
             className={cx(
-              `${prefix}--typography--label ${prefix}--rangeinput-slider__label`
+              `${prefix}--typography-label ${prefix}--rangeinput-slider__label`
             )}
           />
           <SkeletonAnimatedContainer
@@ -58,7 +58,7 @@ const RangeInputSkeleton = ({
           <SkeletonAnimatedContainer
             width={24}
             className={cx(
-              `${prefix}--typography--label ${prefix}--rangeinput-slider__label`
+              `${prefix}--typography-label ${prefix}--rangeinput-slider__label`
             )}
           />
         </div>

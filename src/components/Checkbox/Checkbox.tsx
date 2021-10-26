@@ -46,6 +46,7 @@ const Checkbox = ({
   label,
   readOnly,
   className,
+  disabled,
   children,
   onChange,
   ...rest
@@ -54,7 +55,10 @@ const Checkbox = ({
     <div
       className={cx(
         `${prefix}--checkbox`,
-        { [`${prefix}--checkbox-readonly`]: readOnly },
+        {
+          [`${prefix}--checkbox-disabled`]: disabled,
+          [`${prefix}--checkbox-readonly`]: readOnly
+        },
         className
       )}
     >

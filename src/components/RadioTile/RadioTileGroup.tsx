@@ -1,18 +1,18 @@
 import React, { ChangeEvent, ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
-import { RadioButtonProps } from "./RadioButton";
+import { RadioTileProps } from "./RadioTile";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 
-type RadioButtonGroupProps = {
+type RadioTileGroupProps = {
   /**
    * React className
    */
   className?: string;
 
   /**
-   * RadioButtonGroup ID
+   * RadioTileGroup ID
    */
   id?: string;
 
@@ -22,27 +22,27 @@ type RadioButtonGroupProps = {
   children?: ReactNode;
 
   /**
-   * RadioButtonGroup Value (Controlled). Use null for nothing selected but controlled.
+   * RadioTileGroup Value (Controlled). Use null for nothing selected but controlled.
    */
   value?: string | null;
 
   /**
-   * RadioButtonGroup Default Value (Uncontrolled)
+   * RadioTileGroup Default Value (Uncontrolled)
    */
   defaultValue?: string;
 
   /**
-   * RadioButtonGroup Label
+   * RadioTileGroup Label
    */
   legendLabel?: string;
 
   /**
-   * RadioButtonGroup Name
+   * RadioTileGroup Name
    */
   name: string;
 
   /**
-   * RadioButtonGroup Disabled state
+   * RadioTileGroup Disabled state
    */
   disabled?: boolean;
 
@@ -55,7 +55,7 @@ type RadioButtonGroupProps = {
   ) => void;
 };
 
-const RadioButtonGroup = ({
+const RadioTileGroup = ({
   id,
   legendLabel,
   disabled,
@@ -66,7 +66,7 @@ const RadioButtonGroup = ({
   value,
   name,
   onChange
-}: RadioButtonGroupProps) => {
+}: RadioTileGroupProps) => {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(
     defaultValue ?? value ?? null
@@ -79,25 +79,25 @@ const RadioButtonGroup = ({
   return (
     <fieldset
       id={id}
-      className={cx(`${prefix}--radiobutton-group`, className)}
+      className={cx(`${prefix}--radiotile-group`, className)}
       name={name}
       disabled={disabled}
     >
       {legendLabel && (
         <legend
-          className={`${prefix}--radiobutton-group__legend ${prefix}--typography-label`}
+          className={`${prefix}--radiotile-group__legend ${prefix}--typography-label`}
         >
           {legendLabel}
         </legend>
       )}
       {React.Children.map(children, (child) => {
-        if (!React.isValidElement<RadioButtonProps>(child)) {
+        if (!React.isValidElement<RadioTileProps>(child)) {
           return child;
         }
         assert(
           child.props.checked === undefined &&
             child.props.defaultChecked === undefined,
-          "You provided either checked or defaultChecked property to the RadioButton while it is a child of the RadioButtonGroup. That is illegal. While using a RadioButtonGroup you have to manage its value only on the group as those properties are being ignored on the child elements."
+          "You provided either checked or defaultChecked property to the RadioTile while it is a child of the RadioTileGroup. That is illegal. While using a RadioTileGroup you have to manage its value only on the group as those properties are being ignored on the child elements."
         );
         return React.cloneElement(child, {
           name,
@@ -116,4 +116,4 @@ const RadioButtonGroup = ({
   );
 };
 
-export default RadioButtonGroup;
+export default RadioTileGroup;

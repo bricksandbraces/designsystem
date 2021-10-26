@@ -111,12 +111,12 @@ const ToastNotification = ({
             {title}
           </Headline>
           {subTitle && (
-            <Body type="b2" className={`${prefix}--notification-subtitle`}>
+            <Body type="body-02" className={`${prefix}--notification-subtitle`}>
               {subTitle}
             </Body>
           )}
           {time && (
-            <Body type="b2" className={`${prefix}--notification-time`}>
+            <Body type="body-02" className={`${prefix}--notification-time`}>
               {time}
             </Body>
           )}

@@ -9,6 +9,11 @@ export type IconOnlyButtonProps = {
    * IconOnlyButton Tooltip Props
    */
   tooltipProps?: TooltipProps;
+
+  /**
+   * IconOnlyButton Hide Tooltip
+   */
+  hideTooltip?: boolean;
 } & ButtonProps;
 
 const IconOnlyButton = ({
@@ -19,25 +24,43 @@ const IconOnlyButton = ({
   isLoading,
   href,
   className,
+  hideTooltip,
   icon,
   loadingDescription = "Loading",
   tooltipProps = { tooltipContent: "Tooltip content" },
   ...rest
 }: IconOnlyButtonProps) => (
-  <Tooltip placement="bottom" disabled={disabled} {...tooltipProps}>
-    <Button
-      className={cx(`${prefix}--button-icon-only`, className)}
-      href={href}
-      kind={kind}
-      size={size}
-      danger={danger}
-      icon={icon}
-      isLoading={isLoading}
-      loadingDescription={loadingDescription}
-      disabled={disabled}
-      {...rest}
-    />
-  </Tooltip>
+  <>
+    {hideTooltip ? (
+      <Button
+        className={cx(`${prefix}--button-icon-only`, className)}
+        href={href}
+        kind={kind}
+        size={size}
+        danger={danger}
+        icon={icon}
+        isLoading={isLoading}
+        loadingDescription={loadingDescription}
+        disabled={disabled}
+        {...rest}
+      />
+    ) : (
+      <Tooltip placement="bottom" disabled={disabled} {...tooltipProps}>
+        <Button
+          className={cx(`${prefix}--button-icon-only`, className)}
+          href={href}
+          kind={kind}
+          size={size}
+          danger={danger}
+          icon={icon}
+          isLoading={isLoading}
+          loadingDescription={loadingDescription}
+          disabled={disabled}
+          {...rest}
+        />
+      </Tooltip>
+    )}
+  </>
 );
 
 export default IconOnlyButton;

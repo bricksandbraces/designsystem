@@ -4,17 +4,17 @@ import { prefix } from "../../settings";
 
 type BodyProps = {
   /**
-   * React children
+   * Body Children
    */
   children?: ReactNode;
 
   /**
-   * Type to use
+   * Body Type
    */
-  type?: "b1" | "b2";
+  type?: "body-01" | "body-02";
 
   /**
-   * Classnames
+   * Body ClassName
    */
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
@@ -23,7 +23,7 @@ const Body = ({ children, className, type, ...rest }: BodyProps) => {
   return (
     <p
       className={cx(
-        `${prefix}--typography ${prefix}--typography--${type}`,
+        `${prefix}--typography ${prefix}--typography-${type}`,
         className
       )}
       {...rest}

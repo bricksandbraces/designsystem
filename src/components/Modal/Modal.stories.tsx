@@ -6,7 +6,7 @@ import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 import Button from "../Button/Button";
 
-export default { title: "Components/Modal", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Modal", decorators: [withKnobs] };
 
 const options = {
   Small: "sm",
@@ -23,18 +23,18 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
       Please update the background to see the modal (storybook bug).
       <Modal
-        size={select("Size", options, defaultValue) as any}
+        size={select("size", options, defaultValue) as any}
         open={open}
         onClose={() => {
           setOpen(false);
         }}
         closeOnOutsideClick
-        withDivider={boolean("With Divider", false)}
+        withDivider={boolean("withDivider", false)}
       >
         <ModalHeader
-          headline={text("Headline", "Update available")}
-          subheadline={text(
-            "Subheadline",
+          headline={text("headline", "Update available")}
+          subHeadline={text(
+            "subheadline",
             "Install via npm package manager or yarn"
           )}
         />
@@ -45,8 +45,8 @@ export const Default = () => {
           )}
         </ModalBody>
         <ModalFooter
-          primaryLabel={text("Primary Label", "Update now")}
-          secondaryLabel={text("Secondary Label", "Cancel")}
+          primaryLabel={text("primaryLabel", "Update now")}
+          secondaryLabel={text("secondaryLabel", "Cancel")}
           onSecondaryClick={() => {
             setOpen(false);
           }}
@@ -80,24 +80,24 @@ export const Nested = () => {
         onClose={() => {
           setOpen(false);
         }}
-        withDivider={boolean("With Divider", false)}
+        withDivider={boolean("withDivider", false)}
       >
         <ModalHeader
-          headline={text("Headline 1", "Behind")}
-          subheadline={text(
-            "Subheadline",
+          headline={text("headline1", "Behind")}
+          subHeadline={text(
+            "subHeadline1",
             "Install via npm package manager or yarn"
           )}
         />
         <ModalBody>
           {text(
-            "Children text",
+            "children",
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et earebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
           )}
         </ModalBody>
         <ModalFooter
-          primaryLabel={text("Primary Label 1", "Confirm")}
-          secondaryLabel={text("Secondary Label", "Cancel")}
+          primaryLabel={text("primaryLabel1", "Confirm")}
+          secondaryLabel={text("secondaryLabel1", "Cancel")}
           onSecondaryClick={() => {
             setOpen(false);
           }}
@@ -107,26 +107,26 @@ export const Nested = () => {
         />
       </Modal>
       <Modal
-        size={select("Size", options, defaultValue) as any}
+        size={select("size", options, defaultValue) as any}
         open={secondOpen}
         onClose={() => {
           setSecondOpen(false);
         }}
-        withDivider={boolean("With Divider", false)}
+        withDivider={boolean("withDivider", false)}
       >
         <ModalHeader
-          headline={text("Headline 2", "Always on top of it")}
-          subheadline={text(
-            "Subheadline",
+          headline={text("headline2", "Always on top of it")}
+          subHeadline={text(
+            "subHeadline2",
             "Install via npm package manager or yarn"
           )}
         />
         <ModalBody>
-          {text("Children text 2", "Lorem ipsum dolor sit amet.")}
+          {text("children2", "Lorem ipsum dolor sit amet.")}
         </ModalBody>
         <ModalFooter
-          primaryLabel={text("Primary Label 2", "I am sure")}
-          secondaryLabel={text("Secondary Label", "Cancel")}
+          primaryLabel={text("primaryLabel2", "I am sure")}
+          secondaryLabel={text("secondaryLabel2", "Cancel")}
           onSecondaryClick={() => {
             setSecondOpen(false);
           }}
