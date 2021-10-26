@@ -29,7 +29,7 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
       <SideNavItem
         href={basePath}
         label="Bark"
-        renderIcon={<Logo kind="logomark" size="xsmall" variant="white" />}
+        renderIcon={<Logo type="logomark" size="xsmall" color="white" />}
         className={`${prefix}--sidenav--logo`}
       />
 

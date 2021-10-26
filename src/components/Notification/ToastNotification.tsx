@@ -130,7 +130,7 @@ const ToastNotification = ({
           size="small"
           className={`${prefix}--notification-close`}
           onClick={onClose}
-          tooltipLabel={tooltipLabel}
+          tooltipProps={{ tooltipContent: tooltipLabel }}
           icon={<IconX />}
         />
       )}

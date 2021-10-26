@@ -27,12 +27,7 @@ const TableHead = ({ children, headers, withDivider }: TableHeadProps) => {
         <tr>
           <td colSpan={headers.length}>
             {withDivider && (
-              <Divider
-                margin={false}
-                size="thin"
-                kind="subtle"
-                className="datatable--head-divider"
-              />
+              <Divider type="subtle" className="datatable--head-divider" />
             )}
           </td>
         </tr>
