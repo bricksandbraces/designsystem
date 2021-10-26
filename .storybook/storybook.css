@@ -1,6 +1,4 @@
 @import "./fonts.css";
-@import "../colors.pcss";
-@import "../theme.pcss";
 
 .sb-show-main.sb-main-padded {
   padding: 0;
@@ -35,7 +33,7 @@
 
 .bb--grid--example {
   padding: 1rem;
-  border: 0.0625rem dashed $purple-40;
-  background-color: $purple-10;
-  color: $white;
+  border: 0.0625rem dashed #7633ff;
+  background-color: #206;
+  color: #fff;
 }
