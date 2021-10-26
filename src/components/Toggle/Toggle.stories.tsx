@@ -2,25 +2,30 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
 import Toggle from "./Toggle";
+import ToggleSkeleton from "./ToggleSkeleton";
 
-export default { title: "Components/Toggle", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Toggle", decorators: [withKnobs] };
 
 export const Small = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Toggle
-          small
-          label={text("Label", "Toggle label")}
+          size="small"
+          label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
         />
         <Toggle
-          small
-          label={text("Label", "Toggle label")}
+          size="small"
+          label={text("label", "Toggle label")}
           id="checkbox-2"
           defaultChecked
           value="c2"
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
         />
       </div>
     </div>
@@ -32,15 +37,19 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
         />
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox-2"
           defaultChecked
           value="c2"
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
         />
       </div>
     </div>
@@ -53,12 +62,12 @@ export const Controlled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
         />
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox-2"
           checked={checked}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -76,14 +85,13 @@ export const WithChildren = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
         />
         <Toggle
-          label={text("Label", "Toggle label")}
+          label={text("label", "Toggle label")}
           id="checkbox-2"
-          disabled={boolean("Toggle 2 disabled", false)}
           value="c2"
         >
           <Body type="body-02" style={{ marginTop: "8px", display: "block" }}>
@@ -94,6 +102,24 @@ export const WithChildren = () => {
             Lorem ipsum dolor sit amet.
           </Body>
         </Toggle>
+      </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div
+        style={{
+          width: "405px",
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "column"
+        }}
+      >
+        <ToggleSkeleton />
+        <ToggleSkeleton size="small" />
       </div>
     </div>
   );

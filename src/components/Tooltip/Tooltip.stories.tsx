@@ -7,7 +7,7 @@ import Tooltip from "./Tooltip";
 import ContainerTooltip from "./ContainerTooltip";
 import IconTrigger from "./IconTrigger";
 
-export default { title: "Components/Tooltip", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Tooltip", decorators: [withKnobs] };
 
 const themeOptions = {
   light: "light",

@@ -33,7 +33,7 @@ const IconOnlyButton = ({
   const WrapperElement: any = hideTooltip ? React.Fragment : Tooltip;
   const wrapperProps = hideTooltip
     ? {}
-    : { placement: "bottom", disabled, ...tooltipProps };
+    : { placement: "bottom", disabled, delay: 300, ...tooltipProps };
   return (
     <WrapperElement {...wrapperProps}>
       <Button
