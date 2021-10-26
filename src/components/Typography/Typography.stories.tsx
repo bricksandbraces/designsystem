@@ -36,11 +36,26 @@ export const MarketingHeadlines = () => {
 
 export const QuoteType = () => {
   return (
-    <div style={{ color: "white", margin: "32px" }}>
-      <Quote type="quote-01">
+    <div
+      style={{
+        color: "white",
+        margin: "32px",
+        display: "flex",
+        flexWrap: "nowrap"
+      }}
+    >
+      <Quote
+        type="quote-01"
+        headline="John Doe"
+        subHeadline="Marketing Professional, ACME Inc."
+      >
         This is a Marketing quote that can be used on websites.
       </Quote>
-      <Quote type="quote-02">
+      <Quote
+        type="quote-02"
+        headline="John Doe"
+        subHeadline="Marketing Professional, ACME Inc."
+      >
         This is a Marketing quote that can be used on websites.
       </Quote>
     </div>

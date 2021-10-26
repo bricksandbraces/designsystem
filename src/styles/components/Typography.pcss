@@ -70,10 +70,42 @@
     }
 
     &-blockquote {
-      display: flex;
+      display: inline-flex;
 
-      & > blockquote {
-        margin-left: $size--spacing-04;
+      &__container {
+        display: inline-flex;
+        flex-wrap: wrap;
+
+        & > blockquote {
+          width: 100%;
+          margin-left: $size--spacing-04;
+        }
+      }
+
+      &__headline {
+        position: relative;
+        width: 100%;
+        margin: $size--spacing-06 0 0
+          calc($size--spacing-04 + $size--spacing-09);
+        color: $color--font-text-02;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: $size--spacing-03;
+          left: calc($size--spacing-09 * -1);
+          width: $size--container-02;
+          height: 0.0625rem;
+          margin-bottom: $size--spacing-04;
+          opacity: 0.25;
+          background-color: currentColor;
+        }
+      }
+
+      &__subheadline {
+        width: 100%;
+        margin-left: calc($size--spacing-04 + $size--spacing-09);
+        color: $color--font-text-02;
       }
     }
   }
