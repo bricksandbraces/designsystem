@@ -46,17 +46,19 @@ export const QuoteType = () => {
     >
       <Quote
         type="quote-01"
-        headline="John Doe"
-        subHeadline="Marketing Professional, ACME Inc."
+        name="Pinar"
+        position="Marketing Campaign Lead"
+        company="IBM Deutschland"
       >
-        This is a Marketing quote that can be used on websites.
+        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
       </Quote>
       <Quote
         type="quote-02"
-        headline="John Doe"
-        subHeadline="Marketing Professional, ACME Inc."
+        name="Pinar"
+        position="Marketing Campaign Lead"
+        company="IBM Deutschland"
       >
-        This is a Marketing quote that can be used on websites.
+        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
       </Quote>
     </div>
   );

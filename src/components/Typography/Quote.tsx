@@ -16,14 +16,19 @@ type QuoteProps = {
   type?: "quote-01" | "quote-02";
 
   /**
-   * Quote Headline
+   * Quote Name
    */
-  headline?: string;
+  name?: string;
 
   /**
-   * Quote SubHeadline
+   * Quote Position
    */
-  subHeadline?: string;
+  position?: string;
+
+  /**
+   * Quote Company
+   */
+  company?: string;
 
   /**
    * Quote ClassName
@@ -33,8 +38,9 @@ type QuoteProps = {
 
 const Quote = ({
   children,
-  headline,
-  subHeadline,
+  name,
+  position,
+  company,
   className,
   type,
   ...rest
@@ -56,20 +62,29 @@ const Quote = ({
         >
           {children}
         </blockquote>
-        {headline && (
+        {name && (
           <Headline
             type="h6"
-            className={cx(`${prefix}--typography-blockquote__headline`)}
+            className={cx(`${prefix}--typography-blockquote__name`)}
           >
-            {headline}
+            {name}
           </Headline>
         )}
-        {subHeadline && (
+        {position && (
           <Body
             type="body-02"
-            className={cx(`${prefix}--typography-blockquote__subheadline`)}
+            className={cx(`${prefix}--typography-blockquote__position`)}
           >
-            {subHeadline}
+            {position}
+          </Body>
+        )}
+
+        {company && (
+          <Body
+            type="body-02"
+            className={cx(`${prefix}--typography-blockquote__company`)}
+          >
+            {company}
           </Body>
         )}
       </div>

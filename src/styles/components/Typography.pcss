@@ -82,12 +82,12 @@
         }
       }
 
-      &__headline {
+      &__name {
         position: relative;
         width: 100%;
-        margin: $size--spacing-06 0 0
+        margin: $size--spacing-06 0 $size--spacing-02
           calc($size--spacing-04 + $size--spacing-09);
-        color: $color--font-text-03;
+        color: $color--font-text-01;
 
         &::before {
           content: "";
@@ -97,12 +97,18 @@
           width: $size--container-02;
           height: 0.0625rem;
           margin-bottom: $size--spacing-04;
-          opacity: 0.25;
-          background-color: currentColor;
+          background-color: $color--app-02;
         }
       }
 
-      &__subheadline {
+      &__position {
+        width: 100%;
+        margin-bottom: 0;
+        margin-left: calc($size--spacing-04 + $size--spacing-09);
+        color: $color--font-text-03;
+      }
+
+      &__company {
         width: 100%;
         margin-left: calc($size--spacing-04 + $size--spacing-09);
         color: $color--font-text-03;
