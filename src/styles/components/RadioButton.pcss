@@ -76,6 +76,7 @@
 
     &-disabled {
       color: $color--font-disabled;
+      cursor: not-allowed;
 
       &
         > .$(prefix)--radiobutton-input[type="radio"]
@@ -152,13 +153,12 @@
   &--radiobutton.$(prefix)--skeleton-container {
     display: inline-flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     & > .$(prefix)--radiobutton-selected {
       stroke: $color--skeleton-02;
     }
     & > .$(prefix)--skeleton-animated.$(prefix)--radiobutton {
       margin: 0;
-      transform: translate(0, 0.125rem);
     }
     & > .$(prefix)--skeleton-animated {
       border: 0;

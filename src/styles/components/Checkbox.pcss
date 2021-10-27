@@ -81,6 +81,7 @@
 
     &-disabled {
       color: $color--font-disabled;
+      cursor: not-allowed;
 
       &
         > .$(prefix)--checkbox-input[type="checkbox"]
@@ -156,10 +157,8 @@
   &--checkbox.$(prefix)--skeleton-container {
     display: inline-flex;
     flex-direction: row;
-    align-items: flex-start;
-    transform: translate(0, 0.125rem);
+    align-items: center;
     & > .$(prefix)--checkbox-check {
-      transform: translate(0, -0.125rem);
       stroke: $color--skeleton-02;
     }
     & > .$(prefix)--skeleton-animated.$(prefix)--checkbox {
