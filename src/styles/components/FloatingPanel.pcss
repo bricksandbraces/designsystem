@@ -2,10 +2,12 @@
 @import "../colors.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--floatingpanel {
-  min-height: $container-02;
-  padding: $spacing-02;
-  border: 0.0625rem solid $color--border-default;
-  border-radius: 2px;
-  background-color: $color--background;
+.$(prefix) {
+  &--floatingpanel {
+    min-height: $size--container-02;
+    border: 0.0625rem solid $color--border-default;
+    border-radius: $component--radius-default;
+    background-color: $color--background;
+    box-shadow: $component--shadow-default;
+  }
 }

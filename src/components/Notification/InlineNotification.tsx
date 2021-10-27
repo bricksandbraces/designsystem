@@ -24,11 +24,6 @@ type InlineNotificationProps = {
   subTitle?: string;
 
   /**
-   * InlineNotification ToolTipLabel
-   */
-  tooltipLabel: string;
-
-  /**
    * InlineNotification Type
    */
   type: string;
@@ -52,7 +47,6 @@ type InlineNotificationProps = {
 const InlineNotification = ({
   title,
   subTitle,
-  tooltipLabel,
   type,
   open,
   hideCloseButton,
@@ -118,7 +112,7 @@ const InlineNotification = ({
           size="small"
           className={`${prefix}--notification-close`}
           onClick={onClose}
-          tooltipLabel={tooltipLabel}
+          hideTooltip
           icon={<IconX />}
         />
       )}
