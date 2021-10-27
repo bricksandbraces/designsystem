@@ -118,6 +118,12 @@
 
       display: inline-flex;
       cursor: pointer;
+      user-select: none;
+
+      &__text {
+        transform: translateY(0.125rem);
+        transition: color $transition--app-01;
+      }
     }
 
     &-input {
@@ -132,10 +138,14 @@
 
     &-selected {
       display: inline-block;
-      min-width: calc($size--container-01 * 1.25);
-      min-height: calc($size--container-01 * 1.25);
+      min-width: $size--container-02;
+      min-height: $size--container-02;
       margin-right: $size--spacing-03;
       color: $color--font-unselected;
+    }
+
+    &-content {
+      transition: color $transition--app-01;
     }
   }
 

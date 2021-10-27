@@ -54,6 +54,10 @@
           background-color: $color--app-04;
         }
 
+        & + div > .$(prefix)--toggle-label__text {
+          transition: color $transition--app-01;
+        }
+
         & > .$(prefix)--toggle-checked {
           width: calc($size--container-01 / 2);
           height: calc($size--container-01 / 2);
@@ -103,6 +107,7 @@
 
         & + div > .$(prefix)--toggle-label__text {
           transform: translateY(0.1875rem);
+          transition: color $transition--app-01;
         }
       }
 

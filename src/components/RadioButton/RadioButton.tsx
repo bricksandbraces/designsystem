@@ -99,8 +99,8 @@ const RadioButton = ({
       <label className={`${prefix}--radiobutton-label`} htmlFor={id}>
         <svg
           className={`${prefix}--radiobutton-selected`}
-          width="20"
-          height="20"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
