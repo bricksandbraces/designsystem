@@ -24,7 +24,15 @@ type AccordionProps = {
    * Accordion OnChange Function delivering the toggled index
    */
   onChange?: (selectedIndex: number) => void;
+
+  /**
+   * Accordion Default Open Indices
+   */
   defaultOpenIndices?: number[];
+
+  /**
+   * Accordion Open Indices
+   */
   openIndices?: number[];
 };
 

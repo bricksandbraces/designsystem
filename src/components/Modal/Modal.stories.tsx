@@ -20,8 +20,15 @@ const defaultValue = "sm";
 export const Default = () => {
   const [open, setOpen] = useState(true);
   return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
-      Please update the background to see the modal (storybook bug).
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "32px",
+        color: "white"
+      }}
+    >
+      Please update the background to see the modal (Storybook Bug).
       <Modal
         size={select("size", options, defaultValue) as any}
         open={open}
@@ -63,8 +70,7 @@ export const Nested = () => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
-      Please update the background to see the modal (storybook bug).
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Button
         onClick={(event) => {
           event.stopPropagation();

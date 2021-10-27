@@ -1,147 +1,94 @@
 @import "../prefix.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--userprofile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  transition: 0.3s ease-in-out;
-  border: 0.0625rem solid transparent;
-  border-radius: 50%;
-  outline: 0;
-  background-color: transparent;
-
-  &--link {
-    margin: 0 0 4px 0;
-    padding: 0;
-  }
-
-  &--linklist {
-    margin: 12px 0 0 0;
-    padding: 0;
-  }
-
-  &--avatar {
+.$(prefix) {
+  &--userprofile {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
     padding: 0;
-    transition: transform $transition-01;
-    border-radius: 50%;
-    background-color: #333;
-    background-repeat: no-repeat;
-    background-size: contain;
-    box-shadow: inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.05);
-    color: #999;
-    font-size: 16px;
-  }
 
-  &--content {
-    display: flex;
-    flex-wrap: wrap;
-  }
+    &-trigger {
+      transition: box-shadow $transition--app-01;
+      border-radius: 50%;
+      outline: 0;
+      background-color: transparent;
+      box-shadow: 0 0 0 0 $color--app-02;
 
-  &--menu {
-    visibility: hidden;
-    position: absolute;
-    bottom: -7px;
-    left: 64px;
-    width: 260px;
-    padding: 16px;
-    transform: translate(0, 0);
-    transition: $transition-01;
-    border: 0.0625rem solid $warm-gray-15;
-    border-radius: 4px;
-    opacity: 0;
-    background-color: $warm-gray-10;
-    color: white;
-    font-family: "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+      &:hover {
+        box-shadow: 0 0 0 0.25rem $color--app-02;
+      }
 
-    &-user {
-      display: flex;
+      &:focus-visible {
+        box-shadow: 0 0 0 0.0625rem $color--focus;
+      }
     }
 
     &-open {
-      visibility: visible;
-      transform: translate(0, 6px);
-      opacity: 1;
+      box-shadow: 0 0 0 0.125rem $color--app-03;
+
+      &:hover {
+        box-shadow: 0 0 0 0.25rem $color--app-03;
+      }
     }
 
-    &-avatar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      margin-right: 16px;
+    &-link {
+      margin: 0 0 $size--spacing-02 0;
       padding: 0;
-      border-radius: 50%;
-      background-color: #333;
-      background-repeat: no-repeat;
-      background-size: contain;
-      box-shadow: inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.05);
-      color: #999;
-      font-size: 20px;
+    }
+
+    &-linklist {
+      margin: $size--spacing-04 0 0 0;
+      padding: 0;
+    }
+
+    &-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-menu {
+      visibility: hidden;
+      position: absolute;
+      width: $size--container-08;
+      padding: $size--spacing-05;
+      transform: translate(0, 0);
+      transition: $transition--app-01;
+      opacity: 0;
+
+      &__user {
+        display: flex;
+      }
+
+      &__open {
+        visibility: visible;
+        transform: translate(0, $size--spacing-03);
+        opacity: 1;
+      }
+
+      &__avatar {
+        margin-right: $size--spacing-05;
+        padding: 0;
+      }
+    }
+
+    &-name {
+      margin-bottom: $size--spacing-01;
+      padding: 0;
+      color: $color--font-text-01;
+    }
+
+    &-divider.$(prefix)--divider {
+      width: calc(100% + $size--spacing-07);
+      margin: $size--spacing-05 0;
+      transform: translate(calc($size--spacing-05 * -1), 0);
+      color: inherit;
+    }
+
+    &-subname {
+      margin: 0;
+      padding: 0;
+      color: $color--font-text-04;
     }
   }
-
-  &--name {
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-  }
-
-  &--divider {
-    width: calc(100% + 32px);
-    margin: 16px 0;
-    transform: translate(-16px, 0);
-    border: 0;
-    opacity: 1;
-    background-color: $warm-gray-15;
-    color: inherit;
-  }
-
-  &--subname {
-    margin: 0;
-    padding: 0;
-    color: #808080;
-    font-size: 14px;
-  }
-
-  &:hover {
-    border: 0.0625rem solid rgba(74, 0, 224, 1);
-  }
-
-  &:hover > .$(prefix)--userprofile-avatar {
-    transform: scale(0.9);
-  }
-
-  &:focus-visible {
-    border: 0.0625rem solid white;
-  }
-
-  &:active > .$(prefix)--userprofile-avatar {
-    box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.$(prefix)--userprofile.$(prefix)--userprofile--open {
-  border: 0.0625rem solid rgba(74, 0, 224, 1);
-}
-
-.$(prefix)--userprofile:focus-visible.$(prefix)--userprofile--open {
-  border: 0.0625rem solid white;
-}
-
-.$(prefix)--userprofile.$(prefix)--userprofile--open
-  > .$(prefix)--userprofile--avatar {
-  transform: scale(0.9);
-  box-shadow: inset 0 0 0 18px rgba(0, 0, 0, 0.25);
 }

@@ -4,15 +4,20 @@ import { prefix } from "../../settings";
 
 type FloatingPanelProps = {
   /**
-   * ClassName
+   * FloatingPanel ClassName
    */
   className?: string;
 
   /**
-   * React Children
+   * FloatingPanel Children
    */
   children: ReactNode;
-};
+
+  /**
+   * FloatingPanel Style
+   */
+  style?: ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const FloatingPanel = ({
   className,

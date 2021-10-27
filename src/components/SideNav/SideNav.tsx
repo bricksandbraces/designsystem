@@ -59,6 +59,8 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
       <div className={`${prefix}--sidenav--user`}>
         <UserProfile
           name="Hendrik Ulbrich"
+          positionBottom={-5}
+          positionLeft={64}
           subName="@hendrikU"
           onLogout={() => {}}
           links={[
@@ -66,7 +68,7 @@ const SideNav = ({ children, basePath }: SideNavProps) => {
             { href: "#", label: "Settings" },
             { href: "#", label: "FAQ" }
           ]}
-          imgUrl="https://media-exp3.licdn.com/dms/image/C4D03AQEbx-TmQ9JFsQ/profile-displayphoto-shrink_200_200/0/1595233386946?e=1629331200&v=beta&t=sqAMMqBOm1K8Xe5N5kP3g1Loxt0UsD4QmmNeOal_V6s"
+          imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
         />
       </div>
     </div>
