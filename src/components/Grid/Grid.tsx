@@ -118,17 +118,19 @@ export const Column = ({
   return (
     <div
       className={cx(
-        span && `${prefix}--grid-col__${span}`,
-        offset && `${prefix}--grid-col__${span}-offset--${offset}`,
-        sm && sm <= 4 && `${prefix}--grid-col__sm-${sm}`,
-        smOffset && `${prefix}--grid-col__sm-${sm}--offset__${smOffset}`,
-        md && md <= 8 && `${prefix}--grid-col__md-${md}`,
-        mdOffset && `${prefix}--grid-col__md-${md}--offset__${mdOffset}`,
-        lg && lg <= 16 && `${prefix}--grid-col__lg-${lg}`,
-        lgOffset && `${prefix}--grid-col__lg-${lg}--offset__${lgOffset}`,
-        xlg && xlg <= 16 && `${prefix}--grid-col__xlg-${xlg}`,
-        xlgOffset && `${prefix}--grid-col__xlg-${xlg}--offset__${xlgOffset}`,
-        { [`${prefix}--grid-col`]: defaultColumn },
+        {
+          [`${prefix}--grid-col`]: defaultColumn,
+          [`${prefix}--grid-col__${span}`]: span,
+          [`${prefix}--grid-col__${span}--offset-${offset}`]: offset,
+          [`${prefix}--grid-col__sm-${sm}`]: sm && sm <= 4,
+          [`${prefix}--grid-col__sm-${sm}--offset-${smOffset}`]: smOffset,
+          [`${prefix}--grid-col__md-${md}`]: md && md <= 8,
+          [`${prefix}--grid-col__md-${md}--offset-${mdOffset}`]: mdOffset,
+          [`${prefix}--grid-col__lg-${lg}`]: lg && lg <= 16,
+          [`${prefix}--grid-col__lg-${lg}--offset-${lgOffset}`]: lgOffset,
+          [`${prefix}--grid-col__xlg-${xlg}`]: xlg && xlg <= 16,
+          [`${prefix}--grid-col__xlg-${xlg}--offset-${xlgOffset}`]: xlgOffset
+        },
         className
       )}
       {...rest}

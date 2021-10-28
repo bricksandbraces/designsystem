@@ -3,7 +3,7 @@
 @import "../theme.pcss";
 
 .$(prefix)--grid {
-  &--container {
+  &-container {
     display: grid;
     grid-template-rows: auto;
     max-width: 99rem;
@@ -11,32 +11,32 @@
     margin-left: auto;
 
     & > div > div {
-      padding-right: 1rem;
-      padding-left: 1rem;
+      padding-right: $size--spacing-05;
+      padding-left: $size--spacing-05;
     }
 
-    &-no-gutter__left > div > div {
-      padding-right: 1rem;
+    &__no-gutter-left > div > div {
+      padding-right: $size--spacing-05;
       padding-left: 0;
     }
 
-    &-no-gutter__right > div > div {
+    &__no-gutter-right > div > div {
       padding-right: 0;
-      padding-left: 1rem;
+      padding-left: $size--spacing-05;
     }
 
-    &-no-gutter > div > div {
+    &__no-gutter > div > div {
       padding-right: 0;
       padding-left: 0;
     }
 
-    &-no-gutter {
+    &__no-gutter {
       padding-right: 0;
       padding-left: 0;
     }
   }
 
-  &--fullwidth {
+  &-fullwidth {
     max-width: unset;
   }
 }
@@ -95,7 +95,7 @@
 
 /* < md */
 @media screen and (max-width: $breakpoint-md) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(4, minmax(auto, 25%));
   }
 
@@ -139,7 +139,7 @@
 
 /* md */
 @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(8, minmax(auto, 12.5%));
   }
 
@@ -211,14 +211,14 @@
     }
   }
 
-  .$(prefix)--grid-col__md__8 {
+  .$(prefix)--grid-col__md-8 {
     grid-column: span 8;
   }
 }
 
 /* lg */
 @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
 
@@ -394,7 +394,7 @@
 
 /* xlg */
 @media screen and (min-width: $breakpoint-xlg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
 
@@ -570,68 +570,68 @@
 
 /* < md */
 @media screen and (max-width: $breakpoint-md) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 }
 
 /* > md */
 @media screen and (min-width: $breakpoint-md) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 2rem;
-    padding-left: 2rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-07;
+    padding-left: $size--spacing-07;
   }
 }
 
 /* > max */
 @media screen and (min-width: $breakpoint-max) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+    padding-right: $size--spacing-06;
+    padding-left: $size--spacing-06;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
+    padding-right: $size--spacing-06;
+    padding-left: $size--spacing-06;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-08;
+    padding-left: $size--spacing-08;
   }
 }
 
 /* span-16 */
 
-.$(prefix)--grid--container[data-columncount="1"] > .$(prefix)--grid-col {
+.$(prefix)--grid-container[data-columncount="1"] > .$(prefix)--grid-col {
   grid-column: span 16;
 }
 
 /* span-8 */
 
 @each $i in 2, 3 {
-  .$(prefix)--grid--container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
     grid-column: span 8;
   }
 }
@@ -639,7 +639,7 @@
 /* span-4 */
 
 @each $i in 4, 5, 6, 7 {
-  .$(prefix)--grid--container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
     grid-column: span 4;
   }
 }
@@ -647,13 +647,13 @@
 /* span-2 */
 
 @each $i in 8, 9, 10, 11, 12, 13, 14, 15 {
-  .$(prefix)--grid--container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
     grid-column: span 2;
   }
 }
 
 /* span-1 */
 
-.$(prefix)--grid--container[data-columncount="16"] > .$(prefix)--grid-col {
+.$(prefix)--grid-container[data-columncount="16"] > .$(prefix)--grid-col {
   grid-column: span 1;
 }
