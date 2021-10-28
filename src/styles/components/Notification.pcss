@@ -19,11 +19,11 @@
     &::before {
       content: "";
       position: absolute;
-      left: -1px;
-      width: 4px;
-      height: calc(100% + 2px);
-      border-top-left-radius: 1px;
-      border-bottom-left-radius: 1px;
+      left: -0.0625rem;
+      width: calc($size--container-01 / 4);
+      height: calc(100% + 0.125rem);
+      border-top-left-radius: calc($component--radius-default - 0.0625rem);
+      border-bottom-left-radius: calc($component--radius-default - 0.0625rem);
       background-color: currentColor;
     }
 
@@ -33,6 +33,7 @@
 
     &-toast {
       width: $size--container-08;
+      box-shadow: $component--shadow-default;
     }
 
     &-open {

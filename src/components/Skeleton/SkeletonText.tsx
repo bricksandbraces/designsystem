@@ -4,17 +4,17 @@ import { prefix } from "../../settings";
 
 type SkeletonTextProps = {
   /**
-   * ClassName
+   * SkeletonText ClassName
    */
   className?: string;
 
   /**
-   * Width
+   * SkeletonText Width
    */
   width?: number | "100%" | "80%" | "50%";
 
   /**
-   * Size
+   * SkeletonText Size
    */
   size?: "large" | "default" | "small";
 };

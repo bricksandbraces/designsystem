@@ -2,11 +2,14 @@ import { text, object, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import UserProfile from "./UserProfile";
 
-export default { title: "Components/UserProfile", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_UserProfile",
+  decorators: [withKnobs]
+};
 
 export const Default = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <UserProfile
         name={text("Name", "Hendrik Ulbrich")}
         subName={text("Subname", "@hendriku")}
@@ -16,7 +19,7 @@ export const Default = () => {
           { href: "#", label: "Settings" },
           { href: "#", label: "FAQ" }
         ])}
-        imgUrl="https://media-exp3.licdn.com/dms/image/C4D03AQEbx-TmQ9JFsQ/profile-displayphoto-shrink_200_200/0/1595233386946?e=1629331200&v=beta&t=sqAMMqBOm1K8Xe5N5kP3g1Loxt0UsD4QmmNeOal_V6s"
+        imgUrl="https://randomuser.me/api/portraits/men/74.jpg"
       />
     </div>
   );

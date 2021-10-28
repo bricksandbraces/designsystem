@@ -66,7 +66,10 @@ export const WithChildren = () => {
           disabled={boolean("disabled (Checkbox 2)", false)}
           value="c2"
         >
-          <Body type="body-02" style={{ marginTop: "8px", display: "block" }}>
+          <Body
+            type="body-02"
+            style={{ marginTop: "8px", marginBottom: "0", display: "block" }}
+          >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores

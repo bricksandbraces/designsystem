@@ -29,9 +29,13 @@ const IconOnlyButton = ({
   loadingDescription = "Loading",
   tooltipProps = { tooltipContent: "Tooltip content" },
   ...rest
-}: IconOnlyButtonProps) => (
-  <>
-    {hideTooltip ? (
+}: IconOnlyButtonProps) => {
+  const WrapperElement: any = hideTooltip ? React.Fragment : Tooltip;
+  const wrapperProps = hideTooltip
+    ? {}
+    : { placement: "bottom", disabled, delay: 300, ...tooltipProps };
+  return (
+    <WrapperElement {...wrapperProps}>
       <Button
         className={cx(`${prefix}--button-icon-only`, className)}
         href={href}
@@ -44,23 +48,8 @@ const IconOnlyButton = ({
         disabled={disabled}
         {...rest}
       />
-    ) : (
-      <Tooltip placement="bottom" disabled={disabled} {...tooltipProps}>
-        <Button
-          className={cx(`${prefix}--button-icon-only`, className)}
-          href={href}
-          kind={kind}
-          size={size}
-          danger={danger}
-          icon={icon}
-          isLoading={isLoading}
-          loadingDescription={loadingDescription}
-          disabled={disabled}
-          {...rest}
-        />
-      </Tooltip>
-    )}
-  </>
-);
+    </WrapperElement>
+  );
+};
 
 export default IconOnlyButton;

@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor, ReactElement } from "react";
+import React, { forwardRef, JSXElementConstructor, ReactElement } from "react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
@@ -11,11 +11,15 @@ export type IconTriggerProps = {
   children?: ReactElement<any, string | JSXElementConstructor<any>>;
 };
 
-const IconTrigger = ({ children, ...props }: IconTriggerProps) => {
+const IconTrigger = (
+  { children, ...props }: IconTriggerProps,
+  ref: ForwardedRef<HTMLButtonElement>
+) => {
   return (
     <button
       type="button"
       className={cx(`${prefix}--tooltip-icontrigger`)}
+      ref={ref}
       {...props}
     >
       {children}
@@ -23,4 +27,4 @@ const IconTrigger = ({ children, ...props }: IconTriggerProps) => {
   );
 };
 
-export default IconTrigger;
+export default forwardRef(IconTrigger);

@@ -4,22 +4,22 @@ import { prefix } from "../../settings";
 
 type SkeletonAnimatedContainerProps = {
   /**
-   * Children
+   * SkeletonAnimatedContainer Children
    */
   children?: ReactNode;
 
   /**
-   * ClassName
+   * SkeletonAnimatedContainer ClassName
    */
   className?: string;
 
   /**
-   * light
+   * SkeletonAnimatedContainer Light
    */
   light?: boolean;
 
   /**
-   * Width
+   * SkeletonAnimatedContainer Width
    */
   width?: number | "100%" | "80%" | "50%";
 };

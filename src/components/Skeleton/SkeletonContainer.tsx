@@ -4,12 +4,12 @@ import { prefix } from "../../settings";
 
 type SkeletonContainerProps = {
   /**
-   * Children
+   * SkeletonContainer Children
    */
   children?: ReactNode;
 
   /**
-   * ClassName
+   * SkeletonContainer ClassName
    */
   className?: string;
 };

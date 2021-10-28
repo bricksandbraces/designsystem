@@ -4,17 +4,17 @@ import { prefix } from "../../settings";
 
 type SkeletonStaticContainerProps = {
   /**
-   * Children
+   * SkeletonStaticContainer Children
    */
   children?: ReactNode;
 
   /**
-   * ClassName
+   * SkeletonStaticContainer ClassName
    */
   className?: string;
 
   /**
-   * Width
+   * SkeletonStaticContainer Width
    */
   width?: number | "100%" | "80%" | "50%";
 };

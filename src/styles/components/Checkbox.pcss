@@ -81,6 +81,7 @@
 
     &-disabled {
       color: $color--font-disabled;
+      cursor: not-allowed;
 
       &
         > .$(prefix)--checkbox-input[type="checkbox"]
@@ -121,6 +122,12 @@
 
       display: inline-flex;
       cursor: pointer;
+      user-select: none;
+
+      &__text {
+        transform: translateY(0.125rem);
+        transition: color $transition--app-01;
+      }
     }
 
     &-input {
@@ -135,21 +142,23 @@
 
     &-check {
       display: inline-block;
-      min-width: calc($size--container-01 * 1.25);
-      min-height: calc($size--container-01 * 1.25);
+      min-width: $size--container-02;
+      min-height: $size--container-02;
       margin-right: $size--spacing-03;
       transition: outline $transition--app-01;
       color: $color--font-unselected;
+    }
+
+    &-content {
+      transition: color $transition--app-01;
     }
   }
 
   &--checkbox.$(prefix)--skeleton-container {
     display: inline-flex;
     flex-direction: row;
-    align-items: flex-start;
-    transform: translate(0, 0.125rem);
+    align-items: center;
     & > .$(prefix)--checkbox-check {
-      transform: translate(0, -0.125rem);
       stroke: $color--skeleton-02;
     }
     & > .$(prefix)--skeleton-animated.$(prefix)--checkbox {

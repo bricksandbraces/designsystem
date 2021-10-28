@@ -52,8 +52,9 @@ const IconOnlyButtonGroup = ({
         theme={theme === "light" ? "bbds-light" : "bbds-dark"}
         {...singletonProps}
         singleton={source}
+        animation="bbds-animation"
         arrow={roundArrow}
-        delay={1000}
+        delay={900}
       />
       {React.Children.map(children, (child) => {
         if (!child) {

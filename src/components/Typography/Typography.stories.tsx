@@ -36,12 +36,29 @@ export const MarketingHeadlines = () => {
 
 export const QuoteType = () => {
   return (
-    <div style={{ color: "white", margin: "32px" }}>
-      <Quote type="quote-01">
-        This is a Marketing quote that can be used on websites.
+    <div
+      style={{
+        color: "white",
+        margin: "32px",
+        display: "flex",
+        flexWrap: "nowrap"
+      }}
+    >
+      <Quote
+        type="quote-01"
+        name="Pinar"
+        position="Marketing Campaign Lead"
+        company="IBM Deutschland"
+      >
+        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
       </Quote>
-      <Quote type="quote-02">
-        This is a Marketing quote that can be used on websites.
+      <Quote
+        type="quote-02"
+        name="Pinar"
+        position="Marketing Campaign Lead"
+        company="IBM Deutschland"
+      >
+        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
       </Quote>
     </div>
   );

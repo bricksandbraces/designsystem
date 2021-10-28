@@ -1,6 +1,8 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import Headline from "./Headline";
+import Body from "./Body";
 
 type QuoteProps = {
   /**
@@ -14,12 +16,35 @@ type QuoteProps = {
   type?: "quote-01" | "quote-02";
 
   /**
+   * Quote Name
+   */
+  name?: string;
+
+  /**
+   * Quote Position
+   */
+  position?: string;
+
+  /**
+   * Quote Company
+   */
+  company?: string;
+
+  /**
    * Quote ClassName
    */
   className?: string;
 } & React.HTMLAttributes<HTMLQuoteElement>;
 
-const Quote = ({ children, className, type, ...rest }: QuoteProps) => {
+const Quote = ({
+  children,
+  name,
+  position,
+  company,
+  className,
+  type,
+  ...rest
+}: QuoteProps) => {
   return (
     <div
       className={cx(
@@ -30,12 +55,39 @@ const Quote = ({ children, className, type, ...rest }: QuoteProps) => {
       <p className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}>
         &ldquo;
       </p>
-      <blockquote
-        className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}
-        {...rest}
-      >
-        {children}
-      </blockquote>
+      <div className={cx(`${prefix}--typography-blockquote__container`)}>
+        <blockquote
+          className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}
+          {...rest}
+        >
+          {children}
+        </blockquote>
+        {name && (
+          <Headline
+            type="h6"
+            className={cx(`${prefix}--typography-blockquote__name`)}
+          >
+            {name}
+          </Headline>
+        )}
+        {position && (
+          <Body
+            type="body-02"
+            className={cx(`${prefix}--typography-blockquote__position`)}
+          >
+            {position}
+          </Body>
+        )}
+
+        {company && (
+          <Body
+            type="body-02"
+            className={cx(`${prefix}--typography-blockquote__company`)}
+          >
+            {company}
+          </Body>
+        )}
+      </div>
     </div>
   );
 };

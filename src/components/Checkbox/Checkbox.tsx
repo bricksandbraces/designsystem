@@ -76,8 +76,8 @@ const Checkbox = ({
       <label className={`${prefix}--checkbox-label`} htmlFor={id}>
         <svg
           className={`${prefix}--checkbox-check`}
-          width="20"
-          height="20"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"

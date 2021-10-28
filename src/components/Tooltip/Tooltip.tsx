@@ -34,6 +34,7 @@ const Tooltip = ({
       className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
       arrow={roundArrow}
       animation="bbds-animation"
+      duration={150}
       theme={theme === "light" ? "bbds-light" : "bbds-dark"}
       {...props}
       content={tooltipContent}
