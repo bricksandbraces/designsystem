@@ -85,9 +85,10 @@ const PasswordInput = (
       <IconOnlyButton
         aria-controls="password"
         aria-expanded={passwordType !== "password"}
-        tooltipLabel={
-          passwordType === "password" ? "Show password" : "Hide password"
-        }
+        tooltipProps={{
+          tooltipContent:
+            passwordType === "password" ? "Show password" : "Hide password"
+        }}
         size={size}
         className={`${prefix}--textinput-togglepassword`}
         type="button"

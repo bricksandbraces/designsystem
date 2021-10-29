@@ -2,32 +2,8 @@
 @import "../colors.pcss";
 @import "../theme.pcss";
 
-$span-1: 1;
-$span-2: 2;
-$span-3: 3;
-$span-4: 4;
-$span-5: 5;
-$span-6: 6;
-$span-7: 7;
-$span-8: 8;
-$span-9: 9;
-$span-10: 10;
-$span-11: 11;
-$span-12: 12;
-$span-13: 13;
-$span-14: 14;
-$span-15: 15;
-$span-16: 16;
-
 .$(prefix)--grid {
-  &--example {
-    padding: 1rem;
-    border: 0.0625rem dashed $purple-40;
-    background-color: $purple-10;
-    color: $white;
-  }
-
-  &--container {
+  &-container {
     display: grid;
     grid-template-rows: auto;
     max-width: 99rem;
@@ -35,1648 +11,649 @@ $span-16: 16;
     margin-left: auto;
 
     & > div > div {
-      padding-right: 1rem;
-      padding-left: 1rem;
+      padding-right: $size--spacing-05;
+      padding-left: $size--spacing-05;
     }
 
-    &-no-gutter__left > div > div {
-      padding-right: 1rem;
+    &__no-gutter-left > div > div {
+      padding-right: $size--spacing-05;
       padding-left: 0;
     }
 
-    &-no-gutter__right > div > div {
+    &__no-gutter-right > div > div {
       padding-right: 0;
-      padding-left: 1rem;
+      padding-left: $size--spacing-05;
     }
 
-    &-no-gutter > div > div {
+    &__no-gutter > div > div {
       padding-right: 0;
       padding-left: 0;
     }
 
-    &-no-gutter {
+    &__no-gutter {
       padding-right: 0;
       padding-left: 0;
     }
   }
 
-  &--fullwidth {
+  &-fullwidth {
     max-width: unset;
   }
 }
 
-.$(prefix)--grid--col-1 {
-  grid-column: span $span-1;
+@each $i in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 {
+  .$(prefix)--grid-col__$(i) {
+    grid-column: span $i;
 
-  &__offset-1 {
-    grid-column: 2 / span $span-1;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-1;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-1;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-1;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-1;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-1;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-1;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-1;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-1;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-1;
-  }
-  &__offset-11 {
-    grid-column: 12 / span $span-1;
-  }
-  &__offset-12 {
-    grid-column: 13 / span $span-1;
-  }
-  &__offset-13 {
-    grid-column: 14 / span $span-1;
-  }
-  &__offset-14 {
-    grid-column: 15 / span $span-1;
-  }
-  &__offset-15 {
-    grid-column: 16 / span $span-1;
+    &--offset-1 {
+      grid-column: 2 / span $i;
+    }
+    &--offset-2 {
+      grid-column: 3 / span $i;
+    }
+    &--offset-3 {
+      grid-column: 4 / span $i;
+    }
+    &--offset-4 {
+      grid-column: 5 / span $i;
+    }
+    &--offset-5 {
+      grid-column: 6 / span $i;
+    }
+    &--offset-6 {
+      grid-column: 7 / span $i;
+    }
+    &--offset-7 {
+      grid-column: 8 / span $i;
+    }
+    &--offset-8 {
+      grid-column: 9 / span $i;
+    }
+    &--offset-9 {
+      grid-column: 10 / span $i;
+    }
+    &--offset-10 {
+      grid-column: 11 / span $i;
+    }
+    &--offset-11 {
+      grid-column: 12 / span $i;
+    }
+    &--offset-12 {
+      grid-column: 13 / span $i;
+    }
+    &--offset-13 {
+      grid-column: 14 / span $i;
+    }
+    &--offset-14 {
+      grid-column: 15 / span $i;
+    }
+    &--offset-15 {
+      grid-column: 16 / span $i;
+    }
   }
 }
 
-.$(prefix)--grid--col-2 {
-  grid-column: span $span-2;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-2;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-2;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-2;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-2;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-2;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-2;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-2;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-2;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-2;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-2;
-  }
-  &__offset-11 {
-    grid-column: 12 / span $span-2;
-  }
-  &__offset-12 {
-    grid-column: 13 / span $span-2;
-  }
-  &__offset-13 {
-    grid-column: 14 / span $span-2;
-  }
-  &__offset-14 {
-    grid-column: 15 / span $span-2;
-  }
-}
-
-.$(prefix)--grid--col-3 {
-  grid-column: span $span-3;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-3;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-3;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-3;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-3;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-3;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-3;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-3;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-3;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-3;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-3;
-  }
-  &__offset-11 {
-    grid-column: 12 / span $span-3;
-  }
-  &__offset-12 {
-    grid-column: 13 / span $span-3;
-  }
-  &__offset-13 {
-    grid-column: 14 / span $span-3;
-  }
-}
-
-.$(prefix)--grid--col-4 {
-  grid-column: span $span-4;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-4;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-4;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-4;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-4;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-4;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-4;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-4;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-4;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-4;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-4;
-  }
-  &__offset-11 {
-    grid-column: 12 / span $span-4;
-  }
-  &__offset-12 {
-    grid-column: 13 / span $span-4;
-  }
-}
-
-.$(prefix)--grid--col-5 {
-  grid-column: span $span-5;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-5;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-5;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-5;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-5;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-5;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-5;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-5;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-5;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-5;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-5;
-  }
-  &__offset-11 {
-    grid-column: 12 / span $span-5;
-  }
-}
-
-.$(prefix)--grid--col-6 {
-  grid-column: span $span-6;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-6;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-6;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-6;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-6;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-6;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-6;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-6;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-6;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-6;
-  }
-  &__offset-10 {
-    grid-column: 11 / span $span-6;
-  }
-}
-
-.$(prefix)--grid--col-7 {
-  grid-column: span $span-7;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-7;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-7;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-7;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-7;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-7;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-7;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-7;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-7;
-  }
-  &__offset-9 {
-    grid-column: 10 / span $span-7;
-  }
-}
-
-.$(prefix)--grid--col-8 {
-  grid-column: span $span-8;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-8;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-8;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-8;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-8;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-8;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-8;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-8;
-  }
-  &__offset-8 {
-    grid-column: 9 / span $span-8;
-  }
-}
-
-.$(prefix)--grid--col-9 {
-  grid-column: span $span-9;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-9;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-9;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-9;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-9;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-9;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-9;
-  }
-  &__offset-7 {
-    grid-column: 8 / span $span-9;
-  }
-}
-
-.$(prefix)--grid--col-10 {
-  grid-column: span $span-10;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-10;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-10;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-10;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-10;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-10;
-  }
-  &__offset-6 {
-    grid-column: 7 / span $span-10;
-  }
-}
-
-.$(prefix)--grid--col-11 {
-  grid-column: span $span-11;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-11;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-11;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-11;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-11;
-  }
-  &__offset-5 {
-    grid-column: 6 / span $span-11;
-  }
-}
-
-.$(prefix)--grid--col-12 {
-  grid-column: span $span-12;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-12;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-12;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-12;
-  }
-  &__offset-4 {
-    grid-column: 5 / span $span-12;
-  }
-}
-
-.$(prefix)--grid--col-13 {
-  grid-column: span $span-13;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-13;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-13;
-  }
-  &__offset-3 {
-    grid-column: 4 / span $span-13;
-  }
-}
-
-.$(prefix)--grid--col-14 {
-  grid-column: span $span-14;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-14;
-  }
-  &__offset-2 {
-    grid-column: 3 / span $span-14;
-  }
-}
-
-.$(prefix)--grid--col-15 {
-  grid-column: span $span-15;
-
-  &__offset-1 {
-    grid-column: 2 / span $span-15;
-  }
-}
-
-.$(prefix)--grid--col-16 {
-  grid-column: span $span-16;
-}
-
+/* < md */
 @media screen and (max-width: $breakpoint-md) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(4, minmax(auto, 25%));
   }
 
-  .$(prefix)--grid--col-sm__1 {
-    grid-column: span $span-1;
+  .$(prefix)--grid-col__sm-1 {
+    grid-column: span 1;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-1;
+    &--offset-1 {
+      grid-column: 2 / span 1;
     }
-    &__offset-2 {
-      grid-column: 3 / span $span-1;
+    &--offset-2 {
+      grid-column: 3 / span 1;
     }
-    &__offset-3 {
-      grid-column: 4 / span $span-1;
-    }
-  }
-
-  .$(prefix)--grid--col-sm__2 {
-    grid-column: span $span-2;
-
-    &__offset-1 {
-      grid-column: 2 / span $span-2;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-2;
+    &--offset-3 {
+      grid-column: 4 / span 1;
     }
   }
 
-  .$(prefix)--grid--col-sm__3 {
-    grid-column: span $span-3;
+  .$(prefix)--grid-col__sm-2 {
+    grid-column: span 2;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-3;
+    &--offset-1 {
+      grid-column: 2 / span 2;
+    }
+    &--offset-2 {
+      grid-column: 3 / span 2;
     }
   }
 
-  .$(prefix)--grid--col-sm__4 {
-    grid-column: span $span-4;
+  .$(prefix)--grid-col__sm-3 {
+    grid-column: span 3;
+
+    &--offset-1 {
+      grid-column: 2 / span 3;
+    }
+  }
+
+  .$(prefix)--grid-col__sm-4 {
+    grid-column: span 4;
   }
 }
 
+/* md */
 @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(8, minmax(auto, 12.5%));
   }
 
-  .$(prefix)--grid--col-md__1 {
-    grid-column: span $span-1;
+  .$(prefix)--grid-col__md-1 {
+    grid-column: span 1;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-1;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-1;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-1;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-1;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-1;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-1;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-1;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8) {
+      &--offset-$(j) {
+        grid-column: $k / span 1;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__2 {
-    grid-column: span $span-2;
+  .$(prefix)--grid-col__md-2 {
+    grid-column: span 2;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-2;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-2;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-2;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-2;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-2;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-2;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7) {
+      &--offset-$(j) {
+        grid-column: $k / span 2;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__3 {
-    grid-column: span $span-3;
+  .$(prefix)--grid-col__md-3 {
+    grid-column: span 3;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-3;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-3;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-3;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-3;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-3;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6) {
+      &--offset-$(j) {
+        grid-column: $k / span 3;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__4 {
-    grid-column: span $span-4;
+  .$(prefix)--grid-col__md-4 {
+    grid-column: span 4;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-4;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-4;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-4;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-4;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5) {
+      &--offset-$(j) {
+        grid-column: $k / span 4;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__5 {
-    grid-column: span $span-5;
+  .$(prefix)--grid-col__md-5 {
+    grid-column: span 5;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-5;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-5;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-5;
+    @each $j, $k in (1, 2), (2, 3), (3, 4) {
+      &--offset-$(j) {
+        grid-column: $k / span 5;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__6 {
-    grid-column: span $span-6;
+  .$(prefix)--grid-col__md-6 {
+    grid-column: span 6;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-6;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-6;
-    }
-  }
-
-  .$(prefix)--grid--col-md__7 {
-    grid-column: span $span-7;
-
-    &__offset-1 {
-      grid-column: 2 / span $span-7;
+    @each $j, $k in (1, 2), (2, 3) {
+      &--offset-$(j) {
+        grid-column: $k / span 6;
+      }
     }
   }
 
-  .$(prefix)--grid--col-md__8 {
-    grid-column: span $span-8;
+  .$(prefix)--grid-col__md-7 {
+    grid-column: span 7;
+
+    &--offset-1 {
+      grid-column: 2 / span 7;
+    }
+  }
+
+  .$(prefix)--grid-col__md-8 {
+    grid-column: span 8;
   }
 }
 
+/* lg */
 @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
 
-  .$(prefix)--grid--col-lg__1 {
-    grid-column: span $span-1;
+  .$(prefix)--grid-col__lg-1 {
+    grid-column: span 1;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-1;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-1;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-1;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-1;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-1;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-1;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-1;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-1;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-1;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-1;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-1;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-1;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-1;
-    }
-    &__offset-14 {
-      grid-column: 15 / span $span-1;
-    }
-    &__offset-15 {
-      grid-column: 16 / span $span-1;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15),
+      (15, 16)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 1;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__2 {
-    grid-column: span $span-2;
+  .$(prefix)--grid-col__lg-2 {
+    grid-column: span 2;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-2;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-2;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-2;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-2;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-2;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-2;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-2;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-2;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-2;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-2;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-2;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-2;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-2;
-    }
-    &__offset-14 {
-      grid-column: 15 / span $span-2;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 2;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__3 {
-    grid-column: span $span-3;
+  .$(prefix)--grid-col__lg-3 {
+    grid-column: span 3;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-3;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-3;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-3;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-3;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-3;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-3;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-3;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-3;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-3;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-3;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-3;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-3;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-3;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 3;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__4 {
-    grid-column: span $span-4;
+  .$(prefix)--grid-col__lg-4 {
+    grid-column: span 4;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-4;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-4;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-4;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-4;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-4;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-4;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-4;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-4;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-4;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-4;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-4;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-3;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 4;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__5 {
-    grid-column: span $span-5;
+  .$(prefix)--grid-col__lg-5 {
+    grid-column: span 5;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-5;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-5;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-5;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-5;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-5;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-5;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-5;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-5;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-5;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-5;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-5;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 5;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__6 {
-    grid-column: span $span-6;
+  .$(prefix)--grid-col__lg-6 {
+    grid-column: span 6;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-6;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-6;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-6;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-6;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-6;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-6;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-6;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-6;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-6;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-6;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 6;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__7 {
-    grid-column: span $span-7;
+  .$(prefix)--grid-col__lg-7 {
+    grid-column: span 7;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-7;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-7;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-7;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-7;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-7;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-7;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-7;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-7;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-7;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 7;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__8 {
-    grid-column: span $span-8;
+  .$(prefix)--grid-col__lg-8 {
+    grid-column: span 8;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-8;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-8;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-8;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-8;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-8;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-8;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-8;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-8;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 8;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__9 {
-    grid-column: span $span-9;
+  .$(prefix)--grid-col__lg-9 {
+    grid-column: span 9;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-9;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-9;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-9;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-9;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-9;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-9;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-9;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8) {
+      &--offset-$(j) {
+        grid-column: $k / span 9;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__10 {
-    grid-column: span $span-10;
+  .$(prefix)--grid-col__lg-10 {
+    grid-column: span 10;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-10;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-10;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-10;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-10;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-10;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-10;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7) {
+      &--offset-$(j) {
+        grid-column: $k / span 10;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__11 {
-    grid-column: span $span-11;
+  .$(prefix)--grid-col__lg-11 {
+    grid-column: span 11;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-11;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-11;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-11;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-11;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-11;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6) {
+      &--offset-$(j) {
+        grid-column: $k / span 11;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__12 {
-    grid-column: span $span-12;
+  .$(prefix)--grid-col__lg-12 {
+    grid-column: span 12;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-12;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-12;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-12;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-12;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5) {
+      &--offset-$(j) {
+        grid-column: $k / span 12;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__13 {
-    grid-column: span $span-13;
+  .$(prefix)--grid-col__lg-13 {
+    grid-column: span 13;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-13;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-13;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-13;
+    @each $j, $k in (1, 2), (2, 3), (3, 4) {
+      &--offset-$(j) {
+        grid-column: $k / span 13;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__14 {
-    grid-column: span $span-14;
+  .$(prefix)--grid-col__lg-14 {
+    grid-column: span 14;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-14;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-14;
-    }
-  }
-
-  .$(prefix)--grid--col-lg__15 {
-    grid-column: span $span-15;
-
-    &__offset-1 {
-      grid-column: 2 / span $span-15;
+    @each $j, $k in (1, 2), (2, 3) {
+      &--offset-$(j) {
+        grid-column: $k / span 14;
+      }
     }
   }
 
-  .$(prefix)--grid--col-lg__16 {
-    grid-column: span $span-16;
+  .$(prefix)--grid-col__lg-15 {
+    grid-column: span 15;
+
+    &--offset-1 {
+      grid-column: 2 / span 15;
+    }
+  }
+
+  .$(prefix)--grid-col__lg-16 {
+    grid-column: span 16;
   }
 }
 
+/* xlg */
 @media screen and (min-width: $breakpoint-xlg) {
-  .$(prefix)--grid--container {
+  .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
 
-  .$(prefix)--grid--col-xlg__1 {
-    grid-column: span $span-1;
+  .$(prefix)--grid-col__xlg-1 {
+    grid-column: span 1;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-1;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-1;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-1;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-1;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-1;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-1;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-1;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-1;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-1;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-1;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-1;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-1;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-1;
-    }
-    &__offset-14 {
-      grid-column: 15 / span $span-1;
-    }
-    &__offset-15 {
-      grid-column: 16 / span $span-1;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15),
+      (15, 16)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 1;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__2 {
-    grid-column: span $span-2;
+  .$(prefix)--grid-col__xlg-2 {
+    grid-column: span 2;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-2;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-2;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-2;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-2;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-2;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-2;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-2;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-2;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-2;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-2;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-2;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-2;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-2;
-    }
-    &__offset-14 {
-      grid-column: 15 / span $span-2;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 2;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__3 {
-    grid-column: span $span-3;
+  .$(prefix)--grid-col__xlg-3 {
+    grid-column: span 3;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-3;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-3;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-3;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-3;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-3;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-3;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-3;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-3;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-3;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-3;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-3;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-3;
-    }
-    &__offset-13 {
-      grid-column: 14 / span $span-3;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 3;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__4 {
-    grid-column: span $span-4;
+  .$(prefix)--grid-col__xlg-4 {
+    grid-column: span 4;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-4;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-4;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-4;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-4;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-4;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-4;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-4;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-4;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-4;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-4;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-4;
-    }
-    &__offset-12 {
-      grid-column: 13 / span $span-3;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12), (12, 13)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 4;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__5 {
-    grid-column: span $span-5;
+  .$(prefix)--grid-col__xlg-5 {
+    grid-column: span 5;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-5;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-5;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-5;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-5;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-5;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-5;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-5;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-5;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-5;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-5;
-    }
-    &__offset-11 {
-      grid-column: 12 / span $span-5;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11), (11, 12)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 5;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__6 {
-    grid-column: span $span-6;
+  .$(prefix)--grid-col__xlg-6 {
+    grid-column: span 6;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-6;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-6;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-6;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-6;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-6;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-6;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-6;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-6;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-6;
-    }
-    &__offset-10 {
-      grid-column: 11 / span $span-6;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10), (10, 11)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 6;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__7 {
-    grid-column: span $span-7;
+  .$(prefix)--grid-col__xlg-7 {
+    grid-column: span 7;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-7;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-7;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-7;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-7;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-7;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-7;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-7;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-7;
-    }
-    &__offset-9 {
-      grid-column: 10 / span $span-7;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9), (9, 10)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 7;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__8 {
-    grid-column: span $span-8;
+  .$(prefix)--grid-col__xlg-8 {
+    grid-column: span 8;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-8;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-8;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-8;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-8;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-8;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-8;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-8;
-    }
-    &__offset-8 {
-      grid-column: 9 / span $span-8;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
+      (8, 9)
+    {
+      &--offset-$(j) {
+        grid-column: $k / span 8;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__9 {
-    grid-column: span $span-9;
+  .$(prefix)--grid-col__xlg-9 {
+    grid-column: span 9;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-9;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-9;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-9;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-9;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-9;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-9;
-    }
-    &__offset-7 {
-      grid-column: 8 / span $span-9;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8) {
+      &--offset-$(j) {
+        grid-column: $k / span 9;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__10 {
-    grid-column: span $span-10;
+  .$(prefix)--grid-col__xlg-10 {
+    grid-column: span 10;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-10;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-10;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-10;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-10;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-10;
-    }
-    &__offset-6 {
-      grid-column: 7 / span $span-10;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7) {
+      &--offset-$(j) {
+        grid-column: $k / span 10;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__11 {
-    grid-column: span $span-11;
+  .$(prefix)--grid-col__xlg-11 {
+    grid-column: span 11;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-11;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-11;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-11;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-11;
-    }
-    &__offset-5 {
-      grid-column: 6 / span $span-11;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5), (5, 6) {
+      &--offset-$(j) {
+        grid-column: $k / span 11;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__12 {
-    grid-column: span $span-12;
+  .$(prefix)--grid-col__xlg-12 {
+    grid-column: span 12;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-12;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-12;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-12;
-    }
-    &__offset-4 {
-      grid-column: 5 / span $span-12;
+    @each $j, $k in (1, 2), (2, 3), (3, 4), (4, 5) {
+      &--offset-$(j) {
+        grid-column: $k / span 12;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__13 {
-    grid-column: span $span-13;
+  .$(prefix)--grid-col__xlg-13 {
+    grid-column: span 13;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-13;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-13;
-    }
-    &__offset-3 {
-      grid-column: 4 / span $span-13;
+    @each $j, $k in (1, 2), (2, 3), (3, 4) {
+      &--offset-$(j) {
+        grid-column: $k / span 13;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__14 {
-    grid-column: span $span-14;
+  .$(prefix)--grid-col__xlg-14 {
+    grid-column: span 14;
 
-    &__offset-1 {
-      grid-column: 2 / span $span-14;
-    }
-    &__offset-2 {
-      grid-column: 3 / span $span-14;
-    }
-  }
-
-  .$(prefix)--grid--col-xlg__15 {
-    grid-column: span $span-15;
-
-    &__offset-1 {
-      grid-column: 2 / span $span-15;
+    @each $j, $k in (1, 2), (2, 3) {
+      &--offset-$(j) {
+        grid-column: $k / span 14;
+      }
     }
   }
 
-  .$(prefix)--grid--col-xlg__16 {
-    grid-column: span $span-16;
+  .$(prefix)--grid-col__xlg-15 {
+    grid-column: span 15;
+
+    &--offset-1 {
+      grid-column: 2 / span 15;
+    }
+  }
+
+  .$(prefix)--grid-col__xlg-16 {
+    grid-column: span 16;
   }
 }
 
+/* < md */
 @media screen and (max-width: $breakpoint-md) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 }
 
+/* > md */
 @media screen and (min-width: $breakpoint-md) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
+    padding-right: $size--spacing-05;
+    padding-left: $size--spacing-05;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 2rem;
-    padding-left: 2rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-07;
+    padding-left: $size--spacing-07;
   }
 }
 
+/* > max */
 @media screen and (min-width: $breakpoint-max) {
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+    padding-right: $size--spacing-06;
+    padding-left: $size--spacing-06;
   }
 
-  .$(prefix)--grid--container.$(prefix)--grid--container-no-gutter__left {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
+    padding-right: $size--spacing-06;
+    padding-left: $size--spacing-06;
   }
 
-  .$(prefix)--grid--container {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+  .$(prefix)--grid-container {
+    padding-right: $size--spacing-08;
+    padding-left: $size--spacing-08;
   }
 }
 
-.$(prefix)--grid--container[data-columncount="1"] > .$(prefix)--grid--col {
-  grid-column: span $span-16;
+/* span-16 */
+
+.$(prefix)--grid-container[data-columncount="1"] > .$(prefix)--grid-col {
+  grid-column: span 16;
 }
 
-.$(prefix)--grid--container[data-columncount="2"] > .$(prefix)--grid--col {
-  grid-column: span $span-8;
+/* span-8 */
+
+@each $i in 2, 3 {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+    grid-column: span 8;
+  }
 }
 
-.$(prefix)--grid--container[data-columncount="3"] > .$(prefix)--grid--col {
-  grid-column: span $span-8;
+/* span-4 */
+
+@each $i in 4, 5, 6, 7 {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+    grid-column: span 4;
+  }
 }
 
-.$(prefix)--grid--container[data-columncount="4"] > .$(prefix)--grid--col {
-  grid-column: span $span-4;
+/* span-2 */
+
+@each $i in 8, 9, 10, 11, 12, 13, 14, 15 {
+  .$(prefix)--grid-container[data-columncount="$(i)"] > .$(prefix)--grid-col {
+    grid-column: span 2;
+  }
 }
 
-.$(prefix)--grid--container[data-columncount="5"] > .$(prefix)--grid--col {
-  grid-column: span $span-4;
-}
+/* span-1 */
 
-.$(prefix)--grid--container[data-columncount="6"] > .$(prefix)--grid--col {
-  grid-column: span $span-4;
-}
-
-.$(prefix)--grid--container[data-columncount="7"] > .$(prefix)--grid--col {
-  grid-column: span $span-4;
-}
-
-.$(prefix)--grid--container[data-columncount="8"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="9"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="10"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="11"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.g$(prefix)--rid--container[data-columncount="12"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="13"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="14"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.g$(prefix)--rid--container[data-columncount="15"] > .$(prefix)--grid--col {
-  grid-column: span $span-2;
-}
-
-.$(prefix)--grid--container[data-columncount="16"] > .$(prefix)--grid--col {
-  grid-column: span $span-1;
+.$(prefix)--grid-container[data-columncount="16"] > .$(prefix)--grid-col {
+  grid-column: span 1;
 }

@@ -87,9 +87,9 @@ const Header = ({ linkItems, baseUrl }: HeaderProps) => {
           >
             <a href={baseUrl} className={`${prefix}--header--logo`}>
               <Logo
-                variant="white"
+                color="white"
                 size="xsmall"
-                kind={small ? "logomark" : "logotype"}
+                type={small ? "logomark" : "logotype"}
               />
             </a>
           </Column>

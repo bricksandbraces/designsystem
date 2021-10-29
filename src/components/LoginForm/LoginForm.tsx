@@ -96,9 +96,7 @@ const LoginForm = ({
         autoComplete="off"
       >
         <Label className={`${prefix}--loginform--password-link`}>
-          <Link href="#" inheritSize>
-            Password vergessen?
-          </Link>
+          <Link href="#">Password vergessen?</Link>
         </Label>
       </PasswordInput>
     </form>

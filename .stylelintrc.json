@@ -13,6 +13,7 @@
       true,
       {
         "ignoreAtRules": [
+          "each",
           "apply",
           "layer",
           "variants",

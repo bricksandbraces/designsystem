@@ -11,7 +11,7 @@
 @import "./components/CookieBanner.pcss";
 @import "./components/Link.pcss";
 @import "./components/UserProfile.pcss";
-@import "./components/SideNav.pcss";
+
 @import "./components/Logo.pcss";
 @import "./components/Tooltip.pcss";
 @import "./components/CopyButton.pcss";
@@ -45,6 +45,7 @@
 @import "./components/Avatar.pcss";
 @import "./components/FloatingPanel.pcss";
 @import "./components/RangeInput.pcss";
+@import "./components/SideNav.pcss";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  = Global customization of Bricks and Braces opionionated CSS. =
