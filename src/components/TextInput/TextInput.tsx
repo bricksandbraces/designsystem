@@ -5,7 +5,7 @@ import useControlled from "../../hooks/useControlled";
 import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
 
-type TextInputProps = {
+export type TextInputProps = {
   /**
    * TextInput ClassName
    */
@@ -17,7 +17,7 @@ type TextInputProps = {
   label?: string;
 
   /**
-   * Placeholder text
+   * TextInput Placeholder e.g. for indicating DatePickerInput formats like DD-MM-YYYY
    */
   placeholder?: string;
 
@@ -73,6 +73,10 @@ type TextInputProps = {
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+
   /**
    * ReactChildren
    */
@@ -91,6 +95,9 @@ const TextInput = (
     defaultValue,
     autoComplete,
     onChange,
+    onBlur,
+    onFocus,
+    onKeyDown,
     error,
     errorText,
     warning,
@@ -146,6 +153,9 @@ const TextInput = (
             }
             onChange?.(event);
           }}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
         />
         {fluid && (
           <label

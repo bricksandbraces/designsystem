@@ -2096,6 +2096,7 @@ __metadata:
     classnames: ^2.3.1
     copyfiles: ^2.4.1
     cssnano: ^5.0.7
+    date-fns: ^2.25.0
     enzyme: ^3.11.0
     enzyme-to-json: ^3.6.2
     eslint: ^7.32.0
@@ -2129,6 +2130,7 @@ __metadata:
     prettier: ^2.3.2
     rc-slider: ^9.7.2
     react: ^17.0.2
+    react-day-picker: ^7.4.10
     react-dom: ^17.0.2
     react-focus-lock: ^2.5.2
     react-merge-refs: ^1.1.0
@@ -7544,6 +7546,13 @@ __metadata:
     whatwg-mimetype: ^2.3.0
     whatwg-url: ^8.0.0
   checksum: 42239927c6a202e2d02b7f41c94ca53e3cea036898b97b8bf6120ed1b25e0dd11c48ec7aa5c84cf807c2cb9f3a637df9fb50f3ca25a52863186a4ac46254726b
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.25.0":
+  version: 2.25.0
+  resolution: "date-fns@npm:2.25.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fdate-fns%2F-%2Fdate-fns-2.25.0.tgz"
+  checksum: 492907de08b948c319ec530a92ff160e11c78b02f15c9fc842776d0173ee411d815b5a5e1e32d1ac496f523f975e080d77b685e456c26d4139377911823d7c0f
   languageName: node
   linkType: hard
 
@@ -16341,6 +16350,17 @@ fsevents@^1.2.7:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 7af77b211665f64ee4c4508045011a420f47f0435562c30065aa89457337b956baa2def781360540fbf4c4fc5295d00947f208fda700bfb92450a939bd0d4353
+  languageName: node
+  linkType: hard
+
+"react-day-picker@npm:^7.4.10":
+  version: 7.4.10
+  resolution: "react-day-picker@npm:7.4.10::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freact-day-picker%2F-%2Freact-day-picker-7.4.10.tgz"
+  dependencies:
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: a47e72a616697b8b215971b85dcee8a10982f0fd1305fe5122029f2eef7af37c7b8e4a98a8237c05309a5806f5479771ab408d2e247cb26d8b54d94d1d8cbb8f
   languageName: node
   linkType: hard
 
