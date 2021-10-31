@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import cx from "classnames";
-import { parse, format } from "date-fns";
-import "react-day-picker/lib/style.css";
 import { getLogger } from "@openbricksandbraces/eloguent";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import useControlled from "../../hooks/useControlled";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
+import { formatDate, parseDate } from "../../helpers/dateUtilities";
 
-const log = getLogger("date-fns");
+const logger = getLogger("date-fns");
 
 export type DateChangeEvent =
   | React.FocusEvent<HTMLInputElement>
-  | React.KeyboardEvent<HTMLInputElement>
-  | React.MouseEvent<any, MouseEvent>;
+  | React.KeyboardEvent<HTMLInputElement>;
 
 export type DateInputProps = {
   /**
@@ -29,31 +26,27 @@ export type DateInputProps = {
   /**
    * DateInput Value
    */
-  value?: Date;
+  value?: string;
 
   /**
    * DateInput Default Value
    */
-  defaultValue?: Date;
+  defaultValue?: string;
 
   /**
    * DateInput OnInputChanged
    * Called whenever the user changes something within the textinput.
-   * Also notifies about the change event.
    */
-  onInputChanged?: (
-    input: string,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
   /**
    * DateInput OnDateChanged
    * Called whenever the date behind the input changes. This is the case when
    * 1. the user submits the input via pressing Enter.
    * 2. the user leaves the input field causing a BlurEvent.
-   * Also notifies about the triggering event (meaning Keyboard or BlurEvent).
+   * 3. the children propagate a DateChanged event (e.g. due to DatePicker selection)
    */
-  onDateChanged?: (date: Date | null, event: DateChangeEvent) => void;
+  onDateChanged?: (date: Date | null) => void;
 
   /**
    * DateInput Children
@@ -61,10 +54,7 @@ export type DateInputProps = {
    */
   children?: (
     selectedDate: Date | null,
-    changeDate: (
-      event: React.MouseEvent<any, MouseEvent>,
-      newDate?: Date | null | undefined
-    ) => void
+    changeDate: (newDate: Date | null) => void
   ) => React.ReactNode;
 } & Omit<
   TextInputProps,
@@ -74,67 +64,69 @@ export type DateInputProps = {
 const DateInput = ({
   children,
   className,
-  dateFormat = "DD-MM-YYYY",
+  dateFormat = "dd-MM-yyyy",
   defaultValue,
   value,
-  onInputChanged,
+  label,
+  onChange,
   onDateChanged,
   ...props
 }: DateInputProps) => {
   const controlled = useControlled(value);
-
-  const [localValue, setLocalValue] = useState<Date | null>(
-    (controlled ? value : defaultValue) ?? null
-  );
-  const [inputValue, setInputValue] = useState<string>(
-    localValue ? format(localValue, dateFormat) : ""
+  // one text based representation which may also contain invalid values
+  const [textValue, setTextValue] = useState<string>(
+    (controlled ? value : defaultValue) ?? ""
   );
 
   useEffect(() => {
     if (controlled) {
-      setLocalValue(value ?? null);
-      setInputValue(localValue ? format(localValue, dateFormat) : "");
+      setTextValue(value ?? "");
     }
   }, [value]);
 
   const handleSubmit = (event: DateChangeEvent) => {
-    let newDate: Date | null = null;
+    logger.debug("handleSubmit: ");
+    // eslint-disable-next-line no-console
+    console.debug(event);
 
     // parse from input
-    try {
-      newDate = parse(inputValue, dateFormat, new Date());
-    } catch (err) {
-      log.error(err);
-    }
+    const newDate = parseDate(textValue, dateFormat, null);
 
+    // Reparse to textValue
     if (!controlled) {
-      setLocalValue(newDate);
+      setTextValue(formatDate(newDate, dateFormat, textValue));
     }
 
-    onDateChanged?.(newDate, event);
+    logger.debug("newDate: ");
+    // eslint-disable-next-line no-console
+    console.debug(newDate);
+
+    onDateChanged?.(newDate);
   };
 
   return (
     <>
       <TextInput
-        className={cx(className, "")}
         placeholder={dateFormat}
-        value={inputValue}
+        value={textValue}
         type="text"
         autoComplete="off"
         onChange={(event) => {
           const input = event.target.value;
           if (!controlled) {
-            setInputValue(input);
+            setTextValue(input);
           }
-          onInputChanged?.(input, event);
+          onChange?.(event);
         }}
         onBlur={(event) => handleSubmit(event)}
         onKeyDown={filterForKeys(["Enter"], (event) => handleSubmit(event))}
+        label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />
-      {children?.(localValue, (event, newDate) => {
-        handleSubmit(event, newDate);
+      {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
+        const newTextValue = formatDate(newDate, dateFormat, "");
+        setTextValue(newTextValue);
+        onDateChanged?.(newDate);
       })}
     </>
   );
