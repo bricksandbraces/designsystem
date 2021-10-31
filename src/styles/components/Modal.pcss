@@ -31,7 +31,7 @@
       padding: $size--spacing-06 $size--spacing-11 0 $size--spacing-06;
       pointer-events: none;
 
-      @media screen and (max-width: $breakpoint-md) {
+      @media screen and (max-width: $size--breakpoint-md) {
         padding: $size--spacing-06 $size--spacing-10 0 $size--spacing-06;
       }
 
@@ -72,7 +72,7 @@
         overflow: scroll;
         color: $color--font-text-01;
 
-        @media screen and (max-width: $breakpoint-md) {
+        @media screen and (max-width: $size--breakpoint-md) {
           padding: $size--spacing-05 $size--spacing-10 $size--spacing-05
             $size--spacing-06;
         }
@@ -108,7 +108,7 @@
         );
       }
 
-      @media screen and (max-width: $breakpoint-md) {
+      @media screen and (max-width: $size--breakpoint-md) {
         flex-direction: row;
         flex-wrap: wrap;
 
@@ -150,7 +150,7 @@
       color: $color--font-text-01;
       cursor: auto;
 
-      @media screen and (min-width: $breakpoint-md) {
+      @media screen and (min-width: $size--breakpoint-md) {
         position: static;
         width: 84%;
         height: auto;
@@ -188,7 +188,7 @@
 .$(prefix)--modal-container__sm
   > .$(prefix)--modal-footer
   > .$(prefix)--modal-footer__secondary {
-  @media screen and (max-width: $breakpoint-md) {
+  @media screen and (max-width: $size--breakpoint-md) {
     margin: 0 0 $size--spacing-05 0;
   }
 }
@@ -205,7 +205,7 @@
   padding: $size--spacing-06 $size--spacing-11 $size--spacing-06
     $size--spacing-06;
 
-  @media screen and (max-width: $breakpoint-md) {
+  @media screen and (max-width: $size--breakpoint-md) {
     padding: $size--spacing-06;
   }
 }

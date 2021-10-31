@@ -66,16 +66,16 @@ export const narrow = () => {
   return (
     <Grid narrow>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 1</div>
+        <div className={`${prefix}--grid-example`}>Column 1</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 2</div>
+        <div className={`${prefix}--grid-example`}>Column 2</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 3</div>
+        <div className={`${prefix}--grid-example`}>Column 3</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 4</div>
+        <div className={`${prefix}--grid-example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -85,16 +85,16 @@ export const condensed = () => {
   return (
     <Grid condensed>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 1</div>
+        <div className={`${prefix}--grid-example`}>Column 1</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 2</div>
+        <div className={`${prefix}--grid-example`}>Column 2</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 3</div>
+        <div className={`${prefix}--grid-example`}>Column 3</div>
       </Column>
       <Column sm={4} md={8} lg={4} xlg={4}>
-        <div className={`${prefix}--grid--example`}>Column 4</div>
+        <div className={`${prefix}--grid-example`}>Column 4</div>
       </Column>
     </Grid>
   );
@@ -103,7 +103,7 @@ export const condensed = () => {
 export const Example = () => {
   return (
     <>
-      <Grid narrow fullWidth={boolean("Full width", false)}>
+      <Grid narrow fullWidth={boolean("fullWidth", false)}>
         <Column
           sm={4}
           md={8}
@@ -118,7 +118,7 @@ export const Example = () => {
           }}
         />
       </Grid>
-      <Grid fullWidth={boolean("Full width", false)}>
+      <Grid fullWidth={boolean("fullWidth", false)}>
         <Column sm={4} md={4} lg={4} xlg={4}>
           <div style={{ color: "#fff", marginTop: "24px" }}>
             <p style={{ fontSize: "64px", fontWeight: 200 }}>

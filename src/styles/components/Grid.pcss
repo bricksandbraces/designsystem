@@ -94,7 +94,7 @@
 }
 
 /* < md */
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: $size--breakpoint-md) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(4, minmax(auto, 25%));
   }
@@ -138,7 +138,7 @@
 }
 
 /* md */
-@media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+@media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(8, minmax(auto, 12.5%));
   }
@@ -217,7 +217,7 @@
 }
 
 /* lg */
-@media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
+@media screen and (min-width: $size--breakpoint-lg) and (max-width: $size--breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
@@ -393,7 +393,7 @@
 }
 
 /* xlg */
-@media screen and (min-width: $breakpoint-xlg) {
+@media screen and (min-width: $size--breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 6.25%));
   }
@@ -569,7 +569,7 @@
 }
 
 /* < md */
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: $size--breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
     padding-right: 0;
     padding-left: 0;
@@ -587,7 +587,7 @@
 }
 
 /* > md */
-@media screen and (min-width: $breakpoint-md) {
+@media screen and (min-width: $size--breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
     padding-right: $size--spacing-05;
     padding-left: $size--spacing-05;
@@ -605,7 +605,7 @@
 }
 
 /* > max */
-@media screen and (min-width: $breakpoint-max) {
+@media screen and (min-width: $size--breakpoint-max) {
   .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
     padding-right: $size--spacing-06;
     padding-left: $size--spacing-06;
