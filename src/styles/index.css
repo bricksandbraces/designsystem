@@ -46,6 +46,7 @@
 @import "./components/FloatingPanel.pcss";
 @import "./components/RangeInput.pcss";
 @import "./components/SideNav.pcss";
+@import "./components/Switcher.pcss";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  = Global customization of Bricks and Braces opionionated CSS. =
