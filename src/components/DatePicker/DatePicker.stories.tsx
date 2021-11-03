@@ -3,6 +3,7 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { format } from "date-fns";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
+import { Button } from "../..";
 import { formatDate } from "../../helpers/dateUtilities";
 
 import Label from "../Typography/Label";
@@ -130,6 +131,60 @@ export const SingleWithCalendarUncontrolled = () => {
           }}
         </DateInput>
       </OutsideClickHandler>
+    </div>
+  );
+};
+
+export const SingleWithCalendarControlled = () => {
+  const dateFormat = text("dateFormat", "dd-MM-yyyy");
+  // this is only a mirrored value since uncontrolled input holds the value
+  const [chosenDate, setChosenDate] = useState<Date | null>(new Date());
+
+  const [open, setOpen] = useState<boolean>(false);
+  return (
+    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
+      <OutsideClickHandler
+        onOutsideClick={() => {
+          setOpen(false);
+        }}
+      >
+        <DateInput
+          label="Single with calendar"
+          value={formatDate(chosenDate, dateFormat, "")}
+          dateFormat={dateFormat}
+          onChange={() => {}}
+          onDateChanged={(date) => {
+            setChosenDate(date);
+          }}
+          onFocus={() => {
+            setOpen(true);
+          }}
+        >
+          {(insertedDate, changeDate) => {
+            // inserted date may be invalid and is a live representation from the text
+            const selectedDay = insertedDate ?? undefined;
+            return (
+              <DatePicker
+                open={open}
+                selectedDays={selectedDay}
+                onDayClick={(newDate) => {
+                  changeDate(newDate);
+                  setOpen(false);
+                }}
+                initialMonth={selectedDay}
+              />
+            );
+          }}
+        </DateInput>
+      </OutsideClickHandler>
+      <Button
+        onClick={() => {
+          setChosenDate(new Date());
+        }}
+      >
+        Reset to today
+      </Button>
     </div>
   );
 };
