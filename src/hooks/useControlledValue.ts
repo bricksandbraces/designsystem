@@ -31,12 +31,13 @@ const useControlledValue = <V>(
   (
     overrideValue?: React.SetStateAction<V | undefined>,
     additional?: React.ChangeEventHandler<HTMLInputElement> | undefined
-  ) => ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined
+  ) => ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined,
+  React.Dispatch<React.SetStateAction<V | undefined>>
 ] => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const controlled = useControlled(value);
-  const [cachedControlledValue, setCachedControlledValue] = useState<
+  const [cachedControlledValue, setCachedUncontrolledValue] = useState<
     V | undefined
   >(defaultValue);
   const currentValue = controlled ? value : cachedControlledValue;
@@ -56,11 +57,13 @@ const useControlledValue = <V>(
     overrideValue?: SetStateAction<V | undefined>,
     additional?: React.ChangeEventHandler<HTMLInputElement>
   ) => {
-    if (!onChange) return undefined;
+    if (!onChange && controlled) return undefined;
     return (event: React.ChangeEvent<HTMLInputElement>) => {
       // Only notify the cache for uncontrolled usage
       if (!controlled) {
-        setCachedControlledValue(overrideValue ?? (event.target.value as any));
+        setCachedUncontrolledValue(
+          overrideValue ?? (event.target.value as any)
+        );
       }
 
       additional?.(event);
@@ -69,7 +72,7 @@ const useControlledValue = <V>(
     };
   };
 
-  return [inputRef, currentValue, handleOnChange];
+  return [inputRef, currentValue, handleOnChange, setCachedUncontrolledValue];
 };
 
 export default useControlledValue;

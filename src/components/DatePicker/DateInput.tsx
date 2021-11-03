@@ -1,13 +1,10 @@
 import React, { forwardRef } from "react";
-import { getLogger } from "@openbricksandbraces/eloguent";
 import mergeRefs from "react-merge-refs";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
-
-const logger = getLogger("date-fns");
 
 export type DateChangeEvent =
   | React.FocusEvent<HTMLInputElement>
@@ -78,27 +75,20 @@ const DateInput = (
   ref: ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
-
-  const [inputRef, textValue, handleChange] = useControlledValue(
-    value,
-    defaultValue,
-    onChange
-  );
+  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
+    useControlledValue(value, defaultValue, onChange);
 
   const updateValue = (newValue: string) => {
     if (inputRef.current) {
       if (!controlled) {
         inputRef.current.value = newValue;
+        setCachedUncontrolledValue(newValue);
       }
       inputRef.current.dispatchEvent(new Event("change"));
     }
   };
 
-  const handleSubmit = (event: DateChangeEvent) => {
-    logger.debug("handleSubmit: ");
-    // eslint-disable-next-line no-console
-    console.debug(event);
-
+  const handleSubmit = () => {
     // parse from input
     const newDate = parseDate(textValue, dateFormat, null);
 
@@ -108,10 +98,6 @@ const DateInput = (
       updateValue(formattedDate);
     }
 
-    logger.debug("newDate: ");
-    // eslint-disable-next-line no-console
-    console.debug(newDate);
-
     onDateChanged?.(newDate);
   };
 
@@ -119,13 +105,14 @@ const DateInput = (
     <>
       <TextInput
         placeholder={dateFormat}
-        value={textValue}
+        value={value}
+        defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}
         type="text"
         autoComplete="off"
         onChange={handleChange()}
-        onBlur={(event) => handleSubmit(event)}
-        onKeyDown={filterForKeys(["Enter"], (event) => handleSubmit(event))}
+        onBlur={() => handleSubmit()}
+        onKeyDown={filterForKeys(["Enter"], () => handleSubmit())}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />

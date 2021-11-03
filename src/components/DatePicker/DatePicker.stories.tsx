@@ -1,6 +1,7 @@
 import { getLogger } from "@openbricksandbraces/eloguent";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
-import React, { useRef, useState } from "react";
+import { format } from "date-fns";
+import React, { useState } from "react";
 import { formatDate } from "../../helpers/dateUtilities";
 
 import Label from "../Typography/Label";
@@ -21,35 +22,40 @@ const defaultSize = "default";
 const defaultDateFormat = "dd-MM-yyyy";
 
 export const Uncontrolled = () => {
-  const dateRef = useRef<Date | null>(new Date());
+  const defaultDate = new Date();
+  // this is only a monitoring value since uncontrolled input holds the value
+  const [chosenDate, setSubmittedDate] = useState<Date | null>(defaultDate);
+  const dateFormat = text("dateFormat", defaultDateFormat);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
-        defaultValue="01-01-2020"
+        defaultValue={format(defaultDate, dateFormat)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         size={select("Size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
-        dateFormat={text("dateFormat", defaultDateFormat)}
+        dateFormat={dateFormat}
         label={text("label", "Birthday")}
         onChange={(event) => {
           logger.log(event.target.value);
         }}
         onDateChanged={(newDate) => {
           logger.log(newDate);
-          dateRef.current = newDate;
+          setSubmittedDate(newDate);
         }}
       />
-      <Label>Current date value: {dateRef.current?.toISOString()}</Label>
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
 };
 
 export const Controlled = () => {
   const dateFormat = text("dateFormat", "dd-MM-yyyy");
-  const [date, setDate] = useState<Date | null>(new Date());
+  // this is the single source of truth
+  const [chosenDate, setChosenDate] = useState<Date | null>(new Date());
+  // keep track of the text value and print it out only for debugging purposes
   const [textValue, setTextValue] = useState<string>(
-    formatDate(date, dateFormat, "")
+    formatDate(chosenDate, dateFormat, "")
   );
 
   return (
@@ -57,18 +63,16 @@ export const Controlled = () => {
       <DateInput
         value={textValue}
         onChange={(event) => {
-          logger.log("onInputChanged: newInput");
+          logger.log("onChange:");
           // eslint-disable-next-line no-console
           console.log(event.target.value);
           setTextValue(event.target.value);
         }}
         onDateChanged={(newDate) => {
-          logger.log("onDateChanged: newDate");
+          logger.log("onDateChanged:");
           // eslint-disable-next-line no-console
           console.log(newDate);
-          if (newDate) {
-            setDate(newDate);
-          }
+          setChosenDate(newDate);
         }}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
@@ -77,26 +81,41 @@ export const Controlled = () => {
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
       />
-      <Label>Current date value: {date?.toISOString()}</Label>
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
 };
 
-export const SingleWithCalendar = () => {
+export const SingleWithCalendarUncontrolled = () => {
+  const defaultDate = new Date();
+  const dateFormat = text("dateFormat", "dd-MM-yyyy");
+  // this is only a mirrored value since uncontrolled input holds the value
+  const [chosenDate, setChosenDate] = useState<Date | null>(defaultDate);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <DateInput label="Single with calendar">
-        {(selectedDate, changeDate) => {
+      <DateInput
+        label="Single with calendar"
+        defaultValue={format(defaultDate, dateFormat)}
+        dateFormat={dateFormat}
+        onDateChanged={(date) => {
+          setChosenDate(date);
+        }}
+      >
+        {(insertedDate, changeDate) => {
+          // inserted date may be invalid and is a live representation from the text
+          const selectedDay = insertedDate ?? undefined;
           return (
             <DatePicker
-              selectedDays={selectedDate ?? undefined}
+              selectedDays={selectedDay}
               onDayClick={(newDate) => {
                 changeDate(newDate);
               }}
+              initialMonth={selectedDay}
             />
           );
         }}
       </DateInput>
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
 };
