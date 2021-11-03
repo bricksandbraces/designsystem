@@ -10,11 +10,11 @@ const parseDate = <T,>(
   return !isValid(parsedDate) ? fallback : parsedDate;
 };
 
-const formatDate = <T,>(
+const formatDate = (
   date: Date | Nullish,
   dateFormat: string,
-  fallback: T
-) => {
+  fallback: string
+): string => {
   if (!date) return fallback;
   try {
     const formattedDate = format(date, dateFormat);

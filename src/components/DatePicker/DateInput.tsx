@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import { getLogger } from "@openbricksandbraces/eloguent";
+import mergeRefs from "react-merge-refs";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
-import useControlled from "../../hooks/useControlled";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
+import useControlledValue from "../../hooks/useControlledValue";
+import useControlled from "../../hooks/useControlled";
 
 const logger = getLogger("date-fns");
 
@@ -61,28 +63,36 @@ export type DateInputProps = {
   "value" | "defaultValue" | "children" | "onChange" | "placeholder"
 >;
 
-const DateInput = ({
-  children,
-  className,
-  dateFormat = "dd-MM-yyyy",
-  defaultValue,
-  value,
-  label,
-  onChange,
-  onDateChanged,
-  ...props
-}: DateInputProps) => {
+const DateInput = (
+  {
+    children,
+    className,
+    dateFormat = "dd-MM-yyyy",
+    defaultValue,
+    value,
+    label,
+    onChange,
+    onDateChanged,
+    ...props
+  }: DateInputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   const controlled = useControlled(value);
-  // one text based representation which may also contain invalid values
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
+
+  const [inputRef, textValue, handleChange] = useControlledValue(
+    value,
+    defaultValue,
+    onChange
   );
 
-  useEffect(() => {
-    if (controlled) {
-      setTextValue(value ?? "");
+  const updateValue = (newValue: string) => {
+    if (inputRef.current) {
+      if (!controlled) {
+        inputRef.current.value = newValue;
+      }
+      inputRef.current.dispatchEvent(new Event("change"));
     }
-  }, [value]);
+  };
 
   const handleSubmit = (event: DateChangeEvent) => {
     logger.debug("handleSubmit: ");
@@ -94,7 +104,8 @@ const DateInput = ({
 
     // Reparse to textValue
     if (!controlled) {
-      setTextValue(formatDate(newDate, dateFormat, textValue));
+      const formattedDate = formatDate(newDate, dateFormat, textValue ?? "");
+      updateValue(formattedDate);
     }
 
     logger.debug("newDate: ");
@@ -109,15 +120,10 @@ const DateInput = ({
       <TextInput
         placeholder={dateFormat}
         value={textValue}
+        ref={mergeRefs([ref, inputRef])}
         type="text"
         autoComplete="off"
-        onChange={(event) => {
-          const input = event.target.value;
-          if (!controlled) {
-            setTextValue(input);
-          }
-          onChange?.(event);
-        }}
+        onChange={handleChange()}
         onBlur={(event) => handleSubmit(event)}
         onKeyDown={filterForKeys(["Enter"], (event) => handleSubmit(event))}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
@@ -125,11 +131,13 @@ const DateInput = ({
       />
       {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
         const newTextValue = formatDate(newDate, dateFormat, "");
-        setTextValue(newTextValue);
+        updateValue(newTextValue);
         onDateChanged?.(newDate);
       })}
     </>
   );
 };
 
-export default DateInput;
+export default React.memo(
+  forwardRef<HTMLInputElement, DateInputProps>(DateInput)
+);
