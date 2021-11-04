@@ -6,10 +6,6 @@ import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
 
-export type DateChangeEvent =
-  | React.FocusEvent<HTMLInputElement>
-  | React.KeyboardEvent<HTMLInputElement>;
-
 export type DateInputProps = {
   /**
    * DateInput Classname
@@ -45,7 +41,7 @@ export type DateInputProps = {
    * 2. the user leaves the input field causing a BlurEvent.
    * 3. the children propagate a DateChanged event (e.g. due to DatePicker selection)
    */
-  onDateChanged?: (date: Date | null) => void;
+  onDateChanged?: (date: Date | null, formattedDate: string) => void;
 
   /**
    * DateInput Children
@@ -80,25 +76,33 @@ const DateInput = (
 
   const updateValue = (newValue: string) => {
     if (inputRef.current) {
+      // for uncontrolled usage, the value has to be updated on dom side
       if (!controlled) {
         inputRef.current.value = newValue;
+        // and the cache value has to be also updated
         setCachedUncontrolledValue(newValue);
       }
       inputRef.current.dispatchEvent(new Event("change"));
     }
   };
 
+  /**
+   * When the text input is being submitted via keypress enter or onBlur the dateChange is executed.
+   * This also updates the textvalue for uncontrolled usage
+   */
   const handleSubmit = () => {
-    // parse from input
+    // Parse Date from input
     const newDate = parseDate(textValue, dateFormat, null);
+    // Reparse to formatted text date
+    const formattedDate = formatDate(newDate, dateFormat, textValue ?? "");
 
-    // Reparse to textValue
     if (!controlled) {
-      const formattedDate = formatDate(newDate, dateFormat, textValue ?? "");
+      // for uncontrolled usage the reparsed value has to be updated
+      // so that e.g. 1-1-2020 is being formatted to 01-01-2020.
       updateValue(formattedDate);
     }
 
-    onDateChanged?.(newDate);
+    onDateChanged?.(newDate, formattedDate);
   };
 
   return (
@@ -117,9 +121,10 @@ const DateInput = (
         {...props}
       />
       {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
+        // the selected date has to be updated also within the textfield
         const newTextValue = formatDate(newDate, dateFormat, "");
         updateValue(newTextValue);
-        onDateChanged?.(newDate);
+        onDateChanged?.(newDate, newTextValue);
       })}
     </>
   );
