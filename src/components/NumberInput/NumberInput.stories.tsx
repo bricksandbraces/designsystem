@@ -7,6 +7,7 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
+import { parseToNumber } from "../../helpers/numberUtilities";
 import Label from "../Typography/Label";
 import NumberInput from "./NumberInput";
 
@@ -32,9 +33,9 @@ export const Uncontrolled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
-        onChange={(event, newValue) => {
+        onChange={(event, { parsedValue }) => {
           logger.log(event);
-          setReference(newValue);
+          setReference(parsedValue);
         }}
         size={select("Size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
@@ -52,7 +53,9 @@ export const Uncontrolled = () => {
 
 export const Controlled = () => {
   // this is the single source of truth
-  const [value, setValue] = useState<number>(0);
+  const [textValue, setValue] = useState<string>("1e42");
+  const float = boolean("float", false);
+  const value = parseToNumber(textValue, float);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
@@ -64,14 +67,19 @@ export const Controlled = () => {
         label={text("label", "Label")}
         placeholder={text("Placeholder", "Enter text...")}
         autoComplete={select("Autocomplete", ["off", "on"], "off") as any}
-        value={value}
-        onChange={(event, newValue) => {
-          logger.log(newValue);
-          setValue(newValue);
+        value={textValue}
+        onChange={(event, { parsedValue, newValue }) => {
+          logger.log(event);
+          if (parsedValue != null && !Number.isNaN(parsedValue)) {
+            setValue(`${parsedValue}`);
+          } else {
+            setValue(newValue);
+          }
         }}
         min={number("min", -50)}
         max={number("max", 50)}
         step={number("step", 1)}
+        float={float}
       />
       <Label>SSoT value: {value}</Label>
     </div>

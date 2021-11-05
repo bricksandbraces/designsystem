@@ -6,6 +6,8 @@ import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
+import { parseToNumber } from "../../helpers/numberUtilities";
 
 export type NumberInputProps = {
   /**
@@ -58,7 +60,7 @@ export type NumberInputProps = {
   /**
    * Value
    */
-  value?: number;
+  value?: number | string;
 
   /**
    * Value
@@ -70,7 +72,7 @@ export type NumberInputProps = {
    */
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement> | undefined,
-    newValue: number
+    additionalData: { parsedValue: number; newValue: string }
   ) => void;
 
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
@@ -126,45 +128,46 @@ const NumberInput = (
   }: NumberInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const parseNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const number = float
-      ? Number.parseFloat(event.target.value)
-      : Number.parseInt(event.target.value);
-    return number;
-  };
-
   /**
    * Boosted onChange function that also provides the updated value of
    * the target to the onChange listener
    */
   const boostedOnChange = onChange
     ? (event: React.ChangeEvent<HTMLInputElement>) => {
-        const parsedNumber = parseNumber(event);
+        const newValue = event.target.value;
+        const parsedValue = parseToNumber(newValue, float);
 
-        onChange(event, parsedNumber);
+        onChange(event, { newValue, parsedValue });
       }
     : undefined;
-  const controlled = useControlled(value);
-  const [inputRef, numberValue, handleChange, setCachedUncontrolledValue] =
-    useControlledValue(value, defaultValue, boostedOnChange);
 
-  const updateValue = (newValue: number) => {
+  const controlled = useControlled(value);
+  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
+    useControlledValue<string | undefined>(
+      value != null ? `${value}` : undefined,
+      defaultValue != null ? `${defaultValue}` : undefined,
+      boostedOnChange
+    );
+
+  const updateValue = (newValue: string) => {
     if (inputRef.current) {
       // for uncontrolled usage, the value has to be updated on dom side
       if (!controlled) {
-        inputRef.current.value = `${newValue}`;
+        inputRef.current.value = newValue;
         // and the cache value has to be also updated
         setCachedUncontrolledValue(newValue);
       }
       const event = new Event("change", { bubbles: true });
       inputRef.current.dispatchEvent(event);
 
-      onChange?.(undefined, newValue);
+      const parsedValue = parseToNumber(newValue);
+
+      onChange?.(undefined, { newValue, parsedValue });
     }
   };
 
-  const correctValue = (newValue: number | undefined) => {
-    if (newValue == null) {
+  const correctValIntoBorders = (newValue: number | undefined) => {
+    if (newValue == null || Number.isNaN(newValue)) {
       return;
     }
 
@@ -178,7 +181,7 @@ const NumberInput = (
       correctedValue = Math.min(max, correctedValue);
     }
 
-    updateValue(correctedValue);
+    updateValue(`${correctedValue}`);
   };
 
   return (
@@ -209,14 +212,19 @@ const NumberInput = (
           defaultValue={defaultValue}
           onChange={handleChange()}
           onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
-            correctValue(numberValue);
+            const parsedValue = parseToNumber(textValue);
+            correctValIntoBorders(parsedValue);
             onBlur?.(event);
           }}
           onFocus={onFocus}
-          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-            correctValue(numberValue);
-            onKeyDown?.(event);
-          }}
+          onKeyDown={filterForKeys(
+            ["Enter"],
+            (event: React.KeyboardEvent<HTMLInputElement>) => {
+              const parsedValue = parseToNumber(textValue);
+              correctValIntoBorders(parsedValue);
+              onKeyDown?.(event);
+            }
+          )}
           min={min}
           max={max}
           step={step}
@@ -237,15 +245,19 @@ const NumberInput = (
       )}
       <button
         onClick={() => {
-          if (numberValue != null) {
-            let newValue = numberValue + step;
+          if (textValue != null) {
+            const parsedValue = parseToNumber(textValue);
+            if (Number.isNaN(parsedValue)) {
+              return;
+            }
+            let newValue = parsedValue + step;
 
             // Max the newValue to the given max if there is any
             if (max != null) {
               newValue = Math.min(max, newValue);
             }
 
-            updateValue(newValue);
+            updateValue(`${newValue}`);
           }
         }}
       >
@@ -253,15 +265,19 @@ const NumberInput = (
       </button>
       <button
         onClick={() => {
-          if (numberValue != null) {
-            let newValue = numberValue - step;
+          if (textValue != null) {
+            const parsedValue = parseToNumber(textValue);
+            if (Number.isNaN(parsedValue)) {
+              return;
+            }
+            let newValue = parsedValue - step;
 
             // Max the newValue to the given max if there is any
             if (min != null) {
               newValue = Math.max(min, newValue);
             }
 
-            updateValue(newValue);
+            updateValue(`${newValue}`);
           }
         }}
       >
