@@ -7,12 +7,12 @@ import React, {
   useRef
 } from "react";
 import cx from "classnames";
-import FocusLock from "react-focus-lock";
+import FocusLock, { AutoFocusInside } from "react-focus-lock";
 import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
 import mergeRefs from "react-merge-refs";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
-import useMounted from "../../hooks/useMounted";
+import { useMounted } from "../../hooks/useMounted";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 
@@ -126,16 +126,17 @@ const Modal = (
                 })}
                 disabled={!open}
               >
-                <IconOnlyButton
-                  kind="ghost"
-                  icon={<IconX />}
-                  wrapperClassName={`${prefix}--modal--close`}
-                  tooltipPosition="left"
-                  onClick={(event: any) => {
-                    onClose?.(event);
-                  }}
-                  data-autofocus={autoFocus}
-                />
+                <AutoFocusInside disabled={!open || !autoFocus}>
+                  <IconOnlyButton
+                    kind="ghost"
+                    icon={<IconX />}
+                    wrapperClassName={`${prefix}--modal--close`}
+                    tooltipPosition="left"
+                    onClick={(event: any) => {
+                      onClose?.(event);
+                    }}
+                  />
+                </AutoFocusInside>
                 {children}
               </FocusLock>
             </OutsideClickListener>

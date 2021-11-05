@@ -17,7 +17,7 @@ const options = {
 
 const defaultValue = "sm";
 
-export const Default = () => {
+export const DefaultControlled = () => {
   const [open, setOpen] = useState(true);
   return (
     <div style={{ width: "100vw", height: "100vh", backgroundColor: "#fff" }}>
@@ -30,6 +30,7 @@ export const Default = () => {
         }}
         closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
+        autoFocus
       >
         <ModalHeader
           headline={text("Headline", "Update available")}
@@ -59,7 +60,7 @@ export const Default = () => {
   );
 };
 
-export const Nested = () => {
+export const NestedControlled = () => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
@@ -81,6 +82,7 @@ export const Nested = () => {
           setOpen(false);
         }}
         withDivider={boolean("With Divider", false)}
+        autoFocus
       >
         <ModalHeader
           headline={text("Headline 1", "Behind")}
