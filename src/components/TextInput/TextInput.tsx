@@ -1,11 +1,12 @@
-import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
+import mergeRefs from "react-merge-refs";
 import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
+import useControlledValue from "../../hooks/useControlledValue";
 
-type TextInputProps = {
+export type TextInputProps = {
   /**
    * TextInput ClassName
    */
@@ -17,7 +18,7 @@ type TextInputProps = {
   label?: string;
 
   /**
-   * Placeholder text
+   * TextInput Placeholder e.g. for indicating DatePickerInput formats like DD-MM-YYYY
    */
   placeholder?: string;
 
@@ -73,6 +74,10 @@ type TextInputProps = {
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+
   /**
    * ReactChildren
    */
@@ -91,6 +96,9 @@ const TextInput = (
     defaultValue,
     autoComplete,
     onChange,
+    onBlur,
+    onFocus,
+    onKeyDown,
     error,
     errorText,
     warning,
@@ -100,17 +108,11 @@ const TextInput = (
   }: TextInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const controlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
+  const [inputRef, textValue, handleOnChange] = useControlledValue(
+    value,
+    defaultValue,
+    onChange
   );
-
-  useEffect(() => {
-    if (controlled) {
-      setTextValue(value ?? "");
-    }
-  }, [value]);
-
   return (
     <div
       className={cx(`${prefix}--textinput`, {
@@ -121,7 +123,7 @@ const TextInput = (
       <div className={`${prefix}--textinput--input-container`}>
         <input
           id={id}
-          ref={ref}
+          ref={mergeRefs([ref, inputRef])}
           className={cx(
             `${prefix}--textinput--input`,
             {
@@ -139,13 +141,12 @@ const TextInput = (
           type={type}
           placeholder={!fluid ? placeholder : ""}
           autoComplete={autoComplete}
-          value={textValue}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            if (!controlled) {
-              setTextValue(event.target.value);
-            }
-            onChange?.(event);
-          }}
+          value={value}
+          defaultValue={defaultValue}
+          onChange={handleOnChange()}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
         />
         {fluid && (
           <label
@@ -176,4 +177,6 @@ const TextInput = (
   );
 };
 
-export default forwardRef<HTMLInputElement, TextInputProps>(TextInput);
+export default React.memo(
+  forwardRef<HTMLInputElement, TextInputProps>(TextInput)
+);

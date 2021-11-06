@@ -7,6 +7,7 @@ import SnackBar from "./components/SnackBar/SnackBar";
 import AspectRatio from "./components/AspectRatio/AspectRatio";
 import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
+import DatePicker from "./components/DatePicker/DatePicker";
 import { Grid, Column } from "./components/Grid/Grid";
 import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
@@ -95,6 +96,7 @@ export {
   CookieModal,
   TextInput,
   PasswordInput,
+  DatePicker,
   Dropdown,
   Badge,
   Loading,

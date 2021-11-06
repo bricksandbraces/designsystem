@@ -1,0 +1,13 @@
+@import "../prefix.pcss";
+@import "../theme.pcss";
+
+.$(prefix)--date-picker {
+  position: absolute;
+  z-index: 1000;
+  border: $border $focus;
+  background: black;
+  &__hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
