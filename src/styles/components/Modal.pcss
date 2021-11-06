@@ -3,190 +3,230 @@
 @import "../colors.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--modal {
-  display: flex;
-  visibility: hidden;
-  position: fixed;
-  z-index: 9000;
-  top: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  transition: opacity $transition-01, visibility 0ms linear 0.15s;
-  opacity: 0;
-  background-color: $modal-overlay;
-
-  &--close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    & > .$(prefix)--button {
-      color: $modal-close;
-    }
-  }
-
-  &--header {
-    width: 100%;
-    padding: 1.5rem 6rem 0 1.5rem;
-
-    &-headline {
-      margin: 0 0 0.5rem 0;
-    }
-
-    &-subheadline {
-      margin: 0 0 1.5rem 0;
-      color: $modal-subheadline;
-    }
-  }
-
-  &--body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    &-content {
-      height: 100%;
-      margin: 0;
-      padding: 0 6rem 0 1.5rem;
-      overflow: scroll;
-      color: $modal-content;
-
-      @media screen and (max-width: $breakpoint-md) {
-        padding: 0 1.5rem;
-      }
-    }
-  }
-
-  &--footer {
+.$(prefix) {
+  &--modal {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 1.5rem;
-
-    &-primary {
-      margin: 0;
-    }
-
-    &-ghost {
-      margin: 0 1rem 0 0;
-    }
-
-    @media screen and (max-width: $breakpoint-md) {
-      flex-direction: row;
-      flex-wrap: wrap;
-
-      &-primary {
-        width: 100%;
-      }
-
-      &-ghost {
-        width: 100%;
-        margin: 0 0 1rem 0;
-      }
-    }
-  }
-
-  &--open {
-    visibility: visible;
-    transition: opacity $transition-01;
-    opacity: 1;
-  }
-
-  &--container {
-    display: grid;
+    visibility: hidden;
     position: fixed;
+    z-index: 9000;
     top: 0;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr auto;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    overflow: hidden;
-    transform: translate3d(0, 16px, 0);
-    transform-origin: top center;
-    transition: transform $transition-01, opacity $transition-01, visibility 0ms;
-    border: 1px solid $warm-gray-15;
-    border-radius: $border-radius-2;
-    outline: 3px solid transparent;
-    outline-offset: -3px;
-    background-color: $modal-background;
-    color: $white;
-    cursor: auto;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity $transition--app-01, visibility $transition--app-01;
+    opacity: 0;
+    background-color: $component--overlay;
 
-    @media screen and (min-width: $breakpoint-md) {
-      position: static;
-      width: 84%;
-      height: auto;
-      max-height: 90%;
+    &-close {
+      position: absolute;
+      top: $size--spacing-04;
+      right: $size--spacing-04;
+    }
 
-      &-small {
-        max-width: 400px;
+    &-header {
+      position: relative;
+      width: 100%;
+      padding: $size--spacing-06 $size--spacing-11 0 $size--spacing-06;
+      pointer-events: none;
+
+      @media screen and (max-width: $size--breakpoint-md) {
+        padding: $size--spacing-06 $size--spacing-10 0 $size--spacing-06;
       }
 
-      &-medium {
-        max-width: 600px;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: calc($size--spacing-05 * -1 + 0.0625rem);
+        left: 0;
+        width: 100%;
+        height: $size--container-01;
+        background: linear-gradient(
+          to top,
+          rgba($color--background, 0),
+          rgba($color--background, 1)
+        );
       }
 
-      &-large {
-        max-width: 800px;
+      &__headline {
+        margin: 0 0 $size--spacing-03 0;
       }
 
-      &-xlarge {
-        max-width: 1000px;
+      &__subheadline {
+        margin: 0 0 $size--spacing-03 0;
+        color: $color--font-text-03;
+      }
+    }
+
+    &-body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      &__content {
+        height: 100%;
+        margin: 0;
+        padding: $size--spacing-05 $size--spacing-11 $size--spacing-05
+          $size--spacing-06;
+        overflow: scroll;
+        color: $color--font-text-01;
+
+        @media screen and (max-width: $size--breakpoint-md) {
+          padding: $size--spacing-05 $size--spacing-10 $size--spacing-05
+            $size--spacing-06;
+        }
+      }
+    }
+
+    &-footer {
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+      width: 100%;
+      padding: $size--spacing-06;
+
+      &__primary {
+        margin: 0;
+      }
+
+      &__secondary {
+        margin: 0 $size--spacing-05 0 0;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: calc($size--spacing-05 * -1 + 0.0625rem);
+        left: 0;
+        width: 100%;
+        height: $size--container-01;
+        background: linear-gradient(
+          to bottom,
+          rgba($color--background, 0),
+          rgba($color--background, 1)
+        );
+      }
+
+      @media screen and (max-width: $size--breakpoint-md) {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &__primary {
+          width: 100%;
+        }
+
+        &__secondary {
+          width: 100%;
+          margin: 0 0 $size--spacing-06 0;
+        }
+      }
+    }
+
+    &-open {
+      visibility: visible;
+      transition: opacity $transition--app-01;
+      opacity: 1;
+    }
+
+    &-container {
+      display: grid;
+      position: fixed;
+      top: 0;
+      grid-template-columns: 100%;
+      grid-template-rows: auto 1fr auto;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      transform: translate3d(0, $size--spacing-05, 0);
+      transform-origin: top center;
+      transition: transform $transition--app-01, opacity $transition--app-01,
+        visibility 0ms;
+      border: 0.0625rem solid $color--border-default;
+      border-radius: $component--radius-default;
+      background-color: $color--background;
+      box-shadow: $component--shadow-subtle;
+      color: $color--font-text-01;
+      cursor: auto;
+
+      @media screen and (min-width: $size--breakpoint-md) {
+        position: static;
+        width: 84%;
+        height: auto;
+        max-height: 90%;
+
+        &__sm {
+          max-width: 400px;
+        }
+
+        &__md {
+          max-width: 600px;
+        }
+
+        &__lg {
+          max-width: 800px;
+        }
+
+        &__xlg {
+          max-width: 1000px;
+        }
       }
     }
   }
 }
 
-.$(prefix)--modal--container-small > div > .$(prefix)--modal--body-content {
-  padding: 0 1.5rem;
+.$(prefix)--modal--container-sm > div > .$(prefix)--modal--body-content {
+  padding: 0 $size--spacing-06;
 }
 
-.$(prefix)--modal--container-small > .$(prefix)--modal--footer {
+.$(prefix)--modal--container-sm > .$(prefix)--modal--footer {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.$(prefix)--modal--container-small
-  > .$(prefix)--modal--footer
-  > .$(prefix)--modal--footer-primary {
-  width: 100%;
-}
-
-.$(prefix)--modal--container-small
-  > .$(prefix)--modal--footer
-  > .$(prefix)--modal--footer-ghost {
-  width: 100%;
-  margin: 0 0 1rem 0;
-}
-
-.$(prefix)--modal--with-divider > div > .$(prefix)--modal--header {
-  border-bottom: 1px solid $warm-gray-20;
-}
-
-.$(prefix)--modal--with-divider > div > div > .$(prefix)--modal--body-content {
-  padding: 1.5rem 6rem 1.5rem 1.5rem;
-
-  @media screen and (max-width: $breakpoint-md) {
-    padding: 1.5rem;
+.$(prefix)--modal-container__sm
+  > .$(prefix)--modal-footer
+  > .$(prefix)--modal-footer__secondary {
+  @media screen and (max-width: $size--breakpoint-md) {
+    margin: 0 0 $size--spacing-05 0;
   }
 }
 
-.$(prefix)--modal--with-divider
-  > .$(prefix)--modal--container-small
+.$(prefix)--modal-with-divider > div > .$(prefix)--modal-header {
+  padding-bottom: $size--spacing-05;
+  border-bottom: 0.0625rem solid $color--border-default;
+  &::after {
+    display: none;
+  }
+}
+
+.$(prefix)--modal-with-divider > div > div > .$(prefix)--modal-body__content {
+  padding: $size--spacing-06 $size--spacing-11 $size--spacing-06
+    $size--spacing-06;
+
+  @media screen and (max-width: $size--breakpoint-md) {
+    padding: $size--spacing-06;
+  }
+}
+
+.$(prefix)--modal-with-divider
+  > .$(prefix)--modal-container__small
   > div
-  > .$(prefix)--modal--body-content {
-  padding: 1.5rem;
+  > .$(prefix)--modal-body__content {
+  padding: $size--spacing-06;
 }
 
-.$(prefix)--modal--with-divider > div > .$(prefix)--modal--footer {
+.$(prefix)--modal-with-divider > div > .$(prefix)--modal-footer {
   margin: 0;
-  border-top: 1px solid $warm-gray-20;
+  border-top: 0.0625rem solid $color--border-default;
+
+  &::before {
+    display: none;
+  }
 }
 
-.$(prefix)--modal--open > .$(prefix)--modal--container {
+.$(prefix)--modal-open > .$(prefix)--modal-container {
   visibility: visible;
   transform: translate(0, 0);
   opacity: 1;

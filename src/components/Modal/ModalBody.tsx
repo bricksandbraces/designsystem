@@ -3,15 +3,15 @@ import { prefix } from "../../settings";
 
 type ModalBodyProps = {
   /**
-   * Text labels
+   * ModalBody Children
    */
   children: ReactNode;
 };
 
 const ModalBody = ({ children }: ModalBodyProps) => {
   return (
-    <div className={`${prefix}--modal--body`}>
-      <div className={`${prefix}--modal--body-content`}>{children}</div>
+    <div className={`${prefix}--modal-body`}>
+      <div className={`${prefix}--modal-body__content`}>{children}</div>
     </div>
   );
 };

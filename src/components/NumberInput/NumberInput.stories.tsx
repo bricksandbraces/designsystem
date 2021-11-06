@@ -1,3 +1,4 @@
+
 import { getLogger } from "@openbricksandbraces/eloguent";
 import {
   boolean,
@@ -14,6 +15,7 @@ import NumberInput from "./NumberInput";
 export default { title: "Components/NumberInput", decorators: [withKnobs] };
 
 const logger = getLogger("NumberInputStory");
+
 
 const sizeOptions = {
   Default: "default",

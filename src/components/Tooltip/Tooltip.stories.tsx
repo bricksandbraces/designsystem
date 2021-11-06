@@ -1,132 +1,72 @@
-import { text, select, withKnobs, boolean } from "@storybook/addon-knobs";
-import React, { useState } from "react";
+import React from "react";
+import "tippy.js/dist/tippy.css";
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { IconInfoCircle } from "@tabler/icons";
 import { Button } from "../..";
-import HoverTooltip from "./HoverTooltip";
-import ComposedContainerTooltip from "./ComposedContainerTooltip";
-import ContainerTooltipFooter from "./ContainerTooltipFooter";
-import ContainerTooltipHeader from "./ContainerTooltipHeader";
-import ContainerTooltipBody from "./ContainerTooltipBody";
+import Tooltip from "./Tooltip";
+import ContainerTooltip from "./ContainerTooltip";
+import IconTrigger from "./IconTrigger";
 
-export default { title: "Components/Tooltip", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Tooltip", decorators: [withKnobs] };
 
-const positioning = {
-  Left: "left",
-  Right: "right",
-  Top: "top",
-  Bottom: "bottom"
+const themeOptions = {
+  light: "light",
+  dark: "dark"
 };
 
-const defaultPosition = "top";
+const defaultTheme = "light";
 
-export const DefaultOnHover = () => {
+export const Default = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
+    <div style={{ padding: "32px" }}>
+      <Tooltip
+        theme={select("theme", themeOptions, defaultTheme) as any}
+        tooltipContent="You sneaky little thing."
       >
-        Hover me
-      </HoverTooltip>
+        <Button>Don`t you dare hovering me.</Button>
+      </Tooltip>
     </div>
   );
 };
 
-export const WithCaretOnHover = () => {
+export const Container = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        withCaret
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
+    <div style={{ padding: "32px" }}>
+      <ContainerTooltip
+        theme={select("theme", themeOptions, defaultTheme) as any}
+        title="You sneaky little thing."
+        body={
+          <>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua.
+          </>
         }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
       >
-        Hover me
-      </HoverTooltip>
+        <Button>Don`t you dare clicking me.</Button>
+      </ContainerTooltip>
     </div>
   );
 };
 
-export const Controlled = () => {
-  const [open, setOpen] = useState(false);
+export const IconAsTrigger = () => {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <HoverTooltip
-        withCaret={boolean("withCaret", false)}
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
-        }
-        tooltipLabel={text("Tooltip label", "This is a tooltip")}
-        open={open}
-      >
-        <Button
-          fluid
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          Toggle Tooltip
-        </Button>
-      </HoverTooltip>
-    </div>
-  );
-};
-
-export const WithContainer = () => {
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "64px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <ComposedContainerTooltip
-        tooltipPosition={
-          select("Tooltip position", positioning, defaultPosition) as any
+    <div style={{ padding: "32px" }}>
+      <ContainerTooltip
+        theme={select("theme", themeOptions, defaultTheme) as any}
+        title="You sneaky little thing."
+        body={
+          <>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua.
+          </>
         }
       >
-        <ContainerTooltipHeader>Tooltip Container</ContainerTooltipHeader>
-        <ContainerTooltipBody>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor.
-        </ContainerTooltipBody>
-        <ContainerTooltipFooter>
-          <Button size="small">Delete</Button>
-        </ContainerTooltipFooter>
-      </ComposedContainerTooltip>
+        <IconTrigger>
+          <IconInfoCircle color="white" size={16} />
+        </IconTrigger>
+      </ContainerTooltip>
     </div>
   );
 };

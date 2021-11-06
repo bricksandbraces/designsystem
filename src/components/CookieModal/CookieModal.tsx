@@ -47,7 +47,10 @@ const CookieSettingControl = ({
         disabled={type === OptType.ESSENTIAL}
         onChange={onChange}
       >
-        <Body type="b2" className={`${prefix}--cookiemodal--check-description`}>
+        <Body
+          type="body-02"
+          className={`${prefix}--cookiemodal--check-description`}
+        >
           {description}
         </Body>
       </Checkbox>
@@ -99,7 +102,7 @@ const CookieModal = (
     >
       <ModalHeader headline={headline} />
       <ModalBody>
-        <Body type="b2">{intro}</Body>
+        <Body type="body-02">{intro}</Body>
         {settings.map((setting, i) => {
           return (
             <CookieSettingControl

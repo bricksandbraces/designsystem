@@ -6,107 +6,42 @@
   &--button {
     @mixin type--body-02;
 
-    display: flex;
+    display: inline-flex;
     position: relative;
     align-items: center;
     justify-content: center;
-    min-height: $container-03;
-    max-height: $container-03;
-    padding: 0 16px;
-    transition: $transition-01;
-    border-radius: $border-radius-2;
+    padding: 0 $size--spacing-05;
+    transition: background-color $transition--app-01,
+      border-color $transition--app-01, color $transition--app-01;
+    border: 0.0625rem solid;
+    border-radius: $component--radius-default;
     background-color: transparent;
-    color: $white;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $white;
-    }
+    color: $color--font-text-01;
 
     &:disabled {
       cursor: not-allowed;
     }
 
-    &--group {
-      white-space: nowrap;
-
-      &-divider {
-        & > div:not(:last-child) > button {
-          &:hover {
-            &::before {
-              opacity: 0;
-            }
-          }
-
-          &::before {
-            content: "";
-            position: absolute;
-            right: -1px;
-            width: 1px;
-            height: 50%;
-            transition: ;
-            transition: $transition-01;
-            opacity: 1;
-          }
-        }
-
-        & > div:not(:last-child) > .$(prefix)--button--primary {
-          &::before {
-            background-color: $interactive-primary-hover;
-          }
-        }
-
-        & > div:not(:last-child) > .$(prefix)--button--secondary {
-          &::before {
-            background-color: $interactive-secondary-hover;
-          }
-        }
-
-        & > div:not(:last-child) > .$(prefix)--button--ghost {
-          &::before {
-            background-color: $interactive-ghost-hover;
-          }
-        }
-      }
-
-      & > div:not(:last-child) > .$(prefix)--button--tertiary {
-        border-right: 0;
-
-        & > .$(prefix)--button--label {
-          transform: translateX(-1px);
-        }
-      }
-
-      & > div > button {
-        border-radius: 0;
-      }
-
-      & > div:first-child > button {
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-      }
-
-      & > div:last-child > button {
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
+    &-small {
+      min-height: $size--field-small;
+      max-height: $size--field-small;
     }
 
-    &--small {
-      min-height: $container-02;
-      max-height: $container-02;
+    &-default {
+      min-height: $size--field-default;
+      max-height: $size--field-default;
     }
 
-    &--large {
-      min-height: $container-04;
-      max-height: $container-04;
+    &-large {
+      min-height: $size--field-large;
+      max-height: $size--field-large;
     }
-    &--fluid {
+
+    &-fluid {
       width: 100%;
     }
 
-    &--loading {
+    &-loading {
       pointer-events: none;
 
       & > .$(prefix)--loading {
@@ -114,122 +49,223 @@
       }
     }
 
-    &--hidden {
+    &-hidden {
       opacity: 0;
     }
 
-    &--notallowed {
-      cursor: not-allowed;
-    }
-
-    &--label {
+    &-label {
       display: flex;
       align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
-    &--primary {
-      border: $border $interactive-primary;
-      background-color: $interactive-primary;
+    &-primary {
+      border-color: $color--transparent;
+      background-color: $color--primary-enabled;
 
       &:hover {
-        border: $border $interactive-primary-hover;
-        background-color: $interactive-primary-hover;
+        background-color: $color--primary-hover;
       }
 
       &:active {
-        border: $border $interactive-primary-active;
-        background-color: $interactive-primary-active;
+        background-color: $color--primary-active;
       }
     }
 
-    &--secondary {
-      border: $border $interactive-secondary;
-      background-color: $interactive-secondary;
+    &-secondary {
+      border-color: $color--transparent;
+      background-color: $color--secondary-enabled;
 
       &:hover {
-        border: $border $interactive-secondary-hover;
-        background-color: $interactive-secondary-hover;
+        background-color: $color--secondary-hover;
       }
 
       &:active {
-        border: $border $interactive-secondary-active;
-        background-color: $interactive-secondary-active;
+        background-color: $color--secondary-active;
       }
     }
 
-    &--tertiary {
-      border: $border $interactive-primary;
+    &-tertiary {
+      border-color: $color--tertiary-enabled;
+      background-color: $color--transparent;
 
       &:hover {
-        border: $border $interactive-primary;
-        background-color: $interactive-primary-accent-hover;
+        border-color: $color--tertiary-hover;
+        background-color: $color--tertiary-hover;
+        color: $color--font-text-inverse;
       }
 
       &:active {
-        border: $border $interactive-primary;
-        background-color: $interactive-primary-accent-active;
+        border-color: $color--tertiary-active;
+        background-color: $color--tertiary-active;
       }
     }
 
-    &--ghost {
-      border: $border transparent;
-      background-color: transparent;
+    &-ghost {
+      border-color: $color--transparent;
+      background-color: $color--ghost-enabled;
 
       &:hover {
-        border: $border transparent;
-        background-color: $interactive-ghost-hover;
+        background-color: $color--ghost-hover;
       }
 
       &:active {
-        border: $border transparent;
-        background-color: $interactive-ghost-active;
+        background-color: $color--ghost-active;
       }
     }
 
-    &--danger {
-      border: $border $danger;
-      color: $danger;
+    &-group {
+      white-space: nowrap;
 
-      &:hover {
-        border: $border $danger;
-        background-color: $danger-accent-hover;
+      &__divider {
+        & > .$(prefix)--button:not(:last-child) {
+          &::before {
+            content: "";
+            position: absolute;
+            right: -0.0625rem;
+            width: 0.0625rem;
+            height: 50%;
+            transition: ;
+            transition: $transition-01;
+            opacity: 1;
+            background-color: $color--divider-dark;
+          }
+
+          &:hover {
+            &::before {
+              opacity: 0;
+            }
+          }
+        }
       }
 
-      &:active {
-        border: $border $danger;
-        background-color: $danger-accent-active;
+      & > .$(prefix)--button-tertiary:not(:last-child) {
+        border-right: 0;
+
+        & > .$(prefix)--button-label {
+          transform: translateX(-0.0625rem);
+        }
+      }
+
+      & > .$(prefix)--button-ghost:not(:last-child) {
+        &::before {
+          background-color: $color--divider-light;
+        }
+      }
+
+      & > button {
+        border-radius: 0;
+      }
+
+      & > button:first-child {
+        border-top-left-radius: $component--radius-default;
+        border-bottom-left-radius: $component--radius-default;
+      }
+
+      & > button:last-child {
+        border-top-right-radius: $component--radius-default;
+        border-bottom-right-radius: $component--radius-default;
       }
     }
   }
 }
 
-.$(prefix)--button.$(prefix)--button--ghost:focus-visible,
-.$(prefix)--button.$(prefix)--button--primary:focus-visible,
-.$(prefix)--button.$(prefix)--button--secondary:focus-visible,
-.$(prefix)--button.$(prefix)--button--danger:focus-visible,
-.$(prefix)--button.$(prefix)--button--tertiary:focus-visible {
-  border: $border $focus;
+.$(prefix)--button.$(prefix)--button-ghost:focus-visible,
+.$(prefix)--button.$(prefix)--button-primary:focus-visible,
+.$(prefix)--button.$(prefix)--button-secondary:focus-visible {
+  border-color: $color--focus;
   outline: 0;
 }
 
-.$(prefix)--button.$(prefix)--button--ghost.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--primary.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--secondary.$(prefix)--button--disabled {
-  border: $border $disabled-container;
-  background-color: $disabled-container;
-  color: $disabled-text;
+.$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
+  border-color: $color--focus;
+  outline: 0;
+  background-color: $color--tertiary-hover;
+  box-shadow: inset 0 0 0 0.0625rem $black,
+    inset 0 0 0 0.0125rem $color--tertiary-hover;
+  color: $color--font-text-inverse;
 }
 
-.$(prefix)--button.$(prefix)--button--tertiary.$(prefix)--button--disabled,
-.$(prefix)--button.$(prefix)--button--danger.$(prefix)--button--disabled {
-  border: $border $disabled-container;
-  color: $disabled-text;
-  pointer-events: none;
+.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-disabled,
+.$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-disabled,
+.$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-disabled {
+  border-color: $color--disabled;
+  background-color: $color--disabled;
+  color: $color--font-disabled;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: $color--disabled;
+    background-color: $color--disabled;
+    color: $color--font-disabled;
+  }
 }
 
-.$(prefix)--icon-only {
-  min-width: $container-03;
-  max-width: $container-03;
+.$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-disabled {
+  border-color: $color--disabled;
+  color: $color--font-disabled;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: $color--disabled;
+    background-color: inherit;
+    color: $color--font-disabled;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-danger,
+.$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-danger {
+  background-color: $color--danger;
+
+  &:hover {
+    background-color: $color--danger-hover;
+  }
+
+  &:active {
+    background-color: $color--danger-active;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
+  background-color: $color--transparent;
+  color: $color--danger;
+
+  &:hover {
+    background-color: $color--danger-hover;
+    color: $color--font-text-01;
+  }
+
+  &:active {
+    background-color: $color--danger-active;
+  }
+}
+
+.$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-danger {
+  border-color: $color--danger;
+  color: $color--danger;
+
+  &:hover {
+    border-color: $color--danger-hover;
+    background-color: $color--danger-hover;
+    color: $color--font-text-01;
+  }
+
+  &:active {
+    border-color: $color--danger-active;
+    background-color: $color--danger-active;
+    color: $color--font-text-01;
+  }
+}
+
+.$(prefix)--button-icon-only.$(prefix)--button-default {
+  min-width: $size--field-default;
+  max-width: $size--field-default;
   padding: 0;
 
   &:focus + .$(prefix)--tooltip--text {
@@ -240,60 +276,62 @@
   }
 }
 
-.$(prefix)--icon-only.$(prefix)--button--large {
-  min-width: $container-04;
-  max-width: $container-04;
+.$(prefix)--button-icon-only.$(prefix)--button-large {
+  min-width: $size--field-large;
+  max-width: $size--field-large;
+  padding: 0;
 }
 
-.$(prefix)--icon-only.$(prefix)--button--small {
-  min-width: $container-02;
-  max-width: $container-02;
+.$(prefix)--button-icon-only.$(prefix)--button-small {
+  min-width: $size--field-small;
+  max-width: $size--field-small;
+  padding: 0;
 }
 
-.$(prefix)--with-icon-left > .$(prefix)--button--label {
+.$(prefix)--button-icon-left > .$(prefix)--button-label {
   flex-direction: row;
 }
 
-.$(prefix)--with-icon-right > .$(prefix)--button--label {
+.$(prefix)--button-icon-right > .$(prefix)--button-label {
   flex-direction: row-reverse;
 }
 
-.$(prefix)--icon-only > div > svg {
+.$(prefix)--button-icon-only > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  stroke-width: 2px;
+  stroke-width: 0.125rem;
 }
 
-.$(prefix)--with-icon-left > div > svg {
+.$(prefix)--button-icon-left > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  margin-right: 6px;
-  stroke-width: 2px;
+  margin-right: $size--spacing-03;
+  stroke-width: 0.125rem;
 }
 
-.$(prefix)--with-icon-right > div > svg {
+.$(prefix)--button-icon-right > div > svg {
   width: $icon-container-01;
   height: $icon-container-01;
-  margin-left: 6px;
-  stroke-width: 2px;
+  margin-left: $size--spacing-03;
+  stroke-width: 0.125rem;
 }
 
-.$(prefix)--button--fluid.$(prefix)--with-icon-left > div > svg {
+.$(prefix)--button-fluid.$(prefix)--button-icon-left > div > svg {
   position: absolute;
-  left: 20px;
+  left: $size--spacing-06;
   margin-right: 0;
 }
 
-.$(prefix)--button--fluid.$(prefix)--with-icon-right > div > svg {
+.$(prefix)--button-fluid.$(prefix)--button-icon-right > div > svg {
   position: absolute;
-  right: 20px;
+  right: $size--spacing-06;
   margin-right: 0;
 }
 
 .$(prefix)--spinner-border.$(prefix)--loading {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 2px solid currentColor;
+  width: $size--container-01;
+  height: $size--container-01;
+  border: 0.125rem solid currentColor;
   border-right-color: transparent;
 }

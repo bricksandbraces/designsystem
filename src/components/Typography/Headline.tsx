@@ -29,7 +29,7 @@ const Headline = ({
   return (
     <Element
       className={cx(
-        `${prefix}--typography ${prefix}--typography--${type}`,
+        `${prefix}--typography ${prefix}--typography-${type}`,
         className
       )}
       {...rest}

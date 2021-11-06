@@ -1,3 +1,4 @@
+
 import React, { ChangeEvent, forwardRef } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
@@ -10,13 +11,14 @@ import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 
 export type NumberInputProps = {
+
   /**
    * NumberInput ClassName
    */
   className?: string;
 
   /**
-   * Label
+   * NumberInput Label
    */
   label?: string;
 
@@ -25,25 +27,25 @@ export type NumberInputProps = {
    */
   placeholder?: string;
 
-  /**
-   * Id
+  /*
+   * NumberInput Id
    */
   id?: string;
 
   /**
-   * Error state & text
+   * NumberInput Error State & Text
    */
   error?: boolean;
   errorText?: string;
 
   /**
-   * Error state & text
+   * NumberInput Warning State & Text
    */
   warning?: boolean;
   warningText?: string;
 
   /**
-   * Container size
+   * NumberInput Size
    */
   size?: "default" | "small" | "large";
 
@@ -99,6 +101,9 @@ export type NumberInputProps = {
    */
   max?: number;
 
+  /**
+   * Determines whether the inserted value is a float.
+   */
   float?: boolean;
 };
 

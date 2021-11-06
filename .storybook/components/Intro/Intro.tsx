@@ -7,11 +7,11 @@ const Intro = () => {
   return (
     <div className="sb-intro--container">
       <div className="sb-intro">
-        <Logo kind="logomark" size="xsmall" variant="white" />
+        <Logo type="logomark" size="xsmall" color="white" />
         <Headline type="h1" className="sb-intro--headline">
           Design System
         </Headline>
-        <Body type="b2" className="sb-intro--subline">
+        <Body type="body-02" className="sb-intro--subline">
           v.0.0.1 React Storybook
         </Body>
       </div>

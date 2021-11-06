@@ -10,6 +10,7 @@ import SearchInput from "./SearchInput";
 import SearchContainer from "./SeachContainer";
 import Button from "../Button/Button";
 import { idfy } from "../../helpers/arrayUtilities";
+import { prefix } from "../../settings";
 
 type SearchBadgeItem = {
   /**
@@ -24,22 +25,22 @@ type SearchBadgeItem = {
 
 type SearchProps = {
   /**
-   * Search size
+   * Search Size
    */
   size?: "large" | "small" | "default";
 
   /**
-   * Search id
+   * Search Id
    */
   id: string;
 
   /**
-   * Search label
+   * Search Label
    */
   label: string;
 
   /**
-   * Search placeholder
+   * Search Placeholder
    */
   placeholder?: string;
 
@@ -49,17 +50,17 @@ type SearchProps = {
   value?: string;
 
   /**
-   * Default Value
+   * Search Default Value
    */
   defaultValue?: string;
 
   /**
-   * Clear Button Label
+   * Search Clear Button Label
    */
   clearLabel?: string;
 
   /**
-   * Submit Button Label
+   * Search Submit Button Label
    */
   submitLabel?: string;
 
@@ -79,7 +80,7 @@ type SearchProps = {
   badges?: SearchBadgeItem[];
 
   /**
-   * OnChange Function
+   * Search OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
@@ -87,7 +88,7 @@ type SearchProps = {
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
-   * onSearch Function. Null if clicked on a badge without href but with onClick
+   * Search onSearch Function. Null if clicked on a badge without href but with onClick
    */
   onSubmit?: (submittedValue: string | null, event: any) => void;
 
@@ -283,14 +284,14 @@ const Search = ({
         size={size}
         label={label}
       />
-      <div className="search--box-content">
-        <div className="search--box-content__badges">
+      <div className={`${prefix}--search-box__content`}>
+        <div className={`${prefix}--search-box__content-badges`}>
           {indexedBadges?.map((item, i) => {
             return (
               <Button
                 key={item.id}
                 className={cx({
-                  "search--box-content__badges__manual-hover":
+                  [`${prefix}--search-box__content-badges--manual-hover`]:
                     i === focusedIndex
                 })}
                 kind="secondary"

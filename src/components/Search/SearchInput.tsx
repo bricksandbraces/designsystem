@@ -4,65 +4,66 @@ import cx from "classnames";
 import Button from "../Button/Button";
 import useControlled from "../../hooks/useControlled";
 import IconOnlyButton from "../Button/IconOnlyButton";
+import { prefix } from "../../settings";
 
 type SearchInputProps = {
   /**
-   * SearchInput size
+   * SearchInput Size
    */
   size?: "large" | "small" | "default";
 
   /**
-   * SearchInput id
+   * SearchInput Id
    */
   id: string;
 
   /**
-   * SearchInput label
+   * SearchInput Label
    */
   label: string;
 
   /**
-   * SearchInput placeholder
+   * SearchInput Placeholder
    */
   placeholder?: string;
 
   /**
-   * Clear Button Label
+   * SearchInput Clear Button Label
    */
   clearLabel?: string;
 
   /**
-   * Default Value (Uncontrolled)
+   * SearchInput Default Value (Uncontrolled)
    */
   defaultValue?: string;
 
   /**
-   * Value (Controlled)
+   * SearchInput Value (Controlled)
    */
   value?: string;
 
   /**
-   * OnChange Function
+   * SearchInput OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
-   * Defaults to true. If false, the submit button is being dropped.
+   * SearchInput Defaults to true. If false, the submit button is being dropped.
    */
   withSubmit?: boolean;
 
   /**
-   * Submit Button Label
+   * SearchInput Submit Button Label
    */
   submitLabel?: string;
 
   /**
-   * Submit
+   * SearchInput Submit
    */
   submitIcon?: React.ReactNode;
 
   /**
-   * onSearch Function
+   * SearchInput onSearch Function
    */
   onSubmit?: (
     submittedValue: string,
@@ -112,9 +113,14 @@ const SearchInput = ({
     <div
       role="search"
       aria-labelledby={`${id}-search`}
-      className={cx(`search search--${size}`)}
+      className={cx(`${prefix}--search ${prefix}--search-${size}`)}
     >
-      <label id={`${id}-search`} htmlFor={id} className="search--label">
+      <IconSearch className={cx(`${prefix}--search-icon`)} />
+      <label
+        id={`${id}-search`}
+        htmlFor={id}
+        className={cx(`${prefix}--search-label`)}
+      >
         {label}
       </label>
       <input
@@ -136,12 +142,12 @@ const SearchInput = ({
           }
           onKeyDown?.(event);
         }}
-        className="search--input"
+        className={cx(`${prefix}--search-input`)}
         id={id}
         placeholder={placeholder}
         value={textValue}
       />
-      <div className="search--buttons">
+      <div className={cx(`${prefix}--search-buttons`)}>
         {!!textValue && (
           <IconOnlyButton
             onClick={() => {
@@ -150,7 +156,7 @@ const SearchInput = ({
             kind="ghost"
             size={size}
             icon={<IconX />}
-            className="search--close"
+            className={cx(`${prefix}--search-close`)}
             type="button"
             aria-label={clearLabel}
           />
@@ -162,7 +168,7 @@ const SearchInput = ({
               icon={submitIcon}
               kind="primary"
               size={size}
-              className="search--go"
+              className={cx(`${prefix}--search-go`)}
               type="button"
               aria-label={submitLabel}
             >
@@ -174,7 +180,7 @@ const SearchInput = ({
               kind="primary"
               size={size}
               icon={<IconSearch />}
-              className="search--go"
+              className={cx(`${prefix}--search-go`)}
               type="button"
               aria-label="Search"
             />

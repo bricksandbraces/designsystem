@@ -1,100 +1,147 @@
 @import "../prefix.pcss";
+@import "../typography.pcss";
 @import "../theme.pcss";
 
 .$(prefix) {
   &--accordion {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    color: $accordion-font;
-    &--heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: $container-04;
-      padding: 0 $spacing-04;
-      border: 1px solid transparent;
-      border-radius: $border-radius-2;
-      outline: 0;
-      background-color: transparent;
-      color: $accordion-font;
+    width: 100%;
+    max-width: calc($size--spacing-13 * 3);
 
-      &:hover {
-        background-color: $accordion-background-hover;
-      }
-
-      &:focus {
-        border-color: $accordion-focus;
-        outline: 0;
-      }
-
-      &:focus-visible {
-        border-color: $accordion-focus;
-        outline: 0;
-      }
-
-      &:disabled {
-        background-color: inherit;
-        color: $accordion-disabled-font;
-        cursor: not-allowed;
-      }
-
-      &-icon {
-        transition: $transition-01;
-      }
+    &-small > ul > li,
+    &-small > ul > li > button,
+    &-small > .$(prefix)--skeleton {
+      min-height: $size--field-small;
+      max-height: $size--field-small;
     }
 
-    &--item {
-      box-sizing: content-box;
-      height: 100%;
-      max-height: $container-04;
-      overflow: hidden;
-      transition: $transition-03;
-      border-top: 1px solid $accordion-border;
+    &-default > ul > li,
+    &-default > ul > li > button,
+    &-default > .$(prefix)--skeleton {
+      min-height: $size--field-default;
+      max-height: $size--field-default;
+    }
 
-      &:last-child {
-        border-bottom: 1px solid $accordion-border;
-      }
+    &-large > ul > li,
+    &-large > ul > li > button,
+    &-large > .$(prefix)--skeleton {
+      min-height: $size--field-large;
+      max-height: $size--field-large;
+    }
 
-      &-open {
-        &
-          > .$(prefix)--accordion--heading
-          > .$(prefix)--accordion--heading-icon {
-          transform: rotate(180deg);
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      border: 0.0625rem solid $color--border-default;
+      border-radius: $component--radius-default;
+      background-color: $color--background;
+
+      &__item {
+        box-sizing: content-box;
+        height: 100%;
+        max-height: $size--field-default;
+        margin: $component--padding-inside;
+        overflow: hidden;
+        transition: max-height $transition--app-01;
+        border: 0.0625rem solid $color--transparent;
+        background-color: $color--background;
+
+        &-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          padding: 0 $size--spacing-04;
+          transition: background-color $transition--app-01,
+            border-color $transition--app-01;
+          border: 0.0625rem solid $color--transparent;
+          border-radius: $component--radius-default;
+          outline: 0;
+          background-color: $color--transparent;
+          color: $color--font-text-01;
+
+          &:hover {
+            background-color: $color--hover;
+          }
+
+          &:active {
+            background-color: $color--active;
+          }
+
+          &:focus-visible {
+            border-radius: $component--radius-default;
+            border-color: $color--focus;
+          }
+
+          &:disabled {
+            background-color: $color--disabled;
+            color: $color--font-disabled;
+            cursor: not-allowed;
+          }
+
+          &--headline {
+            @mixin type--body-02;
+
+            margin: 0;
+          }
+
+          &--icon {
+            transition: transform $transition--app-01;
+          }
+        }
+
+        &-content {
+          @mixin type--body-02;
+
+          display: block;
+          width: 80%;
+          height: 100%;
+          margin: 0;
+          padding: $size--spacing-04 $size--spacing-04 $size--spacing-04
+            $size--spacing-04;
+          color: $color--font-text-02;
+        }
+
+        &-open {
+          &
+            > .$(prefix)--accordion-list__item-title
+            > .$(prefix)--accordion-list__item-title--icon {
+            transform: rotate(180deg);
+          }
+
+          & > .$(prefix)--accordion-list__item-content {
+            display: block;
+          }
+        }
+
+        &-open.$(prefix)--accordion-list__item {
+          max-height: inherit;
+        }
+
+        &-expand {
+          & > .$(prefix)--accordion-list__item-content {
+            animation: accordionTransitionIn $transition--app-01;
+          }
         }
       }
     }
+  }
+  &--accordion.$(prefix)--skeleton {
+    padding: $component--padding-inside;
+    gap: $component--padding-inside;
 
-    &--content {
-      display: none;
-      width: 80%;
-      height: 100%;
-      padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
+    & > .$(prefix)--skeleton-static {
+      box-sizing: content-box;
+      justify-content: flex-end;
+      padding: 0 $size--spacing-04;
+      border-color: transparent;
+      background-color: transparent;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-02;
+      }
     }
   }
-}
-
-@keyframes accordionTransitionIn {
-  from {
-    padding: 0 $spacing-04 $spacing-04 $spacing-04;
-    opacity: 0;
-  }
-  to {
-    padding: $spacing-03 $spacing-04 $spacing-04 $spacing-04;
-    opacity: 1;
-  }
-}
-
-.$(prefix)--accordion--item-expand > .$(prefix)--accordion--content {
-  animation-name: accordionTransitionIn;
-  animation-duration: 0.15s;
-}
-
-.$(prefix)--accordion--item-open > .$(prefix)--accordion--content {
-  display: block;
-}
-
-.$(prefix)--accordion--item-open.$(prefix)--accordion--item {
-  max-height: inherit;
 }

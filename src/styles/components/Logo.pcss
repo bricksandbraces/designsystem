@@ -1,40 +1,42 @@
 @import "../prefix.pcss";
 @import "../colors.pcss";
+@import "../theme.pcss";
 
-.$(prefix)--logo {
-  &--black {
-    fill: #000;
+.$(prefix) {
+  &--logo {
+    &-black {
+      fill: $black;
+
+      & > path {
+        fill: $black;
+      }
+    }
+
+    &-white {
+      fill: $white;
+      & > path {
+        fill: $white;
+      }
+    }
+
+    &.$(prefix)--logo-xsmall {
+      height: $size--container-01;
+    }
+
+    &.$(prefix)--logo-small {
+      height: $size--container-02;
+    }
+
+    &.$(prefix)--logo-medium {
+      height: $size--container-03;
+    }
+
+    &.$(prefix)--logo-large {
+      height: $size--container-04;
+    }
+
+    &.$(prefix)--logo-xlarge {
+      height: $size--container-05;
+    }
   }
-
-  &--white {
-    fill: #fff;
-  }
-
-  &:hover > path {
-    fill: $purple-60;
-  }
-}
-
-.$(prefix)--logo > path {
-  transition: 0.3s ease-in-out;
-}
-
-.$(prefix)--logo.$(prefix)--logo--xsmall {
-  height: 16px;
-}
-
-.$(prefix)--logo.$(prefix)--logo--small {
-  height: 32px;
-}
-
-.$(prefix)--logo.$(prefix)--logo--medium {
-  height: 48px;
-}
-
-.$(prefix)--logo.$(prefix)--logo--large {
-  height: 64px;
-}
-
-.$(prefix)--logo.$(prefix)--logo--xlarge {
-  height: 96px;
 }

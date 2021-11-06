@@ -1,0 +1,59 @@
+@import "../prefix.pcss";
+@import "../typography.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--tile {
+    @mixin type--body-02;
+
+    display: inline-flex;
+    min-width: $size--container-08;
+    min-height: $size--container-07;
+    padding: $size--spacing-05;
+    transition: background-color $transition--app-01,
+      border-color $transition--app-01;
+    border: 0.0625rem solid $color--border-default;
+    border-radius: $component--radius-default;
+    background-color: $color--background;
+    color: $color--font-text-01;
+
+    &.$(prefix)--tile-clickable {
+      cursor: pointer;
+      &:hover {
+        background-color: $color--hover;
+      }
+
+      &:active {
+        background-color: $color--active;
+      }
+
+      &:focus-visible {
+        border-color: $color--focus;
+      }
+    }
+
+    &-disabled {
+      border-color: transparent;
+      background-color: $color--disabled;
+      color: $color--font-disabled;
+      pointer-events: none;
+      user-select: none;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-readonly {
+      border-color: transparent;
+      background-color: $color--readonly;
+      color: $color--font-readonly;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &--tile.$(prefix)--skeleton {
+    border: inherit;
+  }
+}

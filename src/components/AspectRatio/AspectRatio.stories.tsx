@@ -1,10 +1,12 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import AspectRatio from "./AspectRatio";
-import { Grid, Column } from "../Grid/Grid";
 import { prefix } from "../../settings";
 
-export default { title: "Components/AspectRatio", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_AspectRatio",
+  decorators: [withKnobs]
+};
 
 const ratio = {
   "1x1": "1x1",
@@ -18,27 +20,19 @@ const defaultRatio = "1x1";
 
 export const Default = () => {
   return (
-    <Grid>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
+    <div
+      style={{
+        display: "flex",
+        padding: "32px",
+        width: "100vw",
+        height: "100vh"
+      }}
+    >
+      <div style={{ width: "256px" }}>
+        <AspectRatio ratio={select("ratio", ratio, defaultRatio) as any}>
+          <div className={`${prefix}--grid-example`}>Content</div>
         </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-      <Column sm={1} md={2} lg={4} xlg={4}>
-        <AspectRatio ratio={select("Ratio", ratio, defaultRatio) as any}>
-          <div className={`${prefix}--grid--example`}>Content</div>
-        </AspectRatio>
-      </Column>
-    </Grid>
+      </div>
+    </div>
   );
 };

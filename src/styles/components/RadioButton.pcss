@@ -2,87 +2,169 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--radiobutton {
-  display: flex;
-  min-height: 1rem;
-  margin-bottom: 0.5rem;
-  color: $radiobutton-font;
+.$(prefix) {
+  &--radiobutton {
+    display: flex;
+    min-height: 1rem;
+    margin-bottom: 0.5rem;
+    color: $color--font-unselected;
 
-  &--group {
-    &-legend {
-      @mixin type--label;
+    &-group {
+      &__legend {
+        @mixin type--label;
+      }
+    }
+
+    & > [type="radio"]:checked + label {
+      color: $color--font-selected;
+      & > .$(prefix)--radiobutton-selected {
+        color: $color--decoration;
+
+        & > .$(prefix)--radiobutton-selected__box {
+          fill: $color--decoration;
+        }
+      }
+    }
+
+    &
+      > .$(prefix)--radiobutton-input[type="radio"]:focus-visible
+      + .$(prefix)--radiobutton-label
+      > svg
+      > .$(prefix)--radiobutton-selected__box {
+      transition: color $transition--app-01;
+      color: $color--focus;
+    }
+
+    &-readonly {
+      color: $color--font-readonly;
+
+      &
+        > .$(prefix)--radiobutton-input[type="radio"]
+        + label
+        > .$(prefix)--radiobutton-selected
+        > .$(prefix)--radiobutton-selected__box {
+        stroke: $color--font-readonly;
+        fill: transparent;
+      }
+
+      & > .$(prefix)--radiobutton-input[type="radio"]:checked + label {
+        color: $color--font-readonly;
+        &
+          > .$(prefix)--radiobutton-selected
+          > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--readonly;
+          fill: $color--readonly;
+        }
+      }
+
+      & > input,
+      label {
+        pointer-events: none;
+        user-select: none;
+      }
+
+      & > label > .$(prefix)--radiobutton-selected {
+        & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--readonly;
+        }
+
+        & > .$(prefix)--radiobutton-selected__mark {
+          stroke: $color--font-readonly;
+        }
+      }
+    }
+
+    &-disabled {
+      color: $color--font-disabled;
+      cursor: not-allowed;
+
+      &
+        > .$(prefix)--radiobutton-input[type="radio"]
+        + label
+        > .$(prefix)--radiobutton-selected
+        > .$(prefix)--radiobutton-selected__box {
+        stroke: $color--font-disabled;
+        fill: transparent;
+      }
+
+      & > .$(prefix)--radiobutton-input[type="radio"]:checked + label {
+        color: $color--font-disabled;
+        &
+          > .$(prefix)--radiobutton-selected
+          > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--disabled;
+          fill: $color--disabled;
+        }
+      }
+
+      & > input,
+      label {
+        pointer-events: none;
+        user-select: none;
+      }
+
+      & > label > .$(prefix)--radiobutton-selected {
+        & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--disabled;
+        }
+
+        & > .$(prefix)--radiobutton-selected__mark {
+          stroke: $color--font-disabled;
+        }
+      }
+    }
+
+    &-label {
+      @mixin type--body-02;
+
+      display: inline-flex;
+      cursor: pointer;
+      user-select: none;
+
+      &__text {
+        transform: translateY(0.125rem);
+        transition: color $transition--app-01;
+      }
+    }
+
+    &-input {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      max-height: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &-selected {
+      display: inline-block;
+      min-width: $size--container-02;
+      min-height: $size--container-02;
+      margin-right: $size--spacing-03;
+      color: $color--font-unselected;
+    }
+
+    &-content {
+      transition: color $transition--app-01;
     }
   }
 
-  &--label {
-    @mixin type--body-02;
-
+  &--radiobutton.$(prefix)--skeleton-container {
     display: inline-flex;
-    cursor: pointer;
-  }
-
-  &--selected {
-    display: inline-block;
-    min-width: 20px;
-    min-height: 20px;
-    margin-right: $spacing-03;
-    color: $warm-gray-30;
-
-    &-mark {
-      color: $white;
+    flex-direction: row;
+    align-items: center;
+    & > .$(prefix)--radiobutton-selected {
+      stroke: $color--skeleton-02;
+    }
+    & > .$(prefix)--skeleton-animated.$(prefix)--radiobutton {
+      margin: 0;
+    }
+    & > .$(prefix)--skeleton-animated {
+      border: 0;
+      &:first-child {
+        margin-right: $size--spacing-03;
+      }
     }
   }
-
-  &--input {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-}
-
-/* Selected Mark */
-
-.$(prefix)--radiobutton
-  input[type="radio"]
-  + label
-  > .$(prefix)--radiobutton--selected
-  > .$(prefix)--radiobutton--selected-mark {
-  visibility: hidden;
-}
-
-.$(prefix)--radiobutton
-  input[type="radio"]:checked
-  + label
-  > .$(prefix)--radiobutton--selected {
-  color: $white;
-  & > .$(prefix)--radiobutton--selected-mark {
-    visibility: visible;
-  }
-}
-
-/* Disabled */
-
-.$(prefix)--radiobutton
-  input[type="radio"]:disabled
-  + .$(prefix)--radiobutton--label {
-  color: $radiobutton-disabled;
-  cursor: not-allowed;
-
-  & * {
-    color: $radiobutton-disabled;
-  }
-}
-
-.$(prefix)--radiobutton
-  input[type="radio"]:focus-visible
-  + .$(prefix)--radiobutton--label
-  > svg {
-  border: 1px solid $focus;
-  border-radius: 50%;
-}
-
-.radiobutton input[type="radio"]:focus-visible + .radiobutton--label > svg {
-  border-color: $focus;
 }

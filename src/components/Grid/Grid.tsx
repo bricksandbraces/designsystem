@@ -84,11 +84,11 @@ export const Grid = ({
     <div
       data-columncount={childrenCount}
       className={cx(
-        `${prefix}--grid--container`,
+        `${prefix}--grid-container`,
         {
-          [`${prefix}--grid--fullwidth`]: fullWidth,
-          [`${prefix}--grid--container-no-gutter`]: narrow,
-          [`${prefix}--grid--container-no-gutter__left`]: condensed
+          [`${prefix}--grid-fullwidth`]: fullWidth,
+          [`${prefix}--grid-container__no-gutter`]: narrow,
+          [`${prefix}--grid-container__no-gutter-left`]: condensed
         },
         className
       )}
@@ -118,17 +118,19 @@ export const Column = ({
   return (
     <div
       className={cx(
-        span && `${prefix}--grid--col-${span}`,
-        offset && `${prefix}--grid--col-${span}__offset-${offset}`,
-        sm && sm <= 4 && `${prefix}--grid--col-sm__${sm}`,
-        smOffset && `${prefix}--grid--col-sm__${sm}__offset-${smOffset}`,
-        md && md <= 8 && `${prefix}--grid--col-md__${md}`,
-        mdOffset && `${prefix}--grid--col-md__${md}__offset-${mdOffset}`,
-        lg && lg <= 16 && `${prefix}--grid--col-lg__${lg}`,
-        lgOffset && `${prefix}--grid--col-lg__${lg}__offset-${lgOffset}`,
-        xlg && xlg <= 16 && `${prefix}--grid--col-xlg__${xlg}`,
-        xlgOffset && `${prefix}--grid--col-xlg__${xlg}__offset-${xlgOffset}`,
-        { [`${prefix}--grid--col`]: defaultColumn },
+        {
+          [`${prefix}--grid-col`]: defaultColumn,
+          [`${prefix}--grid-col__${span}`]: span,
+          [`${prefix}--grid-col__${span}--offset-${offset}`]: offset,
+          [`${prefix}--grid-col__sm-${sm}`]: sm && sm <= 4,
+          [`${prefix}--grid-col__sm-${sm}--offset-${smOffset}`]: smOffset,
+          [`${prefix}--grid-col__md-${md}`]: md && md <= 8,
+          [`${prefix}--grid-col__md-${md}--offset-${mdOffset}`]: mdOffset,
+          [`${prefix}--grid-col__lg-${lg}`]: lg && lg <= 16,
+          [`${prefix}--grid-col__lg-${lg}--offset-${lgOffset}`]: lgOffset,
+          [`${prefix}--grid-col__xlg-${xlg}`]: xlg && xlg <= 16,
+          [`${prefix}--grid-col__xlg-${xlg}--offset-${xlgOffset}`]: xlgOffset
+        },
         className
       )}
       {...rest}

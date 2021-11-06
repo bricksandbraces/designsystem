@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Search from "./Search";
 import SearchInput from "./SearchInput";
 
-export default { title: "Components/Search", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Search", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",
@@ -56,27 +56,27 @@ export const Default = () => {
     <div style={{ padding: "32px" }}>
       <Search
         id={text("id", "search-1") as any}
-        recents={object("Recent Items", [
+        recents={object("recents", [
           { href: "#", label: "User profile" },
           { href: "#", label: "Settings" },
           { href: "#", label: "FAQ" }
         ])}
-        results={object("Result Items", [
+        results={object("results", [
           { href: "#", label: "User profile with google" },
           { href: "#", label: "Settings in bricks & braces" },
           { href: "#", label: "FAQ 124" }
         ])}
-        badges={object("Badge Items", [
+        badges={object("badges", [
           { label: "User profile with google" },
           { label: "Settings in bricks & braces" },
           { label: "FAQ 124" }
         ])}
         clearLabel={text("clearLabel", "Clear results")}
-        submitLabel={text("searchLabel", "Go!")}
+        submitLabel={text("submitLabel", "Go!")}
         defaultValue={text("defaultValue", "Searchkitty")}
         placeholder={text("placeholder", "Search")}
-        label={text("Label", "Search")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        label={text("label", "Search")}
+        size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>
   );

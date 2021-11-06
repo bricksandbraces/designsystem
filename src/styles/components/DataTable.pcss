@@ -5,17 +5,10 @@
   &--container {
     width: 100%;
     table-layout: fixed;
-    border: 1px solid $datatable-border;
-    border-radius: 2px;
-    background-color: $datatable-background;
-    & > * {
-      color: white;
-    }
   }
 
   &--table {
     width: calc(100% - 8px);
-    margin: 4px;
     table-layout: fixed;
   }
 
@@ -26,48 +19,46 @@
           @mixin type--label;
         }
 
-        border-radius: 2px;
         outline: 0;
-        background-color: $datatable-header-background;
+        background-color: $color--background;
         text-transform: uppercase;
 
         &:hover {
-          background-color: $datatable-header-background-hover;
+          background-color: $color--hover;
         }
 
         &:active {
-          background-color: $datatable-header-background-active;
+          background-color: $color--active;
         }
 
-        &:focus-visible {
-          border-radius: 2px;
-          outline: 1px solid $focus;
+        &:first-child {
+          border-top-left-radius: $component--radius-default;
+          border-bottom-left-radius: $component--radius-default;
+        }
+        &:last-child {
+          border-top-right-radius: $component--radius-default;
+          border-bottom-right-radius: $component--radius-default;
         }
       }
     }
     & > tbody > tr {
-      background-color: $datatable-cell-background;
       &:hover {
-        background-color: $datatable-cell-background-hover;
+        background-color: $color--hover;
+        & > td {
+          border-bottom: 1px solid transparent;
+        }
       }
+
       &:active {
-        background-color: $datatable-cell-background-active;
+        background-color: $color--active;
       }
+
       & > td {
-        height: $container-02;
-        min-height: $container-02;
-        max-height: $container-02;
-        padding: 0 $spacing-04;
-
-        &:first-child {
-          border-top-left-radius: 2px;
-          border-bottom-left-radius: 2px;
-        }
-
-        &:last-child {
-          border-top-right-radius: 2px;
-          border-bottom-right-radius: 2px;
-        }
+        height: $size--container-02;
+        min-height: $size--container-02;
+        max-height: $size--container-02;
+        padding: 0 $size--spacing-04;
+        border-bottom: 1px solid $color--border-default;
       }
     }
   }
@@ -75,40 +66,33 @@
   &--small > div > div > table {
     & > thead > tr > th,
     & > tbody > tr > td {
-      height: $container-02;
-      min-height: $container-02;
-      max-height: $container-02;
-      padding: 0 $spacing-04;
+      height: $size--field-small;
+      min-height: $size--field-small;
+      max-height: $size--field-small;
+      padding: 0 $size--spacing-05;
     }
   }
 
   &--default > div > div > table {
     & > thead > tr > th,
     & > tbody > tr > td {
-      height: $container-03;
-      min-height: $container-03;
-      max-height: $container-03;
-      padding: 0 $spacing-04;
+      height: $size--field-default;
+      min-height: $size--field-default;
+      max-height: $size--field-default;
+      padding: 0 $size--spacing-05;
     }
   }
   &--large > div > div > table {
     & > thead > tr > th,
     & > tbody > tr > td {
-      height: $container-04;
-      min-height: $container-04;
-      max-height: $container-04;
-      padding: 0 $spacing-04;
-      border-radius: 2px;
+      height: $size--field-large;
+      min-height: $size--field-large;
+      max-height: $size--field-large;
+      padding: 0 $size--spacing-05;
     }
   }
 
   &--head {
-    &-divider {
-      width: calc(100% + 10px);
-      margin: 3px 0;
-      transform: translateX(-5px);
-    }
-
     &-cell {
       &__label {
         @mixin type--label;
@@ -117,6 +101,7 @@
         font-size: 10px;
         font-weight: 600;
         letter-spacing: 0.08rem;
+        text-align: left;
       }
     }
   }

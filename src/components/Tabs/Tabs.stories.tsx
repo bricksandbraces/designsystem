@@ -6,50 +6,51 @@ import Tabs from "./Tabs";
 import ResponsiveTabs from "./ResponsiveTabs";
 import { Grid, Column } from "../Grid/Grid";
 import Headline from "../Typography/Headline";
+import Body from "../Typography/Body";
 
-export default { title: "Components/Tabs", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Tabs", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (
-    <Grid narrow>
-      <Column xlg={16} lg={16} md={8} sm={4}>
-        <Tabs defaultIndex={1}>
-          <Tab title="Web &amp; Mobile Design">
-            <Headline type="h3">Mobile Design is the new standard</Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-          </Tab>
-          <Tab title="Innovation Sprints">
-            <Headline type="h3">
-              Innovation sprints boost your business
-            </Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-            <Button>Hello Button</Button>
-          </Tab>
-          <Tab title="Experience Design">
-            <Headline type="h3">Experience Design matters</Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-          </Tab>
-        </Tabs>
-      </Column>
-    </Grid>
+    <div style={{ padding: "32px" }}>
+      <Grid narrow>
+        <Column xlg={16} lg={16} md={8} sm={4}>
+          <Tabs defaultIndex={1}>
+            <Tab title="Web &amp; Mobile Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+            <Tab title="Innovation Sprints">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+              <Button>Hello Button</Button>
+            </Tab>
+            <Tab title="Experience Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+          </Tabs>
+        </Column>
+      </Grid>
+    </div>
   );
 };
 
@@ -70,91 +71,95 @@ export const Controlled = () => {
   return (
     <div
       style={{
-        width: "100vw",
-        height: "100vh",
         padding: "32px"
       }}
     >
-      <Tabs
-        index={selectedIndex}
-        onChange={(newIndex) => {
-          setSelectedIndex(newIndex);
-        }}
-      >
-        <Tab title="Web &amp; Mobile Design">
-          <Headline type="h3">Mobile Design is the new standard</Headline>
-          <Headline type="h4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          </Headline>
-        </Tab>
-        <Tab title="Innovation Sprints">
-          <Headline type="h3">Mobile Design is the new standard</Headline>
-          <Headline type="h4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          </Headline>
-          <Button>Hello Button</Button>
-        </Tab>
-        <Tab title="Experience Design">
-          <Headline type="h3">Mobile Design is the new standard</Headline>
-          <Headline type="h4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          </Headline>
-        </Tab>
-      </Tabs>
+      <Grid narrow>
+        <Column xlg={16} lg={16} md={8} sm={4}>
+          <Tabs
+            index={selectedIndex}
+            onChange={(newIndex) => {
+              setSelectedIndex(newIndex);
+            }}
+          >
+            <Tab title="Web &amp; Mobile Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+            <Tab title="Innovation Sprints">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+              <Button>Hello Button</Button>
+            </Tab>
+            <Tab title="Experience Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+          </Tabs>
+        </Column>
+      </Grid>
     </div>
   );
 };
 
 export const Responsive = () => {
   return (
-    <Grid narrow>
-      <Column xlg={16} lg={16} md={8} sm={4}>
-        <ResponsiveTabs defaultIndex={1}>
-          <Tab title="Web &amp; Mobile Design">
-            <Headline type="h3">Mobile Design is the new standard</Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-          </Tab>
-          <Tab title="Innovation Sprints">
-            <Headline type="h3">Mobile Design is the new standard</Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-            <Button>Hello Button</Button>
-          </Tab>
-          <Tab title="Experience Design" disabled>
-            <Headline type="h3">Mobile Design is the new standard</Headline>
-            <Headline type="h4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </Headline>
-          </Tab>
-        </ResponsiveTabs>
-      </Column>
-    </Grid>
+    <div style={{ padding: "32px" }}>
+      <Grid narrow>
+        <Column xlg={16} lg={16} md={8} sm={4}>
+          <ResponsiveTabs defaultIndex={1}>
+            <Tab title="Web &amp; Mobile Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+            <Tab title="Innovation Sprints">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+              <Button>Hello Button</Button>
+            </Tab>
+            <Tab title="Experience Design">
+              <Headline type="h4">Mobile Design is the new standard</Headline>
+              <Body type="body-02">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet.
+              </Body>
+            </Tab>
+          </ResponsiveTabs>
+        </Column>
+      </Grid>
+    </div>
   );
 };

@@ -1,10 +1,11 @@
 @import "../../styles/colors.pcss";
 @import "../../styles/theme.pcss";
 @import "../../styles/typography.pcss";
+@import "../prefix.pcss";
 
 @keyframes showContent {
   from {
-    transform: translateY(-8px);
+    transform: translateY(-0.5rem);
     opacity: 0;
   }
   to {
@@ -13,191 +14,211 @@
   }
 }
 
-.search {
-  @mixin type--body-02;
+.$(prefix) {
+  &--search {
+    @mixin type--body-02;
 
-  display: flex;
-  position: relative;
+    display: flex;
+    position: relative;
+    align-items: center;
 
-  &--box {
-    margin: 0;
-    padding: 0;
-    transition: background-color $transition-01, border-color $transition-01,
-      padding $transition-01, margin $transition-01;
-    outline: 0;
-    background-color: transparent;
-
-    &-open {
-      margin: calc(($spacing-04) * -1);
-      padding: $spacing-04;
-      border-radius: 2px;
-      border-color: $search-border;
-      background-color: $search-box-background;
-      color: $search-font;
-
-      & > .search--box-content {
-        display: block;
-        animation: showContent 0.15s ease-in-out;
-      }
+    &-icon {
+      position: absolute;
+      width: $size--container-01;
+      min-width: $size--container-01;
+      height: $size--container-01;
+      min-height: $size--container-01;
+      margin-left: $size--spacing-04;
+      color: $color--font-placeholder;
     }
 
-    &-content {
-      @mixin type--body-02;
+    &-box {
+      margin: 0;
+      padding: 0;
+      transition: background-color $transition--app-01,
+        padding $transition--app-01, margin $transition--app-01;
+      border: 0.0625rem solid transparent;
+      outline: 0;
+      background-color: transparent;
 
-      display: none;
-      padding: $spacing-04 0 0 0;
+      &__open {
+        margin: calc(($size--spacing-05) * -1);
+        padding: $size--spacing-05;
+        border: 0.0625rem solid $color--border-default;
+        border-radius: $component--radius-default;
+        background-color: $color--background;
+        box-shadow: $component--shadow-default;
+        color: $color--font-text-01;
 
-      &__badges {
-        display: flex;
-        padding: 0 0 $spacing-03 0;
-
-        &__manual-hover {
-          border: $border $interactive-secondary-hover;
-          background-color: $interactive-secondary-hover;
-        }
-
-        & > * {
-          margin-right: $spacing-03;
-          margin-bottom: $spacing-03;
+        & > .$(prefix)--search-box__content {
+          display: block;
+          animation: showContent 0.15s ease-in-out;
         }
       }
 
-      &__list-item {
-        display: flex;
-        align-items: center;
-        padding: 0 $spacing-04;
-        transition: background-color $transition-01;
-        border-radius: 2px;
+      &__content {
+        @mixin type--body-02;
 
-        &__manual-hover {
-          background-color: $search-box-background-hover;
-          color: $search-recent-font;
-        }
-        &--recent {
-          &-icon {
-            margin-right: $spacing-04;
-            color: $search-recent-icon;
+        display: none;
+        padding: $size--spacing-05 0 0 0;
+
+        &-badges {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 0 0 $size--spacing-03 0;
+
+          &--manual-hover {
+            background-color: $interactive-secondary-hover;
           }
 
-          color: $search-recent-font;
+          & > * {
+            margin-right: $size--spacing-03;
+            margin-bottom: $size--spacing-03;
+          }
         }
-        &--result {
-          color: $search-results-font;
+
+        &-list-item {
+          display: flex;
+          align-items: center;
+          padding: 0 $size--spacing-05;
+          transition: background-color $transition--app-01;
+          border-radius: $component--radius-default;
+
+          &--manual-hover {
+            background-color: $color--hover;
+          }
+          &--recent {
+            &__icon {
+              margin-right: $size--spacing-03;
+              color: currentColor;
+            }
+
+            color: $color--font-text-recent;
+          }
+          &--result {
+            color: $color--font-text-01;
+          }
         }
       }
     }
-  }
 
-  &--default {
-    height: $container-03;
+    &-default {
+      height: $size--field-default;
 
-    & + .search--box-content > div {
-      & > .search--box-content__list-item {
-        height: $container-03;
+      & + .$(prefix)--search-box__content > div {
+        & > .$(prefix)--search-box__content-list-item {
+          height: $size--field-default;
+        }
       }
     }
-  }
 
-  &--large {
-    height: $container-04;
+    &-large {
+      height: $size--field-large;
 
-    & + .search--box-content > div {
-      & > .search--box-content__list-item {
-        height: $container-04;
+      & + .$(prefix)--search-box__content > div {
+        & > .$(prefix)--search-box__content-list-item {
+          height: $size--field-large;
+        }
       }
     }
-  }
 
-  &--small {
-    height: $container-02;
+    &-small {
+      height: $size--field-small;
 
-    & + .search--box-content > div {
-      & > .search--box-content__list-item {
-        height: $container-02;
+      & + .$(prefix)--search-box__content > div {
+        & > .$(prefix)--search-box__content-list-item {
+          height: $size--field-small;
+        }
       }
     }
-  }
 
-  &--label {
-    display: block;
-    width: 0;
-    max-width: 0;
-    height: 0;
-    max-height: 0;
-    opacity: 0;
-  }
-
-  &--input {
-    width: 100%;
-    height: 100%;
-    padding: 0 $spacing-04;
-    transition: border $transition-01;
-    border: 1px solid $search-border;
-    border-radius: 2px;
-    outline: 0;
-    background-color: $search-background;
-    color: $search-font;
-
-    &::placeholder {
-      color: $search-placeholder;
+    &-label {
+      display: block;
+      width: 0;
+      max-width: 0;
+      height: 0;
+      max-height: 0;
+      opacity: 0;
     }
 
-    &:focus {
-      border-color: $focus;
-
-      & + div > .search--go {
-        border-color: $focus;
-      }
-    }
-  }
-
-  &--go {
-    position: relative;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 1px;
+    &-input {
+      width: 100%;
       height: 100%;
-      margin-left: -1px;
-      transition: background-color $transition-01;
-      background-color: $interactive-primary;
-    }
+      padding: 0 $size--spacing-05 0 $size--spacing-08;
+      transition: border $transition--app-01;
+      border: 0.0625rem solid $color--border-default;
+      border-radius: $component--radius-default;
+      outline: 0;
+      background-color: $color--background;
+      color: $color--font-text-01;
 
-    &:hover {
-      &::before {
-        background-color: $interactive-primary-hover;
+      &::placeholder {
+        transition: transform $transition--app-01, opacity $transition--app-01;
+        color: $color--font-placeholder;
+      }
+
+      &:focus {
+        border-color: $color--focus;
+
+        &::placeholder {
+          transform: translateX(0.125rem);
+          opacity: 0;
+        }
+
+        & + div > .$(prefix)--search-go {
+          border-color: $color--focus;
+        }
       }
     }
 
-    &:active {
+    &-go {
+      position: relative;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
       &::before {
-        background-color: $interactive-primary-active;
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 0.0625rem;
+        height: 100%;
+        margin-left: -0.0625rem;
+        transition: background-color $transition--app-01;
+        background-color: $color--primary-enabled;
+      }
+
+      &:hover {
+        &::before {
+          background-color: $color--primary-hover;
+        }
+      }
+
+      &:active {
+        &::before {
+          background-color: $color--primary-active;
+        }
+      }
+
+      &:focus-visible {
+        &::before {
+          background-color: $color--focus;
+        }
       }
     }
 
-    &:focus-visible {
-      &::before {
-        background-color: $focus;
-      }
+    &-close {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
-  }
 
-  &--close {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &--buttons {
-    display: flex;
-    position: absolute;
-    right: 0;
-    align-items: center;
-    height: 100%;
+    &-buttons {
+      display: flex;
+      position: absolute;
+      right: 0;
+      align-items: center;
+      height: 100%;
+    }
   }
 }

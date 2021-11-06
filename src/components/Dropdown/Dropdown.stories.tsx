@@ -1,8 +1,15 @@
-import { object, select, text, withKnobs } from "@storybook/addon-knobs";
+import {
+  boolean,
+  object,
+  select,
+  text,
+  withKnobs
+} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
+import DropdownSkeleton from "./DropdownSkeleton";
 
-export default { title: "Components/Dropdown", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Dropdown", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",
@@ -50,13 +57,15 @@ export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Dropdown
+        label={text("label", "Dropdown label")}
+        title={text("title", "Dropdown title")}
+        size={select("size", sizeOptions, defaultSize) as any}
         id="some-dropdown"
-        title={text("Title", "Dropdown title")}
-        label={text("Label", "Dropdown label")}
-        size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        items={object("Items", sampleItemConfig)}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
+        items={object("items", sampleItemConfig)}
       />
     </div>
   );
@@ -67,18 +76,28 @@ export const Controlled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Dropdown
+        label={text("label", "Dropdown label")}
+        title={text("title", "Dropdown title")}
+        size={select("size", sizeOptions, defaultSize) as any}
         id="some-dropdown"
-        title={text("Title", "Dropdown title")}
-        label={text("Label", "Dropdown label")}
-        size={select("Size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        items={object("Items", sampleItemConfig)}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
+        items={object("items", sampleItemConfig)}
         value={selectedValue}
         onChange={(newValue) => {
           setSelectedValue(newValue);
         }}
       />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <DropdownSkeleton />
     </div>
   );
 };

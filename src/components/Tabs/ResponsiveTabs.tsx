@@ -37,7 +37,7 @@ const ResponsiveTabs = ({
         onChange={onChange}
         index={index}
         defaultIndex={defaultIndex}
-        className={`${prefix}--responsivetabs--tabs`}
+        className={`${prefix}--responsivetabs-tabs`}
       >
         {children}
       </Tabs>
@@ -47,7 +47,7 @@ const ResponsiveTabs = ({
         }
         openIndices={index === undefined ? undefined : [index]}
         onChange={onChange}
-        className={`${prefix}--responsivetabs--accordion`}
+        className={`${prefix}--responsivetabs-accordion`}
       >
         {children}
       </Accordion>

@@ -4,41 +4,22 @@ import { prefix } from "../../settings";
 
 type DividerProps = {
   /**
-   * HR kind
+   * Divider Kind
    */
-  kind?: "default" | "subtle" | "explicit";
+  type?: "default" | "subtle" | "harsh";
 
   /**
-   * HR Size
-   */
-  size?: "default" | "thin" | "thicker" | "thick";
-
-  /**
-   * Margin
-   */
-  margin?: boolean;
-
-  /**
-   * Class Name
+   * Divider ClassName
    */
   className?: string;
 };
 
-const Divider = ({ kind, margin = true, size, className }: DividerProps) => {
+const Divider = ({ type = "default", className }: DividerProps) => {
   return (
     <hr
       className={cx(
-        `${prefix}--divider`,
-        {
-          [`${prefix}--divider--default`]:
-            kind === "default" || kind === undefined,
-          [`${prefix}--divider--thin`]: size === "thin" || kind === undefined,
-          [`${prefix}--divider--thicker`]: size === "thicker",
-          [`${prefix}--divider--thick`]: size === "thick",
-          [`${prefix}--divider--subtle`]: kind === "subtle",
-          [`${prefix}--divider--explicit`]: kind === "explicit",
-          [`${prefix}--divider--margin`]: margin
-        },
+        `${prefix}--divider ${prefix}--divider-${type}`,
+
         className
       )}
     />

@@ -12,15 +12,16 @@ import {
 } from "@tabler/icons";
 import Button from "./Button";
 import IconOnlyButton from "./IconOnlyButton";
-import ButtonGroup from "./ButtonGroup";
+import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
+import ButtonSkeleton from "./ButtonSkeleton";
+import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
 
-export default { title: "Components/Button", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Button", decorators: [withKnobs] };
 
 const options = {
   Primary: "primary",
   Secondary: "secondary",
   Tertiary: "tertiary",
-  Danger: "danger",
   Ghost: "ghost"
 };
 
@@ -45,13 +46,14 @@ export const Default = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
       <Button
-        kind={select("Kind", options, defaultValue) as any}
-        size={select("Size", sizeOptions, defaultSize) as any}
-        fluid={boolean("Fluid", false)}
-        isLoading={boolean("is Loading?", false)}
-        disabled={boolean("Disabled", false)}
+        kind={select("kind", options, defaultValue) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
+        fluid={boolean("fluid", false)}
+        danger={boolean("danger", false)}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
       >
-        {text("Label", "Button")}
+        {text("label", "Button")}
       </Button>
     </div>
   </div>
@@ -61,21 +63,22 @@ export const WithIcon = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
       <Button
-        kind={select("Kind", options, defaultValue) as any}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        kind={select("kind", options, defaultValue) as any}
+        danger={boolean("danger", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
         iconPosition={
           select(
-            "Icon Position",
+            "iconPosition",
             iconPositionOptions,
             defaultIconPosition
           ) as any
         }
-        fluid={boolean("Fluid", false)}
+        fluid={boolean("fluid", false)}
         icon={<Icon3dCubeSphere />}
-        isLoading={boolean("is Loading?", false)}
-        disabled={boolean("Disabled", false)}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
       >
-        {text("Label", "Button")}
+        {text("label", "Button")}
       </Button>
     </div>
   </div>
@@ -85,70 +88,92 @@ export const WithIconOnly = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
       <IconOnlyButton
-        kind={select("Kind", options, defaultValue) as any}
-        size={select("Size", sizeOptions, defaultSize) as any}
-        tooltipLabel={text("Tooltip Label", "Label") as any}
+        danger={boolean("danger", false)}
+        kind={select("kind", options, defaultValue) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
+        tooltipProps={{
+          tooltipContent: text("tooltipLabel", "Label") as any
+        }}
         icon={<IconLayoutGridAdd />}
-        isLoading={boolean("is Loading?", false)}
-        disabled={boolean("Disabled", false)}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
       />
     </div>
   </div>
 );
 
-export const IconOnlyGroup = () => (
+export const IconOnlyGroup = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <IconOnlyButtonGroup singletonProps={{ delay: 900 }}>
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Align Left"
+            }}
+            icon={<IconAlignLeft />}
+          />
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Center"
+            }}
+            icon={<IconAlignCenter />}
+          />
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Align Right"
+            }}
+            icon={<IconAlignRight />}
+          />
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Bold"
+            }}
+            icon={<IconBold />}
+          />
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Italic"
+            }}
+            icon={<IconItalic />}
+          />
+          <IconOnlyButton
+            danger={boolean("danger", false)}
+            kind={select("kind", options, defaultValue) as any}
+            size={select("size", sizeOptions, defaultSize) as any}
+            tooltipProps={{
+              tooltipContent: "Underline"
+            }}
+            icon={<IconUnderline />}
+          />
+        </IconOnlyButtonGroup>
+      </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <div style={{ width: "405px" }}>
-      <ButtonGroup withDivider={boolean("withDivider", false)}>
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Align Left"
-          icon={<IconAlignLeft />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Center"
-          icon={<IconAlignCenter />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Align Right"
-          icon={<IconAlignRight />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Bold"
-          icon={<IconBold />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Italic"
-          icon={<IconItalic />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-        <IconOnlyButton
-          kind={select("Kind", options, defaultValue) as any}
-          size={select("Size", sizeOptions, defaultSize) as any}
-          tooltipLabel="Underline"
-          icon={<IconUnderline />}
-          isLoading={boolean("is Loading?", false)}
-          disabled={boolean("Disabled", false)}
-        />
-      </ButtonGroup>
+    <div style={{ width: "405px", display: "flex", gap: "24px" }}>
+      <IconOnlyButtonSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
+      <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
     </div>
   </div>
 );

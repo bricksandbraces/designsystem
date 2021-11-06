@@ -1,2 +1,198 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
+@import "../prefix.pcss";
+
+.$(prefix) {
+  &--rangeinput {
+    display: inline-flex;
+    flex-direction: column;
+    &-container {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+
+      & > .$(prefix)--numberinput {
+        width: $size--container-06;
+        margin-right: $size--spacing-05;
+
+        & > div > .$(prefix)--numberinput-input {
+          -moz-appearance: textfield;
+          text-align: center;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+    }
+    &-slider {
+      &.rc-slider {
+        & > .rc-slider-rail {
+          background-color: $color--background;
+        }
+
+        & > .rc-slider-handle {
+          width: 0.5rem;
+          height: 0.5rem;
+          margin-top: -2px;
+          transition: width $transition--app-01, height $transition--app-01,
+            margin-top $transition--app-01, border-color $transition--app-01;
+          border-color: transparent;
+          background-color: $color--app-05;
+          box-shadow: $component--shadow-default;
+
+          &:active {
+            width: 1rem;
+            height: 1rem;
+            margin-top: -6px;
+            border-color: $color--decoration;
+            box-shadow: $component--shadow-default;
+          }
+
+          &-click-focused {
+            width: 1rem;
+            height: 1rem;
+            margin-top: -6px;
+            border-color: $color--decoration;
+            box-shadow: $component--shadow-default;
+          }
+        }
+
+        & > .rc-slider-track {
+          background-color: $color--decoration;
+        }
+
+        &:hover {
+          & > .rc-slider-handle {
+            width: 1rem;
+            height: 1rem;
+            margin-top: -6px;
+          }
+        }
+      }
+
+      &__container {
+        display: inline-flex;
+        align-items: center;
+        width: $size--container-08;
+        height: 100%;
+
+        & > .$(prefix)--skeleton {
+          margin-bottom: 0;
+        }
+      }
+
+      &__label {
+        @mixin type--body-02;
+
+        display: inline-flex;
+        justify-content: space-between;
+        color: $color--font-text-03;
+        user-select: none;
+
+        &:first-of-type {
+          margin-right: $size--spacing-05;
+        }
+
+        &:last-of-type {
+          margin-left: $size--spacing-05;
+        }
+      }
+
+      &.$(prefix)--skeleton {
+        height: 4px;
+      }
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      user-select: none;
+      & > div > .$(prefix)--rangeinput-slider__container {
+        & > .$(prefix)--rangeinput-slider__label {
+          color: $color--font-disabled;
+        }
+      }
+
+      & > div > div > .$(prefix)--rangeinput-slider {
+        &.rc-slider-disabled {
+          background-color: $color--transparent;
+          & > .rc-slider-rail {
+            background-color: $color--disabled;
+          }
+
+          & > .rc-slider-handle {
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-top: -2px;
+            transition: width $transition--app-01, height $transition--app-01,
+              margin-top $transition--app-01, border-color $transition--app-01;
+            border-color: transparent;
+            background-color: $color--disabled;
+            box-shadow: unset;
+
+            &:active {
+              width: 0.5rem;
+              height: 0.5rem;
+              margin-top: -2px;
+              border-color: transparent;
+              box-shadow: $component--shadow-default;
+            }
+
+            &-click-focused {
+              width: 0.5rem;
+              height: 0.5rem;
+              margin-top: -2px;
+              border-color: transparent;
+              box-shadow: $component--shadow-default;
+            }
+          }
+
+          & > .rc-slider-track {
+            background-color: $color--disabled;
+          }
+
+          &:hover {
+            pointer-events: none;
+            & > .rc-slider-handle {
+              width: 0.5rem;
+              height: 0.5rem;
+              margin-top: -2px;
+            }
+          }
+        }
+      }
+    }
+
+    &-readonly {
+      user-select: none;
+      & > div > .$(prefix)--rangeinput-slider__container {
+        & > .$(prefix)--rangeinput-slider__label {
+          color: $color--font-readonly;
+        }
+      }
+
+      & > div > div > .$(prefix)--rangeinput-slider {
+        &.rc-slider-disabled {
+          background-color: $color--transparent;
+          & > .rc-slider-rail {
+            background-color: $color--background;
+          }
+
+          & > .rc-slider-handle {
+            display: none;
+            opacity: 0;
+          }
+
+          & > .rc-slider-track {
+            background-color: $color--decoration;
+          }
+        }
+      }
+    }
+    &.$(prefix)--skeleton {
+      justify-content: flex-start;
+    }
+  }
+}
