@@ -47,6 +47,7 @@
 @import "./components/RangeInput.pcss";
 @import "./components/SideNav.pcss";
 @import "./components/Switcher.pcss";
+@import "./components/DatePicker.pcss";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  = Global customization of Bricks and Braces opionionated CSS. =
