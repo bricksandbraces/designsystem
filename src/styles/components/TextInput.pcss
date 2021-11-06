@@ -5,8 +5,7 @@
 .$(prefix) {
   &--textinput {
     display: inline-flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     width: $size--container-08;
 
     &-default {
@@ -43,7 +42,7 @@
 
         &::placeholder {
           transform: translateX($size--spacing-01);
-          opacity: 0;
+          opacity: 0%;
         }
       }
 

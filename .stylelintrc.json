@@ -9,6 +9,7 @@
     "unit-disallowed-list": ["em", "pt", "in"],
     "unit-no-unknown": [true, { "ignoreUnits": ["pvh"] }],
     "prettier/prettier": true,
+
     "at-rule-no-unknown": [
       true,
       {
@@ -24,6 +25,7 @@
         ]
       }
     ],
+    "custom-property-no-missing-var-function": null,
     "declaration-block-trailing-semicolon": null,
     "no-descending-specificity": null,
     "no-invalid-position-at-import-rule": null,

@@ -50,7 +50,7 @@ export const DefaultPlainTable = () => {
           <div className="datatable datatable--default">
             <TableContainer>
               <Table>
-                <TableHead headers={defaultHeaders} withDivider>
+                <TableHead headers={defaultHeaders}>
                   <TableRow>
                     {(object("Headers", defaultHeaders) as HeaderData).map(
                       (header) => (

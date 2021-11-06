@@ -5,12 +5,12 @@
   0%,
   100% {
     transform: translateX(-100%);
-    opacity: 0;
+    opacity: 0%;
   }
 
   50% {
     transform: translateX(100%);
-    opacity: 1;
+    opacity: 100%;
   }
 }
 
@@ -46,21 +46,21 @@
         background: linear-gradient(
           90deg,
           $color--skeleton-01,
-          rgba($color--skeleton-02, 0.25),
+          rgb($color--skeleton-02 0.25),
           $color--skeleton-01
         );
       }
     }
 
     &-animated.$(prefix)--skeleton-light {
-      opacity: 0.5;
+      opacity: 50%;
       background-color: $color--skeleton-02;
 
       & > .$(prefix)--skeleton-animated__wiper {
         background: linear-gradient(
           90deg,
           $color--skeleton-02,
-          rgba($color--skeleton-03, 0.25),
+          rgb($color--skeleton-03 0.25),
           $color--skeleton-02
         );
       }

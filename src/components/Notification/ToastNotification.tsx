@@ -44,6 +44,11 @@ type ToastNotificationProps = {
   open: boolean;
 
   /**
+   * ToastNotification closeTooltipLabel
+   */
+  closeTooltipLabel: string;
+
+  /**
    * ToastNotification OnClose Function
    */
   onClose?: (event: any) => void;
@@ -54,6 +59,7 @@ const ToastNotification = ({
   subTitle,
   time,
   hideCloseButton,
+  closeTooltipLabel,
   type,
   open,
   onClose
@@ -124,7 +130,7 @@ const ToastNotification = ({
           size="small"
           className={`${prefix}--notification-close`}
           onClick={onClose}
-          tooltipProps={{ tooltipContent: tooltipLabel }}
+          tooltipProps={{ tooltipContent: closeTooltipLabel }}
           hideTooltip
           icon={<IconX />}
         />

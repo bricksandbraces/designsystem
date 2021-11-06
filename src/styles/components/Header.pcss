@@ -26,23 +26,23 @@
     overflow: scroll;
     transform: translate(-100px, 100px);
     transition: $transition-01;
-    opacity: 0;
+    opacity: 0%;
     background-color: $black;
 
     @media screen and (min-width: $size--breakpoint-lg) {
       display: none;
       visibility: hidden;
-      opacity: 0;
+      opacity: 0%;
     }
 
     &-visible {
       visibility: visible;
       transform: translate(0, 0);
-      opacity: 1;
+      opacity: 100%;
     }
 
     &-list {
-      padding: 80px 1rem 1rem 1rem;
+      padding: 80px 1rem 1rem;
 
       &__item {
         color: $white;
@@ -106,13 +106,14 @@
     padding: 0 0 0 1.15rem;
 
     &:nth-child(2) {
-      padding: 0 1.15rem 0 1.15rem;
+      padding: 0 1.15rem;
     }
   }
 
   &--column > div {
     width: 100%;
   }
+
   &--linksection {
     display: flex;
     visibility: visible;

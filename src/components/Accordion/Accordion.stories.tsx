@@ -4,7 +4,10 @@ import Accordion from "./Accordion";
 import AccordionItem from "./AccordionItem";
 import AccordionSkeleton from "./AccordionSkeleton";
 
-export default { title: "Components/A_REFA_Accordion", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_Accordion",
+  decorators: [withKnobs]
+};
 
 const sizeOptions = {
   Large: "large",

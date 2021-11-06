@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Divider from "../Divider/Divider";
 import { HeaderData } from "./DataTable";
 
 type TableHeadProps = {

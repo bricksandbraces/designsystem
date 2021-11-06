@@ -1,17 +1,15 @@
-
 import React, { ChangeEvent, forwardRef } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
-import FormLabel from "../FormLabel/FormLabel";
 import { prefix } from "../../settings";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
+import Label from "../Typography/Label";
 
 export type NumberInputProps = {
-
   /**
    * NumberInput ClassName
    */
@@ -43,6 +41,16 @@ export type NumberInputProps = {
    */
   warning?: boolean;
   warningText?: string;
+
+  /**
+   * NumberInput Disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * NumberInput ReadOnly
+   */
+  readOnly?: boolean;
 
   /**
    * NumberInput Size
@@ -129,7 +137,9 @@ const NumberInput = (
     step = 1,
     min,
     max,
-    float = false
+    float = false,
+    disabled,
+    readOnly
   }: NumberInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
@@ -191,11 +201,13 @@ const NumberInput = (
 
   return (
     <div className={`${prefix}--NumberInput`}>
-      {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
+      {label && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--NumberInput--input-container`}>
         <input
           id={id}
           ref={mergeRefs([ref, inputRef])}
+          disabled={disabled}
+          readOnly={readOnly}
           className={cx(
             `${prefix}--numberinput--input`,
             {
@@ -222,14 +234,11 @@ const NumberInput = (
             onBlur?.(event);
           }}
           onFocus={onFocus}
-          onKeyDown={filterForKeys(
-            ["Enter"],
-            (event: React.KeyboardEvent<HTMLInputElement>) => {
-              const parsedValue = parseToNumber(textValue);
-              correctValIntoBorders(parsedValue);
-              onKeyDown?.(event);
-            }
-          )}
+          onKeyDown={filterForKeys(["Enter"], (event) => {
+            const parsedValue = parseToNumber(textValue);
+            correctValIntoBorders(parsedValue);
+            onKeyDown?.(event);
+          })}
           min={min}
           max={max}
           step={step}
