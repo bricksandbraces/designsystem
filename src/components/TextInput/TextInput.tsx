@@ -128,7 +128,7 @@ const TextInput = (
   }: TextInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const [inputRef, textValue, handleOnChange] = useControlledValue(
+  const [inputRef, textValue, handleChange] = useControlledValue(
     value,
     defaultValue,
     onChange
@@ -169,7 +169,7 @@ const TextInput = (
           autoComplete={autoComplete}
           value={value}
           defaultValue={defaultValue}
-          onChange={handleOnChange()}
+          onChange={handleChange()}
           onBlur={onBlur}
           onFocus={onFocus}
           onKeyDown={onKeyDown}
