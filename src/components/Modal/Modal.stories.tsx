@@ -28,7 +28,6 @@ export const DefaultControlled = () => {
         color: "white"
       }}
     >
-      Please update the background to see the modal (Storybook Bug).
       <Modal
         size={select("size", options, defaultValue) as any}
         open={open}
@@ -37,7 +36,7 @@ export const DefaultControlled = () => {
         }}
         closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
-        autoFocus
+        primaryFocus={""}
       >
         <ModalHeader
           headline={text("headline", "Update available")}
@@ -88,7 +87,6 @@ export const NestedControlled = () => {
           setOpen(false);
         }}
         withDivider={boolean("With Divider", false)}
-        autoFocus
       >
         <ModalHeader
           headline={text("headline1", "Behind")}

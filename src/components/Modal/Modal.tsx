@@ -7,7 +7,7 @@ import React, {
   useRef
 } from "react";
 import cx from "classnames";
-import FocusLock, { AutoFocusInside } from "react-focus-lock";
+import FocusLock from "react-focus-lock";
 import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
 import mergeRefs from "react-merge-refs";
@@ -53,9 +53,9 @@ type ModalProps = {
   closeOnOutsideClick?: boolean;
 
   /**
-   * Modal Autofocus Close Button
+   * Modal HTMLSelector that focusses the element after opening
    */
-  autoFocus?: boolean;
+  primaryFocus?: string;
 };
 
 const Modal = (
@@ -64,13 +64,14 @@ const Modal = (
     open,
     onClose,
     closeOnOutsideClick = true,
-    autoFocus = true,
+    primaryFocus,
     withDivider,
     children
   }: ModalProps,
   ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -92,6 +93,24 @@ const Modal = (
 
     if (open && modalRef.current) {
       window?.addEventListener("keydown", handleKeyDown, true);
+      setTimeout(() => {
+        // focus the given element or the closeBtn as fallback
+        console.log("Applying focus logic");
+        if (primaryFocus) {
+          const element = modalRef.current?.querySelector(
+            primaryFocus
+          ) as HTMLElement;
+          console.log("Trying to focus custom element");
+          console.log(element);
+          if (element) {
+            element.focus();
+          }
+        } else {
+          console.log("Trying to focus close btn");
+          console.log(closeBtnRef.current);
+          closeBtnRef.current?.focus();
+        }
+      }, 100);
     }
 
     return () => {
@@ -123,20 +142,20 @@ const Modal = (
                 )}
                 disabled={!open}
               >
-                <AutoFocusInside disabled={!open || !autoFocus}>
-                  <IconOnlyButton
-                    kind="ghost"
-                    icon={<IconX />}
-                    tooltipProps={{
-                      className: `${prefix}--modal--close`,
-                      tooltipContent: "Close",
-                      placement: "left"
-                    }}
-                    onClick={(event: any) => {
-                      onClose?.(event);
-                    }}
-                  />
-                </AutoFocusInside>
+                <IconOnlyButton
+                  kind="ghost"
+                  ref={closeBtnRef}
+                  icon={<IconX />}
+                  tooltipProps={{
+                    className: `${prefix}--modal--close`,
+                    tooltipContent: "Close",
+                    placement: "left",
+                    trigger: "hover"
+                  }}
+                  onClick={(event: any) => {
+                    onClose?.(event);
+                  }}
+                />
                 {children}
               </FocusLock>
             </OutsideClickListener>
