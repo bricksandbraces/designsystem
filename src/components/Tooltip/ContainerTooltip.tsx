@@ -1,5 +1,6 @@
 import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
-import Tippy, { TippyProps } from "@tippyjs/react";
+import type { TippyProps } from "@tippyjs/react";
+import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
