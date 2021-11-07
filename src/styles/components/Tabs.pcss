@@ -2,112 +2,120 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--tabs {
-  white-space: wrap;
-  &--btn {
-    position: relative;
-    height: $container-03;
-    margin: 0 0.5rem;
-    padding: 0 1rem;
-    transition: $transition-01;
-    border: 1px solid transparent;
-    border-radius: $border-radius-2;
-    background-color: $tab-background;
-    color: $tab-font;
+.$(prefix) {
+  &--tabs {
+    white-space: wrap;
 
-    &:disabled {
-      color: $tab-disabled-font;
-      cursor: not-allowed;
+    &-btn {
+      position: relative;
+      height: $size--container-04;
+      margin: 0 $size--spacing-03;
+      padding: 0 $size--spacing-05;
+      transition: $transition-01;
+      border: 0.0625rem solid transparent;
+      border-radius: $component--radius-default;
+      background-color: transparent;
+      color: $color--font-unselected;
+
+      &:disabled {
+        color: $color--font-disabled;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+
+      &__container {
+        width: 100%;
+        white-space: nowrap;
+      }
+
+      &__label {
+        margin-bottom: 0;
+        transform: translateY(0.125rem);
+
+        &::after {
+          content: attr(name);
+          display: block;
+          visibility: hidden;
+          height: 0;
+          overflow: hidden;
+          font-weight: 600;
+        }
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0.1875rem;
+        transform: translate(0, 0.25rem);
+        transition: $transition--app-01;
+        border-radius: $component--radius-default;
+        opacity: 0%;
+        background-color: $color--decoration;
+        pointer-events: none;
+      }
 
       &:hover {
-        background-color: inherit;
+        background-color: $color--hover;
       }
-    }
 
-    &-container {
-      width: 100%;
-      white-space: nowrap;
-    }
-
-    &-label {
-      transform: translateY(2px);
-      &::after {
-        content: attr(name);
-        display: block;
-        visibility: hidden;
-        height: 0;
-        overflow: hidden;
-        font-weight: 600;
+      &:focus-visible {
+        border: 0.0625rem solid $color--focus;
       }
-    }
 
-    &::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 3px;
-      transform: translate(0, 4px);
-      transition: $transition-01;
-      opacity: 0;
-      background-color: transparent;
-      background-color: $tab-background-hover-accent;
-      pointer-events: none;
-    }
-
-    &:hover {
-      background-color: $tab-background-hover;
-    }
-
-    &:focus-visible {
-      border: 1px solid $tab-focus;
-    }
-
-    &:active {
-      background-color: $tab-background-active;
-    }
-
-    &-selected {
-      position: relative;
-      color: $tab-font-selected;
-      pointer-events: none;
-      & > .typography {
-        font-weight: 600;
+      &:active {
+        background-color: $color--active;
       }
-      &::after {
-        transform: translate(0, 8px);
-        opacity: 1;
-        background-color: $tab-background-selected;
-      }
-    }
-  }
-  &--content {
-    width: 100%;
-    padding: 1.5rem;
-    color: white;
 
-    &-item {
-      transform: translate(0, -6px);
-      transition: $transition-02;
-      opacity: 0;
       &__selected {
-        transform: translate(0, 0);
-        opacity: 1;
+        position: relative;
+        color: $color--font-selected;
+        pointer-events: none;
+
+        & > .typography {
+          font-weight: 600;
+        }
+
+        &::after {
+          transform: translate(0, 0.5rem);
+          opacity: 100%;
+        }
+      }
+    }
+
+    &-content {
+      width: 80%;
+      padding: $size--spacing-06;
+      color: $color--font-text-01;
+
+      &__item {
+        transform: translate(0, -0.375rem);
+        transition: $transition--app-02;
+        opacity: 0%;
+
+        &-selected {
+          transform: translate(0, 0);
+          opacity: 100%;
+        }
       }
     }
   }
 }
 
 .$(prefix)--responsivetabs {
-  &--tabs {
+  &-tabs {
     display: block;
-    @media screen and (max-width: $breakpoint-md) {
+    @media screen and (max-width: $size--breakpoint-md) {
       display: none;
     }
   }
 
-  &--accordion {
+  &-accordion {
     display: block;
-    @media screen and (min-width: $breakpoint-md) {
+    @media screen and (min-width: $size--breakpoint-md) {
       display: none;
     }
   }

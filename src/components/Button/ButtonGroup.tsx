@@ -4,19 +4,19 @@ import { prefix } from "../../settings";
 
 export type ButtonGroupProps = {
   /**
-   * React Children
+   * ButtonGroup Children
    */
 
   children: ReactNode;
 
   /**
-   * Icon Button Divier
+   * ButtonGroup Icon Divider
    */
 
   withDivider?: boolean;
 
   /**
-   * ClassName
+   * ButtonGroup ClassName
    */
 
   className?: string;
@@ -29,8 +29,8 @@ const ButtonGroup = ({
 }: ButtonGroupProps) => (
   <div
     className={cx(
-      `${prefix}--button--group`,
-      { [`${prefix}--button--group-divider`]: withDivider },
+      `${prefix}--button-group`,
+      { [`${prefix}--button-group__divider`]: withDivider },
       className
     )}
   >

@@ -1,181 +1,200 @@
 @import "../theme.pcss";
+@import "../typography.pcss";
 @import "../prefix.pcss";
 
 .$(prefix) {
   &--avatar {
-    position: relative;
-    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
 
-    &--container {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      transition: transform $transition-01, filter $transition-01;
-      border-radius: 50%;
-    }
+    &-default {
+      width: $size--field-default;
+      min-width: $size--field-default;
+      max-width: $size--field-default;
+      height: $size--field-default;
+      min-height: $size--field-default;
+      max-height: $size--field-default;
 
-    &--default {
-      width: $container-03;
-      min-width: $container-03;
-      max-width: $container-03;
-      height: $container-03;
-      min-height: $container-03;
-      max-height: $container-03;
-
-      & > div > .$(prefix)--avatar--container {
-        width: $container-03;
-        min-width: $container-03;
-        max-width: $container-03;
-        height: $container-03;
-        min-height: $container-03;
-        max-height: $container-03;
+      & > div > .$(prefix)--avatar-container {
+        width: $size--field-default;
+        min-width: $size--field-default;
+        max-width: $size--field-default;
+        height: $size--field-default;
+        min-height: $size--field-default;
+        max-height: $size--field-default;
       }
     }
 
-    &--large {
-      width: $container-04;
-      min-width: $container-04;
-      max-width: $container-04;
-      height: $container-04;
-      min-height: $container-04;
-      max-height: $container-04;
+    &-large {
+      width: $size--field-large;
+      min-width: $size--field-large;
+      max-width: $size--field-large;
+      height: $size--field-large;
+      min-height: $size--field-large;
+      max-height: $size--field-large;
 
-      & > div > .$(prefix)--avatar--container {
-        width: $container-04;
-        min-width: $container-04;
-        max-width: $container-04;
-        height: $container-04;
-        min-height: $container-04;
-        max-height: $container-04;
+      & > div > .$(prefix)--avatar-container {
+        width: $size--field-large;
+        min-width: $size--field-large;
+        max-width: $size--field-large;
+        height: $size--field-large;
+        min-height: $size--field-large;
+        max-height: $size--field-large;
       }
     }
 
-    &--small {
-      width: $container-02;
-      min-width: $container-02;
-      max-width: $container-02;
-      height: $container-02;
-      min-height: $container-02;
-      max-height: $container-02;
+    &-small {
+      width: $size--field-small;
+      min-width: $size--field-small;
+      max-width: $size--field-small;
+      height: $size--field-small;
+      min-height: $size--field-small;
+      max-height: $size--field-small;
 
       & > div > .$(prefix)--avatar--container {
-        width: $container-02;
-        min-width: $container-02;
-        max-width: $container-02;
-        height: $container-02;
-        min-height: $container-02;
-        max-height: $container-02;
+        width: $size--field-small;
+        min-width: $size--field-small;
+        max-width: $size--field-small;
+        height: $size--field-small;
+        min-height: $size--field-small;
+        max-height: $size--field-small;
       }
     }
 
-    &--img {
+    &-img {
       width: 100%;
     }
 
-    &--icon {
+    &-alt {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 100%;
-      background-color: $avatar-icon-background;
+      background-color: $color--app-02;
       color: $white;
 
+      & > .$(prefix)--avatar-alt__text {
+        @mixin type--body-02;
+
+        margin: 0;
+        color: $color--font-text-02;
+      }
+
       & > svg {
-        width: 20px;
-        height: 20px;
+        width: calc($size--container-01 * 1.25);
+        height: calc($size--container-01 * 1.25);
+        stroke-width: 0.125rem;
+        color: $color--icon-default;
       }
     }
 
-    &--list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      &-panel {
-        width: 100%;
-        max-width: max-content;
-      }
-
-      &-children {
-        display: flex;
-        align-items: center;
-        margin-top: $spacing-02;
-        padding: 12px;
-      }
-
-      &-item {
-        display: flex;
-        align-items: center;
-        height: $container-04;
-        max-height: $container-04;
-        padding: 0 12px;
-        transition: background-color $transition-01;
-        border-radius: 2px;
-
-        &:hover {
-          background-color: $avatar-background;
-        }
-
-        &__container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-
-          &-actions {
-            white-space: nowrap;
-            & > div {
-              margin-left: $spacing-03;
-            }
-          }
-        }
-
-        &__text {
-          width: 100%;
-          margin-right: $spacing-10;
-          margin-left: $spacing-05;
-
-          &-heading {
-            width: 100%;
-            max-width: calc($container-05 * 3);
-            overflow: hidden;
-            color: $white;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-          &-body {
-            width: 100%;
-            max-width: $container-07;
-            overflow: hidden;
-            color: $warm-gray-60;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
-      }
-    }
-
-    &--group {
+    &-group {
       display: inline-flex;
       align-items: center;
       margin: 0;
       padding: 0;
       list-style: none;
+      gap: $size--spacing-04;
 
-      & > .$(prefix)--avatar:not(:first-child),
-      & > div:not(:first-child) > .avatar {
-        margin-left: -12px;
+      & > .$(prefix)--avatar-group__container {
+        display: inline-flex;
+        & > .$(prefix)--avatar-container:not(:first-child),
+        & > div:not(:first-child) > .$(prefix)--avatar-container {
+          margin-left: calc($size--spacing-04 * -1);
 
-        & > .avatar--container {
-          box-shadow: $avatar-border 0 0 0 3px;
+          & > .$(prefix)--avatar {
+            box-shadow: $color--app-background 0 0 0 0.1875rem;
+          }
         }
       }
 
-      &-btn {
-        margin-left: 12px;
-        border-radius: 25px;
+      &__btn {
+        border-radius: $size--field-default;
       }
     }
+
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &__panel {
+        width: 100%;
+        max-width: max-content;
+        padding: $component--padding-inside;
+      }
+
+      &__children {
+        display: flex;
+        align-items: center;
+        margin-top: $size--spacing-02;
+        padding: $size--spacing-04;
+        gap: $size--spacing-05;
+      }
+
+      &__item {
+        display: flex;
+        align-items: center;
+        height: $size--field-large;
+        max-height: $size--field-large;
+        padding: 0 $size--spacing-04;
+        transition: background-color $transition--app-01;
+        border-radius: $component--radius-default;
+
+        &:hover {
+          background-color: $color--hover;
+        }
+
+        &-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+
+          &--actions {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: $size--spacing-03;
+          }
+        }
+
+        &-text {
+          width: 100%;
+          margin-right: $size--spacing-12;
+          margin-left: $size--spacing-05;
+
+          &--heading {
+            @mixin type--body-02;
+
+            width: 100%;
+            max-width: calc($size--field-default * 3);
+            margin: 0;
+            overflow: hidden;
+            color: $color--font-text-01;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          &--body {
+            @mixin type--label;
+
+            width: 100%;
+            max-width: $size--container-07;
+            margin: 0;
+            overflow: hidden;
+            color: $color--font-text-03;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  &--avatar.$(prefix)--skeleton {
+    padding: 0;
   }
 }

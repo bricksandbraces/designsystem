@@ -3,7 +3,7 @@ import CookieBanner from "./components/CookieBanner/CookieBanner";
 import Cookies from "./components/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
-import SnackBar from "./components/SnackBar/SnackBar";
+import SnackBar from "./components/Notification/InlineNotification";
 import AspectRatio from "./components/AspectRatio/AspectRatio";
 import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
@@ -13,14 +13,6 @@ import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
-import HoverTooltip from "./components/Tooltip/HoverTooltip";
-import ComposedContainerTooltip from "./components/Tooltip/ComposedContainerTooltip";
-import ContainerTooltipBody from "./components/Tooltip/ContainerTooltipBody";
-import ContainerTooltipHeader from "./components/Tooltip/ContainerTooltipHeader";
-import ContainerTooltipFooter from "./components/Tooltip/ContainerTooltipFooter";
-import ContainerTooltipIcon from "./components/Tooltip/ContainerTooltipIcon";
-import HoverTooltipText from "./components/Tooltip/HoverTooltipText";
-import TooltipTrigger from "./components/Tooltip/TooltipTrigger";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
@@ -46,13 +38,11 @@ import TableCell from "./components/DataTable/TableCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
 import { HeaderData, RowData } from "./components/DataTable/DataTable";
-import LanguageSwitch from "./components/LanguageSwitch/LanguageSwitch";
 import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
-import FormLabel from "./components/FormLabel/FormLabel";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
-import Skeleton from "./components/Skeleton/Skeleton";
+import Skeleton from "./components/Skeleton/SkeletonAnimatedContainer";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
 import RangeInput from "./components/RangeInput/RangeInput";
@@ -60,14 +50,6 @@ import FloatingPanel from "./components/FloatingPanel/FloatingPanel";
 import ButtonGroup from "./components/Button/ButtonGroup";
 
 export {
-  HoverTooltip,
-  ComposedContainerTooltip,
-  ContainerTooltipBody,
-  ContainerTooltipHeader,
-  ContainerTooltipFooter,
-  ContainerTooltipIcon,
-  HoverTooltipText,
-  TooltipTrigger,
   Button,
   Link,
   SnackBar,
@@ -109,11 +91,9 @@ export {
   TableRow,
   TableHeadCell,
   TableHead,
-  LanguageSwitch,
   FloatingPanel,
   RadioButton,
   RadioButtonGroup,
-  FormLabel,
   Select,
   Toggle,
   Skeleton,

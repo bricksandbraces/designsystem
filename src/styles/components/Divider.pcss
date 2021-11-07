@@ -1,38 +1,23 @@
 @import "../prefix.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--divider {
-  margin: 0;
-  border: 0;
-  opacity: 1;
-  background-color: currentColor;
-  color: inherit;
+.$(prefix) {
+  &--divider {
+    height: 0.0625rem;
+    margin: 0;
+    border: 0;
+    opacity: 100%;
 
-  &--default {
-    background-color: $divider-default;
-  }
+    &-default {
+      background-color: $color--divider-default;
+    }
 
-  &--subtle {
-    background-color: $divider-subtle;
-  }
+    &-subtle {
+      background-color: $color--divider-subtle;
+    }
 
-  &--explicit {
-    background-color: $divider-explicit;
-  }
-
-  &--thin {
-    height: 1px !important;
-  }
-
-  &--thicker {
-    height: 2px !important;
-  }
-
-  &--thick {
-    height: 4px !important;
-  }
-
-  &--margin {
-    margin: 1rem 0;
+    &-harsh {
+      background-color: $color--divider-harsh;
+    }
   }
 }

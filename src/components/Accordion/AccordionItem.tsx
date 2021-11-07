@@ -2,17 +2,17 @@ import React, { ReactNode } from "react";
 
 export type AccordionItemProps = {
   /**
-   * Accordion Children
+   * AccordionItem Children
    */
   children?: ReactNode;
 
   /**
-   * Title
+   * AccordionItem Title
    */
   title: string | ReactNode;
 
   /**
-   * Disabled Property
+   * AccordionItem Disabled
    */
   disabled?: boolean;
 };

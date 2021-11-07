@@ -3,24 +3,36 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import { AccordionItemProps } from "./AccordionItem";
 import { prefix } from "../../settings";
-import Body from "../Typography/Body";
 
 type AccordionProps = {
   /**
-   * Children
+   * Accordion Children
    */
   children?: ReactNode;
 
   /**
-   * Classnames for the parent element
+   * Accordion Size
+   */
+  size?: "large" | "default" | "small";
+
+  /**
+   * Accordion ClassName
    */
   className?: string;
 
   /**
-   * OnChange function delivering the toggled index
+   * Accordion OnChange Function delivering the toggled index
    */
   onChange?: (selectedIndex: number) => void;
+
+  /**
+   * Accordion Default Open Indices
+   */
   defaultOpenIndices?: number[];
+
+  /**
+   * Accordion Open Indices
+   */
   openIndices?: number[];
 };
 
@@ -34,6 +46,7 @@ const Accordion = ({
   children,
   className,
   onChange,
+  size = "default",
   defaultOpenIndices,
   openIndices
 }: AccordionProps) => {
@@ -76,68 +89,74 @@ const Accordion = ({
     }
   }, [openIndices]);
   return (
-    <ul className={cx(`${prefix}--accordion`, className)}>
-      {React.Children.map(children, (child, i) => {
-        if (!React.isValidElement<AccordionItemProps>(child)) {
-          return child;
-        }
-        const elementChild: React.ReactElement<AccordionItemProps> = child;
-        const { props } = elementChild;
-        const open = openIndexList.includes(i);
-        return (
-          props && (
-            <li
-              key={child.key}
-              className={cx(`${prefix}--accordion--item`, {
-                [`${prefix}--accordion--item-collapse`]:
-                  itemAnimations[i] === AnimationType.COLLAPSE && open,
-                [`${prefix}--accordion--item-expand`]:
-                  itemAnimations[i] === AnimationType.EXPAND && open,
-                [`${prefix}--accordion--item-open`]: open
-              })}
-              onAnimationEnd={() => {
-                setAnimationForItem(i, AnimationType.NONE);
-              }}
-            >
-              <button
-                disabled={props.disabled}
-                className={`${prefix}--accordion--heading`}
-                onClick={() => {
-                  if (!controlled) {
-                    if (openIndexList.includes(i)) {
-                      setAnimationForItem(i, AnimationType.COLLAPSE);
-                      setOpenIndexList(
-                        openIndexList.filter(
-                          (selectedItemIndex) => i !== selectedItemIndex
-                        )
-                      );
-                    } else {
-                      setAnimationForItem(i, AnimationType.EXPAND);
-                      setOpenIndexList([...openIndexList, i]);
-                    }
-                  }
-                  onChange?.(i);
+    <div
+      className={cx(
+        `${prefix}--accordion ${prefix}--accordion-${size} `,
+        className
+      )}
+    >
+      <ul className={cx(`${prefix}--accordion-list`)}>
+        {React.Children.map(children, (child, i) => {
+          if (!React.isValidElement<AccordionItemProps>(child)) {
+            return child;
+          }
+          const elementChild: React.ReactElement<AccordionItemProps> = child;
+          const { props } = elementChild;
+          const open = openIndexList.includes(i);
+          return (
+            props && (
+              <li
+                key={child.key}
+                className={cx(`${prefix}--accordion-list__item`, {
+                  [`${prefix}--accordion-list__item-collapse`]:
+                    itemAnimations[i] === AnimationType.COLLAPSE && open,
+                  [`${prefix}--accordion-list__item-expand`]:
+                    itemAnimations[i] === AnimationType.EXPAND && open,
+                  [`${prefix}--accordion-list__item-open`]: open
+                })}
+                onAnimationEnd={() => {
+                  setAnimationForItem(i, AnimationType.NONE);
                 }}
               >
-                <Body
-                  type="b2"
-                  className={`${prefix}--accordion--heading-title`}
+                <button
+                  disabled={props.disabled}
+                  className={`${prefix}--accordion-list__item-title`}
+                  onClick={() => {
+                    if (!controlled) {
+                      if (openIndexList.includes(i)) {
+                        setAnimationForItem(i, AnimationType.COLLAPSE);
+                        setOpenIndexList(
+                          openIndexList.filter(
+                            (selectedItemIndex) => i !== selectedItemIndex
+                          )
+                        );
+                      } else {
+                        setAnimationForItem(i, AnimationType.EXPAND);
+                        setOpenIndexList([...openIndexList, i]);
+                      }
+                    }
+                    onChange?.(i);
+                  }}
                 >
-                  {props.title}
-                </Body>
-                <IconChevronDown
-                  className={`${prefix}--accordion--heading-icon`}
-                  size={16}
-                />
-              </button>
-              <Body type="b2" className={`${prefix}--accordion--content`}>
-                {props.children}
-              </Body>
-            </li>
-          )
-        );
-      })}
-    </ul>
+                  <p
+                    className={`${prefix}--accordion-list__item-title--headline`}
+                  >
+                    {props.title}
+                  </p>
+                  <IconChevronDown
+                    className={`${prefix}--accordion-list__item-title--icon`}
+                    size={16}
+                  />
+                </button>
+                <p className={`${prefix}--accordion-list__item-content`}>
+                  {props.children}
+                </p>
+              </li>
+            )
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

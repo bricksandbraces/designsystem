@@ -1,0 +1,132 @@
+@import "../prefix.pcss";
+@import "../typography.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--switcher {
+    white-space: wrap;
+
+    &-small > div > .$(prefix)--switcher-btn {
+      min-height: $size--field-small;
+      max-height: $size--field-small;
+    }
+
+    &-default > div > .$(prefix)--switcher-btn {
+      min-height: $size--field-default;
+      max-height: $size--field-default;
+    }
+
+    &-large > div > .$(prefix)--switcher-btn {
+      min-height: $size--field-large;
+      max-height: $size--field-large;
+    }
+
+    &-btn {
+      display: inline-flex;
+      position: relative;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      /* min-width: calc($size--container-06 * 3); */
+      padding: 0 $size--spacing-05;
+      overflow: hidden;
+      transition: $transition-01;
+      border-top: 0.0625rem solid $color--border-default;
+      border-bottom: 0.0625rem solid $color--border-default;
+      background-color: $color--background;
+      color: $color--font-unselected;
+
+      &:first-child {
+        border-left: 0.0625rem solid $color--border-default;
+        border-top-left-radius: $component--radius-default;
+        border-bottom-left-radius: $component--radius-default;
+      }
+
+      &:last-child {
+        border-right: 0.0625rem solid $color--border-default;
+        border-top-right-radius: $component--radius-default;
+        border-bottom-right-radius: $component--radius-default;
+      }
+
+      &:disabled {
+        color: $color--font-disabled;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+
+      &__container {
+        display: flex;
+        width: 100%;
+      }
+
+      &__label {
+        max-width: 100%;
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &:hover {
+        background-color: $color--hover;
+      }
+
+      &:focus-visible {
+        border: 0.0625rem solid $color--focus;
+      }
+
+      &:active {
+        background-color: $color--active;
+      }
+
+      &__selected.$(prefix)--switcher-btn {
+        position: relative;
+        border-color: transparent;
+        background-color: $color--decoration;
+        color: $color--font-selected;
+        pointer-events: none;
+
+        & > .typography {
+          font-weight: 600;
+        }
+      }
+    }
+
+    &-content {
+      width: 80%;
+      color: white;
+
+      &__item {
+        transform: translate(0, -0.375rem);
+        transition: $transition--app-02;
+        opacity: 0%;
+
+        &-selected {
+          transform: translate(0, 0);
+          opacity: 100%;
+        }
+      }
+    }
+  }
+}
+
+.$(prefix)--responsivetabs {
+  &-tabs {
+    display: block;
+    @media screen and (max-width: $size--breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &-accordion {
+    display: block;
+    @media screen and (min-width: $size--breakpoint-md) {
+      display: none;
+    }
+  }
+}

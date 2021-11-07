@@ -4,29 +4,29 @@ import { prefix } from "../../settings";
 
 type CheckboxProps = {
   /**
-   * React className
+   * Checkbox ClassName
    */
   className?: string;
 
   /**
-   * Checkbox ID
+   * Checkbox Id
    */
   id: string;
 
   /**
-   * Children
+   * Checkbox Children
    */
   children?: ReactNode;
-
-  /**
-   * Checkbox Value
-   */
-  value: string;
 
   /**
    * Checkbox Label
    */
   label?: string;
+
+  /**
+   * Checkbox Read-Only
+   */
+  readOnly?: boolean;
 
   /**
    * Checked values
@@ -35,6 +35,7 @@ type CheckboxProps = {
   defaultChecked?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
+  value: string;
 };
 
 const Checkbox = ({
@@ -43,16 +44,27 @@ const Checkbox = ({
   checked,
   defaultChecked,
   label,
+  readOnly,
   className,
+  disabled,
   children,
   onChange,
   ...rest
 }: CheckboxProps) => {
   return (
-    <div className={cx(`${prefix}--checkbox`, className)}>
+    <div
+      className={cx(
+        `${prefix}--checkbox`,
+        {
+          [`${prefix}--checkbox-disabled`]: disabled,
+          [`${prefix}--checkbox-readonly`]: readOnly
+        },
+        className
+      )}
+    >
       <input
         tabIndex={0}
-        className={`${prefix}--checkbox--input`}
+        className={`${prefix}--checkbox-input`}
         type="checkbox"
         value={value}
         id={id}
@@ -61,11 +73,11 @@ const Checkbox = ({
         onChange={onChange}
         {...rest}
       />
-      <label className={`${prefix}--checkbox--label`} htmlFor={id}>
+      <label className={`${prefix}--checkbox-label`} htmlFor={id}>
         <svg
-          className={`${prefix}--checkbox--check`}
-          width="20"
-          height="20"
+          className={`${prefix}--checkbox-check`}
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
@@ -80,20 +92,20 @@ const Checkbox = ({
             width="16"
             height="16"
             rx="2"
-            className={`${prefix}--checkbox--check-box`}
+            className={`${prefix}--checkbox-check__box`}
           />
           <path
             d="M9 12l2 2l4 -4"
-            className={`${prefix}--checkbox--check-mark`}
+            className={`${prefix}--checkbox-check__mark`}
           />
         </svg>
 
         <div>
           {label && (
-            <div className={`${prefix}--checkbox--label-text`}>{label}</div>
+            <div className={`${prefix}--checkbox-label__text`}>{label}</div>
           )}
           {children && (
-            <div className={`${prefix}--checkbox--content`}>{children}</div>
+            <div className={`${prefix}--checkbox-content`}>{children}</div>
           )}
         </div>
       </label>

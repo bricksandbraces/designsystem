@@ -2,149 +2,194 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--toggle {
-  display: flex;
-  min-height: 1rem;
-  margin-bottom: 0.5rem;
-  color: $toggle-font;
+.$(prefix) {
+  &--toggle {
+    display: flex;
+    min-height: $size--container-01;
+    margin-bottom: $size--spacing-03;
+    color: $color--font-text-03;
 
-  &--label {
-    @mixin type--body-02;
+    &-label {
+      @mixin type--body-02;
 
-    display: inline-flex;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  &--input {
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    max-height: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  &--small {
-    & > label > .$(prefix)--toggle--switch {
       display: inline-flex;
-      position: relative;
-      align-items: center;
-      width: $container-02;
-      min-width: $container-02;
-      height: $container-00;
-      min-height: $container-00;
-      margin-right: $spacing-04;
-      transform: translate(2px, 2px);
-      transition: background-color $transition-01;
-      border: 1px solid transparent;
-      border-radius: 16px;
-      background-color: white;
+      cursor: pointer;
+      user-select: none;
+    }
 
-      &::before {
-        content: "";
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        transition: transform $transition-01, background-color $transition-01;
-        border-radius: 50%;
-        background-color: $warm-gray-80;
+    &-input {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      max-height: 0;
+      opacity: 0%;
+      cursor: pointer;
+    }
+
+    &-small {
+      & > label > .$(prefix)--toggle-switch {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        width: $size--container-03;
+        min-width: $size--container-03;
+        height: $size--container-01;
+        min-height: $size--container-01;
+        margin-right: $size--spacing-04;
+        transform: translate($size--spacing-01, $size--spacing-01);
+        transition: background-color $transition--app-01;
+        border: 0.0625rem solid transparent;
+        border-radius: 1rem;
+        background-color: $color--app-05;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: calc($size--container-01 - 0.125rem);
+          height: calc($size--container-01 - 0.125rem);
+          transition: transform $transition--app-01,
+            background-color $transition--app-01;
+          border-radius: 50%;
+          background-color: $color--app-04;
+        }
+
+        & + div > .$(prefix)--toggle-label__text {
+          transition: color $transition--app-01;
+        }
+
+        & > .$(prefix)--toggle-checked {
+          width: calc($size--container-01 / 2);
+          height: calc($size--container-01 / 2);
+          margin-left: $size--spacing-02;
+          transition: opacity $transition--app-01;
+          stroke-width: calc($size--container-01 / 4);
+          opacity: 0%;
+        }
       }
 
-      & > .$(prefix)--toggle--checked {
-        width: 8px;
-        height: 8px;
-        margin-left: 5px;
-        transition: opacity $transition-01;
-        stroke-width: 3px;
-        opacity: 0;
+      & > .$(prefix)--toggle-switch.$(prefix)--skeleton {
+        width: $size--container-03;
+        min-width: $size--container-03;
+        height: $size--container-01;
+        min-height: $size--container-01;
+        margin-right: $size--spacing-04;
+        border-radius: 1rem;
+      }
+    }
+
+    &-default {
+      & > label > .$(prefix)--toggle-switch {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        width: $size--container-04;
+        min-width: $size--container-04;
+        height: $size--container-02;
+        min-height: $size--container-02;
+        margin-right: $size--spacing-04;
+        transform: translate($size--spacing-01, $size--spacing-01);
+        transition: background-color $transition--app-01;
+        border: 0.0625rem solid transparent;
+        border-radius: 1rem;
+        background-color: $color--app-05;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: calc($size--container-02 - 0.125rem);
+          height: calc($size--container-02 - 0.125rem);
+          transition: transform $transition--app-01,
+            background-color $transition--app-01;
+          border-radius: 50%;
+          background-color: $color--app-04;
+        }
+
+        & + div > .$(prefix)--toggle-label__text {
+          transform: translateY(0.1875rem);
+          transition: color $transition--app-01;
+        }
+      }
+
+      & > .$(prefix)--toggle-switch.$(prefix)--skeleton {
+        width: $size--container-04;
+        min-width: $size--container-04;
+        height: $size--container-02;
+        min-height: $size--container-02;
+        margin-right: $size--spacing-04;
+        border-radius: 1rem;
       }
     }
   }
+  &--toggle.$(prefix)--skeleton-container {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: $size--container-01;
+    transform: translate(0, 0.125rem);
 
-  &--default {
-    & > label > .$(prefix)--toggle--switch {
-      display: inline-flex;
-      position: relative;
-      align-items: center;
-      width: $container-03;
-      min-width: $container-03;
-      height: $container-01;
-      min-height: $container-01;
-      margin-right: $spacing-04;
-      transform: translate(2px, 2px);
-      transition: background-color $transition-01;
-      border: 1px solid transparent;
-      border-radius: 16px;
-      background-color: white;
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        transition: transform $transition-01, background-color $transition-01;
-        border-radius: 50%;
-        background-color: $warm-gray-80;
-      }
-
-      & > .$(prefix)--toggle--checked {
-        display: none;
-        width: 8px;
-        height: 8px;
-        margin-left: 5px;
-        transition: opacity $transition-01;
-        stroke-width: 3px;
-        opacity: 0;
-      }
-
-      & + div > .$(prefix)--toggle--label-text {
-        transform: translateY(3px);
-      }
+    & > .$(prefix)--skeleton-animated {
+      margin-bottom: 0;
+      border: 0;
     }
   }
 }
 
 /* Switch */
 
-.$(prefix)--toggle input[type="checkbox"] + label > .$(prefix)--toggle--switch {
-  background-color: $toggle;
+.$(prefix)--toggle input[type="checkbox"] + label > .$(prefix)--toggle-switch {
+  background-color: $color--app-02;
 }
 
-.$(prefix)--toggle
-  input[type="checkbox"]:checked
-  + label
-  > .$(prefix)--toggle--switch {
-  background-color: $toggle-checked;
+.$(prefix)--toggle-input[type="checkbox"]:checked + label {
+  color: $color--font-text-01;
+  & > .$(prefix)--toggle-switch {
+    background-color: $color--decoration;
 
-  & > .$(prefix)--toggle--checked {
-    opacity: 1;
-  }
+    & > .$(prefix)--toggle-checked {
+      opacity: 100%;
+    }
 
-  &::before {
-    transform: translateX(16px);
-    background-color: $white;
+    &::before {
+      transform: translateX($size--spacing-05);
+      background-color: $color--app-05;
+    }
   }
 }
 
 /* Disabled */
 
-.$(prefix)--toggle--input[type="checkbox"]:disabled + label {
-  color: $toggle-disabled;
+.$(prefix)--toggle-input[type="checkbox"]:disabled + label {
+  color: $color--font-disabled;
   cursor: not-allowed;
 
-  & > .$(prefix)--toggle--switch {
-    background-color: $toggle-disabled;
+  & > .$(prefix)--toggle-switch {
+    background-color: $color--disabled;
 
     &::before {
-      background-color: $warm-gray-40;
+      background-color: $color--font-disabled;
     }
   }
 }
 
-.$(prefix)--toggle--input[type="checkbox"]:focus-visible
-  + .$(prefix)--toggle--label
+/* ReadOnly */
+
+.$(prefix)--toggle-input[type="checkbox"][readonly] + label {
+  color: $color--font-readonly;
+
+  & > .$(prefix)--toggle-switch {
+    background-color: $color--readonly;
+
+    &::before {
+      background-color: $color--font-readonly;
+    }
+  }
+}
+
+/* Focus */
+
+.$(prefix)--toggle-input[type="checkbox"]:focus-visible
+  + .$(prefix)--toggle-label
   > span {
-  box-shadow: 0 0 0 1px white;
+  box-shadow: 0 0 0 0.0625rem $color--focus;
 }

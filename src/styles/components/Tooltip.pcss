@@ -2,282 +2,80 @@
 @import "../theme.pcss";
 @import "../typography.pcss";
 
-/* Tooltip Animation */
+.$(prefix)--tooltip.tippy-box {
+  @mixin type--label;
 
-@keyframes animation-tooltip {
-  from {
-    visibility: hidden;
-    transform: translateY(2px);
-    opacity: 0;
+  border: 0.0625rem solid;
+  border-radius: $component--radius-default;
+  box-shadow: $component--shadow-default;
+
+  & > .tippy-content {
+    padding: $size--spacing-02 $size--spacing-04;
   }
-  to {
-    visibility: visibile;
-    transform: translateY(0);
-    opacity: 1;
+
+  &.$(prefix)--tooltip-container {
+    width: $size--container-08;
+
+    > .tippy-content {
+      padding: $size--spacing-04;
+
+      & > div > .$(prefix)--tooltip-container__title {
+        @mixin type--headline-06;
+
+        margin-bottom: $size--spacing-02;
+      }
+
+      & > div > .$(prefix)--tooltip-container__body {
+        @mixin type--body-02;
+      }
+    }
+  }
+
+  & > .tippy-svg-arrow {
+    & > svg > path {
+      transform: translateY(0.125rem);
+    }
+  }
+
+  &[data-theme~="bbds-dark"] {
+    border-color: #242424;
+    background-color: $color--background;
+    color: $color--font-text-01;
+
+    & > .tippy-svg-arrow {
+      & > svg > path {
+        stroke: #242424;
+        fill: $color--background;
+      }
+    }
+  }
+
+  &[data-theme~="bbds-light"] {
+    border-color: $color--app-04;
+    background-color: $color--app-05;
+    color: $color--font-text-inverse;
+
+    & > .tippy-svg-arrow {
+      & > svg > path {
+        stroke: $color--app-04;
+        fill: $color--app-05;
+      }
+    }
+  }
+
+  &[data-animation="bbds-animation"][data-state="hidden"] {
+    transform: translateY(0.25rem);
+    opacity: 0%;
   }
 }
 
-.$(prefix)--tooltip {
-  &--container {
-    @mixin type--body-02;
+.$(prefix)--tooltip-icontrigger {
+  display: inline-flex;
+  padding: 0;
+  transition: outline $transition--app-01;
+  background-color: transparent;
 
-    display: inline-flex;
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    z-index: 10;
-    flex-wrap: wrap;
-    width: $container-07;
-    max-height: $container-07;
-    padding: 12px 32px 12px 12px;
-    transform: translateY(2px);
-    animation: animation-tooltip $transition-01;
-    border: $border $tooltip-border;
-    border-radius: 2px;
-    opacity: 0;
-    background-color: $tooltip-background;
-    color: $tooltip-font;
-
-    &-footer {
-      display: inline-flex;
-      width: 100%;
-      margin-top: $spacing-04;
-    }
-
-    &-header {
-      @mixin type--body-02;
-
-      display: inline-flex;
-      width: 100%;
-      margin-bottom: $spacing-03;
-    }
-
-    &-body {
-      @mixin type--body-02;
-
-      display: inline-flex;
-      width: 100%;
-    }
-  }
-
-  &--container > .$(prefix)--tooltip--caret-container,
-  &--hover > .$(prefix)--tooltip--caret-container {
-    display: flex;
-    position: absolute;
-
-    &::after {
-      content: "";
-      position: absolute;
-      border: $border transparent;
-      background-color: $tooltip-background;
-    }
-
-    & > .$(prefix)--tooltip--caret {
-      width: 8px;
-      min-width: 8px;
-      height: 8px;
-      min-height: 8px;
-      border: $border $tooltip-border;
-      border-radius: $border-radius-2;
-      background-color: $tooltip-background;
-    }
-  }
-
-  &--container.$(prefix)--tooltip--right,
-  &--hover.$(prefix)--tooltip--right {
-    & > .$(prefix)--tooltip--caret-container {
-      top: 0;
-      left: 0;
-      align-items: center;
-      justify-content: flex-end;
-      width: 0;
-      height: 100%;
-
-      &::after {
-        width: 8px;
-        height: 10px;
-        transform: translateX(8px);
-      }
-
-      & > .$(prefix)--tooltip--caret {
-        width: 8px;
-        min-width: 8px;
-        height: 8px;
-        min-height: 8px;
-        transform: translateX(4px) rotate(45deg);
-      }
-    }
-  }
-
-  &--container.$(prefix)--tooltip--left,
-  &--hover.$(prefix)--tooltip--left {
-    & > .$(prefix)--tooltip--caret-container {
-      top: 0;
-      right: 0;
-      align-items: center;
-      justify-content: flex-end;
-      width: 0;
-      height: 100%;
-
-      &::after {
-        width: 8px;
-        height: 10px;
-      }
-
-      & > .$(prefix)--tooltip--caret {
-        width: 8px;
-        min-width: 8px;
-        height: 8px;
-        min-height: 8px;
-        transform: translateX(4px) rotate(45deg);
-      }
-    }
-  }
-
-  &--container.$(prefix)--tooltip--bottom,
-  &--hover.$(prefix)--tooltip--bottom {
-    & > .$(prefix)--tooltip--caret-container {
-      top: 0;
-      left: 0;
-      align-items: flex-end;
-      justify-content: center;
-      width: 100%;
-      height: 0;
-
-      &::after {
-        width: 10px;
-        height: 8px;
-        transform: translateY(8px);
-      }
-
-      & > .$(prefix)--tooltip--caret {
-        width: 8px;
-        min-width: 8px;
-        height: 8px;
-        min-height: 8px;
-        transform: translateY(4px) rotate(45deg);
-      }
-    }
-  }
-
-  &--container.$(prefix)--tooltip--top,
-  &--hover.$(prefix)--tooltip--top {
-    & > .$(prefix)--tooltip--caret-container {
-      bottom: 0;
-      left: 0;
-      align-items: flex-end;
-      justify-content: center;
-      width: 100%;
-      height: 0;
-
-      &::after {
-        width: 10px;
-        height: 8px;
-      }
-
-      & > .$(prefix)--tooltip--caret {
-        width: 8px;
-        min-width: 8px;
-        height: 8px;
-        min-height: 8px;
-        transform: translateY(4px) rotate(45deg);
-      }
-    }
-  }
-
-  &--btn {
-    display: inline-flex;
-    padding: 2px;
-    transition: background-color $transition-01, border-color $transition-01;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    background-color: transparent;
-    color: $white;
-
-    &:hover {
-      background-color: $warm-gray-10;
-    }
-
-    &:focus {
-      border-color: $white;
-    }
-  }
-
-  &--hover {
-    @mixin type--label;
-
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    z-index: 10;
-    flex-wrap: nowrap;
-    align-items: center;
-    width: max-content;
-    height: $container-01;
-    padding: 0 12px;
-    animation: animation-tooltip $transition-01;
-    border: $border $tooltip-border;
-    border-radius: $border-radius-2;
-    opacity: 0;
-    background-color: $tooltip-background;
-    color: $tooltip-font;
-    text-align: center;
-    white-space: nowrap;
-    user-select: none;
-
-    &.$(prefix)--tooltip--with-caret {
-      @mixin type--body-02;
-
-      height: $container-02;
-    }
-  }
-
-  &--trigger {
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    color: $tooltip-font;
-
-    & > .$(prefix)--tooltip--bottom {
-      top: var(--tooltip-container-height);
-    }
-
-    & > .$(prefix)--tooltip--top {
-      bottom: var(--tooltip-container-height);
-    }
-
-    & > .$(prefix)--tooltip--left {
-      right: calc(100% + 16px);
-    }
-
-    & > .$(prefix)--tooltip--right {
-      left: calc(100% + 16px);
-    }
-  }
-
-  &--visible {
-    &-onhover {
-      &:hover > .$(prefix)--tooltip--hover {
-        display: inline-flex;
-        visibility: visible;
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    & > .$(prefix)--tooltip--hover {
-      display: inline-flex;
-      visibility: visible;
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    & > .$(prefix)--tooltip--container {
-      display: inline-flex;
-      visibility: visible;
-      transform: translateY(0);
-      opacity: 1;
-    }
+  &:focus {
+    outline: 0.0625rem solid $color--focus;
   }
 }

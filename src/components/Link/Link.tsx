@@ -4,37 +4,42 @@ import { prefix } from "../../settings";
 
 type LinkProps = {
   /**
-   * Children that are shown.
+   * Link Children
    */
   children: ReactNode;
 
   /**
-   * Link location .
+   * Link Location
    */
   href?: string;
 
   /**
-   * Location target .
+   * Link Target
    */
   target?: string;
 
   /**
-   * Inline link .
+   * Link Inline
    */
   inline?: boolean;
 
   /**
-   * Inherit size e.g. from Typography component .
-   */
-  inheritSize?: boolean;
-
-  /**
-   * React className
+   * Link ClassName
    */
   className?: string;
 
   /**
-   * OnClick Event
+   * Link Size
+   */
+  size?: "large" | "small" | "default";
+
+  /**
+   * Link Icon
+   */
+  icon?: ReactNode;
+
+  /**
+   * Link OnClick Event
    */
   onClick?: (event: any) => void;
 };
@@ -44,7 +49,8 @@ const Link = ({
   href,
   target,
   inline,
-  inheritSize,
+  size = "default",
+  icon,
   onClick,
   className,
   ...rest
@@ -52,25 +58,24 @@ const Link = ({
   return onClick ? (
     <button
       className={cx(
-        `${prefix}--link`,
+        `${prefix}--link ${prefix}--link-${size}`,
         {
-          [`${prefix}--link--inline`]: inline,
-          [`${prefix}--link--inherit`]: inheritSize
+          [`${prefix}--link-inline`]: inline
         },
         className
       )}
       {...rest}
       onClick={onClick}
     >
-      <div className={`${prefix}--link--label`}>{children}</div>
+      <span className={`${prefix}--link-label`}>{children}</span>
+      {!inline && icon}
     </button>
   ) : (
     <a
       className={cx(
-        `${prefix}--link`,
+        `${prefix}--link ${prefix}--link-${size}`,
         {
-          [`${prefix}--link--inline`]: inline,
-          [`${prefix}--link--inherit`]: inheritSize
+          [`${prefix}--link-inline`]: inline
         },
         className
       )}
@@ -78,7 +83,8 @@ const Link = ({
       target={target}
       {...rest}
     >
-      <div className={`${prefix}--link--label`}>{children}</div>
+      <span className={`${prefix}--link-label`}>{children}</span>
+      {!inline && icon}
     </a>
   );
 };

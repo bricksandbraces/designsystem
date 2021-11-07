@@ -3,17 +3,11 @@
 
 .$(prefix)--loginform {
   &--email.$(prefix)--textinput--input {
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-bottom: 0.0625rem solid transparent;
+    border-radius: 0 2px;
   }
   &--password.$(prefix)--textinput--input {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-radius: 0 2px;
   }
 
   &--password {
@@ -21,6 +15,7 @@
       position: absolute;
       top: 11px;
       right: 40px;
+
       & > a {
         color: $warm-gray-80;
       }

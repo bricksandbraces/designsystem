@@ -18,27 +18,27 @@ import { prefix } from "../../settings";
 
 type ModalProps = {
   /**
-   * Size
+   * Modal Size
    */
   size?: "sm" | "md" | "lg" | "xlg";
 
   /**
-   * Open
+   * Modal Open
    */
   open: boolean;
 
   /**
-   * With Divider
+   * Modal WithDivider
    */
   withDivider?: boolean;
 
   /**
-   * Children
+   * Modal Children
    */
   children?: ReactNode;
 
   /**
-   * OnClose
+   * Modal OnClose
    */
   onClose?: (
     event:
@@ -48,19 +48,19 @@ type ModalProps = {
   ) => void;
 
   /**
-   * Determines whether the modal should be closed when the user clicks outside of the modal.
+   * DModal Close On OutsideClick
    */
   closeOnOutsideClick?: boolean;
 
   /**
-   * Automatically focus the close button of the modal
+   * Modal Autofocus Close Button
    */
   autoFocus?: boolean;
 };
 
 const Modal = (
   {
-    size,
+    size = "sm",
     open,
     onClose,
     closeOnOutsideClick = true,
@@ -107,8 +107,8 @@ const Modal = (
           <div
             ref={mergeRefs([modalRef, ref])}
             className={cx(`${prefix}--modal`, {
-              [`${prefix}--modal--open`]: open,
-              [`${prefix}--modal--with-divider`]: withDivider
+              [`${prefix}--modal-open`]: open,
+              [`${prefix}--modal-with-divider`]: withDivider
             })}
           >
             <OutsideClickListener
@@ -118,12 +118,9 @@ const Modal = (
               }}
             >
               <FocusLock
-                className={cx(`${prefix}--modal--container`, {
-                  [`${prefix}--modal--container-small`]: size === "sm",
-                  [`${prefix}--modal--container-medium`]: size === "md",
-                  [`${prefix}--modal--container-large`]: size === "lg",
-                  [`${prefix}--modal--container-xlarge`]: size === "xlg"
-                })}
+                className={cx(
+                  `${prefix}--modal-container ${prefix}--modal-container__${size}`
+                )}
                 disabled={!open}
               >
                 <AutoFocusInside disabled={!open || !autoFocus}>

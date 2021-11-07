@@ -1,21 +1,57 @@
-import { text, withKnobs } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CopyButton from "./CopyButton";
+import CopyButtonSkeleton from "./CopyButtonSkeleton";
 
-export default { title: "Components/CopyButton", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_CopyButton",
+  decorators: [withKnobs]
+};
+
+const sizeOptions = {
+  Large: "large",
+  Small: "small",
+  Default: "default"
+};
+
+const defaultSize = "default";
 
 export const Default = () => {
   const valueToCopy = "Lynxes are awesome";
   return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "32px",
+        color: "white"
+      }}
+    >
       <span style={{ display: "flex", alignItems: "center" }}>
         <span style={{ paddingRight: "24px" }}>{valueToCopy}</span>
         <CopyButton
-          labelCopied={text("Tooltip Label", "Copied!")}
-          label={text("Button Label", "Copy")}
+          tooltipLabelCopied={text("tooltipLabelCopied", "Copied!")}
+          tooltipLabel={text("tooltipLabel", "Copy")}
           valueToCopy={valueToCopy}
+          size={select("size", sizeOptions, defaultSize) as any}
         />
       </span>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "32px"
+      }}
+    >
+      <CopyButtonSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };

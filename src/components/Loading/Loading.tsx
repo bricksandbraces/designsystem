@@ -9,9 +9,9 @@ type LoadingProps = {
   loadingDescription: string;
 
   /**
-   * isLoading
+   * active
    */
-  isLoading?: boolean;
+  active?: boolean;
 
   /**
    * Overlay anzeigen?
@@ -37,43 +37,38 @@ type LoadingProps = {
 const Loading = ({
   size = "default",
   loadingDescription,
-  isLoading,
+  active,
   disabled,
   className,
   withOverlay
 }: LoadingProps) => {
   return (
     <>
-      {isLoading && (
+      {active && (
         <div
           className={cx(
             `${prefix}--loading`,
             {
-              [`${prefix}--loading--overlay`]: withOverlay,
-              [`${prefix}--loading--isloading`]: isLoading
+              [`${prefix}--loading-overlay`]: withOverlay,
+              [`${prefix}--loading-active`]: active
             },
             className
           )}
         >
           <div
             className={cx(
-              `${prefix}--loading--container`,
-              `${prefix}--loading--${size}`,
+              `${prefix}--loading-container`,
+              `${prefix}--loading-${size}`,
               {
-                [`${prefix}--loading--disabled`]: disabled
+                [`${prefix}--loading-disabled`]: disabled
               }
             )}
             role="status"
-            aria-live={isLoading ? "assertive" : "off"}
+            aria-live={active ? "assertive" : "off"}
           >
-            <svg className={`${prefix}--loading--svg`} viewBox="0 0 100 100">
+            <svg viewBox="0 0 100 100">
               <title>{loadingDescription}</title>
-              <circle
-                className={`${prefix}--loading--stroke`}
-                cx="50%"
-                cy="50%"
-                r="40"
-              />
+              <circle cx="50%" cy="50%" r="40" />
             </svg>
           </div>
         </div>

@@ -7,11 +7,11 @@
 
 @import "./components/LoginForm.pcss";
 @import "./components/Button.pcss";
-@import "./components/SnackBar.pcss";
+@import "./components/Notification.pcss";
 @import "./components/CookieBanner.pcss";
 @import "./components/Link.pcss";
 @import "./components/UserProfile.pcss";
-@import "./components/SideNav.pcss";
+
 @import "./components/Logo.pcss";
 @import "./components/Tooltip.pcss";
 @import "./components/CopyButton.pcss";
@@ -26,6 +26,7 @@
 @import "./components/Checkbox.pcss";
 @import "./components/CookieModal.pcss";
 @import "./components/Divider.pcss";
+@import "./components/Tile.pcss";
 @import "./components/Dropdown.pcss";
 @import "./components/TextInput.pcss";
 @import "./components/TextArea.pcss";
@@ -35,15 +36,17 @@
 @import "./components/Loading.pcss";
 @import "./components/DataTable.pcss";
 @import "./components/Search.pcss";
-@import "./components/LanguageSwitch.pcss";
 @import "./components/RadioButton.pcss";
-@import "./components/FormLabel.pcss";
+@import "./components/RadioTile.pcss";
 @import "./components/Select.pcss";
 @import "./components/Toggle.pcss";
+@import "./components/NumberInput.pcss";
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
 @import "./components/FloatingPanel.pcss";
 @import "./components/RangeInput.pcss";
+@import "./components/SideNav.pcss";
+@import "./components/Switcher.pcss";
 @import "./components/DatePicker.pcss";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -101,12 +104,13 @@ a {
 hr {
   margin: 1rem 0;
   border: 0;
-  opacity: 0.25;
+  opacity: 25%;
   background-color: currentColor;
   color: inherit;
 }
+
 hr:not([size]) {
-  height: 1px;
+  height: 0.0625rem;
 }
 
 svg {

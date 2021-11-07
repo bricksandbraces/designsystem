@@ -2,17 +2,17 @@ import React, { ReactNode } from "react";
 
 export type TabProps = {
   /**
-   * Children
+   * Tab Children
    */
   children?: ReactNode;
 
   /**
-   * Title
+   * Tab Title
    */
   title: string;
 
   /**
-   * Disabled
+   * Tab Disabled
    */
   disabled?: boolean;
 };

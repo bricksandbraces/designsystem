@@ -4,46 +4,94 @@
 @keyframes loading {
   0%,
   100% {
-    background-color: $skeleton-01;
+    transform: translateX(-100%);
+    opacity: 0%;
   }
 
   50% {
-    background-color: $skeleton-02;
+    transform: translateX(100%);
+    opacity: 100%;
   }
 }
 
-.$(prefix)--skeleton {
-  width: 128px;
-  animation: loading $transition-04 infinite;
-  border-radius: 2px;
+.$(prefix) {
+  &--skeleton {
+    display: inline-flex;
+    flex-flow: initial wrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: $component--radius-default;
+    cursor: progress;
 
-  &--default {
-    height: $container-03;
-  }
+    &-container {
+      cursor: progress;
+    }
 
-  &--large {
-    height: $container-04;
-  }
+    &-animated {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      background-color: $color--skeleton-01;
 
-  &--small {
-    height: $container-02;
-  }
+      &__wiper {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        animation: loading $transition--app-04 infinite;
+        background: linear-gradient(
+          90deg,
+          $color--skeleton-01,
+          rgb($color--skeleton-02 0.25),
+          $color--skeleton-01
+        );
+      }
+    }
 
-  &--circle.$(prefix)--skeleton--small {
-    width: $container-02;
-    height: $container-02;
-    border-radius: 50%;
-  }
+    &-animated.$(prefix)--skeleton-light {
+      opacity: 50%;
+      background-color: $color--skeleton-02;
 
-  &--circle.$(prefix)--skeleton--default {
-    width: $container-03;
-    height: $container-03;
-    border-radius: 50%;
-  }
+      & > .$(prefix)--skeleton-animated__wiper {
+        background: linear-gradient(
+          90deg,
+          $color--skeleton-02,
+          rgb($color--skeleton-03 0.25),
+          $color--skeleton-02
+        );
+      }
+    }
 
-  &--circle.$(prefix)--skeleton--large {
-    width: $container-04;
-    height: $container-04;
-    border-radius: 50%;
+    &-static {
+      background-color: $color--skeleton-02;
+      color: $color--skeleton-02;
+    }
+
+    &-fullwidth {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    &-text {
+      border-radius: 0.0625rem;
+      opacity: 65%;
+      background-color: $color--skeleton-03;
+      color: $color--skeleton-03;
+
+      &__small {
+        height: calc($size--container-01 / 2);
+      }
+
+      &__default {
+        height: $size--container-01;
+      }
+
+      &__large {
+        height: $size--field-xsmall;
+      }
+    }
   }
 }

@@ -4,17 +4,17 @@ import { prefix } from "../../settings";
 
 type MarketingProps = {
   /**
-   * React children
+   * Marketing Children
    */
   children?: ReactNode;
 
   /**
-   * Type to use
+   * Marketing Type
    */
-  type?: "m1" | "m2" | "q1" | "q2";
+  type?: "marketing-01" | "marketing-02";
 
   /**
-   * Classnames
+   * Marketing ClassnName
    */
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
@@ -23,7 +23,7 @@ const Marketing = ({ children, className, type, ...rest }: MarketingProps) => {
   return (
     <p
       className={cx(
-        `${prefix}--typography ${prefix}--typography--${type}`,
+        `${prefix}--typography ${prefix}--typography-${type}`,
         className
       )}
       {...rest}

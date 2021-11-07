@@ -2,120 +2,148 @@
 @import "../../styles/theme.pcss";
 @import "../../styles/typography.pcss";
 
-.$(prefix)--select {
-  display: inline-flex;
-  flex-direction: column;
-  width: 100%;
-
-  &--input {
-    &-wrapper {
-      display: inline-flex;
-      position: relative;
-      align-items: center;
-    }
-
-    &-icon {
-      position: absolute;
-      right: $spacing-04;
-      color: $select-font;
-    }
-
-    @mixin type--body-02;
-
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: space-between;
+.$(prefix) {
+  &--select {
+    display: inline-flex;
+    flex-direction: column;
     width: 100%;
-    padding: 0 48px 0 16px;
-    overflow: hidden;
-    transition: $transition-01;
-    border: 1px solid $select-border;
-    border-radius: $border-radius-2;
-    outline: 0;
-    background-color: $select-background;
-    color: $select-font;
-    white-space: nowrap;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    max-width: $size--container-08;
 
-    &:hover {
-      background-color: $select-hover;
+    &-default {
+      height: $size--field-default;
     }
 
-    &:active {
-      background-color: $select-active;
+    &-large {
+      height: $size--field-large;
     }
 
-    &:focus-visible {
-      border-color: $select-focus;
+    &-small {
+      height: $size--field-small;
     }
 
-    &:disabled {
-      & + .$(prefix)--select--input-icon {
-        color: $select-disabled-text;
+    &-input {
+      &__wrapper {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+      }
+
+      &__icon {
+        position: absolute;
+        right: $size--spacing-05;
+        color: $color--font-text-01;
         pointer-events: none;
       }
 
-      border-color: $select-disabled-container;
-      background-color: $select-disabled-container;
-      color: $select-disabled-text;
-      cursor: not-allowed;
+      @mixin type--body-02;
+
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 $size--spacing-09 0 $size--spacing-05;
+      overflow: hidden;
+      transition: border $transition--app-01,
+        background-color $transition--app-01;
+      border: 0.0625rem solid $color--border-default;
+      border-radius: $component--radius-default;
+      outline: 0;
+      background-color: $color--background;
+      color: $color--font-text-01;
+      white-space: nowrap;
+      cursor: pointer;
+      appearance: none;
 
       &:hover {
-        background-color: $select-disabled-container;
+        background-color: $color--hover;
       }
 
       &:active {
-        background-color: $select-disabled-container;
+        background-color: $color--active;
+      }
+
+      &:focus-visible {
+        border-color: $color--focus;
+      }
+
+      &:disabled {
+        & + .$(prefix)--select-input__icon {
+          color: $color--font-disabled;
+          pointer-events: none;
+        }
+
+        border-color: transparent;
+        background-color: $color--disabled;
+        color: $color--font-disabled;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: $color--disabled;
+        }
+
+        &:active {
+          background-color: $color--disabled;
+        }
       }
     }
-  }
 
-  &--default {
-    height: $container-03;
-  }
+    &-readonly {
+      & > div > .$(prefix)--select-input {
+        &:disabled {
+          & + .$(prefix)--select-input__icon {
+            color: $color--font-readonly;
+            pointer-events: none;
+          }
 
-  &--large {
-    height: $container-04;
-  }
+          border-color: transparent;
+          background-color: $color--readonly;
+          color: $color--font-readonly;
 
-  &--small {
-    height: $container-02;
-  }
+          &:hover {
+            background-color: $color--readonly;
+          }
 
-  &--error {
-    border-color: $textinput-border-error;
-
-    &-text {
-      @mixin type--label;
-
-      display: flex;
-      align-items: center;
-      margin-top: $spacing-02;
-      color: $textinput-font-error;
-
-      & > svg {
-        margin-right: $spacing-02;
+          &:active {
+            background-color: $color--readonly;
+          }
+        }
       }
     }
-  }
 
-  &--warning {
-    border-color: $textinput-border-warning;
+    &-error {
+      & > .$(prefix)--dropdown-toggle {
+        border-color: $color--danger;
+      }
 
-    &-text {
-      @mixin type--label;
+      &__text {
+        @mixin type--label;
 
-      display: flex;
-      align-items: center;
-      margin-top: $spacing-02;
-      color: $textinput-font-warning;
+        display: flex;
+        align-items: center;
+        margin-top: $size--spacing-03;
+        color: $color--font-danger;
 
-      & > svg {
-        margin-right: $spacing-02;
+        & > svg {
+          margin-right: $size--spacing-02;
+        }
+      }
+    }
+
+    &-warning {
+      border-color: $color--warning;
+
+      &__text {
+        @mixin type--label;
+
+        display: flex;
+        align-items: center;
+        margin-top: $size--spacing-03;
+        color: $color--font-warning;
+
+        & > svg {
+          margin-right: $size--spacing-02;
+        }
       }
     }
   }

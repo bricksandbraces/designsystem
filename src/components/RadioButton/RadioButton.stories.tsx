@@ -3,8 +3,12 @@ import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
 import RadioButton from "./RadioButton";
 import RadioButtonGroup from "./RadioButtonGroup";
+import RadioButtonSkeleton from "./RadioButtonSkeleton";
 
-export default { title: "Components/RadioButton", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_RadioButton",
+  decorators: [withKnobs]
+};
 
 export const Default = () => {
   return (
@@ -13,12 +17,12 @@ export const Default = () => {
         <form>
           <RadioButtonGroup name="1" legendLabel="RadioButtons">
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               id="checkbox"
               value="value-1"
             />
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               id="checkbox-2"
               value="value-2"
             />
@@ -37,13 +41,13 @@ export const Controlled = () => {
         <form>
           <fieldset>
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               value="value-1"
               id="checkbox"
               name="1"
             />
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               value="value-2"
               id="checkbox-2"
               name="1"
@@ -66,19 +70,23 @@ export const WithChildren = () => {
         <form>
           <fieldset>
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               value="value-1"
               id="checkbox"
               name="1"
             />
             <RadioButton
-              label={text("Label", "RadioButton label")}
+              label={text("label", "RadioButton label")}
               value="value-2"
               id="checkbox-2"
-              disabled={boolean("RadioButton 2 disabled", false)}
+              readOnly={boolean("readOnly (Radio 2)", false)}
+              disabled={boolean("disabled (Radio 2)", false)}
               name="1"
             >
-              <Body type="b2" style={{ marginTop: "8px", display: "block" }}>
+              <Body
+                type="body-02"
+                style={{ marginTop: "8px", display: "block" }}
+              >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et
@@ -99,9 +107,9 @@ export const AsGroupUncontrolled = () => {
       <div style={{ width: "405px" }}>
         <form>
           <RadioButtonGroup
-            disabled={boolean("Disabled", false)}
-            legendLabel={text("Legend", "Legend Label")}
-            name={text("Name", "radio-grop-demo")}
+            disabled={boolean("disabled", false)}
+            legendLabel={text("legendLabel", "Legend Label")}
+            name={text("name", "radio-grop-demo")}
             defaultValue="coffee2"
           >
             <RadioButton id="c1" value="coffee1" label="Coffee" />
@@ -120,9 +128,9 @@ export const AsGroupControlled = () => {
       <div style={{ width: "405px" }}>
         <form>
           <RadioButtonGroup
-            disabled={boolean("Disabled", false)}
-            legendLabel={text("Legend", "Legend Label")}
-            name={text("Name", "radio-grop-demo")}
+            disabled={boolean("disabled", false)}
+            legendLabel={text("legendLabel", "Legend Label")}
+            name={text("name", "radio-grop-demo")}
             value={selectedValue}
             onChange={(newValue) => {
               setSelectedValue(newValue);
@@ -132,6 +140,24 @@ export const AsGroupControlled = () => {
             <RadioButton id="c42" value="coffee2" label="Espresso" />
           </RadioButtonGroup>
         </form>
+      </div>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div
+        style={{
+          width: "405px",
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "column"
+        }}
+      >
+        <RadioButtonSkeleton />
+        <RadioButtonSkeleton />
       </div>
     </div>
   );

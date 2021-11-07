@@ -78,9 +78,9 @@ const Footer = ({
           <a className={`${prefix}--footer--logo`} href={baseUrl}>
             <Logo
               className={`${prefix}--footer--logo-logomark`}
-              variant="white"
+              color="white"
               size="medium"
-              kind="logomark"
+              type="logomark"
             />
           </a>
           <Label className={`${prefix}--footer--logo-label`}>

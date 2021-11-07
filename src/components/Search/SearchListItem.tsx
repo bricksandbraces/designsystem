@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { IconClock } from "@tabler/icons";
+import { prefix } from "../../settings";
 
 export enum SearchListItemType {
   RESULT,
@@ -44,13 +45,13 @@ const SearchListItem = (
     <a
       ref={ref}
       className={cx(
-        "search--box-content__list-item",
+        `${prefix}--search-box__content-list-item`,
         {
-          "search--box-content__list-item--recent":
+          [`${prefix}--search-box__content-list-item--recent`]:
             type === SearchListItemType.RECENT,
-          "search--box-content__list-item--result":
+          [`${prefix}--search-box__content-list-item--result`]:
             type === SearchListItemType.RESULT,
-          "search--box-content__list-item__manual-hover": hovered
+          [`${prefix}--search-box__content-list-item--manual-hover`]: hovered
         },
         className
       )}
@@ -69,7 +70,9 @@ const SearchListItem = (
       {type === SearchListItemType.RECENT && (
         <IconClock
           size={16}
-          className="search--box-content__list-items--recent-icon"
+          className={cx(
+            `${prefix}--search-box__content-list-item--recent__icon`
+          )}
         />
       )}
       {label}
