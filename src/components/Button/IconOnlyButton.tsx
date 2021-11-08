@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import type { ForwardedRef } from "react";
 import cx from "classnames";
 import Button, { ButtonProps } from "./Button";
 import { prefix } from "../../settings";

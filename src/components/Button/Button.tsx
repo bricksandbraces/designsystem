@@ -1,4 +1,5 @@
 import React, { forwardRef, ReactNode } from "react";
+import type { ForwardedRef } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";

@@ -4,17 +4,19 @@ import React, {
   MouseEvent,
   ReactNode,
   useEffect,
+  useState,
   useRef
 } from "react";
+import type { ForwardedRef } from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
 import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
-import mergeRefs from "react-merge-refs";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { useMounted } from "../../hooks/useMounted";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
+import { setRef } from "../../helpers/refUtilities";
 
 type ModalProps = {
   /**
@@ -68,9 +70,9 @@ const Modal = (
     withDivider,
     children
   }: ModalProps,
-  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+  ref: ForwardedRef<HTMLDivElement> | null
 ) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [modalEl, setModalEl] = useState<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -91,15 +93,13 @@ const Modal = (
       }
     }
 
-    if (open && modalRef.current) {
+    if (open && modalEl) {
       window?.addEventListener("keydown", handleKeyDown, true);
       setTimeout(() => {
         // focus the given element or the closeBtn as fallback
         console.log("Applying focus logic");
         if (primaryFocus) {
-          const element = modalRef.current?.querySelector(
-            primaryFocus
-          ) as HTMLElement;
+          const element = modalEl.querySelector(primaryFocus) as HTMLElement;
           console.log("Trying to focus custom element");
           console.log(element);
           if (element) {
@@ -110,21 +110,30 @@ const Modal = (
           console.log(closeBtnRef.current);
           closeBtnRef.current?.focus();
         }
-      }, 100);
+      }, 300);
     }
 
     return () => {
       window?.removeEventListener("keydown", handleKeyDown, true);
     };
-  }, [modalRef, open]);
+  }, [modalEl, open]);
+
   const mounted = useMounted();
+
+  console.log(modalEl);
+  // console.log(mounted);
+
+  console.log("= = = = ");
 
   return (
     <div>
       {mounted &&
         ReactDOM.createPortal(
           <div
-            ref={mergeRefs([modalRef, ref])}
+            ref={(el) => {
+              setRef(el, ref);
+              setModalEl(el);
+            }}
             className={cx(`${prefix}--modal`, {
               [`${prefix}--modal-open`]: open,
               [`${prefix}--modal-with-divider`]: withDivider
@@ -146,6 +155,7 @@ const Modal = (
                   kind="ghost"
                   ref={closeBtnRef}
                   icon={<IconX />}
+                  hideTooltip
                   tooltipProps={{
                     className: `${prefix}--modal--close`,
                     tooltipContent: "Close",

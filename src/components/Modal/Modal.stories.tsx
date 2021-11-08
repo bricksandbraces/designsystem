@@ -36,7 +36,7 @@ export const DefaultControlled = () => {
         }}
         closeOnOutsideClick
         withDivider={boolean("With Divider", false)}
-        primaryFocus={""}
+        primaryFocus=".bb--modal-footer__secondary"
       >
         <ModalHeader
           headline={text("headline", "Update available")}
@@ -87,6 +87,7 @@ export const NestedControlled = () => {
           setOpen(false);
         }}
         withDivider={boolean("With Divider", false)}
+        primaryFocus=".bb--modal-footer__secondary"
       >
         <ModalHeader
           headline={text("headline1", "Behind")}
@@ -112,7 +113,7 @@ export const NestedControlled = () => {
           }}
         />
       </Modal>
-      <Modal
+      {/* <Modal
         size={select("size", options, defaultValue) as any}
         open={secondOpen}
         onClose={() => {
@@ -140,7 +141,7 @@ export const NestedControlled = () => {
             setSecondOpen(false);
           }}
         />
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
