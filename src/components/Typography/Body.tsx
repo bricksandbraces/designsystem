@@ -19,7 +19,12 @@ type BodyProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
-const Body = ({ children, className, type = "b1", ...rest }: BodyProps) => {
+const Body = ({
+  children,
+  className,
+  type = "body-01",
+  ...rest
+}: BodyProps) => {
   return (
     <p
       className={cx(

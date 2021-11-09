@@ -28,7 +28,6 @@ export const Inline = () => {
           setOpen(false);
         }}
         hideCloseButton={boolean("hideCloseButton", false)}
-        tooltipLabel="Close"
         title={text("title", "This is a title")}
         subTitle={text("subTitle", "While this is a subtitle")}
       />
@@ -47,7 +46,6 @@ export const Toast = () => {
           setOpen(false);
         }}
         hideCloseButton={boolean("hideCloseButton", false)}
-        tooltipLabel="Close"
         title={text("title", "This is a title")}
         subTitle={text("subTitle", "While this is a subtitle")}
         time={text("time", "12:23 Uhr")}
