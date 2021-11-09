@@ -35,15 +35,18 @@
           border-top-left-radius: $component--radius-default;
           border-bottom-left-radius: $component--radius-default;
         }
+
         &:last-child {
           border-top-right-radius: $component--radius-default;
           border-bottom-right-radius: $component--radius-default;
         }
       }
     }
+
     & > tbody > tr {
       &:hover {
         background-color: $color--hover;
+
         & > td {
           border-bottom: 1px solid transparent;
         }
@@ -82,6 +85,7 @@
       padding: 0 $size--spacing-05;
     }
   }
+
   &--large > div > div > table {
     & > thead > tr > th,
     & > tbody > tr > td {
