@@ -13,6 +13,7 @@ import {
   RowData,
   TableCell
 } from "../..";
+import { prefix } from "../../settings";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -47,10 +48,10 @@ export const DefaultPlainTable = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className="datatable datatable--default">
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
             <TableContainer>
               <Table>
-                <TableHead headers={defaultHeaders} withDivider>
+                <TableHead headers={defaultHeaders}>
                   <TableRow>
                     {(object("Headers", defaultHeaders) as HeaderData).map(
                       (header) => (

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import Divider from "../Divider/Divider";
 import { HeaderData } from "./DataTable";
+import { prefix } from "../../settings";
 
 type TableHeadProps = {
   /**
@@ -17,7 +17,7 @@ type TableHeadProps = {
 const TableHead = ({ children, headers }: TableHeadProps) => {
   return (
     <>
-      <thead className="datatable--head">
+      <thead className={`${prefix}--datatable-head`}>
         {children}
         <tr>
           <td colSpan={headers.length} />
