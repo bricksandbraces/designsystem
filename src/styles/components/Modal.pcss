@@ -16,7 +16,7 @@
     width: 100vw;
     height: 100vh;
     transition: opacity $transition--app-01, visibility $transition--app-01;
-    opacity: 0;
+    opacity: 0%;
     background-color: $component--overlay;
 
     &-close {
@@ -126,7 +126,7 @@
     &-open {
       visibility: visible;
       transition: opacity $transition--app-01;
-      opacity: 1;
+      opacity: 100%;
     }
 
     &-container {
@@ -196,6 +196,7 @@
 .$(prefix)--modal-with-divider > div > .$(prefix)--modal-header {
   padding-bottom: $size--spacing-05;
   border-bottom: 0.0625rem solid $color--border-default;
+
   &::after {
     display: none;
   }
@@ -229,5 +230,5 @@
 .$(prefix)--modal-open > .$(prefix)--modal-container {
   visibility: visible;
   transform: translate(0, 0);
-  opacity: 1;
+  opacity: 100%;
 }

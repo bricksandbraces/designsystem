@@ -12,7 +12,6 @@ type AspectRatioProps = {
    * Aspect Ratio Classes
    */
   ratio?: "1x1" | "2x1" | "4x3" | "16x9" | "21x9";
-  
 
   /**
    * Aspect Ratio Classnames

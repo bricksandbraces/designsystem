@@ -9,8 +9,8 @@ export type DatePickerProps = { open?: boolean } & DayPickerProps;
 const DatePicker = ({ className, open, ...rest }: DatePickerProps) => {
   return (
     <DayPicker
-      className={cx(className, `${prefix}--date-picker`, {
-        [`${prefix}--date-picker__hidden`]: !open
+      className={cx(className, `${prefix}--datepicker`, {
+        [`${prefix}--datepicker-hidden`]: !open
       })}
       {...rest}
     />
