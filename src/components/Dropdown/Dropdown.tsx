@@ -193,7 +193,7 @@ const Dropdown = ({
           [`${prefix}--dropdown-error`]: error || errorText,
           [`${prefix}--dropdown-warning`]:
             !(error || errorText) && (warning || warningText),
-          [`${prefix}--dropdown-readonly`]:readOnly
+          [`${prefix}--dropdown-readonly`]: readOnly
         },
         className
       )}
