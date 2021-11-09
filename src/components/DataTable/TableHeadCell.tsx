@@ -1,4 +1,5 @@
 import React from "react";
+import { prefix } from "../../settings";
 
 type TableHeadCellProps = {
   /**
@@ -9,8 +10,8 @@ type TableHeadCellProps = {
 
 const TableHeadCell = ({ title }: TableHeadCellProps) => {
   return (
-    <th className="datatable--head-cell" scope="col">
-      <div className="datatable--head-cell__label">{title}</div>
+    <th className={`${prefix}--datatable-head__cell`} scope="col">
+      <div className={`${prefix}--datatable-head__cell-label`}>{title}</div>
     </th>
   );
 };

@@ -1,30 +1,67 @@
 @import "../../styles/theme.pcss";
 @import "../../styles/typography.pcss";
+@import "../prefix.pcss";
 
-.datatable {
-  &--container {
-    width: 100%;
-    table-layout: fixed;
-  }
+.$(prefix) {
+  &--datatable {
+    &-container {
+      width: 100%;
+      table-layout: fixed;
+    }
 
-  &--table {
-    width: calc(100% - 8px);
-    table-layout: fixed;
-  }
+    &-table {
+      width: 100%;
+      table-layout: fixed;
+    }
 
-  & > div > div > table {
-    & > thead > tr {
-      & > th {
-        & > div > {
-          @mixin type--label;
+    & > div > div > table {
+      & > thead > tr {
+        & > th {
+          & > div > {
+            @mixin type--label;
+          }
+
+          outline: 0;
+          background-color: $color--background;
+          text-transform: uppercase;
+
+          &:hover {
+            background-color: $color--hover;
+          }
+
+          &:active {
+            background-color: $color--active;
+          }
+
+          &:first-child {
+            border-top-left-radius: $component--radius-default;
+            border-bottom-left-radius: $component--radius-default;
+          }
+
+          &:last-child {
+            border-top-right-radius: $component--radius-default;
+            border-bottom-right-radius: $component--radius-default;
+          }
         }
+      }
 
-        outline: 0;
-        background-color: $color--background;
-        text-transform: uppercase;
-
+      & > tbody > tr {
         &:hover {
           background-color: $color--hover;
+
+          & > td {
+            &:first-child {
+              border-top-left-radius: $component--radius-default;
+              border-bottom-left-radius: $component--radius-default;
+            }
+
+            &:last-child {
+              border-top-right-radius: $component--radius-default;
+              border-bottom-right-radius: $component--radius-default;
+            }
+
+            border-color: transparent;
+          }
         }
 
         &:active {
@@ -48,71 +85,63 @@
         background-color: $color--hover;
 
         & > td {
-          border-bottom: 1px solid transparent;
+          height: $size--container-02;
+          min-height: $size--container-02;
+          max-height: $size--container-02;
+          padding: 0 $size--spacing-04;
+          border-bottom: 1px solid red;
         }
       }
+    }
 
-      &:active {
-        background-color: $color--active;
-      }
-
-      & > td {
-        height: $size--container-02;
-        min-height: $size--container-02;
-        max-height: $size--container-02;
-        padding: 0 $size--spacing-04;
-        border-bottom: 1px solid $color--border-default;
+    &-small > div > div > table {
+      & > thead > tr > th,
+      & > tbody > tr > td {
+        height: $size--field-small;
+        min-height: $size--field-small;
+        max-height: $size--field-small;
+        padding: 0 $size--spacing-05;
       }
     }
-  }
 
-  &--small > div > div > table {
-    & > thead > tr > th,
-    & > tbody > tr > td {
-      height: $size--field-small;
-      min-height: $size--field-small;
-      max-height: $size--field-small;
-      padding: 0 $size--spacing-05;
+    &-default > div > div > table {
+      & > thead > tr > th,
+      & > tbody > tr > td {
+        height: $size--field-default;
+        min-height: $size--field-default;
+        max-height: $size--field-default;
+        padding: 0 $size--spacing-05;
+      }
     }
-  }
 
-  &--default > div > div > table {
-    & > thead > tr > th,
-    & > tbody > tr > td {
-      height: $size--field-default;
-      min-height: $size--field-default;
-      max-height: $size--field-default;
-      padding: 0 $size--spacing-05;
+    &-large > div > div > table {
+      & > thead > tr > th,
+      & > tbody > tr > td {
+        height: $size--field-large;
+        min-height: $size--field-large;
+        max-height: $size--field-large;
+        padding: 0 $size--spacing-05;
+      }
     }
-  }
 
-  &--large > div > div > table {
-    & > thead > tr > th,
-    & > tbody > tr > td {
-      height: $size--field-large;
-      min-height: $size--field-large;
-      max-height: $size--field-large;
-      padding: 0 $size--spacing-05;
+    &-head {
+      &__cell {
+        &-label {
+          @mixin type--label;
+
+          color: $datatable-header-label;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.08rem;
+          text-align: left;
+        }
+      }
     }
-  }
 
-  &--head {
     &-cell {
-      &__label {
-        @mixin type--label;
+      @mixin type--body-02;
 
-        color: $datatable-header-label;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.08rem;
-        text-align: left;
-      }
+      color: $datatable-row-item;
     }
-  }
-
-  &--cell {
-    @mixin type--body-02;
-
-    color: $datatable-row-item;
   }
 }

@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { prefix } from "../../settings";
 
 type TableRowProps = {
   /**
@@ -8,7 +9,7 @@ type TableRowProps = {
 };
 
 const TableRow = ({ children }: TableRowProps) => {
-  return <tr className="datatable--row">{children}</tr>;
+  return <tr className={`${prefix}--datatable-row`}>{children}</tr>;
 };
 
 export default TableRow;

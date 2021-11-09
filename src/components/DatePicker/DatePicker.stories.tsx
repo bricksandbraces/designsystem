@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { Button } from "../..";
 import { formatDate } from "../../helpers/dateUtilities";
+import { prefix } from "../../settings";
 
 import Label from "../Typography/Label";
 import DateInput from "./DateInput";
@@ -34,7 +35,7 @@ export const Uncontrolled = () => {
         defaultValue={format(defaultDate, dateFormat)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
@@ -78,7 +79,7 @@ export const Controlled = () => {
         }}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-02")}
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
@@ -103,33 +104,38 @@ export const SingleWithCalendarUncontrolled = () => {
           setOpen(false);
         }}
       >
-        <DateInput
-          label="Single with calendar"
-          defaultValue={format(defaultDate, dateFormat)}
-          dateFormat={dateFormat}
-          onDateChanged={(date) => {
-            setChosenDate(date);
-          }}
-          onFocus={() => {
-            setOpen(true);
-          }}
+        <div
+          className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
-          {(insertedDate, changeDate) => {
-            // inserted date may be invalid and is a live representation from the text
-            const selectedDay = insertedDate ?? undefined;
-            return (
-              <DatePicker
-                open={open}
-                selectedDays={selectedDay}
-                onDayClick={(newDate) => {
-                  changeDate(newDate);
-                  setOpen(false);
-                }}
-                initialMonth={selectedDay}
-              />
-            );
-          }}
-        </DateInput>
+          <DateInput
+            label="Single with calendar"
+            defaultValue={format(defaultDate, dateFormat)}
+            dateFormat={dateFormat}
+            size={select("size", sizeOptions, defaultSize) as any}
+            onDateChanged={(date) => {
+              setChosenDate(date);
+            }}
+            onFocus={() => {
+              setOpen(true);
+            }}
+          >
+            {(insertedDate, changeDate) => {
+              // inserted date may be invalid and is a live representation from the text
+              const selectedDay = insertedDate ?? undefined;
+              return (
+                <DatePicker
+                  open={open}
+                  selectedDays={selectedDay}
+                  onDayClick={(newDate) => {
+                    changeDate(newDate);
+                    setOpen(false);
+                  }}
+                  initialMonth={selectedDay}
+                />
+              );
+            }}
+          </DateInput>
+        </div>
       </OutsideClickHandler>
     </div>
   );
@@ -149,34 +155,39 @@ export const SingleWithCalendarControlled = () => {
           setOpen(false);
         }}
       >
-        <DateInput
-          label="Single with calendar"
-          value={formatDate(chosenDate, dateFormat, "")}
-          dateFormat={dateFormat}
-          onChange={() => {}}
-          onDateChanged={(date) => {
-            setChosenDate(date);
-          }}
-          onFocus={() => {
-            setOpen(true);
-          }}
+        <div
+          className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
-          {(insertedDate, changeDate) => {
-            // inserted date may be invalid and is a live representation from the text
-            const selectedDay = insertedDate ?? undefined;
-            return (
-              <DatePicker
-                open={open}
-                selectedDays={selectedDay}
-                onDayClick={(newDate) => {
-                  changeDate(newDate);
-                  setOpen(false);
-                }}
-                initialMonth={selectedDay}
-              />
-            );
-          }}
-        </DateInput>
+          <DateInput
+            label="Single with calendar"
+            value={formatDate(chosenDate, dateFormat, "")}
+            dateFormat={dateFormat}
+            onChange={() => {}}
+            size={select("size", sizeOptions, defaultSize) as any}
+            onDateChanged={(date) => {
+              setChosenDate(date);
+            }}
+            onFocus={() => {
+              setOpen(true);
+            }}
+          >
+            {(insertedDate, changeDate) => {
+              // inserted date may be invalid and is a live representation from the text
+              const selectedDay = insertedDate ?? undefined;
+              return (
+                <DatePicker
+                  open={open}
+                  selectedDays={selectedDay}
+                  onDayClick={(newDate) => {
+                    changeDate(newDate);
+                    setOpen(false);
+                  }}
+                  initialMonth={selectedDay}
+                />
+              );
+            }}
+          </DateInput>
+        </div>
       </OutsideClickHandler>
       <Button
         onClick={() => {
