@@ -1,10 +1,7 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
-import Tippy, {
-  TippyProps,
-  useSingleton,
-  UseSingletonProps
-} from "@tippyjs/react";
+import type { TippyProps, UseSingletonProps } from "@tippyjs/react";
+import Tippy, { useSingleton } from "@tippyjs/react";
 import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 import IconOnlyButton, { IconOnlyButtonProps } from "./IconOnlyButton";

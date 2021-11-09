@@ -151,15 +151,12 @@ const TextInput = (
           readOnly={readOnly}
           ref={mergeRefs([ref, inputRef])}
           className={cx(
-            `${prefix}--textinput--input`,
+            `${prefix}--textinput-input`,
             {
-              [`${prefix}--textinput--large`]: size === "large" && !fluid,
-              [`${prefix}--textinput--default`]:
-                (size === "default" && !fluid) || undefined,
-              [`${prefix}--textinput--small`]: size === "small" && !fluid,
-              [`${prefix}--textinput--error`]:
+              [`${prefix}--textinput-${size}`]: !fluid,
+              [`${prefix}--textinput-error`]:
                 (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput--warning`]:
+              [`${prefix}--textinput-warning`]:
                 !(error || errorText) && (warning || warningText)
             },
             className

@@ -23,7 +23,7 @@
       width: 0;
       height: 0;
       max-height: 0;
-      opacity: 0;
+      opacity: 0%;
       cursor: pointer;
     }
 
@@ -61,10 +61,10 @@
         & > .$(prefix)--toggle-checked {
           width: calc($size--container-01 / 2);
           height: calc($size--container-01 / 2);
-          margin-left: calc($size--spacing-02);
+          margin-left: $size--spacing-02;
           transition: opacity $transition--app-01;
           stroke-width: calc($size--container-01 / 4);
-          opacity: 0;
+          opacity: 0%;
         }
       }
 
@@ -147,7 +147,7 @@
     background-color: $color--decoration;
 
     & > .$(prefix)--toggle-checked {
-      opacity: 1;
+      opacity: 100%;
     }
 
     &::before {
