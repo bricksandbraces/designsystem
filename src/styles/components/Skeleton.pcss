@@ -17,8 +17,7 @@
 .$(prefix) {
   &--skeleton {
     display: inline-flex;
-    flex-direction: initial;
-    flex-wrap: wrap;
+    flex-flow: initial wrap;
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
@@ -46,7 +45,7 @@
         background: linear-gradient(
           90deg,
           $color--skeleton-01,
-          rgba($color--skeleton-02, 0.25),
+          rgb($color--skeleton-02 0.25),
           $color--skeleton-01
         );
       }
@@ -60,7 +59,7 @@
         background: linear-gradient(
           90deg,
           $color--skeleton-02,
-          rgba($color--skeleton-03, 0.25),
+          rgb($color--skeleton-03 0.25),
           $color--skeleton-02
         );
       }

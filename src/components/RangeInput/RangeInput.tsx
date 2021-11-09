@@ -137,12 +137,17 @@ const RangeInput = ({
             step={step}
             value={sliderValue}
             onChange={(event) => {
-              const newValue = clamp((event.target.value as any) * 1, min, max);
-              if (!controlled) {
-                setLocalValue(newValue);
+              if (event) {
+                const newValue = clamp(
+                  (event.target.value as any) * 1,
+                  min,
+                  max
+                );
+                if (!controlled) {
+                  setLocalValue(newValue);
+                }
+                onChange?.(newValue);
               }
-
-              onChange?.(newValue);
             }}
           />
         )}

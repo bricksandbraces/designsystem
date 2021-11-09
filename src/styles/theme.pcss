@@ -16,11 +16,11 @@ $color--background: $cold-gray-900;
 $color--hover: $cold-gray-800;
 $color--active: $cold-gray-700;
 $color--focus: $white;
-$color--divider-dark: rgba($black, 0.2);
-$color--divider-light: rgba($white, 0.15);
+$color--divider-dark: rgb($black 0.2);
+$color--divider-light: rgb($white 0.15);
 $color--decoration: $purple-500;
 $color--disabled: $cold-gray-900;
-$color--selected: rgba($cold-gray-800, 0.5);
+$color--selected: rgb($cold-gray-800 0.5);
 $color--unselected: transparent;
 $color--light: $cold-gray-800;
 $color--transparent: transparent;
@@ -37,15 +37,15 @@ $color--icon-harsh: $white;
 
 /* -- Border Colors -- */
 
-$color--border-subtle: rgba($white, 0.025);
-$color--border-default: rgba($white, 0.05);
-$color--border-harsh: rgba($white, 0.15);
+$color--border-subtle: rgb($white 0.025);
+$color--border-default: rgb($white 0.05);
+$color--border-harsh: rgb($white 0.15);
 
 /* -- Divider Colors -- */
 
-$color--divider-subtle: rgba($white, 0.025);
-$color--divider-default: rgba($white, 0.05);
-$color--divider-harsh: rgba($white, 0.15);
+$color--divider-subtle: rgb($white 0.025);
+$color--divider-default: rgb($white 0.05);
+$color--divider-harsh: rgb($white 0.15);
 
 /* -- Font Colors -- */
 
@@ -81,8 +81,8 @@ $color--tertiary-enabled: $white;
 $color--tertiary-hover: $cold-gray-100;
 $color--tertiary-active: $cold-gray-200;
 $color--ghost-enabled: transparent;
-$color--ghost-hover: rgba($white, 0.1);
-$color--ghost-active: rgba($white, 0.2);
+$color--ghost-hover: rgb($white 0.1);
+$color--ghost-active: rgb($white 0.2);
 $color--warning: $yellow-400;
 $color--warning-alt: $yellow-900;
 $color--warning-hover: $yellow-500;
@@ -179,6 +179,7 @@ $component--padding-inside: 0.25rem;
 
 /* -- Box Shadow -- */
 
+<<<<<<< HEAD
 $component--shadow-subtle: 0 2px 10px 0 rgba(0, 0, 0, 20%);
 $component--shadow-default: 0 4px 10px 0 rgba(0, 0, 0, 30%);
 $component--shadow-harsh: 0 6px 16px 0 rgba(0, 0, 0, 40%);
@@ -186,6 +187,15 @@ $component--shadow-harsh: 0 6px 16px 0 rgba(0, 0, 0, 40%);
 /* -- Overlay -- */
 
 $component--overlay: rgba(0, 0, 0, 60%);
+=======
+$component--shadow-subtle: 0 2px 10px 0 rgb(0 0 0 / 20%);
+$component--shadow-default: 0 4px 10px 0 rgb(0 0 0 / 30%);
+$component--shadow-harsh: 0 6px 16px 0 rgb(0 0 0 / 40%);
+
+/* -- Overlay -- */
+
+$component--overlay: rgb(0 0 0 / 60%);
+>>>>>>> fix/refactoring
 
 /* Transitions */
 
@@ -199,7 +209,7 @@ $transition--app-05: 0.75s cubic-bezier(1, 0.21, 0.71, 0.69);
 
 /* -- Keyframe Transitions -- */
 
-@keyframes accordionTransitionIn {
+@keyframes accordion-transition-in {
   0% {
     padding: 0 $size--spacing-04 $size--spacing-04 $size--spacing-04;
     opacity: 0%;
@@ -301,7 +311,11 @@ $size--breakpoint-lg: 1088px;
 $size--breakpoint-xlg: 1312px;
 $size--breakpoint-max: 1584px;
 
+<<<<<<< HEAD
 $overlay: rgba(0, 0, 0, 60%);
+=======
+$overlay: rgb(0 0 0 / 60%);
+>>>>>>> fix/refactoring
 
 $interactive-primary: $purple-40;
 $interactive-primary-hover: $purple-45;
@@ -315,9 +329,15 @@ $interactive-primary-accent: $purple-10;
 $interactive-primary-accent-hover: $purple-15;
 $interactive-primary-accent-active: $purple-20;
 
+<<<<<<< HEAD
 $interactive-ghost: rgba(255, 255, 255, 5%);
 $interactive-ghost-hover: rgba(255, 255, 255, 10%);
 $interactive-ghost-active: rgba(255, 255, 255, 15%);
+=======
+$interactive-ghost: rgb(255 255 255 / 5%);
+$interactive-ghost-hover: rgb(255 255 255 / 10%);
+$interactive-ghost-active: rgb(255 255 255 / 15%);
+>>>>>>> fix/refactoring
 
 $disabled-container: $cold-gray-10;
 $disabled-text: $cold-gray-20;
@@ -345,7 +365,11 @@ $info-accent-hover: $blue-15;
 $info-accent-active: $blue-20;
 
 $modal-background: $cold-gray-10;
+<<<<<<< HEAD
 $modal-overlay: rgba(0, 0, 0, 60%);
+=======
+$modal-overlay: rgb(0 0 0 / 60%);
+>>>>>>> fix/refactoring
 $modal-close: $cold-gray-50;
 $modal-headline: $cold-gray-90;
 $modal-subheadline: $cold-gray-70;

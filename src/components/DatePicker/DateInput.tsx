@@ -5,7 +5,6 @@ import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
-import { prefix } from "../../settings";
 
 export type DateInputProps = {
   /**

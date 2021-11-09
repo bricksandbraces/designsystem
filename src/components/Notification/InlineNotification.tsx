@@ -39,6 +39,11 @@ type InlineNotificationProps = {
   open: boolean;
 
   /**
+   * InlineNotification Tooltip label for the close button h
+   */
+  closeTooltipLabel: string;
+
+  /**
    * InlineNotification OnClose Function
    */
   onClose?: (event: any) => void;
@@ -50,6 +55,7 @@ const InlineNotification = ({
   type,
   open,
   hideCloseButton,
+  closeTooltipLabel,
   onClose
 }: InlineNotificationProps) => {
   return (
@@ -111,6 +117,7 @@ const InlineNotification = ({
           kind="ghost"
           size="small"
           className={`${prefix}--notification-close`}
+          tooltipProps={{ tooltipContent: closeTooltipLabel }}
           onClick={onClose}
           hideTooltip
           icon={<IconX />}
