@@ -6,6 +6,7 @@
   &--rangeinput {
     display: inline-flex;
     flex-direction: column;
+
     &-container {
       display: inline-flex;
       flex-direction: row;
@@ -16,17 +17,18 @@
         margin-right: $size--spacing-05;
 
         & > div > .$(prefix)--numberinput-input {
-          -moz-appearance: textfield;
+          appearance: textfield;
           text-align: center;
 
           &::-webkit-outer-spin-button,
           &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
+            appearance: none;
             margin: 0;
           }
         }
       }
     }
+
     &-slider {
       &.rc-slider {
         & > .rc-slider-rail {
@@ -118,6 +120,7 @@
       & > div > div > .$(prefix)--rangeinput-slider {
         &.rc-slider-disabled {
           background-color: $color--transparent;
+
           & > .rc-slider-rail {
             background-color: $color--disabled;
           }
@@ -155,6 +158,7 @@
 
           &:hover {
             pointer-events: none;
+
             & > .rc-slider-handle {
               width: 0.5rem;
               height: 0.5rem;
@@ -176,13 +180,14 @@
       & > div > div > .$(prefix)--rangeinput-slider {
         &.rc-slider-disabled {
           background-color: $color--transparent;
+
           & > .rc-slider-rail {
             background-color: $color--background;
           }
 
           & > .rc-slider-handle {
             display: none;
-            opacity: 0;
+            opacity: 0%;
           }
 
           & > .rc-slider-track {

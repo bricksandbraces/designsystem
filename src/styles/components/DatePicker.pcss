@@ -1,13 +1,208 @@
 @import "../prefix.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--date-picker {
-  position: absolute;
-  z-index: 1000;
-  border: $border $focus;
-  background: black;
-  &__hidden {
-    visibility: hidden;
-    opacity: 0;
+.$(prefix) {
+  &--datepicker {
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    width: $size--container-08;
+    transform: translateY(0);
+    transition: opacity $transition--app-01, transform $transition--app-01,
+      visibility $transition--app-01;
+    border: 0.0625rem solid $color--border-default;
+    border-radius: $component--radius-default;
+    background: $color--background;
+    box-shadow: $component--shadow-default;
+
+    &-hidden {
+      visibility: hidden;
+      transform: translateY(calc($size--spacing-03 * -1));
+      opacity: 0%;
+    }
+
+    &-container {
+      position: relative;
+    }
+
+    &-default > .$(prefix)--datepicker {
+      top: calc(2.375rem + $size--field-default);
+    }
+
+    &-small > .$(prefix)--datepicker {
+      top: calc(2.375rem + $size--field-small);
+    }
+
+    &-large > .$(prefix)--datepicker {
+      top: calc(2.375rem + $size--field-large);
+    }
+
+    &.DayPicker:not(.DayPicker--interactionDisabled)
+      .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
+      &:hover {
+        background-color: $color--hover;
+      }
+
+      &:active {
+        background-color: $color--active;
+      }
+    }
+
+    & > .DayPicker-wrapper {
+      padding-bottom: 0;
+      transition: border-color $transition--app-01;
+      border: 0.0625rem solid transparent;
+      border-radius: $component--radius-default;
+
+      &:focus-visible {
+        border-color: $color--focus;
+        outline: 0;
+      }
+
+      & > .DayPicker-NavBar {
+        display: inline-flex;
+        position: absolute;
+        right: 0;
+        margin: $size--spacing-03;
+        margin-top: 0.65rem;
+        gap: $size--spacing-02;
+
+        & > .DayPicker-NavButton {
+          position: unset;
+          z-index: 1;
+          right: 0;
+          width: $size--container-03;
+          height: $size--container-03;
+          margin-top: 0;
+          margin-right: 0;
+          transition: background-color $transition--app-01,
+            border-color $transition--app-01;
+          border: 0.0625rem solid transparent;
+          border-radius: $component--radius-default;
+          background-size: 50%;
+
+          &:hover {
+            opacity: unset;
+            background-color: $color--hover;
+          }
+
+          &:focus-visible {
+            border-color: $color--focus;
+            outline: 0;
+          }
+
+          &.DayPicker-NavButton--prev {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIGljb24tdGFibGVyIGljb24tdGFibGVyLWNoZXZyb24tbGVmdCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlPSIjZmZmIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogIDxwYXRoIHN0cm9rZT0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgogIDxwb2x5bGluZSBwb2ludHM9IjE1IDYgOSAxMiAxNSAxOCIgLz4KPC9zdmc+CgoK");
+            background-position-x: 0.425rem;
+          }
+
+          &.DayPicker-NavButton--next {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIGljb24tdGFibGVyIGljb24tdGFibGVyLWNoZXZyb24tcmlnaHQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iI2ZmZiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBzdHJva2U9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICA8cG9seWxpbmUgcG9pbnRzPSI5IDYgMTUgMTIgOSAxOCIgLz4KPC9zdmc+CgoK");
+            background-position-x: 0.5rem;
+          }
+        }
+      }
+
+      & > .DayPicker-Months {
+        & > .DayPicker-Month {
+          width: 100%;
+          margin: $size--spacing-05;
+
+          & > .DayPicker-Caption {
+            @mixin type--headline-06;
+
+            margin-bottom: $size--spacing-05;
+            padding: 0 $size--spacing-01;
+
+            & > div {
+              font-size: unset;
+              font-weight: unset;
+            }
+          }
+
+          & > .DayPicker-Weekdays {
+            display: unset;
+            margin-top: 0;
+
+            & > .DayPicker-WeekdaysRow {
+              display: flex;
+              position: relative;
+
+              &::before {
+                content: "";
+                position: absolute;
+                width: calc(100% + $size--spacing-05 * 2 - 0.125rem);
+                height: 0.0625rem;
+                transform: translateX(calc($size--spacing-05 * -1 + 0.0625rem));
+                background-color: $color--border-default;
+              }
+
+              & > .DayPicker-Weekday {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: $size--container-03;
+                height: $size--container-03;
+                margin-top: $size--spacing-03;
+                margin-bottom: $size--spacing-03;
+                padding: 0;
+                color: $color--font-text-04;
+
+                & > abbr {
+                  @mixin type--body-02;
+                }
+              }
+            }
+          }
+
+          & > .DayPicker-Body {
+            & > .DayPicker-Week {
+              display: flex;
+
+              & > .DayPicker-Day {
+                @mixin type--body-02;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: $size--container-03;
+                height: $size--container-03;
+                padding: 0;
+                transition: background-color $transition--app-01,
+                  border-color $transition--app-01;
+                border: 0.0625rem solid transparent;
+                border-radius: $component--radius-default;
+                cursor: pointer;
+
+                &:focus-visible {
+                  border-color: $color--focus;
+                  outline: 0;
+                }
+              }
+
+              &
+                > .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+                background-color: $color--decoration;
+                color: $color--font-text-01;
+              }
+
+              & > .DayPicker-Day--today {
+                color: $color--font-text-recent;
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: calc($size--container-01 / 4);
+                  height: calc($size--container-01 / 4);
+                  transform: translateY(calc($size--container-01 / 4 * 3));
+                  border-radius: 50%;
+                  background-color: currentColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

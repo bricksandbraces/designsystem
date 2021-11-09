@@ -68,6 +68,22 @@
           background-color: $color--active;
         }
 
+        &:first-child {
+          border-top-left-radius: $component--radius-default;
+          border-bottom-left-radius: $component--radius-default;
+        }
+
+        &:last-child {
+          border-top-right-radius: $component--radius-default;
+          border-bottom-right-radius: $component--radius-default;
+        }
+      }
+    }
+
+    & > tbody > tr {
+      &:hover {
+        background-color: $color--hover;
+
         & > td {
           height: $size--container-02;
           min-height: $size--container-02;

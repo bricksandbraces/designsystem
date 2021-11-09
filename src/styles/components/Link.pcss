@@ -54,7 +54,7 @@
       & > .$(prefix)--link-label {
         &::after {
           width: 100%;
-          opacity: 1;
+          opacity: 100%;
         }
       }
     }
@@ -80,7 +80,7 @@
         height: 0.0625rem;
         transition: width $transition--app-02, opacity $transition--app-02,
           background-color $transition--app-01;
-        opacity: 0;
+        opacity: 0%;
         background: currentColor;
         pointer-events: none;
       }
@@ -100,10 +100,11 @@
 
   & > .$(prefix)--link-label {
     color: $color--font-link;
+
     &::after {
       bottom: $size--spacing-01;
       width: 100%;
-      opacity: 1;
+      opacity: 100%;
       background: currentColor;
       pointer-events: none;
     }

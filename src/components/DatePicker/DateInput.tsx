@@ -5,6 +5,7 @@ import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 export type DateInputProps = {
   /**
@@ -22,6 +23,11 @@ export type DateInputProps = {
    * DateInput Value
    */
   value?: string;
+
+  /**
+   * DateInput Size
+   */
+  size?: "large" | "small" | "default";
 
   /**
    * DateInput Default Value
@@ -64,6 +70,7 @@ const DateInput = (
     defaultValue,
     value,
     label,
+    size,
     onChange,
     onDateChanged,
     ...props
@@ -113,6 +120,7 @@ const DateInput = (
         defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}
         type="text"
+        size={size}
         autoComplete="off"
         onChange={handleChange()}
         onBlur={() => handleSubmit()}
