@@ -7,14 +7,20 @@
     "__CONFIG__": true,
     "__ENV__": true
   },
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "jest"],
+  "plugins": ["@typescript-eslint", "import", "react", "jsx-a11y", "jest"],
   "extends": [
     "airbnb-typescript",
+    "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "prettier"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -27,6 +33,10 @@
     "jsx-a11y/label-has-associated-control": "off", // not working
     "react/require-default-props": "off", // not working
     "jsx-a11y/anchor-is-valid": "off", // not working good
+    "react/static-property-placement": ["warn", "static public field"],
+    "react/destructuring-assignment": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/button-has-type": "off",
     "import/no-anonymous-default-export": [
       "error",
       {
@@ -39,10 +49,6 @@
         "allowObject": true
       }
     ],
-    "react/static-property-placement": ["warn", "static public field"],
-    "react/destructuring-assignment": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/button-has-type": "off",
     "prefer-destructuring": [
       "error",
       {
