@@ -10,6 +10,7 @@
     &-group {
       display: flex;
       gap: $size--spacing-05;
+
       &__legend {
         @mixin type--label;
       }
@@ -37,7 +38,7 @@
       width: 0;
       height: 0;
       transition: opacity $transition--app-01, transform $transition--app-01;
-      opacity: 0;
+      opacity: 0%;
       color: $color--font-selected;
     }
 
@@ -47,7 +48,7 @@
       width: 0;
       height: 0;
       max-height: 0;
-      opacity: 0;
+      opacity: 0%;
       cursor: pointer;
     }
 
@@ -58,7 +59,7 @@
       & > .$(prefix)--radiotile-selected {
         width: unset;
         height: unset;
-        opacity: 1;
+        opacity: 100%;
       }
     }
 
@@ -130,6 +131,7 @@
     }
     & > .$(prefix)--skeleton-animated {
       border: 0;
+
       &:first-child {
         margin-right: $size--spacing-03;
       }
