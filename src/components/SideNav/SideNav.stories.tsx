@@ -18,7 +18,7 @@ import SideNavItem from "./SideNavItem";
 import SideNavDivider from "./SideNavDivider";
 import SideNavHeadline from "./SideNavHeadline";
 import SideNavItemExpander from "./SideNavItemExpander";
-import { Button, Logo } from "../..";
+import { Logo } from "../..";
 import IconOnlyButton from "../Button/IconOnlyButton";
 
 export default { title: "Components/SideNav", decorators: [withKnobs] };
