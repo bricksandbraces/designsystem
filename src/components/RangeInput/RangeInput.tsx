@@ -136,8 +136,8 @@ const RangeInput = ({
             readOnly={readOnly}
             step={step}
             value={sliderValue}
-            onChange={(event) => {
-              const newValue = clamp((event.target.value as any) * 1, min, max);
+            onChange={(event, { parsedValue }) => {
+              const newValue = clamp(parsedValue, min, max);
               if (!controlled) {
                 setLocalValue(newValue);
               }

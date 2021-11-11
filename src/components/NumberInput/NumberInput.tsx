@@ -1,9 +1,13 @@
-import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
+import { parseToNumber } from "../../helpers/numberUtilities";
+import mergeRefs from "react-merge-refs";
+import useControlledValue from "../../hooks/useControlledValue";
 
 type NumberInputProps = {
   /**
@@ -44,14 +48,19 @@ type NumberInputProps = {
   size?: "default" | "small" | "large";
 
   /**
-   * NumberInput DefaultValue
+   * NumberInput Autocomplete
    */
-  defaultValue?: number;
+  autoComplete?: "off" | "on";
+
+  /**
+   * NumberInput Default Value
+   */
+  defaultValue?: number | string;
 
   /**
    * NumberInput Value
    */
-  value?: number;
+  value?: number | string;
 
   /**
    * NumberInput Min
@@ -86,48 +95,107 @@ type NumberInputProps = {
   /**
    * NumberInput OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement> | undefined,
+    additionalData: { parsedValue: number; newValue: string }
+  ) => void;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
    * NumberInput Children
    */
   children?: React.ReactNode;
+
+  /**
+   * NumberInput Determines whether the inserted value is a float.
+   */
+  float?: boolean;
 };
 
 const NumberInput = (
   {
     id,
-    fluid,
     className,
     label,
     placeholder,
     value,
     defaultValue,
+    autoComplete,
     onChange,
-    readOnly,
-    min,
-    max,
+    onBlur,
+    onFocus,
+    onKeyDown,
     error,
     errorText,
-    step,
-    disabled,
     warning,
     warningText,
     size = "default",
-    children
+    children,
+    step = 1,
+    min,
+    max,
+    fluid,
+    float = false
   }: NumberInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const controlled = useControlled(value);
-  const [numberValue, setNumberValue] = useState<number | undefined>(
-    (controlled ? value : defaultValue) ?? undefined
-  );
+  /**
+   * Boosted onChange function that also provides the updated value of
+   * the target to the onChange listener
+   */
+  const boostedOnChange = onChange
+    ? (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = event.target.value;
+        const parsedValue = parseToNumber(newValue, float);
 
-  useEffect(() => {
-    if (controlled) {
-      setNumberValue(value ?? undefined);
+        onChange(event, { newValue, parsedValue });
+      }
+    : undefined;
+
+  const controlled = useControlled(value);
+  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
+    useControlledValue<string | undefined>(
+      value != null ? `${value}` : undefined,
+      defaultValue != null ? `${defaultValue}` : undefined,
+      boostedOnChange
+    );
+
+  const updateValue = (newValue: string) => {
+    if (inputRef.current) {
+      // for uncontrolled usage, the value has to be updated on dom side
+      if (!controlled) {
+        inputRef.current.value = newValue;
+        // and the cache value has to be also updated
+        setCachedUncontrolledValue(newValue);
+      }
+      const event = new Event("change", { bubbles: true });
+      inputRef.current.dispatchEvent(event);
+
+      const parsedValue = parseToNumber(newValue);
+
+      onChange?.(undefined, { newValue, parsedValue });
     }
-  }, [value]);
+  };
+
+  const correctValIntoBorders = (newValue: number | undefined) => {
+    if (newValue == null || Number.isNaN(newValue)) {
+      return;
+    }
+
+    let correctedValue: number = newValue;
+
+    if (min) {
+      correctedValue = Math.max(min, newValue);
+    }
+
+    if (max) {
+      correctedValue = Math.min(max, correctedValue);
+    }
+
+    updateValue(`${correctedValue}`);
+  };
 
   return (
     <div
@@ -143,34 +211,47 @@ const NumberInput = (
       <div className={`${prefix}--numberinput-input__container`}>
         <input
           id={id}
-          disabled={disabled}
-          readOnly={readOnly}
-          step={step}
-          ref={ref}
+          ref={mergeRefs([ref, inputRef])}
+          className={cx(
+            `${prefix}--numberinput-input`,
+            {
+              [`${prefix}--numberinput-${size}`]: !fluid,
+              [`${prefix}--numberinput-error`]:
+                (error || errorText) && !(warning || warningText),
+              [`${prefix}--numberinput-warning`]:
+                !(error || errorText) && (warning || warningText)
+            },
+            className
+          )}
+          type="number"
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          value={value}
+          defaultValue={defaultValue}
+          onChange={handleChange()}
+          onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+            const parsedValue = parseToNumber(textValue);
+            correctValIntoBorders(parsedValue);
+            onBlur?.(event);
+          }}
+          onFocus={onFocus}
+          onKeyDown={filterForKeys(
+            ["Enter"],
+            (event: React.KeyboardEvent<HTMLInputElement>) => {
+              const parsedValue = parseToNumber(textValue);
+              correctValIntoBorders(parsedValue);
+              onKeyDown?.(event);
+            }
+          )}
           min={min}
           max={max}
-          className={cx(`${prefix}--numberinput-input`, {
-            [`${prefix}--numberinput-${size}`]: !fluid,
-            [`${prefix}--numberinput-error`]:
-              (error || errorText) && !(warning || warningText),
-            [`${prefix}--numberinput-warning`]:
-              !(error || errorText) && (warning || warningText)
-          })}
-          type="number"
-          placeholder={!fluid ? placeholder : ""}
-          value={numberValue}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            if (!controlled) {
-              setNumberValue(event.target.valueAsNumber);
-            }
-            onChange?.(event);
-          }}
+          step={step}
         />
         {fluid && (
           <label
             className={cx(`${prefix}--numberinput-fluid__label`, {
               [`${prefix}--numberinput-fluid__label-value`]:
-                Number.isNaN(numberValue) === false
+                textValue?.length ?? 0 > 0
             })}
           >
             {placeholder}
@@ -192,6 +273,46 @@ const NumberInput = (
           {warningText}
         </div>
       )}
+      <button
+        onClick={() => {
+          if (textValue != null) {
+            const parsedValue = parseToNumber(textValue);
+            if (Number.isNaN(parsedValue)) {
+              return;
+            }
+            let newValue = parsedValue + step;
+
+            // Max the newValue to the given max if there is any
+            if (max != null) {
+              newValue = Math.min(max, newValue);
+            }
+
+            updateValue(`${newValue}`);
+          }
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          if (textValue != null) {
+            const parsedValue = parseToNumber(textValue);
+            if (Number.isNaN(parsedValue)) {
+              return;
+            }
+            let newValue = parsedValue - step;
+
+            // Max the newValue to the given max if there is any
+            if (min != null) {
+              newValue = Math.max(min, newValue);
+            }
+
+            updateValue(`${newValue}`);
+          }
+        }}
+      >
+        -
+      </button>
     </div>
   );
 };
