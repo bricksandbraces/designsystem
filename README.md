@@ -88,7 +88,7 @@ yarn start:storybook
 
 ## Publishing and dealing with yarn berry
 
-> Disclaimer: Because we are using yarn v2 options from .yarnrc and .npmrc will be IGNORED. Please look into the [offical documentation](https://yarnpkg.com/configuration/yarnrc) for the new file structure.
+> Disclaimer: Because we are using yarn berry options from .yarnrc and .npmrc will be IGNORED. Please look into the [offical documentation](https://yarnpkg.com/configuration/yarnrc) for the new file structure.
 
 1. Insert `yarn npm login --publish` and authenticate using the npm account of **openbricksandbraces**.
 2. Make sure you've installed the dependencies and built the package `yarn && yarn build:package`.
