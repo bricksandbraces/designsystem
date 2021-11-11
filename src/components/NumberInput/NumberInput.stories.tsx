@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import Label from "../Typography/Label";
 import NumberInput from "./NumberInput";
+import NumberInputSkeleton from "./NumberInputSkeleton";
 
 export default { title: "Components/NumberInput", decorators: [withKnobs] };
 
@@ -24,7 +25,7 @@ const sizeOptions = {
 const defaultSize = "default";
 
 export const Uncontrolled = () => {
-  const defaultValue = number("Default Value", 0);
+  const defaultValue = number("defaultValue", 0);
   // this is only a monitoring value since uncontrolled input holds the value
   const [reference, setReference] = useState<number>(defaultValue);
   return (
@@ -37,11 +38,11 @@ export const Uncontrolled = () => {
           logger.log(event);
           setReference(parsedValue);
         }}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
-        placeholder={text("Placeholder", "Enter text...")}
-        autoComplete={select("Autocomplete", ["off", "on"], "off") as any}
+        placeholder={text("placeholder", "Enter text...")}
+        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         min={number("min", -50)}
         max={number("max", 50)}
         step={number("step", 1)}
@@ -59,14 +60,14 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
-        fluid={boolean("Fluid variant?", false)}
+        fluid={boolean("fluid", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        size={select("Size", sizeOptions, defaultSize) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
-        placeholder={text("Placeholder", "Enter text...")}
-        autoComplete={select("Autocomplete", ["off", "on"], "off") as any}
+        placeholder={text("placeholder", "Enter text...")}
+        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         value={textValue}
         onChange={(event, { parsedValue, newValue }) => {
           logger.log(event);
@@ -82,6 +83,14 @@ export const Controlled = () => {
         float={float}
       />
       <Label>SSoT value: {value}</Label>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <NumberInputSkeleton />
     </div>
   );
 };

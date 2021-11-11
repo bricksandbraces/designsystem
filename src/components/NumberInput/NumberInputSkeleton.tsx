@@ -3,6 +3,9 @@ import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconMinus, IconPlus } from "@tabler/icons";
 
 type NumberInputSkeletonProps = {
   /**
@@ -50,7 +53,29 @@ const NumberInputSkeleton = ({
       <SkeletonAnimatedContainer
         width={256}
         className={`${prefix}--numberinput-${size}`}
-      />
+      >
+        <IconOnlyButtonGroup
+          withDivider
+          className={`${prefix}--numberinput-spin`}
+        >
+          <IconOnlyButton
+            disabled
+            kind="ghost"
+            className={`${prefix}--numberinput-spin__button`}
+            hideTooltip
+            size={size}
+            icon={<IconMinus />}
+          />
+          <IconOnlyButton
+            disabled
+            kind="ghost"
+            className={`${prefix}--numberinput-spin__button`}
+            hideTooltip
+            size={size}
+            icon={<IconPlus />}
+          />
+        </IconOnlyButtonGroup>
+      </SkeletonAnimatedContainer>
     </SkeletonContainer>
   );
 };

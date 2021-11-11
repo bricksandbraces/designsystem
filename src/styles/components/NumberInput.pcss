@@ -209,5 +209,14 @@
         }
       }
     }
+    &.$(prefix)--skeleton
+      > .$(prefix)--skeleton
+      > .$(prefix)--button-group
+      > .$(prefix)--button-ghost {
+      border-color: transparent;
+      background-color: transparent;
+      cursor: unset;
+      pointer-events: none;
+    }
   }
 }
