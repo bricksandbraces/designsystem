@@ -1,6 +1,18 @@
-# @openbricksandbraces/designsystem
+<p align="center">
+  <a href="https://bricksandbraces.com">
+    <img alt="Bricks & Braces - Designsystem" src="https://user-images.githubusercontent.com/8998518/141280567-d9442db3-fbff-4294-80c0-fca94d2a9f20.png" style="width: 100%; height: 280px; object-fit: cover;"
+ />
+  </a>
+</p>
+<h1 align="center">
+  @openbricksandbraces/designsystem
+</h1>
 
-[![Build and Deploy to GitHub Pages](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml/badge.svg)](https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml)
+<p align="center">
+  <a href="https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml">
+    <img src="https://github.com/bricksandbraces/designsystem/actions/workflows/ghp-deployment.yml/badge.svg" alt="Build and Deploy to GitHub Pages" />
+  </a>
+</p>
 
 Awesome designsystem for the Bricks & Braces brand.
 
