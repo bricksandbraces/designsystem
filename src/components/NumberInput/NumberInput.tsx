@@ -1,6 +1,11 @@
 import React, { forwardRef } from "react";
 import cx from "classnames";
-import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import {
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconMinus,
+  IconPlus
+} from "@tabler/icons";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
@@ -8,6 +13,8 @@ import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import mergeRefs from "react-merge-refs";
 import useControlledValue from "../../hooks/useControlledValue";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
 
 type NumberInputProps = {
   /**
@@ -83,6 +90,11 @@ type NumberInputProps = {
   fluid?: boolean;
 
   /**
+   * NumberInput HideButtons
+   */
+  hideButtons?: boolean;
+
+  /**
    * NumberInput Disabled
    */
   disabled?: boolean;
@@ -133,6 +145,7 @@ const NumberInput = (
     warningText,
     size = "default",
     children,
+    hideButtons,
     step = 1,
     min,
     max,
@@ -247,6 +260,59 @@ const NumberInput = (
           max={max}
           step={step}
         />
+        {!hideButtons && (
+          <IconOnlyButtonGroup
+            withDivider
+            className={`${prefix}--numberinput-spin`}
+          >
+            <IconOnlyButton
+              kind="ghost"
+              className={`${prefix}--numberinput-spin__button`}
+              hideTooltip
+              size={size}
+              onClick={() => {
+                if (textValue != null) {
+                  const parsedValue = parseToNumber(textValue);
+                  if (Number.isNaN(parsedValue)) {
+                    return;
+                  }
+                  let newValue = parsedValue - step;
+
+                  // Max the newValue to the given max if there is any
+                  if (min != null) {
+                    newValue = Math.max(min, newValue);
+                  }
+
+                  updateValue(`${newValue}`);
+                }
+              }}
+              icon={<IconMinus />}
+            />
+            <IconOnlyButton
+              kind="ghost"
+              className={`${prefix}--numberinput-spin__button`}
+              hideTooltip
+              size={size}
+              onClick={() => {
+                if (textValue != null) {
+                  const parsedValue = parseToNumber(textValue);
+                  if (Number.isNaN(parsedValue)) {
+                    return;
+                  }
+                  let newValue = parsedValue + step;
+
+                  // Max the newValue to the given max if there is any
+                  if (max != null) {
+                    newValue = Math.min(max, newValue);
+                  }
+
+                  updateValue(`${newValue}`);
+                }
+              }}
+              icon={<IconPlus />}
+            />
+          </IconOnlyButtonGroup>
+        )}
         {fluid && (
           <label
             className={cx(`${prefix}--numberinput-fluid__label`, {
@@ -273,46 +339,6 @@ const NumberInput = (
           {warningText}
         </div>
       )}
-      <button
-        onClick={() => {
-          if (textValue != null) {
-            const parsedValue = parseToNumber(textValue);
-            if (Number.isNaN(parsedValue)) {
-              return;
-            }
-            let newValue = parsedValue + step;
-
-            // Max the newValue to the given max if there is any
-            if (max != null) {
-              newValue = Math.min(max, newValue);
-            }
-
-            updateValue(`${newValue}`);
-          }
-        }}
-      >
-        +
-      </button>
-      <button
-        onClick={() => {
-          if (textValue != null) {
-            const parsedValue = parseToNumber(textValue);
-            if (Number.isNaN(parsedValue)) {
-              return;
-            }
-            let newValue = parsedValue - step;
-
-            // Max the newValue to the given max if there is any
-            if (min != null) {
-              newValue = Math.max(min, newValue);
-            }
-
-            updateValue(`${newValue}`);
-          }
-        }}
-      >
-        -
-      </button>
     </div>
   );
 };

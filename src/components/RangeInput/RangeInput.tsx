@@ -127,6 +127,7 @@ const RangeInput = ({
       <div className={cx(`${prefix}--rangeinput-container`)}>
         {!hideInput && (
           <NumberInput
+            hideButtons
             className={cx(`${prefix}--rangeinput-numberinput`)}
             disabled={disabled}
             id={id}

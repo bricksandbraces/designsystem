@@ -5,6 +5,7 @@
 .$(prefix) {
   &--textinput {
     display: inline-flex;
+    flex-direction: column;
     flex-wrap: wrap;
     width: $size--container-08;
 
@@ -31,6 +32,11 @@
       outline: 0;
       background-color: $color--background;
       color: $color--font-text-01;
+
+      &::-webkit-credentials-auto-fill-button {
+        display: none;
+        visibility: hidden;
+      }
 
       &::placeholder {
         transition: transform $transition--app-01, opacity $transition--app-01;
@@ -104,8 +110,10 @@
         margin-right: 0.0625rem;
         margin-bottom: 0.0625rem;
         border-top-left-radius: 0;
-        border-top-right-radius: 0.0625rem;
-        border-bottom-right-radius: 0.0625rem;
+        border-top-right-radius: calc($component--radius-default - 0.0625rem);
+        border-bottom-right-radius: calc(
+          $component--radius-default - 0.0625rem
+        );
         border-bottom-left-radius: 0;
       }
 

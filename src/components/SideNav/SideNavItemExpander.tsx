@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import { IconChevronRight } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons";
 
 type SideNavItemExpanderProps = {
   /**
@@ -67,7 +67,7 @@ const SideNavItemExpander = ({
         <div className={`${prefix}--sidenav-item__container`}>
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
           <div className={`${prefix}--sidenav-item__chevron`}>
-            <IconChevronRight />
+            <IconChevronDown />
           </div>
         </div>
       </button>

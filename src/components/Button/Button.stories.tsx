@@ -106,7 +106,7 @@ export const IconOnlyGroup = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <IconOnlyButtonGroup singletonProps={{ delay: 900 }}>
+        <IconOnlyButtonGroup withDivider singletonProps={{ delay: 900 }}>
           <IconOnlyButton
             danger={boolean("danger", false)}
             kind={select("kind", options, defaultValue) as any}

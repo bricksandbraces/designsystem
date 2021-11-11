@@ -28,6 +28,12 @@ export type IconOnlyButtonGroupProps = {
   singletonConfig?: UseSingletonProps;
 
   /**
+   * IconOnlyButtonGroup Divider
+   */
+
+  withDivider?: boolean;
+
+  /**
    * IconOnlyButtonGroup ClassName
    */
   className?: string;
@@ -38,12 +44,19 @@ const IconOnlyButtonGroup = ({
   theme = "light",
   singletonProps,
   singletonConfig,
+  withDivider,
   className
 }: IconOnlyButtonGroupProps) => {
   const [source, target] = useSingleton(singletonConfig);
 
   return (
-    <div className={cx(`${prefix}--button-group`, className)}>
+    <div
+      className={cx(
+        `${prefix}--button-group`,
+        { [`${prefix}--button-group__divider`]: withDivider },
+        className
+      )}
+    >
       <Tippy
         className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
         theme={theme === "light" ? "bbds-light" : "bbds-dark"}

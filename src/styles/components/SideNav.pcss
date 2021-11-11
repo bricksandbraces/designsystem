@@ -128,10 +128,6 @@
       }
 
       &__expander {
-        &::before {
-          display: none;
-        }
-
         &-open {
           & + .$(prefix)--sidenav-item__expander-list {
             display: inline-flex;
@@ -141,7 +137,7 @@
             > .$(prefix)--sidenav-item__container
             > .$(prefix)--sidenav-item__chevron
             > svg {
-            transform: rotate(90deg);
+            transform: rotate(180deg);
           }
         }
 

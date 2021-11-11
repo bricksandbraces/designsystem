@@ -68,6 +68,18 @@
       background-color: $color--background;
       color: $color--font-text-01;
 
+      /* Turn off spin buttons in  Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      /* Turn off spin buttons in Firefox */
+      &[type="number"] {
+        appearance: textfield;
+      }
+
       &::placeholder {
         transition: transform $transition--app-01, opacity $transition--app-01;
         color: $color--font-placeholder;
@@ -115,6 +127,52 @@
         display: flex;
         position: relative;
         flex-direction: column;
+      }
+    }
+
+    &-spin {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &__button {
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+          margin-top: 0.0625rem;
+          margin-right: 0.0625rem;
+          margin-bottom: 0.0625rem;
+          border-top-left-radius: 0;
+          border-top-right-radius: calc($component--radius-default - 0.0625rem);
+          border-bottom-right-radius: calc(
+            $component--radius-default - 0.0625rem
+          );
+          border-bottom-left-radius: 0;
+
+          &:first-child {
+            margin-right: 0;
+            border-radius: 0;
+          }
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-default {
+          min-width: calc($size--container-04 - $size--spacing-01);
+          max-width: calc($size--container-04 - $size--spacing-01);
+          min-height: calc($size--container-04 - $size--spacing-01);
+          max-height: calc($size--container-04 - $size--spacing-01);
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-small {
+          min-width: calc($size--container-03 - $size--spacing-01);
+          max-width: calc($size--container-03 - $size--spacing-01);
+          min-height: calc($size--container-03 - $size--spacing-01);
+          max-height: calc($size--container-03 - $size--spacing-01);
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-large {
+          min-width: calc($size--container-05 - $size--spacing-01);
+          max-width: calc($size--container-05 - $size--spacing-01);
+          min-height: calc($size--container-05 - $size--spacing-01);
+          max-height: calc($size--container-05 - $size--spacing-01);
+        }
       }
     }
 

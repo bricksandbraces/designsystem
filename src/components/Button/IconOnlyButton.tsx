@@ -6,12 +6,12 @@ import Tooltip, { TooltipProps } from "../Tooltip/Tooltip";
 
 export type IconOnlyButtonProps = {
   /**
-   * IconOnlyButton Tooltip Props
+   * IconOnlyButton TooltipProps
    */
   tooltipProps?: TooltipProps;
 
   /**
-   * IconOnlyButton Hide Tooltip
+   * IconOnlyButton HideTooltip
    */
   hideTooltip?: boolean;
 } & ButtonProps;

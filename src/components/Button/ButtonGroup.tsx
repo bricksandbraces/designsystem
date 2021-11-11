@@ -10,7 +10,7 @@ export type ButtonGroupProps = {
   children: ReactNode;
 
   /**
-   * ButtonGroup Icon Divider
+   * ButtonGroup Divider
    */
 
   withDivider?: boolean;
