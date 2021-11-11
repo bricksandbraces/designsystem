@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { prefix } from "../../settings";
 
 type TableContainerProps = {
   /**
@@ -14,9 +15,11 @@ type TableContainerProps = {
 
 const TableContainer = ({ children, title }: TableContainerProps) => {
   return (
-    <div className="datatable--container">
-      <div className="datatable--container-header">{title}</div>
-      <div className="datatable--container-content">{children}</div>
+    <div className={`${prefix}--datatable-container`}>
+      <div className={`${prefix}--datatable-container__header`}>{title}</div>
+      <div className={`${prefix}--datatable-container__content`}>
+        {children}
+      </div>
     </div>
   );
 };

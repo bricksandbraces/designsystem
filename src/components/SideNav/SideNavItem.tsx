@@ -4,32 +4,37 @@ import { prefix } from "../../settings";
 
 type SideNavItemProps = {
   /**
-   * Href for link
+   * SideNavItem Href
    */
   href?: string;
 
   /**
-   * label for link
+   * SideNavItem Label
    */
   label?: string;
 
   /**
-   * ClassName
+   * SideNavItem ClassName
    */
   className?: string;
 
   /**
-   * icon that is shown
+   * SideNavItem Children
    */
-  renderIcon: ReactNode;
+  children?: ReactNode;
 
   /**
-   * Selected state
+   * SideNavItem Icon
+   */
+  icon: ReactNode;
+
+  /**
+   * SideNavItem Selected
    */
   selected?: boolean;
 
   /**
-   * OnClick function
+   * SideNavItem OnClick Function
    */
   onClick?: (event: any) => void;
 };
@@ -37,37 +42,40 @@ type SideNavItemProps = {
 const SideNavItem = ({
   href,
   label,
-  renderIcon,
+  icon,
   selected,
   className,
   onClick
 }: SideNavItemProps) => {
   return (
     <>
-      {href !== undefined ? (
+      {href ? (
         <a
           href={href}
           className={cx(
-            `${prefix}--sidenav--item`,
+            `${prefix}--sidenav-item`,
             {
-              [`${prefix}--sidenav--item-selected`]: selected
+              [`${prefix}--sidenav-item__selected`]: selected
             },
             className
           )}
         >
-          <div className={`${prefix}--sidenav--item-icon`}>{renderIcon}</div>
-          <div className={`${prefix}--sidenav--item-label`}>{label}</div>
+          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </a>
       ) : (
         <button
-          type="button"
           onClick={onClick}
-          className={cx(`${prefix}--sidenav--item`, {
-            [`${prefix}--sidenav--item-selected`]: selected
-          })}
+          className={cx(
+            `${prefix}--sidenav-item`,
+            {
+              [`${prefix}--sidenav-item__selected`]: selected
+            },
+            className
+          )}
         >
-          <div className={`${prefix}--sidenav--item-icon`}>{renderIcon}</div>
-          <div className={`${prefix}--sidenav--item-label`}>{label}</div>
+          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </button>
       )}
     </>

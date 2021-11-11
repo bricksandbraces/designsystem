@@ -24,6 +24,11 @@ export type DateInputProps = {
   value?: string;
 
   /**
+   * DateInput Size
+   */
+  size?: "large" | "small" | "default";
+
+  /**
    * DateInput Default Value
    */
   defaultValue?: string;
@@ -64,6 +69,7 @@ const DateInput = (
     defaultValue,
     value,
     label,
+    size,
     onChange,
     onDateChanged,
     ...props
@@ -113,6 +119,7 @@ const DateInput = (
         defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}
         type="text"
+        size={size}
         autoComplete="off"
         onChange={handleChange()}
         onBlur={() => handleSubmit()}
