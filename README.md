@@ -86,7 +86,7 @@ yarn build:storybook
 yarn start:storybook
 ```
 
-## Publishing and dealing with yarn v2
+## Publishing and dealing with yarn berry
 
 > Disclaimer: Because we are using yarn v2 options from .yarnrc and .npmrc will be IGNORED. Please look into the [offical documentation](https://yarnpkg.com/configuration/yarnrc) for the new file structure.
 
