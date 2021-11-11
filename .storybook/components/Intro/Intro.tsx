@@ -5,7 +5,12 @@ import Body from "../../../src/components/Typography/Body";
 
 const Intro = () => {
   return (
-    <div className="sb-intro--container">
+    <div
+      className="sb-intro--container"
+      style={{
+        backgroundImage: `linear-gradient(135deg,rgba(13, 13, 13, 100%),rgba(13, 13, 13, 0%)),url(/intro.png)`
+      }}
+    >
       <div className="sb-intro">
         <Logo type="logomark" size="xsmall" color="white" />
         <Headline type="h1" className="sb-intro--headline">
