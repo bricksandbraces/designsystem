@@ -12,7 +12,10 @@ import Label from "../Typography/Label";
 import NumberInput from "./NumberInput";
 import NumberInputSkeleton from "./NumberInputSkeleton";
 
-export default { title: "Components/NumberInput", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_NumberInput",
+  decorators: [withKnobs]
+};
 
 const logger = getLogger("NumberInputStory");
 
