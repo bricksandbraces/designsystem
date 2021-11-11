@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, {
   ForwardedRef,
   forwardRef,
@@ -11,10 +10,10 @@ import FocusLock from "react-focus-lock";
 import ReactDOM from "react-dom";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { useMounted } from "../../hooks/useMounted";
-// import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 import { setRef } from "../../helpers/refUtilities";
-import { Button } from "../..";
+import { IconX } from "@tabler/icons";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type ModalProps = {
   /**
@@ -93,22 +92,15 @@ const Modal = (
 
     if (open && modalEl) {
       window?.addEventListener("keydown", handleKeyDown, true);
-      setTimeout(() => {
-        // focus the given element or the closeBtn as fallback
-        console.log("Applying focus logic");
-        if (primaryFocus) {
-          const element = modalEl.querySelector(primaryFocus) as HTMLElement;
-          console.log("Trying to focus custom element");
-          console.log(element);
-          if (element) {
-            element.focus();
-          }
-        } else {
-          console.log("Trying to focus close btn");
-          console.log(closeBtnRef.current);
-          closeBtnRef.current?.focus();
+      // focus the given element or the closeBtn as fallback
+      if (primaryFocus) {
+        const element = modalEl.querySelector(primaryFocus) as HTMLElement;
+        if (element) {
+          element.focus();
         }
-      }, 300);
+      } else {
+        closeBtnRef.current?.focus();
+      }
     }
 
     return () => {
@@ -122,6 +114,7 @@ const Modal = (
       {mounted &&
         ReactDOM.createPortal(
           <div
+            aria-hidden={!open}
             ref={(el) => {
               setRef(el, ref);
               setModalEl(el);
@@ -143,18 +136,16 @@ const Modal = (
                 )}
                 disabled={!open}
               >
-                <Button
-                  title="Close X"
-                  onClick={(event: any) => onClose?.(event)}
-                />
-                {/* <IconOnlyButton
+                <IconOnlyButton
                   hideTooltip
                   kind="ghost"
+                  ref={closeBtnRef}
                   icon={<IconX />}
                   className={`${prefix}--modal-close`}
                   onClick={(event: any) => {
                     onClose?.(event);
-                  }} */}
+                  }}
+                />
                 {children}
               </FocusLock>
             </OutsideClickListener>

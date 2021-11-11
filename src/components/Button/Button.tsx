@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { ForwardedRef, forwardRef, ReactNode, useState } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
@@ -57,6 +57,11 @@ export type ButtonProps = {
   onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
 
   /**
+   * Button onBlur
+   */
+  onBlur?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
+
+  /**
    * Button type
    */
   type?: "button" | "submit" | "reset";
@@ -107,11 +112,6 @@ export type ButtonProps = {
   title?: string;
 
   /**
-   * Automatically focus the button
-   */
-  autoFocus?: boolean;
-
-  /**
    * Tab index for the button
    */
   tabIndex?: number;
@@ -131,84 +131,95 @@ const Button = (
     fluid,
     href,
     loadingDescription = "Loading",
+    onFocus,
+    onBlur,
     ...rest
   }: ButtonProps,
   ref: ForwardedRef<ButtonOrAnchor>
-) => (
-  <>
-    {href ? (
-      <a
-        href={href}
-        ref={ref as ForwardedRef<HTMLAnchorElement>}
-        className={cx(
-          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
-          {
-            [`${prefix}--button-disabled`]: disabled,
-            [`${prefix}--button-fluid`]: fluid,
-            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading,
-            [`${prefix}--button-danger`]: danger
-          },
-          className
-        )}
-        {...rest}
-      >
-        {isLoading && (
-          <Loading
-            active
-            loadingDescription={loadingDescription}
-            disabled={disabled}
-            size="inline"
-          />
-        )}
-        <div
-          className={cx(`${prefix}--button-label`, {
-            [`${prefix}--button-hidden`]: isLoading
-          })}
+) => {
+  /**
+   * To maintain a consistent focus on our controls, we have to manually listen for the focus
+   * state and can NOT use the focus-visible selector.
+   * See discussion under https://github.com/WICG/focus-visible/issues/88 .
+   */
+  const [focused, setFocused] = useState<boolean>(false);
+
+  const classes = cx(
+    `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
+    {
+      [`${prefix}--button-disabled`]: disabled,
+      [`${prefix}--button-fluid`]: fluid,
+      [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
+      [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
+      [`${prefix}--button-loading`]: isLoading,
+      [`${prefix}--button-danger`]: danger,
+      [`${prefix}--button__focus`]: focused
+    },
+    className
+  );
+
+  const loader = isLoading && (
+    <Loading
+      active
+      loadingDescription={loadingDescription}
+      disabled={disabled}
+      size="inline"
+    />
+  );
+
+  const content = (
+    <div
+      className={cx(`${prefix}--button-label`, {
+        [`${prefix}--button-hidden`]: isLoading
+      })}
+    >
+      {children ? iconPosition && icon : icon}
+      {children}
+    </div>
+  );
+
+  return (
+    <>
+      {href ? (
+        <a
+          href={href}
+          ref={ref as ForwardedRef<HTMLAnchorElement>}
+          className={classes}
+          onBlur={(event) => {
+            onBlur?.(event);
+            setFocused(false);
+          }}
+          onFocus={(event) => {
+            onFocus?.(event);
+            setFocused(true);
+          }}
+          {...rest}
         >
-          {children ? iconPosition && icon : icon}
-          {children}
-        </div>
-      </a>
-    ) : (
-      <button
-        type="button"
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        className={cx(
-          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
-          {
-            [`${prefix}--button-disabled`]: disabled,
-            [`${prefix}--button-fluid`]: fluid,
-            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading,
-            [`${prefix}--button-danger`]: danger
-          },
-          className
-        )}
-        disabled={disabled}
-        {...rest}
-      >
-        {isLoading && (
-          <Loading
-            active
-            loadingDescription={loadingDescription}
-            disabled={disabled}
-            size="inline"
-          />
-        )}
-        <div
-          className={cx(`${prefix}--button-label`, {
-            [`${prefix}--button-hidden`]: isLoading
-          })}
+          {loader}
+          {content}
+        </a>
+      ) : (
+        <button
+          type="button"
+          ref={ref as ForwardedRef<HTMLButtonElement>}
+          className={classes}
+          disabled={disabled}
+          onBlur={(event) => {
+            onBlur?.(event);
+            setFocused(false);
+          }}
+          onFocus={(event) => {
+            onFocus?.(event);
+            setFocused(true);
+          }}
+          {...rest}
         >
-          {children ? iconPosition && icon : icon}
-          {children}
-        </div>
-      </button>
-    )}
-  </>
-);
+          {loader}
+          {content}
+        </button>
+      )}
+    </>
+  );
+};
 
 export default forwardRef<ButtonOrAnchor, ButtonProps>(Button);

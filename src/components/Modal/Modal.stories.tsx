@@ -18,7 +18,7 @@ const options = {
 const defaultValue = "sm";
 
 export const DefaultControlled = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <div
       style={{
@@ -28,6 +28,14 @@ export const DefaultControlled = () => {
         color: "white"
       }}
     >
+      <Button
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen(true);
+        }}
+      >
+        Open Modal
+      </Button>
       <Modal
         size={select("size", options, defaultValue) as any}
         open={open}
