@@ -4,133 +4,135 @@
 
 /* Thin 100 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: local(hkgrotesk-thin), url(/fonts/HKGrotesk-Thin.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Thin.woff2) format("woff2");
+  src: local(hkgrotesk-thin), url("/fonts/HKGrotesk-Thin.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Thin.woff2") format("woff2");
 }
 
 /* Extra Light 200 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 200;
   font-display: swap;
   src: local(hkgrotesk-extralight),
-    url(/fonts/HKGrotesk-ExtraLight.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-ExtraLight.woff2) format("woff2");
+    url("/fonts/HKGrotesk-ExtraLight.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-ExtraLight.woff2") format("woff2");
 }
 
 /* Light 300 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local(hkgrotesk-light), url(/fonts/HKGrotesk-Light.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Light.woff2) format("woff2");
+  src: local(hkgrotesk-light),
+    url("/fonts/HKGrotesk-Light.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Light.woff2") format("woff2");
 }
 
 /* Regular 400 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: local(hkgrotesk-regular),
-    url(/fonts/HKGrotesk-Regular.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Regular.woff2) format("woff2");
+    url("/fonts/HKGrotesk-Regular.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Regular.woff2") format("woff2");
 }
 
 /* Medium 500 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: local(hkgrotesk-medium),
-    url(/fonts/HKGrotesk-Medium.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Medium.woff2) format("woff2");
+    url("/fonts/HKGrotesk-Medium.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Medium.woff2") format("woff2");
 }
 
 /* Semibold 600 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 600;
   font-display: swap;
   src: local(hkgrotesk-semibold),
-    url(/fonts/HKGrotesk-SemiBold.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-SemiBold.woff2) format("woff2");
+    url("/fonts/HKGrotesk-SemiBold.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-SemiBold.woff2") format("woff2");
 }
 
 /* Bold 700 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local(hkgrotesk-bold), url(/fonts/HKGrotesk-Bold.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Bold.woff2) format("woff2");
+  src: local(hkgrotesk-bold), url("/fonts/HKGrotesk-Bold.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Bold.woff2") format("woff2");
 }
 
 /* Extra Bold 800 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 800;
   font-display: swap;
   src: local(hkgrotesk-extrabold),
-    url(/fonts/HKGrotesk-ExtraBold.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-ExtraBold.woff2) format("woff2");
+    url("/fonts/HKGrotesk-ExtraBold.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-ExtraBold.woff2") format("woff2");
 }
 
 /* Black 900 */
 @font-face {
-  font-family: HK Grotesk;
+  font-family: "HK Grotesk";
   font-stretch: normal;
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local(hkgrotesk-black), url(/fonts/HKGrotesk-Black.woff2) format("woff2"),
-    url(/designsystem/fonts/HKGrotesk-Black.woff2) format("woff2");
+  src: local(hkgrotesk-black),
+    url("/fonts/HKGrotesk-Black.woff2") format("woff2"),
+    url("/designsystem/fonts/HKGrotesk-Black.woff2") format("woff2");
 }
 
 /* DM Mono = = = = = = = = = = = = = = = = = = = = = */
 
 /* Light 300 */
 @font-face {
-  font-family: DM Mono;
+  font-family: "DM Mono";
   font-style: normal;
   font-weight: 300;
-  src: local("dmmono-light"), url(/fonts/DMMono-Light.woff) format("woff"),
-    url(/designsystem/fonts/DMMono-Light.woff) format("woff");
+  src: local("dmmono-light"), url("/fonts/DMMono-Light.woff") format("woff"),
+    url("/designsystem/fonts/DMMono-Light.woff") format("woff");
 }
 
 /* Regular 400 */
 @font-face {
-  font-family: DM Mono;
+  font-family: "DM Mono";
   font-style: normal;
   font-weight: 400;
-  src: local("dmmono-regular"), url(/fonts/DMMono-Regular.woff) format("woff"),
-    url(/designsystem/fonts/DMMono-Regular.woff) format("woff");
+  src: local("dmmono-regular"), url("/fonts/DMMono-Regular.woff") format("woff"),
+    url("/designsystem/fonts/DMMono-Regular.woff") format("woff");
 }
 
 /* Medium 500 */
 @font-face {
-  font-family: DM Mono;
+  font-family: "DM Mono";
   font-style: normal;
   font-weight: 500;
-  src: local("dmmono-medium"), url(/fonts/DMMono-Medium.woff) format("woff"),
-    url(/designsystem/fonts/DMMono-Medium.woff) format("woff");
+  src: local("dmmono-medium"), url("/fonts/DMMono-Medium.woff") format("woff"),
+    url("/designsystem/fonts/DMMono-Medium.woff") format("woff");
 }

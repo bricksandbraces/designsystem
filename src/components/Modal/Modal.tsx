@@ -1,20 +1,20 @@
 /* eslint-disable no-console */
 import React, {
+  ForwardedRef,
   forwardRef,
-  MouseEvent,
-  ReactNode,
   useEffect,
-  useRef
+  useRef,
+  useState
 } from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
-import { IconX } from "@tabler/icons";
 import ReactDOM from "react-dom";
-import mergeRefs from "react-merge-refs";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
-import useMounted from "../../hooks/useMounted";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { useMounted } from "../../hooks/useMounted";
+// import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
+import { setRef } from "../../helpers/refUtilities";
+import { Button } from "../..";
 
 type ModalProps = {
   /**
@@ -35,7 +35,7 @@ type ModalProps = {
   /**
    * Modal Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Modal OnClose
@@ -48,14 +48,14 @@ type ModalProps = {
   ) => void;
 
   /**
-   * DModal Close On OutsideClick
+   * Modal Close On OutsideClick
    */
   closeOnOutsideClick?: boolean;
 
   /**
-   * Modal Autofocus Close Button
+   * Modal HTMLSelector that focusses the element after opening
    */
-  autoFocus?: boolean;
+  primaryFocus?: string;
 };
 
 const Modal = (
@@ -64,13 +64,14 @@ const Modal = (
     open,
     onClose,
     closeOnOutsideClick = true,
-    autoFocus = true,
+    primaryFocus,
     withDivider,
     children
   }: ModalProps,
-  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+  ref: ForwardedRef<HTMLDivElement>
 ) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [modalEl, setModalEl] = useState<HTMLDivElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -90,14 +91,30 @@ const Modal = (
       }
     }
 
-    if (open && modalRef.current) {
+    if (open && modalEl) {
       window?.addEventListener("keydown", handleKeyDown, true);
+      setTimeout(() => {
+        // focus the given element or the closeBtn as fallback
+        console.log("Applying focus logic");
+        if (primaryFocus) {
+          const element = modalEl.querySelector(primaryFocus) as HTMLElement;
+          console.log("Trying to focus custom element");
+          console.log(element);
+          if (element) {
+            element.focus();
+          }
+        } else {
+          console.log("Trying to focus close btn");
+          console.log(closeBtnRef.current);
+          closeBtnRef.current?.focus();
+        }
+      }, 300);
     }
 
     return () => {
       window?.removeEventListener("keydown", handleKeyDown, true);
     };
-  }, [modalRef, open]);
+  }, [modalEl, open]);
   const mounted = useMounted();
 
   return (
@@ -105,7 +122,10 @@ const Modal = (
       {mounted &&
         ReactDOM.createPortal(
           <div
-            ref={mergeRefs([modalRef, ref])}
+            ref={(el) => {
+              setRef(el, ref);
+              setModalEl(el);
+            }}
             className={cx(`${prefix}--modal`, {
               [`${prefix}--modal-open`]: open,
               [`${prefix}--modal-with-divider`]: withDivider
@@ -123,16 +143,18 @@ const Modal = (
                 )}
                 disabled={!open}
               >
-                <IconOnlyButton
+                <Button
+                  title="Close X"
+                  onClick={(event: any) => onClose?.(event)}
+                />
+                {/* <IconOnlyButton
                   hideTooltip
                   kind="ghost"
                   icon={<IconX />}
                   className={`${prefix}--modal-close`}
                   onClick={(event: any) => {
                     onClose?.(event);
-                  }}
-                  data-autofocus={autoFocus}
-                />
+                  }} */}
                 {children}
               </FocusLock>
             </OutsideClickListener>
