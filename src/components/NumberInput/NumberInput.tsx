@@ -139,7 +139,7 @@ const NumberInput = (
     fluid,
     float = false
   }: NumberInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   /**
    * Boosted onChange function that also provides the updated value of

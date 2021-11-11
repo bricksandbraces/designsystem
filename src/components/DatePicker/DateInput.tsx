@@ -74,7 +74,7 @@ const DateInput = (
     onDateChanged,
     ...props
   }: DateInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
   const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =

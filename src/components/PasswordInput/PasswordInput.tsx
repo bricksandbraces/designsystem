@@ -75,7 +75,7 @@ type PasswordInputProps = {
 
 const PasswordInput = (
   { size, children, ...rest }: PasswordInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const [passwordType, setPasswordType] = useState<"password" | "text">(
     "password"

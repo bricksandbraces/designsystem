@@ -9,7 +9,7 @@ type OutsideClickListenerProps = {
 
 const OutsideClickListener = (
   { children, disabled = false, onClickOutside }: OutsideClickListenerProps,
-  ref: ForwardedRef<any>
+  ref: React.ForwardedRef<any>
 ) => {
   const elementRef = useRef<HTMLElement>();
 
