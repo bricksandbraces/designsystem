@@ -26,7 +26,11 @@
         height: $size--container-06;
         padding-top: calc($size--spacing-05 * 1.25);
 
-        &:focus + .$(prefix)--numberinput-fluid__label {
+        &::placeholder {
+          opacity: 0%;
+        }
+
+        &:focus ~ .$(prefix)--numberinput-fluid__label {
           @mixin type--label;
 
           transform: translateY(-0.625rem);
@@ -35,6 +39,22 @@
 
       & > .$(prefix)--skeleton {
         height: $size--container-06;
+      }
+
+      &
+        > div
+        > .$(prefix)--button-group
+        > .$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+        min-width: $size--container-02;
+        max-width: $size--container-02;
+        min-height: $size--container-02;
+        max-height: $size--container-02;
+        margin-top: $size--spacing-03;
+        border-radius: $component--radius-default;
+
+        &:not(:first-child) {
+          margin-right: $size--spacing-03;
+        }
       }
 
       &__label {
