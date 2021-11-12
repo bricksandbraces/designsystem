@@ -17,13 +17,11 @@
     & > div > div > table {
       & > thead > tr {
         & > th {
-          & > div > {
-            @mixin type--label;
-          }
-
+          border: 0.0625rem solid $color--border-default;
+          border-right: 0;
+          border-left: 0;
           outline: 0;
           background-color: $color--background;
-          text-transform: uppercase;
 
           &:hover {
             background-color: $color--hover;
@@ -34,106 +32,61 @@
           }
 
           &:first-child {
+            border-left: 0.0625rem solid $color--border-default;
             border-top-left-radius: $component--radius-default;
             border-bottom-left-radius: $component--radius-default;
           }
 
           &:last-child {
+            border-right: 0.0625rem solid $color--border-default;
             border-top-right-radius: $component--radius-default;
             border-bottom-right-radius: $component--radius-default;
           }
         }
       }
-
-      & > tbody > tr {
-        &:hover {
-          background-color: $color--hover;
-
-          & > td {
-            &:first-child {
-              border-top-left-radius: $component--radius-default;
-              border-bottom-left-radius: $component--radius-default;
-            }
-
-            &:last-child {
-              border-top-right-radius: $component--radius-default;
-              border-bottom-right-radius: $component--radius-default;
-            }
-
-            border-color: transparent;
-          }
-        }
-
-        &:active {
-          background-color: $color--active;
-        }
-
-        &:first-child {
-          border-top-left-radius: $component--radius-default;
-          border-bottom-left-radius: $component--radius-default;
-        }
-
-        &:last-child {
-          border-top-right-radius: $component--radius-default;
-          border-bottom-right-radius: $component--radius-default;
-        }
-      }
     }
 
-    & > tbody > tr {
-      &:hover {
-        background-color: $color--hover;
-
-        & > td {
-          height: $size--container-02;
-          min-height: $size--container-02;
-          max-height: $size--container-02;
-          padding: 0 $size--spacing-04;
-          border-bottom: 1px solid red;
-        }
-      }
+    & > div > div > table > tbody > tr > td {
+      border-bottom: 0.0625rem solid $color--border-default;
     }
 
     &-small > div > div > table {
       & > thead > tr > th,
       & > tbody > tr > td {
-        height: $size--field-small;
-        min-height: $size--field-small;
-        max-height: $size--field-small;
-        padding: 0 $size--spacing-05;
+        height: calc($size--field-small + $component--padding-inside * 2);
+        padding: $size--spacing-04 $size--spacing-05;
       }
     }
 
     &-default > div > div > table {
       & > thead > tr > th,
       & > tbody > tr > td {
-        height: $size--field-default;
-        min-height: $size--field-default;
-        max-height: $size--field-default;
-        padding: 0 $size--spacing-05;
+        height: calc($size--field-default + $component--padding-inside * 2);
+        padding: $size--spacing-04 $size--spacing-05;
       }
     }
 
     &-large > div > div > table {
       & > thead > tr > th,
       & > tbody > tr > td {
-        height: $size--field-large;
-        min-height: $size--field-large;
-        max-height: $size--field-large;
-        padding: 0 $size--spacing-05;
+        height: calc($size--field-large + $component--padding-inside * 2);
+        padding: $size--spacing-04 $size--spacing-05;
       }
     }
 
     &-head {
       &__cell {
+        overflow: hidden;
+
         &-label {
           @mixin type--label;
 
-          color: $datatable-header-label;
-          font-size: 10px;
+          overflow: hidden;
+          color: $color--font-text-02;
           font-weight: 600;
-          letter-spacing: 0.08rem;
           text-align: left;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }
@@ -141,7 +94,7 @@
     &-cell {
       @mixin type--body-02;
 
-      color: $datatable-row-item;
+      color: $color--font-text-01;
     }
   }
 }

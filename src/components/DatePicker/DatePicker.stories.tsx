@@ -11,7 +11,10 @@ import Label from "../Typography/Label";
 import DateInput from "./DateInput";
 import DatePicker from "./DatePicker";
 
-export default { title: "Components/DatePicker", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_DatePicker",
+  decorators: [withKnobs]
+};
 
 const logger = getLogger("DatePickerStory");
 
