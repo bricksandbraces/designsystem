@@ -1,4 +1,4 @@
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import {
   IconSmartHome,
@@ -29,6 +29,7 @@ export const Default = () => {
       <SideNav
         basePath="#"
         logo={<Logo type="logotype" color="white" size="xsmall" />}
+        open={boolean("open", false)}
       >
         <SideNavItem
           href="#"
@@ -64,6 +65,7 @@ export const WithAction = () => {
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
+        open={boolean("open", false)}
         logo={<Logo type="logotype" color="white" size="xsmall" />}
         action={
           <IconOnlyButton
@@ -108,6 +110,7 @@ export const WithLogoImg = () => {
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
+        open={boolean("open", false)}
         logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hamburg-logo.svg/2000px-Hamburg-logo.svg.png"
         action={<IconOnlyButton hideTooltip size="small" icon={<IconPlus />} />}
       >

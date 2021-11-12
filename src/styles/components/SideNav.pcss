@@ -19,6 +19,7 @@
       $component--padding-inside;
     overflow-x: hidden;
     overflow-y: scroll;
+    transition: transform $transition--app-01;
     border-right: 0.0625rem solid $color--border-default;
     background-color: $color--background;
     gap: $size--spacing-02;
@@ -215,6 +216,37 @@
 
         & > .$(prefix)--toggle-label > .$(prefix)--toggle-switch {
           margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix) {
+    &--sidenav {
+      transform: translateX(calc($size--container-08 * -1));
+
+      &-overlay {
+        visibility: hidden;
+        position: fixed;
+        z-index: 9000;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transition: visibility $transition--app-01, opacity $transition--app-01;
+        opacity: 0%;
+        background-color: $component--overlay;
+      }
+
+      &-open {
+        transform: unset;
+        box-shadow: $component--shadow-default;
+
+        & + .$(prefix)--sidenav-overlay {
+          visibility: visible;
+          opacity: 100%;
         }
       }
     }

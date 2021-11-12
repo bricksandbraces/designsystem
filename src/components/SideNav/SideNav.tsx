@@ -14,6 +14,11 @@ type SideNavProps = {
   action?: ReactNode;
 
   /**
+   * SideNav Open
+   */
+  open?: boolean;
+
+  /**
    * SideNav Logo
    */
   logo: ReactNode | SVGElement | string;
@@ -24,17 +29,28 @@ type SideNavProps = {
   basePath: string;
 };
 
-const SideNav = ({ action, logo, children, basePath }: SideNavProps) => {
+const SideNav = ({ open, action, logo, children, basePath }: SideNavProps) => {
   return (
-    <div className={cx(`${prefix}--sidenav`)}>
-      <div className={cx(`${prefix}--sidenav-head`)}>
-        <a href={basePath} className={cx(`${prefix}--sidenav-logo`)}>
-          {typeof logo === "string" ? <img alt="Logo" src={`${logo}`} /> : logo}
-        </a>
-        {action}
+    <>
+      <div
+        className={cx(`${prefix}--sidenav`, {
+          [`${prefix}--sidenav-open`]: open
+        })}
+      >
+        <div className={cx(`${prefix}--sidenav-head`)}>
+          <a href={basePath} className={cx(`${prefix}--sidenav-logo`)}>
+            {typeof logo === "string" ? (
+              <img alt="Logo" src={`${logo}`} />
+            ) : (
+              logo
+            )}
+          </a>
+          {action}
+        </div>
+        {children}
       </div>
-      {children}
-    </div>
+      <div className={cx(`${prefix}--sidenav-overlay`)} />
+    </>
   );
 };
 
