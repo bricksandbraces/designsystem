@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../../../src/components/Logo/Logo";
 import Headline from "../../../src/components/Typography/Headline";
 import Body from "../../../src/components/Typography/Body";
+import packageJSON from "../../../package.json";
 
 const Intro = () => {
   return (
@@ -17,7 +18,8 @@ const Intro = () => {
           Design System
         </Headline>
         <Body type="body-02" className="sb-intro--subline">
-          v.0.0.1 React Storybook
+          v{packageJSON.version} <br />
+          React Storybook
         </Body>
       </div>
     </div>
