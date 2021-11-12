@@ -178,6 +178,17 @@ const Button = (
     </div>
   );
 
+  const focusHandler = {
+    onBlur: (event: React.FocusEvent<ButtonOrAnchor, Element>) => {
+      onBlur?.(event);
+      setFocused(false);
+    },
+    onFocus: (event: React.FocusEvent<ButtonOrAnchor, Element>) => {
+      onFocus?.(event);
+      setFocused(true);
+    }
+  };
+
   return (
     <>
       {href ? (
@@ -185,14 +196,7 @@ const Button = (
           href={href}
           ref={ref as ForwardedRef<HTMLAnchorElement>}
           className={classes}
-          onBlur={(event) => {
-            onBlur?.(event);
-            setFocused(false);
-          }}
-          onFocus={(event) => {
-            onFocus?.(event);
-            setFocused(true);
-          }}
+          {...focusHandler}
           {...rest}
         >
           {loader}
@@ -204,14 +208,7 @@ const Button = (
           ref={ref as ForwardedRef<HTMLButtonElement>}
           className={classes}
           disabled={disabled}
-          onBlur={(event) => {
-            onBlur?.(event);
-            setFocused(false);
-          }}
-          onFocus={(event) => {
-            onFocus?.(event);
-            setFocused(true);
-          }}
+          {...focusHandler}
           {...rest}
         >
           {loader}
