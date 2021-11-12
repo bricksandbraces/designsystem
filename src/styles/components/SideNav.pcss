@@ -24,6 +24,10 @@
     background-color: $color--background;
     gap: $size--spacing-02;
 
+    &-mobileheader {
+      display: none;
+    }
+
     &-logo {
       display: inline-flex;
       align-items: center;
@@ -225,7 +229,22 @@
 @media screen and (max-width: $size--breakpoint-md) {
   .$(prefix) {
     &--sidenav {
+      position: fixed;
       transform: translateX(calc($size--container-08 * -1));
+
+      &-mobileheader {
+        display: flex;
+        position: sticky;
+        z-index: 11000;
+        top: 0;
+        left: 0;
+        align-items: center;
+        width: 100%;
+        height: $size--container-05;
+        padding: 0 $size--spacing-03;
+        border-bottom: 0.0625rem solid $color--border-default;
+        background-color: $color--background;
+      }
 
       &-overlay {
         visibility: hidden;
@@ -250,5 +269,9 @@
         }
       }
     }
+  }
+
+  .$(prefix)--sidenav-mobileheader ~ .$(prefix)--sidenav {
+    top: $size--container-05;
   }
 }
