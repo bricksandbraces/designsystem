@@ -21,11 +21,15 @@ export const Uncontrolled = () => {
   return (
     <div style={{ margin: "32px" }}>
       <Accordion size={select("size", sizeOptions, defaultSize) as any}>
-        <AccordionItem title="Title 1" disabled>
+        <AccordionItem id="c1" title="Title 1" disabled>
           Content 1
         </AccordionItem>
-        <AccordionItem title="Title 2">Content 2</AccordionItem>
-        <AccordionItem title="Title 3">Content 3</AccordionItem>
+        <AccordionItem id="c2" title="Title 2">
+          Content 2
+        </AccordionItem>
+        <AccordionItem id="c3" title="Title 3">
+          Content 3
+        </AccordionItem>
       </Accordion>
     </div>
   );
@@ -38,19 +42,19 @@ export const Controlled = () => {
       <Accordion
         size={select("Size", sizeOptions, defaultSize) as any}
         openIndices={openIndices}
-        onChange={(i) => {
-          if (openIndices.includes(i)) {
-            setOpenIndices(
-              openIndices.filter((selectedItemIndex) => i !== selectedItemIndex)
-            );
-          } else {
-            setOpenIndices([...openIndices, i]);
-          }
+        onChange={(i, newOpenState, newOpenIndexList) => {
+          setOpenIndices(newOpenIndexList);
         }}
       >
-        <AccordionItem title="Title 1">Content 1</AccordionItem>
-        <AccordionItem title="Title 2">Content 2</AccordionItem>
-        <AccordionItem title="Title 3">Content 3</AccordionItem>
+        <AccordionItem id="c1" title="Title 1">
+          Content 1
+        </AccordionItem>
+        <AccordionItem id="c2" title="Title 2">
+          Content 2
+        </AccordionItem>
+        <AccordionItem id="c3" title="Title 3">
+          Content 3
+        </AccordionItem>
       </Accordion>
     </div>
   );

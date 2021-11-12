@@ -1,10 +1,11 @@
 import { IconChevronDown } from "@tabler/icons";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useState, forwardRef } from "react";
 import cx from "classnames";
 import { AccordionItemProps } from "./AccordionItem";
 import { prefix } from "../../settings";
+import useControlled from "../../hooks/useControlled";
 
-type AccordionProps = {
+export type AccordionProps = {
   /**
    * Accordion Children
    */
@@ -40,23 +41,47 @@ type AccordionProps = {
   openIndices?: number[];
 };
 
-enum AnimationType {
+export enum AnimationType {
   NONE,
   COLLAPSE,
   EXPAND
 }
 
-const Accordion = ({
-  children,
-  className,
-  onChange,
-  size = "default",
-  defaultOpenIndices,
-  openIndices
-}: AccordionProps) => {
+const Accordion = (
+  {
+    children,
+    className,
+    onChange,
+    size = "default",
+    defaultOpenIndices,
+    openIndices
+  }: AccordionProps,
+  ref: React.ForwardedRef<HTMLUListElement>
+) => {
+  const controlled = useControlled(openIndices);
+  const [openIndexList, setOpenIndexList] = useState<number[]>(
+    (controlled ? openIndices : defaultOpenIndices) ?? []
+  );
   const [itemAnimations, setItemAnimations] = useState<AnimationType[]>(
     React.Children.map(children, () => AnimationType.NONE) as AnimationType[]
   );
+
+  useEffect(() => {
+    if (controlled) {
+      const newOpenIndices = openIndices ?? [];
+      const newAnimations = React.Children.map(children, (_, childIndex) => {
+        const isOpen = openIndexList.includes(childIndex);
+        const shouldBeOpen = newOpenIndices.includes(childIndex);
+        // check if inclusion state has changed for this index
+        if (isOpen !== shouldBeOpen) {
+          return shouldBeOpen ? AnimationType.EXPAND : AnimationType.COLLAPSE;
+        }
+        return AnimationType.NONE;
+      });
+      setItemAnimations(newAnimations ?? []);
+      setOpenIndexList(openIndices ?? []);
+    }
+  }, [openIndices]);
 
   const setAnimationForItem = (
     itemIndex: number,
@@ -69,31 +94,6 @@ const Accordion = ({
     );
   };
 
-  const { current: controlled } = useRef(openIndices != null);
-  const [openIndexList, setOpenIndexList] = useState<number[]>(
-    (controlled ? openIndices : defaultOpenIndices) ?? []
-  );
-
-  useEffect(() => {
-    if (controlled) {
-      const newOpenIndices = openIndices ?? [];
-      const newAnimations = React.Children.map(children, (_, childIndex) => {
-        if (
-          openIndexList.includes(childIndex) !==
-          newOpenIndices.includes(childIndex)
-        ) {
-          if (newOpenIndices.includes(childIndex)) {
-            return AnimationType.EXPAND;
-          }
-          return AnimationType.COLLAPSE;
-        }
-        return AnimationType.NONE;
-      });
-      setItemAnimations(newAnimations ?? []);
-      setOpenIndexList(openIndices ?? []);
-    }
-  }, [openIndices]);
-
   return (
     <div
       className={cx(
@@ -101,7 +101,7 @@ const Accordion = ({
         className
       )}
     >
-      <ul className={cx(`${prefix}--accordion-list`)}>
+      <ul className={cx(`${prefix}--accordion-list`)} ref={ref}>
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement<AccordionItemProps>(child)) {
             return child;
@@ -125,8 +125,11 @@ const Accordion = ({
                 }}
               >
                 <button
+                  id={`${props.id}_label`}
                   disabled={props.disabled}
                   className={`${prefix}--accordion-list__item-title`}
+                  aria-expanded={open}
+                  aria-controls={`${props.id}_content`}
                   onClick={() => {
                     const alreadyOpen = openIndexList.includes(i);
                     const newOpenList = alreadyOpen
@@ -156,7 +159,11 @@ const Accordion = ({
                     size={16}
                   />
                 </button>
-                <p className={`${prefix}--accordion-list__item-content`}>
+                <p
+                  className={`${prefix}--accordion-list__item-content`}
+                  id={`${props.id}_content`}
+                  aria-labelledby={`${props.id}_label`}
+                >
                   {props.children}
                 </p>
               </li>
@@ -168,4 +175,4 @@ const Accordion = ({
   );
 };
 
-export default Accordion;
+export default forwardRef<HTMLUListElement, AccordionProps>(Accordion);

@@ -12,6 +12,11 @@ export type AccordionItemProps = {
   title: string | ReactNode;
 
   /**
+   * AccordionItem ID - Required for accessibility
+   */
+  id: string;
+
+  /**
    * AccordionItem Disabled
    */
   disabled?: boolean;
