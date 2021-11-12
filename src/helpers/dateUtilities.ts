@@ -1,6 +1,6 @@
 import { format, parse, isValid } from "date-fns";
 
-const parseDate = <T,>(
+const parseDate = <T>(
   dateString: string | Nullish,
   dateFormat: string,
   fallback: T

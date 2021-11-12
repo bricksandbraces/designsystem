@@ -25,8 +25,8 @@ export const parameters = {
       { name: "black", value: "#000000" },
       { name: "app-bg", value: "#18181b" },
       {
-        name: "random-img-background",
-        value: 'url("https://picsum.photos/seed/picsum/1920/1080")'
+        name: "random-lynx",
+        value: 'url("https://luchs.hobbytes.de/image?width=1920&height=1080")'
       }
     ]
   },

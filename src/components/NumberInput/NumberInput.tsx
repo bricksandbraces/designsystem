@@ -139,7 +139,7 @@ const NumberInput = (
     fluid,
     float = false
   }: NumberInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   /**
    * Boosted onChange function that also provides the updated value of
@@ -212,17 +212,13 @@ const NumberInput = (
         <input
           id={id}
           ref={mergeRefs([ref, inputRef])}
-          className={cx(
-            `${prefix}--numberinput-input`,
-            {
-              [`${prefix}--numberinput-${size}`]: !fluid,
-              [`${prefix}--numberinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--numberinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--numberinput-input`, {
+            [`${prefix}--numberinput-${size}`]: !fluid,
+            [`${prefix}--numberinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--numberinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type="number"
           placeholder={placeholder}
           autoComplete={autoComplete}

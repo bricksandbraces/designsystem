@@ -104,7 +104,7 @@ const TextArea = (
     children,
     onChange
   }: TextAreaProps,
-  ref: ForwardedRef<HTMLTextAreaElement>
+  ref: React.ForwardedRef<HTMLTextAreaElement>
 ) => {
   const controlled = useControlled(value);
   const [textValue, setTextValue] = useState<string>(

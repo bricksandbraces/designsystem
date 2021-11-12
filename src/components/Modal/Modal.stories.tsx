@@ -17,8 +17,8 @@ const options = {
 
 const defaultValue = "sm";
 
-export const Default = () => {
-  const [open, setOpen] = useState(true);
+export const DefaultControlled = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div
       style={{
@@ -28,7 +28,14 @@ export const Default = () => {
         color: "white"
       }}
     >
-      Please update the background to see the modal (Storybook Bug).
+      <Button
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen(true);
+        }}
+      >
+        Open Modal
+      </Button>
       <Modal
         size={select("size", options, defaultValue) as any}
         open={open}
@@ -66,7 +73,7 @@ export const Default = () => {
   );
 };
 
-export const Nested = () => {
+export const NestedControlled = () => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
