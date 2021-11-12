@@ -23,7 +23,11 @@ type AccordionProps = {
   /**
    * Accordion OnChange Function delivering the toggled index
    */
-  onChange?: (selectedIndex: number) => void;
+  onChange?: (
+    selectedIndex: number,
+    newOpenState: boolean,
+    newOpenIndexList: number[]
+  ) => void;
 
   /**
    * Accordion Default Open Indices
@@ -69,6 +73,7 @@ const Accordion = ({
   const [openIndexList, setOpenIndexList] = useState<number[]>(
     (controlled ? openIndices : defaultOpenIndices) ?? []
   );
+
   useEffect(() => {
     if (controlled) {
       const newOpenIndices = openIndices ?? [];
@@ -88,6 +93,7 @@ const Accordion = ({
       setOpenIndexList(openIndices ?? []);
     }
   }, [openIndices]);
+
   return (
     <div
       className={cx(
@@ -122,20 +128,22 @@ const Accordion = ({
                   disabled={props.disabled}
                   className={`${prefix}--accordion-list__item-title`}
                   onClick={() => {
+                    const alreadyOpen = openIndexList.includes(i);
+                    const newOpenList = alreadyOpen
+                      ? openIndexList.filter(
+                          (selectedItemIndex) => i !== selectedItemIndex
+                        )
+                      : [...openIndexList, i];
                     if (!controlled) {
-                      if (openIndexList.includes(i)) {
-                        setAnimationForItem(i, AnimationType.COLLAPSE);
-                        setOpenIndexList(
-                          openIndexList.filter(
-                            (selectedItemIndex) => i !== selectedItemIndex
-                          )
-                        );
-                      } else {
-                        setAnimationForItem(i, AnimationType.EXPAND);
-                        setOpenIndexList([...openIndexList, i]);
-                      }
+                      setAnimationForItem(
+                        i,
+                        alreadyOpen
+                          ? AnimationType.COLLAPSE
+                          : AnimationType.EXPAND
+                      );
+                      setOpenIndexList(newOpenList);
                     }
-                    onChange?.(i);
+                    onChange?.(i, !alreadyOpen, newOpenList);
                   }}
                 >
                   <p
