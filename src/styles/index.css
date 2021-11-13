@@ -20,7 +20,7 @@
 @import "./components/AspectRatio.pcss";
 @import "./components/Typography.pcss";
 @import "./components/LeadSpace.pcss";
-@import "./components/Header.pcss";
+@import "./components/WebHeader.pcss";
 @import "./components/Footer.pcss";
 @import "./components/Modal.pcss";
 @import "./components/Checkbox.pcss";

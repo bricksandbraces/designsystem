@@ -1,7 +1,7 @@
 import { text, object, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import LeadSpace from "./LeadSpace";
-import Header from "../Header/Header";
+import Header from "../WebHeader/WebHeader";
 
 export default { title: "Web/LeadSpace", decorators: [withKnobs] };
 

@@ -8,7 +8,7 @@ import AspectRatio from "./components/AspectRatio/AspectRatio";
 import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
 import DatePicker from "./components/DatePicker/DatePicker";
-import { Grid, Column } from "./components/Grid/Grid";
+import { Grid, Colum./components/WebHeader/Headerd/Grid";
 import Header from "./components/Header/Header";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
