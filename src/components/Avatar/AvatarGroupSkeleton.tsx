@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import AvatarGroup from "./AvatarGroup";
 
-type AvatarGroupSkeletonProps = {
+export type AvatarGroupSkeletonProps = {
   /**
    * AvatarGroupSkeleton ClassName
    */

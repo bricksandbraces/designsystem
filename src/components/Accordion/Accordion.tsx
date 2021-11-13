@@ -110,64 +110,62 @@ const Accordion = (
           const { props } = elementChild;
           const open = openIndexList.includes(i);
           return (
-            props && (
-              <li
-                key={child.key}
-                className={cx(`${prefix}--accordion-list__item`, {
-                  [`${prefix}--accordion-list__item-collapse`]:
-                    itemAnimations[i] === AnimationType.COLLAPSE && open,
-                  [`${prefix}--accordion-list__item-expand`]:
-                    itemAnimations[i] === AnimationType.EXPAND && open,
-                  [`${prefix}--accordion-list__item-open`]: open
-                })}
-                onAnimationEnd={() => {
-                  setAnimationForItem(i, AnimationType.NONE);
+            <li
+              key={child.key}
+              className={cx(`${prefix}--accordion-list__item`, {
+                [`${prefix}--accordion-list__item-collapse`]:
+                  itemAnimations[i] === AnimationType.COLLAPSE && open,
+                [`${prefix}--accordion-list__item-expand`]:
+                  itemAnimations[i] === AnimationType.EXPAND && open,
+                [`${prefix}--accordion-list__item-open`]: open
+              })}
+              onAnimationEnd={() => {
+                setAnimationForItem(i, AnimationType.NONE);
+              }}
+            >
+              <button
+                id={`${props.id}_label`}
+                disabled={props.disabled}
+                className={`${prefix}--accordion-list__item-title`}
+                aria-expanded={open}
+                aria-controls={`${props.id}_content`}
+                onClick={() => {
+                  const alreadyOpen = openIndexList.includes(i);
+                  const newOpenList = alreadyOpen
+                    ? openIndexList.filter(
+                        (selectedItemIndex) => i !== selectedItemIndex
+                      )
+                    : [...openIndexList, i];
+                  if (!controlled) {
+                    setAnimationForItem(
+                      i,
+                      alreadyOpen
+                        ? AnimationType.COLLAPSE
+                        : AnimationType.EXPAND
+                    );
+                    setOpenIndexList(newOpenList);
+                  }
+                  onChange?.(i, !alreadyOpen, newOpenList);
                 }}
               >
-                <button
-                  id={`${props.id}_label`}
-                  disabled={props.disabled}
-                  className={`${prefix}--accordion-list__item-title`}
-                  aria-expanded={open}
-                  aria-controls={`${props.id}_content`}
-                  onClick={() => {
-                    const alreadyOpen = openIndexList.includes(i);
-                    const newOpenList = alreadyOpen
-                      ? openIndexList.filter(
-                          (selectedItemIndex) => i !== selectedItemIndex
-                        )
-                      : [...openIndexList, i];
-                    if (!controlled) {
-                      setAnimationForItem(
-                        i,
-                        alreadyOpen
-                          ? AnimationType.COLLAPSE
-                          : AnimationType.EXPAND
-                      );
-                      setOpenIndexList(newOpenList);
-                    }
-                    onChange?.(i, !alreadyOpen, newOpenList);
-                  }}
-                >
-                  <p
-                    className={`${prefix}--accordion-list__item-title--headline`}
-                  >
-                    {props.title}
-                  </p>
-                  <IconChevronDown
-                    className={`${prefix}--accordion-list__item-title--icon`}
-                    size={16}
-                  />
-                </button>
                 <p
-                  className={`${prefix}--accordion-list__item-content`}
-                  id={`${props.id}_content`}
-                  aria-labelledby={`${props.id}_label`}
+                  className={`${prefix}--accordion-list__item-title--headline`}
                 >
-                  {props.children}
+                  {props.title}
                 </p>
-              </li>
-            )
+                <IconChevronDown
+                  className={`${prefix}--accordion-list__item-title--icon`}
+                  size={16}
+                />
+              </button>
+              <p
+                className={`${prefix}--accordion-list__item-content`}
+                id={`${props.id}_content`}
+                aria-labelledby={`${props.id}_label`}
+              >
+                {props.children}
+              </p>
+            </li>
           );
         })}
       </ul>
