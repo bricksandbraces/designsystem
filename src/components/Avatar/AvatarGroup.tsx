@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 
-type AvatarGroupProps = {
+export type AvatarGroupProps = {
   /**
    * AvatarGroup ClassNames
    */

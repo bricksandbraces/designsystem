@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import FloatingPanel from "../FloatingPanel/FloatingPanel";
 import Avatar from "./Avatar";
 import { prefix } from "../../settings";
 
-type AvatarListItem = {
+export type AvatarListItemProps = {
   /**
    * AvatarListItem Id
    */
-  id: string;
+  id?: string;
 
   /**
    * AvatarListItem Name
@@ -24,69 +24,75 @@ type AvatarListItem = {
    * AvatarListItem Additional Information
    */
   additionalInformation?: string;
+
+  /**
+   * AvatarListItem Actions
+   */
+  actions?: React.ReactNode;
 };
 
-type AvatarListProps = {
+export const AvatarListItem = ({
+  name,
+  imgUrl,
+  additionalInformation,
+  actions
+}: AvatarListItemProps) => {
+  return (
+    <li className={`${prefix}--avatar-list__item`}>
+      <Avatar name={name} imgUrl={imgUrl} size="small" />
+      <div className={`${prefix}--avatar-list__item-container`}>
+        <div className={`${prefix}--avatar-list__item-text`}>
+          <p className={`${prefix}--avatar-list__item-text--heading`}>{name}</p>
+          <p className={`${prefix}--avatar-list__item-text--body`}>
+            {additionalInformation}
+          </p>
+        </div>
+        {actions && (
+          <div className={`${prefix}--avatar-list__item-container--actions`}>
+            {actions}
+          </div>
+        )}
+      </div>
+    </li>
+  );
+};
+
+export type AvatarListProps = {
+  /**
+   * AvatarList ID
+   */
+  id?: string;
+
   /**
    * AvatarList ClassName
    */
   className?: string;
 
   /**
-   * AvatarList Action Items
-   */
-  avatarActions?: ReactNode;
-
-  /**
    * AvatarList Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
-   * AvatarList Items
+   * AvatarList Footer for items that should be placed below the list within the panel
    */
-  avatarItems: AvatarListItem[];
+  footer?: React.ReactNode;
 };
 
-const AvatarList = ({
-  avatarItems,
-  className,
-  children,
-  avatarActions
-}: AvatarListProps) => {
+const AvatarList = (
+  { id, className, children, footer }: AvatarListProps,
+  ref: React.ForwardedRef<HTMLUListElement>
+) => {
   return (
     <FloatingPanel className={`${prefix}--avatar-list__panel`}>
-      <ul className={cx(`${prefix}--avatar-list`, className)}>
-        {avatarItems.map((avatar) => {
-          return (
-            <li key={avatar.id} className={`${prefix}--avatar-list__item`}>
-              <Avatar name={avatar.name} imgUrl={avatar.imgUrl} size="small" />
-              <div className={`${prefix}--avatar-list__item-container`}>
-                <div className={`${prefix}--avatar-list__item-text`}>
-                  <p className={`${prefix}--avatar-list__item-text--heading`}>
-                    {avatar.name}
-                  </p>
-                  <p className={`${prefix}--avatar-list__item-text--body`}>
-                    {avatar.additionalInformation}
-                  </p>
-                </div>
-                {avatarActions && (
-                  <div
-                    className={`${prefix}--avatar-list__item-container--actions`}
-                  >
-                    {avatarActions}
-                  </div>
-                )}
-              </div>
-            </li>
-          );
-        })}
+      <ul id={id} className={cx(`${prefix}--avatar-list`, className)} ref={ref}>
+        {children}
       </ul>
-      {children && (
-        <div className={`${prefix}--avatar-list__children`}>{children}</div>
+      {footer && (
+        <div className={`${prefix}--avatar-list__footer`}>{footer}</div>
       )}
     </FloatingPanel>
   );
 };
 
-export default AvatarList;
+export default React.forwardRef<HTMLUListElement, AvatarListProps>(AvatarList);
