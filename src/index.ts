@@ -65,7 +65,7 @@ export {
   SideNav,
   UserProfile,
   Modal,
-  Footer,
+  WebFooter,
   Divider,
   Checkbox,
   Tabs,
