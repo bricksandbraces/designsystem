@@ -3,7 +3,7 @@ import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CookieModal, { OptType } from "./CookieModal";
 
-export default { title: "Web/CookieModal", decorators: [withKnobs] };
+export default { title: "Web/A_REFA_CookieModal", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
@@ -19,13 +19,20 @@ export const Default = () => {
         onClose={action("onClose")}
         onSecondaryClick={action("onSecondaryClick")}
         onSettingChanged={action("onSettingsChanged")}
-        settings={object("Setttings", [
+        settings={object("settings", [
           {
             checked: true,
             type: OptType.ESSENTIAL,
             description: "These cookies are mandatory to execute the page.",
             id: "essentials",
             label: "Essential Cookies"
+          },
+          {
+            checked: true,
+            type: OptType.OPT_IN,
+            description: "These cookies are mandatory to execute the page.",
+            id: "essentials",
+            label: "Essential Cookies 2"
           }
         ])}
       />
