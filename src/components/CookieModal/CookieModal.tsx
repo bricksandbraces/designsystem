@@ -58,7 +58,7 @@ const CookieSettingControl = ({
   );
 };
 
-type CookieModalProps = {
+export type CookieModalProps = {
   open?: boolean;
   intro: string;
   headline: string;

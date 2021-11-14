@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type CheckboxProps = {
+export type CheckboxProps = {
   /**
    * Checkbox ClassName
    */
@@ -16,7 +16,7 @@ type CheckboxProps = {
   /**
    * Checkbox Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Checkbox Label
@@ -29,28 +29,47 @@ type CheckboxProps = {
   readOnly?: boolean;
 
   /**
-   * Checked values
+   * Checkbox Checked property (controlled usage)
    */
   checked?: boolean;
+
+  /**
+   * Checkbox Default checked property (uncontrolled usage)
+   */
   defaultChecked?: boolean;
+
+  /**
+   * Checkbox OnChange Function
+   */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  /**
+   * Checkbox Disabled
+   */
   disabled?: boolean;
+
+  /**
+   * Checkbox Value
+   */
   value: string;
 };
 
-const Checkbox = ({
-  id,
-  value,
-  checked,
-  defaultChecked,
-  label,
-  readOnly,
-  className,
-  disabled,
-  children,
-  onChange,
-  ...rest
-}: CheckboxProps) => {
+const Checkbox = (
+  {
+    id,
+    value,
+    checked,
+    defaultChecked,
+    label,
+    readOnly,
+    className,
+    disabled,
+    children,
+    onChange,
+    ...rest
+  }: CheckboxProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div
       className={cx(
@@ -64,6 +83,7 @@ const Checkbox = ({
     >
       <input
         tabIndex={0}
+        ref={ref}
         className={`${prefix}--checkbox-input`}
         type="checkbox"
         value={value}
@@ -113,4 +133,4 @@ const Checkbox = ({
   );
 };
 
-export default Checkbox;
+export default React.forwardRef(Checkbox);

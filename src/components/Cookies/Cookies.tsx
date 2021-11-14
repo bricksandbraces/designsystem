@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useCookie } from "react-use";
 import CookieBanner from "../CookieBanner/CookieBanner";
 import useConstant from "../../hooks/useConstant";
-// eslint-disable-next-line import/no-cycle
 import CookieModal, {
   CookieSetting,
   CookieSettingWithState,
@@ -151,7 +150,7 @@ const CookiesComponent = ({
         linkLabel={bannerLinkLabel}
         buttonLabel={bannerButtonLabel}
         onButtonClick={close}
-        onLinkClick={(event: Event) => {
+        onLinkClick={(event) => {
           event.stopPropagation();
           setCookieModalOpen(true);
         }}

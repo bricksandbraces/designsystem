@@ -1,4 +1,4 @@
-import { withKnobs } from "@storybook/addon-knobs";
+import { text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CodeSnippet from "./CodeSnippet";
 import CodeSnippetSkeleton from "./CodeSnippetSkeleton";
@@ -8,10 +8,13 @@ export default {
   decorators: [withKnobs]
 };
 
-export const Default = () => (
-  <div style={{ padding: "32px" }}>
-    <CodeSnippet
-      code={`"scripts": {
+export const Default = () => {
+  return (
+    <div style={{ padding: "32px" }}>
+      <CodeSnippet
+        code={text(
+          "code",
+          `"scripts": {
     "build": "lerna run build --stream --prefix --npm-client yarn",
     "ci-check": "carbon-cli ci-check",
     "clean": "lerna run clean && lerna clean --yes && rimraf node_modules",
@@ -39,10 +42,12 @@ export const Default = () => (
     "@babel/preset-env": "^7.10.0",
     "@babel/preset-react": "^7.10.0",
     "@babel/runtime": "^7.10.0",
-    "@commitlint/cli": "^8.3.5",`}
-    />
-  </div>
-);
+    "@commitlint/cli": "^8.3.5",`
+        )}
+      />
+    </div>
+  );
+};
 
 export const Skeleton = () => (
   <div style={{ padding: "32px" }}>

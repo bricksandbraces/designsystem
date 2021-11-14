@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
@@ -14,11 +15,13 @@ export const Default = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
           id="checkbox-2"
           defaultChecked
+          onChange={action("onChange")}
           value="c2"
         />
       </div>
@@ -35,6 +38,7 @@ export const Controlled = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
@@ -42,6 +46,7 @@ export const Controlled = () => {
           checked={checked}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setChecked(event.target.checked);
+            action("onChange")(event);
           }}
           value="c2"
         />
@@ -58,6 +63,7 @@ export const WithChildren = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
@@ -65,6 +71,7 @@ export const WithChildren = () => {
           readOnly={boolean("readOnly (Checkbox 2)", false)}
           disabled={boolean("disabled (Checkbox 2)", false)}
           value="c2"
+          onChange={action("onChange")}
         >
           <Body
             type="body-02"

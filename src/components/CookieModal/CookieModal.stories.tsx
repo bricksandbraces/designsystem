@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CookieModal, { OptType } from "./CookieModal";
@@ -14,7 +15,10 @@ export const Default = () => {
         primaryLabel={text("Primary label", "Accept All")}
         secondaryLabel={text("Secondary label", "Accept selected")}
         intro={text("Intro", "This is an introduction.")}
-        onPrimaryClick={() => {}}
+        onPrimaryClick={action("onPrimaryClick")}
+        onClose={action("onClose")}
+        onSecondaryClick={action("onSecondaryClick")}
+        onSettingChanged={action("onSettingsChanged")}
         settings={object("Setttings", [
           {
             checked: true,

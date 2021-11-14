@@ -82,39 +82,44 @@ export type ButtonProps = {
   disabled?: boolean;
 
   /**
-   * Button size
+   * Button Size
    */
   size?: "large" | "default" | "small";
 
   /**
-   * Button icon
+   * Button Icon
    */
   icon?: React.ReactNode;
 
   /**
-   * Button iconPosition
+   * Button IconPosition
    */
   iconPosition?: "right" | "left";
 
   /**
-   * Button loading
+   * Button IsLoading
    */
   isLoading?: boolean;
 
   /**
-   * Button fluid
+   * Button Fluid
    */
   fluid?: boolean;
 
   /**
-   * Button title
+   * Button Title
    */
   title?: string;
 
   /**
-   * Tab index for the button
+   * Button TabIndex
    */
   tabIndex?: number;
+
+  /**
+   * Button ManualFocus used for overwriting focus-visible behaviour
+   */
+  manualFocus?: boolean;
 };
 
 const Button = (

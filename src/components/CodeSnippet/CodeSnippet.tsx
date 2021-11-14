@@ -37,20 +37,24 @@ export type CodeSnippetProps = {
   className?: string;
 };
 
-const CodeSnippet = ({
-  code,
-  className,
-  showMoreLabel = "Show more",
-  showLessLabel = "Show less",
-  tooltipLabel = "Copy",
-  tooltipLabelCopied = "Copy Cat!",
-  ...rest
-}: CodeSnippetProps) => {
+const CodeSnippet = (
+  {
+    code,
+    className,
+    showMoreLabel = "Show more",
+    showLessLabel = "Show less",
+    tooltipLabel = "Copy",
+    tooltipLabelCopied = "Copy Cat!",
+    ...rest
+  }: CodeSnippetProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   const [expanded, setExpanded] = useState(false);
   return (
     <div
       className={cx(`${prefix}--codesnippet-container`, className)}
       {...rest}
+      ref={ref}
     >
       <div className={`${prefix}--codesnippet-button__container`}>
         <Button
