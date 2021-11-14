@@ -82,4 +82,4 @@ const Logo = (
   );
 };
 
-export default Logo;
+export default React.forwardRef(Logo);

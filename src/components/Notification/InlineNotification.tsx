@@ -12,7 +12,12 @@ import IconOnlyButton from "../Button/IconOnlyButton";
 import Headline from "../Typography/Headline";
 import Body from "../Typography/Body";
 
-type InlineNotificationProps = {
+export type InlineNotificationProps = {
+  /**
+   * InlineNotification ClassName
+   */
+  className?: string;
+
   /**
    * InlineNotification Title
    */
@@ -26,7 +31,7 @@ type InlineNotificationProps = {
   /**
    * InlineNotification Type
    */
-  type: string;
+  type: "danger" | "success" | "info" | "warning";
 
   /**
    * InlineNotification Hide CloseButton
@@ -41,59 +46,46 @@ type InlineNotificationProps = {
   /**
    * InlineNotification OnClose Function
    */
-  onClose?: (event: any) => void;
+  onClose?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const InlineNotification = ({
-  title,
-  subTitle,
-  type,
-  open,
-  hideCloseButton,
-  onClose
-}: InlineNotificationProps) => {
+const InlineNotification = (
+  {
+    className,
+    title,
+    subTitle,
+    type,
+    open,
+    hideCloseButton,
+    onClose
+  }: InlineNotificationProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
+  const icons = {
+    danger: IconForbid,
+    success: IconCheck,
+    info: IconInfoCircle,
+    warning: IconAlertTriangle
+  };
+  const IconElement = icons[type];
   return (
     <div
       className={cx(
         `${prefix}--notification ${prefix}--notification-inline ${prefix}--notification-${type}`,
         {
           [`${prefix}--notification-open`]: open
-        }
+        },
+        className
       )}
+      ref={ref}
     >
       <div className={cx(`${prefix}--notification-container`)}>
-        {type === "danger" && (
-          <IconForbid
-            size={16}
-            stroke={2}
-            strokeLinejoin="miter"
-            className={`${prefix}--notification-icon`}
-          />
-        )}
-        {type === "success" && (
-          <IconCheck
-            size={16}
-            stroke={2}
-            strokeLinejoin="miter"
-            className={`${prefix}--notification-icon`}
-          />
-        )}
-        {type === "info" && (
-          <IconInfoCircle
-            size={16}
-            stroke={2}
-            strokeLinejoin="miter"
-            className={`${prefix}--notification-icon`}
-          />
-        )}
-        {type === "warning" && (
-          <IconAlertTriangle
-            size={16}
-            stroke={2}
-            strokeLinejoin="miter"
-            className={`${prefix}--notification-icon`}
-          />
-        )}
+        <IconElement
+          size={16}
+          stroke={2}
+          strokeLinejoin="miter"
+          className={`${prefix}--notification-icon`}
+        />
         <div className={cx(`${prefix}--notification-text`)}>
           <Headline type="h6" className={`${prefix}--notification-title`}>
             {title}
@@ -120,4 +112,4 @@ const InlineNotification = ({
   );
 };
 
-export default InlineNotification;
+export default React.forwardRef(InlineNotification);

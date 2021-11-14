@@ -111,7 +111,7 @@ export type ColumnProps = {
   style?: React.HTMLAttributes<HTMLDivElement>["style"];
 };
 
-export const Grid = ({
+const Grid = ({
   children,
   fullWidth,
   className,
@@ -139,7 +139,7 @@ export const Grid = ({
   );
 };
 
-export const Column = ({
+const Column = ({
   children,
   span,
   offset,
@@ -179,3 +179,5 @@ export const Column = ({
     </div>
   );
 };
+
+export { Grid, Column };

@@ -1,10 +1,4 @@
-import React, {
-  ForwardedRef,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
 import ReactDOM from "react-dom";
@@ -15,7 +9,12 @@ import { setRef } from "../../helpers/refUtilities";
 import { IconX } from "@tabler/icons";
 import IconOnlyButton from "../Button/IconOnlyButton";
 
-type ModalProps = {
+export type ModalProps = {
+  /**
+   * Modal ID
+   */
+  id?: string;
+
   /**
    * Modal Size
    */
@@ -35,6 +34,11 @@ type ModalProps = {
    * Modal Children
    */
   children?: React.ReactNode;
+
+  /**
+   * Modal ClassName
+   */
+  className?: string;
 
   /**
    * Modal OnClose
@@ -59,15 +63,17 @@ type ModalProps = {
 
 const Modal = (
   {
+    id,
     size = "sm",
     open,
+    className,
     onClose,
     closeOnOutsideClick = true,
     primaryFocus,
     withDivider,
     children
   }: ModalProps,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   const [modalEl, setModalEl] = useState<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -114,15 +120,20 @@ const Modal = (
       {mounted &&
         ReactDOM.createPortal(
           <div
+            id={id}
             aria-hidden={!open}
             ref={(el) => {
               setRef(el, ref);
               setModalEl(el);
             }}
-            className={cx(`${prefix}--modal`, {
-              [`${prefix}--modal-open`]: open,
-              [`${prefix}--modal-with-divider`]: withDivider
-            })}
+            className={cx(
+              `${prefix}--modal`,
+              {
+                [`${prefix}--modal-open`]: open,
+                [`${prefix}--modal-with-divider`]: withDivider
+              },
+              className
+            )}
           >
             <OutsideClickListener
               disabled={!closeOnOutsideClick || !open}
@@ -142,8 +153,8 @@ const Modal = (
                   ref={closeBtnRef}
                   icon={<IconX />}
                   className={`${prefix}--modal-close`}
-                  onClick={(event: any) => {
-                    onClose?.(event);
+                  onClick={(event) => {
+                    onClose?.(event as React.MouseEvent<HTMLButtonElement>);
                   }}
                 />
                 {children}
@@ -156,4 +167,4 @@ const Modal = (
   );
 };
 
-export default forwardRef<HTMLDivElement, ModalProps>(Modal);
+export default React.forwardRef<HTMLDivElement, ModalProps>(Modal);

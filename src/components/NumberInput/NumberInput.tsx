@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -16,7 +16,7 @@ import useControlledValue from "../../hooks/useControlledValue";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
 
-type NumberInputProps = {
+export type NumberInputProps = {
   /**
    * NumberInput ClassName
    */
@@ -339,4 +339,4 @@ const NumberInput = (
   );
 };
 
-export default forwardRef<HTMLInputElement, NumberInputProps>(NumberInput);
+export default React.forwardRef(NumberInput);
