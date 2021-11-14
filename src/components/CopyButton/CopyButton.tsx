@@ -7,50 +7,53 @@ import IconOnlyButton from "../Button/IconOnlyButton";
 
 export type CopyButtonProps = {
   /**
-   * Provide optional click handler for the button
+   * CopyButton Provide optional click handler for the button
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 
   /**
-   * Label of tooltip.
+   * CopyButton Label of tooltip.
    */
   tooltipLabelCopied: string;
 
   /**
-   * Label of Button
+   * CopyButton Label of Button
    */
   tooltipLabel: string;
 
   /**
-   * Sets the timeout after which the tooltip should hide.
+   * CopyButton Sets the timeout after which the tooltip should hide.
    */
   timeout?: number;
 
   /**
-   * Classname
+   * CopyButton Classname
    */
   className?: string;
 
   /**
-   * Value to copy
+   * CopyButton Value to copy
    */
   valueToCopy: string;
 
   /**
-   * Button size
+   * CopyButton size
    */
   size?: "large" | "default" | "small";
 };
 
-const CopyButton = ({
-  tooltipLabelCopied = "Copied",
-  size = "default",
-  onClick,
-  tooltipLabel = "Copy",
-  className,
-  timeout,
-  valueToCopy
-}: CopyButtonProps) => {
+const CopyButton = (
+  {
+    tooltipLabelCopied = "Copied",
+    size = "default",
+    onClick,
+    tooltipLabel = "Copy",
+    className,
+    timeout = 2000,
+    valueToCopy
+  }: CopyButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement>
+) => {
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
@@ -72,9 +75,10 @@ const CopyButton = ({
         copyToClipboard(valueToCopy);
         setTimeout(() => {
           setShowState(false);
-        }, timeout ?? 2000);
+        }, timeout);
         onClick?.(event);
       }}
+      ref={ref}
     />
   );
 };

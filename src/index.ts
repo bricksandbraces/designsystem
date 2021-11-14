@@ -1,6 +1,6 @@
 import Button from "./components/Button/Button";
-import CookieBanner from "./components/CookieBanner/CookieBanner";
-import Cookies from "./components/Cookies/Cookies";
+import CookieBanner from "./components/_web/CookieBanner/CookieBanner";
+import Cookies from "./components/_web/Cookies/Cookies";
 import Link from "./components/Link/Link";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SnackBar from "./components/Notification/InlineNotification";
@@ -22,7 +22,9 @@ import Tabs from "./components/Tabs/Tabs";
 import Tab from "./components/Tabs/Tab";
 import Accordion from "./components/Accordion/Accordion";
 import AccordionItem from "./components/Accordion/AccordionItem";
-import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
+import CookieModal, {
+  OptType
+} from "./components/_web/CookieModal/CookieModal";
 import TextInput from "./components/TextInput/TextInput";
 import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";

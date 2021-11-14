@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CopyButton from "./CopyButton";
@@ -34,6 +35,7 @@ export const Default = () => {
           tooltipLabel={text("tooltipLabel", "Copy")}
           valueToCopy={valueToCopy}
           size={select("size", sizeOptions, defaultSize) as any}
+          onClick={action("onClick")}
         />
       </span>
     </div>
