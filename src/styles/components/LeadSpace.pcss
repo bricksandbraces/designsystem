@@ -25,6 +25,10 @@
       margin-bottom: $size--spacing-10;
     }
 
+    &-headline {
+      @mixin type--marketing-01;
+    }
+
     &-grid {
       position: relative;
       z-index: 3;
@@ -125,10 +129,6 @@
         rgba(0, 0, 0, 75%) 20%,
         rgba(0, 0, 0, 75%) 100%
       );
-    }
-
-    &-column {
-      padding: $size--spacing-05 0;
     }
 
     & > div > div > div > div > div > .$(prefix)--typography {

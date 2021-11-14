@@ -123,7 +123,9 @@ const LeadSpace = ({
         >
           <div className={`${prefix}--leadspace-container`}>
             <div className={`${prefix}--leadspace-content`}>
-              {title && <Marketing type="marketing-01">{title}</Marketing>}
+              {title && (
+                <h1 className={`${prefix}--leadspace-headline`}>{title}</h1>
+              )}
               {ctaItems && (
                 <div className={`${prefix}--leadspace-content__buttongroup`}>
                   {indexedCtaItems?.map((cta, i) => {

@@ -110,7 +110,7 @@
 /* < md */
 @media screen and (max-width: $size--breakpoint-md) {
   .$(prefix)--grid-container {
-    grid-template-columns: repeat(4, minmax(auto, 25%));
+    grid-template-columns: repeat(4, minmax(auto, 1fr));
   }
 
   .$(prefix)--grid-col__sm-1 {
@@ -157,7 +157,7 @@
 /* md */
 @media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
   .$(prefix)--grid-container {
-    grid-template-columns: repeat(8, minmax(auto, 12.5%));
+    grid-template-columns: repeat(8, minmax(auto, 1fr));
   }
 
   .$(prefix)--grid-col__md-1 {
@@ -236,7 +236,7 @@
 /* lg */
 @media screen and (min-width: $size--breakpoint-lg) and (max-width: $size--breakpoint-xlg) {
   .$(prefix)--grid-container {
-    grid-template-columns: repeat(16, minmax(auto, 6.25%));
+    grid-template-columns: repeat(16, minmax(auto, 1fr));
   }
 
   .$(prefix)--grid-col__lg-1 {
@@ -412,7 +412,7 @@
 /* xlg */
 @media screen and (min-width: $size--breakpoint-xlg) {
   .$(prefix)--grid-container {
-    grid-template-columns: repeat(16, minmax(auto, 6.25%));
+    grid-template-columns: repeat(16, minmax(auto, 1fr));
   }
 
   .$(prefix)--grid-col__xlg-1 {
@@ -587,7 +587,7 @@
 
 /* < md */
 @media screen and (max-width: $size--breakpoint-md) {
-  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: 0;
     padding-left: 0;
   }
@@ -605,7 +605,7 @@
 
 /* > md */
 @media screen and (min-width: $size--breakpoint-md) {
-  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: $size--spacing-05;
     padding-left: $size--spacing-05;
   }
@@ -623,7 +623,7 @@
 
 /* > max */
 @media screen and (min-width: $size--breakpoint-max) {
-  .$(prefix)--grid-container.$(prefix)--grid-container-no-gutter {
+  .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: $size--spacing-06;
     padding-left: $size--spacing-06;
   }
