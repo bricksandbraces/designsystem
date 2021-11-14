@@ -18,12 +18,8 @@ const Intro = () => {
           Design System
         </Headline>
         <Body type="body-02" className="sb-intro--subline">
-<<<<<<< HEAD
           v{packageJSON.version} <br />
           React Storybook
-=======
-          v{packageJSON.version} React Storybook
->>>>>>> bdd549f87bfc5f2d8ffdabf7da9cefaefe7854bb
         </Body>
       </div>
     </div>

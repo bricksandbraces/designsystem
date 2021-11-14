@@ -123,7 +123,7 @@ const Badge = (
     <button
       type="button"
       onClick={onClick}
-      ref={ref as ForwardedRef<HTMLButtonElement>}
+      ref={ref as React.ForwardedRef<HTMLButtonElement>}
       {...baseProps}
     >
       <div className={`${prefix}--badge-content`}>
