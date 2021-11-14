@@ -1,3 +1,4 @@
+import { action, actions } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import PasswordInput from "./PasswordInput";
@@ -16,6 +17,13 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
+const passwordActions = actions(
+  "onBlur",
+  "onFocus",
+  "onKeyDown",
+  "onVisibilityChange"
+);
+
 export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
@@ -28,12 +36,14 @@ export const Uncontrolled = () => {
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter Password")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
+        onChange={action("onChange")}
+        {...passwordActions}
       />
     </div>
   );
 };
 
-export const Controlled = () => {
+export const ControlledTextValue = () => {
   const [value, setValue] = useState<string>("");
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
@@ -49,7 +59,9 @@ export const Controlled = () => {
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setValue(event.target.value);
+          action("onChange")(event);
         }}
+        {...passwordActions}
       />
     </div>
   );
