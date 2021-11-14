@@ -41,7 +41,7 @@ export const WithClose = () => {
     <div style={{ padding: "32px" }}>
       <Badge
         title="Button"
-        onClose={() => {}}
+        onClose={action("onClose")}
         colorType={select("type", colorOptions, defaultType) as any}
         {...badgeActions}
       >
