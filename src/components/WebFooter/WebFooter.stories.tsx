@@ -7,8 +7,8 @@ export default { title: "Web/A_REFA_WebFooter", decorators: [withKnobs] };
 export const Default = () => {
   return (
     <WebFooter
-      baseUrl={text("Header URL", "#")}
-      linkItems={object("Header items", [
+      baseUrl={text("baseUrl", "#")}
+      linkItems={object("linkItems", [
         { href: "#", label: "Imprint" },
         { href: "#", label: "Legal" },
         { href: "#", label: "Cookies" },
@@ -16,10 +16,10 @@ export const Default = () => {
         { href: "#", label: "Contact" }
       ])}
       description={text(
-        "WebFooter description",
+        "description",
         "Wir nutzen Cookies, um deine Experience zu verbessern. Deine Einstellungen kannst du jederzeit in den Einstellungen ändern."
       )}
-      descriptionLink={object("Description Link", {
+      descriptionLink={object("descriptionLink", {
         href: "#",
         label: "Zu den Cookieeinstellungen"
       })}

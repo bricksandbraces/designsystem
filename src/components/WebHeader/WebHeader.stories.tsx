@@ -7,8 +7,8 @@ export default { title: "Web/A_REFA_WebHeader", decorators: [withKnobs] };
 export const Default = () => {
   return (
     <WebHeader
-      baseUrl={text("WebHeader URL", "#")}
-      linkItems={object("WebHeader items", [
+      baseUrl={text("baseUrl", "#")}
+      linkItems={object("linkItems", [
         { href: "#", label: "About us" },
         { href: "#", label: "Contact" },
         { href: "#", label: "Blog" }

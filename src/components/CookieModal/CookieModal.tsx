@@ -47,12 +47,7 @@ const CookieSettingControl = ({
         disabled={type === OptType.ESSENTIAL}
         onChange={onChange}
       >
-        <Body
-          type="body-02"
-          className={`${prefix}--cookiemodal--check-description`}
-        >
-          {description}
-        </Body>
+        {description}
       </Checkbox>
     </div>
   );
