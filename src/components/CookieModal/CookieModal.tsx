@@ -36,7 +36,7 @@ const CookieSettingControl = ({
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }) => {
   return (
-    <div className={`${prefix}--cookiemodal--check`}>
+    <div className={`${prefix}--cookiemodal-check`}>
       <Checkbox
         label={label}
         value={label.toLowerCase()}
