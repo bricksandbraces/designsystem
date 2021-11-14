@@ -1,58 +1,58 @@
 import React from "react";
-import Logo from "../Logo/Logo";
-import { Grid, Column } from "../Grid/Grid";
-import Link from "../Link/Link";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
-import Label from "../Typography/Label";
+import Logo from "../../Logo/Logo";
+import { Grid, Column } from "../../Grid/Grid";
+import Link from "../../Link/Link";
+import { prefix } from "../../../settings";
+import { idfy } from "../../../helpers/arrayUtilities";
+import Label from "../../Typography/Label";
 
-type LinkItem = {
+export type LinkItem = {
   /**
-   * Link to location
+   * LinkItem Link to location
    */
   href?: string;
 
   /**
-   * Label that is shown
+   * LinkItem Label that is shown
    */
   label: string;
 
-  /** onClick action (acts as button) */
-  onClick?: (event: Event) => void;
+  /**
+   * LinkItem onClick action (acts as button)
+   * */
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-type FooterProps = {
+export type FooterProps = {
   /**
-   * Link section / Buttons
+   * Footer Link section / Buttons
    */
   linkItems?: LinkItem[];
 
   /**
-   * Base Url for footer
+   * Footer Base Url for footer
    */
   baseUrl?: string;
 
   /**
-   * Description for footer
+   * Footer Description for footer
    */
   description?: string;
 
   /**
-   * DescriptionLink for footer
+   * Footer DescriptionLink for footer
    */
   descriptionLink?: LinkItem;
 };
 
-const Footer = ({
-  linkItems,
-  baseUrl,
-  description,
-  descriptionLink
-}: FooterProps) => {
+const Footer = (
+  { linkItems, baseUrl, description, descriptionLink }: FooterProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
   return (
-    <footer className={`${prefix}--footer`}>
+    <footer className={`${prefix}--footer`} ref={ref}>
       <Grid narrow className={`${prefix}--footer--grid`}>
         <Column
           sm={4}

@@ -4,44 +4,47 @@ import { prefix } from "../../settings";
 
 type LoadingProps = {
   /**
-   * Label that is shown.
+   * Loading Label that is shown.
    */
   loadingDescription: string;
 
   /**
-   * active
+   * Loading active if the component should indicate loading
    */
   active?: boolean;
 
   /**
-   * Overlay anzeigen?
+   * Loading Overlay anzeigen?
    */
   withOverlay?: boolean;
 
   /**
-   * Disabled loading spinner
+   * Loading Disabled loading spinner
    */
   disabled?: boolean;
 
   /**
-   * ClassName
+   * Loading ClassName
    */
   className?: string;
 
   /**
-   * Size
+   * Loading Size
    */
   size?: "small" | "default" | "large" | "inline";
 };
 
-const Loading = ({
-  size = "default",
-  loadingDescription,
-  active,
-  disabled,
-  className,
-  withOverlay
-}: LoadingProps) => {
+const Loading = (
+  {
+    size = "default",
+    loadingDescription,
+    active,
+    disabled,
+    className,
+    withOverlay
+  }: LoadingProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <>
       {active && (
@@ -54,6 +57,7 @@ const Loading = ({
             },
             className
           )}
+          ref={ref}
         >
           <div
             className={cx(
@@ -77,4 +81,4 @@ const Loading = ({
   );
 };
 
-export default Loading;
+export default React.forwardRef(Loading);

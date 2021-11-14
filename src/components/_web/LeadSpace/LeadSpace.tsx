@@ -5,59 +5,55 @@ import {
   IconPlayerPause,
   IconPlayerPlay
 } from "@tabler/icons";
-import { Grid, Column } from "../Grid/Grid";
-import Button from "../Button/Button";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
-import Headline from "../Typography/Headline";
-import Marketing from "../Typography/Marketing";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { Grid, Column } from "../../Grid/Grid";
+import Button from "../../Button/Button";
+import { prefix } from "../../../settings";
+import { idfy } from "../../../helpers/arrayUtilities";
+import IconOnlyButton from "../../Button/IconOnlyButton";
 
-type CtaItem = {
+export type CtaItem = {
   /**
-   * Link to location
+   * CtaItem Link to location
    */
   href: string;
 
   /**
-   * Label that is shown
+   * CtaItem Label that is shown
    */
   label: string;
 
   /**
-   * Chevron
+   * CtaItem Chevron
    */
   showChevron: boolean;
 };
 
-type LeadSpaceProps = {
+export type LeadSpaceProps = {
   /**
-   * Bg image
+   * LeadSpace Bg image
    */
   backgroundImage?: string;
 
   /**
-   * Bg image
+   * LeadSpace Bg image
    */
   videoUrl?: string;
 
   /**
-   * Leadspace title
+   * LeadSpace title
    */
   title?: string;
 
   /**
-   * CTA section / Buttons
+   * LeadSpace CTA section / Buttons
    */
   ctaItems?: CtaItem[];
 };
 
-const LeadSpace = ({
-  backgroundImage,
-  videoUrl,
-  title,
-  ctaItems
-}: LeadSpaceProps) => {
+const LeadSpace = (
+  { backgroundImage, videoUrl, title, ctaItems }: LeadSpaceProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const video = useRef<HTMLVideoElement>(null);
   const [videoPlay, setVideoPlay] = useState(true);
   const indexedCtaItems = idfy(ctaItems);
@@ -70,6 +66,7 @@ const LeadSpace = ({
       style={{
         backgroundImage: `url(${backgroundImage})`
       }}
+      ref={ref}
     >
       {videoUrl && (
         <>
@@ -152,4 +149,4 @@ const LeadSpace = ({
   );
 };
 
-export default LeadSpace;
+export default React.forwardRef(LeadSpace);

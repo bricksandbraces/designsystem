@@ -38,7 +38,7 @@ export type CookieBannerProps = {
   /**
    * CookieBanner Link Action function
    */
-  onLinkClick?: React.MouseEventHandler<any>;
+  onLinkClick?: React.MouseEventHandler<HTMLElement>;
 
   /**
    * CookieBanner Custom Link Element

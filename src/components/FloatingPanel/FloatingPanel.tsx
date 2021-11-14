@@ -1,31 +1,19 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type FloatingPanelProps = {
-  /**
-   * FloatingPanel ClassName
-   */
-  className?: string;
+export type FloatingPanelProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
-  /**
-   * FloatingPanel Children
-   */
-  children: ReactNode;
-
-  /**
-   * FloatingPanel Style
-   */
-  style?: ReactNode;
-} & React.HTMLAttributes<HTMLDivElement>;
-
-const FloatingPanel = ({
-  className,
-  children,
-  ...rest
-}: FloatingPanelProps) => {
+const FloatingPanel = (
+  { className, children, ...rest }: FloatingPanelProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <div className={cx(`${prefix}--floatingpanel`, className)} {...rest}>
+    <div
+      className={cx(`${prefix}--floatingpanel`, className)}
+      {...rest}
+      ref={ref}
+    >
       {children}
     </div>
   );
