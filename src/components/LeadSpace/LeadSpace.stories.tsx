@@ -3,7 +3,7 @@ import React from "react";
 import LeadSpace from "./LeadSpace";
 import Header from "../WebHeader/WebHeader";
 
-export default { title: "Web/LeadSpace", decorators: [withKnobs] };
+export default { title: "Web/A_REFA_LeadSpace", decorators: [withKnobs] };
 
 export const WithImage = () => {
   return (
@@ -28,10 +28,7 @@ export const WithVideo = () => {
         { href: "#", label: "What we do", showChevron: true },
         { href: "#", label: "Learn more about us", showChevron: false }
       ])}
-      videoUrl={text(
-        "Video Url",
-        "https://think-2021-cos-bucket.s3.eu-de.cloud-object-storage.appdomain.cloud/pexels-nikita-ryumshin-7782667.mp4"
-      )}
+      videoUrl={text("Video Url", "video.mp4")}
       backgroundImage={text(
         "Background Image",
         "https://i.pinimg.com/originals/30/c6/c3/30c6c39d2ad38b4be22a4932707b0550.png"
@@ -57,10 +54,7 @@ export const WithHeader = () => {
           { href: "#", label: "What we do", showChevron: true },
           { href: "#", label: "Learn more about us", showChevron: false }
         ])}
-        videoUrl={text(
-          "Video Url",
-          "https://think-2021-cos-bucket.s3.eu-de.cloud-object-storage.appdomain.cloud/pexels-nikita-ryumshin-7782667.mp4"
-        )}
+        videoUrl={text("Video Url", "video.mp4")}
         backgroundImage={text(
           "Background Image",
           "https://i.pinimg.com/originals/30/c6/c3/30c6c39d2ad38b4be22a4932707b0550.png"
