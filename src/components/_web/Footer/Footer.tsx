@@ -4,7 +4,7 @@ import { Grid, Column, Link } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
 
-export type LinkItem = {
+type LinkItem = {
   /**
    * LinkItem Href
    */
@@ -16,19 +16,19 @@ export type LinkItem = {
   label: string;
 
   /** LinkItem OnClick Action (acts as button) */
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
 type FooterProps = {
   /**
-   * Footer LinkItems
-   */
-  linkItems?: LinkItem[];
-
-  /**
    * Footer className
    */
   className?: string;
+
+  /**
+   * Footer LinkItems
+   */
+  linkItems?: LinkItem[];
 
   /**
    * Footer BaseUrl
@@ -47,8 +47,8 @@ type FooterProps = {
 };
 
 const Footer = (
-  { linkItems, description, descriptionLink, className }: FooterProps,
-  ref: React.ForwardedRef<HTMLElement>
+  { className, linkItems, description, descriptionLink }: FooterProps,
+  ref?: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
@@ -62,7 +62,7 @@ const Footer = (
           xlg={4}
           className={`${prefix}--Footer-column`}
         >
-          <p className={`${prefix}--Footer-labesl`}>
+          <p className={`${prefix}--Footer-label`}>
             &copy; {currentYear} BRICKS &amp; BRACES
           </p>
           {(description || descriptionLink) && (
@@ -108,4 +108,4 @@ const Footer = (
   );
 };
 
-export default Footer;
+export default React.forwardRef(Footer);
