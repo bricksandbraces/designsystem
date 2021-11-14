@@ -1,14 +1,14 @@
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Header from "./Header";
+import WebHeader from "./WebHeader";
 
-export default { title: "Web/Header", decorators: [withKnobs] };
+export default { title: "Web/A_REFA_WebHeader", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
-    <Header
-      baseUrl={text("Header URL", "#")}
-      linkItems={object("Header items", [
+    <WebHeader
+      baseUrl={text("WebHeader URL", "#")}
+      linkItems={object("WebHeader items", [
         { href: "#", label: "About us" },
         { href: "#", label: "Contact" },
         { href: "#", label: "Blog" }

@@ -10,6 +10,8 @@ import Button from "../Button/Button";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
 import Headline from "../Typography/Headline";
+import Marketing from "../Typography/Marketing";
+import IconOnlyButton from "../Button/IconOnlyButton";
 
 type CtaItem = {
   /**
@@ -63,7 +65,7 @@ const LeadSpace = ({
     <section
       id="leadspace"
       className={cx(`${prefix}--leadspace`, {
-        [`${prefix}--leadspace--video-player`]: videoUrl
+        [`${prefix}--leadspace-video__player`]: videoUrl
       })}
       style={{
         backgroundImage: `url(${backgroundImage})`
@@ -83,10 +85,12 @@ const LeadSpace = ({
           >
             <source src={videoUrl} type="video/mp4" />
           </video>
-          <button
-            className={`${prefix}--leadspace--video-controls`}
-            type="button"
+          <IconOnlyButton
+            className={`${prefix}--leadspace-video__controls`}
             aria-label={videoPlay ? "Pause video" : "Play video"}
+            kind="ghost"
+            size="large"
+            hideTooltip
             onClick={() => {
               if (videoPlay) {
                 video.current?.pause();
@@ -96,15 +100,14 @@ const LeadSpace = ({
 
               setVideoPlay(!videoPlay);
             }}
-          >
-            {videoPlay ? <IconPlayerPause /> : <IconPlayerPlay />}
-          </button>
+            icon={videoPlay ? <IconPlayerPause /> : <IconPlayerPlay />}
+          />
         </>
       )}
       <Grid
         narrow
-        className={cx(`${prefix}--leadspace--grid`, {
-          [`${prefix}--leadspace--video`]: videoUrl
+        className={cx(`${prefix}--leadspace-grid`, {
+          [`${prefix}--leadspace-video`]: videoUrl
         })}
       >
         <Column
@@ -112,17 +115,19 @@ const LeadSpace = ({
           smOffset={0}
           md={6}
           mdOffset={1}
-          lg={6}
+          lg={14}
           lgOffset={2}
-          xlg={6}
+          xlg={14}
           xlgOffset={2}
-          className={`${prefix}--leadspace--column`}
+          className={`${prefix}--leadspace-column`}
         >
-          <div className={`${prefix}--leadspace--container`}>
-            <div className={`${prefix}--leadspace--content`}>
-              {title && <Headline type="h1">{title}</Headline>}
+          <div className={`${prefix}--leadspace-container`}>
+            <div className={`${prefix}--leadspace-content`}>
+              {title && (
+                <h1 className={`${prefix}--leadspace-headline`}>{title}</h1>
+              )}
               {ctaItems && (
-                <div className={`${prefix}--leadspace--content-buttongroup`}>
+                <div className={`${prefix}--leadspace-content__buttongroup`}>
                   {indexedCtaItems?.map((cta, i) => {
                     return (
                       <Button

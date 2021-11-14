@@ -9,7 +9,7 @@ import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
 import DatePicker from "./components/DatePicker/DatePicker";
 import { Grid, Column } from "./components/Grid/Grid";
-import Header from "./components/Header/Header";
+import WebHeader from "./components/WebHeader/WebHeader";
 import LeadSpace from "./components/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
@@ -61,7 +61,7 @@ export {
   CopyButton,
   Grid,
   Column,
-  Header,
+  WebHeader,
   LeadSpace,
   Logo,
   SideNav,
