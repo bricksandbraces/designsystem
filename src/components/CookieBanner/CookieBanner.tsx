@@ -3,6 +3,7 @@ import cx from "classnames";
 import Button from "../Button/Button";
 import Link from "../Link/Link";
 import { prefix } from "../../settings";
+import { Column, Grid } from "../..";
 
 type CookieBannerProps = {
   /**
@@ -53,23 +54,48 @@ const CookieBanner = ({
   return (
     <div
       className={cx(`${prefix}--cookiebanner`, {
-        [`${prefix}--cookiebanner--open`]: open
+        [`${prefix}--cookiebanner-open`]: open
       })}
     >
-      <div className={`${prefix}--cookiebanner--label`}>
-        <p>{label}</p>
-        {linkLabel && (
-          <Link
-            inline
-            href={linkHref ?? "#"}
-            onClick={onLinkClick}
-            target="_blank"
-          >
-            {linkLabel}
-          </Link>
-        )}
-      </div>
-      {buttonLabel && <Button onClick={onButtonClick}>{buttonLabel} </Button>}
+      <Grid narrow fullWidth className={`${prefix}--cookiebanner-grid`}>
+        <Column
+          sm={4}
+          md={6}
+          lg={8}
+          xlg={8}
+          className={`${prefix}--cookiebanner-label__container`}
+        >
+          <p className={`${prefix}--cookiebanner-label`}>
+            {label}
+            {linkLabel && (
+              <Link
+                inline
+                href={linkHref ?? "#"}
+                onClick={onLinkClick}
+                target="_blank"
+              >
+                {linkLabel}
+              </Link>
+            )}
+          </p>
+        </Column>
+        <Column
+          sm={4}
+          md={2}
+          lg={8}
+          xlg={8}
+          className={`${prefix}--cookiebanner-button__container`}
+        >
+          {buttonLabel && (
+            <Button
+              className={`${prefix}--cookiebanner-button`}
+              onClick={onButtonClick}
+            >
+              {buttonLabel}
+            </Button>
+          )}
+        </Column>
+      </Grid>
     </div>
   );
 };
