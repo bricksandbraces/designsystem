@@ -1,96 +1,75 @@
 import React from "react";
-import Logo from "../../Logo/Logo";
-import { Grid, Column } from "../../Grid/Grid";
-import Link from "../../Link/Link";
-import { prefix } from "../../../settings";
+import cx from "classnames";
+import { Grid, Column, Link } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
-import Label from "../../Typography/Label";
+import { prefix } from "../../../settings";
 
 export type LinkItem = {
   /**
-   * LinkItem Link to location
+   * LinkItem Href
    */
   href?: string;
 
   /**
-   * LinkItem Label that is shown
+   * LinkItem Label
    */
   label: string;
 
-  /**
-   * LinkItem onClick action (acts as button)
-   * */
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  /** LinkItem OnClick Action (acts as button) */
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 };
 
-export type FooterProps = {
+type FooterProps = {
   /**
-   * Footer Link section / Buttons
+   * Footer LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * Footer Base Url for footer
+   * Footer className
+   */
+  className?: string;
+
+  /**
+   * Footer BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * Footer Description for footer
+   * Footer Description
    */
   description?: string;
 
   /**
-   * Footer DescriptionLink for footer
+   * Footer DescriptionLink
    */
   descriptionLink?: LinkItem;
 };
 
 const Footer = (
-  { linkItems, baseUrl, description, descriptionLink }: FooterProps,
+  { linkItems, description, descriptionLink, className }: FooterProps,
   ref: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
   return (
-    <footer className={`${prefix}--footer`} ref={ref}>
-      <Grid narrow className={`${prefix}--footer--grid`}>
-        <Column
-          sm={4}
-          md={6}
-          mdOffset={1}
-          lg={12}
-          lgOffset={2}
-          xlg={12}
-          xlgOffset={2}
-        >
-          <hr className={`${prefix}--footer--divider`} />
-        </Column>
+    <footer className={cx(`${prefix}--Footer`, className)} ref={ref}>
+      <Grid narrow className={`${prefix}--Footer-grid`}>
         <Column
           sm={3}
-          md={3}
-          mdOffset={1}
+          md={4}
           lg={4}
-          lgOffset={2}
           xlg={4}
-          xlgOffset={2}
-          className={`${prefix}--footer--column`}
+          className={`${prefix}--Footer-column`}
         >
-          <a className={`${prefix}--footer--logo`} href={baseUrl}>
-            <Logo
-              className={`${prefix}--footer--logo-logomark`}
-              color="white"
-              size="medium"
-              type="logomark"
-            />
-          </a>
-          <Label className={`${prefix}--footer--logo-label`}>
+          <p className={`${prefix}--Footer-labesl`}>
             &copy; {currentYear} BRICKS &amp; BRACES
-          </Label>
+          </p>
           {(description || descriptionLink) && (
-            <Label className={`${prefix}--footer--logo-cookies`}>
+            <p className={`${prefix}--Footer-label`}>
               {description}
               {descriptionLink && (
-                <div className={`${prefix}--footer--logo-link`}>
+                <p className={`${prefix}--Footer-label__link`}>
                   <Link
                     href={descriptionLink.href}
                     onClick={descriptionLink.onClick}
@@ -98,28 +77,25 @@ const Footer = (
                   >
                     {descriptionLink.label}
                   </Link>
-                </div>
+                </p>
               )}
-            </Label>
+            </p>
           )}
         </Column>
         <Column
           sm={4}
-          md={3}
-          mdOffset={4}
-          lg={6}
-          lgOffset={8}
-          xlg={6}
-          xlgOffset={8}
-          className={`${prefix}--footer--column`}
+          md={4}
+          lg={12}
+          xlg={12}
+          className={`${prefix}--Footer-column`}
         >
-          <div className={`${prefix}--footer--linksection`}>
+          <div className={`${prefix}--Footer-linksection`}>
             {indexedLinkItems?.map((link) => {
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  className={`${prefix}--footer--linksection-item`}
+                  className={`${prefix}--Footer-linksection__item`}
                 >
                   {link.label}
                 </Link>
