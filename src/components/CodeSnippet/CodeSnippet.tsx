@@ -90,4 +90,4 @@ const CodeSnippet = (
   );
 };
 
-export default CodeSnippet;
+export default React.forwardRef(CodeSnippet);
