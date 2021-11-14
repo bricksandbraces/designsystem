@@ -156,6 +156,7 @@ const Modal = (
                   onClick={(event) => {
                     onClose?.(event as React.MouseEvent<HTMLButtonElement>);
                   }}
+                  manualFocus
                 />
                 {children}
               </FocusLock>

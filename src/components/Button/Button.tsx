@@ -138,6 +138,7 @@ const Button = (
     loadingDescription = "Loading",
     onFocus,
     onBlur,
+    manualFocus,
     ...rest
   }: ButtonProps,
   ref: React.ForwardedRef<ButtonOrAnchor>
@@ -158,7 +159,7 @@ const Button = (
       [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
       [`${prefix}--button-loading`]: isLoading,
       [`${prefix}--button-danger`]: danger,
-      [`${prefix}--button__focus`]: focused
+      [`${prefix}--button__focus`]: focused && manualFocus
     },
     className
   );
