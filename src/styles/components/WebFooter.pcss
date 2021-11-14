@@ -1,0 +1,73 @@
+@import "../prefix.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--webfooter {
+    min-height: $size--container-08;
+    background-color: $black;
+
+    &-divider {
+      background-color: $color--app-03;
+    }
+
+    &-grid {
+      height: 100%;
+    }
+
+    &-column {
+      display: flex;
+      padding: $size--spacing-07 $size--spacing-05 $size--spacing-09
+        $size--spacing-05;
+    }
+
+    &-column > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &-label {
+      @mixin type--label;
+
+      margin: 0 0 $size--spacing-03;
+      color: $color--font-text-03;
+
+      &__link {
+        margin: $size--spacing-05 0;
+
+        & > .$(prefix)--link > .$(prefix)--link-label {
+          @mixin type--label;
+        }
+      }
+    }
+
+    &-linksection {
+      display: flex;
+      justify-content: flex-end;
+
+      &__item {
+        margin: 0 0 0 $size--spacing-06;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix)--webfooter {
+    &-column {
+      display: flex;
+      padding: $size--spacing-05;
+    }
+
+    &-linksection {
+      display: flex;
+      justify-content: flex-start;
+      margin: 0 0 $size--spacing-05;
+
+      &__item {
+        margin: 0 $size--spacing-06 0 0;
+      }
+    }
+  }
+}

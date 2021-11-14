@@ -1,21 +1,22 @@
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Footer from "./Footer";
+import WebFooter from "./WebFooter";
 
-export default { title: "Web/Footer", decorators: [withKnobs] };
+export default { title: "Web/A_REFA_WebFooter", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
-    <Footer
+    <WebFooter
       baseUrl={text("Header URL", "#")}
       linkItems={object("Header items", [
         { href: "#", label: "Imprint" },
         { href: "#", label: "Legal" },
         { href: "#", label: "Cookies" },
-        { href: "#", label: "Data privacy" }
+        { href: "#", label: "Privacy" },
+        { href: "#", label: "Contact" }
       ])}
       description={text(
-        "Footer description",
+        "WebFooter description",
         "Wir nutzen Cookies, um deine Experience zu verbessern. Deine Einstellungen kannst du jederzeit in den Einstellungen ändern."
       )}
       descriptionLink={object("Description Link", {

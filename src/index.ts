@@ -16,7 +16,7 @@ import SideNav from "./components/SideNav/SideNav";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
-import Footer from "./components/Footer/Footer";
+import WebFooter from "./components/WebFooter/WebFooter";
 import Checkbox from "./components/Checkbox/Checkbox";
 import Tabs from "./components/Tabs/Tabs";
 import Tab from "./components/Tabs/Tab";

@@ -21,7 +21,7 @@
 @import "./components/Typography.pcss";
 @import "./components/LeadSpace.pcss";
 @import "./components/WebHeader.pcss";
-@import "./components/Footer.pcss";
+@import "./components/WebFooter.pcss";
 @import "./components/Modal.pcss";
 @import "./components/Checkbox.pcss";
 @import "./components/CookieModal.pcss";

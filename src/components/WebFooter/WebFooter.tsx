@@ -1,10 +1,8 @@
 import React from "react";
-import Logo from "../Logo/Logo";
 import { Grid, Column } from "../Grid/Grid";
 import Link from "../Link/Link";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
-import Label from "../Typography/Label";
 
 type LinkItem = {
   /**
@@ -21,7 +19,7 @@ type LinkItem = {
   onClick?: (event: Event) => void;
 };
 
-type FooterProps = {
+type WebFooterProps = {
   /**
    * Link section / Buttons
    */
@@ -43,54 +41,31 @@ type FooterProps = {
   descriptionLink?: LinkItem;
 };
 
-const Footer = ({
+const WebFooter = ({
   linkItems,
-  baseUrl,
   description,
   descriptionLink
-}: FooterProps) => {
+}: WebFooterProps) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
   return (
-    <footer className={`${prefix}--footer`}>
-      <Grid narrow className={`${prefix}--footer--grid`}>
-        <Column
-          sm={4}
-          md={6}
-          mdOffset={1}
-          lg={12}
-          lgOffset={2}
-          xlg={12}
-          xlgOffset={2}
-        >
-          <hr className={`${prefix}--footer--divider`} />
-        </Column>
+    <footer className={`${prefix}--webfooter`}>
+      <Grid narrow className={`${prefix}--webfooter-grid`}>
         <Column
           sm={3}
-          md={3}
-          mdOffset={1}
+          md={4}
           lg={4}
-          lgOffset={2}
           xlg={4}
-          xlgOffset={2}
-          className={`${prefix}--footer--column`}
+          className={`${prefix}--webfooter-column`}
         >
-          <a className={`${prefix}--footer--logo`} href={baseUrl}>
-            <Logo
-              className={`${prefix}--footer--logo-logomark`}
-              color="white"
-              size="medium"
-              type="logomark"
-            />
-          </a>
-          <Label className={`${prefix}--footer--logo-label`}>
+          <p className={`${prefix}--webfooter-label`}>
             &copy; {currentYear} BRICKS &amp; BRACES
-          </Label>
+          </p>
           {(description || descriptionLink) && (
-            <Label className={`${prefix}--footer--logo-cookies`}>
+            <p className={`${prefix}--webfooter-label`}>
               {description}
               {descriptionLink && (
-                <div className={`${prefix}--footer--logo-link`}>
+                <p className={`${prefix}--webfooter-label__link`}>
                   <Link
                     href={descriptionLink.href}
                     onClick={descriptionLink.onClick}
@@ -98,28 +73,25 @@ const Footer = ({
                   >
                     {descriptionLink.label}
                   </Link>
-                </div>
+                </p>
               )}
-            </Label>
+            </p>
           )}
         </Column>
         <Column
           sm={4}
-          md={3}
-          mdOffset={4}
-          lg={6}
-          lgOffset={8}
-          xlg={6}
-          xlgOffset={8}
-          className={`${prefix}--footer--column`}
+          md={4}
+          lg={12}
+          xlg={12}
+          className={`${prefix}--webfooter-column`}
         >
-          <div className={`${prefix}--footer--linksection`}>
+          <div className={`${prefix}--webfooter-linksection`}>
             {indexedLinkItems?.map((link) => {
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  className={`${prefix}--footer--linksection-item`}
+                  className={`${prefix}--webfooter-linksection__item`}
                 >
                   {link.label}
                 </Link>
@@ -132,4 +104,4 @@ const Footer = ({
   );
 };
 
-export default Footer;
+export default WebFooter;
