@@ -19,35 +19,35 @@ type LinkItem = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-type WebFooterProps = {
+type FooterProps = {
   /**
-   * WebFooter LinkItems
+   * Footer LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * WebFooter ClassName
+   * Footer ClassName
    */
   className?: string;
 
   /**
-   * WebFooter BaseUrl
+   * Footer BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * WebFooter Description
+   * Footer Description
    */
   description?: string;
 
   /**
-   * WebFooter DescriptionLink
+   * Footer DescriptionLink
    */
   descriptionLink?: LinkItem;
 };
 
-const WebFooter = (
-  { linkItems, className, description, descriptionLink }: WebFooterProps,
+const Footer = (
+  { linkItems, className, description, descriptionLink }: FooterProps,
   ref?: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
@@ -108,4 +108,4 @@ const WebFooter = (
   );
 };
 
-export default React.forwardRef(WebFooter);
+export default React.forwardRef(Footer);
