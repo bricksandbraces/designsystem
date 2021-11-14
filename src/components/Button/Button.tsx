@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
@@ -14,7 +14,7 @@ export type ButtonProps = {
   /**
    * Button Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Button Kind
@@ -84,7 +84,7 @@ export type ButtonProps = {
   /**
    * Button icon
    */
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 
   /**
    * Button iconPosition
@@ -139,7 +139,7 @@ const Button = (
     {href ? (
       <a
         href={href}
-        ref={ref as ForwardedRef<HTMLAnchorElement>}
+        ref={ref as React.ForwardedRef<HTMLAnchorElement>}
         className={cx(
           `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
           {
@@ -174,7 +174,7 @@ const Button = (
     ) : (
       <button
         type="button"
-        ref={ref as ForwardedRef<HTMLButtonElement>}
+        ref={ref as React.ForwardedRef<HTMLButtonElement>}
         className={cx(
           `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
           {
@@ -211,4 +211,4 @@ const Button = (
   </>
 );
 
-export default forwardRef<ButtonOrAnchor, ButtonProps>(Button);
+export default React.forwardRef<ButtonOrAnchor, ButtonProps>(Button);

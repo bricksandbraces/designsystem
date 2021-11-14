@@ -8,12 +8,17 @@ type BadgeSkeletonProps = {
    * BadgeSkeleton ClassName
    */
   className?: string;
+
+  /**
+   * BadgeSkeleton width. Defaults to 64
+   */
+  width?: number;
 };
 
-const BadgeSkeleton = ({ className }: BadgeSkeletonProps) => {
+const BadgeSkeleton = ({ className, width = 64 }: BadgeSkeletonProps) => {
   return (
     <SkeletonAnimatedContainer
-      width={64}
+      width={width}
       className={cx(
         `${prefix}--badge`,
 
