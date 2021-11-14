@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import {
   boolean,
   object,
@@ -66,6 +67,9 @@ export const Uncontrolled = () => {
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         items={object("items", sampleItemConfig)}
+        onChange={action("onChange")}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
       />
     </div>
   );
@@ -88,7 +92,10 @@ export const Controlled = () => {
         value={selectedValue}
         onChange={(newValue) => {
           setSelectedValue(newValue);
+          action("onChange")(newValue);
         }}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
       />
     </div>
   );
