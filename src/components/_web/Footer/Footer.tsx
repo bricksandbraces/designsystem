@@ -69,15 +69,13 @@ const Footer = (
             <p className={`${prefix}--webfooter-label`}>
               {description}
               {descriptionLink && (
-                <p className={`${prefix}--webfooter-label__link`}>
-                  <Link
-                    href={descriptionLink.href}
-                    onClick={descriptionLink.onClick}
-                    inline
-                  >
-                    {descriptionLink.label}
-                  </Link>
-                </p>
+                <Link
+                  href={descriptionLink.href}
+                  onClick={descriptionLink.onClick}
+                  inline
+                >
+                  {descriptionLink.label}
+                </Link>
               )}
             </p>
           )}
