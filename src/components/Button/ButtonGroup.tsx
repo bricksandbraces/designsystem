@@ -36,4 +36,4 @@ const ButtonGroup = (
   </div>
 );
 
-export default ButtonGroup;
+export default React.forwardRef(ButtonGroup);

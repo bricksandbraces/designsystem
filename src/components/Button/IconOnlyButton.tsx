@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import cx from "classnames";
 import Button, { ButtonProps } from "./Button";
 import { prefix } from "../../settings";
@@ -56,7 +56,4 @@ const IconOnlyButton = (
   );
 };
 
-export default forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  IconOnlyButtonProps
->(IconOnlyButton);
+export default React.forwardRef(IconOnlyButton);

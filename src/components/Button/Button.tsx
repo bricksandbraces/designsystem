@@ -219,4 +219,4 @@ const Button = (
   );
 };
 
-export default React.forwardRef<ButtonOrAnchor, ButtonProps>(Button);
+export default React.forwardRef(Button);

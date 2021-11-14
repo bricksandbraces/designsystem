@@ -95,4 +95,4 @@ const AvatarList = (
   );
 };
 
-export default React.forwardRef<HTMLUListElement, AvatarListProps>(AvatarList);
+export default React.forwardRef(AvatarList);

@@ -150,4 +150,4 @@ const Badge = (
   );
 };
 
-export default Badge;
+export default React.forwardRef(Badge);

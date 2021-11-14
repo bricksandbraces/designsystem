@@ -1,9 +1,10 @@
 import { IconChevronDown } from "@tabler/icons";
-import React, { ReactNode, useEffect, useState, forwardRef } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
 import { AccordionItemProps } from "./AccordionItem";
 import { prefix } from "../../settings";
 import useControlled from "../../hooks/useControlled";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
 export type AccordionProps = {
   /**
@@ -102,75 +103,73 @@ const Accordion = (
       )}
     >
       <ul className={cx(`${prefix}--accordion-list`)} ref={ref}>
-        {React.Children.map(children, (child, i) => {
-          if (!React.isValidElement<AccordionItemProps>(child)) {
-            return child;
-          }
-          const elementChild: React.ReactElement<AccordionItemProps> = child;
-          const { props } = elementChild;
-          const open = openIndexList.includes(i);
-          return (
-            <li
-              key={child.key}
-              className={cx(`${prefix}--accordion-list__item`, {
-                [`${prefix}--accordion-list__item-collapse`]:
-                  itemAnimations[i] === AnimationType.COLLAPSE && open,
-                [`${prefix}--accordion-list__item-expand`]:
-                  itemAnimations[i] === AnimationType.EXPAND && open,
-                [`${prefix}--accordion-list__item-open`]: open
-              })}
-              onAnimationEnd={() => {
-                setAnimationForItem(i, AnimationType.NONE);
-              }}
-            >
-              <button
-                id={`${props.id}_label`}
-                disabled={props.disabled}
-                className={`${prefix}--accordion-list__item-title`}
-                aria-expanded={open}
-                aria-controls={`${props.id}_content`}
-                onClick={() => {
-                  const alreadyOpen = openIndexList.includes(i);
-                  const newOpenList = alreadyOpen
-                    ? openIndexList.filter(
-                        (selectedItemIndex) => i !== selectedItemIndex
-                      )
-                    : [...openIndexList, i];
-                  if (!controlled) {
-                    setAnimationForItem(
-                      i,
-                      alreadyOpen
-                        ? AnimationType.COLLAPSE
-                        : AnimationType.EXPAND
-                    );
-                    setOpenIndexList(newOpenList);
-                  }
-                  onChange?.(i, !alreadyOpen, newOpenList);
+        {mapReactChildren<AccordionItemProps>(
+          children,
+          ({ props, index, key }) => {
+            const open = openIndexList.includes(index);
+            return (
+              <li
+                key={key}
+                className={cx(`${prefix}--accordion-list__item`, {
+                  [`${prefix}--accordion-list__item-collapse`]:
+                    itemAnimations[index] === AnimationType.COLLAPSE && open,
+                  [`${prefix}--accordion-list__item-expand`]:
+                    itemAnimations[index] === AnimationType.EXPAND && open,
+                  [`${prefix}--accordion-list__item-open`]: open
+                })}
+                onAnimationEnd={() => {
+                  setAnimationForItem(index, AnimationType.NONE);
                 }}
               >
-                <p
-                  className={`${prefix}--accordion-list__item-title--headline`}
+                <button
+                  id={`${props.id}_label`}
+                  disabled={props.disabled}
+                  className={`${prefix}--accordion-list__item-title`}
+                  aria-expanded={open}
+                  aria-controls={`${props.id}_content`}
+                  onClick={() => {
+                    const alreadyOpen = openIndexList.includes(index);
+                    const newOpenList = alreadyOpen
+                      ? openIndexList.filter(
+                          (selectedItemIndex) => index !== selectedItemIndex
+                        )
+                      : [...openIndexList, index];
+                    if (!controlled) {
+                      setAnimationForItem(
+                        index,
+                        alreadyOpen
+                          ? AnimationType.COLLAPSE
+                          : AnimationType.EXPAND
+                      );
+                      setOpenIndexList(newOpenList);
+                    }
+                    onChange?.(index, !alreadyOpen, newOpenList);
+                  }}
                 >
-                  {props.title}
+                  <p
+                    className={`${prefix}--accordion-list__item-title--headline`}
+                  >
+                    {props.title}
+                  </p>
+                  <IconChevronDown
+                    className={`${prefix}--accordion-list__item-title--icon`}
+                    size={16}
+                  />
+                </button>
+                <p
+                  className={`${prefix}--accordion-list__item-content`}
+                  id={`${props.id}_content`}
+                  aria-labelledby={`${props.id}_label`}
+                >
+                  {props.children}
                 </p>
-                <IconChevronDown
-                  className={`${prefix}--accordion-list__item-title--icon`}
-                  size={16}
-                />
-              </button>
-              <p
-                className={`${prefix}--accordion-list__item-content`}
-                id={`${props.id}_content`}
-                aria-labelledby={`${props.id}_label`}
-              >
-                {props.children}
-              </p>
-            </li>
-          );
-        })}
+              </li>
+            );
+          }
+        )}
       </ul>
     </div>
   );
 };
 
-export default forwardRef<HTMLUListElement, AccordionProps>(Accordion);
+export default React.forwardRef(Accordion);
