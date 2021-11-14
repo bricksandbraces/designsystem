@@ -6,37 +6,37 @@ import { idfy } from "../../helpers/arrayUtilities";
 
 type LinkItem = {
   /**
-   * Link to location
+   * LinkItem Href
    */
   href?: string;
 
   /**
-   * Label that is shown
+   * LinkItem Label
    */
   label: string;
 
-  /** onClick action (acts as button) */
+  /** LinkItem OnClick Action (acts as button) */
   onClick?: (event: Event) => void;
 };
 
 type WebFooterProps = {
   /**
-   * Link section / Buttons
+   * WebFooter LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * Base Url for footer
+   * WebFooter BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * Description for footer
+   * WebFooter Description
    */
   description?: string;
 
   /**
-   * DescriptionLink for footer
+   * WebFooter DescriptionLink
    */
   descriptionLink?: LinkItem;
 };
