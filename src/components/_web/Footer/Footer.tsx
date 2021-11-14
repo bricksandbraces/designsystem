@@ -19,57 +19,57 @@ type LinkItem = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-type FooterProps = {
+type WebFooterProps = {
   /**
-   * Footer className
-   */
-  className?: string;
-
-  /**
-   * Footer LinkItems
+   * WebFooter LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * Footer BaseUrl
+   * WebFooter ClassName
+   */
+  className?: string;
+
+  /**
+   * WebFooter BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * Footer Description
+   * WebFooter Description
    */
   description?: string;
 
   /**
-   * Footer DescriptionLink
+   * WebFooter DescriptionLink
    */
   descriptionLink?: LinkItem;
 };
 
-const Footer = (
-  { className, linkItems, description, descriptionLink }: FooterProps,
+const WebFooter = (
+  { linkItems, className, description, descriptionLink }: WebFooterProps,
   ref?: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
   return (
-    <footer className={cx(`${prefix}--Footer`, className)} ref={ref}>
-      <Grid narrow className={`${prefix}--Footer-grid`}>
+    <footer className={cx(`${prefix}--webfooter`, className)} ref={ref}>
+      <Grid narrow className={`${prefix}--webfooter-grid`}>
         <Column
           sm={3}
           md={4}
           lg={4}
           xlg={4}
-          className={`${prefix}--Footer-column`}
+          className={`${prefix}--webfooter-column`}
         >
-          <p className={`${prefix}--Footer-label`}>
+          <p className={`${prefix}--webfooter-label`}>
             &copy; {currentYear} BRICKS &amp; BRACES
           </p>
           {(description || descriptionLink) && (
-            <p className={`${prefix}--Footer-label`}>
+            <p className={`${prefix}--webfooter-label`}>
               {description}
               {descriptionLink && (
-                <p className={`${prefix}--Footer-label__link`}>
+                <p className={`${prefix}--webfooter-label__link`}>
                   <Link
                     href={descriptionLink.href}
                     onClick={descriptionLink.onClick}
@@ -87,15 +87,15 @@ const Footer = (
           md={4}
           lg={12}
           xlg={12}
-          className={`${prefix}--Footer-column`}
+          className={`${prefix}--webfooter-column`}
         >
-          <div className={`${prefix}--Footer-linksection`}>
+          <div className={`${prefix}--webfooter-linksection`}>
             {indexedLinkItems?.map((link) => {
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  className={`${prefix}--Footer-linksection__item`}
+                  className={`${prefix}--webfooter-linksection__item`}
                 >
                   {link.label}
                 </Link>
@@ -108,4 +108,4 @@ const Footer = (
   );
 };
 
-export default React.forwardRef(Footer);
+export default React.forwardRef(WebFooter);
