@@ -90,7 +90,7 @@ const CookieModal = (
     secondaryLabel,
     onSecondaryClick
   }: CookieModalProps,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <Modal

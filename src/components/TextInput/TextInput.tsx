@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
@@ -150,17 +150,13 @@ const TextInput = (
           disabled={disabled}
           readOnly={readOnly}
           ref={mergeRefs([ref, inputRef])}
-          className={cx(
-            `${prefix}--textinput-input`,
-            {
-              [`${prefix}--textinput-${size}`]: !fluid,
-              [`${prefix}--textinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--textinput-input`, {
+            [`${prefix}--textinput-${size}`]: !fluid,
+            [`${prefix}--textinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--textinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type={type}
           placeholder={!fluid ? placeholder : ""}
           autoComplete={autoComplete}

@@ -33,7 +33,7 @@ const SearchListItem = (
     onMouseEnter,
     onMouseLeave
   }: SearchListItemProps,
-  ref: ForwardedRef<HTMLAnchorElement>
+  ref: React.ForwardedRef<HTMLAnchorElement>
 ) => {
   const [hovered, setHovered] = useState<boolean>(manuallyHovered ?? false);
   useEffect(() => {

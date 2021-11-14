@@ -1,4 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { actions } from "@storybook/addon-actions";
 import React from "react";
 import {
   Icon3dCubeSphere,
@@ -16,7 +17,10 @@ import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
 import ButtonSkeleton from "./ButtonSkeleton";
 import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
 
-export default { title: "Components/A_REFA_Button", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_Button",
+  decorators: [withKnobs]
+};
 
 const options = {
   Primary: "primary",
@@ -42,6 +46,14 @@ const iconPositionOptions = {
 
 const defaultIconPosition = "right";
 
+const buttonActions = actions(
+  "onClick",
+  "onFocus",
+  "onBlur",
+  "onMouseEnter",
+  "onMouseLeave"
+);
+
 export const Default = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
     <div style={{ width: "405px" }}>
@@ -52,6 +64,7 @@ export const Default = () => (
         danger={boolean("danger", false)}
         isLoading={boolean("isLoading", false)}
         disabled={boolean("disabled", false)}
+        {...buttonActions}
       >
         {text("label", "Button")}
       </Button>
@@ -77,6 +90,7 @@ export const WithIcon = () => (
         icon={<Icon3dCubeSphere />}
         isLoading={boolean("isLoading", false)}
         disabled={boolean("disabled", false)}
+        {...buttonActions}
       >
         {text("label", "Button")}
       </Button>
@@ -97,6 +111,7 @@ export const WithIconOnly = () => (
         icon={<IconLayoutGridAdd />}
         isLoading={boolean("isLoading", false)}
         disabled={boolean("disabled", false)}
+        {...buttonActions}
       />
     </div>
   </div>
@@ -115,6 +130,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Align Left"
             }}
             icon={<IconAlignLeft />}
+            {...buttonActions}
           />
           <IconOnlyButton
             danger={boolean("danger", false)}
@@ -124,6 +140,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Center"
             }}
             icon={<IconAlignCenter />}
+            {...buttonActions}
           />
           <IconOnlyButton
             danger={boolean("danger", false)}
@@ -133,6 +150,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Align Right"
             }}
             icon={<IconAlignRight />}
+            {...buttonActions}
           />
           <IconOnlyButton
             danger={boolean("danger", false)}
@@ -142,6 +160,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Bold"
             }}
             icon={<IconBold />}
+            {...buttonActions}
           />
           <IconOnlyButton
             danger={boolean("danger", false)}
@@ -151,6 +170,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Italic"
             }}
             icon={<IconItalic />}
+            {...buttonActions}
           />
           <IconOnlyButton
             danger={boolean("danger", false)}
@@ -160,6 +180,7 @@ export const IconOnlyGroup = () => {
               tooltipContent: "Underline"
             }}
             icon={<IconUnderline />}
+            {...buttonActions}
           />
         </IconOnlyButtonGroup>
       </div>

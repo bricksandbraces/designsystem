@@ -13,7 +13,7 @@ export type IconTriggerProps = {
 
 const IconTrigger = (
   { children, ...props }: IconTriggerProps,
-  ref: ForwardedRef<HTMLButtonElement>
+  ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (
     <button

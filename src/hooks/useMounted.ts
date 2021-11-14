@@ -1,13 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const useMounted = () => {
+const useMountedPassive = () => {
   const mounted = useRef<boolean>(false);
 
   useEffect(() => {
     mounted.current = true;
   }, []);
-
   return mounted.current;
 };
 
-export default useMounted;
+const useMounted = () => {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted;
+};
+
+export { useMounted, useMountedPassive };
