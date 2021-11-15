@@ -1,11 +1,12 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
 import { RadioButtonProps } from "./RadioButton";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
-type RadioButtonGroupProps = {
+export type RadioButtonGroupProps = {
   /**
    * React className
    */
@@ -19,7 +20,7 @@ type RadioButtonGroupProps = {
   /**
    * Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * RadioButtonGroup Value (Controlled). Use null for nothing selected but controlled.
@@ -51,22 +52,25 @@ type RadioButtonGroupProps = {
    */
   onChange?: (
     newValue: string | null,
-    event: ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>
   ) => void;
 };
 
-const RadioButtonGroup = ({
-  id,
-  legendLabel,
-  disabled,
-  className,
-  children,
+const RadioButtonGroup = (
+  {
+    id,
+    legendLabel,
+    disabled,
+    className,
+    children,
 
-  defaultValue,
-  value,
-  name,
-  onChange
-}: RadioButtonGroupProps) => {
+    defaultValue,
+    value,
+    name,
+    onChange
+  }: RadioButtonGroupProps,
+  ref?: React.ForwardedRef<HTMLFieldSetElement>
+) => {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(
     defaultValue ?? value ?? null
@@ -76,12 +80,14 @@ const RadioButtonGroup = ({
       setSelectedValue(value ?? null);
     }
   }, [value]);
+
   return (
     <fieldset
       id={id}
       className={cx(`${prefix}--radiobutton-group`, className)}
       name={name}
       disabled={disabled}
+      ref={ref}
     >
       {legendLabel && (
         <legend
@@ -90,30 +96,30 @@ const RadioButtonGroup = ({
           {legendLabel}
         </legend>
       )}
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement<RadioButtonProps>(child)) {
-          return child;
-        }
+      {mapReactChildren<RadioButtonProps>(children, ({ props, child }) => {
         assert(
-          child.props.checked === undefined &&
-            child.props.defaultChecked === undefined,
-          "You provided either checked or defaultChecked property to the RadioButton while it is a child of the RadioButtonGroup. That is illegal. While using a RadioButtonGroup you have to manage its value only on the group as those properties are being ignored on the child elements."
+          props.checked === undefined && props.defaultChecked === undefined,
+          `You provided either checked or defaultChecked property to the RadioButton while it is a
+          child of the RadioButtonGroup. That is illegal. While using a RadioButtonGroup you have
+          to manage its value only on the group as those properties are being ignored on the child
+          elements.`
         );
         return React.cloneElement(child, {
           name,
-          checked: selectedValue === child.props.value,
-          disabled: disabled || child.props.disabled,
-          onChange: (event: ChangeEvent<HTMLInputElement>) => {
+          checked: selectedValue === props.value,
+          disabled: disabled || props.disabled,
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             if (event.target.checked && !controlled) {
               setSelectedValue(child.props.value);
             }
-            child.props.onChange?.(event);
-            onChange?.(child.props.value, event);
+            props.onChange?.(event);
+            onChange?.(props.value, event);
           }
         });
       })}
+      )
     </fieldset>
   );
 };
 
-export default RadioButtonGroup;
+export default React.forwardRef(RadioButtonGroup);

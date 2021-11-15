@@ -15,18 +15,20 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <form>
-          <RadioButtonGroup name="1" legendLabel="RadioButtons">
+          <fieldset>
             <RadioButton
               label={text("label", "RadioButton label")}
               id="checkbox"
               value="value-1"
+              name="1"
             />
             <RadioButton
               label={text("label", "RadioButton label")}
               id="checkbox-2"
               value="value-2"
+              name="1"
             />
-          </RadioButtonGroup>
+          </fieldset>
         </form>
       </div>
     </div>

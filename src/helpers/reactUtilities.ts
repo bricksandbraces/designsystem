@@ -15,6 +15,7 @@ const mapReactChildren = <P>(
     props: P;
     key: React.Key | null;
     index: number;
+    child: React.ReactElement<P, string | React.JSXElementConstructor<any>>;
   }) => React.ReactNode
 ) => {
   return React.Children.map(children, (child, index) => {
@@ -24,7 +25,7 @@ const mapReactChildren = <P>(
     const elementChild: React.ReactElement<P> = child;
     const { props, key } = elementChild;
 
-    return fn({ props, key, index });
+    return fn({ props, key, index, child });
   });
 };
 
