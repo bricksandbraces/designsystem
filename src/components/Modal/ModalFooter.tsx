@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import Button from "../Button/Button";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type ModalFooterProps = {
   /**
@@ -17,7 +18,7 @@ export type ModalFooterProps = {
   /**
    * ModalFooter OnPrimaryClick
    */
-  onPrimaryClick: (event: any) => void;
+  onPrimaryClick: React.MouseEventHandler<HTMLButtonElement>;
 
   /**
    * ModalFooter Secondary Label
@@ -27,7 +28,7 @@ export type ModalFooterProps = {
   /**
    * ModalFooter OnSecondaryClick
    */
-  onSecondaryClick?: (event: any) => void;
+  onSecondaryClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const ModalFooter = (
@@ -46,14 +47,14 @@ const ModalFooter = (
         <Button
           kind="secondary"
           className={`${prefix}--modal-footer__secondary`}
-          onClick={onSecondaryClick}
+          onClick={withoutPropagation(onSecondaryClick)}
         >
           {secondaryLabel}
         </Button>
       )}
       <Button
         className={`${prefix}--modal-footer__primary`}
-        onClick={onPrimaryClick}
+        onClick={withoutPropagation(onPrimaryClick)}
       >
         {primaryLabel}
       </Button>

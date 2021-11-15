@@ -8,6 +8,7 @@ import { prefix } from "../../settings";
 import { setRef } from "../../helpers/refUtilities";
 import { IconX } from "@tabler/icons";
 import IconOnlyButton from "../Button/IconOnlyButton";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type ModalProps = {
   /**
@@ -154,7 +155,11 @@ const Modal = (
                   icon={<IconX />}
                   className={`${prefix}--modal-close`}
                   onClick={(event) => {
-                    onClose?.(event as React.MouseEvent<HTMLButtonElement>);
+                    const evt = event as React.MouseEvent<
+                      HTMLButtonElement,
+                      globalThis.MouseEvent
+                    >;
+                    withoutPropagation(onClose)(evt);
                   }}
                   manualFocus
                 />
