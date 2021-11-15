@@ -37,7 +37,22 @@ export type DateInputProps = {
    * DateInput OnInputChanged
    * Called whenever the user changes something within the textinput.
    */
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnBlur
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnFocus
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput
+   */
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
    * DateInput OnDateChanged
@@ -72,6 +87,9 @@ const DateInput = (
     size,
     onChange,
     onDateChanged,
+    onKeyDown,
+    onFocus,
+    onBlur,
     ...props
   }: DateInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -122,8 +140,15 @@ const DateInput = (
         size={size}
         autoComplete="off"
         onChange={handleChange()}
-        onBlur={() => handleSubmit()}
-        onKeyDown={filterForKeys(["Enter"], () => handleSubmit())}
+        onFocus={onFocus}
+        onBlur={(event) => {
+          onBlur?.(event);
+          handleSubmit();
+        }}
+        onKeyDown={(event) => {
+          filterForKeys(["Enter"], () => handleSubmit())(event);
+          onKeyDown?.(event);
+        }}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />
