@@ -13,6 +13,7 @@
 @import "./components/UserProfile.pcss";
 
 @import "./components/Logo.pcss";
+@import "./components/List.pcss";
 @import "./components/Tooltip.pcss";
 @import "./components/CopyButton.pcss";
 @import "./components/CodeSnippet.pcss";
