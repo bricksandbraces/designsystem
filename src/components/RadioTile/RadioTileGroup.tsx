@@ -4,6 +4,7 @@ import { assert } from "@openbricksandbraces/eloguent";
 import { RadioTileProps } from "./RadioTile";
 import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
 type RadioTileGroupProps = {
   /**
@@ -90,25 +91,24 @@ const RadioTileGroup = ({
           {legendLabel}
         </legend>
       )}
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement<RadioTileProps>(child)) {
-          return child;
-        }
+      {mapReactChildren<RadioTileProps>(children, ({ props, child }) => {
         assert(
-          child.props.checked === undefined &&
-            child.props.defaultChecked === undefined,
-          "You provided either checked or defaultChecked property to the RadioTile while it is a child of the RadioTileGroup. That is illegal. While using a RadioTileGroup you have to manage its value only on the group as those properties are being ignored on the child elements."
+          props.checked === undefined && props.defaultChecked === undefined,
+          `You provided either checked or defaultChecked property to the RadioTile
+           while it is a child of the RadioTileGroup. That is illegal. While using 
+           a RadioTileGroup you have to manage its value only on the group as those 
+           properties are being ignored on the child elements.`
         );
         return React.cloneElement(child, {
           name,
-          checked: selectedValue === child.props.value,
-          disabled: disabled || child.props.disabled,
+          checked: selectedValue === props.value,
+          disabled: disabled || props.disabled,
           onChange: (event: ChangeEvent<HTMLInputElement>) => {
             if (event.target.checked && !controlled) {
-              setSelectedValue(child.props.value);
+              setSelectedValue(props.value);
             }
-            child.props.onChange?.(event);
-            onChange?.(child.props.value, event);
+            props.onChange?.(event);
+            onChange?.(props.value, event);
           }
         });
       })}

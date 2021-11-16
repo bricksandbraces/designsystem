@@ -25,11 +25,6 @@ export type RadioTileProps = {
   value: string;
 
   /**
-   * RadioTile Label
-   */
-  label?: string;
-
-  /**
    * RadioTile Name
    */
   name?: string;
@@ -50,6 +45,16 @@ export type RadioTileProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
+   * RadioTile OnFocus Function
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * RadioTile OnBlur Function
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
    * RadioTile Disabled
    */
   disabled?: boolean;
@@ -66,7 +71,6 @@ const RadioTile = ({
   checked,
   name,
   defaultChecked,
-  label,
   className,
   readOnly,
   disabled,
