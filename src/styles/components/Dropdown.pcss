@@ -31,12 +31,12 @@
         background-color: $color--active;
       }
 
-      &:focus-visible {
+      &:focus {
         border-color: $color--focus;
       }
 
       &:disabled {
-        border-color: $color--transparent;
+        border-color: transparent;
         background-color: $color--disabled;
         color: $color--font-disabled;
         cursor: not-allowed;
@@ -222,7 +222,7 @@
           border-radius: $component--radius-default;
           outline: 0;
 
-          &:focus-visible {
+          &:focus {
             border-color: $color--focus;
           }
         }

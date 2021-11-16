@@ -62,7 +62,7 @@
     }
 
     &-primary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--primary-enabled;
 
       &:hover {
@@ -75,7 +75,7 @@
     }
 
     &-secondary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--secondary-enabled;
 
       &:hover {
@@ -89,7 +89,7 @@
 
     &-tertiary {
       border-color: $color--tertiary-enabled;
-      background-color: $color--transparent;
+      background-color: transparent;
 
       &:hover {
         border-color: $color--tertiary-hover;
@@ -104,7 +104,7 @@
     }
 
     &-ghost {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--ghost-enabled;
 
       &:hover {
@@ -171,14 +171,14 @@
   }
 }
 
-.$(prefix)--button.$(prefix)--button-ghost:focus-visible,
-.$(prefix)--button.$(prefix)--button-primary:focus-visible,
-.$(prefix)--button.$(prefix)--button-secondary:focus-visible {
+.$(prefix)--button.$(prefix)--button-ghost:focus,
+.$(prefix)--button.$(prefix)--button-primary:focus,
+.$(prefix)--button.$(prefix)--button-secondary:focus {
   border-color: $color--focus;
   outline: 0;
 }
 
-.$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
+.$(prefix)--button.$(prefix)--button-tertiary:focus {
   border-color: $color--focus;
   outline: 0;
   background-color: $color--tertiary-hover;
@@ -196,7 +196,7 @@
 
   &:hover,
   &:focus,
-  &:focus-visible,
+  &:focus,
   &:active {
     border-color: $color--disabled;
     background-color: $color--disabled;
@@ -210,7 +210,7 @@
 
   &:hover,
   &:focus,
-  &:focus-visible,
+  &:focus,
   &:active {
     border-color: $color--disabled;
     background-color: inherit;
@@ -232,7 +232,7 @@
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
-  background-color: $color--transparent;
+  background-color: transparent;
   color: $color--danger;
 
   &:hover {

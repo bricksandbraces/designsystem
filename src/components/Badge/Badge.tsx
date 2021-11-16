@@ -30,9 +30,9 @@ type BadgeProps = {
   title?: string;
 
   /**
-   * Badge Type
+   * Badge Color
    */
-  colorType?: BadgeColor;
+  color?: BadgeColor;
 
   /**
    * Badge TabIndex
@@ -56,7 +56,7 @@ const Badge = ({
   tabIndex,
   onClose,
   onClick,
-  colorType = "gray",
+  color = "gray",
   title
 }: BadgeProps) => {
   return (
@@ -67,7 +67,7 @@ const Badge = ({
           type="button"
           tabIndex={tabIndex}
           className={cx(
-            `${prefix}--badge ${prefix}--badge-${colorType}`,
+            `${prefix}--badge ${prefix}--badge-${color}`,
             className
           )}
         >
@@ -79,7 +79,7 @@ const Badge = ({
         <div
           tabIndex={tabIndex}
           className={cx(
-            `${prefix}--badge ${prefix}--badge-${colorType}`,
+            `${prefix}--badge ${prefix}--badge-${color}`,
             className
           )}
         >
