@@ -8,7 +8,8 @@
       position: relative;
       width: 100%;
       max-width: calc($size--spacing-13 * 3);
-      border: 0.0625rem solid $color--border-default;
+      overflow: hidden;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       background-color: $color--background;
     }
@@ -25,8 +26,8 @@
         width: 100%;
         height: calc($size--field-small + ($size--spacing-03 * 2));
         padding: $size--spacing-03;
-        border-top: 0.0625rem solid $color--border-default;
-        background-color: rgba($color--background, 1);
+        border-top: 0.0625rem solid $color--border;
+        background-color: $color--background;
         gap: $size--spacing-03;
       }
     }

@@ -7,8 +7,7 @@ export type BadgeColor =
   | "red"
   | "yellow"
   | "purple"
-  | "warm-gray"
-  | "cold-gray"
+  | "gray"
   | "cyan"
   | "blue"
   | "orange"
@@ -57,7 +56,7 @@ const Badge = ({
   tabIndex,
   onClose,
   onClick,
-  colorType = "warm-gray",
+  colorType = "gray",
   title
 }: BadgeProps) => {
   return (

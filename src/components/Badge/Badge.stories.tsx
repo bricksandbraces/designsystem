@@ -11,13 +11,12 @@ const typeOptions = {
   Red: "red",
   Green: "green",
   Orange: "orange",
-  "Warm Gray": "warm-gray",
-  "Cold Gray": "cold-gray",
+  Gray: "gray",
   Purple: "purple",
   Cyan: "cyan"
 };
 
-const defaultType = "cold-gray";
+const defaultType = "gray";
 
 export const Default = () => {
   return (
