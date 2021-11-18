@@ -15,6 +15,7 @@
 @import "./components/Logo.pcss";
 @import "./components/List.pcss";
 @import "./components/Tooltip.pcss";
+@import "./components/OverflowMenu.pcss";
 @import "./components/CopyButton.pcss";
 @import "./components/CodeSnippet.pcss";
 @import "./components/Grid.pcss";
