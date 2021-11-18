@@ -29,6 +29,11 @@ type OverflowMenuItemProps = {
   tabIndex?: number;
 
   /**
+   * OverflowMenuItem Href
+   */
+  href?: string;
+
+  /**
    * OverflowMenuItem onClose Function
    */
   onClose?: (event: any) => void;
@@ -44,26 +49,41 @@ const OverflowMenuItem = ({
   tabIndex,
   icon,
   danger,
-  onClose,
-  onClick,
-  title
+  href,
+  onClick
 }: OverflowMenuItemProps) => {
   return (
     <>
-      <button
-        aria-label={children}
-        title={children}
-        type="button"
-        tabIndex={tabIndex}
-        className={cx(`${prefix}--overflowmenu-item`, {
-          [`${prefix}--overflowmenu-item__danger`]: danger
-        })}
-      >
-        <div>
-          <p>{children}</p>
-          {icon}
-        </div>
-      </button>
+      {onClick ? (
+        <button
+          aria-label={children}
+          title={children}
+          type="button"
+          tabIndex={tabIndex}
+          className={cx(`${prefix}--overflowmenu-item`, {
+            [`${prefix}--overflowmenu-item__danger`]: danger
+          })}
+        >
+          <div>
+            <p>{children}</p>
+            {icon}
+          </div>
+        </button>
+      ) : (
+        <a
+          href={href}
+          title={children}
+          tabIndex={tabIndex}
+          className={cx(`${prefix}--overflowmenu-item`, {
+            [`${prefix}--overflowmenu-item__danger`]: danger
+          })}
+        >
+          <div>
+            <p>{children}</p>
+            {icon}
+          </div>
+        </a>
+      )}
     </>
   );
 };
