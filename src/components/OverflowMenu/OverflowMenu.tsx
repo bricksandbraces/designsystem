@@ -1,8 +1,9 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useRef } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconDotsVertical } from "@tabler/icons";
+import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 
 type OverflowMenuProps = {
   /**
@@ -29,6 +30,7 @@ const OverflowMenu = ({
   const [open, setOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
+  const divRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <div className={`${prefix}--overflowmenu-container`}>
@@ -42,16 +44,24 @@ const OverflowMenu = ({
           }}
           size={size}
         />
-        <div
-          ref={setPopperElement}
-          className={cx(
-            `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`,
-            { [`${prefix}--overflowmenu-open`]: open },
-            className
-          )}
+        <OutsideClickListener
+          onClickOutside={() => {
+            setOpen(false);
+          }}
+          disabled={!open}
+          ref={divRef}
         >
-          {children}
-        </div>
+          <div
+            ref={setPopperElement}
+            className={cx(
+              `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`,
+              { [`${prefix}--overflowmenu-open`]: open },
+              className
+            )}
+          >
+            {children}
+          </div>
+        </OutsideClickListener>
       </div>
     </>
   );
