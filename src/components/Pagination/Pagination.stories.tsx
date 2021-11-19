@@ -1,4 +1,4 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Pagination from "./Pagination";
 
@@ -16,7 +16,13 @@ export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
-        <Pagination size={select("size", sizeOptions, defaultSize) as any} />
+        <Pagination
+          hideFastforward={boolean("hideFastforward", false)}
+          hideNav={boolean("hideNav", false)}
+          pageItems={8}
+          pagesShown={4}
+          size={select("size", sizeOptions, defaultSize) as any}
+        />
       </div>
     </div>
   );
