@@ -11,7 +11,7 @@
 @import "./components/CookieBanner.pcss";
 @import "./components/Link.pcss";
 @import "./components/UserProfile.pcss";
-
+@import "./components/Pagination.pcss";
 @import "./components/Logo.pcss";
 @import "./components/List.pcss";
 @import "./components/Tooltip.pcss";

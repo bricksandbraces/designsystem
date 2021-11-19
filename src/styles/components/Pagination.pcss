@@ -1,0 +1,66 @@
+@import "../prefix.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--pagination {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: $component--padding-inside;
+
+    &-list {
+      display: inline-flex;
+      list-style: none;
+      gap: $component--padding-inside;
+
+      &__item {
+        &-active > .$(prefix)--button {
+          position: relative;
+          background-color: $color--selected;
+
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: $size--container-02;
+            height: calc($size--container-01 / 4);
+            border-radius: calc($component--radius-subtle * 2);
+            opacity: 100%;
+            background-color: $color--decoration;
+          }
+        }
+      }
+    }
+
+    & > ul > li > .$(prefix)--button {
+      padding: 0;
+    }
+
+    &-default {
+      & > ul > li > .$(prefix)--button {
+        min-width: $size--field-default;
+        max-width: $size--field-default;
+        min-height: $size--field-default;
+        max-height: $size--field-default;
+      }
+    }
+
+    &-small {
+      & > ul > li > .$(prefix)--button {
+        min-width: $size--field-small;
+        max-width: $size--field-small;
+        min-height: $size--field-small;
+        max-height: $size--field-small;
+      }
+    }
+
+    &-large {
+      & > ul > li > .$(prefix)--button {
+        min-width: $size--field-large;
+        max-width: $size--field-large;
+        min-height: $size--field-large;
+        max-height: $size--field-large;
+      }
+    }
+  }
+}
