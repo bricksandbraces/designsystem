@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SideNavItemProps = {
+export type SideNavItemProps = {
   /**
    * SideNavItem Href
    */
@@ -36,21 +36,18 @@ type SideNavItemProps = {
   /**
    * SideNavItem OnClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const SideNavItem = ({
-  href,
-  label,
-  icon,
-  selected,
-  className,
-  onClick
-}: SideNavItemProps) => {
+const SideNavItem = (
+  { href, label, icon, selected, className, onClick }: SideNavItemProps,
+  ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => {
   return (
     <>
       {href ? (
         <a
+          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
           href={href}
           className={cx(
             `${prefix}--sidenav-item`,
@@ -65,6 +62,7 @@ const SideNavItem = ({
         </a>
       ) : (
         <button
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
           onClick={onClick}
           className={cx(
             `${prefix}--sidenav-item`,
@@ -82,4 +80,4 @@ const SideNavItem = ({
   );
 };
 
-export default SideNavItem;
+export default React.forwardRef(SideNavItem);

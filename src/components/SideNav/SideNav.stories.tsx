@@ -13,7 +13,6 @@ import {
   IconBrandTinder,
   IconPlus
 } from "@tabler/icons";
-import SideNav from "./SideNav";
 import SideNavItem from "./SideNavItem";
 import SideNavDivider from "./SideNavDivider";
 import SideNavHeadline from "./SideNavHeadline";
@@ -24,13 +23,13 @@ import SideNavMobileHeader from "./SideNavMobileHeader";
 
 export default { title: "Components/SideNav", decorators: [withKnobs] };
 
-export const Default = () => {
+export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
         logo={<Logo type="logotype" color="white" size="xsmall" />}
-        open={boolean("open", false)}
+        defaultOpen={true}
       >
         <SideNavItem
           href="#"

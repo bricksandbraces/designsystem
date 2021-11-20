@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type LabelProps = {
+export type LabelProps = {
   /**
    * Label Children
    */
@@ -14,9 +14,13 @@ type LabelProps = {
   className?: string;
 } & React.LabelHTMLAttributes<HTMLLabelElement>;
 
-const Label = ({ children, className, ...rest }: LabelProps) => {
+const Label = (
+  { children, className, ...rest }: LabelProps,
+  ref: React.ForwardedRef<HTMLLabelElement>
+) => {
   return (
     <label
+      ref={ref}
       className={cx(
         `${prefix}--typography ${prefix}--typography-label`,
         className
@@ -28,4 +32,4 @@ const Label = ({ children, className, ...rest }: LabelProps) => {
   );
 };
 
-export default Label;
+export default React.forwardRef(Label);
