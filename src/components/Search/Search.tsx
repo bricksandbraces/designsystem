@@ -275,6 +275,8 @@ const Search = (
         }
 
         onSubmit?.(currentValue ?? "", event);
+      } else if (event.key === "Escape") {
+        performOpenChange(false);
       }
     };
 
@@ -307,13 +309,12 @@ const Search = (
         onFocus={onFocus}
         onBlur={(event) => {
           // todo: only close the container if the blur was on the webpage (not outside the window)
-          performOpenChange(false);
+          setTimeout(() => {
+            performOpenChange(false);
+          }, 100);
           onBlur?.(event);
         }}
         onChange={handleValueChange(undefined, () => {
-          // todo: why must we perform open action on input change?
-          performOpenChange(true);
-
           // reset the focus on every change
           performFocusChange(null);
         })}
