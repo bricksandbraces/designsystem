@@ -18,12 +18,10 @@ export const parameters = {
   },
   actions: { argTypesRegex: "^on[A-Z].*" },
   backgrounds: {
-    default: "black",
+    default: "app-bg",
     values: [
       { name: "white", value: "#ffffff" },
-      { name: "dark", value: "#808080" },
-      { name: "black", value: "#000000" },
-      { name: "app-bg", value: "#18181b" },
+      { name: "app-bg", value: "#0c0c0d" },
       {
         name: "random-img-background",
         value: 'url("https://picsum.photos/seed/picsum/1920/1080")'

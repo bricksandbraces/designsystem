@@ -4,6 +4,7 @@ import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconDotsVertical } from "@tabler/icons";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
+import Tippy from "@tippyjs/react";
 
 type OverflowMenuProps = {
   /**
@@ -25,44 +26,33 @@ type OverflowMenuProps = {
 const OverflowMenu = ({
   size = "default",
   children,
-  className
+  className,
+  ...props
 }: OverflowMenuProps) => {
-  const [open, setOpen] = useState(false);
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const divRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      <div className={`${prefix}--overflowmenu-container`}>
-        <IconOnlyButton
-          hideTooltip
-          kind="ghost"
-          icon={<IconDotsVertical />}
-          ref={setReferenceElement}
-          onClick={() => {
-            setOpen(!open);
-          }}
-          size={size}
-        />
-        <OutsideClickListener
-          onClickOutside={() => {
-            setOpen(false);
-          }}
-          disabled={!open}
-          ref={divRef}
+      <Tippy
+        arrow={false}
+        className={cx(
+          `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`
+        )}
+        animation="bbds-animation"
+        duration={150}
+        trigger="click"
+        placement="bottom-start"
+        theme="dark"
+        {...props}
+        allowHTML
+        content={children}
+      >
+        <button
+          className={cx(
+            `${prefix}--overflowmenu-trigger ${prefix}--overflowmenu-trigger__${size}`
+          )}
         >
-          <div
-            ref={setPopperElement}
-            className={cx(
-              `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`,
-              { [`${prefix}--overflowmenu-open`]: open },
-              className
-            )}
-          >
-            {children}
-          </div>
-        </OutsideClickListener>
-      </div>
+          <IconDotsVertical />
+        </button>
+      </Tippy>
     </>
   );
 };

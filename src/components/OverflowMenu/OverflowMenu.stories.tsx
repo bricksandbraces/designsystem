@@ -28,7 +28,9 @@ export const Default = () => {
   return (
     <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
       <OverflowMenu size={select("size", sizeOptions, defaultSize) as any}>
-        <OverflowMenuItem icon={<Icon2fa />}>Enable 2FA</OverflowMenuItem>
+        <OverflowMenuItem onClick={() => {}} icon={<Icon2fa />}>
+          Enable 2FA
+        </OverflowMenuItem>
         <OverflowMenuItem icon={<IconAccessible />}>
           Turn on accessibility
         </OverflowMenuItem>

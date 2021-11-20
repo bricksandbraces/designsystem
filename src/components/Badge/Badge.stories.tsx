@@ -7,7 +7,14 @@ export default { title: "Components/A_REFA_Badge", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
+    <div
+      style={{
+        padding: "32px",
+        display: "flex",
+        gap: "16px",
+        flexWrap: "wrap"
+      }}
+    >
       <Badge title="Button" color="blue">
         Blue Badge
       </Badge>
@@ -38,7 +45,14 @@ export const Default = () => {
 
 export const WithClose = () => {
   return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
+    <div
+      style={{
+        padding: "32px",
+        display: "flex",
+        gap: "16px",
+        flexWrap: "wrap"
+      }}
+    >
       <Badge title="Button" color="blue" onClose={() => {}}>
         Blue Badge
       </Badge>
@@ -69,7 +83,14 @@ export const WithClose = () => {
 
 export const Interactive = () => {
   return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
+    <div
+      style={{
+        padding: "32px",
+        display: "flex",
+        gap: "16px",
+        flexWrap: "wrap"
+      }}
+    >
       <Badge title="Button" color="blue" onClick={() => {}}>
         Blue Badge
       </Badge>

@@ -6,6 +6,7 @@
 @import "./typography.pcss";
 
 @import "./components/LoginForm.pcss";
+@import "./components/Breadcrumb.pcss";
 @import "./components/Button.pcss";
 @import "./components/Notification.pcss";
 @import "./components/CookieBanner.pcss";

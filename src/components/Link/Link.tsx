@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type LinkProps = {
+export type LinkProps = {
   /**
    * Link Children
    */

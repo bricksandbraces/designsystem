@@ -69,7 +69,7 @@ const UserProfile = ({
   onLogout
 }: UserProfileProps) => {
   const [open, setOpen] = useState(false);
-  const panelRef = useRef<HTMLUListElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const indexedLinks = idfy(links);
   return (
     <>
