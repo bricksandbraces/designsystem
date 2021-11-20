@@ -36,9 +36,21 @@ const useControlled = (value: any) => {
 const useControlledValue = <V>(
   value: V | undefined,
   defaultValue: V | undefined,
-  onChange: ((newValue: V) => void) | undefined,
+  onChange:
+    | ((
+        newValue: V,
+        event?: React.ChangeEvent<HTMLElement & { value?: string }>
+      ) => void)
+    | undefined,
   fallback: V
-): [V, (newValue: V) => void, React.Dispatch<SetStateAction<V>>] => {
+): [
+  V,
+  (
+    newValue: V,
+    event?: React.ChangeEvent<HTMLElement & { value?: string }>
+  ) => void,
+  React.Dispatch<SetStateAction<V>>
+] => {
   const controlled = useControlled(value);
   const [currentValue, setCurrentValue] = useState<V>(
     (controlled ? value : defaultValue) ?? fallback
@@ -50,11 +62,14 @@ const useControlledValue = <V>(
     }
   }, [value]);
 
-  const performChange = (newValue: V) => {
+  const performChange = (
+    newValue: V,
+    event?: React.ChangeEvent<HTMLElement & { value?: string }>
+  ) => {
     if (!controlled) {
       setCurrentValue(newValue);
     }
-    onChange?.(newValue);
+    onChange?.(newValue, event);
   };
 
   return [currentValue, performChange, setCurrentValue];

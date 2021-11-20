@@ -311,7 +311,7 @@ const Search = (
           // todo: only close the container if the blur was on the webpage (not outside the window)
           setTimeout(() => {
             performOpenChange(false);
-          }, 100);
+          }, 250);
           onBlur?.(event);
         }}
         onChange={handleValueChange(undefined, () => {
