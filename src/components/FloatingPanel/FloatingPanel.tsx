@@ -6,7 +6,7 @@ export type FloatingPanelProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
 const FloatingPanel = (
   { className, children, ...rest }: FloatingPanelProps,
-  ref?: React.ForwardedRef<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <div

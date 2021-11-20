@@ -4,7 +4,7 @@ import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import useControlledValue from "../../hooks/useControlledValue";
+import { useControlledInput } from "../../hooks/useControlled";
 
 export type TextInputProps = {
   /**
@@ -128,10 +128,13 @@ const TextInput = (
   }: TextInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) => {
-  const [inputRef, textValue, handleChange] = useControlledValue(
+  const [inputRef, textValue, handleChange] = useControlledInput(
     value,
     defaultValue,
-    onChange
+    onChange &&
+      ((newValue, event) => {
+        onChange(event as React.ChangeEvent<HTMLInputElement>);
+      })
   );
   return (
     <div

@@ -1,12 +1,20 @@
 import React from "react";
 import { addDecorator } from "@storybook/react";
 import { themes } from "@storybook/theming";
+import { configureActions } from "@storybook/addon-actions";
 
 import Layout from "./layout";
 import LogoWhite from "./public/logo-white.svg";
 import LogoBlack from "./public/logo-black.svg";
 
 addDecorator((storyFn) => <Layout>{storyFn()}</Layout>);
+
+configureActions({
+  depth: 3,
+  // Limit the number of items logged into the actions panel
+  limit: 15,
+  allowFunction: false
+});
 
 export const parameters = {
   controls: { disabled: true },

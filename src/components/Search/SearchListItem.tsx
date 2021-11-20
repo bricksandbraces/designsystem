@@ -3,21 +3,53 @@ import cx from "classnames";
 import { IconClock } from "@tabler/icons";
 import { prefix } from "../../settings";
 
+/**
+ * Determine whether the list item is a result item or a recents item.
+ * By habit, the suitable recents are displayed before the result.
+ */
 export enum SearchListItemType {
   RESULT,
   RECENT
 }
 
 export type SearchListItemProps = {
-  type: SearchListItemType;
-  label: string;
-  href: string;
-  className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement>;
   /**
-   * Provides a way to additionally trigger a manual hover. A falsy value does NOT override the real hover state.
+   * SearchListItem Type See SearchListItemType
+   */
+  type: SearchListItemType;
+
+  /**
+   * SearchListItem Label
+   */
+  label: string;
+
+  /**
+   * SearchListItem Href
+   */
+  href: string;
+
+  /**
+   * SearchListItem ClassName
+   */
+  className?: string;
+
+  /**
+   * SearchListItem OnClick
+   */
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+
+  /**
+   * SearchListItem OnMouseEnter
+   */
+  onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement>;
+
+  /**
+   * SearchListItem OnMouseLeave
+   */
+  onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement>;
+
+  /**
+   * SearchListItem Provides a way to additionally trigger a manual hover. A falsy value does NOT override the real hover state.
    */
   manuallyHovered?: boolean;
 };
@@ -41,16 +73,17 @@ const SearchListItem = (
       setHovered(manuallyHovered);
     }
   }, [manuallyHovered]);
+
+  const isRecent = type === SearchListItemType.RECENT;
+
   return (
     <a
       ref={ref}
       className={cx(
         `${prefix}--search-box__content-list-item`,
         {
-          [`${prefix}--search-box__content-list-item--recent`]:
-            type === SearchListItemType.RECENT,
-          [`${prefix}--search-box__content-list-item--result`]:
-            type === SearchListItemType.RESULT,
+          [`${prefix}--search-box__content-list-item--recent`]: isRecent,
+          [`${prefix}--search-box__content-list-item--result`]: !isRecent,
           [`${prefix}--search-box__content-list-item--manual-hover`]: hovered
         },
         className
@@ -67,7 +100,7 @@ const SearchListItem = (
         onMouseLeave?.(event);
       }}
     >
-      {type === SearchListItemType.RECENT && (
+      {isRecent && (
         <IconClock
           size={16}
           className={cx(

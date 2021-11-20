@@ -6,7 +6,7 @@ import {
   IconChevronDown
 } from "@tabler/icons";
 import { findNextItem } from "../../helpers/arrayUtilities";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";

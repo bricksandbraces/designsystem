@@ -48,7 +48,7 @@ type FooterProps = {
 
 const Footer = (
   { linkItems, className, description, descriptionLink }: FooterProps,
-  ref?: React.ForwardedRef<HTMLElement>
+  ref: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);

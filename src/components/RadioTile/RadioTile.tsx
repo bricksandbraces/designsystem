@@ -65,19 +65,22 @@ export type RadioTileProps = {
   readOnly?: boolean;
 };
 
-const RadioTile = ({
-  id,
-  value,
-  checked,
-  name,
-  defaultChecked,
-  className,
-  readOnly,
-  disabled,
-  children,
-  onChange,
-  ...rest
-}: RadioTileProps) => {
+const RadioTile = (
+  {
+    id,
+    value,
+    checked,
+    name,
+    defaultChecked,
+    className,
+    readOnly,
+    disabled,
+    children,
+    onChange,
+    ...rest
+  }: RadioTileProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div
       className={cx(
@@ -100,6 +103,7 @@ const RadioTile = ({
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
+        ref={ref}
         {...rest}
       />
       <label
@@ -116,4 +120,4 @@ const RadioTile = ({
   );
 };
 
-export default RadioTile;
+export default React.forwardRef(RadioTile);

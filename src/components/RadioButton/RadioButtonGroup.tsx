@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
 import { RadioButtonProps } from "./RadioButton";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 
@@ -69,7 +69,7 @@ const RadioButtonGroup = (
     name,
     onChange
   }: RadioButtonGroupProps,
-  ref?: React.ForwardedRef<HTMLFieldSetElement>
+  ref: React.ForwardedRef<HTMLFieldSetElement>
 ) => {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(

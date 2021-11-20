@@ -28,7 +28,7 @@ const defaultSize = "default";
 export const Uncontrolled = () => {
   const defaultValue = number("defaultValue", 0);
   // this is only a monitoring value since uncontrolled input holds the value
-  const [reference, setReference] = useState<number>(defaultValue);
+  const [reference, setReference] = useState<number | undefined>(defaultValue);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
@@ -80,7 +80,7 @@ export const Controlled = () => {
           if (params.parsedValue != null && !Number.isNaN(params.parsedValue)) {
             setValue(`${params.parsedValue}`);
           } else {
-            setValue(params.newValue);
+            setValue(params.newValue ?? "");
           }
           action("onChange")(event, params);
         }}

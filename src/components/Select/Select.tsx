@@ -1,18 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 
-type SelectOptionGroup = { group: string; options: SelectOption[] };
+export type SelectOptionGroup = { group: string; options: SelectOption[] };
 
-type SelectOption = {
+export type SelectOption = {
   value: string;
   text: string;
 };
 
-type SelectProps = {
+export type SelectProps = {
   /**
    * Options data for the selectable items
    * */

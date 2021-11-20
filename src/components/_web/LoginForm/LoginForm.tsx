@@ -4,9 +4,9 @@ import PasswordInput from "../../PasswordInput/PasswordInput";
 import Link from "../../Link/Link";
 import { prefix } from "../../../settings";
 import Label from "../../Typography/Label";
-import useControlledValue from "../../../hooks/useControlledValue";
+import { useControlledInput } from "../../../hooks/useControlled";
 
-type LoginFormProps = {
+export type LoginFormProps = {
   /**
    * LoginForm ID
    */
@@ -108,16 +108,22 @@ const LoginForm = (
   }: LoginFormProps,
   ref: React.ForwardedRef<HTMLFormElement>
 ) => {
-  const [, , handleEmailOnChange] = useControlledValue(
+  const [, , handleEmailOnChange] = useControlledInput(
     emailValue,
     defaultEmailValue,
-    onEmailChange
+    onEmailChange &&
+      ((newValue, event) => {
+        onEmailChange(event as React.ChangeEvent<HTMLInputElement>);
+      })
   );
 
-  const [, , handlePasswordOnChange] = useControlledValue(
+  const [, , handlePasswordOnChange] = useControlledInput(
     passwordValue,
     defaultPasswordValue,
-    onPasswordChange
+    onPasswordChange &&
+      ((newValue, event) => {
+        onPasswordChange(event as React.ChangeEvent<HTMLInputElement>);
+      })
   );
 
   return (

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 

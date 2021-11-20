@@ -3,7 +3,7 @@ import { IconEye, IconEyeOff } from "@tabler/icons";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 
 export type PasswordInputProps = {
   /**

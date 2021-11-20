@@ -84,7 +84,7 @@ const RadioButton = (
     onChange,
     ...rest
   }: RadioButtonProps,
-  ref?: React.ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   return (
     <div

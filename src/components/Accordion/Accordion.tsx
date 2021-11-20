@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
 import { AccordionItemProps } from "./AccordionItem";
 import { prefix } from "../../settings";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 
 export type AccordionProps = {

@@ -1,8 +1,8 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
 import { RadioTileProps } from "./RadioTile";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 
@@ -20,7 +20,7 @@ type RadioTileGroupProps = {
   /**
    * Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * RadioTileGroup Value (Controlled). Use null for nothing selected but controlled.
@@ -52,22 +52,25 @@ type RadioTileGroupProps = {
    */
   onChange?: (
     newValue: string | null,
-    event: ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>
   ) => void;
 };
 
-const RadioTileGroup = ({
-  id,
-  legendLabel,
-  disabled,
-  className,
-  children,
+const RadioTileGroup = (
+  {
+    id,
+    legendLabel,
+    disabled,
+    className,
+    children,
 
-  defaultValue,
-  value,
-  name,
-  onChange
-}: RadioTileGroupProps) => {
+    defaultValue,
+    value,
+    name,
+    onChange
+  }: RadioTileGroupProps,
+  ref: React.ForwardedRef<HTMLFieldSetElement>
+) => {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(
     defaultValue ?? value ?? null
@@ -83,6 +86,7 @@ const RadioTileGroup = ({
       className={cx(`${prefix}--radiotile-group`, className)}
       name={name}
       disabled={disabled}
+      ref={ref}
     >
       {legendLabel && (
         <legend
@@ -103,7 +107,7 @@ const RadioTileGroup = ({
           name,
           checked: selectedValue === props.value,
           disabled: disabled || props.disabled,
-          onChange: (event: ChangeEvent<HTMLInputElement>) => {
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             if (event.target.checked && !controlled) {
               setSelectedValue(props.value);
             }
@@ -116,4 +120,4 @@ const RadioTileGroup = ({
   );
 };
 
-export default RadioTileGroup;
+export default React.forwardRef(RadioTileGroup);

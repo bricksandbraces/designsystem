@@ -81,7 +81,7 @@ export type AvatarListProps = {
 
 const AvatarList = (
   { id, className, children, footer }: AvatarListProps,
-  ref?: React.ForwardedRef<HTMLUListElement>
+  ref: React.ForwardedRef<HTMLUListElement>
 ) => {
   return (
     <FloatingPanel className={`${prefix}--avatar-list__panel`}>
