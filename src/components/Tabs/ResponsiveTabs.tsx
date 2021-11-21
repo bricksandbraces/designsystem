@@ -1,36 +1,34 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Tabs from "./Tabs";
 import Accordion from "../Accordion/Accordion";
 import { prefix } from "../../settings";
 
-type ResonsiveTabsProps = {
+export type ResonsiveTabsProps = {
   /**
-   * Children
+   * ResponsiveTabs ReactChildren
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
-   * OnChange Function
+   * ResponsiveTabs OnChange Function
    */
   onChange?: (selectedIndex: number) => void;
 
   /**
-   * DefaultIndex
+   * ResponsiveTabs DefaultIndex
    */
   defaultIndex?: number;
 
   /**
-   * Index
+   * ResponsiveTabs Index
    */
   index?: number;
 };
 
-const ResponsiveTabs = ({
-  children,
-  onChange,
-  defaultIndex,
-  index
-}: ResonsiveTabsProps) => {
+const ResponsiveTabs = (
+  { children, onChange, defaultIndex, index }: ResonsiveTabsProps,
+  ref: React.ForwardedRef<HTMLDivElement | HTMLUListElement>
+) => {
   return (
     <>
       <Tabs
@@ -38,6 +36,7 @@ const ResponsiveTabs = ({
         index={index}
         defaultIndex={defaultIndex}
         className={`${prefix}--responsivetabs-tabs`}
+        ref={ref as React.ForwardedRef<HTMLDivElement>}
       >
         {children}
       </Tabs>
@@ -48,6 +47,7 @@ const ResponsiveTabs = ({
         openIndices={index === undefined ? undefined : [index]}
         onChange={onChange}
         className={`${prefix}--responsivetabs-accordion`}
+        ref={ref as React.ForwardedRef<HTMLUListElement>}
       >
         {children}
       </Accordion>

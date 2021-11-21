@@ -4,6 +4,7 @@ import SwitcherItem from "./SwitcherItem";
 import Switcher from "./Switcher";
 import { Grid, Column } from "../Grid/Grid";
 import Body from "../Typography/Body";
+import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/A_REFA_Switcher", decorators: [withKnobs] };
 
@@ -23,6 +24,7 @@ export const Uncontrolled = () => {
           <Switcher
             defaultIndex={1}
             size={select("size", sizeOptions, defaultSize) as any}
+            onChange={action("onChange")}
           >
             <SwitcherItem title="List view">
               <div style={{ padding: "24px 0" }}>
@@ -67,6 +69,7 @@ export const Controlled = () => {
             index={selectedIndex}
             onChange={(newIndex) => {
               setSelectedIndex(newIndex);
+              action("onChange")(newIndex);
             }}
             size={select("size", sizeOptions, defaultSize) as any}
           >

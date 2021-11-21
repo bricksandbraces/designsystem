@@ -17,7 +17,7 @@ import SideNavItem from "./SideNavItem";
 import SideNavDivider from "./SideNavDivider";
 import SideNavHeadline from "./SideNavHeadline";
 import SideNavItemExpander from "./SideNavItemExpander";
-import { Logo } from "../..";
+import { Logo, SideNav } from "../..";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import SideNavMobileHeader from "./SideNavMobileHeader";
 
