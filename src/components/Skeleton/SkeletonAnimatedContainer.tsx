@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SkeletonAnimatedContainerProps = {
+export type SkeletonAnimatedContainerProps = {
   /**
    * SkeletonAnimatedContainer Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * SkeletonAnimatedContainer ClassName
@@ -19,18 +19,15 @@ type SkeletonAnimatedContainerProps = {
   light?: boolean;
 
   /**
-   * SkeletonAnimatedContainer Width
+   * SkeletonAnimatedContainer InlineStyle
    */
-  width?: number | "100%" | "80%" | "50%";
+  style?: React.CSSProperties;
 };
 
-const SkeletonAnimatedContainer = ({
-  width,
-  light,
-  children,
-
-  className
-}: SkeletonAnimatedContainerProps) => {
+const SkeletonAnimatedContainer = (
+  { light, children, className, ...rest }: SkeletonAnimatedContainerProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
       className={cx(
@@ -38,11 +35,8 @@ const SkeletonAnimatedContainer = ({
         { [`${prefix}--skeleton-light`]: light },
         className
       )}
-      style={
-        typeof width === "string"
-          ? { width: `${width}` }
-          : { width: `${width}px` }
-      }
+      {...rest}
+      ref={ref}
     >
       {children}
       <div className={`${prefix}--skeleton-animated__wiper`} />
@@ -50,4 +44,4 @@ const SkeletonAnimatedContainer = ({
   );
 };
 
-export default SkeletonAnimatedContainer;
+export default React.forwardRef(SkeletonAnimatedContainer);

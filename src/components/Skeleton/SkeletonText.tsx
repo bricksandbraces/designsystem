@@ -2,16 +2,16 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SkeletonTextProps = {
+export type SkeletonTextProps = {
   /**
    * SkeletonText ClassName
    */
   className?: string;
 
   /**
-   * SkeletonText Width
+   * SkeletonText InlineStyle
    */
-  width?: number | "100%" | "80%" | "50%";
+  style?: React.CSSProperties;
 
   /**
    * SkeletonText Size
@@ -19,24 +19,20 @@ type SkeletonTextProps = {
   size?: "large" | "default" | "small";
 };
 
-const SkeletonText = ({
-  width,
-  size = "default",
-  className
-}: SkeletonTextProps) => {
+const SkeletonText = (
+  { style, size = "default", className, ...rest }: SkeletonTextProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
       className={cx(
         `${prefix}--skeleton-text ${prefix}--skeleton-text__${size}`,
         className
       )}
-      style={
-        typeof width === "string"
-          ? { width: `${width}` }
-          : { width: `${width}px` }
-      }
+      {...rest}
+      ref={ref}
     />
   );
 };
 
-export default SkeletonText;
+export default React.forwardRef(SkeletonText);
