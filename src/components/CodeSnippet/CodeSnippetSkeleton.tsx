@@ -15,7 +15,7 @@ type CodeSnippetSkeletonProps = {
 const CodeSnippetSkeleton = ({ className }: CodeSnippetSkeletonProps) => {
   return (
     <SkeletonAnimatedContainer
-      width="100%"
+      style={{ width: "100%" }}
       className={cx(
         `${prefix}--codesnippet`,
 

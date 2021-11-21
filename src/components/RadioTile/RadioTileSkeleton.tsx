@@ -18,7 +18,7 @@ export type RadioTileSkeletonProps = {
 const RadioTileSkeleton = ({ light, className }: RadioTileSkeletonProps) => (
   <SkeletonAnimatedContainer
     light={light}
-    width={128}
+    style={{ width: 128 }}
     className={cx(
       `${prefix}--radiotile ${prefix}--tile`,
 

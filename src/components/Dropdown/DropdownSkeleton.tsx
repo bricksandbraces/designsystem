@@ -30,7 +30,7 @@ const DropdownSkeleton = ({
       )}
     >
       <SkeletonAnimatedContainer
-        width={64}
+        style={{ width: 64 }}
         className={cx(
           `${prefix}--typography-label`,
 
@@ -38,7 +38,7 @@ const DropdownSkeleton = ({
         )}
       />
       <SkeletonAnimatedContainer
-        width={256}
+        style={{ width: 256 }}
         className={`${prefix}--dropdown-${size}`}
       >
         <IconChevronDown size={16} />

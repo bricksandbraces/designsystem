@@ -42,7 +42,7 @@ const NumberInputSkeleton = ({
     >
       {!fluid && (
         <SkeletonAnimatedContainer
-          width={64}
+          style={{ width: 64 }}
           className={cx(
             `${prefix}--typography-label`,
 
@@ -51,7 +51,7 @@ const NumberInputSkeleton = ({
         />
       )}
       <SkeletonAnimatedContainer
-        width={256}
+        style={{ width: 256 }}
         className={`${prefix}--numberinput-${size}`}
       >
         <IconOnlyButtonGroup

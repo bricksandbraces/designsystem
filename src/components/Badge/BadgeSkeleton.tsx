@@ -10,15 +10,15 @@ type BadgeSkeletonProps = {
   className?: string;
 
   /**
-   * BadgeSkeleton width. Defaults to 64
+   * BadgeSkeleton InlineStyle. Width defaults to 64
    */
-  width?: number;
+  style?: React.CSSProperties;
 };
 
-const BadgeSkeleton = ({ className, width = 64 }: BadgeSkeletonProps) => {
+const BadgeSkeleton = ({ className, style }: BadgeSkeletonProps) => {
   return (
     <SkeletonAnimatedContainer
-      width={width}
+      style={{ width: 64, ...style }}
       className={cx(
         `${prefix}--badge`,
 

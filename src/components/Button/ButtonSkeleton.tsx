@@ -27,7 +27,7 @@ const ButtonSkeleton = ({
 }: ButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
     light={light}
-    width={128}
+    style={{ width: 128 }}
     className={cx(
       `${prefix}--button-${size}`,
 

@@ -41,7 +41,7 @@ const CheckboxSkeleton = ({ className }: CheckboxSkeletonProps) => (
       />
     </svg>
     <SkeletonAnimatedContainer
-      width={128}
+      style={{ width: 128 }}
       className={cx(`${prefix}--checkbox`)}
     />
   </SkeletonContainer>

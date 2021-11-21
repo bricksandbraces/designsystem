@@ -34,29 +34,29 @@ const RangeInputSkeleton = ({
       )}
     >
       <SkeletonAnimatedContainer
-        width={64}
+        style={{ width: 64 }}
         className={cx(`${prefix}--typography-label`)}
       />
       <div className={cx(`${prefix}--rangeinput-container`)}>
         {!hideInput && (
           <SkeletonAnimatedContainer
-            width={64}
+            style={{ width: 64 }}
             className={`${prefix}--numberinput ${prefix}--numberinput-${size}`}
           />
         )}
         <div className={cx(`${prefix}--rangeinput-slider__container`)}>
           <SkeletonAnimatedContainer
-            width={24}
+            style={{ width: 24 }}
             className={cx(
               `${prefix}--typography-label ${prefix}--rangeinput-slider__label`
             )}
           />
           <SkeletonAnimatedContainer
-            width={164}
+            style={{ width: 164 }}
             className={cx(`${prefix}--rangeinput-slider`)}
           />
           <SkeletonAnimatedContainer
-            width={24}
+            style={{ width: 24 }}
             className={cx(
               `${prefix}--typography-label ${prefix}--rangeinput-slider__label`
             )}
