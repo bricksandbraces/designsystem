@@ -1,31 +1,13 @@
-import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
+import React from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import { useControlled } from "../../hooks/useControlled";
+import { useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
+import { TextInputProps } from "../TextInput/TextInput";
+import mergeRefs from "react-merge-refs";
 
-type TextAreaProps = {
-  /**
-   * TextArea ClassName
-   */
-  className?: string;
-
-  /**
-   * TextArea Label
-   */
-  label?: string;
-
-  /**
-   * TextArea Placeholder
-   */
-  placeholder?: string;
-
-  /**
-   * TextArea Id
-   */
-  id?: string;
-
+export type TextAreaProps = {
   /**
    * TextArea Character Limit
    */
@@ -42,47 +24,28 @@ type TextAreaProps = {
   maxLength?: number;
 
   /**
-   * TextArea Error State & Text
-   */
-  error?: boolean;
-  errorText?: string;
-
-  /**
-   * TextArea Warning State & Text
-   */
-  warning?: boolean;
-  warningText?: string;
-
-  /**
-   * TextArea Default Value
-   */
-  defaultValue?: string;
-
-  /**
-   * TextArea Value
-   */
-  value?: string;
-
-  /**
    * TextArea OnChange Function
    */
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 
   /**
-   * TextArea Children
+   * TextArea OnBlur Function
    */
-  children?: React.ReactNode;
+  onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
 
   /**
-   * TextArea Disabled
+   * TextArea OnFocus Function
    */
-  disabled?: boolean;
+  onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
 
   /**
-   * TextArea ReadOnly
+   * TextArea OnChange Function
    */
-  readOnly?: boolean;
-};
+  onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>;
+} & Omit<
+  TextInputProps,
+  "onChange" | "onBlur" | "onFocus" | "onKeyDown" | "fluid"
+>;
 
 const TextArea = (
   {
@@ -94,6 +57,8 @@ const TextArea = (
     characterLimit,
     characterLimitExceededText,
     maxLength,
+    autoComplete,
+
     className,
     label,
     disabled,
@@ -102,33 +67,35 @@ const TextArea = (
     value,
     defaultValue,
     children,
-    onChange
+    onChange,
+    onBlur,
+    onFocus,
+    onKeyDown
   }: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>
 ) => {
-  const controlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
+  const [inputRef, textValue, handleChange] = useControlledInput(
+    value,
+    defaultValue,
+    onChange &&
+      ((newValue, event) => {
+        onChange(event as React.ChangeEvent<HTMLTextAreaElement>);
+      })
   );
-
-  useEffect(() => {
-    if (controlled) {
-      setTextValue(value ?? "");
-    }
-  }, [value]);
+  const textLength = textValue?.length ?? 0;
 
   return (
-    <div className={`${prefix}--textarea`}>
+    <div className={cx(`${prefix}--textarea`, className)}>
       <div className={`${prefix}--textarea-top`}>
         {label && <Label htmlFor={id}>{label}</Label>}
         {characterLimit && (
           <div
             className={cx(`${prefix}--textarea-charcounter`, {
               [`${prefix}--textarea-charcounter__exceeded`]:
-                textValue.length > characterLimit
+                textLength > characterLimit
             })}
           >
-            {textValue.length} / {characterLimit}
+            {textLength} / {characterLimit}
           </div>
         )}
       </div>
@@ -138,31 +105,27 @@ const TextArea = (
           id={id}
           readOnly={readOnly}
           disabled={disabled}
-          ref={ref}
-          className={cx(
-            `${prefix}--textarea-input`,
-            {
-              [`${prefix}--textarea-error`]:
-                ((error || errorText) && !(warning || warningText)) ||
-                (characterLimit && textValue.length > characterLimit),
-              [`${prefix}--textarea-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          ref={mergeRefs([ref, inputRef])}
+          className={cx(`${prefix}--textarea-input`, {
+            [`${prefix}--textarea-error`]:
+              ((error || errorText) && !(warning || warningText)) ||
+              (characterLimit && textLength > characterLimit),
+            [`${prefix}--textarea-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           placeholder={placeholder}
-          value={textValue}
-          onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
-            if (!controlled) {
-              setTextValue(event.target.value);
-            }
-            onChange?.(event);
-          }}
+          autoComplete={autoComplete}
+          value={value}
+          defaultValue={defaultValue}
+          onChange={handleChange()}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
         />
         {children}
       </div>
       {/* Error text or character limit exceeded. Error text overwrites character limit */}
-      {(errorText || (characterLimit && textValue.length > characterLimit)) && (
+      {(errorText || (characterLimit && textLength > characterLimit)) && (
         <div className={`${prefix}--textinput-error__text`}>
           <IconAlertCircle size={16} />
           {errorText || characterLimitExceededText}
@@ -178,4 +141,6 @@ const TextArea = (
   );
 };
 
-export default forwardRef<HTMLTextAreaElement, TextAreaProps>(TextArea);
+export default React.memo(
+  React.forwardRef<HTMLTextAreaElement, TextAreaProps>(TextArea)
+);

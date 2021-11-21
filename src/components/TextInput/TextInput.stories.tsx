@@ -1,4 +1,4 @@
-import { getLogger } from "@openbricksandbraces/eloguent";
+import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Label from "../Typography/Label";
@@ -9,8 +9,6 @@ export default {
   title: "Components/A_REFA_TextInput",
   decorators: [withKnobs]
 };
-
-const logger = getLogger("TextInputStory");
 
 const sizeOptions = {
   Default: "default",
@@ -35,14 +33,17 @@ export const Uncontrolled = () => {
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
         onChange={(event) => {
-          logger.log(event.target.value);
           setReference(event.target.value);
+          action("onChange")(event);
         }}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         type={text("type", "text") as any}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
       <Label>Reference value: {reference}</Label>
     </div>
@@ -67,10 +68,13 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         type={text("type", "text") as any}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          logger.log(event.target.value);
+        onChange={(event) => {
           setValue(event.target.value);
+          action("onChange")(event);
         }}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
       <Label>SSoT value: {value}</Label>
     </div>
