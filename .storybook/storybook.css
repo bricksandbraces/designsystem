@@ -33,5 +33,7 @@
 }
 
 .bb--lottie-example {
+  display: inline-flex;
+  position: absolute;
   height: 1rem;
 }

@@ -5,6 +5,9 @@ import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import useControlledValue from "../../hooks/useControlledValue";
 import useControlled from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import cx from "classnames";
+import { IconCalendar } from "@tabler/icons";
 
 export type DateInputProps = {
   /**
@@ -112,9 +115,10 @@ const DateInput = (
   };
 
   return (
-    <>
+    <div className={cx(`${prefix}--datepicker-input__container`, className)}>
       <TextInput
         placeholder={dateFormat}
+        className={cx(`${prefix}--datepicker-input`)}
         value={value}
         defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}
@@ -133,7 +137,10 @@ const DateInput = (
         updateValue(newTextValue);
         onDateChanged?.(newDate, newTextValue);
       })}
-    </>
+      <div className={`${prefix}--datepicker-input__icon`}>
+        <IconCalendar />
+      </div>
+    </div>
   );
 };
 

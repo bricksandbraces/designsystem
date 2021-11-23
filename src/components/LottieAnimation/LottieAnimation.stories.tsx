@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import LottieAnimation from "./LottieAnimation";
-import loadinganimation from "./loadinganimation.json";
+import animation from "./animation.json";
 import { Button } from "../..";
 import { AnimationItem } from "lottie-web";
 
@@ -70,7 +70,7 @@ export const Uncontrolled = () => {
             className="bb--lottie-example"
             ref={containerRef}
             animationProps={{
-              animationData: loadinganimation,
+              animationData: animation,
               autoplay: false,
               loop: false
             }}
