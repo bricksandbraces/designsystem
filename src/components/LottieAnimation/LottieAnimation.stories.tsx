@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import LottieAnimation from "./LottieAnimation";
-import loadingSuccessFailSpinner from "./loading-success-fail-spinner-stroke-update.json";
+import loadinganimation from "./loadinganimation.json";
 import { Button } from "../..";
 import { AnimationItem } from "lottie-web";
 
 export default {
-  title: "Components/A_REFA_Lottie",
+  title: "Components/LottieAnimation",
   decorators: [withKnobs]
 };
 
@@ -21,7 +21,7 @@ export const Uncontrolled = () => {
     if (isLoading) {
       // started loading
       console.log("Starting to load");
-      animationItem.current?.playSegments([0, 240], true);
+      animationItem.current?.playSegments([0, 90], true);
 
       setTimeout(() => {
         setLoading(false);
@@ -34,7 +34,7 @@ export const Uncontrolled = () => {
     if (isDone) {
       // received success
       console.log("Starting to success animation");
-      animationItem.current?.playSegments([241, 418], true);
+      animationItem.current?.playSegments([91, 180], true);
 
       const onSuccessAnimationCompleted = () => {
         setDisabled(false);
@@ -57,7 +57,7 @@ export const Uncontrolled = () => {
 
   return (
     <>
-      <div>
+      <div style={{ padding: "32px" }}>
         <Button
           disabled={isDisabled}
           onClick={() => {
@@ -67,9 +67,10 @@ export const Uncontrolled = () => {
         >
           {!isDisabled ? "Send huge data" : "Sending..."}
           <LottieAnimation
+            className="bb--lottie-example"
             ref={containerRef}
             animationProps={{
-              animationData: loadingSuccessFailSpinner,
+              animationData: loadinganimation,
               autoplay: false,
               loop: false
             }}
