@@ -9,45 +9,43 @@ import { Grid, Column } from "../Grid/Grid";
 import Button from "../Button/Button";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
-import Headline from "../Typography/Headline";
-import Marketing from "../Typography/Marketing";
 import IconOnlyButton from "../Button/IconOnlyButton";
 
 type CtaItem = {
   /**
-   * Link to location
+   * CtaItem Href
    */
   href: string;
 
   /**
-   * Label that is shown
+   * CtaItem Label
    */
   label: string;
 
   /**
-   * Chevron
+   * CtaItem Chevron
    */
   showChevron: boolean;
 };
 
 type LeadSpaceProps = {
   /**
-   * Bg image
+   * LeadSpace BackgroundImage
    */
   backgroundImage?: string;
 
   /**
-   * Bg image
+   * LeadSpace VideoUrl
    */
   videoUrl?: string;
 
   /**
-   * Leadspace title
+   * LeadSpace Title
    */
   title?: string;
 
   /**
-   * CTA section / Buttons
+   * LeadSpace CtaItems
    */
   ctaItems?: CtaItem[];
 };
@@ -115,9 +113,9 @@ const LeadSpace = ({
           smOffset={0}
           md={6}
           mdOffset={1}
-          lg={14}
+          lg={12}
           lgOffset={2}
-          xlg={14}
+          xlg={12}
           xlgOffset={2}
           className={`${prefix}--leadspace-column`}
         >
