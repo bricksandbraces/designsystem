@@ -3,7 +3,6 @@ import React from "react";
 import LeadSpace from "./LeadSpace";
 import Header from "../WebHeader/WebHeader";
 import LeadSpaceBlock from "./LeadSpaceBlock";
-import { Badge } from "../..";
 
 export default { title: "Web/A_REFA_LeadSpace", decorators: [withKnobs] };
 
@@ -118,27 +117,6 @@ export const BlockWithoutCTA = () => {
           "text",
           "Lorem ipsum Digital Agency sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
         )}
-      />
-    </>
-  );
-};
-
-export const BlockWithNodeChildren = () => {
-  return (
-    <>
-      <LeadSpaceBlock
-        title={text("title", "What we do")}
-        text={
-          <>
-            <p>
-              Lorem ipsum Digital Agency sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua.
-            </p>
-            <Badge color="red">Blog Post</Badge>
-            <Badge color="blue">Blog Post</Badge>
-          </>
-        }
       />
     </>
   );

@@ -91,6 +91,11 @@
 .$(prefix)--leadspace-block.$(prefix)--leadspace {
   height: 100%;
   min-height: calc($size--container-06 * 10);
+  background-color: $color--app-05;
+
+  &::before {
+    background: unset;
+  }
 
   & > .$(prefix)--leadspace-grid > .$(prefix)--leadspace-column {
     padding: $size--spacing-12 $size--spacing-05;
@@ -99,13 +104,15 @@
         @mixin type--marketing-02;
 
         margin-bottom: $size--spacing-06;
-        font-weight: 400;
+        color: $color--font-text-inverse;
+        font-weight: 500;
       }
 
       & > .$(prefix)--leadspace-block__text {
         @mixin type--headline-03;
 
         margin-bottom: $size--spacing-09;
+        color: $color--font-text-inverse;
         font-weight: 300;
       }
     }
@@ -180,6 +187,11 @@
           border: 0.0625rem solid $color--tertiary-enabled;
         }
 
+        & > .$(prefix)--button-secondary {
+          width: calc(100% - $size--field-large - $size--spacing-05);
+          margin-bottom: $size--spacing-05;
+        }
+
         & > .$(prefix)--button-primary {
           width: calc(100% - $size--field-large - $size--spacing-05);
           margin-right: 0;
@@ -192,7 +204,7 @@
     min-height: unset;
 
     & > .$(prefix)--leadspace-grid > .$(prefix)--leadspace-column {
-      padding: $size--spacing-11 $size--spacing-05;
+      padding: $size--spacing-05 $size--spacing-05;
 
       &
         > div

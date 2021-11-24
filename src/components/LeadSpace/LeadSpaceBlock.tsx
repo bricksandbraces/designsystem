@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
 import { Grid, Column } from "../Grid/Grid";
@@ -78,7 +78,7 @@ const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
                       <Button
                         key={cta.id}
                         size="large"
-                        kind={i === 0 ? "primary" : "ghost"}
+                        kind={i === 0 ? "primary" : "secondary"}
                         href={cta.href}
                         iconPosition="right"
                         icon={cta.showChevron && <IconChevronRight />}
