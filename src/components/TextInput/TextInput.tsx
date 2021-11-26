@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
@@ -83,6 +83,11 @@ export type TextInputProps = {
   value?: string;
 
   /**
+   * TextInput Value
+   */
+  icon?: ReactNode;
+
+  /**
    * TextInput Fluid
    */
   fluid?: boolean;
@@ -121,6 +126,7 @@ const TextInput = (
     onKeyDown,
     error,
     errorText,
+    icon,
     warning,
     warningText,
     size = "default",
@@ -145,6 +151,7 @@ const TextInput = (
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--textinput-input__container`}>
+        {icon && <div className={`${prefix}--textinput-icon`}>{icon}</div>}
         <input
           id={id}
           disabled={disabled}

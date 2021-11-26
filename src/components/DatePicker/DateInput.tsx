@@ -115,8 +115,9 @@ const DateInput = (
   };
 
   return (
-    <div className={cx(`${prefix}--datepicker-input__container`, className)}>
+    <>
       <TextInput
+        icon={<IconCalendar />}
         placeholder={dateFormat}
         className={cx(`${prefix}--datepicker-input`)}
         value={value}
@@ -137,10 +138,7 @@ const DateInput = (
         updateValue(newTextValue);
         onDateChanged?.(newDate, newTextValue);
       })}
-      <div className={`${prefix}--datepicker-input__icon`}>
-        <IconCalendar />
-      </div>
-    </div>
+    </>
   );
 };
 

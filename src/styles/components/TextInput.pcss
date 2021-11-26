@@ -100,6 +100,27 @@
       }
     }
 
+    &-icon {
+      display: inline-flex;
+      position: absolute;
+      right: 0;
+      align-items: center;
+      height: 100%;
+      padding: 0 $size--spacing-05;
+      pointer-events: none;
+
+      & + .$(prefix)--textinput-input {
+        padding-right: $size--spacing-09;
+      }
+
+      & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
+      }
+    }
+
     &-togglepassword {
       position: absolute;
       top: 0;
