@@ -112,7 +112,7 @@ const Dropdown = ({
   id,
   defaultValue,
   onChange,
-  size,
+  size = "default",
   label,
   className,
   title,

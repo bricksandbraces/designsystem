@@ -27,7 +27,7 @@ type LeadSpaceBlockProps = {
   /**
    * LeadSpaceBlock Text
    */
-  text?: string | ReactNode;
+  text?: ReactNode;
 
   /**
    * LeadSpaceBlock Title
@@ -69,7 +69,7 @@ const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
                 </h1>
               )}
               {text && (
-                <p className={`${prefix}--leadspace-block__text`}>{text}</p>
+                <div className={`${prefix}--leadspace-block__text`}>{text}</div>
               )}
               {ctaItems && (
                 <div className={`${prefix}--leadspace-content__buttongroup`}>
