@@ -144,7 +144,9 @@ const TextInput = (
       className={cx(
         `${prefix}--textinput`,
         {
-          [`${prefix}--textinput-fluid`]: fluid
+          [`${prefix}--textinput-fluid`]: fluid,
+          [`${prefix}--textinput-disabled`]: disabled,
+          [`${prefix}--textinput-readonly`]: readOnly
         },
         className
       )}

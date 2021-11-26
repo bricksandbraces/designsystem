@@ -10,6 +10,7 @@ import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 import DateInput from "./DateInput";
 import DatePicker from "./DatePicker";
+import DatePickerSkeleton from "./DatePickerSkeleton";
 
 export default {
   title: "Components/A_REFA_DatePicker",
@@ -199,6 +200,16 @@ export const SingleWithCalendarControlled = () => {
       >
         Reset to today
       </Button>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <DatePickerSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };

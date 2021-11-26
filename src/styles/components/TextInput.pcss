@@ -21,6 +21,16 @@
       height: $size--container-03;
     }
 
+    &-disabled {
+      color: $color--font-disabled;
+    }
+
+    &-readonly {
+      color: $color--font-readonly;
+      pointer-events: none;
+      user-select: none;
+    }
+
     &-input {
       @mixin type--body-02;
 
