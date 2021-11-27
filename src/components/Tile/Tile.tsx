@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type TileProps = {
+export type TileProps = {
   /**
    * Tile ClassName
    */
@@ -24,22 +24,19 @@ type TileProps = {
   children?: ReactNode;
 };
 
-const Tile = ({
-  children,
-  disabled,
-  readOnly,
-  className,
-  ...rest
-}: TileProps) => {
+const Tile = (
+  { children, disabled, readOnly, className, ...rest }: TileProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
+      ref={ref}
       className={cx(
         `${prefix}--tile`,
         {
           [`${prefix}--tile-disabled`]: disabled,
           [`${prefix}--tile-readonly`]: readOnly
         },
-
         className
       )}
       {...rest}
@@ -49,4 +46,4 @@ const Tile = ({
   );
 };
 
-export default Tile;
+export default React.forwardRef(Tile);

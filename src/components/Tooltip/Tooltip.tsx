@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor, ReactElement } from "react";
+import React from "react";
 import Tippy from "@tippyjs/react";
 import type { TippyProps } from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -8,11 +8,6 @@ import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 
 export type TooltipProps = {
-  /**
-   * Tooltip Children
-   */
-  children?: ReactElement<any, string | JSXElementConstructor<any>>;
-
   /**
    * Tooltip Theme
    */
@@ -24,14 +19,13 @@ export type TooltipProps = {
   tooltipContent: React.ReactNode;
 } & Omit<TippyProps, "content">;
 
-const Tooltip = ({
-  children,
-  theme = "light",
-  tooltipContent,
-  ...props
-}: TooltipProps) => {
+const Tooltip = (
+  { children, theme = "light", tooltipContent, ...props }: TooltipProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   return (
     <Tippy
+      ref={ref}
       className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
       arrow={roundArrow}
       animation="bbds-animation"

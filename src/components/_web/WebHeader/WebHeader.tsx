@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import { IconMenu, IconX } from "@tabler/icons";
-import Logo from "../Logo/Logo";
-import { Grid, Column } from "../Grid/Grid";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
+import Logo from "../../Logo/Logo";
+import { Grid, Column } from "../../Grid/Grid";
+import { prefix } from "../../../settings";
+import { idfy } from "../../../helpers/arrayUtilities";
 import WebHeaderLink from "./WebHeaderLink";
 
 type LinkItem = {

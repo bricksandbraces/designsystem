@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { text, object, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import UserProfile from "./UserProfile";
@@ -13,7 +14,7 @@ export const Default = () => {
       <UserProfile
         name={text("Name", "Hendrik Ulbrich")}
         subName={text("Subname", "@hendriku")}
-        onLogout={() => {}}
+        onPrimaryAction={action("onPrimaryAction")}
         links={object("Link data", [
           { href: "#", label: "User profile" },
           { href: "#", label: "Settings" },

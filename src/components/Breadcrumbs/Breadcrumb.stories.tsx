@@ -3,7 +3,7 @@ import React from "react";
 import BreadcrumbItem from "./BreadcrumbItem";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbSkeleton from "./BreadcrumbSkeleton";
-import { IconFolder, IconHome } from "@tabler/icons";
+import { IconFolder } from "@tabler/icons";
 import OverflowMenu from "../OverflowMenu/OverflowMenu";
 import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
 

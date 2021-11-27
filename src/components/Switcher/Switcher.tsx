@@ -95,15 +95,15 @@ const Switcher = (
         {mapReactChildren<SwitcherItemProps>(
           children,
           ({ props, key, index: i }) => {
+            const isSelected = selectedIndex === i;
             return (
               <div
                 key={key}
                 className={cx(`${prefix}--switcher-content__item`, {
-                  [`${prefix}--switcher-content__item-selected`]:
-                    selectedIndex === i
+                  [`${prefix}--switcher-content__item-selected`]: isSelected
                 })}
               >
-                {selectedIndex === i && props.children}
+                {isSelected && props.children}
               </div>
             );
           }

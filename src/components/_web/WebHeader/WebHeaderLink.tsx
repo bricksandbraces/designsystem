@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { prefix } from "../../settings";
+import { prefix } from "../../../settings";
 import cx from "classnames";
 
 type WebHeaderLinkProps = {

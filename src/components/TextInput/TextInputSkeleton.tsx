@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import SkeletonContainer from "../Skeleton/SkeletonContainer";
 
-type TextInputSkeletonProps = {
+export type TextInputSkeletonProps = {
   /**
    * TextInputSkeleton ClassName
    */

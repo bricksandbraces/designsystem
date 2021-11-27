@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type ToggleProps = {
+export type ToggleProps = {
   /**
    * Toggle ClassName
    */
@@ -16,7 +16,7 @@ type ToggleProps = {
   /**
    * Toggle Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Toggle Value
@@ -49,6 +49,16 @@ type ToggleProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
+   * Toggle OnFocus Function
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * Toggle OnBlur Function
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
    * Toggle Disabled
    */
   disabled?: boolean;
@@ -59,20 +69,23 @@ type ToggleProps = {
   readOnly?: boolean;
 };
 
-const Toggle = ({
-  id,
-  value,
-  checked,
-  size = "default",
-  defaultChecked,
-  label,
-  className,
-  disabled,
-  readOnly,
-  children,
-  onChange,
-  ...rest
-}: ToggleProps) => {
+const Toggle = (
+  {
+    id,
+    value,
+    checked,
+    size = "default",
+    defaultChecked,
+    label,
+    className,
+    disabled,
+    readOnly,
+    children,
+    onChange,
+    ...rest
+  }: ToggleProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div
       className={cx(
@@ -96,6 +109,7 @@ const Toggle = ({
         defaultChecked={defaultChecked}
         onChange={onChange}
         {...rest}
+        ref={ref}
       />
       <label className={`${prefix}--toggle-label`} htmlFor={id}>
         <span className={`${prefix}--toggle-switch`}>
@@ -129,4 +143,4 @@ const Toggle = ({
   );
 };
 
-export default Toggle;
+export default React.forwardRef(Toggle);
