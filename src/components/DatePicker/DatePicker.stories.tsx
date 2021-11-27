@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { format } from "date-fns";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -34,6 +34,8 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         defaultValue={format(defaultDate, dateFormat)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
@@ -67,6 +69,8 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         value={textValue}
         onChange={(event) => {
           setTextValue(event.target.value);
@@ -108,6 +112,8 @@ export const SingleWithCalendarUncontrolled = () => {
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            disabled={boolean("disabled", false)}
+            readOnly={boolean("readOnly", false)}
             label="Single with calendar"
             defaultValue={format(defaultDate, dateFormat)}
             dateFormat={dateFormat}
@@ -166,6 +172,8 @@ export const SingleWithCalendarControlled = () => {
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            disabled={boolean("disabled", false)}
+            readOnly={boolean("readOnly", false)}
             label="Single with calendar"
             value={formatDate(chosenDate, dateFormat, "")}
             dateFormat={dateFormat}

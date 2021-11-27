@@ -91,7 +91,7 @@ export type TextInputProps = {
   value?: string;
 
   /**
-   * TextInput Value
+   * TextInput Icon
    */
   icon?: ReactNode;
 

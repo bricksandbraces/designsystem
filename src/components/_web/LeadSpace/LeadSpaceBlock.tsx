@@ -73,7 +73,7 @@ const LeadSpaceBlock = (
                 </h1>
               )}
               {text && (
-                <p className={`${prefix}--leadspace-block__text`}>{text}</p>
+                <div className={`${prefix}--leadspace-block__text`}>{text}</div>
               )}
               {ctaItems && (
                 <div className={`${prefix}--leadspace-content__buttongroup`}>

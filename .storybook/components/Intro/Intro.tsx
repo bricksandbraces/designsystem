@@ -13,7 +13,6 @@ const Intro = () => {
       }}
     >
       <div className="sb-intro">
-        <Logo type="logomark" size="xsmall" color="white" />
         <Headline type="h1" className="sb-intro--headline">
           Design System
         </Headline>
@@ -21,6 +20,12 @@ const Intro = () => {
           v{packageJSON.version} <br />
           React Storybook
         </Body>
+        <Logo
+          type="logotype"
+          size="xsmall"
+          className="sb-intro--logo"
+          color="white"
+        />
       </div>
     </div>
   );

@@ -58,7 +58,6 @@ const TextArea = (
     characterLimitExceededText,
     maxLength,
     autoComplete,
-
     className,
     label,
     disabled,
@@ -85,7 +84,12 @@ const TextArea = (
   const textLength = textValue?.length ?? 0;
 
   return (
-    <div className={cx(`${prefix}--textarea`, className)}>
+    <div
+      className={cx(`${prefix}--textarea`, {
+        [`${prefix}--textarea-disabled`]: disabled,
+        [`${prefix}--textarea-readonly`]: readOnly
+      })}
+    >
       <div className={`${prefix}--textarea-top`}>
         {label && <Label htmlFor={id}>{label}</Label>}
         {characterLimit && (
@@ -106,13 +110,17 @@ const TextArea = (
           readOnly={readOnly}
           disabled={disabled}
           ref={mergeRefs([ref, inputRef])}
-          className={cx(`${prefix}--textarea-input`, {
-            [`${prefix}--textarea-error`]:
-              ((error || errorText) && !(warning || warningText)) ||
-              (characterLimit && textLength > characterLimit),
-            [`${prefix}--textarea-warning`]:
-              !(error || errorText) && (warning || warningText)
-          })}
+          className={cx(
+            `${prefix}--textarea-input`,
+            {
+              [`${prefix}--textarea-error`]:
+                ((error || errorText) && !(warning || warningText)) ||
+                (characterLimit && textLength > characterLimit),
+              [`${prefix}--textarea-warning`]:
+                !(error || errorText) && (warning || warningText)
+            },
+            className
+          )}
           placeholder={placeholder}
           autoComplete={autoComplete}
           value={value}

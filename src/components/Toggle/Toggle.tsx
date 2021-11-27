@@ -75,7 +75,14 @@ const Toggle = ({
 }: ToggleProps) => {
   return (
     <div
-      className={cx(`${prefix}--toggle ${prefix}--toggle-${size}`, className)}
+      className={cx(
+        `${prefix}--toggle ${prefix}--toggle-${size}`,
+        {
+          [`${prefix}--toggle-disabled`]: disabled,
+          [`${prefix}--toggle-readonly`]: readOnly
+        },
+        className
+      )}
     >
       <input
         tabIndex={0}

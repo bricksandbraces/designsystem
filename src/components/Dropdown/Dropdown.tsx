@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -133,7 +133,7 @@ const Dropdown = (
     onChange,
     onFocus,
     onBlur,
-    size,
+    size = "default",
     label,
     className,
     title,

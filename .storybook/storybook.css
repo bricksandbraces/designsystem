@@ -15,8 +15,13 @@
   }
 
   &--headline {
-    margin-top: 2rem;
     color: white;
+  }
+
+  &--logo {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
   }
 
   &--subline {
