@@ -32,20 +32,20 @@
       /* min-width: calc($size--container-06 * 3); */
       padding: 0 $size--spacing-05;
       overflow: hidden;
-      transition: $transition-01;
-      border-top: 0.0625rem solid $color--border-default;
-      border-bottom: 0.0625rem solid $color--border-default;
+      transition: $transition--app-01;
+      border-top: 0.0625rem solid $color--border;
+      border-bottom: 0.0625rem solid $color--border;
       background-color: $color--background;
       color: $color--font-unselected;
 
       &:first-child {
-        border-left: 0.0625rem solid $color--border-default;
+        border-left: 0.0625rem solid $color--border;
         border-top-left-radius: $component--radius-default;
         border-bottom-left-radius: $component--radius-default;
       }
 
       &:last-child {
-        border-right: 0.0625rem solid $color--border-default;
+        border-right: 0.0625rem solid $color--border;
         border-top-right-radius: $component--radius-default;
         border-bottom-right-radius: $component--radius-default;
       }
@@ -76,7 +76,7 @@
         background-color: $color--hover;
       }
 
-      &:focus-visible {
+      &:focus {
         border: 0.0625rem solid $color--focus;
       }
 

@@ -21,13 +21,23 @@
       height: $size--container-03;
     }
 
+    &-disabled {
+      color: $color--font-disabled;
+    }
+
+    &-readonly {
+      color: $color--font-readonly;
+      pointer-events: none;
+      user-select: none;
+    }
+
     &-input {
       @mixin type--body-02;
 
       width: 100%;
       padding: 0 $size--spacing-05;
       transition: border $transition--app-01;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       outline: 0;
       background-color: $color--background;
@@ -97,6 +107,27 @@
         display: flex;
         position: relative;
         flex-direction: column;
+      }
+    }
+
+    &-icon {
+      display: inline-flex;
+      position: absolute;
+      right: 0;
+      align-items: center;
+      height: 100%;
+      padding: 0 $size--spacing-05;
+      pointer-events: none;
+
+      & + .$(prefix)--textinput-input {
+        padding-right: $size--spacing-09;
+      }
+
+      & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
       }
     }
 

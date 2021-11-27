@@ -5,7 +5,6 @@
 .$(prefix)--tooltip.tippy-box {
   @mixin type--label;
 
-  border: 0.0625rem solid;
   border-radius: $component--radius-default;
   box-shadow: $component--shadow-default;
 
@@ -38,26 +37,22 @@
   }
 
   &[data-theme~="bbds-dark"] {
-    border-color: #242424;
     background-color: $color--background;
     color: $color--font-text-01;
 
     & > .tippy-svg-arrow {
       & > svg > path {
-        stroke: #242424;
         fill: $color--background;
       }
     }
   }
 
   &[data-theme~="bbds-light"] {
-    border-color: $color--app-04;
     background-color: $color--app-05;
     color: $color--font-text-inverse;
 
     & > .tippy-svg-arrow {
       & > svg > path {
-        stroke: $color--app-04;
         fill: $color--app-05;
       }
     }

@@ -27,12 +27,10 @@ export const parameters = {
   },
   actions: { argTypesRegex: "^on[A-Z].*" },
   backgrounds: {
-    default: "black",
+    default: "app-bg",
     values: [
       { name: "white", value: "#ffffff" },
-      { name: "dark", value: "#808080" },
-      { name: "black", value: "#000000" },
-      { name: "app-bg", value: "#18181b" },
+      { name: "app-bg", value: "#0c0c0d" },
       {
         name: "random-lynx",
         value: 'url("https://luchs.hobbytes.de/image?width=1920&height=1080")'

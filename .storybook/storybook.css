@@ -31,3 +31,9 @@
   background-color: #206;
   color: #fff;
 }
+
+.bb--lottie-example {
+  display: inline-flex;
+  position: absolute;
+  height: 1rem;
+}

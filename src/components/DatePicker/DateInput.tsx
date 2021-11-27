@@ -4,6 +4,9 @@ import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import { useControlled, useControlledInput } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import cx from "classnames";
+import { IconCalendar } from "@tabler/icons";
 
 export type DateInputProps = {
   /**
@@ -126,7 +129,9 @@ const DateInput = (
   return (
     <>
       <TextInput
+        icon={<IconCalendar />}
         placeholder={dateFormat}
+        className={cx(`${prefix}--datepicker-input`)}
         value={value}
         defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}

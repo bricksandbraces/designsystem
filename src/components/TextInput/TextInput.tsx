@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
@@ -91,6 +91,11 @@ export type TextInputProps = {
   value?: string;
 
   /**
+   * TextInput Value
+   */
+  icon?: ReactNode;
+
+  /**
    * TextInput Fluid
    */
   fluid?: boolean;
@@ -140,12 +145,13 @@ const TextInput = (
     onKeyDown,
     error,
     errorText,
+    icon,
     warning,
     warningText,
     size = "default",
     children
   }: TextInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const [inputRef, textValue, handleChange] = useControlledInput(
     value,
@@ -160,13 +166,16 @@ const TextInput = (
       className={cx(
         `${prefix}--textinput`,
         {
-          [`${prefix}--textinput-fluid`]: fluid
+          [`${prefix}--textinput-fluid`]: fluid,
+          [`${prefix}--textinput-disabled`]: disabled,
+          [`${prefix}--textinput-readonly`]: readOnly
         },
         className
       )}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--textinput-input__container`}>
+        {icon && <div className={`${prefix}--textinput-icon`}>{icon}</div>}
         <input
           id={id}
           disabled={disabled}

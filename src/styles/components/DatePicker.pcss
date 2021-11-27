@@ -11,7 +11,7 @@
     transform: translateY(0);
     transition: opacity $transition--app-01, transform $transition--app-01,
       visibility $transition--app-01;
-    border: 0.0625rem solid $color--border-default;
+    border: 0.0625rem solid $color--border;
     border-radius: $component--radius-default;
     background: $color--background;
     box-shadow: $component--shadow-default;
@@ -23,6 +23,7 @@
     }
 
     &-container {
+      display: inline-flex;
       position: relative;
     }
 
@@ -55,7 +56,7 @@
       border: 0.0625rem solid transparent;
       border-radius: $component--radius-default;
 
-      &:focus-visible {
+      &:focus {
         border-color: $color--focus;
         outline: 0;
       }
@@ -87,7 +88,7 @@
             background-color: $color--hover;
           }
 
-          &:focus-visible {
+          &:focus {
             border-color: $color--focus;
             outline: 0;
           }
@@ -135,7 +136,7 @@
                 width: calc(100% + $size--spacing-05 * 2 - 0.125rem);
                 height: 0.0625rem;
                 transform: translateX(calc($size--spacing-05 * -1 + 0.0625rem));
-                background-color: $color--border-default;
+                background-color: $color--border;
               }
 
               & > .DayPicker-Weekday {
@@ -175,7 +176,7 @@
                 border-radius: $component--radius-default;
                 cursor: pointer;
 
-                &:focus-visible {
+                &:focus {
                   border-color: $color--focus;
                   outline: 0;
                 }
@@ -203,6 +204,22 @@
             }
           }
         }
+      }
+    }
+  }
+  &--datepicker.$(prefix)--skeleton {
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(0.0625rem);
+
+    & > .$(prefix)--skeleton {
+      justify-content: flex-end;
+      padding: 0 $size--spacing-05;
+      appearance: auto;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-02;
       }
     }
   }

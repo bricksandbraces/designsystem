@@ -41,7 +41,7 @@ const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
           <Grid narrow fullWidth>
             <Column className={cx(`${prefix}--webheader-container`)}>
               <a href={baseUrl} className={cx(`${prefix}--webheader-logo`)}>
-                <Logo type="logotype" color="black" size="xsmall" />
+                <Logo type="logomark" color="black" size="xsmall" />
               </a>
             </Column>
           </Grid>

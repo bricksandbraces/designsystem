@@ -45,7 +45,11 @@
       pointer-events: none;
 
       & > .$(prefix)--loading {
+        display: inline-flex;
         position: absolute;
+        top: 0;
+        bottom: 0;
+        align-items: center;
       }
     }
 
@@ -62,7 +66,7 @@
     }
 
     &-primary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--primary-enabled;
 
       &:hover {
@@ -75,7 +79,7 @@
     }
 
     &-secondary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--secondary-enabled;
 
       &:hover {
@@ -89,7 +93,7 @@
 
     &-tertiary {
       border-color: $color--tertiary-enabled;
-      background-color: $color--transparent;
+      background-color: transparent;
 
       &:hover {
         border-color: $color--tertiary-hover;
@@ -104,7 +108,7 @@
     }
 
     &-ghost {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--ghost-enabled;
 
       &:hover {
@@ -171,16 +175,26 @@
   }
 }
 
+<<<<<<< HEAD
 .$(prefix)--button__focus,
 .$(prefix)--button.$(prefix)--button-ghost:focus-visible,
 .$(prefix)--button.$(prefix)--button-primary:focus-visible,
 .$(prefix)--button.$(prefix)--button-secondary:focus-visible {
+=======
+.$(prefix)--button.$(prefix)--button-ghost:focus,
+.$(prefix)--button.$(prefix)--button-primary:focus,
+.$(prefix)--button.$(prefix)--button-secondary:focus {
+>>>>>>> a488db42ac1ce1719d279c4c9d5a2b0b3cbfe69d
   border-color: $color--focus;
   outline: 0;
 }
 
+<<<<<<< HEAD
 .$(prefix)--button__focus.$(prefix)--button-tertiary,
 .$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
+=======
+.$(prefix)--button.$(prefix)--button-tertiary:focus {
+>>>>>>> a488db42ac1ce1719d279c4c9d5a2b0b3cbfe69d
   border-color: $color--focus;
   outline: 0;
   background-color: $color--tertiary-hover;
@@ -198,7 +212,6 @@
 
   &:hover,
   &:focus,
-  &:focus-visible,
   &:active {
     border-color: $color--disabled;
     background-color: $color--disabled;
@@ -212,7 +225,6 @@
 
   &:hover,
   &:focus,
-  &:focus-visible,
   &:active {
     border-color: $color--disabled;
     background-color: inherit;
@@ -234,7 +246,7 @@
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
-  background-color: $color--transparent;
+  background-color: transparent;
   color: $color--danger;
 
   &:hover {
@@ -298,21 +310,21 @@
 }
 
 .$(prefix)--button-icon-only > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-left > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   margin-right: $size--spacing-03;
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-right > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   margin-left: $size--spacing-03;
   stroke-width: 0.125rem;
 }

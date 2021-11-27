@@ -7,8 +7,7 @@ export type BadgeColor =
   | "red"
   | "yellow"
   | "purple"
-  | "warm-gray"
-  | "cold-gray"
+  | "gray"
   | "cyan"
   | "blue"
   | "orange"
@@ -35,7 +34,7 @@ export type BadgeProps = {
   /**
    * Badge Type Defaults to warm-gray
    */
-  colorType?: BadgeColor;
+  color?: BadgeColor;
 
   /**
    * Badge TabIndex
@@ -93,17 +92,16 @@ const Badge = (
     children,
     className,
     tabIndex,
-    role,
-    title,
     onClose,
-    closeTitle,
     onClick,
-    colorType = "warm-gray",
-    "aria-label": ariaLabel,
+    onMouseEnter,
+    onMouseLeave,
     onFocus,
     onBlur,
-    onMouseEnter,
-    onMouseLeave
+    role,
+    color = "gray",
+    title,
+    "aria-label": ariaLabel
   }: BadgeProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLDivElement>
 ) => {
@@ -116,37 +114,39 @@ const Badge = (
     title,
     role,
     "aria-label": ariaLabel,
-    className: cx(`${prefix}--badge ${prefix}--badge-${colorType}`, className)
+    className: cx(`${prefix}--badge ${prefix}--badge-${color}`, className)
   };
-
-  return onClick ? (
-    <button
-      type="button"
-      onClick={onClick}
-      ref={ref as React.ForwardedRef<HTMLButtonElement>}
-      {...baseProps}
-    >
-      <div className={`${prefix}--badge-content`}>
-        <p>{children}</p>
-      </div>
-    </button>
-  ) : (
-    <div ref={ref as React.ForwardedRef<HTMLDivElement>} {...baseProps}>
-      <div className={`${prefix}--badge-content`}>
-        <p>{children}</p>
-        {onClose && (
-          <button
-            type="button"
-            tab-index={0}
-            className={`${prefix}--badge-close`}
-            title={closeTitle}
-            onClick={onClose}
-          >
-            <IconX size={12} stroke={2} strokeLinejoin="miter" />
-          </button>
-        )}
-      </div>
-    </div>
+  return (
+    <>
+      {onClick ? (
+        <button
+          type="button"
+          {...baseProps}
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
+        >
+          <div className={`${prefix}--badge-content`}>
+            <p>{children}</p>
+          </div>
+        </button>
+      ) : (
+        <div {...baseProps} ref={ref as React.ForwardedRef<HTMLDivElement>}>
+          <div className={`${prefix}--badge-content`}>
+            <p>{children}</p>
+            {onClose && (
+              <button
+                type="button"
+                tab-index={0}
+                className={`${prefix}--badge-close`}
+                title={title}
+                onClick={onClose}
+              >
+                <IconX size={12} stroke={2} strokeLinejoin="miter" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

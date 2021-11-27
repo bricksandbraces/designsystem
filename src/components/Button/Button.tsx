@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
+import animation from "./loadinganimation.json";
 
 export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
 
@@ -167,8 +168,8 @@ const Button = (
   const loader = isLoading && (
     <Loading
       active
+      loadingAnimation={animation}
       loadingDescription={loadingDescription}
-      disabled={disabled}
       size="inline"
     />
   );

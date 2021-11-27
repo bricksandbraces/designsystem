@@ -18,7 +18,7 @@ export type CtaItem = {
   href: string;
 
   /**
-   * CtaItem Label that is shown
+   * CtaItem Label
    */
   label: string;
 
@@ -30,22 +30,22 @@ export type CtaItem = {
 
 export type LeadSpaceProps = {
   /**
-   * LeadSpace Bg image
+   * LeadSpace BackgroundImage
    */
   backgroundImage?: string;
 
   /**
-   * LeadSpace Bg image
+   * LeadSpace VideoUrl
    */
   videoUrl?: string;
 
   /**
-   * LeadSpace title
+   * LeadSpace Title
    */
   title?: string;
 
   /**
-   * LeadSpace CTA section / Buttons
+   * LeadSpace CtaItems
    */
   ctaItems?: CtaItem[];
 };
@@ -112,9 +112,9 @@ const LeadSpace = (
           smOffset={0}
           md={6}
           mdOffset={1}
-          lg={14}
+          lg={12}
           lgOffset={2}
-          xlg={14}
+          xlg={12}
           xlgOffset={2}
           className={`${prefix}--leadspace-column`}
         >

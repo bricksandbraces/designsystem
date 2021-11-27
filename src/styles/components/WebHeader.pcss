@@ -68,6 +68,7 @@
 
     &-menu {
       display: flex;
+      visibility: hidden;
       position: fixed;
       z-index: 10500;
       top: 0;
@@ -81,14 +82,15 @@
       padding: $size--spacing-07;
       overflow-y: scroll;
       transform: translateX(calc($size--container-08 * 2));
-      transition: transform $transition--app-01;
-      border-left: 0.0625rem solid $color--border-harsh;
-      background: linear-gradient($cyan-400, $purple-700);
+      transition: transform $transition--app-01, visibility $transition--app-01;
+      border-left: 0.0625rem solid rgba($white, 0.2);
+      background: linear-gradient($blue-600, $purple-500);
 
       &__logo {
         margin-top: $size--spacing-10;
         &.$(prefix)--webheader-logo {
           display: inline-flex;
+          margin-left: 0;
           padding-left: 0;
 
           &:focus-visible {
@@ -98,6 +100,7 @@
       }
 
       &__open {
+        visibility: visible;
         transform: unset;
         box-shadow: $component--shadow-harsh;
 

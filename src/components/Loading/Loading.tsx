@@ -1,15 +1,12 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import LottieAnimation from "../LottieAnimation/LottieAnimation";
+import loadingAnimation from "./animation.json";
 
-type LoadingProps = {
+export type LoadingProps = {
   /**
-   * Loading Label that is shown.
-   */
-  loadingDescription: string;
-
-  /**
-   * Loading active if the component should indicate loading
+   * Loading active
    */
   active?: boolean;
 
@@ -19,14 +16,19 @@ type LoadingProps = {
   withOverlay?: boolean;
 
   /**
-   * Loading Disabled loading spinner
-   */
-  disabled?: boolean;
-
-  /**
-   * Loading ClassName
+   * ClassName
    */
   className?: string;
+
+  /**
+   * Loading Animation
+   */
+  loadingAnimation?: object;
+
+  /**
+   * Loading Description
+   */
+  loadingDescription?: string;
 
   /**
    * Loading Size
@@ -39,7 +41,6 @@ const Loading = (
     size = "default",
     loadingDescription,
     active,
-    disabled,
     className,
     withOverlay
   }: LoadingProps,
@@ -59,22 +60,20 @@ const Loading = (
           )}
           ref={ref}
         >
-          <div
+          <LottieAnimation
+            title={loadingDescription}
             className={cx(
               `${prefix}--loading-container`,
-              `${prefix}--loading-${size}`,
-              {
-                [`${prefix}--loading-disabled`]: disabled
-              }
+              `${prefix}--loading-${size}`
             )}
             role="status"
             aria-live={active ? "assertive" : "off"}
-          >
-            <svg viewBox="0 0 100 100">
-              <title>{loadingDescription}</title>
-              <circle cx="50%" cy="50%" r="40" />
-            </svg>
-          </div>
+            animationProps={{
+              animationData: loadingAnimation,
+              autoplay: true,
+              loop: true
+            }}
+          />
         </div>
       )}
     </>

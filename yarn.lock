@@ -2066,7 +2066,6 @@ __metadata:
   dependencies:
     "@babel/core": ^7.16.0
     "@openbricksandbraces/eloguent": ^0.1.2
-    "@popperjs/core": ^2.10.2
     "@storybook/addon-a11y": ^6.3.12
     "@storybook/addon-actions": ^6.3.12
     "@storybook/addon-essentials": ^6.3.12
@@ -2117,6 +2116,7 @@ __metadata:
     identity-obj-proxy: ^3.0.0
     jest: ^27.3.1
     lodash: ^4.17.21
+    lottie-web: ^5.8.1
     object-hash: ^2.2.0
     postcss: ^8.3.11
     postcss-calc: ^8.0.0
@@ -2215,13 +2215,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.10.2, @popperjs/core@npm:^2.9.0":
-  version: 2.10.2
-  resolution: "@popperjs/core@npm:2.10.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.10.2.tgz"
-  checksum: 43c189e3eb6d032433512d94761b54fc7cae15957ca5528008813f887a67b5760b949f30a5141b476be2ba5a6c677c91def150f603d2d3e30b5e97a5ae51474e
-  languageName: node
-  linkType: hard
-
 "@popperjs/core@npm:^2.5.4, @popperjs/core@npm:^2.6.0":
   version: 2.9.3
   resolution: "@popperjs/core@npm:2.9.3"
@@ -2233,6 +2226,13 @@ __metadata:
   version: 2.10.1
   resolution: "@popperjs/core@npm:2.10.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.10.1.tgz"
   checksum: 55262eb98984a03364a844177a9d4b9ab1c6e3503eaa1ecb086c028b5b6d93985a92b5b5783008962633015fc9f0232fda3ce88f5b17930a909a633387a06505
+  languageName: node
+  linkType: hard
+
+"@popperjs/core@npm:^2.9.0":
+  version: 2.10.2
+  resolution: "@popperjs/core@npm:2.10.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.10.2.tgz"
+  checksum: 43c189e3eb6d032433512d94761b54fc7cae15957ca5528008813f887a67b5760b949f30a5141b476be2ba5a6c677c91def150f603d2d3e30b5e97a5ae51474e
   languageName: node
   linkType: hard
 
@@ -12997,6 +12997,13 @@ fsevents@^1.2.7:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.8.1":
+  version: 5.8.1
+  resolution: "lottie-web@npm:5.8.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Flottie-web%2F-%2Flottie-web-5.8.1.tgz"
+  checksum: 48c19ea7863310150dc9e46855b0f85179f3768ac0c0cf4f3ffb18944819079d3046c31ca04f2748291f3c413a855329a12ce9c3faae056a1a869776b6ed12a9
   languageName: node
   linkType: hard
 
