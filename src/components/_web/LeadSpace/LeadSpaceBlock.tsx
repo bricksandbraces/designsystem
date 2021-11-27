@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
-import { Grid, Column } from "../Grid/Grid";
-import Button from "../Button/Button";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
+import { Grid, Column } from "../../Grid/Grid";
+import Button from "../../Button/Button";
+import { prefix } from "../../../settings";
+import { idfy } from "../../../helpers/arrayUtilities";
 
-type CtaItem = {
+export type CtaItem = {
   /**
    * CtaItem Href
    */
@@ -23,7 +23,7 @@ type CtaItem = {
   showChevron: boolean;
 };
 
-type LeadSpaceBlockProps = {
+export type LeadSpaceBlockProps = {
   /**
    * LeadSpaceBlock Text
    */
@@ -40,10 +40,14 @@ type LeadSpaceBlockProps = {
   ctaItems?: CtaItem[];
 };
 
-const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
+const LeadSpaceBlock = (
+  { text, title, ctaItems }: LeadSpaceBlockProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const indexedCtaItems = idfy(ctaItems);
   return (
     <section
+      ref={ref}
       id="leadspace"
       className={cx(`${prefix}--leadspace ${prefix}--leadspace-block`)}
     >
@@ -97,4 +101,4 @@ const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
   );
 };
 
-export default LeadSpaceBlock;
+export default React.forwardRef(LeadSpaceBlock);

@@ -1,61 +1,72 @@
 import React from "react";
 import cx from "classnames";
-import Button from "../Button/Button";
-import Link from "../Link/Link";
-import { prefix } from "../../settings";
-import { Column, Grid } from "../..";
+import Button from "../../Button/Button";
+import Link from "../../Link/Link";
+import { prefix } from "../../../settings";
+import { Column, Grid } from "../../Grid/Grid";
 
-type CookieBannerProps = {
+export type CookieBannerProps = {
   /**
-   * Label that is shown.
+   * CookieBanner Label that is shown.
    */
   label: string;
 
   /**
-   * Button label that is shown.
+   * CookieBanner Button label that is shown.
    */
   buttonLabel?: string;
 
   /**
-   * Link Label that is shown.
+   * CookieBanner Link Label that is shown.
    */
   linkLabel?: string;
 
   /**
-   * Link target location that is shown.
+   * CookieBanner Link target location that is shown.
    */
   linkHref?: string;
 
   /**
-   * Cookiebanner open state.
+   * CookieBanner open state.
    */
   open: boolean;
 
   /**
-   * onDismiss function
+   * CookieBanner onDismiss function
    */
-  onButtonClick?: (event: any) => void;
+  onButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
 
   /**
-   * Link Action function
+   * CookieBanner Link Action function
    */
-  onLinkClick?: (event: any) => void;
+  onLinkClick?: React.MouseEventHandler<HTMLElement>;
+
+  /**
+   * CookieBanner Custom Link Element
+   */
+  linkElement?: React.ElementType;
 };
 
-const CookieBanner = ({
-  label,
-  linkLabel,
-  linkHref,
-  buttonLabel,
-  open,
-  onButtonClick,
-  onLinkClick
-}: CookieBannerProps) => {
+const CookieBanner = (
+  {
+    label,
+    linkLabel,
+    linkHref,
+    buttonLabel,
+    open,
+    linkElement,
+    onButtonClick,
+    onLinkClick
+  }: CookieBannerProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
+  const LinkElement = linkElement ?? Link;
   return (
     <div
       className={cx(`${prefix}--cookiebanner`, {
         [`${prefix}--cookiebanner-open`]: open
       })}
+      ref={ref}
     >
       <Grid narrow fullWidth className={`${prefix}--cookiebanner-grid`}>
         <Column
@@ -68,14 +79,14 @@ const CookieBanner = ({
           <p className={`${prefix}--cookiebanner-label`}>
             {label}
             {linkLabel && (
-              <Link
+              <LinkElement
                 inline
                 href={linkHref ?? "#"}
                 onClick={onLinkClick}
                 target="_blank"
               >
                 {linkLabel}
-              </Link>
+              </LinkElement>
             )}
           </p>
         </Column>
@@ -100,4 +111,4 @@ const CookieBanner = ({
   );
 };
 
-export default CookieBanner;
+export default React.forwardRef(CookieBanner);

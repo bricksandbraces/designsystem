@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
@@ -15,7 +15,7 @@ export type ButtonProps = {
   /**
    * Button Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Button Kind
@@ -58,6 +58,11 @@ export type ButtonProps = {
   onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
 
   /**
+   * Button onBlur
+   */
+  onBlur?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
+
+  /**
    * Button type
    */
   type?: "button" | "submit" | "reset";
@@ -78,44 +83,44 @@ export type ButtonProps = {
   disabled?: boolean;
 
   /**
-   * Button size
+   * Button Size
    */
   size?: "large" | "default" | "small";
 
   /**
-   * Button icon
+   * Button Icon
    */
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 
   /**
-   * Button iconPosition
+   * Button IconPosition
    */
   iconPosition?: "right" | "left";
 
   /**
-   * Button loading
+   * Button IsLoading
    */
   isLoading?: boolean;
 
   /**
-   * Button fluid
+   * Button Fluid
    */
   fluid?: boolean;
 
   /**
-   * Button title
+   * Button Title
    */
   title?: string;
 
   /**
-   * Automatically focus the button
-   */
-  autoFocus?: boolean;
-
-  /**
-   * Tab index for the button
+   * Button TabIndex
    */
   tabIndex?: number;
+
+  /**
+   * Button ManualFocus used for overwriting focus-visible behaviour
+   */
+  manualFocus?: boolean;
 };
 
 const Button = (
@@ -132,84 +137,93 @@ const Button = (
     fluid,
     href,
     loadingDescription = "Loading",
+    onFocus,
+    onBlur,
+    manualFocus,
     ...rest
   }: ButtonProps,
-  ref: ForwardedRef<ButtonOrAnchor>
-) => (
-  <>
-    {href ? (
-      <a
-        href={href}
-        ref={ref as ForwardedRef<HTMLAnchorElement>}
-        className={cx(
-          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
-          {
-            [`${prefix}--button-disabled`]: disabled,
-            [`${prefix}--button-fluid`]: fluid,
-            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading,
-            [`${prefix}--button-danger`]: danger
-          },
-          className
-        )}
-        {...rest}
-      >
-        {isLoading && (
-          <Loading
-            active
-            loadingAnimation={animation}
-            loadingDescription={loadingDescription}
-            size="inline"
-          />
-        )}
-        <div
-          className={cx(`${prefix}--button-label`, {
-            [`${prefix}--button-hidden`]: isLoading
-          })}
-        >
-          {children ? iconPosition && icon : icon}
-          {children}
-        </div>
-      </a>
-    ) : (
-      <button
-        type="button"
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        className={cx(
-          `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
-          {
-            [`${prefix}--button-disabled`]: disabled,
-            [`${prefix}--button-fluid`]: fluid,
-            [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
-            [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
-            [`${prefix}--button-loading`]: isLoading,
-            [`${prefix}--button-danger`]: danger
-          },
-          className
-        )}
-        disabled={disabled}
-        {...rest}
-      >
-        {isLoading && (
-          <Loading
-            active
-            loadingDescription={loadingDescription}
-            size="inline"
-            loadingAnimation={animation}
-          />
-        )}
-        <div
-          className={cx(`${prefix}--button-label`, {
-            [`${prefix}--button-hidden`]: isLoading
-          })}
-        >
-          {children ? iconPosition && icon : icon}
-          {children}
-        </div>
-      </button>
-    )}
-  </>
-);
+  ref: React.ForwardedRef<ButtonOrAnchor>
+) => {
+  /**
+   * To maintain a consistent focus on our controls, we have to manually listen for the focus
+   * state and can NOT use the focus-visible selector.
+   * See discussion under https://github.com/WICG/focus-visible/issues/88 .
+   */
+  const [focused, setFocused] = useState<boolean>(false);
 
-export default forwardRef<ButtonOrAnchor, ButtonProps>(Button);
+  const classes = cx(
+    `${prefix}--button ${prefix}--button-${size} ${prefix}--button-${kind}`,
+    {
+      [`${prefix}--button-disabled`]: disabled,
+      [`${prefix}--button-fluid`]: fluid,
+      [`${prefix}--button-icon-right`]: icon && iconPosition === "right",
+      [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
+      [`${prefix}--button-loading`]: isLoading,
+      [`${prefix}--button-danger`]: danger,
+      [`${prefix}--button__focus`]: focused && manualFocus
+    },
+    className
+  );
+
+  const loader = isLoading && (
+    <Loading
+      active
+      loadingAnimation={animation}
+      loadingDescription={loadingDescription}
+      size="inline"
+    />
+  );
+
+  const content = (
+    <div
+      className={cx(`${prefix}--button-label`, {
+        [`${prefix}--button-hidden`]: isLoading
+      })}
+    >
+      {children ? iconPosition && icon : icon}
+      {children}
+    </div>
+  );
+
+  const focusHandler = {
+    onBlur: (event: React.FocusEvent<ButtonOrAnchor, Element>) => {
+      onBlur?.(event);
+      setFocused(false);
+    },
+    onFocus: (event: React.FocusEvent<ButtonOrAnchor, Element>) => {
+      onFocus?.(event);
+      setFocused(true);
+    }
+  };
+
+  return (
+    <>
+      {href ? (
+        <a
+          href={href}
+          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+          className={classes}
+          {...focusHandler}
+          {...rest}
+        >
+          {loader}
+          {content}
+        </a>
+      ) : (
+        <button
+          type="button"
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
+          className={classes}
+          disabled={disabled}
+          {...focusHandler}
+          {...rest}
+        >
+          {loader}
+          {content}
+        </button>
+      )}
+    </>
+  );
+};
+
+export default React.forwardRef(Button);

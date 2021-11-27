@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import TextArea from "./TextArea";
@@ -16,6 +17,10 @@ export const Uncontrolled = () => {
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         maxLength={number("maxLength", undefined as any)}
+        onChange={action("onChange")}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
     </div>
   );
@@ -36,7 +41,11 @@ export const Controlled = () => {
         readOnly={boolean("readOnly", false)}
         onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
           setValue(event.target.value);
+          action("onChange")(event);
         }}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
         maxLength={number("maxLength", undefined as any)}
       />
     </div>
@@ -60,6 +69,10 @@ export const WithCharacterCounter = () => {
           "characterLimitExceededText",
           "Ooops that is too long!"
         )}
+        onChange={action("onChange")}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
     </div>
   );

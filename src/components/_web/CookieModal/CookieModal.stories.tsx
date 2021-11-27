@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CookieModal, { OptType } from "./CookieModal";
@@ -10,11 +11,14 @@ export const Default = () => {
       Please update the background to see the modal (storybook bug).
       <CookieModal
         open
-        headline={text("headline", "Cookie Settings")}
-        primaryLabel={text("primaryLabel", "Accept All")}
-        secondaryLabel={text("secondaryLabel", "Accept selected")}
-        intro={text("intro", "This is an introduction.")}
-        onPrimaryClick={() => {}}
+        headline={text("Headline", "Cookie Settings")}
+        primaryLabel={text("Primary label", "Accept All")}
+        secondaryLabel={text("Secondary label", "Accept selected")}
+        intro={text("Intro", "This is an introduction.")}
+        onPrimaryClick={action("onPrimaryClick")}
+        onClose={action("onClose")}
+        onSecondaryClick={action("onSecondaryClick")}
+        onSettingChanged={action("onSettingsChanged")}
         settings={object("settings", [
           {
             checked: true,

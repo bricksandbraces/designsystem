@@ -4,7 +4,7 @@ import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import useControlledValue from "../../hooks/useControlledValue";
+import { useControlledInput } from "../../hooks/useControlled";
 
 export type TextInputProps = {
   /**
@@ -38,15 +38,23 @@ export type TextInputProps = {
   readOnly?: boolean;
 
   /**
-   * TextInput Error State & Text
+   * TextInput Error State
    */
   error?: boolean;
+
+  /**
+   * TextInput Error Text
+   */
   errorText?: string;
 
   /**
-   * TextInput Warning State & Text
+   * TextInput Warning State
    */
   warning?: boolean;
+
+  /**
+   * TextInput Warning Text
+   */
   warningText?: string;
 
   /**
@@ -97,8 +105,19 @@ export type TextInputProps = {
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
+  /**
+   * TextInput OnBlur Function
+   */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * TextInput OnFocus Function
+   */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * TextInput OnKeyDown Function
+   */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
@@ -132,12 +151,15 @@ const TextInput = (
     size = "default",
     children
   }: TextInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  const [inputRef, textValue, handleChange] = useControlledValue(
+  const [inputRef, textValue, handleChange] = useControlledInput(
     value,
     defaultValue,
-    onChange
+    onChange &&
+      ((newValue, event) => {
+        onChange(event as React.ChangeEvent<HTMLInputElement>);
+      })
   );
   return (
     <div
@@ -159,17 +181,13 @@ const TextInput = (
           disabled={disabled}
           readOnly={readOnly}
           ref={mergeRefs([ref, inputRef])}
-          className={cx(
-            `${prefix}--textinput-input`,
-            {
-              [`${prefix}--textinput-${size}`]: !fluid,
-              [`${prefix}--textinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--textinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--textinput-input`, {
+            [`${prefix}--textinput-${size}`]: !fluid,
+            [`${prefix}--textinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--textinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type={type}
           placeholder={!fluid ? placeholder : ""}
           autoComplete={autoComplete}
@@ -183,7 +201,7 @@ const TextInput = (
         {fluid && (
           <label
             className={cx(`${prefix}--textinput-fluid__label`, {
-              [`${prefix}--textinput-fluid__label-value`]: textValue !== ""
+              [`${prefix}--textinput-fluid__label-value`]: !!textValue
             })}
           >
             {placeholder}
@@ -194,14 +212,12 @@ const TextInput = (
       {errorText && !warningText && (
         <div className={`${prefix}--textinput-error__text`}>
           <IconAlertCircle size={16} />
-
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
         <div className={`${prefix}--textinput-warning__text`}>
           <IconAlertTriangle size={16} />
-
           {warningText}
         </div>
       )}

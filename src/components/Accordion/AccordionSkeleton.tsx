@@ -20,20 +20,20 @@ type AccordionSkeletonProps = {
 const AccordionSkeleton = ({ size, className }: AccordionSkeletonProps) => {
   return (
     <SkeletonAnimatedContainer
-      width="100%"
+      style={{ width: "100%" }}
       className={cx(
         `${prefix}--accordion ${prefix}--accordion-${size}`,
 
         className
       )}
     >
-      <SkeletonStaticContainer width="100%">
+      <SkeletonStaticContainer style={{ width: "100%" }}>
         <IconChevronDown size={16} />
       </SkeletonStaticContainer>
-      <SkeletonStaticContainer width="100%">
+      <SkeletonStaticContainer style={{ width: "100%" }}>
         <IconChevronDown size={16} />
       </SkeletonStaticContainer>
-      <SkeletonStaticContainer width="100%">
+      <SkeletonStaticContainer style={{ width: "100%" }}>
         <IconChevronDown size={16} />
       </SkeletonStaticContainer>
     </SkeletonAnimatedContainer>

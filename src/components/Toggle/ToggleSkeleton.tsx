@@ -29,7 +29,7 @@ const ToggleSkeleton = ({
   >
     <SkeletonAnimatedContainer className={cx(`${prefix}--toggle-switch`)} />
     <SkeletonAnimatedContainer
-      width={128}
+      style={{ width: 128 }}
       className={cx(`${prefix}--toggle`)}
     />
   </SkeletonContainer>

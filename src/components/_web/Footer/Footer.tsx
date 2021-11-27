@@ -1,8 +1,8 @@
 import React from "react";
-import { Grid, Column } from "../Grid/Grid";
-import Link from "../Link/Link";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
+import cx from "classnames";
+import { Grid, Column, Link } from "../../..";
+import { idfy } from "../../../helpers/arrayUtilities";
+import { prefix } from "../../../settings";
 
 type LinkItem = {
   /**
@@ -16,40 +16,44 @@ type LinkItem = {
   label: string;
 
   /** LinkItem OnClick Action (acts as button) */
-  onClick?: (event: Event) => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-type WebFooterProps = {
+type FooterProps = {
   /**
-   * WebFooter LinkItems
+   * Footer LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * WebFooter BaseUrl
+   * Footer ClassName
+   */
+  className?: string;
+
+  /**
+   * Footer BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * WebFooter Description
+   * Footer Description
    */
   description?: string;
 
   /**
-   * WebFooter DescriptionLink
+   * Footer DescriptionLink
    */
   descriptionLink?: LinkItem;
 };
 
-const WebFooter = ({
-  linkItems,
-  description,
-  descriptionLink
-}: WebFooterProps) => {
+const Footer = (
+  { linkItems, className, description, descriptionLink }: FooterProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const currentYear = new Date().getFullYear();
   const indexedLinkItems = idfy(linkItems);
   return (
-    <footer className={`${prefix}--webfooter`}>
+    <footer className={cx(`${prefix}--webfooter`, className)} ref={ref}>
       <Grid narrow className={`${prefix}--webfooter-grid`}>
         <Column
           sm={3}
@@ -65,15 +69,13 @@ const WebFooter = ({
             <p className={`${prefix}--webfooter-label`}>
               {description}
               {descriptionLink && (
-                <p className={`${prefix}--webfooter-label__link`}>
-                  <Link
-                    href={descriptionLink.href}
-                    onClick={descriptionLink.onClick}
-                    inline
-                  >
-                    {descriptionLink.label}
-                  </Link>
-                </p>
+                <Link
+                  href={descriptionLink.href}
+                  onClick={descriptionLink.onClick}
+                  inline
+                >
+                  {descriptionLink.label}
+                </Link>
               )}
             </p>
           )}
@@ -104,4 +106,4 @@ const WebFooter = ({
   );
 };
 
-export default WebFooter;
+export default React.forwardRef(Footer);

@@ -2,18 +2,41 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SearchContainerProps = { open?: boolean; children: React.ReactNode };
+export type SearchContainerProps = {
+  /**
+   * SearchContainer Open Defining if the Container is expanded (open) or closed
+   */
+  open?: boolean;
 
-const SearchContainer = ({ open, children }: SearchContainerProps) => {
+  /**
+   * SearchContainer ClassName
+   */
+  className?: string;
+
+  /**
+   * SearchConatiner Children
+   */
+  children: React.ReactNode;
+};
+
+const SearchContainer = (
+  { open, children, className }: SearchContainerProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
-      className={cx(`${prefix}--search-box`, {
-        [`${prefix}--search-box__open`]: open
-      })}
+      className={cx(
+        `${prefix}--search-box`,
+        {
+          [`${prefix}--search-box__open`]: open
+        },
+        className
+      )}
+      ref={ref}
     >
       {children}
     </div>
   );
 };
 
-export default SearchContainer;
+export default React.forwardRef(SearchContainer);

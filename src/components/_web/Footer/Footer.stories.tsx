@@ -1,12 +1,12 @@
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import WebFooter from "./WebFooter";
+import Footer from "./Footer";
 
-export default { title: "Web/A_REFA_WebFooter", decorators: [withKnobs] };
+export default { title: "Web/A_REFA_Footer", decorators: [withKnobs] };
 
 export const Default = () => {
   return (
-    <WebFooter
+    <Footer
       baseUrl={text("baseUrl", "#")}
       linkItems={object("linkItems", [
         { href: "#", label: "Imprint" },

@@ -1,11 +1,26 @@
 import React from "react";
+import cx from "classnames";
 import { prefix } from "../../settings";
 import { Divider } from "../..";
 
-type SideNavDividerProps = {};
-
-const SideNavDivider = ({}: SideNavDividerProps) => {
-  return <Divider type="default" className={`${prefix}--sidenav-divider`} />;
+export type SideNavDividerProps = {
+  /**
+   * SideNavDividerProps ClassName
+   */
+  className?: string;
 };
 
-export default SideNavDivider;
+const SideNavDivider = (
+  { className }: SideNavDividerProps,
+  ref: React.ForwardedRef<HTMLHRElement>
+) => {
+  return (
+    <Divider
+      type="default"
+      className={cx(`${prefix}--sidenav-divider`, className)}
+      ref={ref}
+    />
+  );
+};
+
+export default React.forwardRef(SideNavDivider);

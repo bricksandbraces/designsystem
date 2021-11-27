@@ -1,11 +1,11 @@
 import React, { ChangeEvent, forwardRef } from "react";
-import { prefix } from "../../settings";
-import Checkbox from "../Checkbox/Checkbox";
-import Modal from "../Modal/Modal";
-import ModalBody from "../Modal/ModalBody";
-import ModalFooter from "../Modal/ModalFooter";
-import ModalHeader from "../Modal/ModalHeader";
-import Body from "../Typography/Body";
+import { prefix } from "../../../settings";
+import Checkbox from "../../Checkbox/Checkbox";
+import Modal from "../../Modal/Modal";
+import ModalBody from "../../Modal/ModalBody";
+import ModalFooter from "../../Modal/ModalFooter";
+import ModalHeader from "../../Modal/ModalHeader";
+import Body from "../../Typography/Body";
 
 export enum OptType {
   OPT_IN,
@@ -53,7 +53,7 @@ const CookieSettingControl = ({
   );
 };
 
-type CookieModalProps = {
+export type CookieModalProps = {
   open?: boolean;
   intro: string;
   headline: string;
@@ -85,7 +85,7 @@ const CookieModal = (
     secondaryLabel,
     onSecondaryClick
   }: CookieModalProps,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <Modal

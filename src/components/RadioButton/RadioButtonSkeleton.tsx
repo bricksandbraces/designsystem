@@ -39,7 +39,7 @@ const RadioButtonSkeleton = ({ className }: RadioButtonSkeletonProps) => (
       />
     </svg>
     <SkeletonAnimatedContainer
-      width={128}
+      style={{ width: 128 }}
       className={cx(`${prefix}--radiobutton`)}
     />
   </SkeletonContainer>

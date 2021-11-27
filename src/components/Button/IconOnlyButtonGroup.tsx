@@ -1,16 +1,17 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import type { TippyProps, UseSingletonProps } from "@tippyjs/react";
 import Tippy, { useSingleton } from "@tippyjs/react";
 import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 import IconOnlyButton, { IconOnlyButtonProps } from "./IconOnlyButton";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
 export type IconOnlyButtonGroupProps = {
   /**
    * IconOnlyButtonGroup Children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 
   /**
    * Tooltip Theme
@@ -39,14 +40,17 @@ export type IconOnlyButtonGroupProps = {
   className?: string;
 };
 
-const IconOnlyButtonGroup = ({
-  children,
-  theme = "light",
-  singletonProps,
-  singletonConfig,
-  withDivider,
-  className
-}: IconOnlyButtonGroupProps) => {
+const IconOnlyButtonGroup = (
+  {
+    children,
+    theme = "light",
+    singletonProps,
+    singletonConfig,
+    withDivider,
+    className
+  }: IconOnlyButtonGroupProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   const [source, target] = useSingleton(singletonConfig);
 
   return (
@@ -56,6 +60,7 @@ const IconOnlyButtonGroup = ({
         { [`${prefix}--button-group__divider`]: withDivider },
         className
       )}
+      ref={ref}
     >
       <Tippy
         className={cx(`${prefix}--tooltip ${prefix}--tooltip-default`)}
@@ -66,20 +71,13 @@ const IconOnlyButtonGroup = ({
         arrow={roundArrow}
         delay={900}
       />
-      {React.Children.map(children, (child) => {
-        if (!child) {
-          return undefined;
-        }
-        const elementChild: React.ReactElement<IconOnlyButtonProps> =
-          child as React.ReactElement<IconOnlyButtonGroupProps>;
-        const { props } = elementChild;
-
+      {mapReactChildren<IconOnlyButtonProps>(children, ({ props }) => {
         return (
           <IconOnlyButton
             {...props}
             tooltipProps={{
               tooltipContent: "",
-              ...props.tooltipProps,
+              ...props?.tooltipProps,
               theme,
               singleton: target
             }}
@@ -90,4 +88,4 @@ const IconOnlyButtonGroup = ({
   );
 };
 
-export default IconOnlyButtonGroup;
+export default React.forwardRef(IconOnlyButtonGroup);

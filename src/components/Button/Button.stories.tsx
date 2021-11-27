@@ -1,4 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { actions } from "@storybook/addon-actions";
 import React from "react";
 import {
   Icon3dCubeSphere,
@@ -16,7 +17,10 @@ import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
 import ButtonSkeleton from "./ButtonSkeleton";
 import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
 
-export default { title: "Components/A_REFA_Button", decorators: [withKnobs] };
+export default {
+  title: "Components/A_REFA_Button",
+  decorators: [withKnobs]
+};
 
 const options = {
   Primary: "primary",
@@ -42,53 +46,74 @@ const iconPositionOptions = {
 
 const defaultIconPosition = "right";
 
+const buttonActions = actions(
+  "onClick",
+  "onFocus",
+  "onBlur",
+  "onMouseEnter",
+  "onMouseLeave"
+);
+
 export const Default = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <Button
-      kind={select("kind", options, defaultValue) as any}
-      size={select("size", sizeOptions, defaultSize) as any}
-      fluid={boolean("fluid", false)}
-      danger={boolean("danger", false)}
-      isLoading={boolean("isLoading", false)}
-      disabled={boolean("disabled", false)}
-    >
-      {text("label", "Button")}
-    </Button>
+    <div style={{ width: "405px" }}>
+      <Button
+        kind={select("kind", options, defaultValue) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
+        fluid={boolean("fluid", false)}
+        danger={boolean("danger", false)}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
+        {...buttonActions}
+      >
+        {text("label", "Button")}
+      </Button>
+    </div>
   </div>
 );
 
 export const WithIcon = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <Button
-      kind={select("kind", options, defaultValue) as any}
-      danger={boolean("danger", false)}
-      size={select("size", sizeOptions, defaultSize) as any}
-      iconPosition={
-        select("iconPosition", iconPositionOptions, defaultIconPosition) as any
-      }
-      fluid={boolean("fluid", false)}
-      icon={<Icon3dCubeSphere />}
-      isLoading={boolean("isLoading", false)}
-      disabled={boolean("disabled", false)}
-    >
-      {text("label", "Button")}
-    </Button>
+    <div style={{ width: "405px" }}>
+      <Button
+        kind={select("kind", options, defaultValue) as any}
+        danger={boolean("danger", false)}
+        size={select("size", sizeOptions, defaultSize) as any}
+        iconPosition={
+          select(
+            "iconPosition",
+            iconPositionOptions,
+            defaultIconPosition
+          ) as any
+        }
+        fluid={boolean("fluid", false)}
+        icon={<Icon3dCubeSphere />}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
+        {...buttonActions}
+      >
+        {text("label", "Button")}
+      </Button>
+    </div>
   </div>
 );
 
 export const WithIconOnly = () => (
   <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <IconOnlyButton
-      danger={boolean("danger", false)}
-      kind={select("kind", options, defaultValue) as any}
-      size={select("size", sizeOptions, defaultSize) as any}
-      tooltipProps={{
-        tooltipContent: text("tooltipLabel", "Label") as any
-      }}
-      icon={<IconLayoutGridAdd />}
-      isLoading={boolean("isLoading", false)}
-      disabled={boolean("disabled", false)}
-    />
+    <div style={{ width: "405px" }}>
+      <IconOnlyButton
+        danger={boolean("danger", false)}
+        kind={select("kind", options, defaultValue) as any}
+        size={select("size", sizeOptions, defaultSize) as any}
+        tooltipProps={{
+          tooltipContent: text("tooltipLabel", "Label") as any
+        }}
+        icon={<IconLayoutGridAdd />}
+        isLoading={boolean("isLoading", false)}
+        disabled={boolean("disabled", false)}
+        {...buttonActions}
+      />
+    </div>
   </div>
 );
 

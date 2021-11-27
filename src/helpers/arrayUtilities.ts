@@ -14,7 +14,7 @@ import { useEffect, useRef } from "react";
  *
  * @returns If no elmeent matches the condition, empty object is returned. Else: `{ item?: T; index?: number }`
  */
-const findNextItem = <T,>(
+const findNextItem = <T>(
   array: Array<T>,
   filterPredicate: (item: T) => boolean,
   sliceIndex: number,

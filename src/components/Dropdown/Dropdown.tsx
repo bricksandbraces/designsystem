@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -6,12 +6,12 @@ import {
   IconChevronDown
 } from "@tabler/icons";
 import { findNextItem } from "../../helpers/arrayUtilities";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 
-type DropdownItem = {
+export type DropdownItem = {
   /**
    * DropdownItem Id
    */
@@ -33,7 +33,7 @@ type DropdownItem = {
   disabled?: boolean;
 };
 
-type DropdownProps = {
+export type DropdownProps = {
   /**
    * Dropdown Id
    */
@@ -65,15 +65,23 @@ type DropdownProps = {
   readOnly?: boolean;
 
   /**
-   * Dropdown Error
+   * Dropdown Error State Active. Overwrites warning state.
    */
   error?: boolean;
+
+  /**
+   * Dropdown Error Text. Only visible on error state.
+   */
   errorText?: string;
 
   /**
-   * Dropdown Warning
+   * Dropdown Warning State Active. Gets overwritten by error state.
    */
   warning?: boolean;
+
+  /**
+   * Dropdown Warning Text. Only visible on warning state.
+   */
   warningText?: string;
 
   /**
@@ -87,17 +95,17 @@ type DropdownProps = {
   items: DropdownItem[];
 
   /**
-   * Controlled value of the selected dropdown item
+   * Dropdown Controlled value of the selected dropdown item
    */
   value?: string | null;
 
   /**
-   * Uncontrolled default value of the selected dropdown item
+   * Dropdown Uncontrolled default value of the selected dropdown item
    */
   defaultValue?: string | null;
 
   /**
-   * OnChange Function for listeners or value change requests in controlled mode
+   * Dropdown OnChange Function for listeners or value change requests in controlled mode
    */
   onChange?: (
     newValue: string | null,
@@ -105,25 +113,40 @@ type DropdownProps = {
       | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
       | React.KeyboardEvent<HTMLDivElement>
   ) => void;
+
+  /**
+   * Dropdown OnFocus Function
+   */
+  onFocus?: React.FocusEventHandler<HTMLButtonElement>;
+
+  /**
+   * Dropdown OnBlur Function
+   */
+  onBlur?: React.FocusEventHandler<HTMLButtonElement>;
 };
 
-const Dropdown = ({
-  value,
-  id,
-  defaultValue,
-  onChange,
-  size = "default",
-  label,
-  className,
-  title,
-  items,
-  error,
-  errorText,
-  warning,
-  warningText,
-  disabled,
-  readOnly
-}: DropdownProps) => {
+const Dropdown = (
+  {
+    value,
+    id,
+    defaultValue,
+    onChange,
+    onFocus,
+    onBlur,
+    size = "default",
+    label,
+    className,
+    title,
+    items,
+    error,
+    errorText,
+    warning,
+    warningText,
+    disabled,
+    readOnly
+  }: DropdownProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   const controlled = useControlled(value);
 
   const ulRef = useRef<HTMLUListElement>(null);
@@ -197,6 +220,7 @@ const Dropdown = ({
         },
         className
       )}
+      ref={ref}
     >
       <Label htmlFor={`${id}-toggle-button`}>{label}</Label>
       <button
@@ -208,6 +232,8 @@ const Dropdown = ({
         onClick={() => {
           setOpen(!open);
         }}
+        onFocus={onFocus}
+        onBlur={onBlur}
       >
         <p className={`${prefix}--dropdown-toggle__title`} title={selectedText}>
           {selectedValue == null ? title : selectedText}
@@ -271,7 +297,7 @@ const Dropdown = ({
                     selectValue(item.value, event);
                     setOpen(false);
                   }}
-                  onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) =>
+                  onKeyDown={(event) =>
                     handleKeyPressOnItem(event, event.key, item.value, i)
                   }
                 >
@@ -291,4 +317,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default React.forwardRef(Dropdown);

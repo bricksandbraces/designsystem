@@ -1,77 +1,117 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type GridProps = {
+export type GridProps = {
   /**
-   * Grid Children
+   * Grid Grid Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
-   * Classnames
+   * Grid Classnames
    */
   className?: string;
 
   /**
-   * Fullwidth
+   * Grid Fullwidth
    */
   fullWidth?: boolean;
 
   /**
-   * Gutter
+   * Grid Gutter Narrow
    */
   narrow?: boolean;
+
+  /**
+   * Grid Gutter Condensed
+   */
   condensed?: boolean;
+
+  /**
+   * Grid Gutter NarrowRight
+   */
   narrowRight?: boolean;
 
   /**
-   * React inline styles for the Grid
+   * Grid React inline styles for the Grid
    */
-  style?: any;
+  style?: React.HTMLAttributes<HTMLDivElement>["style"];
 };
 
-type ColumnProps = {
+export type ColumnProps = {
   /**
-   * Column Children
+   * Grid Column Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
-   * Classnames
+   * Grid Classnames
    */
   className?: string;
 
   /**
-   * Span
+   * Grid Span
    */
   span?: number;
 
   /**
-   * Offset
+   * Grid Offset
    */
   offset?: number;
 
   /**
-   * Breakpoint
+   * Grid Breakpoint sm
    */
   sm?: number;
+
+  /**
+   * Grid Breakpoint md
+   */
   md?: number;
+
+  /**
+   * Grid Breakpoint lg
+   */
   lg?: number;
+
+  /**
+   * Grid Breakpoint xlg
+   */
   xlg?: number;
+
+  /**
+   * Grid Breakpoint sm offset
+   */
   smOffset?: number;
+
+  /**
+   * Grid Breakpoint md offset
+   */
   mdOffset?: number;
+
+  /**
+   * Grid Breakpoint lg offset
+   */
   lgOffset?: number;
+
+  /**
+   * Grid Breakpoint xlg offset
+   */
   xlgOffset?: number;
+
+  /**
+   * Grid default column
+   */
   defaultColumn?: boolean;
 
   /**
-   * React inline styles for the column
+   * Grid React inline styles for the column
    */
-  style?: any;
+  style?: React.HTMLAttributes<HTMLDivElement>["style"];
 };
 
-export const Grid = ({
+const Grid = ({
   children,
   fullWidth,
   className,
@@ -99,7 +139,7 @@ export const Grid = ({
   );
 };
 
-export const Column = ({
+const Column = ({
   children,
   span,
   offset,
@@ -139,3 +179,5 @@ export const Column = ({
     </div>
   );
 };
+
+export { Grid, Column };

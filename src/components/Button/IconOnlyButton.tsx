@@ -16,20 +16,23 @@ export type IconOnlyButtonProps = {
   hideTooltip?: boolean;
 } & ButtonProps;
 
-const IconOnlyButton = ({
-  kind = "primary",
-  size = "default",
-  danger,
-  disabled,
-  isLoading,
-  href,
-  className,
-  hideTooltip,
-  icon,
-  loadingDescription = "Loading",
-  tooltipProps = { tooltipContent: "Tooltip content" },
-  ...rest
-}: IconOnlyButtonProps) => {
+const IconOnlyButton = (
+  {
+    kind = "primary",
+    size = "default",
+    danger,
+    disabled,
+    isLoading,
+    href,
+    className,
+    hideTooltip,
+    icon,
+    loadingDescription = "Loading",
+    tooltipProps = { tooltipContent: "Tooltip content" },
+    ...rest
+  }: IconOnlyButtonProps,
+  ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => {
   const WrapperElement: any = hideTooltip ? React.Fragment : Tooltip;
   const wrapperProps = hideTooltip
     ? {}
@@ -37,6 +40,7 @@ const IconOnlyButton = ({
   return (
     <WrapperElement {...wrapperProps}>
       <Button
+        ref={ref}
         className={cx(`${prefix}--button-icon-only`, className)}
         href={href}
         kind={kind}
@@ -52,4 +56,4 @@ const IconOnlyButton = ({
   );
 };
 
-export default IconOnlyButton;
+export default React.forwardRef(IconOnlyButton);

@@ -5,6 +5,7 @@ import ModalHeader from "./ModalHeader";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 import Button from "../Button/Button";
+import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/A_REFA_Modal", decorators: [withKnobs] };
 
@@ -17,8 +18,8 @@ const options = {
 
 const defaultValue = "sm";
 
-export const Default = () => {
-  const [open, setOpen] = useState(true);
+export const DefaultControlled = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div
       style={{
@@ -28,12 +29,20 @@ export const Default = () => {
         color: "white"
       }}
     >
-      Please update the background to see the modal (Storybook Bug).
+      <Button
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen(true);
+        }}
+      >
+        Open Modal
+      </Button>
       <Modal
         size={select("size", options, defaultValue) as any}
         open={open}
         onClose={() => {
           setOpen(false);
+          action("onClose")();
         }}
         closeOnOutsideClick
         withDivider={boolean("withDivider", false)}
@@ -56,9 +65,11 @@ export const Default = () => {
           secondaryLabel={text("secondaryLabel", "Cancel")}
           onSecondaryClick={() => {
             setOpen(false);
+            action("onSecondaryClick")();
           }}
           onPrimaryClick={() => {
             setOpen(false);
+            action("onPrimaryClick")();
           }}
         />
       </Modal>
@@ -66,7 +77,7 @@ export const Default = () => {
   );
 };
 
-export const Nested = () => {
+export const NestedControlled = () => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
@@ -83,8 +94,9 @@ export const Nested = () => {
         size="md"
         open={open}
         closeOnOutsideClick={!secondOpen}
-        onClose={() => {
+        onClose={(event) => {
           setOpen(false);
+          action("onClose")(event);
         }}
         withDivider={boolean("withDivider", false)}
       >
@@ -104,19 +116,22 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("primaryLabel1", "Confirm")}
           secondaryLabel={text("secondaryLabel1", "Cancel")}
-          onSecondaryClick={() => {
+          onSecondaryClick={(event) => {
             setOpen(false);
+            action("onSecondaryClick")(event);
           }}
-          onPrimaryClick={() => {
+          onPrimaryClick={(event) => {
             setSecondOpen(true);
+            action("onPrimaryClick")(event);
           }}
         />
       </Modal>
       <Modal
         size={select("size", options, defaultValue) as any}
         open={secondOpen}
-        onClose={() => {
+        onClose={(event) => {
           setSecondOpen(false);
+          action("onClose")(event);
         }}
         withDivider={boolean("withDivider", false)}
       >
@@ -133,11 +148,13 @@ export const Nested = () => {
         <ModalFooter
           primaryLabel={text("primaryLabel2", "I am sure")}
           secondaryLabel={text("secondaryLabel2", "Cancel")}
-          onSecondaryClick={() => {
+          onSecondaryClick={(event) => {
             setSecondOpen(false);
+            action("onSecondaryClick")(event);
           }}
-          onPrimaryClick={() => {
+          onPrimaryClick={(event) => {
             setSecondOpen(false);
+            action("onPrimaryClick")(event);
           }}
         />
       </Modal>

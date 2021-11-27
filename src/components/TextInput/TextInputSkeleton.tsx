@@ -33,13 +33,12 @@ const TextInputSkeleton = ({
         {
           [`${prefix}--textinput-fluid`]: fluid
         },
-
         className
       )}
     >
       {!fluid && (
         <SkeletonAnimatedContainer
-          width={64}
+          style={{ width: 64 }}
           className={cx(
             `${prefix}--typography-label`,
 
@@ -48,7 +47,7 @@ const TextInputSkeleton = ({
         />
       )}
       <SkeletonAnimatedContainer
-        width={256}
+        style={{ width: 256 }}
         className={`${prefix}--textinput-${size}`}
       />
     </SkeletonContainer>

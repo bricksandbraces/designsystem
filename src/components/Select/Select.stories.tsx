@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import {
   boolean,
   object,
@@ -40,6 +41,7 @@ export const Uncontrolled = () => {
         label={text("label", "Label")}
         size={select("size", sizeOptions, defaultSize) as any}
         warningText={text("warningText", "")}
+        onChange={action("onChange")}
         errorText={text("errorText", "")}
         options={object("options", options) as any}
         disabled={boolean("disabled", false)}
@@ -51,7 +53,7 @@ export const Uncontrolled = () => {
 };
 
 export const Controlled = () => {
-  const [value, setValue] = useState("espresso");
+  const [value, setValue] = useState<string | undefined>("espresso");
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
@@ -64,7 +66,10 @@ export const Controlled = () => {
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => {
+          setValue(event?.target?.value);
+          action("onChange")(event);
+        }}
       />
     </div>
   );

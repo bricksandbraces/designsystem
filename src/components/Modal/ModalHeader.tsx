@@ -1,9 +1,15 @@
 import React from "react";
+import cx from "classnames";
 import { prefix } from "../../settings";
 import Body from "../Typography/Body";
 import Headline from "../Typography/Headline";
 
 type ModalHeaderProps = {
+  /**
+   * ModalHeader ClassName
+   */
+  className?: string;
+
   /**
    * ModalHeader Headline
    */
@@ -15,9 +21,12 @@ type ModalHeaderProps = {
   subHeadline?: string;
 };
 
-const ModalHeader = ({ headline, subHeadline }: ModalHeaderProps) => {
+const ModalHeader = (
+  { className, headline, subHeadline }: ModalHeaderProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <div className={`${prefix}--modal-header`}>
+    <div className={cx(`${prefix}--modal-header`, className)} ref={ref}>
       <Headline type="h4" className={`${prefix}--modal-header__headline`}>
         {headline}
       </Headline>
@@ -28,4 +37,4 @@ const ModalHeader = ({ headline, subHeadline }: ModalHeaderProps) => {
   );
 };
 
-export default ModalHeader;
+export default React.forwardRef(ModalHeader);

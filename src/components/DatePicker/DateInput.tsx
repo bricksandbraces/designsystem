@@ -3,8 +3,7 @@ import mergeRefs from "react-merge-refs";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
-import useControlledValue from "../../hooks/useControlledValue";
-import useControlled from "../../hooks/useControlled";
+import { useControlled, useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
@@ -40,7 +39,22 @@ export type DateInputProps = {
    * DateInput OnInputChanged
    * Called whenever the user changes something within the textinput.
    */
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnBlur
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnFocus
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput
+   */
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
    * DateInput OnDateChanged
@@ -75,25 +89,23 @@ const DateInput = (
     size,
     onChange,
     onDateChanged,
+    onKeyDown,
+    onFocus,
+    onBlur,
     ...props
   }: DateInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const controlled = useControlled(value);
-  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
-    useControlledValue(value, defaultValue, onChange);
-
-  const updateValue = (newValue: string) => {
-    if (inputRef.current) {
-      // for uncontrolled usage, the value has to be updated on dom side
-      if (!controlled) {
-        inputRef.current.value = newValue;
-        // and the cache value has to be also updated
-        setCachedUncontrolledValue(newValue);
-      }
-      inputRef.current.dispatchEvent(new Event("change"));
-    }
-  };
+  const [inputRef, textValue, handleChange, setValueManually] =
+    useControlledInput(
+      value,
+      defaultValue,
+      onChange &&
+        ((newValue, event) => {
+          onChange(event as React.ChangeEvent<HTMLInputElement>);
+        })
+    );
 
   /**
    * When the text input is being submitted via keypress enter or onBlur the dateChange is executed.
@@ -108,7 +120,7 @@ const DateInput = (
     if (!controlled) {
       // for uncontrolled usage the reparsed value has to be updated
       // so that e.g. 1-1-2020 is being formatted to 01-01-2020.
-      updateValue(formattedDate);
+      setValueManually(formattedDate);
     }
 
     onDateChanged?.(newDate, formattedDate);
@@ -127,15 +139,24 @@ const DateInput = (
         size={size}
         autoComplete="off"
         onChange={handleChange()}
-        onBlur={() => handleSubmit()}
-        onKeyDown={filterForKeys(["Enter"], () => handleSubmit())}
+        onFocus={onFocus}
+        onBlur={(event) => {
+          onBlur?.(event);
+          handleSubmit();
+        }}
+        onKeyDown={(event) => {
+          filterForKeys(["Enter"], () => handleSubmit())(event);
+          onKeyDown?.(event);
+        }}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />
       {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
         // the selected date has to be updated also within the textfield
         const newTextValue = formatDate(newDate, dateFormat, "");
-        updateValue(newTextValue);
+        if (!controlled) {
+          setValueManually(newTextValue);
+        }
         onDateChanged?.(newDate, newTextValue);
       })}
     </>

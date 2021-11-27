@@ -1,4 +1,11 @@
-import { object, select, text, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import {
+  boolean,
+  object,
+  select,
+  text,
+  withKnobs
+} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Search from "./Search";
 import SearchInput from "./SearchInput";
@@ -13,49 +20,90 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
-export const SearchInputWithSubmit = () => {
+export const InputWithSubmit = () => {
   const [submittedValue, handleSubmit] = useState<string | null>(null);
   return (
     <div style={{ padding: "32px" }}>
       <SearchInput
         id="search-1"
-        label="Search"
-        submitLabel="Go!"
-        onSubmit={(valueToSubmit) => handleSubmit(valueToSubmit)}
+        label={text("Label", "Search")}
+        submitLabel={text("Submit Label", "Go!")}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onChange={action("onChange")}
+        onClickInput={action("onClickInput")}
+        onKeyDown={action("onKeyDown")}
+        onSubmit={(valueToSubmit, event) => {
+          handleSubmit(valueToSubmit);
+          action("onSubmit")(valueToSubmit, event);
+        }}
       />
       Submitted value: {submittedValue}
     </div>
   );
 };
 
-export const SearchInputWithoutSubmit = () => {
-  return (
-    <div style={{ padding: "32px" }}>
-      <SearchInput id="search-2" label="Search" withSubmit={false} />
-    </div>
-  );
-};
-
-export const Controlled = () => {
-  const [value, setValue] = useState("");
+export const InputWithoutSubmit = () => {
   return (
     <div style={{ padding: "32px" }}>
       <SearchInput
-        id="search-1"
-        label="Search"
+        id="search-2"
         withSubmit={false}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
+        label={text("Label", "Search")}
+        submitLabel={text("Submit Label", "Go!")}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onChange={action("onChange")}
+        onClickInput={action("onClickInput")}
+        onKeyDown={action("onKeyDown")}
+        placeholder={text("Placeholder", "")}
+        size={select("Size", sizeOptions, "default") as any}
+        clearLabel={text("Clear Label", "Clear")}
+        defaultValue={text("Default Value", "")}
       />
     </div>
   );
 };
 
-export const Default = () => {
+export const ControlledInput = () => {
+  const [value, setValue] = useState("");
+  return (
+    <div style={{ padding: "32px" }}>
+      <SearchInput
+        id="search-1"
+        label={text("Label", "Search")}
+        withSubmit={false}
+        value={value}
+        submitLabel={text("Submit Label", "Go!")}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onChange={(event) => {
+          setValue(event.target.value);
+          action("onChange")(event);
+        }}
+        onClickInput={action("onClickInput")}
+        onKeyDown={action("onKeyDown")}
+        placeholder={text("Placeholder", "")}
+        size={select("Size", sizeOptions, "default") as any}
+        clearLabel={text("Clear Label", "Clear")}
+      />
+    </div>
+  );
+};
+
+export const FullSearchWithContainer = () => {
   return (
     <div style={{ padding: "32px" }}>
       <Search
-        id={text("id", "search-1") as any}
+        id={text("ID", "search-1") as any}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onKeyDown={action("onKeyDown")}
+        onChange={action("onChange")}
+        onClickInput={action("onClick")}
+        onItemFocusChange={action("onItemFocusChange")}
+        onSubmit={action("onSubmit")}
+        defaultOpen={boolean("Default Open", false)}
         recents={object("recents", [
           { href: "#", label: "User profile" },
           { href: "#", label: "Settings" },
@@ -71,12 +119,12 @@ export const Default = () => {
           { label: "Settings in bricks & braces" },
           { label: "FAQ 124" }
         ])}
-        clearLabel={text("clearLabel", "Clear results")}
-        submitLabel={text("submitLabel", "Go!")}
-        defaultValue={text("defaultValue", "Searchkitty")}
-        placeholder={text("placeholder", "Search")}
-        label={text("label", "Search")}
-        size={select("size", sizeOptions, defaultSize) as any}
+        clearLabel={text("Clear Label", "Clear results")}
+        submitLabel={text("Submit Label", "Go!")}
+        defaultValue={text("Default Value", "Searchkitty")}
+        placeholder={text("Placeholder", "Search")}
+        label={text("Label", "Search")}
+        size={select("Size", sizeOptions, defaultSize) as any}
       />
     </div>
   );

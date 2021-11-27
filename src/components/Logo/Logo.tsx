@@ -2,7 +2,12 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type LogoProps = {
+export type LogoProps = {
+  /**
+   * Logo ID
+   */
+  id?: string;
+
   /**
    * Logo Color
    */
@@ -24,12 +29,16 @@ type LogoProps = {
   className?: string;
 };
 
-const Logo = ({ type, size, color, className }: LogoProps) => {
+const Logo = (
+  { id, type, size, color, className }: LogoProps,
+  ref: React.ForwardedRef<SVGSVGElement>
+) => {
   return (
     <>
       {type === "logomark" && (
         <svg
-          id="logo"
+          ref={ref}
+          id={id}
           data-name="logo"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 219.9 190.45"
@@ -44,7 +53,8 @@ const Logo = ({ type, size, color, className }: LogoProps) => {
 
       {type === "logotype" && (
         <svg
-          id="logo"
+          ref={ref}
+          id={id}
           data-name="logo"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 727.8 71.3"
@@ -73,4 +83,4 @@ const Logo = ({ type, size, color, className }: LogoProps) => {
   );
 };
 
-export default Logo;
+export default React.forwardRef(Logo);

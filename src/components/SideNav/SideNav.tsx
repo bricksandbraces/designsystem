@@ -1,17 +1,19 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import { useControlledValue } from "../../hooks/useControlled";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
 
-type SideNavProps = {
+export type SideNavProps = {
   /**
    * SideNav Children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 
   /**
    * SideNav Action
    */
-  action?: ReactNode;
+  action?: React.ReactNode;
 
   /**
    * SideNav Open
@@ -19,9 +21,24 @@ type SideNavProps = {
   open?: boolean;
 
   /**
+   * SideNav DefaultOpen
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * SideNav OnOpenChange
+   */
+  onOpenChange?: (newOpen: boolean) => void;
+
+  /**
    * SideNav Logo
    */
-  logo: ReactNode | SVGElement | string;
+  logo: React.ReactNode | SVGElement;
+
+  /**
+   * SideNav LogoAlt
+   */
+  logoAlt?: string;
 
   /**
    * SideNav Basepath
@@ -29,18 +46,37 @@ type SideNavProps = {
   basePath: string;
 };
 
-const SideNav = ({ open, action, logo, children, basePath }: SideNavProps) => {
+const SideNav = (
+  {
+    open,
+    defaultOpen,
+    onOpenChange,
+    action,
+    logo,
+    children,
+    basePath,
+    logoAlt = "Logo"
+  }: SideNavProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
+  const [currentlyOpen, performChange] = useControlledValue(
+    open,
+    defaultOpen,
+    onOpenChange,
+    false
+  );
   return (
     <>
       <div
+        ref={ref}
         className={cx(`${prefix}--sidenav`, {
-          [`${prefix}--sidenav-open`]: open
+          [`${prefix}--sidenav-open`]: currentlyOpen
         })}
       >
         <div className={cx(`${prefix}--sidenav-head`)}>
           <a href={basePath} className={cx(`${prefix}--sidenav-logo`)}>
             {typeof logo === "string" ? (
-              <img alt="Logo" src={`${logo}`} />
+              <img alt={logoAlt} src={`${logo}`} />
             ) : (
               logo
             )}
@@ -49,9 +85,19 @@ const SideNav = ({ open, action, logo, children, basePath }: SideNavProps) => {
         </div>
         {children}
       </div>
-      <div className={cx(`${prefix}--sidenav-overlay`)} />
+      <div
+        role="button"
+        className={cx(`${prefix}--sidenav-overlay`)}
+        tabIndex={0}
+        onKeyDown={filterForKeys(["Enter", " "], () => {
+          performChange(!currentlyOpen);
+        })}
+        onClick={() => {
+          performChange(!currentlyOpen);
+        }}
+      />
     </>
   );
 };
 
-export default SideNav;
+export default React.forwardRef(SideNav);

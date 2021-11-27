@@ -1,8 +1,15 @@
 import React from "react";
+import cx from "classnames";
 import { prefix } from "../../settings";
 import Button from "../Button/Button";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
-type ModalFooterProps = {
+export type ModalFooterProps = {
+  /**
+   * ModalFooter ClassName
+   */
+  className?: string;
+
   /**
    * ModalFooter Primary Label
    */
@@ -11,7 +18,7 @@ type ModalFooterProps = {
   /**
    * ModalFooter OnPrimaryClick
    */
-  onPrimaryClick: (event: any) => void;
+  onPrimaryClick: React.MouseEventHandler<HTMLButtonElement>;
 
   /**
    * ModalFooter Secondary Label
@@ -21,36 +28,38 @@ type ModalFooterProps = {
   /**
    * ModalFooter OnSecondaryClick
    */
-  onSecondaryClick?: (event: any) => void;
+  onSecondaryClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const ModalFooter = ({
-  onSecondaryClick,
-  onPrimaryClick,
-  secondaryLabel,
-  primaryLabel
-}: ModalFooterProps) => {
+const ModalFooter = (
+  {
+    className,
+    onSecondaryClick,
+    onPrimaryClick,
+    secondaryLabel,
+    primaryLabel
+  }: ModalFooterProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <>
-      <div className={`${prefix}--modal-footer`}>
-        {secondaryLabel && (
-          <Button
-            kind="secondary"
-            className={`${prefix}--modal-footer__secondary`}
-            onClick={onSecondaryClick}
-          >
-            {secondaryLabel}
-          </Button>
-        )}
+    <div className={cx(`${prefix}--modal-footer`, className)} ref={ref}>
+      {secondaryLabel && (
         <Button
-          className={`${prefix}--modal-footer__primary`}
-          onClick={onPrimaryClick}
+          kind="secondary"
+          className={`${prefix}--modal-footer__secondary`}
+          onClick={withoutPropagation(onSecondaryClick)}
         >
-          {primaryLabel}
+          {secondaryLabel}
         </Button>
-      </div>
-    </>
+      )}
+      <Button
+        className={`${prefix}--modal-footer__primary`}
+        onClick={withoutPropagation(onPrimaryClick)}
+      >
+        {primaryLabel}
+      </Button>
+    </div>
   );
 };
 
-export default ModalFooter;
+export default React.forwardRef(ModalFooter);

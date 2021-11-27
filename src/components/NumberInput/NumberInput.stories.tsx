@@ -1,4 +1,4 @@
-import { getLogger } from "@openbricksandbraces/eloguent";
+import { action } from "@storybook/addon-actions";
 import {
   boolean,
   number,
@@ -17,8 +17,6 @@ export default {
   decorators: [withKnobs]
 };
 
-const logger = getLogger("NumberInputStory");
-
 const sizeOptions = {
   Default: "default",
   Small: "small",
@@ -30,17 +28,20 @@ const defaultSize = "default";
 export const Uncontrolled = () => {
   const defaultValue = number("defaultValue", 0);
   // this is only a monitoring value since uncontrolled input holds the value
-  const [reference, setReference] = useState<number>(defaultValue);
+  const [reference, setReference] = useState<number | undefined>(defaultValue);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
-        onChange={(event, { parsedValue }) => {
-          logger.log(event);
-          setReference(parsedValue);
+        onChange={(event, params) => {
+          setReference(params.parsedValue);
+          action("onChange")(event, params);
         }}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onKeyDown={action("onKeyDown")}
         size={select("size", sizeOptions, defaultSize) as any}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
@@ -72,13 +73,16 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         value={textValue}
-        onChange={(event, { parsedValue, newValue }) => {
-          logger.log(event);
-          if (parsedValue != null && !Number.isNaN(parsedValue)) {
-            setValue(`${parsedValue}`);
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onKeyDown={action("onKeyDown")}
+        onChange={(event, params) => {
+          if (params.parsedValue != null && !Number.isNaN(params.parsedValue)) {
+            setValue(`${params.parsedValue}`);
           } else {
-            setValue(newValue);
+            setValue(params.newValue ?? "");
           }
+          action("onChange")(event, params);
         }}
         min={number("min", -50)}
         max={number("max", 50)}

@@ -1,6 +1,7 @@
 @import "../prefix.pcss";
 @import "../colors.pcss";
 @import "../theme.pcss";
+@import "../typography.pcss";
 
 .$(prefix) {
   &--webfooter {
@@ -30,13 +31,14 @@
     &-label {
       @mixin type--label;
 
+      display: inline-flex;
+      flex-direction: column;
       margin: 0 0 $size--spacing-03;
       color: $color--font-text-03;
 
-      &__link {
-        margin: $size--spacing-05 0;
-
-        & > .$(prefix)--link > .$(prefix)--link-label {
+      & > .$(prefix)--link {
+        margin-top: $size--spacing-05;
+        & > .$(prefix)--link-label {
           @mixin type--label;
         }
       }

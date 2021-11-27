@@ -2,9 +2,9 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type DividerProps = {
+export type DividerProps = {
   /**
-   * Divider Kind
+   * Divider Type
    */
   type?: "default" | "subtle" | "harsh";
 
@@ -14,7 +14,10 @@ type DividerProps = {
   className?: string;
 };
 
-const Divider = ({ type = "default", className }: DividerProps) => {
+const Divider = (
+  { type = "default", className }: DividerProps,
+  ref: React.ForwardedRef<HTMLHRElement>
+) => {
   return (
     <hr
       className={cx(
@@ -22,8 +25,9 @@ const Divider = ({ type = "default", className }: DividerProps) => {
 
         className
       )}
+      ref={ref}
     />
   );
 };
 
-export default Divider;
+export default React.forwardRef(Divider);

@@ -1,15 +1,9 @@
-import {
-  text,
-  object,
-  withKnobs,
-  select,
-  boolean
-} from "@storybook/addon-knobs";
+import { text, object, withKnobs, boolean } from "@storybook/addon-knobs";
 import React from "react";
 import LeadSpace from "./LeadSpace";
-import Header from "../WebHeader/WebHeader";
+import Header from "../../WebHeader/WebHeader";
 import LeadSpaceBlock from "./LeadSpaceBlock";
-import { Dropdown } from "../..";
+import { Dropdown } from "../../..";
 
 export default { title: "Web/A_REFA_LeadSpace", decorators: [withKnobs] };
 

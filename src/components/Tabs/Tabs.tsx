@@ -1,14 +1,16 @@
-import React, { useState, ReactNode, useRef, useEffect } from "react";
+import React from "react";
 import cx from "classnames";
 import { TabProps } from "./Tab";
 import { prefix } from "../../settings";
 import Body from "../Typography/Body";
+import { useControlledValue } from "../../hooks/useControlled";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
-type TabsProps = {
+export type TabsProps = {
   /**
    * Tabs Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Tabs OnChange Function
@@ -31,67 +33,47 @@ type TabsProps = {
   className?: string;
 };
 
-const Tabs = ({
-  children,
-  onChange,
-  defaultIndex,
-  className,
-  index
-}: TabsProps) => {
-  const { current: controlled } = useRef(index != null);
-  const [selectedIndex, setSelectedIndex] = useState(
-    (controlled ? index : defaultIndex) ?? 0
+const Tabs = (
+  { children, onChange, defaultIndex, className, index }: TabsProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
+  const [selectedIndex, performIndexChange] = useControlledValue(
+    index,
+    defaultIndex,
+    onChange,
+    0
   );
-  useEffect(() => {
-    if (controlled) {
-      setSelectedIndex(index ?? 0);
-    }
-  }, [index]);
 
   return (
-    <div className={cx(`${prefix}--tabs`, className)}>
+    <div className={cx(`${prefix}--tabs`, className)} ref={ref}>
       <div className={`${prefix}--tabs-btn__container`}>
-        {React.Children.map(children, (child, i) => {
-          if (!React.isValidElement<TabProps>(child)) {
-            return child;
-          }
-          const elementChild: React.ReactElement<TabProps> = child;
-          const { props } = elementChild;
+        {mapReactChildren<TabProps>(children, ({ props, key, index: i }) => {
           return (
-            props && (
-              <button
-                disabled={props.disabled}
-                type="button"
-                tabIndex={0}
-                key={child.key}
-                className={cx(`${prefix}--tabs-btn`, {
-                  [`${prefix}--tabs-btn__selected`]: selectedIndex === i
-                })}
-                onClick={() => {
-                  if (!controlled) {
-                    setSelectedIndex(i);
-                  }
-                  onChange?.(i);
-                }}
-              >
-                <Body type="body-02" className={`${prefix}--tabs-btn__label`}>
-                  {props.title}
-                </Body>
-              </button>
-            )
+            <button
+              disabled={props.disabled}
+              type="button"
+              tabIndex={0}
+              key={key}
+              className={cx(`${prefix}--tabs-btn`, {
+                [`${prefix}--tabs-btn__selected`]: selectedIndex === i
+              })}
+              onClick={() => {
+                performIndexChange(i);
+              }}
+            >
+              <Body type="body-02" className={`${prefix}--tabs-btn__label`}>
+                {props.title}
+              </Body>
+            </button>
           );
         })}
       </div>
       <div className={`${prefix}--tabs-content`}>
-        {React.Children.map(children, (child, i) => {
-          if (!React.isValidElement<TabProps>(child)) {
-            return child;
-          }
-          const elementChild: React.ReactElement<TabProps> = child;
-          const { props } = elementChild;
+        {mapReactChildren<TabProps>(children, ({ props, key, index: i }) => {
           return (
             props && (
               <div
+                key={key}
                 className={cx(`${prefix}--tabs-content__item`, {
                   [`${prefix}--tabs-content__item-selected`]:
                     selectedIndex === i
@@ -107,4 +89,4 @@ const Tabs = ({
   );
 };
 
-export default Tabs;
+export default React.forwardRef(Tabs);

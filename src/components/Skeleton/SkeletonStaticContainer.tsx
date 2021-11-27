@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SkeletonStaticContainerProps = {
+export type SkeletonStaticContainerProps = {
   /**
    * SkeletonStaticContainer Children
    */
@@ -14,31 +14,27 @@ type SkeletonStaticContainerProps = {
   className?: string;
 
   /**
-   * SkeletonStaticContainer Width
+   * SkeletonStaticContainer Inline Style
    */
-  width?: number | "100%" | "80%" | "50%";
+  style?: React.CSSProperties;
 };
 
-const SkeletonStaticContainer = ({
-  width,
-  children,
-  className
-}: SkeletonStaticContainerProps) => {
+const SkeletonStaticContainer = (
+  { children, className, ...rest }: SkeletonStaticContainerProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
       className={cx(
         `${prefix}--skeleton ${prefix}--skeleton-static`,
         className
       )}
-      style={
-        typeof width === "string"
-          ? { width: `${width}` }
-          : { width: `${width}px` }
-      }
+      {...rest}
+      ref={ref}
     >
       {children}
     </div>
   );
 };
 
-export default SkeletonStaticContainer;
+export default React.forwardRef(SkeletonStaticContainer);

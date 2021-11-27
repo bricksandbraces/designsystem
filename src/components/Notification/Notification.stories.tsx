@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { text, boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import InlineNotification from "./InlineNotification";
@@ -22,10 +23,11 @@ export const Inline = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <InlineNotification
-        type={select("type", typeOptions, defaultType)}
+        type={select("type", typeOptions, defaultType) as any}
         open={boolean("open", open)}
-        onClose={() => {
+        onClose={(event) => {
           setOpen(false);
+          action("onClose")(event);
         }}
         hideCloseButton={boolean("hideCloseButton", false)}
         title={text("title", "This is a title")}
@@ -40,10 +42,11 @@ export const Toast = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <ToastNotification
-        type={select("type", typeOptions, defaultType)}
+        type={select("type", typeOptions, defaultType) as any}
         open={boolean("open", open)}
-        onClose={() => {
+        onClose={(event) => {
           setOpen(false);
+          action("onClose")(event);
         }}
         hideCloseButton={boolean("hideCloseButton", false)}
         title={text("title", "This is a title")}

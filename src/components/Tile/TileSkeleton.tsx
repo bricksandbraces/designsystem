@@ -18,7 +18,7 @@ export type TileSkeletonProps = {
 const TileSkeleton = ({ light, className }: TileSkeletonProps) => (
   <SkeletonAnimatedContainer
     light={light}
-    width={128}
+    style={{ width: 128 }}
     className={cx(
       `${prefix}--tile`,
 

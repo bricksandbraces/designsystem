@@ -1,5 +1,6 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import RadioTile from "./RadioTile";
 import RadioTileGroup from "./RadioTileGroup";
 import RadioTileSkeleton from "./RadioTileSkeleton";
@@ -14,24 +15,30 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div>
         <form>
-          <RadioTileGroup name="1" legendLabel="RadioTiles">
+          <fieldset>
             <RadioTile
-              label={text("label", "RadioTile label")}
-              id="checkbox"
+              name="g1"
+              id="checkbox-1"
               value="value-1"
+              onFocus={action("onFocus")}
+              onBlur={action("onBlur")}
+              onChange={action("onChange")}
             >
-              123
+              {text("label", "Café Latte")}
             </RadioTile>
             <RadioTile
-              label={text("label", "RadioTile label")}
+              name="g1"
               id="checkbox-2"
               value="value-2"
               readOnly={boolean("readOnly (Radio 2)", false)}
               disabled={boolean("disabled (Radio 2)", false)}
+              onFocus={action("onFocus")}
+              onBlur={action("onBlur")}
+              onChange={action("onChange")}
             >
-              456
+              {text("label", "Espresso")}
             </RadioTile>
-          </RadioTileGroup>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -39,37 +46,37 @@ export const Default = () => {
 };
 
 export const Controlled = () => {
-  const [checked, setChecked] = useState(false);
+  const [selectedValue, setSelectedValue] = useState<string | null>("value-1");
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div>
         <form>
-          <RadioTileGroup
-            disabled={boolean("disabled", false)}
-            legendLabel={text("legendLabel", "Legend Label")}
-            name={text("name", "radio-grop-demo")}
-          >
+          <fieldset>
             <RadioTile
-              label={text("label", "RadioTile label")}
               value="value-1"
-              id="checkbox"
+              id="checkbox-1"
               name="1"
+              checked={selectedValue === "value-1"}
+              onChange={(event) => {
+                setSelectedValue("value-1");
+                action("onChange")(event);
+              }}
             >
-              123
+              {text("label", "Café Latte")}
             </RadioTile>
             <RadioTile
-              label={text("label", "RadioTile label")}
               value="value-2"
               id="checkbox-2"
               name="1"
-              checked={checked}
-              onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                setChecked(event.target.checked);
+              checked={selectedValue === "value-2"}
+              onChange={(event) => {
+                setSelectedValue("value-2");
+                action("onChange")(event);
               }}
             >
-              456
+              {text("label", "Espresso")}
             </RadioTile>
-          </RadioTileGroup>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -86,6 +93,7 @@ export const AsGroupUncontrolled = () => {
             legendLabel={text("legendLabel", "Legend Label")}
             name={text("name", "radio-grop-demo")}
             defaultValue="coffee2"
+            onChange={action("onChange")}
           >
             <RadioTile id="c1" value="coffee1">
               Coffee
@@ -111,8 +119,9 @@ export const AsGroupControlled = () => {
             legendLabel={text("legendLabel", "Legend Label")}
             name={text("name", "radio-grop-demo")}
             value={selectedValue}
-            onChange={(newValue) => {
+            onChange={(newValue, event) => {
               setSelectedValue(newValue);
+              action("onChange")(newValue, event);
             }}
           >
             <RadioTile id="c1" value="coffee1">

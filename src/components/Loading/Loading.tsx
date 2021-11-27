@@ -2,16 +2,16 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import LottieAnimation from "../LottieAnimation/LottieAnimation";
-import animation from "./animation.json";
+import loadingAnimation from "./animation.json";
 
-type LoadingProps = {
+export type LoadingProps = {
   /**
-   * active
+   * Loading active
    */
   active?: boolean;
 
   /**
-   * Overlay anzeigen?
+   * Loading Overlay anzeigen?
    */
   withOverlay?: boolean;
 
@@ -31,19 +31,21 @@ type LoadingProps = {
   loadingDescription?: string;
 
   /**
-   * Size
+   * Loading Size
    */
   size?: "small" | "default" | "large" | "inline";
 };
 
-const Loading = ({
-  size = "default",
-  loadingAnimation = animation,
-  loadingDescription = "Loading spinner",
-  active,
-  className,
-  withOverlay
-}: LoadingProps) => {
+const Loading = (
+  {
+    size = "default",
+    loadingDescription,
+    active,
+    className,
+    withOverlay
+  }: LoadingProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <>
       {active && (
@@ -56,6 +58,7 @@ const Loading = ({
             },
             className
           )}
+          ref={ref}
         >
           <LottieAnimation
             title={loadingDescription}
@@ -77,4 +80,4 @@ const Loading = ({
   );
 };
 
-export default Loading;
+export default React.forwardRef(Loading);

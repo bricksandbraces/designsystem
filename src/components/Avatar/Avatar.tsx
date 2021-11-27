@@ -29,15 +29,12 @@ export type AvatarProps = {
   imgUrl?: string;
 };
 
-const Avatar = ({
-  size = "default",
-  className,
-  name,
-  imgUrl,
-  children
-}: AvatarProps) => {
+const Avatar = (
+  { size = "default", className, name, imgUrl, children }: AvatarProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <div className={cx(`${prefix}--avatar-container`, className)}>
+    <div className={cx(`${prefix}--avatar-container`, className)} ref={ref}>
       <div className={cx(`${prefix}--avatar ${prefix}--avatar-${size}`)}>
         {imgUrl ? (
           <img src={imgUrl} className={`${prefix}--avatar-img`} alt={name} />
@@ -58,4 +55,4 @@ const Avatar = ({
   );
 };
 
-export default Avatar;
+export default React.forwardRef(Avatar);

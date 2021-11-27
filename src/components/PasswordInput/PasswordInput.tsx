@@ -1,106 +1,95 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
-import TextInput from "../TextInput/TextInput";
+import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
+import { useControlled } from "../../hooks/useControlled";
 
-type PasswordInputProps = {
+export type PasswordInputProps = {
   /**
-   * PasswordInput ClassName
+   * PasswordInput Controlled Visible
    */
-  className?: string;
-
-  /**
-   * PasswordInput Label
-   */
-  label?: string;
+  visible?: boolean;
 
   /**
-   * PasswordInput Placeholder
+   * PasswordInput DefaultVisible
    */
-  placeholder?: string;
+  defaultVisible?: boolean;
 
   /**
-   * PasswordInput Id
+   * PasswordInput onVisibilityChange
    */
-  id?: string;
+  onVisibilityChange?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+      | React.KeyboardEvent<HTMLButtonElement>,
+    newVisibility: boolean
+  ) => void;
 
   /**
-   * PasswordInput Error State & Text
+   * PasswordInput HidePasswordLabel
    */
-  error?: boolean;
-  errorText?: string;
+  hidePasswordLabel?: string;
 
   /**
-   * PasswordInput Warning State & Text
+   * PasswordInput ShowPasswordLabel
    */
-  warning?: boolean;
-  warningText?: string;
-
-  /**
-   * PasswordInput Size
-   */
-  size?: "default" | "small" | "large";
-
-  /**
-   * PasswordInput AutoComplete
-   */
-  autoComplete?: "off" | "on";
-
-  /**
-   * PasswordInput Default Value
-   */
-  defaultValue?: string;
-
-  /**
-   * PasswordInput Value
-   */
-  value?: string;
-
-  /**
-   * PasswordInput Fluid
-   */
-  fluid?: boolean;
-
-  /**
-   * PasswordInput OnChange Function
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-
-  /**
-   * PasswordInput Children
-   */
-  children?: React.ReactNode;
-};
+  showPasswordLabel?: string;
+} & Omit<TextInputProps, "type">;
 
 const PasswordInput = (
-  { size, children, ...rest }: PasswordInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  {
+    visible,
+    defaultVisible,
+    onVisibilityChange,
+    size,
+    children,
+    hidePasswordLabel = "Hide password",
+    showPasswordLabel = "Show password",
+    ...rest
+  }: PasswordInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  const [passwordType, setPasswordType] = useState<"password" | "text">(
-    "password"
+  const controlled = useControlled(visible);
+  const [passwordVisible, setPasswordVisibility] = useState<boolean>(
+    (controlled ? visible : defaultVisible) ?? false
   );
+
+  useEffect(() => {
+    if (controlled) {
+      setPasswordVisibility(visible ?? false);
+    }
+  }, [visible]);
+
   return (
-    <TextInput {...rest} ref={ref} size={size} type={passwordType}>
+    <TextInput
+      {...rest}
+      ref={ref}
+      size={size}
+      type={passwordVisible ? "text" : "password"}
+    >
       <IconOnlyButton
         aria-controls="password"
-        aria-expanded={passwordType !== "password"}
+        aria-expanded={passwordVisible}
         tooltipProps={{
-          tooltipContent:
-            passwordType === "password" ? "Show password" : "Hide password"
+          tooltipContent: passwordVisible
+            ? hidePasswordLabel
+            : showPasswordLabel
         }}
         size={size}
         className={`${prefix}--textinput-togglepassword`}
         type="button"
         kind="ghost"
-        onClick={() => {
-          if (passwordType === "password") {
-            setPasswordType("text");
-          } else {
-            setPasswordType("password");
+        onClick={(event) => {
+          if (!controlled) {
+            setPasswordVisibility(!passwordVisible);
           }
+          onVisibilityChange?.(
+            event as React.MouseEvent<HTMLButtonElement>,
+            !passwordVisible
+          );
         }}
-        icon={passwordType === "password" ? <IconEye /> : <IconEyeOff />}
+        icon={passwordVisible ? <IconEyeOff /> : <IconEye />}
       />
       {children}
     </TextInput>

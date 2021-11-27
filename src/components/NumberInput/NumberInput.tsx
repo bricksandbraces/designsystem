@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import cx from "classnames";
 import {
   IconAlertCircle,
@@ -6,17 +6,16 @@ import {
   IconMinus,
   IconPlus
 } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import mergeRefs from "react-merge-refs";
-import useControlledValue from "../../hooks/useControlledValue";
+import { useControlledInput } from "../../hooks/useControlled";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
 
-type NumberInputProps = {
+export type NumberInputProps = {
   /**
    * NumberInput ClassName
    */
@@ -109,7 +108,7 @@ type NumberInputProps = {
    */
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement> | undefined,
-    additionalData: { parsedValue: number; newValue: string }
+    additionalData: { parsedValue?: number; newValue?: string }
   ) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
@@ -152,39 +151,27 @@ const NumberInput = (
     fluid,
     float = false
   }: NumberInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  /**
-   * Boosted onChange function that also provides the updated value of
-   * the target to the onChange listener
-   */
-  const boostedOnChange = onChange
-    ? (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = event.target.value;
-        const parsedValue = parseToNumber(newValue, float);
-
-        onChange(event, { newValue, parsedValue });
-      }
-    : undefined;
-
-  const controlled = useControlled(value);
-  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
-    useControlledValue<string | undefined>(
+  const [inputRef, textValue, handleChange, setValueManually] =
+    useControlledInput(
       value != null ? `${value}` : undefined,
       defaultValue != null ? `${defaultValue}` : undefined,
-      boostedOnChange
+      onChange &&
+        ((_, event) => {
+          const newValue = event?.target?.value;
+          const parsedValue = parseToNumber(newValue, float);
+
+          onChange(event as React.ChangeEvent<HTMLInputElement>, {
+            newValue,
+            parsedValue
+          });
+        })
     );
 
   const updateValue = (newValue: string) => {
     if (inputRef.current) {
-      // for uncontrolled usage, the value has to be updated on dom side
-      if (!controlled) {
-        inputRef.current.value = newValue;
-        // and the cache value has to be also updated
-        setCachedUncontrolledValue(newValue);
-      }
-      const event = new Event("change", { bubbles: true });
-      inputRef.current.dispatchEvent(event);
+      setValueManually(newValue);
 
       const parsedValue = parseToNumber(newValue);
 
@@ -225,17 +212,13 @@ const NumberInput = (
         <input
           id={id}
           ref={mergeRefs([ref, inputRef])}
-          className={cx(
-            `${prefix}--numberinput-input`,
-            {
-              [`${prefix}--numberinput-${size}`]: !fluid,
-              [`${prefix}--numberinput-error`]:
-                (error || errorText) && !(warning || warningText),
-              [`${prefix}--numberinput-warning`]:
-                !(error || errorText) && (warning || warningText)
-            },
-            className
-          )}
+          className={cx(`${prefix}--numberinput-input`, {
+            [`${prefix}--numberinput-${size}`]: !fluid,
+            [`${prefix}--numberinput-error`]:
+              (error || errorText) && !(warning || warningText),
+            [`${prefix}--numberinput-warning`]:
+              !(error || errorText) && (warning || warningText)
+          })}
           type="number"
           placeholder={placeholder}
           autoComplete={autoComplete}
@@ -343,4 +326,4 @@ const NumberInput = (
   );
 };
 
-export default forwardRef<HTMLInputElement, NumberInputProps>(NumberInput);
+export default React.forwardRef(NumberInput);

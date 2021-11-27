@@ -39,7 +39,7 @@ const PasswordInputSkeleton = ({
     >
       {!fluid && (
         <SkeletonAnimatedContainer
-          width={64}
+          style={{ width: 64 }}
           className={cx(
             `${prefix}--typography-label`,
 
@@ -48,7 +48,7 @@ const PasswordInputSkeleton = ({
         />
       )}
       <SkeletonAnimatedContainer
-        width={256}
+        style={{ width: 256 }}
         className={`${prefix}--textinput-${size}`}
       />
     </SkeletonContainer>

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import cx from "classnames";
-import useControlled from "../../hooks/useControlled";
+import {
+  useControlledValue,
+  useControlledInput
+} from "../../hooks/useControlled";
 import { BadgeColor } from "../Badge/Badge";
 import SearchListItem, {
   SearchListItemProps,
@@ -11,26 +14,33 @@ import SearchContainer from "./SeachContainer";
 import Button from "../Button/Button";
 import { idfy } from "../../helpers/arrayUtilities";
 import { prefix } from "../../settings";
+import mergeRefs from "react-merge-refs";
 
-type SearchBadgeItem = {
+export type SearchBadgeItem = {
   /**
-   * Search Badge Item label
+   * SearchBadgeItem Label
    */
   label: string;
 
+  /**
+   * SearchBadgeItem Color
+   */
   color?: BadgeColor;
 
-  onClick?: React.MouseEventHandler;
+  /**
+   * SearchBageItem OnClick
+   */
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-type SearchProps = {
+export type SearchProps = {
   /**
    * Search Size
    */
   size?: "large" | "small" | "default";
 
   /**
-   * Search Id
+   * Search ID Mandatory
    */
   id: string;
 
@@ -82,89 +92,130 @@ type SearchProps = {
   /**
    * Search OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    newValue?: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
-  onClick?: React.MouseEventHandler<HTMLInputElement>;
+  /**
+   * Search OnClick Function
+   */
+  onClickInput?: React.MouseEventHandler<HTMLInputElement>;
+
+  /**
+   * Search OnKeyDown Function
+   */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
-   * Search onSearch Function. Null if clicked on a badge without href but with onClick
+   * Search OnSubmit Function. Null if clicked on a badge without href but with onClick
    */
-  onSubmit?: (submittedValue: string | null, event: any) => void;
+  onSubmit?: (
+    submittedValue: string | null,
+    event:
+      | React.MouseEvent<
+          HTMLButtonElement | HTMLAnchorElement,
+          globalThis.MouseEvent
+        >
+      | React.KeyboardEvent<HTMLInputElement>
+  ) => void;
 
+  /**
+   * Search Open State (Controlled)
+   */
   open?: boolean;
-  defaultOpen?: boolean;
-  onFocus?: React.FocusEventHandler;
-  onBlur?: React.FocusEventHandler;
 
-  /** A focus state for the list elements that combines selection via hover and keyboard events. Separate to the classic DOM focus events. */
+  /**
+   * Search Open State (Uncontrolled)
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Search OnOpenChange
+   */
+  onOpenChange?: (newOpen: boolean) => void;
+
+  /**
+   * Search OnFocus Function
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * Search OnBlur Function
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * Search FocusItemIndex : A focus state for the list elements that combines selection via hover and keyboard events.
+   * Separate to the classic DOM focus events. (Controlled)
+   */
   focusedItemIndex?: number;
+
+  /**
+   * Search DefaultFocusedItemIndex : A focus state for the list elements that combines selection via hover and keyboard events.
+   * Separate to the classic DOM focus events. (Uncontrolled)
+   */
   defaultFocusedItemIndex?: number;
-  onItemFocusChange?: (newFocusedItemIndex: number) => void;
+
+  /**
+   * Search OnItemsFocusChange Called when the Item Focus Changes (Separate to the classic DOM focus events, See focusedItemIndex and defaultFocusedItemIndex).
+   */
+  onItemFocusChange?: (newFocusedItemIndex: number | null) => void;
 };
 
-const Search = ({
-  id,
-  value,
-  defaultValue,
-  onChange,
+const Search = (
+  {
+    id,
+    value,
+    defaultValue,
+    onChange,
 
-  open,
-  defaultOpen,
-  onFocus,
-  onBlur,
-  onClick,
-  onKeyDown,
+    open,
+    defaultOpen,
+    onOpenChange,
 
-  clearLabel = "Clear search results",
-  submitLabel = "Go!",
-  label = "Search",
-  size = "default",
-  placeholder = "Search",
+    clearLabel = "Clear search results",
+    submitLabel = "Go!",
+    label = "Search",
+    size = "default",
+    placeholder = "Search",
 
-  focusedItemIndex,
-  defaultFocusedItemIndex,
-  onItemFocusChange,
+    focusedItemIndex,
+    defaultFocusedItemIndex,
+    onItemFocusChange,
 
-  results,
-  recents,
-  badges,
-  onSubmit
-}: SearchProps) => {
+    results,
+    recents,
+    badges,
+    onSubmit,
+    onFocus,
+    onBlur,
+    onClickInput,
+    onKeyDown
+  }: SearchProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   const indexedBadges = idfy(badges);
 
   // |- - textValue
-  const valueControlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (valueControlled ? value : defaultValue) ?? ""
-  );
-  useEffect(() => {
-    if (valueControlled) {
-      setTextValue(value ?? "");
-    }
-  }, [value]);
+  const [inputRef, currentValue, handleValueChange, setValueManually] =
+    useControlledInput(value, defaultValue, onChange);
 
   // |- - containerOpen
-  const openControlled = useControlled(open);
-  const [containerOpen, setContainerOpen] = useState<boolean>(
-    (openControlled ? open : defaultOpen) ?? false
+  const [containerOpen, performOpenChange] = useControlledValue<boolean>(
+    open,
+    defaultOpen,
+    onOpenChange,
+    false
   );
-  useEffect(() => {
-    if (openControlled) {
-      setContainerOpen(open ?? false);
-    }
-  }, [open]);
 
   // |- - focusedIndex
-  const focusControlled = useControlled(focusedItemIndex);
-  const [focusedIndex, setFocusedIndex] = useState<number | null>(
-    (focusControlled ? focusedItemIndex : defaultFocusedItemIndex) ?? null
+  const [focusedIndex, performFocusChange] = useControlledValue<number | null>(
+    focusedItemIndex,
+    defaultFocusedItemIndex,
+    onItemFocusChange,
+    null
   );
-  useEffect(() => {
-    if (focusControlled) {
-      setFocusedIndex(focusedItemIndex ?? null);
-    }
-  }, [focusedItemIndex]);
 
   // Concat all search list items (Button + SearchListItem [both types]) to easily access an item via absolute index
   const overallArray = [
@@ -180,23 +231,27 @@ const Search = ({
   /** the currently focused items props */
   const focusedItem = focusedIndex != null ? overallArray[focusedIndex] : null;
 
-  const updateFocusIndexAndTextValue = (newFocusedIndex: number | null) => {
+  const updateFocusIndexAndTextValue = (newFocusedIndex: number) => {
     const newFocusedItem =
       newFocusedIndex != null ? overallArray[newFocusedIndex] : null;
-    if (!valueControlled) setTextValue(newFocusedItem?.label ?? "");
-    if (!focusControlled) setFocusedIndex(newFocusedIndex);
+    const newValue = newFocusedItem?.label ?? "";
+
+    // update text
+    setValueManually(newValue);
+    onChange?.(newValue);
+
+    // update focus
+    performFocusChange(newFocusedIndex);
   };
 
-  const handleVerticalKeyboardNavigation: React.KeyboardEventHandler = (
-    event
-  ) => {
-    const navigation = event.key === "ArrowUp" || event.key === "ArrowDown";
-    const up = event.key === "ArrowUp";
-    if (navigation) {
-      event.preventDefault();
-      if (!openControlled) setContainerOpen(true);
+  const handleKeyboardNavigation: React.KeyboardEventHandler<HTMLInputElement> =
+    (event) => {
+      const navigation = event.key === "ArrowUp" || event.key === "ArrowDown";
+      const up = event.key === "ArrowUp";
+      if (navigation) {
+        event.preventDefault();
+        performOpenChange(true);
 
-      if (!focusControlled) {
         let newFocusedIndex;
         if (focusedIndex == null) {
           newFocusedIndex = up ? overallArray.length - 1 : 0;
@@ -209,22 +264,21 @@ const Search = ({
         }
 
         updateFocusIndexAndTextValue(newFocusedIndex);
+      } else if (event.key === "Enter" && !event.repeat) {
+        performOpenChange(false);
 
-        onItemFocusChange?.(newFocusedIndex);
-      }
-    } else if (event.key === "Enter") {
-      if (openControlled) {
-        setContainerOpen(false);
-      }
+        if (focusedItemIndex != null) {
+          const newValue = focusedItem?.label ?? "";
+          setValueManually(newValue);
+          onChange?.(newValue);
+          performFocusChange(null);
+        }
 
-      if (focusedItemIndex != null) {
-        if (!valueControlled) setTextValue(focusedItem?.label ?? "");
-        if (!focusControlled) setFocusedIndex(null);
+        onSubmit?.(currentValue ?? "", event);
+      } else if (event.key === "Escape") {
+        performOpenChange(false);
       }
-
-      onSubmit?.(textValue, event);
-    }
-  };
+    };
 
   // combine recent with result as their component is the same
   const searchListItems = idfy(
@@ -242,44 +296,32 @@ const Search = ({
     <SearchContainer open={containerOpen}>
       <SearchInput
         id={id}
-        value={textValue}
+        ref={mergeRefs([inputRef, ref])}
+        value={value}
+        defaultValue={defaultValue}
         clearLabel={clearLabel}
         submitLabel={submitLabel}
         onClickInput={(event) => {
-          if (!openControlled) {
-            setContainerOpen(true);
-          }
-          if (!focusControlled) {
-            setFocusedIndex(null);
-          }
-          onClick?.(event);
+          performOpenChange(true);
+          performFocusChange(null);
+          onClickInput?.(event);
         }}
         onFocus={onFocus}
         onBlur={(event) => {
           // todo: only close the container if the blur was on the webpage (not outside the window)
-          if (!openControlled) {
-            setContainerOpen(false);
-          }
+          setTimeout(() => {
+            performOpenChange(false);
+          }, 250);
           onBlur?.(event);
         }}
-        onChange={(event) => {
-          if (!openControlled) {
-            setContainerOpen(true);
-          }
-          if (!valueControlled) {
-            setTextValue(event.target.value);
-          }
+        onChange={handleValueChange(undefined, () => {
           // reset the focus on every change
-          if (!focusControlled) {
-            setFocusedIndex(null);
-          }
-          onChange?.(event);
-        }}
+          performFocusChange(null);
+        })}
         onKeyDown={(event) => {
-          handleVerticalKeyboardNavigation(event);
+          handleKeyboardNavigation(event);
           onKeyDown?.(event);
         }}
-        onSubmit={onSubmit}
         placeholder={placeholder}
         size={size}
         label={label}
@@ -296,7 +338,7 @@ const Search = ({
                 })}
                 kind="secondary"
                 onMouseEnter={() => {
-                  setFocusedIndex(i);
+                  performFocusChange(i);
                 }}
                 tabIndex={-1}
                 size="small"
@@ -315,7 +357,7 @@ const Search = ({
                 type={item.type}
                 key={item.id}
                 onMouseEnter={() => {
-                  setFocusedIndex(absIndex);
+                  performFocusChange(absIndex);
                 }}
                 onClick={() => {
                   updateFocusIndexAndTextValue(absIndex);
@@ -332,4 +374,4 @@ const Search = ({
   );
 };
 
-export default Search;
+export default React.forwardRef(Search);

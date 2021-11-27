@@ -27,6 +27,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "import/no-cycle": "off",
     "arrow-body-style": "off",
     "@typescript-eslint/indent": "off",
     "jsx-a11y/accessible-emoji": "off", // deprecated

@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import CookieBanner from "./CookieBanner";
@@ -9,12 +10,13 @@ export const Default = () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <CookieBanner
-        label={text("label", "This is the cookie banner label. ")}
-        linkLabel={text("linkLabel", "Cookie link")}
-        linkHref={text("linkHref", "#")}
-        buttonLabel={text("buttonLabel", "Close")}
-        onButtonClick={() => {
+        label={text("Label", "This is the cookie banner label.")}
+        linkLabel={text("Link label", "Cookie link")}
+        linkHref={text("Link Href", "#")}
+        buttonLabel={text("Button label", "Close")}
+        onButtonClick={(event) => {
           setOpen(false);
+          action("onButtonClick")(event);
         }}
         open={boolean("open", open)}
       />
