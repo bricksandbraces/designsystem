@@ -40,10 +40,14 @@ export type LeadSpaceBlockProps = {
   ctaItems?: CtaItem[];
 };
 
-const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
+const LeadSpaceBlock = (
+  { text, title, ctaItems }: LeadSpaceBlockProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const indexedCtaItems = idfy(ctaItems);
   return (
     <section
+      ref={ref}
       id="leadspace"
       className={cx(`${prefix}--leadspace ${prefix}--leadspace-block`)}
     >
@@ -97,4 +101,4 @@ const LeadSpaceBlock = ({ text, title, ctaItems }: LeadSpaceBlockProps) => {
   );
 };
 
-export default LeadSpaceBlock;
+export default React.forwardRef(LeadSpaceBlock);
