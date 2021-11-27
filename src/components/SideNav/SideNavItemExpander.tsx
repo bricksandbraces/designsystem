@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import { IconChevronDown } from "@tabler/icons";
@@ -22,32 +22,34 @@ type SideNavItemExpanderProps = {
   /**
    * SideNavItemExpander Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * SideNavItemExpander Icon
    */
-  icon: ReactNode;
-
-  /**
-   * SideNavItemExpander Selected
-   */
-  selected?: boolean;
+  icon: React.ReactNode;
 
   /**
    * SideNavItemExpander OnClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const SideNavItemExpander = ({
   label,
   icon,
-  selected,
   className,
   children
 }: SideNavItemExpanderProps) => {
   const [open, setOpen] = useState(false);
+
+  // selected when collapsed but one child is selected
+  const selected =
+    !open &&
+    React.Children.toArray(children).some(
+      (child: any) => !!child.props?.selected
+    );
+
   return (
     <>
       <button

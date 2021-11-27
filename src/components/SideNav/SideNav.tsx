@@ -35,6 +35,8 @@ export type SideNavProps = {
    */
   logo: React.ReactNode | SVGElement;
 
+  onLogoClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+
   /**
    * SideNav LogoAlt
    */
@@ -43,7 +45,7 @@ export type SideNavProps = {
   /**
    * SideNav Basepath
    */
-  basePath: string;
+  basePath?: string;
 };
 
 const SideNav = (
@@ -51,6 +53,7 @@ const SideNav = (
     open,
     defaultOpen,
     onOpenChange,
+    onLogoClick,
     action,
     logo,
     children,
@@ -59,12 +62,15 @@ const SideNav = (
   }: SideNavProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
-  const [currentlyOpen, performChange] = useControlledValue(
+  const [currentlyOpen, setSideNavOpen] = useControlledValue(
     open,
     defaultOpen,
     onOpenChange,
     false
   );
+  const logoContent =
+    typeof logo === "string" ? <img alt={logoAlt} src={`${logo}`} /> : logo;
+
   return (
     <>
       <div
@@ -74,13 +80,18 @@ const SideNav = (
         })}
       >
         <div className={cx(`${prefix}--sidenav-head`)}>
-          <a href={basePath} className={cx(`${prefix}--sidenav-logo`)}>
-            {typeof logo === "string" ? (
-              <img alt={logoAlt} src={`${logo}`} />
-            ) : (
-              logo
-            )}
-          </a>
+          {basePath ? (
+            <a href={basePath} className={cx(`${prefix}--sidenav-logo`)}>
+              {logoContent}
+            </a>
+          ) : (
+            <button
+              onClick={onLogoClick}
+              className={cx(`${prefix}--sidenav-logo`)}
+            >
+              {logoContent}
+            </button>
+          )}
           {action}
         </div>
         {children}
@@ -90,10 +101,10 @@ const SideNav = (
         className={cx(`${prefix}--sidenav-overlay`)}
         tabIndex={0}
         onKeyDown={filterForKeys(["Enter", " "], () => {
-          performChange(!currentlyOpen);
+          setSideNavOpen(false);
         })}
         onClick={() => {
-          performChange(!currentlyOpen);
+          setSideNavOpen(false);
         }}
       />
     </>

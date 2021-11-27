@@ -20,29 +20,30 @@ import SideNavItemExpander from "./SideNavItemExpander";
 import { Logo, SideNav } from "../..";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import SideNavMobileHeader from "./SideNavMobileHeader";
+import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/SideNav", decorators: [withKnobs] };
 
-export const Uncontrolled = () => {
+export const Default = () => {
   return (
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
         logo={<Logo type="logotype" color="white" size="xsmall" />}
-        defaultOpen={true}
+        defaultOpen
+        onLogoClick={action("onLogoClick")}
       >
         <SideNavItem
           href="#"
           icon={<IconSmartHome />}
           label="Home &amp; Dashboard"
-          selected
         />
         <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
         <SideNavDivider />
         <SideNavHeadline>Group 1</SideNavHeadline>
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
-        <SideNavItemExpander icon={<IconApps />} label="All apps" selected>
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
           <SideNavItem href="#" icon={<IconCash />} label="Cash" />
           <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
           <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
@@ -60,12 +61,86 @@ export const Uncontrolled = () => {
   );
 };
 
+export const ButtonsAsItems = () => {
+  return (
+    <div style={{ height: "100vh" }}>
+      <SideNav
+        logo={<Logo type="logotype" color="white" size="xsmall" />}
+        defaultOpen={true}
+        onLogoClick={action("onLogoClick")}
+      >
+        <SideNavItem icon={<IconSmartHome />} label="Home &amp; Dashboard" />
+        <SideNavItem icon={<IconSend />} label="Campaigns" />
+        <SideNavDivider />
+        <SideNavHeadline>Group 1</SideNavHeadline>
+        <SideNavItem icon={<IconDatabase />} label="Data base" />
+        <SideNavItem icon={<IconSearch />} label="Search" />
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
+          <SideNavItem icon={<IconCash />} label="Cash" />
+          <SideNavItem icon={<IconAngle />} label="Angle" selected />
+          <SideNavItem icon={<IconBrandTinder />} label="Tinder" />
+        </SideNavItemExpander>
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
+          <SideNavItem icon={<IconCash />} label="Cash" />
+          <SideNavItem icon={<IconAngle />} label="Angle" />
+          <SideNavItem icon={<IconBrandTinder />} label="Tinder" />
+        </SideNavItemExpander>
+        <SideNavHeadline>Group 2</SideNavHeadline>
+        <SideNavItem icon={<Icon2fa />} label="Two-factor auth" />
+        <SideNavItem icon={<IconAward />} label="Awards" />
+      </SideNav>
+    </div>
+  );
+};
+
+export const WithSelection = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  return (
+    <div style={{ height: "100vh" }}>
+      <SideNav
+        logo={<Logo type="logotype" color="white" size="xsmall" />}
+        defaultOpen={true}
+        onLogoClick={action("onLogoClick")}
+      >
+        <SideNavItem
+          icon={<IconSmartHome />}
+          label="Home &amp; Dashboard"
+          selected={selectedIndex === 0}
+          onClick={() => setSelectedIndex(0)}
+        />
+        <SideNavDivider />
+        <SideNavHeadline>Group 1</SideNavHeadline>
+        <SideNavItem
+          icon={<IconDatabase />}
+          label="Data base"
+          selected={selectedIndex === 1}
+          onClick={() => setSelectedIndex(1)}
+        />
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
+          <SideNavItem
+            icon={<IconCash />}
+            label="Cash"
+            selected={selectedIndex === 2}
+            onClick={() => setSelectedIndex(2)}
+          />
+          <SideNavItem
+            icon={<IconAngle />}
+            label="Angle"
+            selected={selectedIndex === 3}
+            onClick={() => setSelectedIndex(3)}
+          />
+        </SideNavItemExpander>
+      </SideNav>
+    </div>
+  );
+};
+
 export const WithAction = () => {
   return (
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
-        open={boolean("open", false)}
+        defaultOpen={boolean("open", false)}
         logo={<Logo type="logotype" color="white" size="xsmall" />}
         action={
           <IconOnlyButton
@@ -80,14 +155,13 @@ export const WithAction = () => {
           href="#"
           icon={<IconSmartHome />}
           label="Home &amp; Dashboard"
-          selected
         />
         <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
         <SideNavDivider />
         <SideNavHeadline>Group 1</SideNavHeadline>
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
-        <SideNavItemExpander icon={<IconApps />} label="All apps" selected>
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
           <SideNavItem href="#" icon={<IconCash />} label="Cash" />
           <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
           <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
@@ -110,22 +184,27 @@ export const WithLogoImg = () => {
     <div style={{ height: "100vh" }}>
       <SideNav
         basePath="#"
-        open={boolean("open", false)}
-        logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hamburg-logo.svg/2000px-Hamburg-logo.svg.png"
+        defaultOpen={boolean("open", false)}
+        logo={
+          <img
+            alt="Glyph"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hamburg-logo.svg/2000px-Hamburg-logo.svg.png"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
+        }
         action={<IconOnlyButton hideTooltip size="small" icon={<IconPlus />} />}
       >
         <SideNavItem
           href="#"
           icon={<IconSmartHome />}
           label="Home &amp; Dashboard"
-          selected
         />
         <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
         <SideNavDivider />
         <SideNavHeadline>Group 1</SideNavHeadline>
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
-        <SideNavItemExpander icon={<IconApps />} label="All apps" selected>
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
           <SideNavItem href="#" icon={<IconCash />} label="Cash" />
           <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
           <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
@@ -156,20 +235,20 @@ export const WithMobileHeader = () => {
       <SideNav
         basePath="#"
         open={openMenu}
+        onOpenChange={(newOpen) => setOpenMenu(newOpen)}
         logo={<Logo type="logotype" color="white" size="xsmall" />}
       >
         <SideNavItem
           href="#"
           icon={<IconSmartHome />}
           label="Home &amp; Dashboard"
-          selected
         />
         <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
         <SideNavDivider />
         <SideNavHeadline>Group 1</SideNavHeadline>
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
-        <SideNavItemExpander icon={<IconApps />} label="All apps" selected>
+        <SideNavItemExpander icon={<IconApps />} label="All apps">
           <SideNavItem href="#" icon={<IconCash />} label="Cash" />
           <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
           <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
