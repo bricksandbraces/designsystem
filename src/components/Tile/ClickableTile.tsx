@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import { ButtonOrAnchor } from "../Button/Button";
 
-type ClickableTileProps = {
+export type ClickableTileProps = {
   /**
    * ClickableTile ClassName
    */
@@ -47,56 +47,60 @@ type ClickableTileProps = {
   /**
    * ClickableTile onFocus
    */
-  onFocus?: (event: React.FocusEvent<ButtonOrAnchor>) => void;
+  onFocus?: React.FocusEventHandler<ButtonOrAnchor>;
+
+  /**
+   * ClickableTile onBlur
+   */
+  onBlur?: React.FocusEventHandler<ButtonOrAnchor>;
 
   /**
    * ClickableTile Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const ClickableTile = ({
-  children,
-  className,
-  disabled,
-  readOnly,
-  onClick,
-  ...rest
-}: ClickableTileProps) => {
+const ClickableTile = (
+  {
+    children,
+    className,
+    disabled,
+    readOnly,
+    onClick,
+    href,
+    ...rest
+  }: ClickableTileProps,
+  ref: React.ForwardedRef<ButtonOrAnchor>
+) => {
+  const classes = cx(
+    `${prefix}--tile ${prefix}--tile-clickable`,
+    {
+      [`${prefix}--tile-disabled`]: disabled,
+      [`${prefix}--tile-readonly`]: readOnly
+    },
+    className
+  );
   return (
     <>
-      {onClick ? (
-        <button
-          disabled={disabled}
-          className={cx(
-            `${prefix}--tile ${prefix}--tile-clickable`,
-            {
-              [`${prefix}--tile-disabled`]: disabled,
-              [`${prefix}--tile-readonly`]: readOnly
-            },
-
-            className
-          )}
-          {...rest}
-        >
-          {children}
-        </button>
-      ) : (
+      {href ? (
         <a
           aria-disabled={disabled}
-          className={cx(
-            `${prefix}--tile ${prefix}--tile-clickable`,
-            {
-              [`${prefix}--tile-disabled`]: disabled,
-              [`${prefix}--tile-readonly`]: readOnly
-            },
-
-            className
-          )}
+          className={classes}
           {...rest}
+          href={href}
+          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
         >
           {children}
         </a>
+      ) : (
+        <button
+          disabled={disabled}
+          className={classes}
+          {...rest}
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
+        >
+          {children}
+        </button>
       )}
     </>
   );

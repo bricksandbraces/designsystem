@@ -1,5 +1,5 @@
 import { withKnobs } from "@storybook/addon-knobs";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import Tab from "./Tab";
 import Tabs from "./Tabs";
@@ -57,17 +57,6 @@ export const Uncontrolled = () => {
 
 export const Controlled = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSelectedIndex(selectedIndex + 1 > 2 ? 0 : selectedIndex + 1);
-    }, 1500);
-
-    // cleanup
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [selectedIndex]);
 
   return (
     <div
@@ -169,16 +158,6 @@ export const ResponsiveUncontrolled = () => {
 export const ResponsiveControlled = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSelectedIndex(selectedIndex + 1 > 2 ? 0 : selectedIndex + 1);
-    }, 1500);
-
-    // cleanup
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [selectedIndex]);
   return (
     <div style={{ padding: "32px" }}>
       <Grid narrow>

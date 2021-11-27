@@ -1,7 +1,7 @@
 import { text, object, withKnobs, boolean } from "@storybook/addon-knobs";
 import React from "react";
 import LeadSpace from "./LeadSpace";
-import Header from "../../WebHeader/WebHeader";
+import Header from "../WebHeader/WebHeader";
 import LeadSpaceBlock from "./LeadSpaceBlock";
 import { Dropdown } from "../../..";
 

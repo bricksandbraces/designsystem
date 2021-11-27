@@ -1,30 +1,28 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type HeadlineProps = {
+export type HeadlineProps = {
   /**
-   * React children
+   * Headline React children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
-   * Type to use
+   * Headline Type to use
    */
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
   /**
-   * Classnames
+   * Headline Classnames
    */
   className?: string;
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
-const Headline = ({
-  children,
-  className,
-  type = "h1",
-  ...rest
-}: HeadlineProps) => {
+const Headline = (
+  { children, className, type = "h1", ...rest }: HeadlineProps,
+  ref: React.ForwardedRef<HTMLHeadElement>
+) => {
   const Element: any = React.createElement(type).type;
   return (
     <Element
@@ -33,10 +31,11 @@ const Headline = ({
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </Element>
   );
 };
 
-export default Headline;
+export default React.forwardRef(Headline);

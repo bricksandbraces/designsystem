@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type BodyProps = {
+export type BodyProps = {
   /**
    * Body Children
    */
@@ -19,12 +19,10 @@ type BodyProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
-const Body = ({
-  children,
-  className,
-  type = "body-01",
-  ...rest
-}: BodyProps) => {
+const Body = (
+  { children, className, type = "body-01", ...rest }: BodyProps,
+  ref: React.ForwardedRef<HTMLParagraphElement>
+) => {
   return (
     <p
       className={cx(
@@ -32,10 +30,11 @@ const Body = ({
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </p>
   );
 };
 
-export default Body;
+export default React.forwardRef(Body);

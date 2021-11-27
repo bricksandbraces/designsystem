@@ -76,7 +76,6 @@ export const Controlled = () => {
         onBlur={action("onBlur")}
         onKeyDown={action("onKeyDown")}
       />
-      <Label>SSoT value: {value}</Label>
     </div>
   );
 };

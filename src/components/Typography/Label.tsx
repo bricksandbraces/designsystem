@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
@@ -6,7 +6,7 @@ export type LabelProps = {
   /**
    * Label Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Label ClassName
@@ -20,12 +20,12 @@ const Label = (
 ) => {
   return (
     <label
-      ref={ref}
       className={cx(
         `${prefix}--typography ${prefix}--typography-label`,
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </label>
