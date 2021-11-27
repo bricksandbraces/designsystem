@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cx from "classnames";
 import { IconMenu, IconX } from "@tabler/icons";
 import Logo from "../../Logo/Logo";
@@ -6,8 +6,9 @@ import { Grid, Column } from "../../Grid/Grid";
 import { prefix } from "../../../settings";
 import { idfy } from "../../../helpers/arrayUtilities";
 import WebHeaderLink from "./WebHeaderLink";
+import { useControlledValue } from "../../../hooks/useControlled";
 
-type LinkItem = {
+export type LinkItem = {
   /**
    * LinkItem Href
    */
@@ -19,24 +20,52 @@ type LinkItem = {
   label: string;
 };
 
-type WebHeaderProps = {
+export type WebHeaderProps = {
   /**
    * WebHeader LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
+   * WebHeader Logo
+   */
+  logo?: React.ReactNode;
+
+  /**
    * WebHeader BaseUrl
    */
   baseUrl?: string;
+
+  /**
+   * WebHeader Open
+   */
+  open?: boolean;
+
+  /**
+   * WebHeader DefaultOpen
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * WebHeader OnOpenChange
+   */
+  onOpenChange?: (newOpen: boolean) => void;
 };
 
-const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
-  const [open, setOpen] = useState(false);
+const WebHeader = (
+  { open, defaultOpen, onOpenChange, linkItems, logo, baseUrl }: WebHeaderProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
+  const [headerOpen, setHeaderOpen] = useControlledValue(
+    open,
+    defaultOpen,
+    onOpenChange,
+    false
+  );
   const indexedLinkItems = idfy(linkItems);
   return (
     <>
-      <header className={cx(`${prefix}--webheader`)}>
+      <header className={cx(`${prefix}--webheader`)} ref={ref}>
         <div>
           <Grid narrow fullWidth>
             <Column className={cx(`${prefix}--webheader-container`)}>
@@ -49,17 +78,17 @@ const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
       </header>
       <button
         className={cx(`${prefix}--webheader-toggle`, {
-          [`${prefix}--webheader-toggle__open`]: open
+          [`${prefix}--webheader-toggle__open`]: headerOpen
         })}
         onClick={() => {
-          setOpen(!open);
+          setHeaderOpen(!headerOpen);
         }}
       >
-        {open ? <IconX /> : <IconMenu />}
+        {headerOpen ? <IconX /> : <IconMenu />}
       </button>
       <div
         className={cx(`${prefix}--webheader-menu`, {
-          [`${prefix}--webheader-menu__open`]: open
+          [`${prefix}--webheader-menu__open`]: headerOpen
         })}
       >
         <div>
@@ -69,7 +98,7 @@ const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
                 key={link.id}
                 href={link.href}
                 onClick={() => {
-                  setOpen(!open);
+                  setHeaderOpen(!headerOpen);
                 }}
               >
                 {link.label}
@@ -84,7 +113,7 @@ const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
               `${prefix}--webheader-logo ${prefix}--webheader-menu__logo`
             )}
           >
-            <Logo type="logotype" color="white" size="xsmall" />
+            {logo ?? <Logo type="logotype" color="white" size="xsmall" />}
           </a>
         </div>
       </div>
@@ -93,4 +122,4 @@ const WebHeader = ({ linkItems, baseUrl }: WebHeaderProps) => {
   );
 };
 
-export default WebHeader;
+export default React.forwardRef(WebHeader);
