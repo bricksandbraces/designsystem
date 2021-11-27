@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
-import { Grid, Column } from "../Grid/Grid";
-import Button from "../Button/Button";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
+import { Grid, Column } from "../../Grid/Grid";
+import Button from "../../Button/Button";
+import { prefix } from "../../../settings";
+import { idfy } from "../../../helpers/arrayUtilities";
 
-type CtaItem = {
+export type CtaItem = {
   /**
    * CtaItem Href
    */
@@ -23,11 +23,11 @@ type CtaItem = {
   showChevron: boolean;
 };
 
-type LeadSpaceBlockProps = {
+export type LeadSpaceBlockProps = {
   /**
    * LeadSpaceBlock Text
    */
-  text?: string | ReactNode;
+  text?: ReactNode;
 
   /**
    * LeadSpaceBlock Title

@@ -9,6 +9,8 @@ import cx from "classnames";
 import mergeRefs from "react-merge-refs";
 
 export type LottieProps = {
+  title?: string;
+  role?: string;
   className?: string;
   animationProps:
     | (Omit<AnimationConfigWithPath, "container" | "path"> & { path: string })
