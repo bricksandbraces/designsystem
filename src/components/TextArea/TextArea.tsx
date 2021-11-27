@@ -118,7 +118,12 @@ const TextArea = (
   }, [value]);
 
   return (
-    <div className={`${prefix}--textarea`}>
+    <div
+      className={cx(`${prefix}--textarea`, {
+        [`${prefix}--textarea-disabled`]: disabled,
+        [`${prefix}--textarea-readonly`]: readOnly
+      })}
+    >
       <div className={`${prefix}--textarea-top`}>
         {label && <Label htmlFor={id}>{label}</Label>}
         {characterLimit && (
