@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCookie } from "react-use";
 import CookieBanner from "../CookieBanner/CookieBanner";
 import useConstant from "../../../hooks/useConstant";
@@ -8,36 +8,73 @@ import CookieModal, {
   OptType
 } from "../CookieModal/CookieModal";
 
-type CookieModalProps = {
-  /** Override the banner open state. */
+export type CookieModalProps = {
+  /**
+   * Cookies BannerOpen - Override the banner open state.
+   */
   bannerOpen?: boolean;
+  /**
+   * Cookies BannerLabel
+   */
   bannerLabel: string;
-  bannerButtonLabel?: string;
-  bannerLinkLabel?: string;
-  bannerLinkHref?: string;
-
-  modalHeadline?: string;
-  modalIntro?: string;
-  /** Override the modal open state. */
-  modalOpen?: boolean;
-  acceptAllLabel?: string;
-  acceptSelectedLabel?: string;
 
   /**
-   * The settings to render in the UI. Should not change after initial render.
+   * Cookies BannerButtonLabel
+   */
+  bannerButtonLabel?: string;
+
+  /**
+   * Cookies BannerLinkLabel
+   */
+  bannerLinkLabel?: string;
+
+  /**
+   * Cookies BannerLinkHref
+   */
+  bannerLinkHref?: string;
+
+  /**
+   * Cookies ModalHeadline
+   */
+  modalHeadline: string;
+
+  /**
+   * Cookies ModalIntro
+   */
+  modalIntro: string;
+
+  /**
+   * Cookies Modal Open - Override the modal open state.
+   */
+  modalOpen?: boolean;
+
+  /**
+   * Cookies AcceptAllLabel
+   */
+  acceptAllLabel: string;
+
+  /**
+   * Cookies AcceptSelectedLabel
+   */
+  acceptSelectedLabel: string;
+
+  /**
+   * Cookies Settings - The settings to render in the UI. Should not change after initial render.
    */
   settings: CookieSetting[];
 
-  /** Version of the settings datastructure. Should not be changed after initial render. Default is 1. Floats are not supported. */
+  /**
+   * Cookies Revision - Version of the settings datastructure. Should not be changed after initial render. Default is 1. Floats are not supported.
+   */
   revision?: number;
 
   /**
-   * When changed settings are submitted, this listener is called with a settingsMap where keys are the ids of the settings and the values are the checked values. The listener is NOT called when the modal is being closed. See onClose for this.
+   * Cookies onSettingsSubmit - When changed settings are submitted, this listener is called with a settingsMap where keys are the ids of the settings and the values are the checked values. The listener is NOT called when the modal is being closed. See onClose for this.
    */
   onSettingsSubmit?: (settingsMap: Record<string, boolean>) => void;
 
   /**
-   * When the modal receives a close request, this listener is being called. It is also being called when the new settings are being submitted additionally to onSettingsSubmit.
+   * Cookies OnClose - When the modal receives a close request, this listener is being called. It is also being called when the new settings are being submitted additionally to onSettingsSubmit.
    */
   onClose?: () => void;
 };
@@ -47,15 +84,15 @@ type CookieModalProps = {
  */
 const CookiesComponent = ({
   modalOpen,
-  modalIntro = "Hier können Sie Ihre Cookies anpassen.",
-  modalHeadline = "Cookies anpassen",
+  modalIntro,
+  modalHeadline,
   bannerOpen,
-  bannerLabel = "Diese Website verwendet Cookies 🍪 .",
+  bannerLabel,
   bannerButtonLabel = "OK",
-  bannerLinkLabel = "Einstellungen anpassen",
+  bannerLinkLabel,
   bannerLinkHref,
-  acceptAllLabel = "Alle Cookies akzeptieren",
-  acceptSelectedLabel = "Einstellungen übernehmen",
+  acceptAllLabel,
+  acceptSelectedLabel,
   revision = 1,
   settings,
   onClose,
@@ -163,7 +200,7 @@ const CookiesComponent = ({
         ref={modalRef}
         settings={editingSettings}
         onSettingChanged={(
-          event: ChangeEvent<HTMLInputElement>,
+          event: React.ChangeEvent<HTMLInputElement>,
           settingIndex: number
         ) => {
           setEditingSettings(

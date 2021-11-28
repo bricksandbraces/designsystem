@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { prefix } from "../../../settings";
 import cx from "classnames";
 
-type WebHeaderLinkProps = {
+export type WebHeaderLinkProps = {
   /**
    * WebHeaderLink Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * WebHeaderLink ClassName
@@ -21,24 +21,23 @@ type WebHeaderLinkProps = {
   /**
    * WebHeaderLink OnClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-const WebHeaderLink = ({
-  className,
-  href,
-  children,
-  ...rest
-}: WebHeaderLinkProps) => {
+const WebHeaderLink = (
+  { className, href, children, ...rest }: WebHeaderLinkProps,
+  ref: React.ForwardedRef<HTMLAnchorElement>
+) => {
   return (
     <a
       href={href}
       {...rest}
       className={cx(`${prefix}--webheader-link`, className)}
+      ref={ref}
     >
       {children}
     </a>
   );
 };
 
-export default WebHeaderLink;
+export default React.forwardRef(WebHeaderLink);

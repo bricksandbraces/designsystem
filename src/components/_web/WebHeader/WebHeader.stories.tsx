@@ -1,10 +1,11 @@
+import { action } from "@storybook/addon-actions";
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import WebHeader from "./WebHeader";
 
 export default { title: "Web/A_REFA_WebHeader", decorators: [withKnobs] };
 
-export const Default = () => {
+export const DefaultUncontrolled = () => {
   return (
     <WebHeader
       baseUrl={text("baseUrl", "#")}
@@ -13,6 +14,7 @@ export const Default = () => {
         { href: "#", label: "Contact" },
         { href: "#", label: "Blog" }
       ])}
+      onOpenChange={action("onOpenChange")}
     />
   );
 };

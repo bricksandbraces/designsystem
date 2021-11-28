@@ -4,7 +4,7 @@ import { Grid, Column, Link } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
 
-type LinkItem = {
+export type LinkItem = {
   /**
    * LinkItem Href
    */
@@ -19,11 +19,16 @@ type LinkItem = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-type FooterProps = {
+export type FooterProps = {
   /**
    * Footer LinkItems
    */
   linkItems?: LinkItem[];
+
+  /**
+   * Footer CompanyLabel
+   */
+  companyLabel?: React.ReactNode;
 
   /**
    * Footer ClassName
@@ -47,7 +52,13 @@ type FooterProps = {
 };
 
 const Footer = (
-  { linkItems, className, description, descriptionLink }: FooterProps,
+  {
+    linkItems,
+    className,
+    description,
+    descriptionLink,
+    companyLabel = <>BRICKS &amp; BRACES</>
+  }: FooterProps,
   ref: React.ForwardedRef<HTMLElement>
 ) => {
   const currentYear = new Date().getFullYear();
@@ -63,7 +74,7 @@ const Footer = (
           className={`${prefix}--webfooter-column`}
         >
           <p className={`${prefix}--webfooter-label`}>
-            &copy; {currentYear} BRICKS &amp; BRACES
+            &copy; {currentYear} {companyLabel}
           </p>
           {(description || descriptionLink) && (
             <p className={`${prefix}--webfooter-label`}>

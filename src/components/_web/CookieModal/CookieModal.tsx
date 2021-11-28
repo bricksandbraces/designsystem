@@ -1,4 +1,4 @@
-import React, { ChangeEvent, forwardRef } from "react";
+import React from "react";
 import { prefix } from "../../../settings";
 import Checkbox from "../../Checkbox/Checkbox";
 import Modal from "../../Modal/Modal";
@@ -14,9 +14,24 @@ export enum OptType {
 }
 
 export type CookieSetting = {
+  /**
+   * CookieSetting ID mandatory
+   */
   id: string;
+
+  /**
+   * CookieSetting OptType
+   */
   type: OptType;
+
+  /**
+   * CookieSetting Label
+   */
   label: string;
+
+  /**
+   * CookieSetting Description
+   */
   description: string;
 };
 
@@ -25,18 +40,21 @@ export type CookieSettingWithState = CookieSetting & { checked: boolean };
 /**
  * UI component representing a controlled cookie setting checkbox
  */
-const CookieSettingControl = ({
-  id,
-  type,
-  label,
-  description,
-  checked,
-  onChange
-}: CookieSettingWithState & {
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-}) => {
+export const CookieSettingControl = (
+  {
+    id,
+    type,
+    label,
+    description,
+    checked,
+    onChange
+  }: CookieSettingWithState & {
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  },
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <div className={`${prefix}--cookiemodal-check`}>
+    <div className={`${prefix}--cookiemodal-check`} ref={ref}>
       <Checkbox
         label={label}
         value={label.toLowerCase()}
@@ -54,19 +72,63 @@ const CookieSettingControl = ({
 };
 
 export type CookieModalProps = {
+  /**
+   * CookieModal Open
+   */
   open?: boolean;
+
+  /**
+   * CookieModal Intro
+   */
   intro: string;
+
+  /**
+   * CookieModal Headline
+   */
   headline: string;
+
+  /**
+   * CookieModal Primary Label
+   */
   primaryLabel: string;
-  onPrimaryClick: () => void;
+
+  /**
+   * CookieModal onPrimaryClick
+   */
+  onPrimaryClick: React.MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * CookieModal Secondary Label
+   */
   secondaryLabel: string;
-  onSecondaryClick?: () => void;
+
+  /**
+   * CookieModal onSecondarClick
+   */
+  onSecondaryClick?: React.MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * CookieModal Settings
+   */
   settings: CookieSettingWithState[];
+
+  /**
+   * CookieModal OnSettingChanged
+   */
   onSettingChanged?: (
-    event: ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>,
     settingIndex: number
   ) => void;
-  onClose?: () => void;
+
+  /**
+   * CookieModal OnClose
+   */
+  onClose?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | KeyboardEvent
+      | MouseEvent
+  ) => void;
 };
 
 /**
@@ -118,4 +180,4 @@ const CookieModal = (
   );
 };
 
-export default forwardRef<HTMLDivElement, CookieModalProps>(CookieModal);
+export default React.forwardRef<HTMLDivElement, CookieModalProps>(CookieModal);

@@ -40,6 +40,16 @@ export type LeadSpaceProps = {
   videoUrl?: string;
 
   /**
+   * LeadSpace VideoPlayLabel
+   */
+  videoPlayLabel?: string;
+
+  /**
+   * LeadSpace VideoPauseLabel
+   */
+  videoPauseLabel?: string;
+
+  /**
    * LeadSpace Title
    */
   title?: string;
@@ -51,7 +61,14 @@ export type LeadSpaceProps = {
 };
 
 const LeadSpace = (
-  { backgroundImage, videoUrl, title, ctaItems }: LeadSpaceProps,
+  {
+    backgroundImage,
+    videoUrl,
+    videoPauseLabel,
+    videoPlayLabel,
+    title,
+    ctaItems
+  }: LeadSpaceProps,
   ref: React.ForwardedRef<HTMLElement>
 ) => {
   const video = useRef<HTMLVideoElement>(null);
@@ -64,7 +81,9 @@ const LeadSpace = (
         [`${prefix}--leadspace-video__player`]: videoUrl
       })}
       style={{
-        backgroundImage: `url(${backgroundImage})`
+        backgroundImage: backgroundImage?.startsWith("url(")
+          ? backgroundImage
+          : `url(${backgroundImage})`
       }}
       ref={ref}
     >
@@ -84,7 +103,7 @@ const LeadSpace = (
           </video>
           <IconOnlyButton
             className={`${prefix}--leadspace-video__controls`}
-            aria-label={videoPlay ? "Pause video" : "Play video"}
+            aria-label={videoPlay ? videoPauseLabel : videoPlayLabel}
             kind="ghost"
             size="large"
             hideTooltip
