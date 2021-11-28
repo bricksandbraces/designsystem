@@ -10,6 +10,7 @@ import { useControlled } from "../../hooks/useControlled";
 import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type DropdownItem = {
   /**
@@ -229,9 +230,9 @@ const Dropdown = (
         ref={btnRef}
         aria-expanded={open}
         className={cx(`${prefix}--dropdown-${size} ${prefix}--dropdown-toggle`)}
-        onClick={() => {
+        onClick={withoutPropagation(() => {
           setOpen(!open);
-        }}
+        })}
         onFocus={onFocus}
         onBlur={onBlur}
       >

@@ -103,8 +103,7 @@ const LoginForm = (
     onEmailChange,
     onPasswordChange,
     forgotPasswordText,
-    forgotPasswordLink = "#",
-    ...rest
+    forgotPasswordLink = "#"
   }: LoginFormProps,
   ref: React.ForwardedRef<HTMLFormElement>
 ) => {
@@ -127,7 +126,7 @@ const LoginForm = (
   );
 
   return (
-    <form className={className} {...rest} ref={ref}>
+    <form className={className} ref={ref}>
       <TextInput
         className={`${prefix}--loginform--email`}
         fluid
