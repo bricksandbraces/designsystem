@@ -12,6 +12,9 @@ const DatePicker = (
 ) => {
   return (
     <DayPicker
+      showOutsideDays
+      firstDayOfWeek={1}
+      fixedWeeks
       className={cx(className, `${prefix}--datepicker`, {
         [`${prefix}--datepicker-hidden`]: !open
       })}
