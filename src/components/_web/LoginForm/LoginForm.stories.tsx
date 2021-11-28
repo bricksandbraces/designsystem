@@ -30,8 +30,8 @@ export const DefaultUncontrolled = () => (
           "Invalid Password Text",
           "This password is not valid."
         )}
-        emailPlaceholder={text("Email Placeholder", "")}
-        passwordPlaceholder={text("Email Placeholder", "")}
+        emailPlaceholder={text("Email Placeholder", "Email")}
+        passwordPlaceholder={text("Password Placeholder", "Password")}
         defaultEmailValue={text("Default Email Value", "max@mustermann.de")}
         defaultPasswordValue={text("Default Password Value", "12345678")}
         forgotPasswordLink={text("Forgot Password Link", "#")}

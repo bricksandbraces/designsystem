@@ -40,36 +40,38 @@ export type CookieSettingWithState = CookieSetting & { checked: boolean };
 /**
  * UI component representing a controlled cookie setting checkbox
  */
-export const CookieSettingControl = (
-  {
-    id,
-    type,
-    label,
-    description,
-    checked,
-    onChange
-  }: CookieSettingWithState & {
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  },
-  ref: React.ForwardedRef<HTMLDivElement>
-) => {
-  return (
-    <div className={`${prefix}--cookiemodal-check`} ref={ref}>
-      <Checkbox
-        label={label}
-        value={label.toLowerCase()}
-        id={id}
-        checked={
-          checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)
-        }
-        disabled={type === OptType.ESSENTIAL}
-        onChange={onChange}
-      >
-        {description}
-      </Checkbox>
-    </div>
-  );
-};
+export const CookieSettingControl = React.forwardRef(
+  function CookieSettingsControlFn(
+    {
+      id,
+      type,
+      label,
+      description,
+      checked,
+      onChange
+    }: CookieSettingWithState & {
+      onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    },
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) {
+    return (
+      <div className={`${prefix}--cookiemodal-check`} ref={ref}>
+        <Checkbox
+          label={label}
+          value={label.toLowerCase()}
+          id={id}
+          checked={
+            checked ?? (type === OptType.OPT_OUT || type === OptType.ESSENTIAL)
+          }
+          disabled={type === OptType.ESSENTIAL}
+          onChange={onChange}
+        >
+          {description}
+        </Checkbox>
+      </div>
+    );
+  }
+);
 
 export type CookieModalProps = {
   /**

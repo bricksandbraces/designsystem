@@ -166,4 +166,4 @@ const UserProfile = (
   );
 };
 
-export default UserProfile;
+export default React.forwardRef(UserProfile);
