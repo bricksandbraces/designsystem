@@ -1,14 +1,13 @@
-import React, { ReactNode, useState, useRef } from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconDotsVertical } from "@tabler/icons";
-import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import Tippy from "@tippyjs/react";
 
 type OverflowMenuProps = {
   /**
-   * OverflowMenu Message
+   * OverflowMenu Children
    */
   children?: string | ReactNode;
 
@@ -16,6 +15,11 @@ type OverflowMenuProps = {
    * OverflowMenu ClassName
    */
   className?: string;
+
+  /**
+   * OverflowMenu Icon
+   */
+  icon?: ReactNode;
 
   /**
    * OverflowMenu Size
@@ -26,18 +30,19 @@ type OverflowMenuProps = {
 const OverflowMenu = ({
   size = "default",
   children,
+  icon = <IconDotsVertical />,
   className,
   ...props
 }: OverflowMenuProps) => {
   return (
     <>
       <Tippy
+        interactive
         arrow={false}
         className={cx(
           `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`
         )}
         animation="bbds-animation"
-        duration={150}
         trigger="click"
         placement="bottom-start"
         theme="dark"
@@ -45,13 +50,13 @@ const OverflowMenu = ({
         allowHTML
         content={children}
       >
-        <button
-          className={cx(
-            `${prefix}--overflowmenu-trigger ${prefix}--overflowmenu-trigger__${size}`
-          )}
-        >
-          <IconDotsVertical />
-        </button>
+        <IconOnlyButton
+          icon={icon}
+          size={size}
+          kind="ghost"
+          hideTooltip
+          className={cx(`${prefix}--overflowmenu-trigger`)}
+        />
       </Tippy>
     </>
   );
