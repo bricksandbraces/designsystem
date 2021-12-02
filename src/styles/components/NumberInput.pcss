@@ -30,7 +30,7 @@
           opacity: 0%;
         }
 
-        &:focus ~ .$(prefix)--numberinput-fluid__label {
+        &:focus-visible ~ .$(prefix)--numberinput-fluid__label {
           @mixin type--label;
 
           transform: translateY(-0.625rem);
@@ -105,7 +105,7 @@
         color: $color--font-placeholder;
       }
 
-      &:focus {
+      &:focus-visible {
         border-color: $color--focus;
 
         &::placeholder {
