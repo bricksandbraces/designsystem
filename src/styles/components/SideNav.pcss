@@ -43,7 +43,7 @@
         user-select: none;
       }
 
-      &:focus {
+      &:focus-visible {
         outline: 0.0625rem solid white;
       }
     }
@@ -55,7 +55,7 @@
       justify-content: flex-start;
       width: 100%;
       height: $size--container-04;
-      padding: 0 16px;
+      padding: 0 $size--spacing-05;
       overflow: hidden;
       transition: background-color $transition--app-01,
         border-color $transition--app-01, color $transition--app-01;
@@ -85,8 +85,16 @@
         background-color: $color--active;
       }
 
-      &:focus {
+      &:focus-visible {
         border-color: $color--focus;
+      }
+
+      &__with-icon {
+        & + .$(prefix)--sidenav-item__expander-list {
+          & > .$(prefix)--sidenav-item {
+            padding-left: $size--spacing-09;
+          }
+        }
       }
 
       &__icon {
@@ -154,15 +162,11 @@
           gap: $component--padding-inside;
 
           & > .$(prefix)--sidenav-item {
-            & > .$(prefix)--sidenav-item__icon > svg {
-              display: none;
-            }
-
-            padding-left: $size--spacing-07;
+            padding-left: calc($size--spacing-05 * 2);
           }
 
           & + .$(prefix)--sidenav-headline {
-            margin-top: $size--spacing-05;
+            margin-top: $size--spacing-06;
           }
         }
       }
@@ -182,7 +186,15 @@
       display: inline-flex;
       align-items: flex-end;
       width: 100%;
-      padding: 0 calc($size--spacing-05 + $component--padding-inside);
+      margin-bottom: $size--spacing-03;
+      padding: 0 $size--spacing-05;
+
+      & > h3 {
+        @mixin type--label;
+
+        margin: 0;
+        color: $color--font-text-04;
+      }
 
       & > .$(prefix)--typography-label {
         margin: 0;

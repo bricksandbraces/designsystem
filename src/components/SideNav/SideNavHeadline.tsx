@@ -1,7 +1,6 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
 
 export type SideNavHeadlineProps = {
   /**
@@ -17,12 +16,11 @@ export type SideNavHeadlineProps = {
 
 const SideNavHeadline = (
   { className, children }: SideNavHeadlineProps,
-  ref: React.ForwardedRef<HTMLLabelElement>
+  ref: React.ForwardedRef<HTMLHeadingElement>
 ) => {
   return (
     <div className={cx(`${prefix}--sidenav-headline`, className)}>
-      {/* TODO: Replace Label Component with h1,2,3 or so to improve SEO */}
-      <Label ref={ref}>{children}</Label>
+      <h3 ref={ref}>{children}</h3>
     </div>
   );
 };

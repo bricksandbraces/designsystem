@@ -26,7 +26,7 @@ export type SideNavItemProps = {
   /**
    * SideNavItem Icon
    */
-  icon: ReactNode;
+  icon?: ReactNode;
 
   /**
    * SideNavItem Selected
@@ -52,12 +52,15 @@ const SideNavItem = (
           className={cx(
             `${prefix}--sidenav-item`,
             {
-              [`${prefix}--sidenav-item__selected`]: selected
+              [`${prefix}--sidenav-item__selected`]: selected,
+              [`${prefix}--sidenav-item__with-icon`]: icon
             },
             className
           )}
         >
-          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          {icon && (
+            <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          )}
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </a>
       ) : (
@@ -67,12 +70,15 @@ const SideNavItem = (
           className={cx(
             `${prefix}--sidenav-item`,
             {
-              [`${prefix}--sidenav-item__selected`]: selected
+              [`${prefix}--sidenav-item__selected`]: selected,
+              [`${prefix}--sidenav-item__with-icon`]: icon
             },
             className
           )}
         >
-          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          {icon && (
+            <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          )}
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </button>
       )}

@@ -44,18 +44,53 @@ export const Default = () => {
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" selected />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
+        <SideNavDivider />
         <SideNavHeadline>Group 2</SideNavHeadline>
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
         <SideNavItem href="#" icon={<IconAward />} label="Awards" />
+      </SideNav>
+    </div>
+  );
+};
+
+export const DefaultWithoutIcons = () => {
+  return (
+    <div style={{ height: "100vh" }}>
+      <SideNav
+        basePath="#"
+        logo={<Logo type="logotype" color="white" size="xsmall" />}
+        defaultOpen
+        onLogoClick={action("onLogoClick")}
+      >
+        <SideNavItem href="#" label="Home &amp; Dashboard" />
+        <SideNavItem href="#" label="Campaigns" />
+        <SideNavDivider />
+        <SideNavHeadline>Group 1</SideNavHeadline>
+        <SideNavItem href="#" label="Data base" />
+        <SideNavItem href="#" label="Search" />
+        <SideNavItemExpander label="All apps">
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" selected />
+          <SideNavItem href="#" label="Tinder" />
+        </SideNavItemExpander>
+        <SideNavItemExpander label="All apps">
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" />
+          <SideNavItem href="#" label="Tinder" />
+        </SideNavItemExpander>
+        <SideNavDivider />
+        <SideNavHeadline>Group 2</SideNavHeadline>
+        <SideNavItem href="#" label="Two-factor auth" />
+        <SideNavItem href="#" label="Awards" />
       </SideNav>
     </div>
   );
@@ -76,14 +111,14 @@ export const ButtonsAsItems = () => {
         <SideNavItem icon={<IconDatabase />} label="Data base" />
         <SideNavItem icon={<IconSearch />} label="Search" />
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem icon={<IconCash />} label="Cash" />
-          <SideNavItem icon={<IconAngle />} label="Angle" selected />
-          <SideNavItem icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem label="Cash" />
+          <SideNavItem label="Angle" selected />
+          <SideNavItem label="Tinder" />
         </SideNavItemExpander>
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem icon={<IconCash />} label="Cash" />
-          <SideNavItem icon={<IconAngle />} label="Angle" />
-          <SideNavItem icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem label="Cash" />
+          <SideNavItem label="Angle" />
+          <SideNavItem label="Tinder" />
         </SideNavItemExpander>
         <SideNavHeadline>Group 2</SideNavHeadline>
         <SideNavItem icon={<Icon2fa />} label="Two-factor auth" />
@@ -118,13 +153,11 @@ export const WithSelection = () => {
         />
         <SideNavItemExpander icon={<IconApps />} label="All apps">
           <SideNavItem
-            icon={<IconCash />}
             label="Cash"
             selected={selectedIndex === 2}
             onClick={() => setSelectedIndex(2)}
           />
           <SideNavItem
-            icon={<IconAngle />}
             label="Angle"
             selected={selectedIndex === 3}
             onClick={() => setSelectedIndex(3)}
@@ -162,14 +195,14 @@ export const WithAction = () => {
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" selected />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
         <SideNavHeadline>Group 2</SideNavHeadline>
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
@@ -205,14 +238,14 @@ export const WithLogoImg = () => {
         <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
         <SideNavItem href="#" icon={<IconSearch />} label="Search" />
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" selected />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
         <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          <SideNavItem href="#" label="Cash" />
+          <SideNavItem href="#" label="Angle" />
+          <SideNavItem href="#" label="Tinder" />
         </SideNavItemExpander>
         <SideNavHeadline>Group 2</SideNavHeadline>
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />

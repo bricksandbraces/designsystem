@@ -27,7 +27,7 @@ type SideNavItemExpanderProps = {
   /**
    * SideNavItemExpander Icon
    */
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 
   /**
    * SideNavItemExpander OnClick Function
@@ -60,12 +60,13 @@ const SideNavItemExpander = ({
           `${prefix}--sidenav-item ${prefix}--sidenav-item__expander`,
           {
             [`${prefix}--sidenav-item__selected`]: selected,
-            [`${prefix}--sidenav-item__expander-open`]: open
+            [`${prefix}--sidenav-item__expander-open`]: open,
+            [`${prefix}--sidenav-item__with-icon`]: icon
           },
           className
         )}
       >
-        <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+        {icon && <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>}
         <div className={`${prefix}--sidenav-item__container`}>
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
           <div className={`${prefix}--sidenav-item__chevron`}>
