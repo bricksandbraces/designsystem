@@ -4,9 +4,9 @@ import cx from "classnames";
 
 export type HeaderNavLinkProps = {
   /**
-   * HeaderNavLink Children
+   * HeaderNavLink Label
    */
-  children?: React.ReactNode;
+  label?: string;
 
   /**
    * HeaderNavLink ClassName
@@ -30,7 +30,7 @@ export type HeaderNavLinkProps = {
 };
 
 const HeaderNavLink = (
-  { className, href, children, selected, ...rest }: HeaderNavLinkProps,
+  { className, href, label, selected, ...rest }: HeaderNavLinkProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
 ) => {
   return (
@@ -44,7 +44,7 @@ const HeaderNavLink = (
       )}
       ref={ref}
     >
-      {children}
+      {label}
     </a>
   );
 };

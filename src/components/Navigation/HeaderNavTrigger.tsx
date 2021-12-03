@@ -5,9 +5,9 @@ import { IconChevronDown } from "@tabler/icons";
 
 export type HeaderNavTriggerProps = {
   /**
-   * HeaderNavTrigger Children
+   * HeaderNavTrigger Label
    */
-  children?: React.ReactNode;
+  label?: string;
 
   /**
    * HeaderNavTrigger ClassName
@@ -31,14 +31,7 @@ export type HeaderNavTriggerProps = {
 };
 
 const HeaderNavTrigger = (
-  {
-    className,
-    children,
-    onClick,
-    open,
-    selected,
-    ...rest
-  }: HeaderNavTriggerProps,
+  { className, label, onClick, open, selected, ...rest }: HeaderNavTriggerProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (
@@ -55,7 +48,7 @@ const HeaderNavTrigger = (
       )}
       ref={ref}
     >
-      {children}
+      {label}
       <IconChevronDown />
     </button>
   );

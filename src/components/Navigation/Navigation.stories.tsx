@@ -130,16 +130,16 @@ export const WithSideNav = () => {
             }}
           />
           <HeaderNav>
-            <HeaderNavLink href="#">Link 1</HeaderNavLink>
-            <HeaderNavLink href="#">Link 2</HeaderNavLink>
-            <HeaderNavLink href="#">Link 3</HeaderNavLink>
+            <HeaderNavLink href="#" label="Link 1" />
+            <HeaderNavLink href="#" label="Link 2" />
+            <HeaderNavLink href="#" label="Link 3" />
             <HeaderDivider />
-            <HeaderNavLink href="#">Link 4</HeaderNavLink>
-            <HeaderNavLink href="#">Link 5</HeaderNavLink>
+            <HeaderNavLink href="#" label="Link 4" />
+            <HeaderNavLink href="#" label="Link 5" />
             <HeaderDivider />
-            <HeaderNavTrigger>Trigger 1</HeaderNavTrigger>
-            <HeaderNavTrigger>Trigger 2</HeaderNavTrigger>
-            <HeaderNavTrigger>Trigger 3</HeaderNavTrigger>
+            <HeaderNavTrigger label="Trigger 1" />
+            <HeaderNavTrigger label="Trigger 2" />
+            <HeaderNavTrigger label="Trigger 3" />
             <HeaderDivider />
           </HeaderNav>
           <HeaderAction>
