@@ -2,35 +2,35 @@ import React from "react";
 import { prefix } from "../../settings";
 import cx from "classnames";
 
-export type UIHeaderNavLinkProps = {
+export type HeaderNavLinkProps = {
   /**
-   * UIHeaderNavLink Children
+   * HeaderNavLink Children
    */
   children?: React.ReactNode;
 
   /**
-   * UIHeaderNavLink ClassName
+   * HeaderNavLink ClassName
    */
   className?: string;
 
   /**
-   * UIHeaderNavLink Href
+   * HeaderNavLink Href
    */
   href?: string;
 
   /**
-   * UIHeaderNavLink Selected
+   * HeaderNavLink Selected
    */
   selected?: boolean;
 
   /**
-   * UIHeaderNavLink OnClick Function
+   * HeaderNavLink OnClick Function
    */
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-const UIHeaderNavLink = (
-  { className, href, children, selected, ...rest }: UIHeaderNavLinkProps,
+const HeaderNavLink = (
+  { className, href, children, selected, ...rest }: HeaderNavLinkProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
 ) => {
   return (
@@ -38,8 +38,8 @@ const UIHeaderNavLink = (
       href={href}
       {...rest}
       className={cx(
-        `${prefix}--uiheader-nav__link`,
-        { [`${prefix}--uiheader-nav__link-selected`]: selected },
+        `${prefix}--navigation-header__nav-link`,
+        { [`${prefix}--navigation-header__nav-link--selected`]: selected },
         className
       )}
       ref={ref}
@@ -49,4 +49,4 @@ const UIHeaderNavLink = (
   );
 };
 
-export default React.forwardRef(UIHeaderNavLink);
+export default React.forwardRef(HeaderNavLink);

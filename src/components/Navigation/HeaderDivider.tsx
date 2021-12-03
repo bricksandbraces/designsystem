@@ -3,24 +3,24 @@ import cx from "classnames";
 import { prefix } from "../../settings";
 import { Divider } from "../..";
 
-export type UIHeaderDividerProps = {
+export type HeaderDividerProps = {
   /**
-   * UIHeaderDividerProps ClassName
+   * HeaderDividerProps ClassName
    */
   className?: string;
 };
 
-const UIHeaderDivider = (
-  { className }: UIHeaderDividerProps,
+const HeaderDivider = (
+  { className }: HeaderDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
 ) => {
   return (
     <Divider
       type="default"
-      className={cx(`${prefix}--uiheader-divider`, className)}
+      className={cx(`${prefix}--navigation-header__divider`, className)}
       ref={ref}
     />
   );
 };
 
-export default React.forwardRef(UIHeaderDivider);
+export default React.forwardRef(HeaderDivider);
