@@ -29,6 +29,11 @@ export type SideNavItemProps = {
   icon?: ReactNode;
 
   /**
+   * SideNavItem FromHeader
+   */
+  fromHeader?: boolean;
+
+  /**
    * SideNavItem Selected
    */
   selected?: boolean;
@@ -40,7 +45,15 @@ export type SideNavItemProps = {
 };
 
 const SideNavItem = (
-  { href, label, icon, selected, className, onClick }: SideNavItemProps,
+  {
+    href,
+    label,
+    icon,
+    selected,
+    fromHeader,
+    className,
+    onClick
+  }: SideNavItemProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
 ) => {
   return (
@@ -53,7 +66,8 @@ const SideNavItem = (
             `${prefix}--sidenav-item`,
             {
               [`${prefix}--sidenav-item__selected`]: selected,
-              [`${prefix}--sidenav-item__with-icon`]: icon
+              [`${prefix}--sidenav-item__with-icon`]: icon,
+              [`${prefix}--sidenav-from-header`]: fromHeader
             },
             className
           )}
@@ -71,7 +85,8 @@ const SideNavItem = (
             `${prefix}--sidenav-item`,
             {
               [`${prefix}--sidenav-item__selected`]: selected,
-              [`${prefix}--sidenav-item__with-icon`]: icon
+              [`${prefix}--sidenav-item__with-icon`]: icon,
+              [`${prefix}--sidenav-from-header`]: fromHeader
             },
             className
           )}

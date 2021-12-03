@@ -5,19 +5,28 @@ import { Divider } from "../..";
 
 export type SideNavDividerProps = {
   /**
-   * SideNavDividerProps ClassName
+   * SideNavDivider ClassName
    */
   className?: string;
+
+  /**
+   * SideNavDivider FromHeader
+   */
+  fromHeader?: boolean;
 };
 
 const SideNavDivider = (
-  { className }: SideNavDividerProps,
+  { className, fromHeader }: SideNavDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
 ) => {
   return (
     <Divider
       type="default"
-      className={cx(`${prefix}--sidenav-divider`, className)}
+      className={cx(
+        `${prefix}--sidenav-divider`,
+        { [`${prefix}--sidenav-from-header`]: fromHeader },
+        className
+      )}
       ref={ref}
     />
   );

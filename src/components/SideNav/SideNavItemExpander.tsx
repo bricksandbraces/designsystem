@@ -25,6 +25,11 @@ type SideNavItemExpanderProps = {
   children?: React.ReactNode;
 
   /**
+   * SideNavItemExpander FromHeader
+   */
+  fromHeader?: boolean;
+
+  /**
    * SideNavItemExpander Icon
    */
   icon?: React.ReactNode;
@@ -39,6 +44,7 @@ const SideNavItemExpander = ({
   label,
   icon,
   className,
+  fromHeader,
   children
 }: SideNavItemExpanderProps) => {
   const [open, setOpen] = useState(false);
@@ -61,7 +67,8 @@ const SideNavItemExpander = ({
           {
             [`${prefix}--sidenav-item__selected`]: selected,
             [`${prefix}--sidenav-item__expander-open`]: open,
-            [`${prefix}--sidenav-item__with-icon`]: icon
+            [`${prefix}--sidenav-item__with-icon`]: icon,
+            [`${prefix}--sidenav-from-header`]: fromHeader
           },
           className
         )}

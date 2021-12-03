@@ -13,7 +13,8 @@
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
-    width: $size--container-08;
+    min-width: $size--container-08;
+    max-width: $size--container-08;
     height: 100%;
     padding: 0 $component--padding-inside $component--padding-inside
       $component--padding-inside;
@@ -287,5 +288,11 @@
 
   .$(prefix)--sidenav-mobileheader ~ .$(prefix)--sidenav {
     top: $size--container-05;
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-lg) {
+  .$(prefix)--sidenav-from-header {
+    display: none;
   }
 }

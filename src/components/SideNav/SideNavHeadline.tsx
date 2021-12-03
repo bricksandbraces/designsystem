@@ -12,14 +12,25 @@ export type SideNavHeadlineProps = {
    * SideNavHeadline Children
    */
   children: string;
+
+  /**
+   * SideNavHeadline FromHeader
+   */
+  fromHeader?: boolean;
 };
 
 const SideNavHeadline = (
-  { className, children }: SideNavHeadlineProps,
+  { className, children, fromHeader }: SideNavHeadlineProps,
   ref: React.ForwardedRef<HTMLHeadingElement>
 ) => {
   return (
-    <div className={cx(`${prefix}--sidenav-headline`, className)}>
+    <div
+      className={cx(
+        `${prefix}--sidenav-headline`,
+        { [`${prefix}--sidenav-from-header`]: fromHeader },
+        className
+      )}
+    >
       <h3 ref={ref}>{children}</h3>
     </div>
   );

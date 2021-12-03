@@ -5,9 +5,13 @@
 
 .$(prefix) {
   &--navigation {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+
     &-header {
       display: flex;
-      position: fixed;
+      position: sticky;
       z-index: 10000;
       top: 0;
       right: 0;
@@ -16,7 +20,7 @@
       justify-content: space-between;
       width: 100%;
       height: $size--container-05;
-      padding: $component--padding-inside $size--spacing-04;
+      padding: $component--padding-inside;
       border-bottom: 0.0625rem solid $color--border;
       background-color: $color--background;
       gap: $component--padding-inside;
@@ -25,6 +29,7 @@
         display: flex;
         height: $size--container-04;
         gap: $component--padding-inside;
+        padding: 0 $size--spacing-04;
 
         &-trigger {
           & > svg {
@@ -162,5 +167,39 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-md) {
+  .$(prefix)--navigation-header {
+    &__menu-button {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix)--navigation-header {
+    & + .$(prefix)--sidenav {
+      top: $size--container-05;
+    }
+
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-lg) {
+  .$(prefix)--navigation-header {
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
+  .$(prefix)--navigation-header {
+    justify-content: flex-end;
   }
 }
