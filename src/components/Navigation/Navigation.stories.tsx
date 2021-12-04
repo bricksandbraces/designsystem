@@ -37,15 +37,15 @@ export const WithNav = () => {
     <Navigation>
       <Header>
         <HeaderNav>
-          <HeaderNavLink href="#" selected>
-            Link 1
-          </HeaderNavLink>
-          <HeaderNavLink href="#">Link 2</HeaderNavLink>
-          <HeaderNavLink href="#">Link 3</HeaderNavLink>
-          <HeaderDivider />
-          <HeaderNavLink href="#">Link 4</HeaderNavLink>
-          <HeaderNavLink href="#">Link 5</HeaderNavLink>
-          <HeaderDivider />
+          <HeaderNav>
+            <HeaderNavLink href="#" label="Link 1" />
+            <HeaderNavLink href="#" label="Link 2" />
+            <HeaderNavLink href="#" label="Link 3" />
+            <HeaderDivider />
+            <HeaderNavLink href="#" label="Link 4" />
+            <HeaderNavLink href="#" label="Link 5" />
+            <HeaderDivider />
+          </HeaderNav>
         </HeaderNav>
       </Header>
     </Navigation>
@@ -57,14 +57,12 @@ export const WithActions = () => {
     <Navigation>
       <Header>
         <HeaderNav>
-          <HeaderNavLink href="#" selected>
-            Link 1
-          </HeaderNavLink>
-          <HeaderNavLink href="#">Link 2</HeaderNavLink>
-          <HeaderNavLink href="#">Link 3</HeaderNavLink>
+          <HeaderNavLink href="#" label="Link 1" />
+          <HeaderNavLink href="#" label="Link 2" />
+          <HeaderNavLink href="#" label="Link 3" />
           <HeaderDivider />
-          <HeaderNavLink href="#">Link 4</HeaderNavLink>
-          <HeaderNavLink href="#">Link 5</HeaderNavLink>
+          <HeaderNavLink href="#" label="Link 4" />
+          <HeaderNavLink href="#" label="Link 5" />
           <HeaderDivider />
         </HeaderNav>
         <HeaderAction>
@@ -85,23 +83,16 @@ export const WithDropdown = () => {
     <Navigation>
       <Header>
         <HeaderNav>
-          <HeaderNavLink href="#" selected>
-            Link 1
-          </HeaderNavLink>
-          <HeaderNavLink href="#">Link 2</HeaderNavLink>
-          <HeaderNavLink href="#">Link 3</HeaderNavLink>
+          <HeaderNavLink href="#" label="Link 1" />
+          <HeaderNavLink href="#" label="Link 2" />
+          <HeaderNavLink href="#" label="Link 3" />
           <HeaderDivider />
-          <HeaderNavLink href="#">Link 4</HeaderNavLink>
-          <HeaderNavLink href="#">Link 5</HeaderNavLink>
+          <HeaderNavLink href="#" label="Link 4" />
+          <HeaderNavLink href="#" label="Link 5" />
           <HeaderDivider />
-          <HeaderNavTrigger
-            open={boolean("open", false)}
-            selected={boolean("selected", false)}
-          >
-            Trigger 1
-          </HeaderNavTrigger>
-          <HeaderNavTrigger>Trigger 2</HeaderNavTrigger>
-          <HeaderNavTrigger>Trigger 3</HeaderNavTrigger>
+          <HeaderNavTrigger label="Trigger 1" />
+          <HeaderNavTrigger label="Trigger 2" />
+          <HeaderNavTrigger label="Trigger 3" />
           <HeaderDivider />
         </HeaderNav>
         <HeaderAction>
