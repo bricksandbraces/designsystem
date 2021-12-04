@@ -42,7 +42,7 @@ const defaultRows: RowEntry[] = [
   }
 ];
 const defaultHeaders: HeaderEntry[] = [
-  { title: "Full Name", key: "name" },
+  { title: "Full Name", key: "name", sortable: true },
   { title: "Location (Country)", key: "location" },
   { title: "Profession", key: "profession" }
 ];
@@ -216,6 +216,107 @@ export const DataTableWithSelection = () => {
                               checked={selectedIDs.includes(row.id)}
                               onChange={() => toggleSelectionForRow(row)}
                             />
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+const useTableSort = (): [
+  string | undefined,
+  "ascending" | "descending",
+  ((r1: RowEntry, r2: RowEntry) => number) | undefined,
+  (header: HeaderEntry) => void,
+  () => void
+] => {
+  const [sortByColumn, setSortByColumn] = useState<string>();
+  const [sortDirection, setSortDirection] = useState<
+    "ascending" | "descending"
+  >("descending");
+  const [sortFn, setSortFn] =
+    useState<(r1: RowEntry, r2: RowEntry) => number>();
+
+  const toggleHeaderSorting = (header: HeaderEntry) => {
+    setSortByColumn(header.key);
+    setSortDirection(
+      sortDirection === "ascending" ? "descending" : "ascending"
+    );
+    setSortFn(header.sortFn);
+  };
+
+  const disableSorting = () => {
+    setSortByColumn(undefined);
+    setSortDirection("descending");
+    setSortFn(undefined);
+  };
+
+  return [
+    sortByColumn,
+    sortDirection,
+    sortFn,
+    toggleHeaderSorting,
+    disableSorting
+  ];
+};
+
+export const DataTableWithSortableHeaderCells = () => {
+  const [sortByColumn, sortDirection, sortFn, toggleHeaderSorting] =
+    useTableSort();
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable
+              rows={object("Rows", defaultRows as RowEntry[])}
+              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+              sortedByColumn={sortByColumn}
+              sortDirection={sortDirection}
+              customSortFn={sortFn}
+            >
+              {({
+                rows,
+                headers,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          {headers.map((header) => (
+                            <TableHeadCell
+                              key={header.key}
+                              onClick={() => toggleHeaderSorting(header)}
+                              interactive={header.sortable}
+                            >
+                              {header.title}
+                            </TableHeadCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
                             {headers.map((header) => (
                               <TableCell key={`${row.id}-${header.key}`}>
                                 {row[header.key]}

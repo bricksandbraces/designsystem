@@ -12,16 +12,19 @@ export type TableHeadCellProps = {
    * TableHeadCell Interactive tells if the HeadCell should be interactive
    */
   interactive?: boolean;
+
+  onClick?: React.MouseEventHandler<HTMLTableCellElement>;
 };
 
 const TableHeadCell = (
-  { children, interactive, ...rest }: TableHeadCellProps,
-  ref: React.ForwardedRef<HTMLTableHeaderCellElement>
+  { children, interactive, onClick, ...rest }: TableHeadCellProps,
+  ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   return (
     <th
       className={cx(`${prefix}--datatable-head__cell`, { interactive })}
       scope="col"
+      onClick={onClick}
       {...rest}
       ref={ref}
     >

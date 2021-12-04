@@ -6,7 +6,8 @@ import { TableHeadProps } from "./TableHead";
 export type HeaderEntry = {
   title: string;
   key: string;
-  sortFn?: (r1: RowEntry, r2: RowEntry) => boolean;
+  sortable?: boolean;
+  sortFn?: (r1: RowEntry, r2: RowEntry) => number;
 };
 
 type Identifiable = {
@@ -26,24 +27,54 @@ export type DataTableRendererProps = {
 export type DataTableProps = {
   rows: RowEntry[];
   headers: HeaderEntry[];
+  sortedByColumn?: string;
+  customSortFn?: (a: RowEntry, b: RowEntry) => number;
+  sortDirection?: "ascending" | "descending";
   children: (rendererProps: DataTableRendererProps) => React.ReactNode;
 };
 
 const DataTable = ({
   rows,
   headers,
+  sortedByColumn,
+  customSortFn,
+  sortDirection = "ascending",
   children
 }: DataTableProps): JSX.Element => {
-  const [tableContainerProps, setTableContainerProps] = useState<
-    Partial<TableContainerProps>
-  >({});
+  const [tableContainerProps] = useState<Partial<TableContainerProps>>({});
+  const [tableProps] = useState<Partial<TableProps>>({});
+  const [tableHeadProps] = useState<Partial<TableHeadProps>>();
 
-  const [tableProps, setTableProps] = useState<Partial<TableProps>>({});
+  let processedRows = rows;
 
-  const [tableHeadProps, setTableHeadProps] =
-    useState<Partial<TableHeadProps>>();
+  // Sorting
+  if (sortedByColumn) {
+    if (customSortFn) {
+      processedRows = processedRows.sort(customSortFn);
+      if (sortDirection === "descending") {
+        processedRows = processedRows.reverse();
+      }
+    } else {
+      const sortableEntries = processedRows.filter(
+        (row) => typeof row[sortedByColumn] === "string"
+      );
+      const unsortableEntries = processedRows.filter(
+        (row) => typeof row[sortedByColumn] !== "string"
+      );
 
-  const processedRows = rows;
+      // sort sortableEntries and append unsortableEntries
+      processedRows = sortableEntries
+        .sort((a, b) => {
+          const aString = a[sortedByColumn] as string;
+          const bString = b[sortedByColumn] as string;
+          return sortDirection === "ascending"
+            ? aString.localeCompare(bString)
+            : bString.localeCompare(aString);
+        })
+        .concat(unsortableEntries);
+    }
+  }
+
   const processedHeaders = headers;
 
   return (
