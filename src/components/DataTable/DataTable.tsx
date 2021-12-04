@@ -28,17 +28,25 @@ export type DataTableProps = {
   rows: RowEntry[];
   headers: HeaderEntry[];
   sortedByColumn?: string;
+  activeFilters?: Record<string, ((row: RowEntry) => boolean) | undefined>;
   customSortFn?: (a: RowEntry, b: RowEntry) => number;
   sortDirection?: "ascending" | "descending";
+  itemsToShow?: number;
+  searchQuery?: string;
+  customSearchFilterFn?: (row: RowEntry) => boolean;
   children: (rendererProps: DataTableRendererProps) => React.ReactNode;
 };
 
 const DataTable = ({
   rows,
   headers,
+  activeFilters,
   sortedByColumn,
   customSortFn,
   sortDirection = "ascending",
+  itemsToShow,
+  searchQuery,
+  customSearchFilterFn,
   children
 }: DataTableProps): JSX.Element => {
   const [tableContainerProps] = useState<Partial<TableContainerProps>>({});
@@ -46,6 +54,34 @@ const DataTable = ({
   const [tableHeadProps] = useState<Partial<TableHeadProps>>();
 
   let processedRows = rows;
+
+  // Filtering
+
+  if (activeFilters) {
+    Object.keys(activeFilters).forEach((filterKey) => {
+      const filterFn = activeFilters[filterKey];
+      if (filterFn) {
+        processedRows = processedRows.filter(filterFn);
+      }
+    });
+  }
+
+  // Searching
+
+  if (searchQuery) {
+    const basicSearchFilterFn = (rowEntry: RowEntry) => {
+      return (
+        !searchQuery ||
+        Object.keys(rowEntry)
+          .filter((key) => typeof rowEntry[key] === "string")
+          .some((key) => (rowEntry[key] as string).includes(searchQuery))
+      );
+    };
+
+    processedRows = processedRows.filter(
+      customSearchFilterFn ?? basicSearchFilterFn
+    );
+  }
 
   // Sorting
   if (sortedByColumn) {
@@ -73,6 +109,11 @@ const DataTable = ({
         })
         .concat(unsortableEntries);
     }
+  }
+
+  // Slice & (todo) Pagination
+  if (itemsToShow != null) {
+    processedRows.slice(0, itemsToShow);
   }
 
   const processedHeaders = headers;

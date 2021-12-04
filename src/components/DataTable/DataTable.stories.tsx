@@ -1,4 +1,5 @@
 import { object, withKnobs } from "@storybook/addon-knobs";
+import { IconFilter } from "@tabler/icons";
 import React, { useState } from "react";
 import {
   Grid,
@@ -10,10 +11,15 @@ import {
   TableContainer,
   TableBody,
   TableCell,
-  SearchInput
+  SearchInput,
+  Modal,
+  Checkbox
 } from "../..";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 import { prefix } from "../../settings";
+import IconOnlyButton from "../Button/IconOnlyButton";
 import NumberInput from "../NumberInput/NumberInput";
+import Headline from "../Typography/Headline";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
 import TableSelectionCell from "./TableSelectionCell";
 import TableSelectionHeaderCell from "./TableSelectionHeaderCell";
@@ -393,14 +399,7 @@ export const DataTableWithHeader = () => {
 export const DataTableWithToolbar = () => {
   const [itemsToShow, setItemsToShow] = useState<number>(10);
   const [searchQuery, setSearchQuery] = useState<string | undefined>();
-  const filterBySearchQuery = (rowEntry: RowEntry) => {
-    return (
-      !searchQuery ||
-      Object.keys(rowEntry)
-        .filter((key) => typeof rowEntry[key] === "string")
-        .some((key) => (rowEntry[key] as string).includes(searchQuery))
-    );
-  };
+
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -409,6 +408,8 @@ export const DataTableWithToolbar = () => {
             <DataTable
               rows={object("Rows", defaultRows as RowEntry[])}
               headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+              searchQuery={searchQuery}
+              itemsToShow={itemsToShow}
             >
               {({
                 rows,
@@ -453,18 +454,162 @@ export const DataTableWithToolbar = () => {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {rows
-                          .filter(filterBySearchQuery)
-                          .slice(0, itemsToShow)
-                          .map((row) => (
-                            <TableRow key={row.id}>
-                              {headers.map((header) => (
-                                <TableCell key={`${row.id}-${header.key}`}>
-                                  {row[header.key]}
-                                </TableCell>
-                              ))}
-                            </TableRow>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+const useTableFilter = () => {
+  const [filterPanelOpen, setFilterPanelOpen] = useState(false);
+  const [activeFilters, setActiveFilters] = useState<
+    Record<string, ((row: RowEntry) => boolean) | undefined>
+  >({});
+  const activeFiltersCount = Object.keys(activeFilters).filter(
+    (filterKey) => !!activeFilters[filterKey]
+  ).length;
+
+  const registerFilter = (
+    filterKey: string,
+    filterFn: ((row: RowEntry) => boolean) | undefined
+  ) => {
+    setActiveFilters({ ...activeFilters, [filterKey]: filterFn });
+  };
+
+  return {
+    filterPanelOpen,
+    setFilterPanelOpen,
+    activeFilters,
+    activeFiltersCount,
+    registerFilter
+  };
+};
+
+export const DataTableFilterPanel = () => {
+  const {
+    filterPanelOpen,
+    setFilterPanelOpen,
+    activeFilters,
+    activeFiltersCount,
+    registerFilter
+  } = useTableFilter();
+
+  const [locationFilter, setLocationFilter] = useState<string[]>([]);
+  const toggleLocationFilter = (location: string) => {
+    let newAllowedLocations: string[] = [];
+    if (locationFilter.includes(location)) {
+      newAllowedLocations = locationFilter.filter((l) => l !== location);
+    } else {
+      newAllowedLocations = [...locationFilter, location];
+    }
+
+    setLocationFilter(newAllowedLocations);
+
+    // afterwards re-register filter
+    if (newAllowedLocations.length > 0) {
+      registerFilter("location", (rowEntry: RowEntry) =>
+        newAllowedLocations.includes(rowEntry.location as string)
+      );
+    } else {
+      registerFilter("location", undefined);
+    }
+  };
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable
+              activeFilters={activeFilters}
+              rows={object("Rows", defaultRows as RowEntry[])}
+              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            >
+              {({
+                rows,
+                headers,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <TableToolbar>
+                      {/** Extract to TableToolbarFilter Buttton */}
+                      <IconOnlyButton
+                        icon={
+                          <IconFilter
+                            fill={activeFiltersCount ? "white" : undefined}
+                          />
+                        }
+                        onClick={withoutPropagation(() =>
+                          setFilterPanelOpen(true)
+                        )}
+                      />
+                      <Modal
+                        open={filterPanelOpen}
+                        onClose={() => setFilterPanelOpen(false)}
+                      >
+                        <Headline type="h6">Location</Headline>
+                        <Checkbox
+                          id="location-filter-ger"
+                          label="Germany"
+                          value="Germany"
+                          onChange={() => toggleLocationFilter("Germany")}
+                        />
+                        <Checkbox
+                          id="location-filter-jap"
+                          label="Japan"
+                          value="Japan"
+                          onChange={() => toggleLocationFilter("Japan")}
+                        />
+                        <Checkbox
+                          id="location-filter-usa"
+                          label="USA"
+                          value="USA"
+                          onChange={() => toggleLocationFilter("USA")}
+                        />
+                      </Modal>
+                    </TableToolbar>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          {headers.map((header) => (
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
                           ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
