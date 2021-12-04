@@ -53,6 +53,7 @@ const DataTable = ({
   const [tableProps] = useState<Partial<TableProps>>({});
   const [tableHeadProps] = useState<Partial<TableHeadProps>>();
 
+  const processedHeaders = headers;
   let processedRows = rows;
 
   // Filtering
@@ -84,6 +85,7 @@ const DataTable = ({
   }
 
   // Sorting
+
   if (sortedByColumn) {
     if (customSortFn) {
       processedRows = processedRows.sort(customSortFn);
@@ -112,11 +114,10 @@ const DataTable = ({
   }
 
   // Slice & (todo) Pagination
+
   if (itemsToShow != null) {
     processedRows.slice(0, itemsToShow);
   }
-
-  const processedHeaders = headers;
 
   return (
     <>

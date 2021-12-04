@@ -1,5 +1,4 @@
 import { object, withKnobs } from "@storybook/addon-knobs";
-import { IconFilter } from "@tabler/icons";
 import React, { useState } from "react";
 import {
   Grid,
@@ -15,15 +14,16 @@ import {
   Modal,
   Checkbox
 } from "../..";
-import { withoutPropagation } from "../../helpers/eventUtilities";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
 import NumberInput from "../NumberInput/NumberInput";
 import Headline from "../Typography/Headline";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
 import TableSelectionCell from "./TableSelectionCell";
 import TableSelectionHeaderCell from "./TableSelectionHeaderCell";
+import TableSelectionRadioCell from "./TableSelectionRadioCell";
+import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
 import TableToolbar from "./TableToolbar";
+import TableToolbarFilterButton from "./TableToolbarFilterButton";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -54,6 +54,8 @@ const defaultHeaders: HeaderEntry[] = [
 ];
 
 export const DefaultPlainTable = () => {
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -63,25 +65,21 @@ export const DefaultPlainTable = () => {
               <Table>
                 <TableHead headers={defaultHeaders}>
                   <TableRow>
-                    {(object("Headers", defaultHeaders) as HeaderEntry[]).map(
-                      (header) => (
-                        <TableHeadCell key={header.key}>
-                          {header.title}
-                        </TableHeadCell>
-                      )
-                    )}
+                    {unprocessedHeaders.map((header) => (
+                      <TableHeadCell key={header.key}>
+                        {header.title}
+                      </TableHeadCell>
+                    ))}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {object("Rows", defaultRows as RowEntry[]).map((row) => (
+                  {unprocessedRows.map((row) => (
                     <TableRow key={row.id}>
-                      {(object("Headers", defaultHeaders) as HeaderEntry[]).map(
-                        (header) => (
-                          <TableCell key={`${row.id}-${header.key}`}>
-                            {row[header.key]}
-                          </TableCell>
-                        )
-                      )}
+                      {unprocessedHeaders.map((header) => (
+                        <TableCell key={`${row.id}-${header.key}`}>
+                          {row[header.key]}
+                        </TableCell>
+                      ))}
                     </TableRow>
                   ))}
                 </TableBody>
@@ -95,15 +93,14 @@ export const DefaultPlainTable = () => {
 };
 
 export const DefaultAsDataTable = () => {
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
           <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
-            >
+            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
               {({
                 rows,
                 headers,
@@ -221,6 +218,69 @@ export const DataTableWithSelection = () => {
                               id={row.id + "-selection"}
                               checked={selectedIDs.includes(row.id)}
                               onChange={() => toggleSelectionForRow(row)}
+                            />
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const DataTableWithRadioSelection = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [selectedID, selectID] = useState<string>();
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+              {({
+                rows,
+                headers,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          <TableSelectionRadioHeaderCell />
+                          {headers.map((header) => (
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            <TableSelectionRadioCell
+                              id={row.id + "-selection"}
+                              checked={selectedID === row.id}
+                              onChange={() => selectID(row.id)}
                             />
                             {headers.map((header) => (
                               <TableCell key={`${row.id}-${header.key}`}>
@@ -552,15 +612,9 @@ export const DataTableFilterPanel = () => {
                   <TableContainer {...getTableContainerProps()}>
                     <TableToolbar>
                       {/** Extract to TableToolbarFilter Buttton */}
-                      <IconOnlyButton
-                        icon={
-                          <IconFilter
-                            fill={activeFiltersCount ? "white" : undefined}
-                          />
-                        }
-                        onClick={withoutPropagation(() =>
-                          setFilterPanelOpen(true)
-                        )}
+                      <TableToolbarFilterButton
+                        activeFiltersCount={activeFiltersCount}
+                        setFilterPanelOpen={setFilterPanelOpen}
                       />
                       <Modal
                         open={filterPanelOpen}
