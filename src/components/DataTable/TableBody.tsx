@@ -1,14 +1,21 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-type TableBodyProps = {
+export type TableBodyProps = {
   /**
    * React children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-const TableBody = ({ children }: TableBodyProps) => {
-  return <tbody>{children}</tbody>;
+const TableBody = (
+  { children, ...rest }: TableBodyProps,
+  ref: React.ForwardedRef<HTMLTableSectionElement>
+) => {
+  return (
+    <tbody {...rest} ref={ref}>
+      {children}
+    </tbody>
+  );
 };
 
-export default TableBody;
+export default React.forwardRef(TableBody);

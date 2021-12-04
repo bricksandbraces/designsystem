@@ -2,6 +2,7 @@ module.exports = {
   core: {
     builder: "webpack5"
   },
+  staticDir: "public",
   stories: ["./components/**/*.stories.tsx", "../src/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-links",

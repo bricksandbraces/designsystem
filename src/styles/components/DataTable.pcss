@@ -24,14 +24,6 @@
           outline: 0;
           background-color: $color--background;
 
-          &:hover {
-            background-color: $color--hover;
-          }
-
-          &:active {
-            background-color: $color--active;
-          }
-
           &:first-child {
             border-left: 0.0625rem solid $color--border;
             border-top-left-radius: $component--radius-default;
@@ -43,6 +35,14 @@
             border-top-right-radius: $component--radius-default;
             border-bottom-right-radius: $component--radius-default;
           }
+        }
+
+        & > th.interactive:hover {
+          background-color: $color--hover;
+        }
+
+        & th.interactive:active {
+          background-color: $color--active;
         }
       }
     }

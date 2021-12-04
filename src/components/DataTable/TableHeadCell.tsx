@@ -1,19 +1,33 @@
 import React from "react";
+import cx from "classnames";
 import { prefix } from "../../settings";
 
-type TableHeadCellProps = {
+export type TableHeadCellProps = {
   /**
-   * Header item title
+   * TableHeadCell ReactChildren usually used as title
    */
-  title: string;
+  children: React.ReactNode;
+
+  /**
+   * TableHeadCell Interactive tells if the HeadCell should be interactive
+   */
+  interactive?: boolean;
 };
 
-const TableHeadCell = ({ title }: TableHeadCellProps) => {
+const TableHeadCell = (
+  { children, interactive, ...rest }: TableHeadCellProps,
+  ref: React.ForwardedRef<HTMLTableHeaderCellElement>
+) => {
   return (
-    <th className={`${prefix}--datatable-head__cell`} scope="col">
-      <div className={`${prefix}--datatable-head__cell-label`}>{title}</div>
+    <th
+      className={cx(`${prefix}--datatable-head__cell`, { interactive })}
+      scope="col"
+      {...rest}
+      ref={ref}
+    >
+      <div className={`${prefix}--datatable-head__cell-label`}>{children}</div>
     </th>
   );
 };
 
-export default TableHeadCell;
+export default React.forwardRef(TableHeadCell);

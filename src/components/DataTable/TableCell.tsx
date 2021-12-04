@@ -1,15 +1,22 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { prefix } from "../../settings";
 
-type TableCellProps = {
+export type TableCellProps = {
   /**
    * React children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-const TableCell = ({ children }: TableCellProps) => {
-  return <td className={`${prefix}--datatable-cell`}>{children}</td>;
+const TableCell = (
+  { children, ...rest }: TableCellProps,
+  ref: React.ForwardedRef<HTMLTableCellElement>
+) => {
+  return (
+    <td className={`${prefix}--datatable-cell`} {...rest} ref={ref}>
+      {children}
+    </td>
+  );
 };
 
-export default TableCell;
+export default React.forwardRef(TableCell);

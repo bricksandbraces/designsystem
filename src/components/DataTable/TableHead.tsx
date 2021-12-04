@@ -1,30 +1,31 @@
-import React, { ReactNode } from "react";
-import { HeaderData } from "./DataTable";
+import React from "react";
+import { HeaderEntry } from "./DataTable";
 import { prefix } from "../../settings";
 
-type TableHeadProps = {
+export type TableHeadProps = {
   /**
    * React children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 
   /**
    * Header column calculation
    */
-  headers: HeaderData;
+  headers: HeaderEntry[];
 };
 
-const TableHead = ({ children, headers }: TableHeadProps) => {
+const TableHead = (
+  { children, headers }: TableHeadProps,
+  ref: React.ForwardedRef<HTMLTableSectionElement>
+) => {
   return (
-    <>
-      <thead className={`${prefix}--datatable-head`}>
-        {children}
-        <tr>
-          <td colSpan={headers.length} />
-        </tr>
-      </thead>
-    </>
+    <thead className={`${prefix}--datatable-head`} ref={ref}>
+      {children}
+      <tr>
+        <td colSpan={headers.length} />
+      </tr>
+    </thead>
   );
 };
 
-export default TableHead;
+export default React.forwardRef(TableHead);
