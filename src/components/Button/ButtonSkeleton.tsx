@@ -1,7 +1,8 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import SkeletonText from "../Skeleton/SkeletonText";
 
 export type ButtonSkeletonProps = {
   /**
@@ -22,18 +23,14 @@ export type ButtonSkeletonProps = {
 
 const ButtonSkeleton = ({
   size = "default",
-  light,
+
   className
 }: ButtonSkeletonProps) => (
-  <SkeletonAnimatedContainer
-    light={light}
-    style={{ width: 128 }}
-    className={cx(
-      `${prefix}--button-${size}`,
-
-      className
-    )}
-  />
+  <SkeletonContainer
+    className={cx(`${prefix}--button ${prefix}--button-${size}`, className)}
+  >
+    <SkeletonText style={{ width: "8rem" }} />
+  </SkeletonContainer>
 );
 
 export default ButtonSkeleton;

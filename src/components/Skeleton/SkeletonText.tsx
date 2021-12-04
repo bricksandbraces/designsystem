@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
 
 export type SkeletonTextProps = {
   /**
@@ -12,25 +13,17 @@ export type SkeletonTextProps = {
    * SkeletonText InlineStyle
    */
   style?: React.CSSProperties;
-
-  /**
-   * SkeletonText Size
-   */
-  size?: "large" | "default" | "small";
 };
 
 const SkeletonText = (
-  { style, size = "default", className, ...rest }: SkeletonTextProps,
+  { className, ...rest }: SkeletonTextProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
-    <div
-      className={cx(
-        `${prefix}--skeleton-text ${prefix}--skeleton-text__${size}`,
-        className
-      )}
-      {...rest}
+    <SkeletonAnimatedContainer
+      className={cx(`${prefix}--skeleton-text`, className)}
       ref={ref}
+      {...rest}
     />
   );
 };

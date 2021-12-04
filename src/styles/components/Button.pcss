@@ -292,11 +292,11 @@
 }
 
 .$(prefix)--button-icon-left > .$(prefix)--button-label {
-  flex-direction: row;
+  flex-flow: row;
 }
 
 .$(prefix)--button-icon-right > .$(prefix)--button-label {
-  flex-direction: row-reverse;
+  flex-flow: row-reverse;
 }
 
 .$(prefix)--button-icon-only > div > svg {
@@ -337,4 +337,8 @@
   height: $size--container-01;
   border: 0.125rem solid currentColor;
   border-right-color: transparent;
+}
+
+.$(prefix)--button-icon-only.$(prefix)--skeleton-container {
+  justify-content: center;
 }

@@ -130,15 +130,16 @@
   &--accordion.$(prefix)--skeleton {
     padding: $component--padding-inside;
     gap: $component--padding-inside;
+    border: 0.0625rem solid transparent;
 
-    & > .$(prefix)--skeleton-static {
-      box-sizing: content-box;
-      justify-content: flex-end;
-      padding: 0 $size--spacing-04;
-      border-color: transparent;
-      background-color: transparent;
+    & > .$(prefix)--accordion-list__item-title {
+      justify-content: space-between;
 
       & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
         transform: translateX(-0.0625rem);
         stroke: $color--skeleton-02;
       }

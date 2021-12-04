@@ -17,6 +17,11 @@ type BreadcrumbItemProps = {
   icon?: ReactNode;
 
   /**
+   * BreadcrumbItem IsOverflow
+   */
+  isOverflow?: boolean;
+
+  /**
    * BreadcrumbItem CurrentItem
    */
   currentItem?: boolean;
@@ -25,13 +30,15 @@ type BreadcrumbItemProps = {
 const BreadcrumbItem = ({
   children,
   currentItem,
+  isOverflow,
   icon,
   ...rest
 }: BreadcrumbItemProps) => {
   return (
     <li
       className={cx(`${prefix}--breadcrumb-item`, {
-        [`${prefix}--breadcrumb-item__current`]: currentItem
+        [`${prefix}--breadcrumb-item__current`]: currentItem,
+        [`${prefix}--breadcrumb-item__overflow`]: isOverflow
       })}
       {...rest}
     >

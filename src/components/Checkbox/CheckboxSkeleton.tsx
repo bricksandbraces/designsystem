@@ -2,7 +2,6 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
 
 export type CheckboxSkeletonProps = {
   /**
@@ -12,9 +11,9 @@ export type CheckboxSkeletonProps = {
 };
 
 const CheckboxSkeleton = ({ className }: CheckboxSkeletonProps) => (
-  <SkeletonContainer
+  <div
     className={cx(
-      `${prefix}--checkbox`,
+      `${prefix}--skeleton ${prefix}--checkbox`,
 
       className
     )}
@@ -44,7 +43,7 @@ const CheckboxSkeleton = ({ className }: CheckboxSkeletonProps) => (
       style={{ width: 128 }}
       className={cx(`${prefix}--checkbox`)}
     />
-  </SkeletonContainer>
+  </div>
 );
 
 export default CheckboxSkeleton;

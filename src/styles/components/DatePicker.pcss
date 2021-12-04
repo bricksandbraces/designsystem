@@ -194,7 +194,7 @@
               }
 
               & > .DayPicker-Day--today {
-                color: $color--font-text-recent;
+                color: $color--font-decoration;
 
                 &::after {
                   content: "";
@@ -212,15 +212,21 @@
       }
     }
   }
-  &--datepicker-skeleton.$(prefix)--skeleton {
-    flex-direction: column;
-    align-items: flex-start;
-    transform: translateY(0.0625rem);
 
-    & > .$(prefix)--skeleton {
-      justify-content: flex-end;
+  &--datepicker.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-container {
+      justify-content: space-between;
       padding: 0 $size--spacing-05;
-      appearance: auto;
+      border-radius: $component--radius-default;
 
       & > svg {
         transform: translateX(-0.0625rem);

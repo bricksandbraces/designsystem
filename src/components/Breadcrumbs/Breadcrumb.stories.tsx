@@ -3,7 +3,7 @@ import React from "react";
 import BreadcrumbItem from "./BreadcrumbItem";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbSkeleton from "./BreadcrumbSkeleton";
-import { IconFolder } from "@tabler/icons";
+import { IconDots, IconFolder } from "@tabler/icons";
 import OverflowMenu from "../OverflowMenu/OverflowMenu";
 import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
 
@@ -27,8 +27,8 @@ export const WithOverflowMenu = () => {
     <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
       <Breadcrumb aria-label="Breadcrumb nav">
         <BreadcrumbItem>Home</BreadcrumbItem>
-        <BreadcrumbItem>
-          <OverflowMenu>
+        <BreadcrumbItem isOverflow>
+          <OverflowMenu icon={<IconDots />} size="small">
             <OverflowMenuItem>Private Account</OverflowMenuItem>
             <OverflowMenuItem>Financial Details</OverflowMenuItem>
           </OverflowMenu>

@@ -2,8 +2,8 @@ import React from "react";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import SkeletonText from "../Skeleton/SkeletonText";
 
 type DatePickerSkeletonProps = {
   /**
@@ -22,28 +22,25 @@ const DatePickerSkeleton = ({
   className
 }: DatePickerSkeletonProps) => {
   return (
-    <SkeletonContainer
+    <div
       className={cx(
-        `${prefix}--datepicker-skeleton`,
+        `${prefix}--datepicker ${prefix}--skeleton ${prefix}--datepicker-${size}`,
 
         className
       )}
     >
-      <SkeletonAnimatedContainer
-        style={{ width: 64 }}
-        className={cx(
-          `${prefix}--typography-label`,
-
-          className
-        )}
+      <SkeletonText
+        style={{ width: "4rem" }}
+        className={cx(`${prefix}--typography-label`)}
       />
-      <SkeletonAnimatedContainer
-        style={{ width: 256 }}
+      <SkeletonContainer
+        style={{ width: "16rem" }}
         className={`${prefix}--textinput-${size}`}
       >
+        <SkeletonText style={{ width: "8rem" }} />
         <IconCalendar size={16} />
-      </SkeletonAnimatedContainer>
-    </SkeletonContainer>
+      </SkeletonContainer>
+    </div>
   );
 };
 
