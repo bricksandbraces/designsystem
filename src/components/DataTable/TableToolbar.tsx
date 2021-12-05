@@ -3,18 +3,25 @@ import { prefix } from "../../settings";
 
 export type TableToolbarProps = {
   /**
-   * React children
+   * TableToolbar React children
    */
   children: React.ReactNode;
+
+  /**
+   * TableToolbar Selected IDs
+   */
+  selectedIDs?: string[];
+
+  batchActions?: React.ReactNode;
 };
 
 const TableToolbar = (
-  { children, ...rest }: TableToolbarProps,
+  { children, selectedIDs, batchActions, ...rest }: TableToolbarProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <div className={`${prefix}--datatable-toolbar`} {...rest} ref={ref}>
-      {children}
+      {selectedIDs?.length ? batchActions : children}
     </div>
   );
 };

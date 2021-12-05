@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { object, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import {
@@ -12,12 +13,14 @@ import {
   TableCell,
   SearchInput,
   Modal,
-  Checkbox
+  Checkbox,
+  Button
 } from "../..";
 import { prefix } from "../../settings";
 import NumberInput from "../NumberInput/NumberInput";
 import Headline from "../Typography/Headline";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
+import TableActions from "./TableActions";
 import TableSelectionCell from "./TableSelectionCell";
 import TableSelectionHeaderCell from "./TableSelectionHeaderCell";
 import TableSelectionRadioCell from "./TableSelectionRadioCell";
@@ -148,23 +151,33 @@ export const DefaultAsDataTable = () => {
 
 const useTableSelection = (
   unprocessedRows: RowEntry[]
-): [string[], (entry: RowEntry) => void, () => void] => {
+): [
+  string[],
+  (entry: RowEntry | string) => void,
+  (select?: boolean) => void
+] => {
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
 
-  const toggleSelectionForRow = (entry: RowEntry) => {
-    if (!selectedIDs.includes(entry.id)) {
-      setSelectedIDs([...selectedIDs, entry.id]);
+  const toggleSelectionForRow = (entry: RowEntry | string) => {
+    const entryId = typeof entry === "string" ? entry : entry.id;
+
+    if (!selectedIDs.includes(entryId)) {
+      setSelectedIDs([...selectedIDs, entryId]);
     } else {
-      setSelectedIDs(selectedIDs.filter((id) => id !== entry.id));
+      setSelectedIDs(selectedIDs.filter((id) => id !== entryId));
     }
   };
 
-  const toggleAll = () => {
-    // all selected
-    if (selectedIDs.length === unprocessedRows.length) {
-      setSelectedIDs([]);
+  const toggleAll = (select?: boolean) => {
+    if (select != null) {
+      setSelectedIDs(select ? unprocessedRows.map((row) => row.id) : []);
     } else {
-      setSelectedIDs(unprocessedRows.map((row) => row.id));
+      // all selected
+      if (selectedIDs.length === unprocessedRows.length) {
+        setSelectedIDs([]);
+      } else {
+        setSelectedIDs(unprocessedRows.map((row) => row.id));
+      }
     }
   };
 
@@ -200,7 +213,7 @@ export const DataTableWithSelection = () => {
                       >
                         <TableRow>
                           <TableSelectionHeaderCell
-                            onChange={toggleAll}
+                            onChange={() => toggleAll()}
                             unprocessedRows={unprocessedRows}
                             selectedRows={selectedIDs}
                           />
@@ -657,6 +670,161 @@ export const DataTableFilterPanel = () => {
                       <TableBody>
                         {rows.map((row) => (
                           <TableRow key={row.id}>
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const DataTableRowActions = () => {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable
+              rows={object("Rows", defaultRows as RowEntry[])}
+              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            >
+              {({
+                rows,
+                headers,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          {headers.map((header) => (
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
+                          ))}
+                          <TableHeadCell />
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                            <TableActions>
+                              <Button
+                                key="edit"
+                                onClick={(event) => {
+                                  action("onClick")(event, row);
+                                }}
+                                kind="ghost"
+                              >
+                                Edit
+                              </Button>
+                            </TableActions>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const DataTableWithBatchActions = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [selectedIDs, toggleSelectionForRow, toggleAll] =
+    useTableSelection(unprocessedRows);
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+              {({
+                rows,
+                headers,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <TableToolbar
+                      selectedIDs={selectedIDs}
+                      batchActions={
+                        <>
+                          <p>{selectedIDs.length} items selected</p>
+                          <Button>Delete</Button>
+                          <Button>Download</Button>
+                           |
+                          <Button
+                            onClick={() => {
+                              toggleAll(false);
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                        </>
+                      }
+                    >
+                      <Button>Add new</Button>
+                    </TableToolbar>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          <TableSelectionHeaderCell
+                            onChange={() => toggleAll()}
+                            unprocessedRows={unprocessedRows}
+                            selectedRows={selectedIDs}
+                          />
+                          {headers.map((header) => (
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            <TableSelectionCell
+                              id={row.id + "-selection"}
+                              checked={selectedIDs.includes(row.id)}
+                              onChange={() => toggleSelectionForRow(row)}
+                            />
                             {headers.map((header) => (
                               <TableCell key={`${row.id}-${header.key}`}>
                                 {row[header.key]}

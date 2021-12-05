@@ -35,6 +35,7 @@ export type DataTableProps = {
   searchQuery?: string;
   customSearchFilterFn?: (row: RowEntry) => boolean;
   children: (rendererProps: DataTableRendererProps) => React.ReactNode;
+  actions?: (row: RowEntry) => JSX.Element[];
 };
 
 const DataTable = ({

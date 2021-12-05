@@ -6,7 +6,7 @@ export type TableHeadCellProps = {
   /**
    * TableHeadCell ReactChildren usually used as title
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /**
    * TableHeadCell Interactive tells if the HeadCell should be interactive
