@@ -53,12 +53,18 @@
     }
 
     & > [type="radio"]:checked + label {
+      border-color: $color--decoration;
       color: $color--font-selected;
 
       & > .$(prefix)--radiotile-selected {
         width: unset;
         height: unset;
         opacity: 100%;
+
+        & > circle {
+          stroke: $color--decoration;
+          fill: $color--decoration;
+        }
       }
     }
 

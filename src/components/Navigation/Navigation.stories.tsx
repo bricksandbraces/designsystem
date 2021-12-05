@@ -37,15 +37,13 @@ export const WithNav = () => {
     <Navigation>
       <Header>
         <HeaderNav>
-          <HeaderNav>
-            <HeaderNavLink href="#" label="Link 1" />
-            <HeaderNavLink href="#" label="Link 2" />
-            <HeaderNavLink href="#" label="Link 3" />
-            <HeaderDivider />
-            <HeaderNavLink href="#" label="Link 4" />
-            <HeaderNavLink href="#" label="Link 5" />
-            <HeaderDivider />
-          </HeaderNav>
+          <HeaderNavLink href="#" label="Link 1" />
+          <HeaderNavLink href="#" label="Link 2" />
+          <HeaderNavLink href="#" label="Link 3" />
+          <HeaderDivider />
+          <HeaderNavLink href="#" label="Link 4" />
+          <HeaderNavLink href="#" label="Link 5" />
+          <HeaderDivider />
         </HeaderNav>
       </Header>
     </Navigation>

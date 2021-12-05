@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import SkeletonText from "../Skeleton/SkeletonText";
 
 type DatePickerSkeletonProps = {
@@ -33,13 +33,12 @@ const DatePickerSkeleton = ({
         style={{ width: "4rem" }}
         className={cx(`${prefix}--typography-label`)}
       />
-      <SkeletonContainer
+      <SkeletonAnimatedContainer
         style={{ width: "16rem" }}
         className={`${prefix}--textinput-${size}`}
       >
-        <SkeletonText style={{ width: "8rem" }} />
         <IconCalendar size={16} />
-      </SkeletonContainer>
+      </SkeletonAnimatedContainer>
     </div>
   );
 };

@@ -129,6 +129,12 @@ const RadioButton = (
             r="9"
             className={`${prefix}--radiobutton-selected__box`}
           />
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+            className={`${prefix}--radiobutton-selected__mark`}
+          />
         </svg>
         <div>
           {label && (

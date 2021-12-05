@@ -15,13 +15,29 @@
       }
     }
 
+    & > [type="radio"] + label {
+      & > .$(prefix)--radiobutton-selected {
+        & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--app-02;
+        }
+        & > .$(prefix)--radiobutton-selected__mark {
+          visibility: hidden;
+        }
+      }
+    }
+
     & > [type="radio"]:checked + label {
       color: $color--font-selected;
       & > .$(prefix)--radiobutton-selected {
         color: $color--decoration;
 
         & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--decoration;
           fill: $color--decoration;
+        }
+        & > .$(prefix)--radiobutton-selected__mark {
+          visibility: visible;
+          fill: white;
         }
       }
     }
@@ -150,7 +166,7 @@
     }
   }
 
-  &--radiobutton.$(prefix)--skeleton-container {
+  &--radiobutton.$(prefix)--skeleton {
     display: inline-flex;
     flex-flow: row;
     align-items: center;

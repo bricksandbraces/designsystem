@@ -4,12 +4,12 @@ import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
 import SkeletonContainer from "./SkeletonContainer";
 import SkeletonText from "./SkeletonText";
 
-export default { title: "Components/Skeleton", decorators: [withKnobs] };
+export default { title: "Components/A_REFA_Skeleton", decorators: [withKnobs] };
 
 export const AnimatedContainer = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SkeletonAnimatedContainer />
+      <SkeletonAnimatedContainer style={{ width: "8rem", height: "8rem" }} />
     </div>
   );
 };
@@ -17,7 +17,7 @@ export const AnimatedContainer = () => {
 export const Container = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SkeletonContainer />
+      <SkeletonContainer style={{ width: "8rem", height: "8rem" }} />
     </div>
   );
 };
@@ -25,7 +25,7 @@ export const Container = () => {
 export const Text = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SkeletonText />
+      <SkeletonText style={{ width: "8rem" }} />
     </div>
   );
 };

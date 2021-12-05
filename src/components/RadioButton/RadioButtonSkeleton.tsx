@@ -1,8 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import { SkeletonText } from "../..";
 
 export type RadioButtonSkeletonProps = {
   /**
@@ -12,9 +11,9 @@ export type RadioButtonSkeletonProps = {
 };
 
 const RadioButtonSkeleton = ({ className }: RadioButtonSkeletonProps) => (
-  <SkeletonContainer
+  <div
     className={cx(
-      `${prefix}--radiobutton`,
+      `${prefix}--skeleton ${prefix}--radiobutton`,
 
       className
     )}
@@ -38,11 +37,11 @@ const RadioButtonSkeleton = ({ className }: RadioButtonSkeletonProps) => (
         className={`${prefix}--radiobutton-selected__box`}
       />
     </svg>
-    <SkeletonAnimatedContainer
-      style={{ width: 128 }}
+    <SkeletonText
+      style={{ width: "8rem" }}
       className={cx(`${prefix}--radiobutton`)}
     />
-  </SkeletonContainer>
+  </div>
 );
 
 export default RadioButtonSkeleton;

@@ -3,18 +3,6 @@
 @import "../../styles/typography.pcss";
 @import "../prefix.pcss";
 
-@keyframes show-content {
-  from {
-    transform: translateY(-0.5rem);
-    opacity: 0%;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 100%;
-  }
-}
-
 .$(prefix) {
   &--search {
     @mixin type--body-02;
@@ -34,39 +22,39 @@
     }
 
     &-box {
+      visibility: hidden;
       margin: 0;
-      padding: 0;
-      transition: background-color $transition--app-01,
-        padding $transition--app-01, margin $transition--app-01;
-      border: 0.0625rem solid transparent;
+      padding: $component--padding-inside;
+      transition: transform $transition--app-01, opacity $transition--app-01,
+        visibility $transition--app-01;
+      border: 0.0625rem solid $color--border;
+      border-radius: $component--radius-default;
       outline: 0;
+      opacity: 0%;
       background-color: transparent;
+      background-color: $color--background;
+      box-shadow: $component--shadow-default;
+      color: $color--font-text-01;
 
       &__open {
-        margin: calc(($size--spacing-05) * -1);
-        padding: $size--spacing-05;
-        border: 0.0625rem solid $color--border;
-        border-radius: $component--radius-default;
-        background-color: $color--background;
-        box-shadow: $component--shadow-default;
-        color: $color--font-text-01;
-
-        & > .$(prefix)--search-box__content {
-          display: block;
-          animation: show-content 0.15s ease-in-out;
-        }
+        visibility: visible;
+        transform: translateY($size--spacing-03);
+        opacity: 100%;
       }
 
       &__content {
         @mixin type--body-02;
 
-        display: none;
-        padding: $size--spacing-05 0 0 0;
+        &-items {
+          display: flex;
+          gap: $component--padding-inside;
+          flex-flow: column wrap;
+        }
 
         &-badges {
           display: flex;
           flex-wrap: wrap;
-          padding: 0 0 $size--spacing-03 0;
+          padding: $size--spacing-04;
 
           &--manual-hover {
             background-color: $color--secondary-hover;
@@ -108,7 +96,7 @@
     &-default {
       height: $size--field-default;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-default;
         }
@@ -118,7 +106,7 @@
     &-large {
       height: $size--field-large;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-large;
         }
@@ -128,7 +116,7 @@
     &-small {
       height: $size--field-small;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-small;
         }
@@ -145,6 +133,8 @@
     }
 
     &-input {
+      @mixin type--body-02;
+
       width: 100%;
       height: 100%;
       padding: 0 $size--spacing-05 0 $size--spacing-08;
@@ -202,7 +192,7 @@
         }
       }
 
-      &:focus {
+      &:focus-visible {
         &::before {
           background-color: $color--focus;
         }

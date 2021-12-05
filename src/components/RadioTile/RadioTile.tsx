@@ -112,7 +112,7 @@ const RadioTile = (
       >
         {children}
         <IconCircleCheck
-          size={16}
+          size={24}
           className={`${prefix}--radiotile-selected`}
         />
       </label>

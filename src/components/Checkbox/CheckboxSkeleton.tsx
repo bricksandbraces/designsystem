@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonText } from "../..";
 
 export type CheckboxSkeletonProps = {
   /**
@@ -39,7 +39,7 @@ const CheckboxSkeleton = ({ className }: CheckboxSkeletonProps) => (
         className={`${prefix}--checkbox-check__box`}
       />
     </svg>
-    <SkeletonAnimatedContainer
+    <SkeletonText
       style={{ width: 128 }}
       className={cx(`${prefix}--checkbox`)}
     />

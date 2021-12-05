@@ -229,14 +229,24 @@
         }
       }
     }
-    &.$(prefix)--skeleton
-      > .$(prefix)--skeleton
-      > .$(prefix)--button-group
-      > .$(prefix)--button-ghost {
-      border-color: transparent;
-      background-color: transparent;
-      cursor: unset;
-      pointer-events: none;
+
+    &.$(prefix)--skeleton {
+      & > .$(prefix)--skeleton-animated {
+        display: inline-flex;
+        justify-content: flex-end;
+        padding: 0 0 0 $size--spacing-05;
+        & > .$(prefix)--button-group {
+          & > .$(prefix)--button {
+            border-color: transparent;
+            background-color: transparent;
+            color: $color--skeleton-03;
+
+            &::before {
+              background-color: $color--skeleton-03;
+            }
+          }
+        }
+      }
     }
   }
 }

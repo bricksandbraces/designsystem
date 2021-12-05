@@ -36,6 +36,11 @@ export const Uncontrolled = () => {
                 <Body type="body-02">Tile view</Body>
               </div>
             </SwitcherItem>
+            <SwitcherItem title="No view">
+              <div style={{ padding: "24px 0" }}>
+                <Body type="body-02">No view</Body>
+              </div>
+            </SwitcherItem>
           </Switcher>
         </Column>
       </Grid>
@@ -81,6 +86,11 @@ export const Controlled = () => {
             <SwitcherItem title="Tile view">
               <div style={{ padding: "24px 0" }}>
                 <Body type="body-02">Tile view</Body>
+              </div>
+            </SwitcherItem>
+            <SwitcherItem title="No view">
+              <div style={{ padding: "24px 0" }}>
+                <Body type="body-02">No view</Body>
               </div>
             </SwitcherItem>
           </Switcher>
