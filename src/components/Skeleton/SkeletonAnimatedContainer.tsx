@@ -14,25 +14,19 @@ export type SkeletonAnimatedContainerProps = {
   className?: string;
 
   /**
-   * SkeletonAnimatedContainer Light
-   */
-  light?: boolean;
-
-  /**
    * SkeletonAnimatedContainer InlineStyle
    */
   style?: React.CSSProperties;
 };
 
 const SkeletonAnimatedContainer = (
-  { light, children, className, ...rest }: SkeletonAnimatedContainerProps,
+  { children, className, ...rest }: SkeletonAnimatedContainerProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <div
       className={cx(
         `${prefix}--skeleton ${prefix}--skeleton-animated`,
-        { [`${prefix}--skeleton-light`]: light },
         className
       )}
       {...rest}

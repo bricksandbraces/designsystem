@@ -12,10 +12,21 @@ export default {
 
 export const Default = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "32px"
+      }}
+    >
       <div>
         <form>
-          <fieldset>
+          <fieldset
+            style={{
+              display: "flex",
+              gap: "1rem"
+            }}
+          >
             <RadioTile
               name="g1"
               id="checkbox-1"
@@ -48,10 +59,21 @@ export const Default = () => {
 export const Controlled = () => {
   const [selectedValue, setSelectedValue] = useState<string | null>("value-1");
   return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        padding: "32px"
+      }}
+    >
       <div>
         <form>
-          <fieldset>
+          <fieldset
+            style={{
+              display: "flex",
+              gap: "1rem"
+            }}
+          >
             <RadioTile
               value="value-1"
               id="checkbox-1"

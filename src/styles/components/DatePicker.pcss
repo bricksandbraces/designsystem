@@ -56,7 +56,7 @@
       border: 0.0625rem solid transparent;
       border-radius: $component--radius-default;
 
-      &:focus {
+      &:focus-visible {
         border-color: $color--focus;
         outline: 0;
       }
@@ -88,7 +88,7 @@
             background-color: $color--hover;
           }
 
-          &:focus {
+          &:focus-visible {
             border-color: $color--focus;
             outline: 0;
           }
@@ -148,7 +148,7 @@
                 margin-top: $size--spacing-03;
                 margin-bottom: $size--spacing-03;
                 padding: 0;
-                color: $color--font-text-04;
+                color: $color--font-text-05;
 
                 & > abbr {
                   @mixin type--body-02;
@@ -176,7 +176,7 @@
                 border-radius: $component--radius-default;
                 cursor: pointer;
 
-                &:focus {
+                &:focus-visible {
                   border-color: $color--focus;
                   outline: 0;
                 }
@@ -189,12 +189,12 @@
               }
 
               & > .DayPicker-Day--outside {
-                color: $color--font-text-04;
+                color: $color--font-text-05;
                 cursor: unset;
               }
 
               & > .DayPicker-Day--today {
-                color: $color--font-text-recent;
+                color: $color--font-decoration;
 
                 &::after {
                   content: "";
@@ -212,19 +212,25 @@
       }
     }
   }
-  &--datepicker-skeleton.$(prefix)--skeleton {
-    flex-direction: column;
-    align-items: flex-start;
-    transform: translateY(0.0625rem);
 
-    & > .$(prefix)--skeleton {
+  &--datepicker.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
       justify-content: flex-end;
       padding: 0 $size--spacing-05;
-      appearance: auto;
+      border-radius: $component--radius-default;
 
       & > svg {
         transform: translateX(-0.0625rem);
-        stroke: $color--skeleton-02;
+        stroke: $color--skeleton-03;
       }
     }
   }

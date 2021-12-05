@@ -1,7 +1,5 @@
 import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import IconOnlyButtonSkeleton from "../Button/IconOnlyButtonSkeleton";
 
 export type CopyButtonSkeletonProps = {
   /**
@@ -13,26 +11,13 @@ export type CopyButtonSkeletonProps = {
    * CopyButtonSkeleton Size
    */
   size?: "large" | "default" | "small";
-
-  /**
-   * CopyButtonSkeleton Light
-   */
-  light?: boolean;
 };
 
 const CopyButtonSkeleton = ({
   size = "default",
-  light,
   className
 }: CopyButtonSkeletonProps) => (
-  <SkeletonAnimatedContainer
-    light={light}
-    className={cx(
-      `${prefix}--button-icon-only ${prefix}--button-${size}`,
-
-      className
-    )}
-  />
+  <IconOnlyButtonSkeleton size={size} className={className} />
 );
 
 export default CopyButtonSkeleton;

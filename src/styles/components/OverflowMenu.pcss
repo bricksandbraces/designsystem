@@ -10,12 +10,11 @@
     width: calc($size--container-07 + $size--container-06);
     padding: $component--padding-inside;
     transition: transform $transition--app-01, opacity $transition--app-01,
-      visibility $transition--app-01;
+      visibility $transition--app-01 !important;
     border: 0.0625rem solid $color--border;
     border-radius: $component--radius-default;
     background-color: $color--background;
     box-shadow: $component--shadow-default;
-    gap: $component--padding-inside;
 
     &.$(prefix)--overflowmenu-small
       .tippy-content
@@ -41,6 +40,12 @@
     & > .tippy-content {
       width: 100%;
       padding: 0;
+
+      & > div {
+        display: flex;
+        flex-flow: column;
+        gap: $component--padding-inside;
+      }
 
       & > div > {
         &.$(prefix)--divider {
@@ -94,7 +99,7 @@
             background-color: $color--active;
           }
 
-          &:focus {
+          &:focus-visible {
             border-color: $color--focus;
           }
 
@@ -109,6 +114,11 @@
           }
         }
       }
+    }
+
+    &[data-animation="bbds-animation"][data-state="hidden"] {
+      transform: translateY(calc($component--padding-inside * -1));
+      opacity: 0%;
     }
   }
 }

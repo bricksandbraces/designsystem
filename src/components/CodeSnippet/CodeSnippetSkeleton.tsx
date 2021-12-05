@@ -1,9 +1,10 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import IconOnlyButtonSkeleton from "../Button/IconOnlyButtonSkeleton";
 import ButtonSkeleton from "../Button/ButtonSkeleton";
+import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import SkeletonText from "../Skeleton/SkeletonText";
 
 type CodeSnippetSkeletonProps = {
   /**
@@ -14,7 +15,7 @@ type CodeSnippetSkeletonProps = {
 
 const CodeSnippetSkeleton = ({ className }: CodeSnippetSkeletonProps) => {
   return (
-    <SkeletonAnimatedContainer
+    <SkeletonContainer
       style={{ width: "100%" }}
       className={cx(
         `${prefix}--codesnippet`,
@@ -22,11 +23,17 @@ const CodeSnippetSkeleton = ({ className }: CodeSnippetSkeletonProps) => {
         className
       )}
     >
-      <div className={`${prefix}--codesnippet-button__container`}>
-        <ButtonSkeleton size="small" light />
-        <IconOnlyButtonSkeleton size="small" light />
+      <div style={{ width: "75%" }}>
+        <SkeletonText style={{ width: "100%" }} />
+        <SkeletonText style={{ width: "100%" }} />
+        <SkeletonText style={{ width: "100%" }} />
+        <SkeletonText style={{ width: "75%" }} />
       </div>
-    </SkeletonAnimatedContainer>
+      <div className={`${prefix}--codesnippet-button__container`}>
+        <ButtonSkeleton size="small" />
+        <IconOnlyButtonSkeleton size="small" />
+      </div>
+    </SkeletonContainer>
   );
 };
 

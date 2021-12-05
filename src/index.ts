@@ -44,7 +44,9 @@ import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
-import Skeleton from "./components/Skeleton/SkeletonAnimatedContainer";
+import SkeletonAnimatedContainer from "./components/Skeleton/SkeletonAnimatedContainer";
+import SkeletonContainer from "./components/Skeleton/SkeletonContainer";
+import SkeletonText from "./components/Skeleton/SkeletonText";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
 import RangeInput from "./components/RangeInput/RangeInput";
@@ -98,7 +100,9 @@ export {
   RadioButtonGroup,
   Select,
   Toggle,
-  Skeleton,
+  SkeletonAnimatedContainer,
+  SkeletonContainer,
+  SkeletonText,
   Avatar,
   AvatarGroup,
   RangeInput,

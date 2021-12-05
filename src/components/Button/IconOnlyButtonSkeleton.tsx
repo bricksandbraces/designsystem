@@ -22,14 +22,11 @@ export type IconOnlyButtonSkeletonProps = {
 
 const IconOnlyButtonSkeleton = ({
   size = "default",
-  light,
   className
 }: IconOnlyButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
-    light={light}
     className={cx(
-      `${prefix}--button-icon-only ${prefix}--button-${size}`,
-
+      `${prefix}--button ${prefix}--button-icon-only ${prefix}--button-${size}`,
       className
     )}
   />

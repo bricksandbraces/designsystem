@@ -5,7 +5,7 @@
 .$(prefix) {
   &--numberinput {
     display: inline-flex;
-    flex-direction: column;
+    flex-flow: column;
     flex-wrap: wrap;
     width: $size--container-08;
 
@@ -30,7 +30,7 @@
           opacity: 0%;
         }
 
-        &:focus ~ .$(prefix)--numberinput-fluid__label {
+        &:focus-visible ~ .$(prefix)--numberinput-fluid__label {
           @mixin type--label;
 
           transform: translateY(-0.625rem);
@@ -105,7 +105,7 @@
         color: $color--font-placeholder;
       }
 
-      &:focus {
+      &:focus-visible {
         border-color: $color--focus;
 
         &::placeholder {
@@ -146,7 +146,7 @@
       &__container {
         display: flex;
         position: relative;
-        flex-direction: column;
+        flex-flow: column;
       }
     }
 
@@ -229,14 +229,24 @@
         }
       }
     }
-    &.$(prefix)--skeleton
-      > .$(prefix)--skeleton
-      > .$(prefix)--button-group
-      > .$(prefix)--button-ghost {
-      border-color: transparent;
-      background-color: transparent;
-      cursor: unset;
-      pointer-events: none;
+
+    &.$(prefix)--skeleton {
+      & > .$(prefix)--skeleton-animated {
+        display: inline-flex;
+        justify-content: flex-end;
+        padding: 0 0 0 $size--spacing-05;
+        & > .$(prefix)--button-group {
+          & > .$(prefix)--button {
+            border-color: transparent;
+            background-color: transparent;
+            color: $color--skeleton-03;
+
+            &::before {
+              background-color: $color--skeleton-03;
+            }
+          }
+        }
+      }
     }
   }
 }

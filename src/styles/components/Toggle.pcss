@@ -123,7 +123,7 @@
   }
   &--toggle.$(prefix)--skeleton-container {
     display: inline-flex;
-    flex-direction: row;
+    flex-flow: row;
     align-items: center;
     min-height: $size--container-01;
     transform: translate(0, 0.125rem);
@@ -188,7 +188,7 @@
 
 /* Focus */
 
-.$(prefix)--toggle-input[type="checkbox"]:focus
+.$(prefix)--toggle-input[type="checkbox"]:focus-visible
   + .$(prefix)--toggle-label
   > span {
   box-shadow: 0 0 0 0.0625rem $color--focus;

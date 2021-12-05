@@ -22,17 +22,19 @@
     justify-content: flex-start;
     overflow: hidden;
     border-radius: $component--radius-default;
-    cursor: progress;
+    pointer-events: none;
 
     &-container {
-      cursor: progress;
+      border-color: transparent;
+      background-color: $color--skeleton-01;
     }
 
     &-animated {
       position: relative;
       z-index: 1;
       overflow: hidden;
-      background-color: $color--skeleton-01;
+      border-color: transparent;
+      background-color: $color--skeleton-02;
 
       &__wiper {
         position: absolute;
@@ -44,20 +46,6 @@
         animation: loading $transition--app-04 infinite;
         background: linear-gradient(
           90deg,
-          $color--skeleton-01,
-          rgba($color--skeleton-02, 0.25),
-          $color--skeleton-01
-        );
-      }
-    }
-
-    &-animated.$(prefix)--skeleton-light {
-      opacity: 50%;
-      background-color: $color--skeleton-02;
-
-      & > .$(prefix)--skeleton-animated__wiper {
-        background: linear-gradient(
-          90deg,
           $color--skeleton-02,
           rgba($color--skeleton-03, 0.25),
           $color--skeleton-02
@@ -65,33 +53,9 @@
       }
     }
 
-    &-static {
-      background-color: $color--skeleton-02;
-      color: $color--skeleton-02;
-    }
-
-    &-fullwidth {
-      min-width: 100%;
-      max-width: 100%;
-    }
-
     &-text {
-      border-radius: 0.0625rem;
-      opacity: 65%;
-      background-color: $color--skeleton-03;
-      color: $color--skeleton-03;
-
-      &__small {
-        height: calc($size--container-01 / 2);
-      }
-
-      &__default {
-        height: $size--container-01;
-      }
-
-      &__large {
-        height: $size--field-xsmall;
-      }
+      min-height: $size--container-01;
+      max-height: $size--container-01;
     }
   }
 }

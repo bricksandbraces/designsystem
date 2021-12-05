@@ -5,7 +5,7 @@
 .$(prefix) {
   &--dropdown {
     display: inline-flex;
-    flex-direction: column;
+    flex-flow: column;
 
     &-toggle {
       display: inline-flex;
@@ -128,7 +128,7 @@
 
     &-wrapper {
       display: inline-flex;
-      flex-direction: column;
+      flex-flow: column;
     }
 
     &-icon {
@@ -180,7 +180,7 @@
     &-menu {
       display: inline-flex;
       visibility: hidden;
-      flex-direction: column;
+      flex-flow: column;
       width: 100%;
       max-width: $size--container-08;
       padding: $component--padding-inside;
@@ -241,7 +241,7 @@
           border-radius: $component--radius-default;
           outline: 0;
 
-          &:focus {
+          &:focus-visible {
             border-color: $color--focus;
           }
         }
@@ -288,18 +288,24 @@
     }
   }
   &--dropdown.$(prefix)--skeleton {
-    flex-direction: column;
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
     align-items: flex-start;
-    transform: translateY(0.0625rem);
+    justify-content: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
 
-    & > .$(prefix)--skeleton {
+    & > .$(prefix)--skeleton-animated {
       justify-content: flex-end;
       padding: 0 $size--spacing-05;
-      appearance: auto;
+      border-radius: $component--radius-default;
 
       & > svg {
         transform: translateX(-0.0625rem);
-        stroke: $color--skeleton-02;
+        stroke: $color--skeleton-03;
       }
     }
   }

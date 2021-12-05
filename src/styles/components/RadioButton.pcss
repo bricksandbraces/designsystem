@@ -15,19 +15,35 @@
       }
     }
 
+    & > [type="radio"] + label {
+      & > .$(prefix)--radiobutton-selected {
+        & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--app-02;
+        }
+        & > .$(prefix)--radiobutton-selected__mark {
+          visibility: hidden;
+        }
+      }
+    }
+
     & > [type="radio"]:checked + label {
       color: $color--font-selected;
       & > .$(prefix)--radiobutton-selected {
         color: $color--decoration;
 
         & > .$(prefix)--radiobutton-selected__box {
+          stroke: $color--decoration;
           fill: $color--decoration;
+        }
+        & > .$(prefix)--radiobutton-selected__mark {
+          visibility: visible;
+          fill: white;
         }
       }
     }
 
     &
-      > .$(prefix)--radiobutton-input[type="radio"]:focus
+      > .$(prefix)--radiobutton-input[type="radio"]:focus-visible
       + .$(prefix)--radiobutton-label
       > svg
       > .$(prefix)--radiobutton-selected__box {
@@ -150,9 +166,9 @@
     }
   }
 
-  &--radiobutton.$(prefix)--skeleton-container {
+  &--radiobutton.$(prefix)--skeleton {
     display: inline-flex;
-    flex-direction: row;
+    flex-flow: row;
     align-items: center;
     & > .$(prefix)--radiobutton-selected {
       stroke: $color--skeleton-02;

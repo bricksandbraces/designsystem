@@ -181,12 +181,18 @@ export const IconOnlyGroup = () => {
 };
 
 export const Skeleton = () => (
-  <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <div style={{ width: "405px", display: "flex", gap: "24px" }}>
-      <IconOnlyButtonSkeleton
-        size={select("size", sizeOptions, defaultSize) as any}
-      />
-      <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
-    </div>
+  <div
+    style={{
+      width: "100vw",
+      height: "100vh",
+      padding: "32px",
+      display: "flex",
+      gap: "1rem"
+    }}
+  >
+    <IconOnlyButtonSkeleton
+      size={select("size", sizeOptions, defaultSize) as any}
+    />
+    <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
   </div>
 );

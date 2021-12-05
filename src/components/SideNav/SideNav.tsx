@@ -73,7 +73,7 @@ const SideNav = (
 
   return (
     <>
-      <div
+      <nav
         ref={ref}
         className={cx(`${prefix}--sidenav`, {
           [`${prefix}--sidenav-open`]: currentlyOpen
@@ -95,7 +95,7 @@ const SideNav = (
           {action}
         </div>
         {children}
-      </div>
+      </nav>
       <div
         role="button"
         className={cx(`${prefix}--sidenav-overlay`)}

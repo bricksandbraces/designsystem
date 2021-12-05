@@ -293,7 +293,7 @@ const Search = (
   );
 
   return (
-    <SearchContainer open={containerOpen}>
+    <>
       <SearchInput
         id={id}
         ref={mergeRefs([inputRef, ref])}
@@ -326,51 +326,53 @@ const Search = (
         size={size}
         label={label}
       />
-      <div className={`${prefix}--search-box__content`}>
-        <div className={`${prefix}--search-box__content-badges`}>
-          {indexedBadges?.map((item, i) => {
-            return (
-              <Button
-                key={item.id}
-                className={cx({
-                  [`${prefix}--search-box__content-badges--manual-hover`]:
-                    i === focusedIndex
-                })}
-                kind="secondary"
-                onMouseEnter={() => {
-                  performFocusChange(i);
-                }}
-                tabIndex={-1}
-                size="small"
-                onClick={item.onClick}
-              >
-                {item.label}
-              </Button>
-            );
-          })}
+      <SearchContainer open={containerOpen}>
+        <div className={`${prefix}--search-box__content`}>
+          <div className={`${prefix}--search-box__content-badges`}>
+            {indexedBadges?.map((item, i) => {
+              return (
+                <Button
+                  key={item.id}
+                  className={cx({
+                    [`${prefix}--search-box__content-badges--manual-hover`]:
+                      i === focusedIndex
+                  })}
+                  kind="secondary"
+                  onMouseEnter={() => {
+                    performFocusChange(i);
+                  }}
+                  tabIndex={-1}
+                  size="small"
+                  onClick={item.onClick}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
+          </div>
+          <div className={`${prefix}--search-box__content-items`}>
+            {searchListItems.map((item, i) => {
+              const absIndex = (indexedBadges?.length ?? 0) + i;
+              return (
+                <SearchListItem
+                  type={item.type}
+                  key={item.id}
+                  onMouseEnter={() => {
+                    performFocusChange(absIndex);
+                  }}
+                  onClick={() => {
+                    updateFocusIndexAndTextValue(absIndex);
+                  }}
+                  label={item.label}
+                  href={item.href}
+                  manuallyHovered={absIndex === focusedIndex}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div>
-          {searchListItems.map((item, i) => {
-            const absIndex = (indexedBadges?.length ?? 0) + i;
-            return (
-              <SearchListItem
-                type={item.type}
-                key={item.id}
-                onMouseEnter={() => {
-                  performFocusChange(absIndex);
-                }}
-                onClick={() => {
-                  updateFocusIndexAndTextValue(absIndex);
-                }}
-                label={item.label}
-                href={item.href}
-                manuallyHovered={absIndex === focusedIndex}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </SearchContainer>
+      </SearchContainer>
+    </>
   );
 };
 

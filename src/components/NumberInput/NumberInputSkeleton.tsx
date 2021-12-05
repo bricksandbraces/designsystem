@@ -1,11 +1,11 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
 import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconMinus, IconPlus } from "@tabler/icons";
+import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonAnimatedContainer } from "../..";
 
 type NumberInputSkeletonProps = {
   /**
@@ -30,9 +30,9 @@ const NumberInputSkeleton = ({
   className
 }: NumberInputSkeletonProps) => {
   return (
-    <SkeletonContainer
+    <div
       className={cx(
-        `${prefix}--numberinput`,
+        `${prefix}--numberinput ${prefix}--skeleton`,
         {
           [`${prefix}--numberinput-fluid`]: fluid
         },
@@ -41,8 +41,8 @@ const NumberInputSkeleton = ({
       )}
     >
       {!fluid && (
-        <SkeletonAnimatedContainer
-          style={{ width: 64 }}
+        <SkeletonText
+          style={{ width: "4rem" }}
           className={cx(
             `${prefix}--typography-label`,
 
@@ -51,13 +51,10 @@ const NumberInputSkeleton = ({
         />
       )}
       <SkeletonAnimatedContainer
-        style={{ width: 256 }}
+        style={{ width: "16rem" }}
         className={`${prefix}--numberinput-${size}`}
       >
-        <IconOnlyButtonGroup
-          withDivider
-          className={`${prefix}--numberinput-spin`}
-        >
+        <IconOnlyButtonGroup withDivider>
           <IconOnlyButton
             disabled
             kind="ghost"
@@ -76,7 +73,7 @@ const NumberInputSkeleton = ({
           />
         </IconOnlyButtonGroup>
       </SkeletonAnimatedContainer>
-    </SkeletonContainer>
+    </div>
   );
 };
 

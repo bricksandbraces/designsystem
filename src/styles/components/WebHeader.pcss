@@ -10,8 +10,8 @@
     top: 0;
     width: 100%;
     height: $size--container-06;
-    border-bottom: 0.0625rem solid rgba(0, 0, 0, 10%);
-    background-color: $color--app-05;
+    border-bottom: 0.0625rem solid rgba($color--border, 0.25);
+    background-color: $color--app-01;
 
     & > div {
       position: relative;
@@ -43,22 +43,22 @@
       outline: 0.125rem solid transparent;
       outline-offset: calc($size--spacing-02 * -1);
       background-color: transparent;
-      color: $color--background;
+      color: $color--font-text-01;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 5%);
+        background-color: rgba($color--app-05, 0.05);
       }
 
       &:active {
-        background-color: rgba(0, 0, 0, 10%);
+        background-color: rgba($color--app-05, 0.1);
       }
 
       &:focus-visible {
-        outline: 0.125rem solid $color--focus-inverse;
+        outline: 0.125rem solid $color--focus;
       }
 
       &__open {
-        color: white;
+        color: $color--font-text-01;
 
         &:focus-visible {
           outline: 0.125rem solid $color--focus;
@@ -73,7 +73,7 @@
       z-index: 10500;
       top: 0;
       right: 0;
-      flex-direction: column;
+      flex-flow: column;
       align-content: space-between;
       justify-content: space-between;
       width: 100%;
@@ -84,7 +84,7 @@
       transform: translateX(calc($size--container-08 * 2));
       transition: transform $transition--app-01, visibility $transition--app-01;
       border-left: 0.0625rem solid rgba($white, 0.2);
-      background: linear-gradient($blue-600, $purple-500);
+      background: $color--decoration;
 
       &__logo {
         margin-top: $size--spacing-10;
@@ -120,7 +120,7 @@
       transition: opacity $transition--app-02;
       outline: 0.0625rem solid transparent;
       outline-offset: $size--spacing-01;
-      color: white;
+      color: $color--font-text-01;
 
       &::after {
         content: "";
@@ -168,8 +168,12 @@
       outline: 0.125rem solid transparent;
       outline-offset: $size--spacing-03;
 
+      & > svg > path {
+        fill: $color--font-text-01;
+      }
+
       &:focus-visible {
-        outline: 0.125rem solid $color--focus-inverse;
+        outline: 0.125rem solid $color--focus;
       }
     }
   }
