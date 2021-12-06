@@ -110,6 +110,15 @@ const Pagination = (
               kind="ghost"
               icon={<IconChevronsLeft />}
               size={size}
+              onClick={() => {
+                if (currentIndex === 0) {
+                  if (loop) {
+                    performPageChange(totalPages - 1);
+                  }
+                } else {
+                  performPageChange(0);
+                }
+              }}
             />
           </li>
         )}
@@ -175,6 +184,15 @@ const Pagination = (
               kind="ghost"
               icon={<IconChevronsRight />}
               size={size}
+              onClick={() => {
+                if (currentIndex === totalPages - 1) {
+                  if (loop) {
+                    performPageChange(0);
+                  }
+                } else {
+                  performPageChange(totalPages - 1);
+                }
+              }}
             />
           </li>
         )}
