@@ -28,6 +28,9 @@ import TableSelectionRadioCell from "./TableSelectionRadioCell";
 import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
 import TableToolbar from "./TableToolbar";
 import TableToolbarFilterButton from "./TableToolbarFilterButton";
+import { useTableFilter } from "./useTableFilter";
+import { useTableSelection } from "./useTableSelection";
+import { useTableSort } from "./useTableSort";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -148,41 +151,6 @@ export const DefaultAsDataTable = () => {
       </Grid>
     </div>
   );
-};
-
-const useTableSelection = (
-  unprocessedRows: RowEntry[]
-): [
-  string[],
-  (entry: RowEntry | string) => void,
-  (select?: boolean) => void
-] => {
-  const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
-
-  const toggleSelectionForRow = (entry: RowEntry | string) => {
-    const entryId = typeof entry === "string" ? entry : entry.id;
-
-    if (!selectedIDs.includes(entryId)) {
-      setSelectedIDs([...selectedIDs, entryId]);
-    } else {
-      setSelectedIDs(selectedIDs.filter((id) => id !== entryId));
-    }
-  };
-
-  const toggleAll = (select?: boolean) => {
-    if (select != null) {
-      setSelectedIDs(select ? unprocessedRows.map((row) => row.id) : []);
-    } else {
-      // all selected
-      if (selectedIDs.length === unprocessedRows.length) {
-        setSelectedIDs([]);
-      } else {
-        setSelectedIDs(unprocessedRows.map((row) => row.id));
-      }
-    }
-  };
-
-  return [selectedIDs, toggleSelectionForRow, toggleAll];
 };
 
 export const DataTableWithSelection = () => {
@@ -314,43 +282,6 @@ export const DataTableWithRadioSelection = () => {
       </Grid>
     </div>
   );
-};
-
-const useTableSort = (): [
-  string | undefined,
-  "ascending" | "descending",
-  ((r1: RowEntry, r2: RowEntry) => number) | undefined,
-  (header: HeaderEntry) => void,
-  () => void
-] => {
-  const [sortByColumn, setSortByColumn] = useState<string>();
-  const [sortDirection, setSortDirection] = useState<
-    "ascending" | "descending"
-  >("descending");
-  const [sortFn, setSortFn] =
-    useState<(r1: RowEntry, r2: RowEntry) => number>();
-
-  const toggleHeaderSorting = (header: HeaderEntry) => {
-    setSortByColumn(header.key);
-    setSortDirection(
-      sortDirection === "ascending" ? "descending" : "ascending"
-    );
-    setSortFn(header.sortFn);
-  };
-
-  const disableSorting = () => {
-    setSortByColumn(undefined);
-    setSortDirection("descending");
-    setSortFn(undefined);
-  };
-
-  return [
-    sortByColumn,
-    sortDirection,
-    sortFn,
-    toggleHeaderSorting,
-    disableSorting
-  ];
 };
 
 export const DataTableWithSortableHeaderCells = () => {
@@ -550,39 +481,10 @@ export const DataTableWithToolbar = () => {
   );
 };
 
-const useTableFilter = () => {
-  const [filterPanelOpen, setFilterPanelOpen] = useState(false);
-  const [activeFilters, setActiveFilters] = useState<
-    Record<string, ((row: RowEntry) => boolean) | undefined>
-  >({});
-  const activeFiltersCount = Object.keys(activeFilters).filter(
-    (filterKey) => !!activeFilters[filterKey]
-  ).length;
-
-  const registerFilter = (
-    filterKey: string,
-    filterFn: ((row: RowEntry) => boolean) | undefined
-  ) => {
-    setActiveFilters({ ...activeFilters, [filterKey]: filterFn });
-  };
-
-  return {
-    filterPanelOpen,
-    setFilterPanelOpen,
-    activeFilters,
-    activeFiltersCount,
-    registerFilter
-  };
-};
-
 export const DataTableFilterPanel = () => {
-  const {
-    filterPanelOpen,
-    setFilterPanelOpen,
-    activeFilters,
-    activeFiltersCount,
-    registerFilter
-  } = useTableFilter();
+  const [filterPanelOpen, setFilterPanelOpen] = useState<boolean>(false);
+  const { activeFilters, activeFiltersCount, registerFilter } =
+    useTableFilter();
 
   const [locationFilter, setLocationFilter] = useState<string[]>([]);
   const toggleLocationFilter = (location: string) => {
