@@ -131,7 +131,6 @@ export const Skeleton = () => {
         }}
       >
         <ToggleSkeleton />
-        <ToggleSkeleton size="small" />
       </div>
     </div>
   );

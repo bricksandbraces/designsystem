@@ -4,7 +4,7 @@
 
 .$(prefix) {
   &--tabs {
-    white-space: wrap;
+    white-space: normal;
 
     &-btn {
       position: relative;
@@ -100,6 +100,34 @@
           transform: translate(0, 0);
           opacity: 100%;
         }
+      }
+    }
+  }
+  &--tabs.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: unset;
+    border: 0.0625rem solid;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--tabs-btn {
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      min-width: $size--container-07;
+
+      &::after {
+        display: none;
+      }
+
+      & > .$(prefix)--skeleton-text {
+        width: 100%;
       }
     }
   }
