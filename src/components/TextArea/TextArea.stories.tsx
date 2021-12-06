@@ -2,6 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import TextArea from "./TextArea";
+import TextAreaSkeleton from "./TextAreaSkeleton";
 
 export default { title: "Components/A_REFA_TextArea", decorators: [withKnobs] };
 
@@ -74,6 +75,14 @@ export const WithCharacterCounter = () => {
         onBlur={action("onBlur")}
         onKeyDown={action("onKeyDown")}
       />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ height: "100vh", padding: "32px" }}>
+      <TextAreaSkeleton />
     </div>
   );
 };

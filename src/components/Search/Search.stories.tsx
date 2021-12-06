@@ -7,6 +7,7 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
+import Label from "../Typography/Label";
 import Search from "./Search";
 import SearchInput from "./SearchInput";
 
@@ -38,7 +39,7 @@ export const InputWithSubmit = () => {
           action("onSubmit")(valueToSubmit, event);
         }}
       />
-      Submitted value: {submittedValue}
+      <Label> Submitted value: {submittedValue}</Label>
     </div>
   );
 };
@@ -56,7 +57,7 @@ export const InputWithoutSubmit = () => {
         onChange={action("onChange")}
         onClickInput={action("onClickInput")}
         onKeyDown={action("onKeyDown")}
-        placeholder={text("Placeholder", "")}
+        placeholder={text("Placeholder", "Search")}
         size={select("Size", sizeOptions, "default") as any}
         clearLabel={text("Clear Label", "Clear")}
         defaultValue={text("Default Value", "")}
@@ -83,7 +84,7 @@ export const ControlledInput = () => {
         }}
         onClickInput={action("onClickInput")}
         onKeyDown={action("onKeyDown")}
-        placeholder={text("Placeholder", "")}
+        placeholder={text("Placeholder", "Search")}
         size={select("Size", sizeOptions, "default") as any}
         clearLabel={text("Clear Label", "Clear")}
       />
