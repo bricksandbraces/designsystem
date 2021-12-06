@@ -18,6 +18,7 @@ import {
 } from "../..";
 import { prefix } from "../../settings";
 import NumberInput from "../NumberInput/NumberInput";
+import Pagination from "../Pagination/Pagination";
 import Headline from "../Typography/Headline";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
 import TableActions from "./TableActions";
@@ -833,6 +834,74 @@ export const DataTableWithBatchActions = () => {
                           </TableRow>
                         ))}
                       </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }}
+            </DataTable>
+          </div>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const DataTableWithPagination = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [page, setPage] = useState<number>(0);
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
+            <DataTable
+              rows={unprocessedRows}
+              headers={unprocessedHeaders}
+              page={page}
+              itemsPerPage={2}
+            >
+              {({
+                rows,
+                headers,
+                pagesCount,
+                getTableContainerProps,
+                getTableProps,
+                getTableHeadProps
+              }) => {
+                return (
+                  <TableContainer {...getTableContainerProps()}>
+                    <Table {...getTableProps()}>
+                      <TableHead
+                        headers={defaultHeaders}
+                        {...getTableHeadProps()}
+                      >
+                        <TableRow>
+                          {headers.map((header) => (
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <TableRow key={row.id}>
+                            {headers.map((header) => (
+                              <TableCell key={`${row.id}-${header.key}`}>
+                                {row[header.key]}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                      <Pagination
+                        totalPages={pagesCount}
+                        page={page}
+                        onPageChange={(newPage) => setPage(newPage)}
+                      />
                     </Table>
                   </TableContainer>
                 );

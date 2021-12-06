@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TableProps } from "./Table";
 import { TableContainerProps } from "./TableContainer";
 import { TableHeadProps } from "./TableHead";
+import { chunk } from "lodash";
 
 export type HeaderEntry = {
   title: string;
@@ -22,6 +23,7 @@ export type DataTableRendererProps = {
   getTableHeadProps: () => any;
   getTableContainerProps: () => any;
   getTableProps: () => any;
+  pagesCount: number;
 };
 
 export type DataTableProps = {
@@ -36,6 +38,8 @@ export type DataTableProps = {
   customSearchFilterFn?: (row: RowEntry) => boolean;
   children: (rendererProps: DataTableRendererProps) => React.ReactNode;
   actions?: (row: RowEntry) => JSX.Element[];
+  page?: number;
+  itemsPerPage?: number;
 };
 
 const DataTable = ({
@@ -47,6 +51,8 @@ const DataTable = ({
   sortDirection = "ascending",
   itemsToShow,
   searchQuery,
+  page,
+  itemsPerPage,
   customSearchFilterFn,
   children
 }: DataTableProps): JSX.Element => {
@@ -114,10 +120,18 @@ const DataTable = ({
     }
   }
 
-  // Slice & (todo) Pagination
+  let pagesCount: number = 1;
 
+  // Slice
   if (itemsToShow != null) {
     processedRows.slice(0, itemsToShow);
+  } else {
+    // Pagination
+    if (itemsPerPage != null && page != null) {
+      const chunkedRows = chunk(processedRows, itemsPerPage);
+      processedRows = chunkedRows[page];
+      pagesCount = chunkedRows.length;
+    }
   }
 
   return (
@@ -127,7 +141,8 @@ const DataTable = ({
         headers: processedHeaders,
         getTableContainerProps: () => tableContainerProps,
         getTableProps: () => tableProps,
-        getTableHeadProps: () => tableHeadProps
+        getTableHeadProps: () => tableHeadProps,
+        pagesCount
       })}
     </>
   );

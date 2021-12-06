@@ -2079,6 +2079,7 @@ __metadata:
     "@tippyjs/react": ^4.2.6
     "@types/enzyme": ^3.10.10
     "@types/jest": ^27.0.3
+    "@types/lodash": ^4.14.177
     "@types/node": ^16.11.11
     "@types/object-hash": ^2.2.1
     "@types/prop-types": ^15.7.4
@@ -3898,6 +3899,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: b5f8aa592cc21c16d99e69aec0976f12b893b055e4456d90148a610a6b6088e297b2ba5f38f8c8280cef006cfd8f9ec99e069905020882619dc5fc8aa46f5f27
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.177":
+  version: 4.14.177
+  resolution: "@types/lodash@npm:4.14.177::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40types%2Flodash%2F-%2Flodash-4.14.177.tgz"
+  checksum: 00f9eb300ed5219cfbabb3448d4a71744895edad60dcfda9f028c0808a50eb6ad1ca9f673b56a85f85668a4ea54b9870643625468a747039c435643e52253a75
   languageName: node
   linkType: hard
 
