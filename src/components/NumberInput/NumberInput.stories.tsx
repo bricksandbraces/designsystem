@@ -39,6 +39,9 @@ export const Uncontrolled = () => {
           setReference(params.parsedValue);
           action("onChange")(event, params);
         }}
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
+        fluid={boolean("fluid", false)}
         onBlur={action("onBlur")}
         onFocus={action("onFocus")}
         onKeyDown={action("onKeyDown")}

@@ -50,10 +50,21 @@
         min-height: $size--container-02;
         max-height: $size--container-02;
         margin-top: $size--spacing-03;
+        margin-right: $size--spacing-03;
         border-radius: $component--radius-default;
 
-        &:not(:first-child) {
-          margin-right: $size--spacing-03;
+        &:first-child {
+          margin-right: $size--spacing-05;
+        }
+
+        &:hover {
+          &::before {
+            opacity: 100%;
+          }
+        }
+
+        &::before {
+          right: calc($size--spacing-01 * 5 * -1);
         }
       }
 
@@ -147,6 +158,17 @@
         display: flex;
         position: relative;
         flex-flow: column;
+      }
+    }
+
+    &-readonly {
+      &
+        > .$(prefix)--numberinput-input__container
+        > .$(prefix)--button-group
+        > .$(prefix)--button {
+        border-color: transparent;
+        background-color: transparent;
+        color: $color--font-readonly;
       }
     }
 

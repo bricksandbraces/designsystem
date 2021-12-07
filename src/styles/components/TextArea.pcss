@@ -119,4 +119,30 @@
       }
     }
   }
+  &--textarea.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
+      justify-content: flex-end;
+      padding: 0 $size--spacing-05;
+      border-radius: $component--radius-default;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-03;
+      }
+    }
+
+    & > .$(prefix)--skeleton-container {
+      align-items: flex-start;
+    }
+  }
 }

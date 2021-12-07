@@ -5,6 +5,7 @@ import Switcher from "./Switcher";
 import { Grid, Column } from "../Grid/Grid";
 import Body from "../Typography/Body";
 import { action } from "@storybook/addon-actions";
+import SwitcherSkeleton from "./SwitcherSkeleton";
 
 export default { title: "Components/A_REFA_Switcher", decorators: [withKnobs] };
 
@@ -94,6 +95,22 @@ export const Controlled = () => {
               </div>
             </SwitcherItem>
           </Switcher>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div
+      style={{
+        padding: "32px"
+      }}
+    >
+      <Grid narrow>
+        <Column xlg={16} lg={16} md={8} sm={4}>
+          <SwitcherSkeleton />
         </Column>
       </Grid>
     </div>

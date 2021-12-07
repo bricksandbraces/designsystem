@@ -17,7 +17,7 @@
       min-width: $size--container-01;
       height: $size--container-01;
       min-height: $size--container-01;
-      margin-left: $size--spacing-04;
+      margin-left: $size--spacing-05;
       color: $color--font-placeholder;
     }
 
@@ -212,6 +212,30 @@
       right: 0;
       align-items: center;
       height: 100%;
+    }
+  }
+  &--search.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: unset;
+    border: 0.0625rem solid;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
+      justify-content: flex-start;
+      padding: 0 $size--spacing-05;
+      border-radius: $component--radius-default;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-03;
+      }
     }
   }
 }

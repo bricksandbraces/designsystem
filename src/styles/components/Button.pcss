@@ -200,12 +200,20 @@
   background-color: $color--disabled;
   color: $color--font-disabled;
 
+  &::before {
+    background-color: $color--font-disabled;
+  }
+
   &:hover,
   &:focus,
   &:active {
     border-color: $color--disabled;
     background-color: $color--disabled;
     color: $color--font-disabled;
+
+    &::before {
+      opacity: 100%;
+    }
   }
 }
 

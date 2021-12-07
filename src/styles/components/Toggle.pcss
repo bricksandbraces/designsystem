@@ -121,17 +121,13 @@
       }
     }
   }
-  &--toggle.$(prefix)--skeleton-container {
+  &--toggle.$(prefix)--skeleton {
     display: inline-flex;
     flex-flow: row;
     align-items: center;
     min-height: $size--container-01;
-    transform: translate(0, 0.125rem);
-
-    & > .$(prefix)--skeleton-animated {
-      margin-bottom: 0;
-      border: 0;
-    }
+    margin: 0;
+    transform: translate(0.125rem, 0.125rem);
   }
 }
 

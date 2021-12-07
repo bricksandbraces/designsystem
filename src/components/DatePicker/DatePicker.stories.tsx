@@ -52,6 +52,8 @@ export const Uncontrolled = () => {
         onBlur={action("onBlur")}
         onFocus={action("onFocus")}
       />
+      <br />
+      <br />
       <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
@@ -87,6 +89,8 @@ export const Controlled = () => {
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
       />
+      <br />
+      <br />
       <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
@@ -101,7 +105,6 @@ export const SingleWithCalendarUncontrolled = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
       <OutsideClickHandler
         onOutsideClick={(event) => {
           setOpen(false);
@@ -149,6 +152,8 @@ export const SingleWithCalendarUncontrolled = () => {
           </DateInput>
         </div>
       </OutsideClickHandler>
+      <br />
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
 };
@@ -161,7 +166,6 @@ export const SingleWithCalendarControlled = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
       <OutsideClickHandler
         onOutsideClick={() => {
           setOpen(false);
@@ -209,6 +213,10 @@ export const SingleWithCalendarControlled = () => {
           </DateInput>
         </div>
       </OutsideClickHandler>
+      <br />
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
+      <br />
+      <br />
       <Button
         onClick={(event) => {
           setChosenDate(new Date());

@@ -132,6 +132,8 @@ const NumberInput = (
     label,
     placeholder,
     value,
+    disabled,
+    readOnly,
     defaultValue,
     autoComplete,
     onChange,
@@ -202,7 +204,9 @@ const NumberInput = (
       className={cx(
         `${prefix}--numberinput`,
         {
-          [`${prefix}--numberinput-fluid`]: fluid
+          [`${prefix}--numberinput-fluid`]: fluid,
+          [`${prefix}--numberinput-disabled`]: disabled,
+          [`${prefix}--numberinput-readonly`]: readOnly
         },
         className
       )}
@@ -220,6 +224,8 @@ const NumberInput = (
               !(error || errorText) && (warning || warningText)
           })}
           type="number"
+          disabled={disabled}
+          readOnly={readOnly}
           placeholder={placeholder}
           autoComplete={autoComplete}
           value={value}
@@ -249,6 +255,7 @@ const NumberInput = (
             className={`${prefix}--numberinput-spin`}
           >
             <IconOnlyButton
+              disabled={disabled || readOnly}
               kind="ghost"
               className={`${prefix}--numberinput-spin__button`}
               hideTooltip
@@ -272,6 +279,7 @@ const NumberInput = (
               icon={<IconMinus />}
             />
             <IconOnlyButton
+              disabled={disabled || readOnly}
               kind="ghost"
               className={`${prefix}--numberinput-spin__button`}
               hideTooltip
