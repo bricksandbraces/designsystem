@@ -96,6 +96,45 @@ export const ControlledInput = () => {
 export const FullSearchWithContainer = () => {
   return (
     <div style={{ padding: "32px" }}>
+      <Search
+        id={text("ID", "search-1") as any}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
+        onKeyDown={action("onKeyDown")}
+        onChange={action("onChange")}
+        onClickInput={action("onClick")}
+        onItemFocusChange={action("onItemFocusChange")}
+        onSubmit={action("onSubmit")}
+        defaultOpen={boolean("Default Open", false)}
+        recents={object("recents", [
+          { href: "#", label: "User profile" },
+          { href: "#", label: "Settings" },
+          { href: "#", label: "FAQ" }
+        ])}
+        results={object("results", [
+          { href: "#", label: "User profile with google" },
+          { href: "#", label: "Settings in bricks & braces" },
+          { href: "#", label: "FAQ 124" }
+        ])}
+        badges={object("badges", [
+          { label: "User profile with google" },
+          { label: "Settings in bricks & braces" },
+          { label: "FAQ 124" }
+        ])}
+        clearLabel={text("Clear Label", "Clear results")}
+        submitLabel={text("Submit Label", "Go!")}
+        defaultValue={text("Default Value", "Searchkitty")}
+        placeholder={text("Placeholder", "Search")}
+        label={text("Label", "Search")}
+        size={select("Size", sizeOptions, defaultSize) as any}
+      />
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ padding: "32px" }}>
       <SearchSkeleton />
     </div>
   );
