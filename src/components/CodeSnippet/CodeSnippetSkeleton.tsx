@@ -1,8 +1,6 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import IconOnlyButtonSkeleton from "../Button/IconOnlyButtonSkeleton";
-import ButtonSkeleton from "../Button/ButtonSkeleton";
 import SkeletonContainer from "../Skeleton/SkeletonContainer";
 import SkeletonText from "../Skeleton/SkeletonText";
 
