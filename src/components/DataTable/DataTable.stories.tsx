@@ -56,7 +56,7 @@ const defaultRows: RowEntry[] = [
 ];
 const defaultHeaders: HeaderEntry[] = [
   { title: "Full Name", key: "name", sortable: true },
-  { title: "Location (Country)", key: "location" },
+  { title: "Location (Country)", key: "location", sortable: true },
   { title: "Profession", key: "profession" }
 ];
 
@@ -182,7 +182,7 @@ export const DataTableWithSelection = () => {
                       >
                         <TableRow>
                           <TableSelectionHeaderCell
-                            onChange={() => toggleAll()}
+                            toggleAll={toggleAll}
                             unprocessedRows={unprocessedRows}
                             selectedRows={selectedIDs}
                           />
@@ -285,8 +285,14 @@ export const DataTableWithRadioSelection = () => {
 };
 
 export const DataTableWithSortableHeaderCells = () => {
-  const [sortByColumn, sortDirection, sortFn, toggleHeaderSorting] =
-    useTableSort();
+  const [
+    sortByColumn,
+    sortDirection,
+    sortFn,
+    toggleHeaderSorting,
+    ,
+    getSortState
+  ] = useTableSort();
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -314,15 +320,17 @@ export const DataTableWithSortableHeaderCells = () => {
                         {...getTableHeadProps()}
                       >
                         <TableRow>
-                          {headers.map((header) => (
-                            <TableHeadCell
-                              key={header.key}
-                              onClick={() => toggleHeaderSorting(header)}
-                              interactive={header.sortable}
-                            >
-                              {header.title}
-                            </TableHeadCell>
-                          ))}
+                          {headers.map((header) => {
+                            return (
+                              <TableHeadCell
+                                key={header.key}
+                                onClick={() => toggleHeaderSorting(header)}
+                                sortState={getSortState(header)}
+                              >
+                                {header.title}
+                              </TableHeadCell>
+                            );
+                          })}
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -374,7 +382,9 @@ export const DataTableWithHeader = () => {
                       >
                         <TableRow>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>{}</TableHeadCell>
+                            <TableHeadCell key={header.key}>
+                              {header.title}
+                            </TableHeadCell>
                           ))}
                         </TableRow>
                       </TableHead>
@@ -402,7 +412,7 @@ export const DataTableWithHeader = () => {
 };
 
 export const DataTableWithToolbar = () => {
-  const [itemsToShow, setItemsToShow] = useState<number>(10);
+  const [itemsToShow, setItemsToShow] = useState<number>(3);
   const [searchQuery, setSearchQuery] = useState<string | undefined>();
 
   return (
@@ -709,7 +719,7 @@ export const DataTableWithBatchActions = () => {
                       >
                         <TableRow>
                           <TableSelectionHeaderCell
-                            onChange={() => toggleAll()}
+                            toggleAll={toggleAll}
                             unprocessedRows={unprocessedRows}
                             selectedRows={selectedIDs}
                           />
@@ -763,7 +773,7 @@ export const DataTableWithPagination = () => {
               rows={unprocessedRows}
               headers={unprocessedHeaders}
               page={page}
-              itemsPerPage={2}
+              itemsPerPage={1}
             >
               {({
                 rows,

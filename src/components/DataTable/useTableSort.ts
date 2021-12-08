@@ -11,7 +11,8 @@ import { HeaderEntry, RowEntry } from "./DataTable";
  *   sortDirection,
  *   sortFn,
  *   toggleHeaderSorting,
- *   disableSorting
+ *   disableSorting,
+ *   getSortState
  * ]
  */
 const useTableSort = (): [
@@ -19,7 +20,8 @@ const useTableSort = (): [
   "ascending" | "descending",
   ((r1: RowEntry, r2: RowEntry) => number) | undefined,
   (header: HeaderEntry) => void,
-  () => void
+  () => void,
+  (header: HeaderEntry) => "ascending" | "descending" | "unsorted" | undefined
 ] => {
   const [sortByColumn, setSortByColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<
@@ -28,18 +30,32 @@ const useTableSort = (): [
   const [sortFn, setSortFn] =
     useState<(r1: RowEntry, r2: RowEntry) => number>();
 
-  const toggleHeaderSorting = (header: HeaderEntry) => {
-    setSortByColumn(header.key);
-    setSortDirection(
-      sortDirection === "ascending" ? "descending" : "ascending"
-    );
-    setSortFn(header.sortFn);
-  };
-
   const disableSorting = () => {
     setSortByColumn(undefined);
     setSortDirection("descending");
     setSortFn(undefined);
+  };
+
+  const toggleHeaderSorting = (header: HeaderEntry) => {
+    // check if current header toggling
+    if (header.key === sortByColumn) {
+      if (sortDirection === "ascending") {
+        setSortDirection("descending");
+      } else if (sortDirection === "descending") {
+        disableSorting();
+      }
+    } else {
+      setSortDirection("ascending");
+      setSortByColumn(header.key);
+      setSortFn(header.sortFn);
+    }
+  };
+
+  const getSortState = (header: HeaderEntry) => {
+    const headerSortable = header.sortable ? "unsorted" : undefined;
+    const sortState =
+      sortByColumn === header.key ? sortDirection : headerSortable;
+    return sortState;
   };
 
   return [
@@ -47,7 +63,8 @@ const useTableSort = (): [
     sortDirection,
     sortFn,
     toggleHeaderSorting,
-    disableSorting
+    disableSorting,
+    getSortState
   ];
 };
 export { useTableSort };

@@ -89,6 +89,61 @@ export const WithChildren = () => {
   );
 };
 
+export const Indeterminate = () => {
+  const [checked, setChecked] = useState<string[]>([]);
+
+  const toggleChecked = (value: string) => {
+    if (checked.includes(value)) {
+      setChecked(checked.filter((f) => f !== value));
+    } else {
+      setChecked([...checked, value]);
+    }
+  };
+
+  const allChecked = checked.length === 2;
+  const noneChecked = checked.length === 0;
+
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Checkbox
+          label={text("label", "Parent checkbox")}
+          id="checkbox-1"
+          value="c"
+          indeterminate={!allChecked && !noneChecked}
+          checked={allChecked}
+          onChange={() => {
+            if (noneChecked) {
+              setChecked(["c1", "c2"]);
+            } else {
+              setChecked([]);
+            }
+          }}
+        >
+          <Checkbox
+            label={text("childLabel", "Child checkbox")}
+            id="checkbox-2"
+            value="c1"
+            checked={checked.includes("c1")}
+            onChange={() => {
+              toggleChecked("c1");
+            }}
+          />
+          <Checkbox
+            label={text("childLabel", "Child checkbox")}
+            id="checkbox-3"
+            value="c2"
+            checked={checked.includes("c2")}
+            onChange={() => {
+              toggleChecked("c2");
+            }}
+          />
+        </Checkbox>
+      </div>
+    </div>
+  );
+};
+
 export const Skeleton = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>

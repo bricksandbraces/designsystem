@@ -40,6 +40,24 @@
       }
     }
 
+    & > [data-checkbox-state="mixed"] + label {
+      color: yellow;
+      & > .$(prefix)--checkbox-check {
+        color: yellow;
+        & > .$(prefix)--checkbox-check__indeterminate-mark {
+          visibility: visible;
+          stroke-width: 0.125rem;
+          color: blue;
+        }
+
+        & > .$(prefix)--checkbox-check__box {
+          border-color: $color--decoration;
+          stroke: $color--decoration;
+          fill: $color--decoration;
+        }
+      }
+    }
+
     &
       > .$(prefix)--checkbox-input[type="checkbox"]:focus-visible
       + .$(prefix)--checkbox-label
@@ -141,7 +159,7 @@
       width: 0;
       height: 0;
       max-height: 0;
-      opacity: 0%;
+      opacity: 0;
       cursor: pointer;
     }
 

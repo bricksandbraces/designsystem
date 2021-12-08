@@ -35,6 +35,22 @@
             border-top-right-radius: $component--radius-default;
             border-bottom-right-radius: $component--radius-default;
           }
+
+          & > .$(prefix)--datatable-head__cell-label {
+            & > .$(prefix)--datatable-head__cell-sorticon {
+              opacity: 0;
+            }
+            &
+              > .$(prefix)--datatable-head__cell-sorticon.$(prefix)--datatable-head__cell-sorticon__active {
+              opacity: 1;
+            }
+          }
+
+          & > .$(prefix)--datatable-head__cell-label:hover {
+            & > .$(prefix)--datatable-head__cell-sorticon {
+              opacity: 1;
+            }
+          }
         }
 
         & > th.interactive:hover {
