@@ -106,4 +106,4 @@ const ClickableTile = (
   );
 };
 
-export default ClickableTile;
+export default React.forwardRef(ClickableTile);

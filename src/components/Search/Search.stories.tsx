@@ -79,9 +79,9 @@ export const ControlledInput = () => {
         submitLabel={text("Submit Label", "Go!")}
         onBlur={action("onBlur")}
         onFocus={action("onFocus")}
-        onChange={(event) => {
-          setValue(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setValue(newValue);
+          action("onChange")(newValue, event);
         }}
         onClickInput={action("onClickInput")}
         onKeyDown={action("onKeyDown")}

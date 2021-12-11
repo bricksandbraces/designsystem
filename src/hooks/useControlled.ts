@@ -1,4 +1,4 @@
-import {
+import React, {
   MutableRefObject,
   SetStateAction,
   useEffect,
@@ -92,28 +92,38 @@ const useControlledValue = <V>(
  *   setUncontrolledCacheValue = update the internal cache for holding the uncontrolled input value
  * ]
  */
-const useControlledInput = <V, E extends HTMLElement & { value?: string }>(
-  value: V,
-  defaultValue: V,
+const useControlledInput = <
+  E extends HTMLElement & { value?: string | undefined } = HTMLInputElement
+>(
+  value?: string,
+  defaultValue?: string,
   onChange?: (
     newValue: string | undefined,
     event?: React.ChangeEvent<E>
   ) => void
 ): [
   MutableRefObject<E | null>,
-  V | undefined,
+  string | undefined,
   (
-    overrideValue?: React.SetStateAction<V | undefined>,
-    additional?: React.ChangeEventHandler<E> | undefined
-  ) => ((event: React.ChangeEvent<E>) => void) | undefined,
-  React.Dispatch<React.SetStateAction<V | undefined>>,
-  React.Dispatch<React.SetStateAction<V | undefined>>
+    overrideValue?: React.SetStateAction<string | undefined> | undefined,
+    additional?: (
+      newValue?: string | undefined,
+      event?: React.ChangeEvent<E>
+    ) => void
+  ) =>
+    | ((
+        first: string | React.ChangeEvent<E> | undefined,
+        event?: React.ChangeEvent<E>
+      ) => void)
+    | undefined,
+  React.Dispatch<React.SetStateAction<string | undefined>>,
+  React.Dispatch<React.SetStateAction<string | undefined>>
 ] => {
   const inputRef = useRef<E>(null);
   const controlled = useControlled(value);
   // A mirrored value that is getting updated when the value changed and the input is uncontrolled
   const [uncontrolledCacheValue, setUncontrolledCacheValue] = useState<
-    V | undefined
+    string | undefined
   >(defaultValue);
   // Current value is being returned dynamically depending on if the value is controlled or uncontrolled
   const currentValue = controlled ? value : uncontrolledCacheValue;
@@ -130,21 +140,40 @@ const useControlledInput = <V, E extends HTMLElement & { value?: string }>(
    *   the hook and the input is controlled, undefined will be returned.
    */
   const handleChange = (
-    overrideValue?: SetStateAction<V | undefined>,
-    additional?: React.ChangeEventHandler<E>
-  ) => {
+    overrideValue?: SetStateAction<string | undefined>,
+    additional?: (
+      newValue: string | undefined,
+      event?: React.ChangeEvent<E>
+    ) => void
+  ):
+    | ((
+        first: string | React.ChangeEvent<E> | undefined,
+        event?: React.ChangeEvent<E>
+      ) => void)
+    | undefined => {
     // if the input is controlled and no onChange listener is being returned,
     // no onChange function will be returned, resulting in a useful native error
     if (!onChange && controlled) return undefined;
-    return (event: React.ChangeEvent<E>) => {
+
+    return (
+      first: string | React.ChangeEvent<E> | undefined,
+      event?: React.ChangeEvent<E>
+    ) => {
+      // normalize the value for handling all cases that
+      // 1) native change handler is being used
+      // 2) newvalue + event change handler is being used.
+      const newValue =
+        typeof first === "string"
+          ? first
+          : (first as React.ChangeEvent<E> | undefined)?.target?.value ?? "";
       // Only notify the cache for uncontrolled usage, controlled usage always takes the value directly from the parent
       if (!controlled) {
-        setUncontrolledCacheValue(overrideValue ?? (event.target.value as any));
+        setUncontrolledCacheValue(overrideValue ?? newValue);
       }
 
-      additional?.(event);
+      additional?.(newValue, event);
 
-      onChange?.(event.target.value, event);
+      onChange?.(newValue, event);
     };
   };
 
@@ -154,7 +183,7 @@ const useControlledInput = <V, E extends HTMLElement & { value?: string }>(
    *
    * @param newValue New value to set
    */
-  const setValueManually = (newValue: SetStateAction<V | undefined>) => {
+  const setValueManually = (newValue: SetStateAction<string | undefined>) => {
     if (inputRef.current) {
       inputRef.current.value = `${newValue}`;
       setUncontrolledCacheValue(newValue);

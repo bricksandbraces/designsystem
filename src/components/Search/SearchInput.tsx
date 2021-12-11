@@ -46,7 +46,10 @@ export type SearchInputProps = {
   /**
    * SearchInput OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * SearchInput Defaults to true. If false, the submit button is being dropped.
@@ -125,7 +128,10 @@ const SearchInput = (
       defaultValue,
       onChange &&
         ((newValue, event) => {
-          onChange(event as React.ChangeEvent<HTMLInputElement>);
+          onChange(
+            newValue ?? "",
+            event as React.ChangeEvent<HTMLInputElement>
+          );
         })
     );
   return (
@@ -167,7 +173,9 @@ const SearchInput = (
         {!!currentValue && (
           <IconOnlyButton
             onClick={() => {
-              setValueManually("");
+              const newValue = "";
+              setValueManually(newValue);
+              onChange?.(newValue);
             }}
             kind="ghost"
             size={size}

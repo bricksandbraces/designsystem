@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 
 import { prefix } from "../../settings";
@@ -7,7 +7,7 @@ export type HeaderProps = {
   /**
    * Header Children
    */
-  children?: ReactNode;
+  children: React.ReactNode;
 };
 
 const Header = (

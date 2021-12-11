@@ -31,7 +31,7 @@ export const Default = () => {
             checked: true,
             type: OptType.OPT_IN,
             description: "These cookies are mandatory to execute the page.",
-            id: "essentials",
+            id: "essentials2",
             label: "Essential Cookies 2"
           }
         ])}

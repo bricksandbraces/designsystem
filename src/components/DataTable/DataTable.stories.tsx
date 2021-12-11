@@ -413,7 +413,7 @@ export const DataTableWithHeader = () => {
 
 export const DataTableWithToolbar = () => {
   const [itemsToShow, setItemsToShow] = useState<number>(3);
-  const [searchQuery, setSearchQuery] = useState<string | undefined>();
+  const [searchQuery, setSearchQuery] = useState<string | undefined>("");
 
   return (
     <div style={{ marginTop: "16px" }}>
@@ -451,7 +451,9 @@ export const DataTableWithToolbar = () => {
                       <SearchInput
                         id="datatable-search"
                         label="Search"
-                        onChange={(event) => setSearchQuery(event.target.value)}
+                        onChange={(newValue) => {
+                          setSearchQuery(newValue);
+                        }}
                         withSubmit={false}
                       />
                     </TableToolbar>

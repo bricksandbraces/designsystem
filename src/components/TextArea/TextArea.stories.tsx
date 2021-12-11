@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import TextArea from "./TextArea";
 import TextAreaSkeleton from "./TextAreaSkeleton";
 
@@ -28,21 +28,21 @@ export const Uncontrolled = () => {
 };
 
 export const Controlled = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string | undefined>("");
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextArea
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
-        value={value}
+        value={value ?? ""}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter text...")}
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
-        onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
-          setValue(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setValue(newValue);
+          action("onChange")(newValue, event);
         }}
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}

@@ -39,7 +39,10 @@ export type DateInputProps = {
    * DateInput OnInputChanged
    * Called whenever the user changes something within the textinput.
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    dateString: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * DateInput OnBlur
@@ -103,7 +106,7 @@ const DateInput = (
       defaultValue,
       onChange &&
         ((newValue, event) => {
-          onChange(event as React.ChangeEvent<HTMLInputElement>);
+          onChange(newValue ?? "", event);
         })
     );
 

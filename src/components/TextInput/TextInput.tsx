@@ -103,7 +103,10 @@ export type TextInputProps = {
   /**
    * TextInput OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * TextInput OnBlur Function
@@ -158,7 +161,7 @@ const TextInput = (
     defaultValue,
     onChange &&
       ((newValue, event) => {
-        onChange(event as React.ChangeEvent<HTMLInputElement>);
+        onChange(newValue ?? "", event as React.ChangeEvent<HTMLInputElement>);
       })
   );
   return (
