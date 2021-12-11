@@ -124,7 +124,7 @@ const DataTable = ({
 
   // Slice
   if (itemsToShow != null) {
-    processedRows.slice(0, itemsToShow);
+    processedRows = processedRows.slice(0, itemsToShow);
   } else {
     // Pagination
     if (itemsPerPage != null && page != null) {

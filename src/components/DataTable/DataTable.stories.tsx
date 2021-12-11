@@ -412,8 +412,13 @@ export const DataTableWithHeader = () => {
 };
 
 export const DataTableWithToolbar = () => {
-  const [itemsToShow, setItemsToShow] = useState<number>(3);
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [itemsToShow, setItemsToShow] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string | undefined>("");
+
+  console.log(itemsToShow);
 
   return (
     <div style={{ marginTop: "16px" }}>
@@ -421,8 +426,8 @@ export const DataTableWithToolbar = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
             <DataTable
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+              rows={unprocessedRows}
+              headers={unprocessedHeaders}
               searchQuery={searchQuery}
               itemsToShow={itemsToShow}
             >
@@ -440,7 +445,7 @@ export const DataTableWithToolbar = () => {
                       <NumberInput
                         value={itemsToShow}
                         min={0}
-                        max={rows.length}
+                        max={unprocessedRows.length}
                         onChange={(event, { parsedValue }) => {
                           if (parsedValue != null) {
                             setItemsToShow(parsedValue);
