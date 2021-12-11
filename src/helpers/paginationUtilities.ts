@@ -53,16 +53,16 @@ const calcVisibleCurrentPageIndex = (
         pagesRemaining -= 1;
       } else {
         // else take the spot from the left
-        returnIndex -= 1;
+        returnIndex += 1;
       }
       pagesRemaining -= 1;
     }
 
     if (pagesRemaining > 0) {
       // check left space up to maximum. All left or nothing
-      const maxLeftAddition = Math.max(
-        0,
-        currentIndex - idealLeftCount - pagesRemaining
+      const maxLeftAddition = Math.min(
+        Math.max(0, currentIndex - idealLeftCount - pagesRemaining),
+        pagesRemaining
       );
       pagesRemaining -= maxLeftAddition;
       returnIndex = idealLeftCount + maxLeftAddition;

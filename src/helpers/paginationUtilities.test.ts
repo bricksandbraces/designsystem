@@ -101,6 +101,18 @@ describe("paginationUtilities - Show even partial", () => {
   it("solves _ _ x x j x x x _", () => {
     expect(generateVisiblePagesArray(9, 6, 4)).toEqual([2, 3, 4, 5, 6, 7]);
   });
+
+  it("solves _ _ _ _ x j x x", () => {
+    expect(generateVisiblePagesArray(8, 4, 5)).toEqual([4, 5, 6, 7]);
+  });
+
+  it("solves _ _ _ _ x x j x", () => {
+    expect(generateVisiblePagesArray(8, 4, 6)).toEqual([4, 5, 6, 7]);
+  });
+
+  it("solves _ _ _ _ x x x j", () => {
+    expect(generateVisiblePagesArray(8, 4, 7)).toEqual([4, 5, 6, 7]);
+  });
 });
 
 describe("paginationUtilities - Show odd partial", () => {
