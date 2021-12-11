@@ -1,4 +1,4 @@
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 import {
   Icon2fa,
   IconApps,

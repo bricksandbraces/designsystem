@@ -8,16 +8,10 @@ export type RadioTileSkeletonProps = {
    * RadioTileSkeleton ClassName
    */
   className?: string;
-
-  /**
-   * RadioTileSkeleton light
-   */
-  light?: boolean;
 };
 
-const RadioTileSkeleton = ({ light, className }: RadioTileSkeletonProps) => (
+const RadioTileSkeleton = ({ className }: RadioTileSkeletonProps) => (
   <SkeletonAnimatedContainer
-    light={light}
     style={{ width: 128 }}
     className={cx(
       `${prefix}--radiotile ${prefix}--tile`,

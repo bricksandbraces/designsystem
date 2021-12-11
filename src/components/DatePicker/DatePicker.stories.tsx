@@ -74,9 +74,9 @@ export const Controlled = () => {
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         value={textValue}
-        onChange={(event) => {
-          setTextValue(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setTextValue(newValue);
+          action("onChange")(newValue, event);
         }}
         onDateChanged={(newDate) => {
           setChosenDate(newDate);

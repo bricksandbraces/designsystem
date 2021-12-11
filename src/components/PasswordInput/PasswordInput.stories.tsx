@@ -1,6 +1,6 @@
 import { action, actions } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import PasswordInput from "./PasswordInput";
 import PasswordInputSkeleton from "./PasswordInputSkeleton";
 
@@ -57,9 +57,9 @@ export const ControlledTextValue = () => {
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter Password")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          setValue(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setValue(newValue);
+          action("onChange")(newValue, event);
         }}
         {...passwordActions}
       />
@@ -71,7 +71,6 @@ export const Skeleton = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <PasswordInputSkeleton
-        fluid={boolean("fluid", false)}
         size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>

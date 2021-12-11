@@ -70,12 +70,18 @@ export type LoginFormProps = {
   /**
    * LoginForm OnEmailChange
    */
-  onEmailChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onEmailChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * LoginForm OnPasswordChange
    */
-  onPasswordChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onPasswordChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * LoginForm ForgotPasswordText
@@ -112,7 +118,10 @@ const LoginForm = (
     defaultEmailValue,
     onEmailChange &&
       ((newValue, event) => {
-        onEmailChange(event as React.ChangeEvent<HTMLInputElement>);
+        onEmailChange(
+          newValue ?? "",
+          event as React.ChangeEvent<HTMLInputElement>
+        );
       })
   );
 
@@ -121,7 +130,10 @@ const LoginForm = (
     defaultPasswordValue,
     onPasswordChange &&
       ((newValue, event) => {
-        onPasswordChange(event as React.ChangeEvent<HTMLInputElement>);
+        onPasswordChange(
+          newValue ?? "",
+          event as React.ChangeEvent<HTMLInputElement>
+        );
       })
   );
 

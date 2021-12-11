@@ -39,7 +39,7 @@ import TableRow from "./components/DataTable/TableRow";
 import TableCell from "./components/DataTable/TableCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
-import { HeaderData, RowData } from "./components/DataTable/DataTable";
+import { HeaderEntry, RowEntry } from "./components/DataTable/DataTable";
 import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
 import Select from "./components/Select/Select";
@@ -109,4 +109,4 @@ export {
   ButtonGroup
 };
 
-export type { HeaderData, RowData };
+export type { HeaderEntry, RowEntry };

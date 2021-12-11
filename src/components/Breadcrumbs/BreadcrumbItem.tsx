@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import { Link } from "../..";
@@ -9,12 +9,12 @@ type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * BreadcrumbItem Icon
    */
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 
   /**
    * BreadcrumbItem IsOverflow
@@ -25,15 +25,24 @@ type BreadcrumbItemProps = {
    * BreadcrumbItem CurrentItem
    */
   currentItem?: boolean;
-} & LinkProps;
 
-const BreadcrumbItem = ({
-  children,
-  currentItem,
-  isOverflow,
-  icon,
-  ...rest
-}: BreadcrumbItemProps) => {
+  /**
+   * BreadcrumbItem LinkProps
+   */
+  linkProps?: LinkProps;
+};
+
+const BreadcrumbItem = (
+  {
+    children,
+    currentItem,
+    isOverflow,
+    icon,
+    linkProps,
+    ...rest
+  }: BreadcrumbItemProps,
+  ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => {
   return (
     <li
       className={cx(`${prefix}--breadcrumb-item`, {
@@ -44,11 +53,13 @@ const BreadcrumbItem = ({
     >
       <div>
         {icon}
-        <Link>{children}</Link>
+        <Link {...linkProps} ref={ref}>
+          {children}
+        </Link>
       </div>
       <IconChevronRight aria-hidden />
     </li>
   );
 };
 
-export default BreadcrumbItem;
+export default React.forwardRef(BreadcrumbItem);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
@@ -9,8 +9,10 @@ import {
   IconChevronsRight
 } from "@tabler/icons";
 import { Button } from "../..";
+import { useControlledValue } from "../../hooks/useControlled";
+import { generateVisiblePagesArray } from "../../helpers/paginationUtilities";
 
-type PaginationProps = {
+export type PaginationProps = {
   /**
    * Pagination Size
    */
@@ -22,9 +24,24 @@ type PaginationProps = {
   className?: string;
 
   /**
-   * Pagination PageItems
+   * Pagination Total Pages
    */
-  pageItems?: number;
+  totalPages: number;
+
+  /**
+   * Pagination Default Page (Uncontrolled)
+   */
+  defaultPage?: number;
+
+  /**
+   * Pagination Page (Controlled)
+   */
+  page?: number;
+
+  /**
+   * Pagination OnPageChange
+   */
+  onPageChange?: (newPage: number) => void;
 
   /**
    * Pagination PagesShown
@@ -47,23 +64,44 @@ type PaginationProps = {
   loop?: boolean;
 };
 
-const Pagination = ({
-  pageItems,
-  pagesShown,
-  loop,
-  hideNav,
-  hideFastforward,
-  size = "default",
-  className
-}: PaginationProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Pagination = (
+  {
+    totalPages,
+    pagesShown,
+
+    defaultPage,
+    page,
+    onPageChange,
+
+    loop = true,
+    hideNav,
+    hideFastforward,
+    size = "default",
+    className
+  }: PaginationProps,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
+  const [currentIndex, performPageChange] = useControlledValue(
+    page,
+    defaultPage,
+    onPageChange,
+    0
+  );
+
+  // positionOfCurrentIndexInPageArray
+  const visiblePagesArray = generateVisiblePagesArray(
+    totalPages,
+    pagesShown ?? totalPages,
+    currentIndex
+  );
+
   return (
     <nav
       className={cx(
         `${prefix}--pagination ${prefix}--pagination-${size}`,
-
         className
       )}
+      ref={ref}
     >
       <ul className={cx(`${prefix}--pagination-list`)}>
         {!hideFastforward && (
@@ -72,6 +110,15 @@ const Pagination = ({
               kind="ghost"
               icon={<IconChevronsLeft />}
               size={size}
+              onClick={() => {
+                if (currentIndex === 0) {
+                  if (loop) {
+                    performPageChange(totalPages - 1);
+                  }
+                } else {
+                  performPageChange(0);
+                }
+              }}
             />
           </li>
         )}
@@ -82,26 +129,33 @@ const Pagination = ({
               icon={<IconChevronLeft />}
               size={size}
               onClick={() => {
-                setCurrentIndex(currentIndex + -1);
+                if (currentIndex === 0) {
+                  if (loop) {
+                    performPageChange(totalPages - 1);
+                  }
+                } else {
+                  performPageChange(currentIndex - 1);
+                }
               }}
             />
           </li>
         )}
-        {new Array(pageItems).fill("").map((item, i) => {
+        {visiblePagesArray.map((pageIndex) => {
           return (
             <li
-              key={i}
+              key={pageIndex}
               className={cx(`${prefix}--pagination-list__item`, {
-                [`${prefix}--pagination-list__item-active`]: currentIndex === i
+                [`${prefix}--pagination-list__item-active`]:
+                  currentIndex === pageIndex
               })}
             >
               <Button
                 kind="ghost"
                 onClick={() => {
-                  setCurrentIndex(i);
+                  performPageChange(pageIndex);
                 }}
               >
-                {i + 1}
+                {pageIndex + 1}
               </Button>
             </li>
           );
@@ -113,7 +167,13 @@ const Pagination = ({
               icon={<IconChevronRight />}
               size={size}
               onClick={() => {
-                setCurrentIndex(currentIndex + 1);
+                if (currentIndex === totalPages - 1) {
+                  if (loop) {
+                    performPageChange(0);
+                  }
+                } else {
+                  performPageChange(currentIndex + 1);
+                }
               }}
             />
           </li>
@@ -124,6 +184,15 @@ const Pagination = ({
               kind="ghost"
               icon={<IconChevronsRight />}
               size={size}
+              onClick={() => {
+                if (currentIndex === totalPages - 1) {
+                  if (loop) {
+                    performPageChange(0);
+                  }
+                } else {
+                  performPageChange(totalPages - 1);
+                }
+              }}
             />
           </li>
         )}
@@ -132,4 +201,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default React.forwardRef(Pagination);

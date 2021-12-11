@@ -55,4 +55,4 @@ const ResponsiveTabs = (
   );
 };
 
-export default ResponsiveTabs;
+export default React.forwardRef(ResponsiveTabs);

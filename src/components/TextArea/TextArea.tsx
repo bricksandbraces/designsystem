@@ -26,7 +26,10 @@ export type TextAreaProps = {
   /**
    * TextArea OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+  onChange?: (
+    newValue?: string,
+    event?: React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
 
   /**
    * TextArea OnBlur Function
@@ -73,14 +76,15 @@ const TextArea = (
   }: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>
 ) => {
-  const [inputRef, textValue, handleChange] = useControlledInput(
-    value,
-    defaultValue,
-    onChange &&
-      ((newValue, event) => {
-        onChange(event as React.ChangeEvent<HTMLTextAreaElement>);
-      })
-  );
+  const [inputRef, textValue, handleChange] =
+    useControlledInput<HTMLTextAreaElement>(
+      value,
+      defaultValue,
+      onChange &&
+        ((newValue, event) => {
+          onChange(newValue, event);
+        })
+    );
   const textLength = textValue?.length ?? 0;
 
   return (

@@ -19,7 +19,7 @@ export const Default = () => {
         <Pagination
           hideFastforward={boolean("hideFastforward", false)}
           hideNav={boolean("hideNav", false)}
-          pageItems={8}
+          totalPages={8}
           pagesShown={4}
           size={select("size", sizeOptions, defaultSize) as any}
         />

@@ -32,9 +32,9 @@ export const Uncontrolled = () => {
         readOnly={boolean("readOnly", false)}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
-        onChange={(event) => {
-          setReference(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setReference(newValue);
+          action("onChange")(newValue, event);
         }}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
@@ -68,9 +68,9 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         type={text("type", "text") as any}
-        onChange={(event) => {
-          setValue(event.target.value);
-          action("onChange")(event);
+        onChange={(newValue, event) => {
+          setValue(newValue);
+          action("onChange")(newValue, event);
         }}
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
@@ -84,7 +84,6 @@ export const Skeleton = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <TextInputSkeleton
-        fluid={boolean("fluid", false)}
         size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>
