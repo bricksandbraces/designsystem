@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
 import cx from "classnames";
-import "rc-slider/assets/index.css";
 import { useControlled } from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
 import { prefix } from "../../settings";

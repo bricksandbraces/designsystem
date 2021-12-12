@@ -53,6 +53,13 @@ import RangeInput from "./components/RangeInput/RangeInput";
 import FloatingPanel from "./components/FloatingPanel/FloatingPanel";
 import ButtonGroup from "./components/Button/ButtonGroup";
 
+import Headline from "./components/Typography/Headline";
+import Body from "./components/Typography/Body";
+import Caption from "./components/Typography/Caption";
+import Label from "./components/Typography/Label";
+import Marketing from "./components/Typography/Marketing";
+import Quote from "./components/Typography/Quote";
+
 export {
   Button,
   Link,
@@ -106,7 +113,13 @@ export {
   Avatar,
   AvatarGroup,
   RangeInput,
-  ButtonGroup
+  ButtonGroup,
+  Body,
+  Caption,
+  Label,
+  Marketing,
+  Quote,
+  Headline
 };
 
 export type { HeaderEntry, RowEntry };
