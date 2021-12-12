@@ -106,7 +106,7 @@
 
         & + .$(prefix)--webheader-overlay {
           visibility: visible;
-          opacity: 100%;
+          opacity: 1;
         }
       }
     }
@@ -131,7 +131,7 @@
         height: 0.125rem;
         transition: width $transition--app-02, opacity $transition--app-02,
           background-color $transition--app-01;
-        opacity: 0%;
+        opacity: 0;
         background: currentColor;
         pointer-events: none;
       }
@@ -139,7 +139,7 @@
       &:hover {
         &::after {
           width: 100%;
-          opacity: 100%;
+          opacity: 1;
         }
       }
 
@@ -157,7 +157,7 @@
       width: 100vw;
       height: 100vh;
       transition: visibility $transition--app-01, opacity $transition--app-01;
-      opacity: 0%;
+      opacity: 0;
       background-color: $component--overlay;
     }
 

@@ -16,7 +16,7 @@
     width: 100vw;
     height: 100vh;
     transition: opacity $transition--app-01, visibility $transition--app-01;
-    opacity: 0%;
+    opacity: 0;
     background-color: $component--overlay;
 
     &-close {
@@ -125,7 +125,7 @@
     &-open {
       visibility: visible;
       transition: opacity $transition--app-01;
-      opacity: 100%;
+      opacity: 1;
     }
 
     &-container {
@@ -228,5 +228,5 @@
 .$(prefix)--modal-open > .$(prefix)--modal-container {
   visibility: visible;
   transform: translate(0, 0);
-  opacity: 100%;
+  opacity: 1;
 }

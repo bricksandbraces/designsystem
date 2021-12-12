@@ -35,9 +35,7 @@ const TextInputSkeleton = ({
       <SkeletonAnimatedContainer
         style={{ width: "16rem" }}
         className={`${prefix}--textinput-${size}`}
-      >
-    
-      </SkeletonAnimatedContainer>
+      ></SkeletonAnimatedContainer>
     </div>
   );
 };

@@ -190,7 +190,7 @@
         visibility $transition--app-01;
       border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
-      opacity: 0%;
+      opacity: 0;
       background-color: $color--background;
       box-shadow: $component--shadow-default;
       gap: $component--padding-inside;
@@ -198,7 +198,7 @@
       &__open {
         visibility: visible;
         transform: translateY($size--spacing-03);
-        opacity: 100%;
+        opacity: 1;
       }
 
       &__item {
@@ -222,13 +222,13 @@
           width: calc($size--container-01 / 4);
           height: $size--container-02;
           border-radius: calc($component--radius-subtle * 2);
-          opacity: 0%;
+          opacity: 0;
           background-color: $color--decoration;
         }
 
         &.$(prefix)--dropdown-menu__item-selected {
           &::before {
-            opacity: 100%;
+            opacity: 1;
           }
         }
 

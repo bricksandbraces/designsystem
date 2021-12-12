@@ -2,7 +2,6 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
 import { SkeletonText } from "../..";
 
 type RangeInputSkeletonProps = {

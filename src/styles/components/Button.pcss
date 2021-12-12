@@ -54,7 +54,7 @@
     }
 
     &-hidden {
-      opacity: 0%;
+      opacity: 0;
     }
 
     &-label {
@@ -132,13 +132,13 @@
             width: 0.0625rem;
             height: 50%;
             transition: opacity $transition--app-01;
-            opacity: 100%;
+            opacity: 1;
             background-color: $color--divider-dark;
           }
 
           &:hover {
             &::before {
-              opacity: 0%;
+              opacity: 0;
             }
           }
         }
@@ -212,7 +212,7 @@
     color: $color--font-disabled;
 
     &::before {
-      opacity: 100%;
+      opacity: 1;
     }
   }
 }
@@ -283,7 +283,7 @@
     display: inline-flex;
     visibility: visible;
     transform: translateY(0);
-    opacity: 100%;
+    opacity: 1;
   }
 }
 

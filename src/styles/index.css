@@ -109,7 +109,7 @@ a {
 hr {
   margin: 1rem 0;
   border: 0;
-  opacity: 25%;
+  opacity: 0.25;
   background-color: currentColor;
   color: inherit;
 }

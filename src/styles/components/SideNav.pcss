@@ -73,7 +73,7 @@
         width: calc($size--container-01 / 4);
         height: $size--container-02;
         border-radius: calc($component--radius-subtle * 2);
-        opacity: 0%;
+        opacity: 0;
         background-color: $color--decoration;
       }
 
@@ -138,7 +138,7 @@
         color: $color--font-selected;
 
         &::before {
-          opacity: 100%;
+          opacity: 1;
         }
       }
 
@@ -270,7 +270,7 @@
         width: 100vw;
         height: 100vh;
         transition: visibility $transition--app-01, opacity $transition--app-01;
-        opacity: 0%;
+        opacity: 0;
         background-color: $component--overlay;
       }
 
@@ -280,7 +280,7 @@
 
         & + .$(prefix)--sidenav-overlay {
           visibility: visible;
-          opacity: 100%;
+          opacity: 1;
         }
       }
     }

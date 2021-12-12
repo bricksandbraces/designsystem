@@ -5,7 +5,7 @@ import { Link } from "../..";
 import { LinkProps } from "../Link/Link";
 import { IconChevronRight } from "@tabler/icons";
 
-type BreadcrumbItemProps = {
+export type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem Children
    */
