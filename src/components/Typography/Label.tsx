@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type LabelProps = {
+export type LabelProps = {
   /**
    * Label Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Label ClassName
@@ -14,7 +14,10 @@ type LabelProps = {
   className?: string;
 } & React.LabelHTMLAttributes<HTMLLabelElement>;
 
-const Label = ({ children, className, ...rest }: LabelProps) => {
+const Label = (
+  { children, className, ...rest }: LabelProps,
+  ref: React.ForwardedRef<HTMLLabelElement>
+) => {
   return (
     <label
       className={cx(
@@ -22,10 +25,11 @@ const Label = ({ children, className, ...rest }: LabelProps) => {
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </label>
   );
 };
 
-export default Label;
+export default React.forwardRef(Label);

@@ -1,10 +1,10 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import mergeRefs from "react-merge-refs";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import useControlledValue from "../../hooks/useControlledValue";
+import { useControlledInput } from "../../hooks/useControlled";
 
 export type TextInputProps = {
   /**
@@ -38,15 +38,23 @@ export type TextInputProps = {
   readOnly?: boolean;
 
   /**
-   * TextInput Error State & Text
+   * TextInput Error State
    */
   error?: boolean;
+
+  /**
+   * TextInput Error Text
+   */
   errorText?: string;
 
   /**
-   * TextInput Warning State & Text
+   * TextInput Warning State
    */
   warning?: boolean;
+
+  /**
+   * TextInput Warning Text
+   */
   warningText?: string;
 
   /**
@@ -83,6 +91,11 @@ export type TextInputProps = {
   value?: string;
 
   /**
+   * TextInput Icon
+   */
+  icon?: ReactNode;
+
+  /**
    * TextInput Fluid
    */
   fluid?: boolean;
@@ -90,10 +103,24 @@ export type TextInputProps = {
   /**
    * TextInput OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
+  /**
+   * TextInput OnBlur Function
+   */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * TextInput OnFocus Function
+   */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * TextInput OnKeyDown Function
+   */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
@@ -121,30 +148,37 @@ const TextInput = (
     onKeyDown,
     error,
     errorText,
+    icon,
     warning,
     warningText,
     size = "default",
     children
   }: TextInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  const [inputRef, textValue, handleChange] = useControlledValue(
+  const [inputRef, textValue, handleChange] = useControlledInput(
     value,
     defaultValue,
-    onChange
+    onChange &&
+      ((newValue, event) => {
+        onChange(newValue ?? "", event as React.ChangeEvent<HTMLInputElement>);
+      })
   );
   return (
     <div
       className={cx(
         `${prefix}--textinput`,
         {
-          [`${prefix}--textinput-fluid`]: fluid
+          [`${prefix}--textinput-fluid`]: fluid,
+          [`${prefix}--textinput-disabled`]: disabled,
+          [`${prefix}--textinput-readonly`]: readOnly
         },
         className
       )}
     >
       {label && !fluid && <Label htmlFor={id}>{label}</Label>}
       <div className={`${prefix}--textinput-input__container`}>
+        {icon && <div className={`${prefix}--textinput-icon`}>{icon}</div>}
         <input
           id={id}
           disabled={disabled}
@@ -170,7 +204,7 @@ const TextInput = (
         {fluid && (
           <label
             className={cx(`${prefix}--textinput-fluid__label`, {
-              [`${prefix}--textinput-fluid__label-value`]: textValue !== ""
+              [`${prefix}--textinput-fluid__label-value`]: !!textValue
             })}
           >
             {placeholder}
@@ -181,14 +215,12 @@ const TextInput = (
       {errorText && !warningText && (
         <div className={`${prefix}--textinput-error__text`}>
           <IconAlertCircle size={16} />
-
           {errorText}
         </div>
       )}
       {warningText && !errorText && (
         <div className={`${prefix}--textinput-warning__text`}>
           <IconAlertTriangle size={16} />
-
           {warningText}
         </div>
       )}

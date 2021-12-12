@@ -1,104 +1,30 @@
 @import "../prefix.pcss";
 @import "../theme.pcss";
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes active {
-  0% {
-    opacity: 0%;
-  }
-
-  100% {
-    opacity: 100%;
-  }
-}
-
 .$(prefix) {
   &--loading {
     &-container {
-      display: flex;
-      justify-content: space-between;
-      animation: rotate $transition--app-05 infinite;
-
-      & > svg > circle {
-        stroke-linecap: round;
-        stroke-dasharray: 180;
-        stroke: white;
-      }
-    }
-
-    &-active {
-      animation: active $transition--app-03;
-    }
-
-    &-disabled {
-      & > svg > circle {
-        stroke: $disabled-text;
-      }
+      display: inline-flex;
     }
 
     &-inline {
       width: $size--container-01;
       height: $size--container-01;
-
-      & > svg {
-        width: $size--container-01;
-        height: $size--container-01;
-
-        & > circle {
-          stroke-width: calc($size--spacing-08 / 2.4);
-        }
-      }
     }
 
     &-small {
       width: $size--container-03;
       height: $size--container-03;
-
-      & > svg {
-        width: $size--container-03;
-        height: $size--container-03;
-
-        & > circle {
-          stroke-width: calc($size--spacing-08 / 2.6);
-        }
-      }
     }
 
     &-default {
       width: $size--container-05;
       height: $size--container-05;
-
-      & > svg {
-        width: $size--container-05;
-        height: $size--container-05;
-
-        & > circle {
-          stroke-width: calc($size--spacing-08 / 3);
-        }
-      }
     }
 
     &-large {
       width: $size--container-07;
       height: $size--container-07;
-
-      & > svg {
-        width: $size--container-07;
-        height: $size--container-07;
-
-        & > circle {
-          stroke-width: calc($size--spacing-08 / 3.8);
-        }
-      }
     }
 
     &-overlay {

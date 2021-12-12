@@ -10,7 +10,7 @@ import Avatar from "../Avatar/Avatar";
 import Divider from "../Divider/Divider";
 import Body from "../Typography/Body";
 
-type LinkItem = {
+export type LinkItem = {
   /**
    * UserProfile LinkItem Href
    */
@@ -22,7 +22,7 @@ type LinkItem = {
   label: string;
 };
 
-type UserProfileProps = {
+export type UserProfileProps = {
   /**
    * UserProfile Name
    */
@@ -52,29 +52,42 @@ type UserProfileProps = {
   positionRight?: number;
 
   /**
-   * UserProfile onLogout Function
+   * UserProfile Number of profiles to show
    */
-  onLogout: (event: any) => void;
+  profilesToShow?: number;
+
+  primaryLabel?: string;
+
+  /**
+   * UserProfile onPrimaryAction Function for e.g. Sign Out
+   */
+  onPrimaryAction: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const UserProfile = ({
-  name,
-  subName,
-  links,
-  positionBottom,
-  positionLeft,
-  positionRight,
-  positionTop,
-  imgUrl,
-  onLogout
-}: UserProfileProps) => {
+const UserProfile = (
+  {
+    name,
+    subName,
+    links,
+    positionBottom,
+    positionLeft,
+    positionRight,
+    positionTop,
+    imgUrl,
+    profilesToShow,
+    primaryLabel = "Sign Out",
+    onPrimaryAction
+  }: UserProfileProps,
+  ref: React.ForwardedRef<HTMLButtonElement>
+) => {
   const [open, setOpen] = useState(false);
-  const panelRef = useRef<HTMLUListElement>(null);
+
+  const panelRef = useRef<HTMLDivElement>(null);
   const indexedLinks = idfy(links);
   return (
     <>
       <button
-        tabIndex={0}
+        ref={ref}
         onClick={() => {
           setOpen(!open);
         }}
@@ -135,7 +148,7 @@ const UserProfile = ({
                         </div>
                       );
                     })
-                    .slice(0, 3)}
+                    .slice(0, profilesToShow)}
                 </div>
               )}
             </div>
@@ -144,8 +157,8 @@ const UserProfile = ({
             className={`${prefix}--userprofile-divider`}
             type="default"
           />
-          <Button onClick={onLogout} fluid size="small">
-            Sign out
+          <Button onClick={onPrimaryAction} fluid size="small">
+            {primaryLabel}
           </Button>
         </FloatingPanel>
       </OutsideClickListener>
@@ -153,4 +166,4 @@ const UserProfile = ({
   );
 };
 
-export default UserProfile;
+export default React.forwardRef(UserProfile);

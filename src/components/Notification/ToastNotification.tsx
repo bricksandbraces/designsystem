@@ -12,7 +12,12 @@ import IconOnlyButton from "../Button/IconOnlyButton";
 import Headline from "../Typography/Headline";
 import Body from "../Typography/Body";
 
-type ToastNotificationProps = {
+export type ToastNotificationProps = {
+  /**
+   * ToastNotification ClassName
+   */
+  className?: string;
+
   /**
    * ToastNotification Title
    */
@@ -49,23 +54,29 @@ type ToastNotificationProps = {
   onClose?: (event: any) => void;
 };
 
-const ToastNotification = ({
-  title,
-  subTitle,
-  time,
-  hideCloseButton,
-  type,
-  open,
-  onClose
-}: ToastNotificationProps) => {
+const ToastNotification = (
+  {
+    className,
+    title,
+    subTitle,
+    time,
+    type,
+    open,
+    hideCloseButton,
+    onClose
+  }: ToastNotificationProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <div
       className={cx(
         `${prefix}--notification ${prefix}--notification-toast ${prefix}--notification-${type}`,
         {
           [`${prefix}--notification-open`]: open
-        }
+        },
+        className
       )}
+      ref={ref}
     >
       <div className={cx(`${prefix}--notification-container`)}>
         {type === "danger" && (
@@ -132,4 +143,4 @@ const ToastNotification = ({
   );
 };
 
-export default ToastNotification;
+export default React.forwardRef(ToastNotification);

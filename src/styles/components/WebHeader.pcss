@@ -1,0 +1,180 @@
+@import "../prefix.pcss";
+@import "../typography.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--webheader {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    width: 100%;
+    height: $size--container-06;
+    border-bottom: 0.0625rem solid rgba($color--border, 0.25);
+    background-color: $color--app-01;
+
+    & > div {
+      position: relative;
+      height: 100%;
+      & > .$(prefix)--grid-container {
+        height: 100%;
+      }
+    }
+
+    &-container {
+      display: flex;
+      position: relative;
+      align-items: center;
+    }
+
+    &-toggle {
+      display: flex;
+      position: fixed;
+      z-index: 11000;
+      top: 0;
+      right: 0;
+      align-items: center;
+      justify-content: center;
+      width: $size--container-06;
+      height: $size--container-06;
+      padding: 0;
+      transition: background-color $transition--app-01,
+        outline $transition--app-01;
+      outline: 0.125rem solid transparent;
+      outline-offset: calc($size--spacing-02 * -1);
+      background-color: transparent;
+      color: $color--font-text-01;
+
+      &:hover {
+        background-color: rgba($color--app-05, 0.05);
+      }
+
+      &:active {
+        background-color: rgba($color--app-05, 0.1);
+      }
+
+      &:focus-visible {
+        outline: 0.125rem solid $color--focus;
+      }
+
+      &__open {
+        color: $color--font-text-01;
+
+        &:focus-visible {
+          outline: 0.125rem solid $color--focus;
+        }
+      }
+    }
+
+    &-menu {
+      display: flex;
+      visibility: hidden;
+      position: fixed;
+      z-index: 10500;
+      top: 0;
+      right: 0;
+      flex-flow: column;
+      align-content: space-between;
+      justify-content: space-between;
+      width: 100%;
+      max-width: calc($size--container-08 * 2);
+      height: 100%;
+      padding: $size--spacing-07;
+      overflow-y: scroll;
+      transform: translateX(calc($size--container-08 * 2));
+      transition: transform $transition--app-01, visibility $transition--app-01;
+      border-left: 0.0625rem solid rgba($white, 0.2);
+      background: $color--decoration;
+
+      &__logo {
+        margin-top: $size--spacing-10;
+        &.$(prefix)--webheader-logo {
+          display: inline-flex;
+          margin-left: 0;
+          padding-left: 0;
+
+          &:focus-visible {
+            outline: 0.125rem solid $color--focus;
+          }
+        }
+      }
+
+      &__open {
+        visibility: visible;
+        transform: unset;
+        box-shadow: $component--shadow-harsh;
+
+        & + .$(prefix)--webheader-overlay {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+
+    &-link {
+      @mixin type--marketing-01;
+
+      display: table;
+      position: relative;
+      margin-bottom: $size--spacing-03;
+      transition: opacity $transition--app-02;
+      outline: 0.0625rem solid transparent;
+      outline-offset: $size--spacing-01;
+      color: $color--font-text-01;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0.125rem;
+        transition: width $transition--app-02, opacity $transition--app-02,
+          background-color $transition--app-01;
+        opacity: 0;
+        background: currentColor;
+        pointer-events: none;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+
+      &:focus-visible {
+        outline: 0.125rem solid $color--focus;
+      }
+    }
+
+    &-overlay {
+      visibility: hidden;
+      position: fixed;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      transition: visibility $transition--app-01, opacity $transition--app-01;
+      opacity: 0;
+      background-color: $component--overlay;
+    }
+
+    &-logo {
+      display: flex;
+      margin-left: $size--spacing-05;
+      transition: outline $transition--app-01;
+      outline: 0.125rem solid transparent;
+      outline-offset: $size--spacing-03;
+
+      & > svg > path {
+        fill: $color--font-text-01;
+      }
+
+      &:focus-visible {
+        outline: 0.125rem solid $color--focus;
+      }
+    }
+  }
+}

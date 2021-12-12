@@ -1,14 +1,16 @@
-import React, { useState, ReactNode, useRef, useEffect } from "react";
+import React from "react";
 import cx from "classnames";
 import { SwitcherItemProps } from "./SwitcherItem";
 import { prefix } from "../../settings";
 import Body from "../Typography/Body";
+import { useControlledValue } from "../../hooks/useControlled";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 
-type SwitcherProps = {
+export type SwitcherProps = {
   /**
    * Switcher Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Switcher OnChange Function
@@ -36,23 +38,23 @@ type SwitcherProps = {
   className?: string;
 };
 
-const Switcher = ({
-  children,
-  onChange,
-  defaultIndex,
-  className,
-  index,
-  size = "default"
-}: SwitcherProps) => {
-  const { current: controlled } = useRef(index != null);
-  const [selectedIndex, setSelectedIndex] = useState(
-    (controlled ? index : defaultIndex) ?? 0
+const Switcher = (
+  {
+    children,
+    onChange,
+    defaultIndex,
+    className,
+    index,
+    size = "default"
+  }: SwitcherProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
+  const [selectedIndex, performIndexChange] = useControlledValue(
+    index,
+    defaultIndex,
+    onChange,
+    0
   );
-  useEffect(() => {
-    if (controlled) {
-      setSelectedIndex(index ?? 0);
-    }
-  }, [index]);
 
   return (
     <div
@@ -60,29 +62,22 @@ const Switcher = ({
         `${prefix}--switcher ${prefix}--switcher-${size}`,
         className
       )}
+      ref={ref}
     >
       <div className={`${prefix}--switcher-btn__container`}>
-        {React.Children.map(children, (child, i) => {
-          if (!React.isValidElement<SwitcherItemProps>(child)) {
-            return child;
-          }
-          const elementChild: React.ReactElement<SwitcherItemProps> = child;
-          const { props } = elementChild;
-          return (
-            props && (
+        {mapReactChildren<SwitcherItemProps>(
+          children,
+          ({ props, key, index: i }) => {
+            return (
               <button
                 disabled={props.disabled}
                 type="button"
-                tabIndex={0}
-                key={child.key}
+                key={key}
                 className={cx(`${prefix}--switcher-btn`, {
                   [`${prefix}--switcher-btn__selected`]: selectedIndex === i
                 })}
                 onClick={() => {
-                  if (!controlled) {
-                    setSelectedIndex(i);
-                  }
-                  onChange?.(i);
+                  performIndexChange(i);
                 }}
               >
                 <Body
@@ -92,33 +87,30 @@ const Switcher = ({
                   {props.title}
                 </Body>
               </button>
-            )
-          );
-        })}
+            );
+          }
+        )}
       </div>
       <div className={`${prefix}--switcher-content`}>
-        {React.Children.map(children, (child, i) => {
-          if (!React.isValidElement<SwitcherItemProps>(child)) {
-            return child;
-          }
-          const elementChild: React.ReactElement<SwitcherItemProps> = child;
-          const { props } = elementChild;
-          return (
-            props && (
+        {mapReactChildren<SwitcherItemProps>(
+          children,
+          ({ props, key, index: i }) => {
+            const isSelected = selectedIndex === i;
+            return (
               <div
+                key={key}
                 className={cx(`${prefix}--switcher-content__item`, {
-                  [`${prefix}--switcher-content__item-selected`]:
-                    selectedIndex === i
+                  [`${prefix}--switcher-content__item-selected`]: isSelected
                 })}
               >
-                {selectedIndex === i && props.children}
+                {isSelected && props.children}
               </div>
-            )
-          );
-        })}
+            );
+          }
+        )}
       </div>
     </div>
   );
 };
 
-export default Switcher;
+export default React.forwardRef(Switcher);

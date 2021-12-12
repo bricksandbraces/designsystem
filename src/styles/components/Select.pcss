@@ -5,7 +5,7 @@
 .$(prefix) {
   &--select {
     display: inline-flex;
-    flex-direction: column;
+    flex-flow: column;
     width: 100%;
     max-width: $size--container-08;
 
@@ -46,7 +46,7 @@
       overflow: hidden;
       transition: border $transition--app-01,
         background-color $transition--app-01;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       outline: 0;
       background-color: $color--background;
@@ -63,7 +63,7 @@
         background-color: $color--active;
       }
 
-      &:focus-visible {
+      &:focus {
         border-color: $color--focus;
       }
 

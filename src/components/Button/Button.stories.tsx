@@ -120,81 +120,79 @@ export const WithIconOnly = () => (
 export const IconOnlyGroup = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <IconOnlyButtonGroup singletonProps={{ delay: 900 }}>
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Align Left"
-            }}
-            icon={<IconAlignLeft />}
-            {...buttonActions}
-          />
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Center"
-            }}
-            icon={<IconAlignCenter />}
-            {...buttonActions}
-          />
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Align Right"
-            }}
-            icon={<IconAlignRight />}
-            {...buttonActions}
-          />
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Bold"
-            }}
-            icon={<IconBold />}
-            {...buttonActions}
-          />
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Italic"
-            }}
-            icon={<IconItalic />}
-            {...buttonActions}
-          />
-          <IconOnlyButton
-            danger={boolean("danger", false)}
-            kind={select("kind", options, defaultValue) as any}
-            size={select("size", sizeOptions, defaultSize) as any}
-            tooltipProps={{
-              tooltipContent: "Underline"
-            }}
-            icon={<IconUnderline />}
-            {...buttonActions}
-          />
-        </IconOnlyButtonGroup>
-      </div>
+      <IconOnlyButtonGroup withDivider singletonProps={{ delay: 900 }}>
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Align Left"
+          }}
+          icon={<IconAlignLeft />}
+        />
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Center"
+          }}
+          icon={<IconAlignCenter />}
+        />
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Align Right"
+          }}
+          icon={<IconAlignRight />}
+        />
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Bold"
+          }}
+          icon={<IconBold />}
+        />
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Italic"
+          }}
+          icon={<IconItalic />}
+        />
+        <IconOnlyButton
+          danger={boolean("danger", false)}
+          kind={select("kind", options, defaultValue) as any}
+          size={select("size", sizeOptions, defaultSize) as any}
+          tooltipProps={{
+            tooltipContent: "Underline"
+          }}
+          icon={<IconUnderline />}
+        />
+      </IconOnlyButtonGroup>
     </div>
   );
 };
 
 export const Skeleton = () => (
-  <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-    <div style={{ width: "405px", display: "flex", gap: "24px" }}>
-      <IconOnlyButtonSkeleton
-        size={select("size", sizeOptions, defaultSize) as any}
-      />
-      <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
-    </div>
+  <div
+    style={{
+      width: "100vw",
+      height: "100vh",
+      padding: "32px",
+      display: "flex",
+      gap: "1rem"
+    }}
+  >
+    <IconOnlyButtonSkeleton
+      size={select("size", sizeOptions, defaultSize) as any}
+    />
+    <ButtonSkeleton size={select("size", sizeOptions, defaultSize) as any} />
   </div>
 );

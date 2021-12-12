@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
 import cx from "classnames";
 import "rc-slider/assets/index.css";
-import useControlled from "../../hooks/useControlled";
+import { useControlled } from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 import NumberInput from "../NumberInput/NumberInput";
 
-type RangeInputProps = {
+export type RangeInputProps = {
   /**
    * RangeInput ClassName
    */
@@ -23,12 +23,20 @@ type RangeInputProps = {
    * RangeInput Min
    */
   min: number;
+
+  /**
+   * RangeInput MinLabel
+   */
   minLabel?: string;
 
   /**
    * RangeInput Max
    */
   max: number;
+
+  /**
+   * RangeInput MaxLabel
+   */
   maxLabel?: string;
 
   /**
@@ -59,7 +67,10 @@ type RangeInputProps = {
   /**
    * RangeInput OnChange Function
    */
-  onChange?: (newValue: number) => void;
+  onChange?: (
+    newValue: number,
+    event: React.ChangeEvent<HTMLInputElement> | Nullish
+  ) => void;
 
   /**
    * RangeInput Size
@@ -80,26 +91,41 @@ type RangeInputProps = {
    * RangeInput Hide TextInput
    */
   hideInput?: boolean;
+
+  /**
+   * RangeInput OnFocus
+   */
+  onFocus?: React.FocusEventHandler<HTMLDivElement>;
+
+  /**
+   * RangeInput OnBlur
+   */
+  onBlur?: React.FocusEventHandler<HTMLDivElement>;
 };
 
-const RangeInput = ({
-  id,
-  value,
-  defaultValue,
-  label,
-  min,
-  minLabel,
-  max,
-  maxLabel,
-  size,
-  step = 1,
-  marks,
-  disabled,
-  hideInput,
-  readOnly,
-  className,
-  onChange
-}: RangeInputProps) => {
+const RangeInput = (
+  {
+    id,
+    value,
+    defaultValue,
+    label,
+    min,
+    minLabel,
+    max,
+    maxLabel,
+    size,
+    step = 1,
+    marks,
+    disabled,
+    hideInput,
+    readOnly,
+    className,
+    onChange,
+    onFocus,
+    onBlur
+  }: RangeInputProps,
+  ref: React.ForwardedRef<any>
+) => {
   const controlled = useControlled(value);
   const initialValue = controlled ? value ?? min : defaultValue ?? min;
   const [sliderValue, setLocalValue] = useState<number>(initialValue);
@@ -127,6 +153,7 @@ const RangeInput = ({
       <div className={cx(`${prefix}--rangeinput-container`)}>
         {!hideInput && (
           <NumberInput
+            hideButtons
             className={cx(`${prefix}--rangeinput-numberinput`)}
             disabled={disabled}
             id={id}
@@ -137,12 +164,14 @@ const RangeInput = ({
             step={step}
             value={sliderValue}
             onChange={(event, { parsedValue }) => {
-              const newValue = clamp(parsedValue, min, max);
-              if (!controlled) {
-                setLocalValue(newValue);
-              }
+              if (parsedValue != null) {
+                const newValue = clamp(parsedValue, min, max);
+                if (!controlled) {
+                  setLocalValue(newValue);
+                }
 
-              onChange?.(newValue);
+                onChange?.(newValue, event);
+              }
             }}
           />
         )}
@@ -158,12 +187,15 @@ const RangeInput = ({
             value={sliderValue}
             step={step}
             marks={marks}
+            ref={ref}
+            onFocus={onFocus}
+            onBlur={onBlur}
             onChange={(newValue) => {
               if (!controlled) {
                 setLocalValue(newValue);
               }
 
-              onChange?.(newValue);
+              onChange?.(newValue, null);
             }}
           />
           <span className={cx(`${prefix}--rangeinput-slider__label`)}>
@@ -175,4 +207,4 @@ const RangeInput = ({
   );
 };
 
-export default RangeInput;
+export default React.forwardRef(RangeInput);

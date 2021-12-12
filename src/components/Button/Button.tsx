@@ -1,7 +1,8 @@
-import React, { ForwardedRef, forwardRef, ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import Loading from "../Loading/Loading";
 import { prefix } from "../../settings";
+import animation from "./loadinganimation.json";
 
 export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
 
@@ -14,7 +15,7 @@ export type ButtonProps = {
   /**
    * Button Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Button Kind
@@ -82,39 +83,44 @@ export type ButtonProps = {
   disabled?: boolean;
 
   /**
-   * Button size
+   * Button Size
    */
   size?: "large" | "default" | "small";
 
   /**
-   * Button icon
+   * Button Icon
    */
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 
   /**
-   * Button iconPosition
+   * Button IconPosition
    */
   iconPosition?: "right" | "left";
 
   /**
-   * Button loading
+   * Button IsLoading
    */
   isLoading?: boolean;
 
   /**
-   * Button fluid
+   * Button Fluid
    */
   fluid?: boolean;
 
   /**
-   * Button title
+   * Button Title
    */
   title?: string;
 
   /**
-   * Tab index for the button
+   * Button TabIndex
    */
   tabIndex?: number;
+
+  /**
+   * Button ManualFocus used for overwriting focus-visible behaviour
+   */
+  manualFocus?: boolean;
 };
 
 const Button = (
@@ -133,9 +139,10 @@ const Button = (
     loadingDescription = "Loading",
     onFocus,
     onBlur,
+    manualFocus,
     ...rest
   }: ButtonProps,
-  ref: ForwardedRef<ButtonOrAnchor>
+  ref: React.ForwardedRef<ButtonOrAnchor>
 ) => {
   /**
    * To maintain a consistent focus on our controls, we have to manually listen for the focus
@@ -153,7 +160,7 @@ const Button = (
       [`${prefix}--button-icon-left`]: icon && iconPosition === "left",
       [`${prefix}--button-loading`]: isLoading,
       [`${prefix}--button-danger`]: danger,
-      [`${prefix}--button__focus`]: focused
+      [`${prefix}--button__focus`]: focused && manualFocus
     },
     className
   );
@@ -161,8 +168,8 @@ const Button = (
   const loader = isLoading && (
     <Loading
       active
+      loadingAnimation={animation}
       loadingDescription={loadingDescription}
-      disabled={disabled}
       size="inline"
     />
   );
@@ -194,7 +201,7 @@ const Button = (
       {href ? (
         <a
           href={href}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
+          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
           className={classes}
           {...focusHandler}
           {...rest}
@@ -205,7 +212,7 @@ const Button = (
       ) : (
         <button
           type="button"
-          ref={ref as ForwardedRef<HTMLButtonElement>}
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
           className={classes}
           disabled={disabled}
           {...focusHandler}
@@ -219,4 +226,4 @@ const Button = (
   );
 };
 
-export default forwardRef<ButtonOrAnchor, ButtonProps>(Button);
+export default React.forwardRef(Button);

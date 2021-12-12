@@ -45,12 +45,16 @@
       pointer-events: none;
 
       & > .$(prefix)--loading {
+        display: inline-flex;
         position: absolute;
+        top: 0;
+        bottom: 0;
+        align-items: center;
       }
     }
 
     &-hidden {
-      opacity: 0%;
+      opacity: 0;
     }
 
     &-label {
@@ -62,7 +66,7 @@
     }
 
     &-primary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--primary-enabled;
 
       &:hover {
@@ -75,7 +79,7 @@
     }
 
     &-secondary {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--secondary-enabled;
 
       &:hover {
@@ -89,7 +93,7 @@
 
     &-tertiary {
       border-color: $color--tertiary-enabled;
-      background-color: $color--transparent;
+      background-color: transparent;
 
       &:hover {
         border-color: $color--tertiary-hover;
@@ -104,7 +108,7 @@
     }
 
     &-ghost {
-      border-color: $color--transparent;
+      border-color: transparent;
       background-color: $color--ghost-enabled;
 
       &:hover {
@@ -127,15 +131,14 @@
             right: -0.0625rem;
             width: 0.0625rem;
             height: 50%;
-            transition: ;
-            transition: $transition-01;
-            opacity: 100%;
+            transition: opacity $transition--app-01;
+            opacity: 1;
             background-color: $color--divider-dark;
           }
 
           &:hover {
             &::before {
-              opacity: 0%;
+              opacity: 0;
             }
           }
         }
@@ -197,13 +200,20 @@
   background-color: $color--disabled;
   color: $color--font-disabled;
 
+  &::before {
+    background-color: $color--font-disabled;
+  }
+
   &:hover,
   &:focus,
-  &:focus-visible,
   &:active {
     border-color: $color--disabled;
     background-color: $color--disabled;
     color: $color--font-disabled;
+
+    &::before {
+      opacity: 1;
+    }
   }
 }
 
@@ -213,7 +223,6 @@
 
   &:hover,
   &:focus,
-  &:focus-visible,
   &:active {
     border-color: $color--disabled;
     background-color: inherit;
@@ -235,7 +244,7 @@
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
-  background-color: $color--transparent;
+  background-color: transparent;
   color: $color--danger;
 
   &:hover {
@@ -274,7 +283,7 @@
     display: inline-flex;
     visibility: visible;
     transform: translateY(0);
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
@@ -291,29 +300,29 @@
 }
 
 .$(prefix)--button-icon-left > .$(prefix)--button-label {
-  flex-direction: row;
+  flex-flow: row;
 }
 
 .$(prefix)--button-icon-right > .$(prefix)--button-label {
-  flex-direction: row-reverse;
+  flex-flow: row-reverse;
 }
 
 .$(prefix)--button-icon-only > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-left > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   margin-right: $size--spacing-03;
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-right > div > svg {
-  width: $icon-container-01;
-  height: $icon-container-01;
+  width: $size--container-01;
+  height: $size--container-01;
   margin-left: $size--spacing-03;
   stroke-width: 0.125rem;
 }

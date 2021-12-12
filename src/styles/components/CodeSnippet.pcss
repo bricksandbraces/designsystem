@@ -4,11 +4,52 @@
 
 .$(prefix) {
   &--codesnippet {
+    &-single {
+      &.$(prefix)--codesnippet-container {
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+      }
+      & > .$(prefix)--codesnippet-button__container {
+        display: inline-flex;
+        position: absolute;
+        right: 0;
+        left: unset;
+        align-items: center;
+        justify-content: center;
+        min-width: $size--container-05;
+        max-width: $size--container-05;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+        border-top: 0;
+        border-left: 0.0625rem solid $color--border;
+        background-color: $color--background;
+      }
+
+      & > .$(prefix)--codesnippet-innercontainer {
+        display: flex;
+        align-items: center;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+        padding: 0 $size--spacing-05;
+
+        & > .$(prefix)--codesnippet-pre {
+          display: inline-flex;
+          align-items: center;
+          white-space: nowrap;
+
+          & > .$(prefix)--codesnippet-code {
+            padding-right: $size--spacing-10;
+          }
+        }
+      }
+    }
+
     &-container {
       position: relative;
       width: 100%;
-      max-width: calc($size--spacing-13 * 3);
-      border: 0.0625rem solid $color--border-default;
+      max-width: calc($size--container-08 * 3);
+      overflow: hidden;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       background-color: $color--background;
     }
@@ -25,8 +66,8 @@
         width: 100%;
         height: calc($size--field-small + ($size--spacing-03 * 2));
         padding: $size--spacing-03;
-        border-top: 0.0625rem solid $color--border-default;
-        background-color: rgba($color--background, 1);
+        border-top: 0.0625rem solid $color--border;
+        background-color: $color--background;
         gap: $size--spacing-03;
       }
     }
@@ -56,7 +97,21 @@
     }
   }
   &--codesnippet.$(prefix)--skeleton {
+    &.$(prefix)--codesnippet-single {
+      display: flex;
+      align-items: center;
+      min-height: $size--container-06;
+      max-height: $size--container-06;
+
+      & > div {
+        display: inline-flex;
+      }
+    }
+
+    position: relative;
+    align-items: flex-start;
     max-width: calc($size--spacing-13 * 3);
     height: $size--container-08;
+    padding: $size--spacing-05;
   }
 }

@@ -1,15 +1,22 @@
 import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
-type TableProps = {
+export type TableProps = {
   /**
-   * Children
+   * React Children
    */
-  children?: ReactNode;
+  children: ReactNode;
 };
 
-const Table = ({ children }: TableProps) => {
-  return <table className={`${prefix}--datatable-table`}>{children}</table>;
+const Table = (
+  { children, ...rest }: TableProps,
+  ref: React.ForwardedRef<HTMLTableElement>
+) => {
+  return (
+    <table className={`${prefix}--datatable-table`} {...rest} ref={ref}>
+      {children}
+    </table>
+  );
 };
 
-export default Table;
+export default React.forwardRef(Table);

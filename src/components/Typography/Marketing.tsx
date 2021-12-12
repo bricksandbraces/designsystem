@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type MarketingProps = {
+export type MarketingProps = {
   /**
    * Marketing Children
    */
@@ -19,7 +19,10 @@ type MarketingProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
-const Marketing = ({ children, className, type, ...rest }: MarketingProps) => {
+const Marketing = (
+  { children, className, type, ...rest }: MarketingProps,
+  ref: React.ForwardedRef<HTMLParagraphElement>
+) => {
   return (
     <p
       className={cx(
@@ -27,10 +30,11 @@ const Marketing = ({ children, className, type, ...rest }: MarketingProps) => {
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </p>
   );
 };
 
-export default Marketing;
+export default React.forwardRef(Marketing);

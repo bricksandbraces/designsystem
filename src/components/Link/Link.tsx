@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type LinkProps = {
+export type LinkProps = {
   /**
    * Link Children
    */
@@ -41,7 +41,7 @@ type LinkProps = {
   /**
    * Link OnClick Event
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
 const Link = ({
@@ -55,8 +55,10 @@ const Link = ({
   className,
   ...rest
 }: LinkProps) => {
-  return onClick ? (
-    <button
+  const Element = React.createElement(href ? "a" : "button").type;
+
+  return (
+    <Element
       className={cx(
         `${prefix}--link ${prefix}--link-${size}`,
         {
@@ -65,28 +67,14 @@ const Link = ({
         className
       )}
       {...rest}
-      onClick={onClick}
-    >
-      <span className={`${prefix}--link-label`}>{children}</span>
-      {!inline && icon}
-    </button>
-  ) : (
-    <a
-      className={cx(
-        `${prefix}--link ${prefix}--link-${size}`,
-        {
-          [`${prefix}--link-inline`]: inline
-        },
-        className
-      )}
       href={href}
       target={target}
-      {...rest}
+      onClick={onClick as React.MouseEventHandler<HTMLElement>}
     >
       <span className={`${prefix}--link-label`}>{children}</span>
       {!inline && icon}
-    </a>
+    </Element>
   );
 };
 
-export default Link;
+export default React.forwardRef(Link);

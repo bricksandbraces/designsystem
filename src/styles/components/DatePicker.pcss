@@ -11,7 +11,7 @@
     transform: translateY(0);
     transition: opacity $transition--app-01, transform $transition--app-01,
       visibility $transition--app-01;
-    border: 0.0625rem solid $color--border-default;
+    border: 0.0625rem solid $color--border;
     border-radius: $component--radius-default;
     background: $color--background;
     box-shadow: $component--shadow-default;
@@ -19,10 +19,11 @@
     &-hidden {
       visibility: hidden;
       transform: translateY(calc($size--spacing-03 * -1));
-      opacity: 0%;
+      opacity: 0;
     }
 
     &-container {
+      display: inline-flex;
       position: relative;
     }
 
@@ -135,7 +136,7 @@
                 width: calc(100% + $size--spacing-05 * 2 - 0.125rem);
                 height: 0.0625rem;
                 transform: translateX(calc($size--spacing-05 * -1 + 0.0625rem));
-                background-color: $color--border-default;
+                background-color: $color--border;
               }
 
               & > .DayPicker-Weekday {
@@ -147,7 +148,7 @@
                 margin-top: $size--spacing-03;
                 margin-bottom: $size--spacing-03;
                 padding: 0;
-                color: $color--font-text-04;
+                color: $color--font-text-05;
 
                 & > abbr {
                   @mixin type--body-02;
@@ -187,8 +188,13 @@
                 color: $color--font-text-01;
               }
 
+              & > .DayPicker-Day--outside {
+                color: $color--font-text-05;
+                cursor: unset;
+              }
+
               & > .DayPicker-Day--today {
-                color: $color--font-text-recent;
+                color: $color--font-decoration;
 
                 &::after {
                   content: "";
@@ -203,6 +209,28 @@
             }
           }
         }
+      }
+    }
+  }
+
+  &--datepicker.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
+      justify-content: flex-end;
+      padding: 0 $size--spacing-05;
+      border-radius: $component--radius-default;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-03;
       }
     }
   }

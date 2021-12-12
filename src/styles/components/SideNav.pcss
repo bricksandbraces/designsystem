@@ -13,15 +13,21 @@
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
-    width: $size--container-08;
+    min-width: $size--container-08;
+    max-width: $size--container-08;
     height: 100%;
     padding: 0 $component--padding-inside $component--padding-inside
       $component--padding-inside;
     overflow-x: hidden;
     overflow-y: scroll;
-    border-right: 0.0625rem solid $color--border-default;
+    transition: transform $transition--app-01;
+    border-right: 0.0625rem solid $color--border;
     background-color: $color--background;
     gap: $size--spacing-02;
+
+    &-mobileheader {
+      display: none;
+    }
 
     &-logo {
       display: inline-flex;
@@ -29,6 +35,7 @@
       transition: outline $transition--app-01;
       outline: 0.0625rem solid transparent;
       outline-offset: $size--spacing-02;
+      background-color: transparent;
 
       & > img,
       & > svg {
@@ -49,7 +56,7 @@
       justify-content: flex-start;
       width: 100%;
       height: $size--container-04;
-      padding: 0 16px;
+      padding: 0 $size--spacing-05;
       overflow: hidden;
       transition: background-color $transition--app-01,
         border-color $transition--app-01, color $transition--app-01;
@@ -66,7 +73,7 @@
         width: calc($size--container-01 / 4);
         height: $size--container-02;
         border-radius: calc($component--radius-subtle * 2);
-        opacity: 0%;
+        opacity: 0;
         background-color: $color--decoration;
       }
 
@@ -81,6 +88,14 @@
 
       &:focus-visible {
         border-color: $color--focus;
+      }
+
+      &__with-icon {
+        & + .$(prefix)--sidenav-item__expander-list {
+          & > .$(prefix)--sidenav-item {
+            padding-left: $size--spacing-09;
+          }
+        }
       }
 
       &__icon {
@@ -123,15 +138,11 @@
         color: $color--font-selected;
 
         &::before {
-          opacity: 100%;
+          opacity: 1;
         }
       }
 
       &__expander {
-        &::before {
-          display: none;
-        }
-
         &-open {
           & + .$(prefix)--sidenav-item__expander-list {
             display: inline-flex;
@@ -141,25 +152,22 @@
             > .$(prefix)--sidenav-item__container
             > .$(prefix)--sidenav-item__chevron
             > svg {
-            transform: rotate(90deg);
+            transform: rotate(180deg);
           }
         }
 
         &-list {
           display: none;
           flex-wrap: wrap;
+          width: 100%;
           gap: $component--padding-inside;
 
           & > .$(prefix)--sidenav-item {
-            & > .$(prefix)--sidenav-item__icon > svg {
-              display: none;
-            }
-
-            padding-left: $size--spacing-07;
+            padding-left: calc($size--spacing-05 * 2);
           }
 
           & + .$(prefix)--sidenav-headline {
-            margin-top: $size--spacing-05;
+            margin-top: $size--spacing-06;
           }
         }
       }
@@ -179,7 +187,15 @@
       display: inline-flex;
       align-items: flex-end;
       width: 100%;
-      padding: 0 calc($size--spacing-05 + $component--padding-inside);
+      margin-bottom: $size--spacing-03;
+      padding: 0 $size--spacing-05;
+
+      & > h3 {
+        @mixin type--label;
+
+        margin: 0;
+        color: $color--font-text-04;
+      }
 
       & > .$(prefix)--typography-label {
         margin: 0;
@@ -222,5 +238,61 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix) {
+    &--sidenav {
+      position: fixed;
+      transform: translateX(calc($size--container-08 * -1));
+
+      &-mobileheader {
+        display: flex;
+        position: sticky;
+        z-index: 11000;
+        top: 0;
+        left: 0;
+        align-items: center;
+        width: 100%;
+        height: $size--container-05;
+        padding: 0 $size--spacing-03;
+        border-bottom: 0.0625rem solid $color--border;
+        background-color: $color--background;
+      }
+
+      &-overlay {
+        visibility: hidden;
+        position: fixed;
+        z-index: 9000;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transition: visibility $transition--app-01, opacity $transition--app-01;
+        opacity: 0;
+        background-color: $component--overlay;
+      }
+
+      &-open {
+        transform: unset;
+        box-shadow: $component--shadow-default;
+
+        & + .$(prefix)--sidenav-overlay {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .$(prefix)--sidenav-mobileheader ~ .$(prefix)--sidenav {
+    top: $size--container-05;
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-lg) {
+  .$(prefix)--sidenav-from-header {
+    display: none;
   }
 }

@@ -5,19 +5,32 @@
 .$(prefix) {
   &--textinput {
     display: inline-flex;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     width: $size--container-08;
 
     &-default {
-      height: $size--container-04;
+      min-height: $size--field-default;
+      max-height: $size--field-default;
     }
 
     &-large {
-      height: $size--container-05;
+      min-height: $size--field-large;
+      max-height: $size--field-large;
     }
 
     &-small {
-      height: $size--container-03;
+      min-height: $size--field-small;
+      max-height: $size--field-small;
+    }
+
+    &-disabled {
+      color: $color--font-disabled;
+    }
+
+    &-readonly {
+      color: $color--font-readonly;
+      pointer-events: none;
+      user-select: none;
     }
 
     &-input {
@@ -26,11 +39,16 @@
       width: 100%;
       padding: 0 $size--spacing-05;
       transition: border $transition--app-01;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       outline: 0;
       background-color: $color--background;
       color: $color--font-text-01;
+
+      &::-webkit-credentials-auto-fill-button {
+        display: none;
+        visibility: hidden;
+      }
 
       &::placeholder {
         transition: transform $transition--app-01, opacity $transition--app-01;
@@ -42,7 +60,7 @@
 
         &::placeholder {
           transform: translateX($size--spacing-01);
-          opacity: 0%;
+          opacity: 0;
         }
       }
 
@@ -90,7 +108,28 @@
       &__container {
         display: flex;
         position: relative;
-        flex-direction: column;
+        flex-flow: column;
+      }
+    }
+
+    &-icon {
+      display: inline-flex;
+      position: absolute;
+      right: 0;
+      align-items: center;
+      height: 100%;
+      padding: 0 $size--spacing-05;
+      pointer-events: none;
+
+      & + .$(prefix)--textinput-input {
+        padding-right: $size--spacing-09;
+      }
+
+      & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
       }
     }
 
@@ -104,8 +143,10 @@
         margin-right: 0.0625rem;
         margin-bottom: 0.0625rem;
         border-top-left-radius: 0;
-        border-top-right-radius: 0.0625rem;
-        border-bottom-right-radius: 0.0625rem;
+        border-top-right-radius: calc($component--radius-default - 0.0625rem);
+        border-bottom-right-radius: calc(
+          $component--radius-default - 0.0625rem
+        );
         border-bottom-left-radius: 0;
       }
 
@@ -141,10 +182,6 @@
 
           transform: translateY(-0.625rem);
         }
-      }
-
-      & > .$(prefix)--skeleton {
-        height: $size--container-06;
       }
 
       &
@@ -209,6 +246,28 @@
         & > svg {
           margin-right: $size--spacing-02;
         }
+      }
+    }
+  }
+  &--textinput.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: unset;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
+      justify-content: flex-end;
+      padding: 0 $size--spacing-05;
+      border-radius: $component--radius-default;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-03;
       }
     }
   }

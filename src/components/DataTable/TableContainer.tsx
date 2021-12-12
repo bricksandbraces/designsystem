@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { prefix } from "../../settings";
 
-type TableContainerProps = {
+export type TableContainerProps = {
   /**
    * React children
    */
-  children: ReactNode;
+  children: React.ReactNode;
 
   /**
    * Table title
@@ -16,7 +16,9 @@ type TableContainerProps = {
 const TableContainer = ({ children, title }: TableContainerProps) => {
   return (
     <div className={`${prefix}--datatable-container`}>
-      <div className={`${prefix}--datatable-container__header`}>{title}</div>
+      {title && (
+        <div className={`${prefix}--datatable-container__header`}>{title}</div>
+      )}
       <div className={`${prefix}--datatable-container__content`}>
         {children}
       </div>
@@ -24,4 +26,4 @@ const TableContainer = ({ children, title }: TableContainerProps) => {
   );
 };
 
-export default TableContainer;
+export default React.forwardRef(TableContainer);

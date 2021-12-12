@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 export type SwitcherItemProps = {
   /**
    * SwitcherItem Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * SwitcherItem Title

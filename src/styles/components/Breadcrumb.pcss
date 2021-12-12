@@ -1,0 +1,97 @@
+@import "../colors.pcss";
+@import "../theme.pcss";
+@import "../typography.pcss";
+@import "../prefix.pcss";
+
+.$(prefix) {
+  &--breadcrumb {
+    min-height: $size--container-02;
+    max-height: $size--container-02;
+
+    &-list {
+      display: inline-flex;
+      min-height: $size--container-02;
+      max-height: $size--container-02;
+      list-style-type: none;
+      gap: $size--spacing-03;
+    }
+
+    &-item {
+      display: inline-flex;
+      align-items: center;
+      gap: $size--spacing-03;
+      color: $color--font-text-01;
+
+      &__overflow {
+        & > div {
+          min-height: $size--container-02;
+          max-height: $size--container-02;
+
+          & > .$(prefix)--link > .$(prefix)--link-label {
+            & > .$(prefix)--button {
+              min-width: $size--container-02;
+              max-width: $size--container-02;
+              min-height: $size--container-02;
+              max-height: $size--container-02;
+            }
+
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      & > div {
+        display: inline-block;
+
+        & > svg {
+          min-width: $size--container-01;
+          max-width: $size--container-01;
+          min-height: $size--container-01;
+          max-height: $size--container-01;
+          margin-right: $size--spacing-02;
+          transform: translateY(-0.0625rem);
+          stroke: currentColor;
+        }
+      }
+
+      &:last-child {
+        & > svg {
+          display: none;
+        }
+      }
+
+      & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
+        stroke: $color--app-03;
+      }
+
+      &__current {
+        color: $color--font-decoration;
+        pointer-events: none;
+        & > div > .$(prefix)--link {
+          color: $color--font-decoration;
+        }
+      }
+    }
+    & > div > div > .$(prefix)--skeleton {
+      height: $size--field-xsmall;
+      transform: translateY(0.0625rem);
+    }
+  }
+  &--breadcrumb.$(prefix)--skeleton {
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+    min-height: $size--container-02;
+    max-height: $size--container-02;
+
+    & > div > div > svg {
+      stroke: $color--skeleton-02;
+    }
+  }
+}

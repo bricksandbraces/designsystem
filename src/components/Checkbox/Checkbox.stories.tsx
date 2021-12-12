@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
@@ -14,11 +15,13 @@ export const Default = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
           id="checkbox-2"
           defaultChecked
+          onChange={action("onChange")}
           value="c2"
         />
       </div>
@@ -35,6 +38,7 @@ export const Controlled = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
@@ -42,6 +46,7 @@ export const Controlled = () => {
           checked={checked}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setChecked(event.target.checked);
+            action("onChange")(event);
           }}
           value="c2"
         />
@@ -58,6 +63,7 @@ export const WithChildren = () => {
           label={text("label", "Checkbox label")}
           id="checkbox"
           value="c1"
+          onChange={action("onChange")}
         />
         <Checkbox
           label={text("label", "Checkbox label")}
@@ -65,6 +71,7 @@ export const WithChildren = () => {
           readOnly={boolean("readOnly (Checkbox 2)", false)}
           disabled={boolean("disabled (Checkbox 2)", false)}
           value="c2"
+          onChange={action("onChange")}
         >
           <Body
             type="body-02"
@@ -76,6 +83,61 @@ export const WithChildren = () => {
             et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
             Lorem ipsum dolor sit amet.
           </Body>
+        </Checkbox>
+      </div>
+    </div>
+  );
+};
+
+export const Indeterminate = () => {
+  const [checked, setChecked] = useState<string[]>([]);
+
+  const toggleChecked = (value: string) => {
+    if (checked.includes(value)) {
+      setChecked(checked.filter((f) => f !== value));
+    } else {
+      setChecked([...checked, value]);
+    }
+  };
+
+  const allChecked = checked.length === 2;
+  const noneChecked = checked.length === 0;
+
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Checkbox
+          label={text("label", "Parent checkbox")}
+          id="checkbox-1"
+          value="c"
+          indeterminate={!allChecked && !noneChecked}
+          checked={allChecked}
+          onChange={() => {
+            if (noneChecked) {
+              setChecked(["c1", "c2"]);
+            } else {
+              setChecked([]);
+            }
+          }}
+        >
+          <Checkbox
+            label={text("childLabel", "Child checkbox")}
+            id="checkbox-2"
+            value="c1"
+            checked={checked.includes("c1")}
+            onChange={() => {
+              toggleChecked("c1");
+            }}
+          />
+          <Checkbox
+            label={text("childLabel", "Child checkbox")}
+            id="checkbox-3"
+            value="c2"
+            checked={checked.includes("c2")}
+            onChange={() => {
+              toggleChecked("c2");
+            }}
+          />
         </Checkbox>
       </div>
     </div>

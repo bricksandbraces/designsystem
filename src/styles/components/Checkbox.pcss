@@ -13,6 +13,10 @@
       > .$(prefix)--checkbox-input[type="checkbox"]
       + label
       > .$(prefix)--checkbox-check {
+      & > .$(prefix)--checkbox-check__box {
+        stroke: $color--app-02;
+      }
+
       & > .$(prefix)--checkbox-check__mark {
         visibility: hidden;
       }
@@ -20,7 +24,7 @@
 
     & > [type="checkbox"]:checked + label {
       color: $color--font-selected;
-      > .$(prefix)--checkbox-check {
+      & > .$(prefix)--checkbox-check {
         color: $color--decoration;
         & > .$(prefix)--checkbox-check__mark {
           visibility: visible;
@@ -30,6 +34,25 @@
 
         & > .$(prefix)--checkbox-check__box {
           border-color: $color--decoration;
+          stroke: $color--decoration;
+          fill: $color--decoration;
+        }
+      }
+    }
+
+    & > [data-checkbox-state="mixed"] + label {
+      color: yellow;
+      & > .$(prefix)--checkbox-check {
+        color: yellow;
+        & > .$(prefix)--checkbox-check__indeterminate-mark {
+          visibility: visible;
+          stroke-width: 0.125rem;
+          color: blue;
+        }
+
+        & > .$(prefix)--checkbox-check__box {
+          border-color: $color--decoration;
+          stroke: $color--decoration;
           fill: $color--decoration;
         }
       }
@@ -136,7 +159,7 @@
       width: 0;
       height: 0;
       max-height: 0;
-      opacity: 0%;
+      opacity: 0;
       cursor: pointer;
     }
 
@@ -150,13 +173,14 @@
     }
 
     &-content {
+      margin-top: $size--spacing-03;
       transition: color $transition--app-01;
     }
   }
 
-  &--checkbox.$(prefix)--skeleton-container {
+  &--checkbox.$(prefix)--skeleton {
     display: inline-flex;
-    flex-direction: row;
+    flex-flow: row;
     align-items: center;
     & > .$(prefix)--checkbox-check {
       stroke: $color--skeleton-02;

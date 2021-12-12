@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type AspectRatioProps = {
+export type AspectRatioProps = {
   /**
    * Aspect Ratio Children
    */

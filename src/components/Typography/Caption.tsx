@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type CaptionProps = {
+export type CaptionProps = {
   /**
    * Caption Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Caption Classnames
@@ -14,7 +14,10 @@ type CaptionProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
-const Caption = ({ children, className, ...rest }: CaptionProps) => {
+const Caption = (
+  { children, className, ...rest }: CaptionProps,
+  ref: React.ForwardedRef<HTMLParagraphElement>
+) => {
   return (
     <p
       className={cx(
@@ -22,10 +25,11 @@ const Caption = ({ children, className, ...rest }: CaptionProps) => {
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </p>
   );
 };
 
-export default Caption;
+export default React.forwardRef(Caption);

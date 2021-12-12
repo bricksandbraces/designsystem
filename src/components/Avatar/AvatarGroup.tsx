@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 
-type AvatarGroupProps = {
+export type AvatarGroupProps = {
   /**
    * AvatarGroup ClassNames
    */
@@ -40,17 +40,20 @@ type AvatarGroupProps = {
   >;
 };
 
-const AvatarGroup = ({
-  size = "default",
-  handleAddClick,
-  handleMoreClick,
-  className,
-  itemsToDisplay,
-  children
-}: AvatarGroupProps) => {
+const AvatarGroup = (
+  {
+    size = "default",
+    handleAddClick,
+    handleMoreClick,
+    className,
+    itemsToDisplay,
+    children
+  }: AvatarGroupProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   const avatarAmount = React.Children.count(children);
   return (
-    <div className={cx(`${prefix}--avatar-group`, className)}>
+    <div className={cx(`${prefix}--avatar-group`, className)} ref={ref}>
       <div className={cx(`${prefix}--avatar-group__container`, className)}>
         {React.Children.toArray(children).slice(0, itemsToDisplay)}
       </div>
@@ -80,4 +83,4 @@ const AvatarGroup = ({
   );
 };
 
-export default AvatarGroup;
+export default React.forwardRef(AvatarGroup);

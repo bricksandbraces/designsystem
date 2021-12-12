@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
 import { prefix } from "../../settings";
@@ -7,18 +7,19 @@ export type BadgeColor =
   | "red"
   | "yellow"
   | "purple"
-  | "warm-gray"
-  | "cold-gray"
+  | "gray"
   | "cyan"
   | "blue"
   | "orange"
   | "green";
 
-type BadgeProps = {
+type ButtonOrDiv = HTMLButtonElement | HTMLDivElement;
+
+export type BadgeProps = {
   /**
-   * Badge Message
+   * Badge React Children as Message
    */
-  children?: string | ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Badge ClassName
@@ -26,14 +27,14 @@ type BadgeProps = {
   className?: string;
 
   /**
-   * Badge Title
+   * Badge aria-label
    */
-  title?: string;
+  "aria-label"?: string;
 
   /**
-   * Badge Type
+   * Badge Type Defaults to warm-gray
    */
-  colorType?: BadgeColor;
+  color?: BadgeColor;
 
   /**
    * Badge TabIndex
@@ -41,49 +42,94 @@ type BadgeProps = {
   tabIndex?: number;
 
   /**
+   * Badge Role
+   */
+  role?: React.AriaRole;
+
+  /**
+   * Badge Title
+   */
+  title?: string;
+
+  /**
    * Badge onClose Function
    */
-  onClose?: (event: any) => void;
+  onClose?: React.MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * Badge closeTitle
+   */
+  closeTitle?: string;
 
   /**
    * Badge onClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+
+  /**
+   * Badge onFocus Function
+   */
+  onFocus?: React.FocusEventHandler<ButtonOrDiv>;
+
+  /**
+   * Badge onBlur Function
+   */
+  onBlur?: React.FocusEventHandler<ButtonOrDiv>;
+
+  /**
+   * Badge onMouseEnter Function
+   */
+  onMouseEnter?: React.MouseEventHandler<ButtonOrDiv>;
+
+  /**
+   * Badge onMouseLeave Function
+   */
+  onMouseLeave?: React.MouseEventHandler<ButtonOrDiv>;
 };
 
-const Badge = ({
-  children,
-  className,
-  tabIndex,
-  onClose,
-  onClick,
-  colorType = "warm-gray",
-  title
-}: BadgeProps) => {
+const Badge = (
+  {
+    children,
+    className,
+    tabIndex,
+    onClose,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    onFocus,
+    onBlur,
+    role,
+    color = "gray",
+    title,
+    "aria-label": ariaLabel
+  }: BadgeProps,
+  ref: React.ForwardedRef<HTMLButtonElement | HTMLDivElement>
+) => {
+  const baseProps = {
+    onMouseEnter,
+    onMouseLeave,
+    onFocus,
+    onBlur,
+    tabIndex,
+    title,
+    role,
+    "aria-label": ariaLabel,
+    className: cx(`${prefix}--badge ${prefix}--badge-${color}`, className)
+  };
   return (
     <>
       {onClick ? (
         <button
-          aria-label={title}
           type="button"
-          tabIndex={tabIndex}
-          className={cx(
-            `${prefix}--badge ${prefix}--badge-${colorType}`,
-            className
-          )}
+          {...baseProps}
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
         >
           <div className={`${prefix}--badge-content`}>
             <p>{children}</p>
           </div>
         </button>
       ) : (
-        <div
-          tabIndex={tabIndex}
-          className={cx(
-            `${prefix}--badge ${prefix}--badge-${colorType}`,
-            className
-          )}
-        >
+        <div {...baseProps} ref={ref as React.ForwardedRef<HTMLDivElement>}>
           <div className={`${prefix}--badge-content`}>
             <p>{children}</p>
             {onClose && (
@@ -104,4 +150,4 @@ const Badge = ({
   );
 };
 
-export default Badge;
+export default React.forwardRef(Badge);

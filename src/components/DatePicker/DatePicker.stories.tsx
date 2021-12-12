@@ -1,5 +1,5 @@
-import { getLogger } from "@openbricksandbraces/eloguent";
-import { select, text, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { format } from "date-fns";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -10,10 +10,12 @@ import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 import DateInput from "./DateInput";
 import DatePicker from "./DatePicker";
+import DatePickerSkeleton from "./DatePickerSkeleton";
 
-export default { title: "Components/DatePicker", decorators: [withKnobs] };
-
-const logger = getLogger("DatePickerStory");
+export default {
+  title: "Components/A_REFA_DatePicker",
+  decorators: [withKnobs]
+};
 
 const sizeOptions = {
   Default: "default",
@@ -32,6 +34,8 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         defaultValue={format(defaultDate, dateFormat)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
@@ -39,14 +43,17 @@ export const Uncontrolled = () => {
         id={text("id", "textfield-01")}
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
-        onChange={(event) => {
-          logger.log(event.target.value);
-        }}
+        onChange={action("onChange")}
         onDateChanged={(newDate) => {
-          logger.log(newDate);
           setSubmittedDate(newDate);
+          action("onDateChanged")(newDate);
         }}
+        onKeyDown={action("onKeyDown")}
+        onBlur={action("onBlur")}
+        onFocus={action("onFocus")}
       />
+      <br />
+      <br />
       <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
@@ -64,18 +71,16 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        disabled={boolean("disabled", false)}
+        readOnly={boolean("readOnly", false)}
         value={textValue}
-        onChange={(event) => {
-          logger.log("onChange:");
-          // eslint-disable-next-line no-console
-          console.log(event.target.value);
-          setTextValue(event.target.value);
+        onChange={(newValue, event) => {
+          setTextValue(newValue);
+          action("onChange")(newValue, event);
         }}
         onDateChanged={(newDate) => {
-          logger.log("onDateChanged:");
-          // eslint-disable-next-line no-console
-          console.log(newDate);
           setChosenDate(newDate);
+          action("onDateChanged")(newDate);
         }}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
@@ -84,6 +89,8 @@ export const Controlled = () => {
         dateFormat={dateFormat}
         label={text("label", "Birthday")}
       />
+      <br />
+      <br />
       <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
@@ -98,26 +105,33 @@ export const SingleWithCalendarUncontrolled = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
       <OutsideClickHandler
-        onOutsideClick={() => {
+        onOutsideClick={(event) => {
           setOpen(false);
+          action("onOutsideClick")(event);
         }}
       >
         <div
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            disabled={boolean("disabled", false)}
+            readOnly={boolean("readOnly", false)}
             label="Single with calendar"
             defaultValue={format(defaultDate, dateFormat)}
             dateFormat={dateFormat}
             size={select("size", sizeOptions, defaultSize) as any}
             onDateChanged={(date) => {
               setChosenDate(date);
+              action("onDateChanged")(date);
             }}
-            onFocus={() => {
+            onChange={action("onChange")}
+            onFocus={(event) => {
               setOpen(true);
+              action("onFocus")(event);
             }}
+            onBlur={action("onBlur")}
+            onKeyDown={action("onKeyDown")}
           >
             {(insertedDate, changeDate) => {
               // inserted date may be invalid and is a live representation from the text
@@ -129,6 +143,7 @@ export const SingleWithCalendarUncontrolled = () => {
                   onDayClick={(newDate) => {
                     changeDate(newDate);
                     setOpen(false);
+                    action("onDayClick")(newDate);
                   }}
                   initialMonth={selectedDay}
                 />
@@ -137,6 +152,8 @@ export const SingleWithCalendarUncontrolled = () => {
           </DateInput>
         </div>
       </OutsideClickHandler>
+      <br />
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
     </div>
   );
 };
@@ -149,27 +166,33 @@ export const SingleWithCalendarControlled = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
       <OutsideClickHandler
         onOutsideClick={() => {
           setOpen(false);
+          action("onOutsideClick")(event);
         }}
       >
         <div
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            disabled={boolean("disabled", false)}
+            readOnly={boolean("readOnly", false)}
             label="Single with calendar"
             value={formatDate(chosenDate, dateFormat, "")}
             dateFormat={dateFormat}
-            onChange={() => {}}
+            onChange={action("onChange")}
             size={select("size", sizeOptions, defaultSize) as any}
             onDateChanged={(date) => {
               setChosenDate(date);
+              action("onDateChanged")(date);
             }}
             onFocus={() => {
               setOpen(true);
+              action("onFocus")(event);
             }}
+            onBlur={action("onBlur")}
+            onKeyDown={action("onKeyDown")}
           >
             {(insertedDate, changeDate) => {
               // inserted date may be invalid and is a live representation from the text
@@ -181,6 +204,7 @@ export const SingleWithCalendarControlled = () => {
                   onDayClick={(newDate) => {
                     changeDate(newDate);
                     setOpen(false);
+                    action("onDayClick")(newDate);
                   }}
                   initialMonth={selectedDay}
                 />
@@ -189,13 +213,28 @@ export const SingleWithCalendarControlled = () => {
           </DateInput>
         </div>
       </OutsideClickHandler>
+      <br />
+      <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
+      <br />
+      <br />
       <Button
-        onClick={() => {
+        onClick={(event) => {
           setChosenDate(new Date());
+          action("onClick")(event);
         }}
       >
         Reset to today
       </Button>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  return (
+    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <DatePickerSkeleton
+        size={select("size", sizeOptions, defaultSize) as any}
+      />
     </div>
   );
 };

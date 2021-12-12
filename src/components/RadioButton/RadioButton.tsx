@@ -1,22 +1,22 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
 export type RadioButtonProps = {
-  /**
-   * RadioButton ClassName
-   */
-  className?: string;
-
   /**
    * RadioButton Id
    */
   id: string;
 
   /**
+   * RadioButton ClassName
+   */
+  className?: string;
+
+  /**
    * RadioButton Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * RadioButton Value
@@ -49,6 +49,16 @@ export type RadioButtonProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
+   * RadioButton OnFocus
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * RadioButton OnBlur
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
    * RadioButton Disabled
    */
   disabled?: boolean;
@@ -59,20 +69,23 @@ export type RadioButtonProps = {
   readOnly?: boolean;
 };
 
-const RadioButton = ({
-  id,
-  value,
-  checked,
-  name,
-  defaultChecked,
-  label,
-  className,
-  readOnly,
-  disabled,
-  children,
-  onChange,
-  ...rest
-}: RadioButtonProps) => {
+const RadioButton = (
+  {
+    id,
+    value,
+    checked,
+    name,
+    defaultChecked,
+    label,
+    className,
+    readOnly,
+    disabled,
+    children,
+    onChange,
+    ...rest
+  }: RadioButtonProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div
       className={cx(
@@ -91,6 +104,7 @@ const RadioButton = ({
         value={value}
         name={name}
         id={id}
+        ref={ref}
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
@@ -115,6 +129,12 @@ const RadioButton = ({
             r="9"
             className={`${prefix}--radiobutton-selected__box`}
           />
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+            className={`${prefix}--radiobutton-selected__mark`}
+          />
         </svg>
         <div>
           {label && (
@@ -129,4 +149,4 @@ const RadioButton = ({
   );
 };
 
-export default RadioButton;
+export default React.forwardRef(RadioButton);

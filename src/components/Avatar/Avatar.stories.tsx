@@ -9,11 +9,12 @@ import React from "react";
 import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons";
 import Avatar from "./Avatar";
 import AvatarGroup from "./AvatarGroup";
-import AvatarList from "./AvatarList";
+import AvatarList, { AvatarListItem } from "./AvatarList";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import Button from "../Button/Button";
 import AvatarSkeleton from "./AvatarSkeleton";
 import AvatarGroupSkeleton from "./AvatarGroupSkeleton";
+import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/A_REFA_Avatar", decorators: [withKnobs] };
 
@@ -67,7 +68,11 @@ export const WithIcon = () => {
 export const Group = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <AvatarGroup size={select("size", sizeOptions, defaultSize) as any}>
+      <AvatarGroup
+        size={select("size", sizeOptions, defaultSize) as any}
+        handleMoreClick={action("handleMoreClick")}
+        handleAddClick={action("handleAddClick")}
+      >
         <Avatar
           size={select("size", sizeOptions, defaultSize) as any}
           name="Erika Musterfrau"
@@ -99,7 +104,8 @@ export const GroupWithTrigger = () => {
     <div style={{ margin: "32px" }}>
       <AvatarGroup
         itemsToDisplay={number("Items to display", 2)}
-        handleMoreClick={() => {}}
+        handleMoreClick={action("handleMoreClick")}
+        handleAddClick={action("handleAddClick")}
         size={select("size", sizeOptions, defaultSize) as any}
       >
         <Avatar
@@ -133,8 +139,8 @@ export const GroupWithAddButton = () => {
     <div style={{ margin: "32px" }}>
       <AvatarGroup
         itemsToDisplay={3}
-        handleMoreClick={() => {}}
-        handleAddClick={() => {}}
+        handleMoreClick={action("handleMoreClick")}
+        handleAddClick={action("handleAddClick")}
         size={select("size", sizeOptions, defaultSize) as any}
       >
         <Avatar
@@ -177,36 +183,39 @@ export const GroupWithAddButton = () => {
   );
 };
 
+const avatarItems = [
+  {
+    id: "1",
+    name: "Dominic Müller",
+    imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
+    additionalInformation: "22. September 2021"
+  },
+  {
+    id: "2",
+    name: "Tom Mustermann",
+    additionalInformation: "09. August 2021"
+  },
+  {
+    id: "3",
+    name: "Jana Slavic",
+    imgUrl: "https://randomuser.me/api/portraits/women/88.jpg"
+  },
+  {
+    id: "4",
+    name: "Maria Hulahoop",
+    imgUrl: "https://randomuser.me/api/portraits/women/23.jpg",
+    additionalInformation: "Today, 18:55"
+  }
+];
+
 export const List = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <AvatarList
-        avatarItems={object("avatars", [
-          {
-            id: "1",
-            name: "Dominic Müller",
-            imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
-            additionalInformation: "22. September 2021"
-          },
-          {
-            id: "2",
-            name: "Tom Mustermann",
-            additionalInformation: "09. August 2021"
-          },
-          {
-            id: "3",
-            name: "Jana Slavic",
-            imgUrl: "https://randomuser.me/api/portraits/women/88.jpg",
-            additionalInformation: "21. September 2021"
-          },
-          {
-            id: "4",
-            name: "Maria Hulahoop",
-            imgUrl: "https://randomuser.me/api/portraits/women/23.jpg",
-            additionalInformation: "Today, 18:55"
-          }
-        ])}
-      />
+      <AvatarList>
+        {object("avatarItems", avatarItems).map((avatar) => {
+          return <AvatarListItem key={avatar.id} {...avatar} />;
+        })}
+      </AvatarList>
     </div>
   );
 };
@@ -214,47 +223,32 @@ export const List = () => {
 export const ListWithActions = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <AvatarList
-        avatarItems={object("avatars", [
-          {
-            id: "1",
-            name: "Dominic Müller",
-            imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
-            additionalInformation: "22. September 2021"
-          },
-          {
-            id: "2",
-            name: "Tom Mustermann",
-            additionalInformation: "09. August 2021"
-          },
-          {
-            id: "3",
-            name: "Jana Slavic",
-            imgUrl: "https://randomuser.me/api/portraits/women/88.jpg",
-            additionalInformation: "21. September 2021"
-          },
-          {
-            id: "4",
-            name: "Maria Hulahoop",
-            imgUrl: "https://randomuser.me/api/portraits/women/23.jpg",
-            additionalInformation: "Today, 18:55"
-          }
-        ])}
-        avatarActions={
-          <>
-            <IconOnlyButton
-              size="small"
-              kind="ghost"
-              icon={<IconAccessible />}
+      <AvatarList>
+        {object("avatarItems", avatarItems).map((avatar) => {
+          return (
+            <AvatarListItem
+              key={avatar.id}
+              {...avatar}
+              actions={
+                <>
+                  <IconOnlyButton
+                    size="small"
+                    kind="ghost"
+                    onClick={action("onFirstActionClick")}
+                    icon={<IconAccessible />}
+                  />
+                  <IconOnlyButton
+                    size="small"
+                    kind="ghost"
+                    onClick={action("onSeconActionClick")}
+                    icon={<IconDotsVertical />}
+                  />
+                </>
+              }
             />
-            <IconOnlyButton
-              size="small"
-              kind="ghost"
-              icon={<IconDotsVertical />}
-            />
-          </>
-        }
-      />
+          );
+        })}
+      </AvatarList>
     </div>
   );
 };
@@ -263,41 +257,23 @@ export const ListWithChildren = () => {
   return (
     <div style={{ margin: "32px" }}>
       <AvatarList
-        avatarItems={object("avatars", [
-          {
-            id: "1",
-            name: "Dominic Müller",
-            imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
-            additionalInformation: "22. September 2021"
-          },
-          {
-            id: "2",
-            name: "Tom Mustermann",
-            additionalInformation: "09. August 2021"
-          },
-          {
-            id: "3",
-            name: "Jana Slavic",
-            imgUrl: "https://randomuser.me/api/portraits/women/88.jpg",
-            additionalInformation: "21. September 2021"
-          },
-          {
-            id: "4",
-            name: "Maria Hulahoop",
-            imgUrl: "https://randomuser.me/api/portraits/women/23.jpg",
-            additionalInformation: "Today, 18:55"
-          }
-        ])}
+        footer={
+          <>
+            <Button fluid size="default">
+              Sharing Settings
+            </Button>
+            <IconOnlyButton
+              icon={<IconDotsVertical />}
+              type="button"
+              size="default"
+              kind="ghost"
+            />
+          </>
+        }
       >
-        <Button fluid size="default">
-          Sharing Settings
-        </Button>
-        <IconOnlyButton
-          icon={<IconDotsVertical />}
-          type="button"
-          size="default"
-          kind="ghost"
-        />
+        {object("avatarItems", avatarItems).map((avatar) => {
+          return <AvatarListItem key={avatar.id} {...avatar} />;
+        })}
       </AvatarList>
     </div>
   );

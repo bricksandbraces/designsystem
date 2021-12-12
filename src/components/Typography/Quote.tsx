@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import Headline from "./Headline";
 import Body from "./Body";
 
-type QuoteProps = {
+export type QuoteProps = {
   /**
    * Quote Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Quote Type
@@ -36,15 +36,10 @@ type QuoteProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLQuoteElement>;
 
-const Quote = ({
-  children,
-  name,
-  position,
-  company,
-  className,
-  type,
-  ...rest
-}: QuoteProps) => {
+const Quote = (
+  { children, name, position, company, className, type, ...rest }: QuoteProps,
+  ref: React.ForwardedRef<HTMLQuoteElement>
+) => {
   return (
     <div
       className={cx(
@@ -59,6 +54,7 @@ const Quote = ({
         <blockquote
           className={cx(`${prefix}--typography ${prefix}--typography-${type}`)}
           {...rest}
+          ref={ref}
         >
           {children}
         </blockquote>
@@ -92,4 +88,4 @@ const Quote = ({
   );
 };
 
-export default Quote;
+export default React.forwardRef(Quote);

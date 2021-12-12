@@ -1,27 +1,19 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import LottieAnimation from "../LottieAnimation/LottieAnimation";
+import loadingAnimation from "./animation.json";
 
-type LoadingProps = {
+export type LoadingProps = {
   /**
-   * Label that is shown.
-   */
-  loadingDescription: string;
-
-  /**
-   * active
+   * Loading active
    */
   active?: boolean;
 
   /**
-   * Overlay anzeigen?
+   * Loading Overlay anzeigen?
    */
   withOverlay?: boolean;
-
-  /**
-   * Disabled loading spinner
-   */
-  disabled?: boolean;
 
   /**
    * ClassName
@@ -29,19 +21,31 @@ type LoadingProps = {
   className?: string;
 
   /**
-   * Size
+   * Loading Animation
+   */
+  loadingAnimation?: object;
+
+  /**
+   * Loading Description
+   */
+  loadingDescription?: string;
+
+  /**
+   * Loading Size
    */
   size?: "small" | "default" | "large" | "inline";
 };
 
-const Loading = ({
-  size = "default",
-  loadingDescription,
-  active,
-  disabled,
-  className,
-  withOverlay
-}: LoadingProps) => {
+const Loading = (
+  {
+    size = "default",
+    loadingDescription,
+    active,
+    className,
+    withOverlay
+  }: LoadingProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
     <>
       {active && (
@@ -54,27 +58,26 @@ const Loading = ({
             },
             className
           )}
+          ref={ref}
         >
-          <div
+          <LottieAnimation
+            title={loadingDescription}
             className={cx(
               `${prefix}--loading-container`,
-              `${prefix}--loading-${size}`,
-              {
-                [`${prefix}--loading-disabled`]: disabled
-              }
+              `${prefix}--loading-${size}`
             )}
             role="status"
             aria-live={active ? "assertive" : "off"}
-          >
-            <svg viewBox="0 0 100 100">
-              <title>{loadingDescription}</title>
-              <circle cx="50%" cy="50%" r="40" />
-            </svg>
-          </div>
+            animationProps={{
+              animationData: loadingAnimation,
+              autoplay: true,
+              loop: true
+            }}
+          />
         </div>
       )}
     </>
   );
 };
 
-export default Loading;
+export default React.forwardRef(Loading);

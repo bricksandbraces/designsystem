@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactElement, useEffect, useRef } from "react";
 import mergeRefs from "react-merge-refs";
 
-type OutsideClickListenerProps = {
+export type OutsideClickListenerProps = {
   children: ReactElement<any, string>;
   disabled?: boolean;
   onClickOutside: (event: MouseEvent) => void;
@@ -25,9 +25,12 @@ const OutsideClickListener = (
     }
   };
 
-  // todo: shouldn't document.addEventListener only be called once OR if disabled is false?
   useEffect(() => {
-    document.addEventListener("click", handleGlobalClick);
+    if (disabled) {
+      document.removeEventListener("click", handleGlobalClick);
+    } else {
+      document.addEventListener("click", handleGlobalClick);
+    }
 
     return () => {
       document.removeEventListener("click", handleGlobalClick);
@@ -39,4 +42,4 @@ const OutsideClickListener = (
   });
 };
 
-export default forwardRef<any, any>(OutsideClickListener);
+export default forwardRef(OutsideClickListener);

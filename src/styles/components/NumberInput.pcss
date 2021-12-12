@@ -5,7 +5,7 @@
 .$(prefix) {
   &--numberinput {
     display: inline-flex;
-    flex-direction: column;
+    flex-flow: column;
     flex-wrap: wrap;
     width: $size--container-08;
 
@@ -26,7 +26,11 @@
         height: $size--container-06;
         padding-top: calc($size--spacing-05 * 1.25);
 
-        &:focus + .$(prefix)--numberinput-fluid__label {
+        &::placeholder {
+          opacity: 0;
+        }
+
+        &:focus-visible ~ .$(prefix)--numberinput-fluid__label {
           @mixin type--label;
 
           transform: translateY(-0.625rem);
@@ -35,6 +39,33 @@
 
       & > .$(prefix)--skeleton {
         height: $size--container-06;
+      }
+
+      &
+        > div
+        > .$(prefix)--button-group
+        > .$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+        min-width: $size--container-02;
+        max-width: $size--container-02;
+        min-height: $size--container-02;
+        max-height: $size--container-02;
+        margin-top: $size--spacing-03;
+        margin-right: $size--spacing-03;
+        border-radius: $component--radius-default;
+
+        &:first-child {
+          margin-right: $size--spacing-05;
+        }
+
+        &:hover {
+          &::before {
+            opacity: 1;
+          }
+        }
+
+        &::before {
+          right: calc($size--spacing-01 * 5 * -1);
+        }
       }
 
       &__label {
@@ -62,23 +93,35 @@
       width: 100%;
       padding: 0 $size--spacing-05;
       transition: border $transition--app-01;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       outline: 0;
       background-color: $color--background;
       color: $color--font-text-01;
+
+      /* Turn off spin buttons in  Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      /* Turn off spin buttons in Firefox */
+      &[type="number"] {
+        appearance: textfield;
+      }
 
       &::placeholder {
         transition: transform $transition--app-01, opacity $transition--app-01;
         color: $color--font-placeholder;
       }
 
-      &:focus {
-        border-color: $textinput-focus;
+      &:focus-visible {
+        border-color: $color--focus;
 
         &::placeholder {
           transform: translateX($size--spacing-01);
-          opacity: 0%;
+          opacity: 0;
         }
       }
 
@@ -114,7 +157,64 @@
       &__container {
         display: flex;
         position: relative;
-        flex-direction: column;
+        flex-flow: column;
+      }
+    }
+
+    &-readonly {
+      &
+        > .$(prefix)--numberinput-input__container
+        > .$(prefix)--button-group
+        > .$(prefix)--button {
+        border-color: transparent;
+        background-color: transparent;
+        color: $color--font-readonly;
+      }
+    }
+
+    &-spin {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &__button {
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+          margin-top: 0.0625rem;
+          margin-right: 0.0625rem;
+          margin-bottom: 0.0625rem;
+          border-top-left-radius: 0;
+          border-top-right-radius: calc($component--radius-default - 0.0625rem);
+          border-bottom-right-radius: calc(
+            $component--radius-default - 0.0625rem
+          );
+          border-bottom-left-radius: 0;
+
+          &:first-child {
+            margin-right: 0;
+            border-radius: 0;
+          }
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-default {
+          min-width: calc($size--container-04 - $size--spacing-01);
+          max-width: calc($size--container-04 - $size--spacing-01);
+          min-height: calc($size--container-04 - $size--spacing-01);
+          max-height: calc($size--container-04 - $size--spacing-01);
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-small {
+          min-width: calc($size--container-03 - $size--spacing-01);
+          max-width: calc($size--container-03 - $size--spacing-01);
+          min-height: calc($size--container-03 - $size--spacing-01);
+          max-height: calc($size--container-03 - $size--spacing-01);
+        }
+
+        &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-large {
+          min-width: calc($size--container-05 - $size--spacing-01);
+          max-width: calc($size--container-05 - $size--spacing-01);
+          min-height: calc($size--container-05 - $size--spacing-01);
+          max-height: calc($size--container-05 - $size--spacing-01);
+        }
       }
     }
 
@@ -148,6 +248,25 @@
 
         & > svg {
           margin-right: $size--spacing-02;
+        }
+      }
+    }
+
+    &.$(prefix)--skeleton {
+      & > .$(prefix)--skeleton-animated {
+        display: inline-flex;
+        justify-content: flex-end;
+        padding: 0 0 0 $size--spacing-05;
+        & > .$(prefix)--button-group {
+          & > .$(prefix)--button {
+            border-color: transparent;
+            background-color: transparent;
+            color: $color--skeleton-03;
+
+            &::before {
+              background-color: $color--skeleton-03;
+            }
+          }
         }
       }
     }

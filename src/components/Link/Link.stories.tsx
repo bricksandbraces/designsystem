@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { IconArrowNarrowRight } from "@tabler/icons";
 import React from "react";
@@ -23,8 +24,25 @@ export const Default = () => {
           target="_blank"
           icon={<IconArrowNarrowRight />}
           size={select("size", sizeOptions, defaultSize) as any}
+          onClick={action("onClick")}
         >
           {text("children", "Link text")}
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export const AsButton = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Link
+          icon={<IconArrowNarrowRight />}
+          size={select("size", sizeOptions, defaultSize) as any}
+          onClick={action("onClick")}
+        >
+          {text("children", "Link Button text")}
         </Link>
       </div>
     </div>
@@ -41,7 +59,12 @@ export const Inline = () => {
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
           rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
           ipsum dolor sit amet.{" "}
-          <Link href="https://google.de" target="_blank" inline>
+          <Link
+            href="https://google.de"
+            target="_blank"
+            inline
+            onClick={action("onClick")}
+          >
             Stet clita kasd
           </Link>{" "}
           gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.

@@ -3,18 +3,6 @@
 @import "../../styles/typography.pcss";
 @import "../prefix.pcss";
 
-@keyframes show-content {
-  from {
-    transform: translateY(-0.5rem);
-    opacity: 0%;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 100%;
-  }
-}
-
 .$(prefix) {
   &--search {
     @mixin type--body-02;
@@ -29,47 +17,47 @@
       min-width: $size--container-01;
       height: $size--container-01;
       min-height: $size--container-01;
-      margin-left: $size--spacing-04;
+      margin-left: $size--spacing-05;
       color: $color--font-placeholder;
     }
 
     &-box {
+      visibility: hidden;
       margin: 0;
-      padding: 0;
-      transition: background-color $transition--app-01,
-        padding $transition--app-01, margin $transition--app-01;
-      border: 0.0625rem solid transparent;
+      padding: $component--padding-inside;
+      transition: transform $transition--app-01, opacity $transition--app-01,
+        visibility $transition--app-01;
+      border: 0.0625rem solid $color--border;
+      border-radius: $component--radius-default;
       outline: 0;
+      opacity: 0;
       background-color: transparent;
+      background-color: $color--background;
+      box-shadow: $component--shadow-default;
+      color: $color--font-text-01;
 
       &__open {
-        margin: calc(($size--spacing-05) * -1);
-        padding: $size--spacing-05;
-        border: 0.0625rem solid $color--border-default;
-        border-radius: $component--radius-default;
-        background-color: $color--background;
-        box-shadow: $component--shadow-default;
-        color: $color--font-text-01;
-
-        & > .$(prefix)--search-box__content {
-          display: block;
-          animation: show-content 0.15s ease-in-out;
-        }
+        visibility: visible;
+        transform: translateY($size--spacing-03);
+        opacity: 1;
       }
 
       &__content {
         @mixin type--body-02;
 
-        display: none;
-        padding: $size--spacing-05 0 0 0;
+        &-items {
+          display: flex;
+          gap: $component--padding-inside;
+          flex-flow: column wrap;
+        }
 
         &-badges {
           display: flex;
           flex-wrap: wrap;
-          padding: 0 0 $size--spacing-03 0;
+          padding: $size--spacing-04;
 
           &--manual-hover {
-            background-color: $interactive-secondary-hover;
+            background-color: $color--secondary-hover;
           }
 
           & > * {
@@ -95,7 +83,7 @@
               color: currentColor;
             }
 
-            color: $color--font-text-recent;
+            color: $color--font-decoration;
           }
 
           &--result {
@@ -108,7 +96,7 @@
     &-default {
       height: $size--field-default;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-default;
         }
@@ -118,7 +106,7 @@
     &-large {
       height: $size--field-large;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-large;
         }
@@ -128,7 +116,7 @@
     &-small {
       height: $size--field-small;
 
-      & + .$(prefix)--search-box__content > div {
+      & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
           height: $size--field-small;
         }
@@ -141,15 +129,17 @@
       max-width: 0;
       height: 0;
       max-height: 0;
-      opacity: 0%;
+      opacity: 0;
     }
 
     &-input {
+      @mixin type--body-02;
+
       width: 100%;
       height: 100%;
       padding: 0 $size--spacing-05 0 $size--spacing-08;
       transition: border $transition--app-01;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       outline: 0;
       background-color: $color--background;
@@ -165,7 +155,7 @@
 
         &::placeholder {
           transform: translateX(0.125rem);
-          opacity: 0%;
+          opacity: 0;
         }
 
         & + div > .$(prefix)--search-go {
@@ -222,6 +212,30 @@
       right: 0;
       align-items: center;
       height: 100%;
+    }
+  }
+  &--search.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: unset;
+    border: 0.0625rem solid;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+
+    & > .$(prefix)--skeleton-animated {
+      justify-content: flex-start;
+      padding: 0 $size--spacing-05;
+      border-radius: $component--radius-default;
+
+      & > svg {
+        transform: translateX(-0.0625rem);
+        stroke: $color--skeleton-03;
+      }
     }
   }
 }

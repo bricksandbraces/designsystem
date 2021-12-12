@@ -1,4 +1,4 @@
-import { getLogger } from "@openbricksandbraces/eloguent";
+import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Label from "../Typography/Label";
@@ -9,8 +9,6 @@ export default {
   title: "Components/A_REFA_TextInput",
   decorators: [withKnobs]
 };
-
-const logger = getLogger("TextInputStory");
 
 const sizeOptions = {
   Default: "default",
@@ -34,15 +32,18 @@ export const Uncontrolled = () => {
         readOnly={boolean("readOnly", false)}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
-        onChange={(event) => {
-          logger.log(event.target.value);
-          setReference(event.target.value);
+        onChange={(newValue, event) => {
+          setReference(newValue);
+          action("onChange")(newValue, event);
         }}
         id={text("id", "textfield-01")}
         label={text("label", "Label")}
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         type={text("type", "text") as any}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
       <Label>Reference value: {reference}</Label>
     </div>
@@ -67,12 +68,14 @@ export const Controlled = () => {
         placeholder={text("placeholder", "Enter text...")}
         autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         type={text("type", "text") as any}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          logger.log(event.target.value);
-          setValue(event.target.value);
+        onChange={(newValue, event) => {
+          setValue(newValue);
+          action("onChange")(newValue, event);
         }}
+        onFocus={action("onFocus")}
+        onBlur={action("onBlur")}
+        onKeyDown={action("onKeyDown")}
       />
-      <Label>SSoT value: {value}</Label>
     </div>
   );
 };
@@ -81,7 +84,6 @@ export const Skeleton = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <TextInputSkeleton
-        fluid={boolean("fluid", false)}
         size={select("size", sizeOptions, defaultSize) as any}
       />
     </div>

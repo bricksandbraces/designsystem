@@ -35,35 +35,50 @@ export type CodeSnippetProps = {
    * CodeSnippet ClassName
    */
   className?: string;
+
+  /**
+   * CodeSnippet Type
+   */
+  type?: "multi" | "single";
 };
 
-const CodeSnippet = ({
-  code,
-  className,
-  showMoreLabel = "Show more",
-  showLessLabel = "Show less",
-  tooltipLabel = "Copy",
-  tooltipLabelCopied = "Copy Cat!",
-  ...rest
-}: CodeSnippetProps) => {
+const CodeSnippet = (
+  {
+    code,
+    className,
+    showMoreLabel = "Show more",
+    showLessLabel = "Show less",
+    tooltipLabel = "Copy",
+    tooltipLabelCopied = "Copy Cat!",
+    type = "multi",
+    ...rest
+  }: CodeSnippetProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   const [expanded, setExpanded] = useState(false);
   return (
     <div
-      className={cx(`${prefix}--codesnippet-container`, className)}
+      className={cx(
+        `${prefix}--codesnippet-container ${prefix}--codesnippet-${type}`,
+        className
+      )}
       {...rest}
+      ref={ref}
     >
       <div className={`${prefix}--codesnippet-button__container`}>
-        <Button
-          size="small"
-          icon={expanded ? <IconChevronUp /> : <IconChevronDown />}
-          iconPosition="right"
-          kind="ghost"
-          onClick={() => {
-            setExpanded(!expanded);
-          }}
-        >
-          {expanded ? showLessLabel : showMoreLabel}
-        </Button>
+        {type === "multi" && (
+          <Button
+            size="small"
+            icon={expanded ? <IconChevronUp /> : <IconChevronDown />}
+            iconPosition="right"
+            kind="ghost"
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+          >
+            {expanded ? showLessLabel : showMoreLabel}
+          </Button>
+        )}
         <CopyButton
           valueToCopy={code}
           tooltipLabel={tooltipLabel}
@@ -86,4 +101,4 @@ const CodeSnippet = ({
   );
 };
 
-export default CodeSnippet;
+export default React.forwardRef(CodeSnippet);

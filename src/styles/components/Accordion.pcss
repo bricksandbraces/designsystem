@@ -32,7 +32,7 @@
       margin: 0;
       padding: 0;
       list-style-type: none;
-      border: 0.0625rem solid $color--border-default;
+      border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       background-color: $color--background;
 
@@ -43,7 +43,7 @@
         margin: $component--padding-inside;
         overflow: hidden;
         transition: max-height $transition--app-01;
-        border: 0.0625rem solid $color--transparent;
+        border: 0.0625rem solid transparent;
         background-color: $color--background;
 
         &-title {
@@ -55,10 +55,10 @@
           padding: 0 $size--spacing-04;
           transition: background-color $transition--app-01,
             border-color $transition--app-01;
-          border: 0.0625rem solid $color--transparent;
+          border: 0.0625rem solid transparent;
           border-radius: $component--radius-default;
           outline: 0;
-          background-color: $color--transparent;
+          background-color: transparent;
           color: $color--font-text-01;
 
           &:hover {
@@ -75,7 +75,7 @@
           }
 
           &:disabled {
-            background-color: $color--disabled;
+            background-color: transparent;
             color: $color--font-disabled;
             cursor: not-allowed;
           }
@@ -130,15 +130,16 @@
   &--accordion.$(prefix)--skeleton {
     padding: $component--padding-inside;
     gap: $component--padding-inside;
+    border: 0.0625rem solid transparent;
 
-    & > .$(prefix)--skeleton-static {
-      box-sizing: content-box;
-      justify-content: flex-end;
-      padding: 0 $size--spacing-04;
-      border-color: transparent;
-      background-color: transparent;
+    & > .$(prefix)--accordion-list__item-title {
+      justify-content: space-between;
 
       & > svg {
+        min-width: $size--container-01;
+        max-width: $size--container-01;
+        min-height: $size--container-01;
+        max-height: $size--container-01;
         transform: translateX(-0.0625rem);
         stroke: $color--skeleton-02;
       }

@@ -1,15 +1,21 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import cx from "classnames";
-import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
+import {
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconMinus,
+  IconPlus
+} from "@tabler/icons";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import mergeRefs from "react-merge-refs";
-import useControlledValue from "../../hooks/useControlledValue";
+import { useControlledInput } from "../../hooks/useControlled";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
 
-type NumberInputProps = {
+export type NumberInputProps = {
   /**
    * NumberInput ClassName
    */
@@ -83,6 +89,11 @@ type NumberInputProps = {
   fluid?: boolean;
 
   /**
+   * NumberInput HideButtons
+   */
+  hideButtons?: boolean;
+
+  /**
    * NumberInput Disabled
    */
   disabled?: boolean;
@@ -97,7 +108,7 @@ type NumberInputProps = {
    */
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement> | undefined,
-    additionalData: { parsedValue: number; newValue: string }
+    additionalData: { parsedValue?: number; newValue?: string }
   ) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
@@ -121,6 +132,8 @@ const NumberInput = (
     label,
     placeholder,
     value,
+    disabled,
+    readOnly,
     defaultValue,
     autoComplete,
     onChange,
@@ -133,6 +146,7 @@ const NumberInput = (
     warningText,
     size = "default",
     children,
+    hideButtons,
     step = 1,
     min,
     max,
@@ -141,37 +155,25 @@ const NumberInput = (
   }: NumberInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  /**
-   * Boosted onChange function that also provides the updated value of
-   * the target to the onChange listener
-   */
-  const boostedOnChange = onChange
-    ? (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = event.target.value;
-        const parsedValue = parseToNumber(newValue, float);
-
-        onChange(event, { newValue, parsedValue });
-      }
-    : undefined;
-
-  const controlled = useControlled(value);
-  const [inputRef, textValue, handleChange, setCachedUncontrolledValue] =
-    useControlledValue<string | undefined>(
+  const [inputRef, textValue, handleChange, setValueManually] =
+    useControlledInput(
       value != null ? `${value}` : undefined,
       defaultValue != null ? `${defaultValue}` : undefined,
-      boostedOnChange
+      onChange &&
+        ((_, event) => {
+          const newValue = event?.target?.value;
+          const parsedValue = parseToNumber(newValue, float);
+
+          onChange(event as React.ChangeEvent<HTMLInputElement>, {
+            newValue,
+            parsedValue
+          });
+        })
     );
 
   const updateValue = (newValue: string) => {
     if (inputRef.current) {
-      // for uncontrolled usage, the value has to be updated on dom side
-      if (!controlled) {
-        inputRef.current.value = newValue;
-        // and the cache value has to be also updated
-        setCachedUncontrolledValue(newValue);
-      }
-      const event = new Event("change", { bubbles: true });
-      inputRef.current.dispatchEvent(event);
+      setValueManually(newValue);
 
       const parsedValue = parseToNumber(newValue);
 
@@ -202,7 +204,9 @@ const NumberInput = (
       className={cx(
         `${prefix}--numberinput`,
         {
-          [`${prefix}--numberinput-fluid`]: fluid
+          [`${prefix}--numberinput-fluid`]: fluid,
+          [`${prefix}--numberinput-disabled`]: disabled,
+          [`${prefix}--numberinput-readonly`]: readOnly
         },
         className
       )}
@@ -220,6 +224,8 @@ const NumberInput = (
               !(error || errorText) && (warning || warningText)
           })}
           type="number"
+          disabled={disabled}
+          readOnly={readOnly}
           placeholder={placeholder}
           autoComplete={autoComplete}
           value={value}
@@ -243,6 +249,61 @@ const NumberInput = (
           max={max}
           step={step}
         />
+        {!hideButtons && (
+          <IconOnlyButtonGroup
+            withDivider
+            className={`${prefix}--numberinput-spin`}
+          >
+            <IconOnlyButton
+              disabled={disabled || readOnly}
+              kind="ghost"
+              className={`${prefix}--numberinput-spin__button`}
+              hideTooltip
+              size={size}
+              onClick={() => {
+                if (textValue != null) {
+                  const parsedValue = parseToNumber(textValue);
+                  if (Number.isNaN(parsedValue)) {
+                    return;
+                  }
+                  let newValue = parsedValue - step;
+
+                  // Max the newValue to the given max if there is any
+                  if (min != null) {
+                    newValue = Math.max(min, newValue);
+                  }
+
+                  updateValue(`${newValue}`);
+                }
+              }}
+              icon={<IconMinus />}
+            />
+            <IconOnlyButton
+              disabled={disabled || readOnly}
+              kind="ghost"
+              className={`${prefix}--numberinput-spin__button`}
+              hideTooltip
+              size={size}
+              onClick={() => {
+                if (textValue != null) {
+                  const parsedValue = parseToNumber(textValue);
+                  if (Number.isNaN(parsedValue)) {
+                    return;
+                  }
+                  let newValue = parsedValue + step;
+
+                  // Max the newValue to the given max if there is any
+                  if (max != null) {
+                    newValue = Math.min(max, newValue);
+                  }
+
+                  updateValue(`${newValue}`);
+                }
+              }}
+              icon={<IconPlus />}
+            />
+          </IconOnlyButtonGroup>
+        )}
         {fluid && (
           <label
             className={cx(`${prefix}--numberinput-fluid__label`, {
@@ -269,48 +330,8 @@ const NumberInput = (
           {warningText}
         </div>
       )}
-      <button
-        onClick={() => {
-          if (textValue != null) {
-            const parsedValue = parseToNumber(textValue);
-            if (Number.isNaN(parsedValue)) {
-              return;
-            }
-            let newValue = parsedValue + step;
-
-            // Max the newValue to the given max if there is any
-            if (max != null) {
-              newValue = Math.min(max, newValue);
-            }
-
-            updateValue(`${newValue}`);
-          }
-        }}
-      >
-        +
-      </button>
-      <button
-        onClick={() => {
-          if (textValue != null) {
-            const parsedValue = parseToNumber(textValue);
-            if (Number.isNaN(parsedValue)) {
-              return;
-            }
-            let newValue = parsedValue - step;
-
-            // Max the newValue to the given max if there is any
-            if (min != null) {
-              newValue = Math.max(min, newValue);
-            }
-
-            updateValue(`${newValue}`);
-          }
-        }}
-      >
-        -
-      </button>
     </div>
   );
 };
 
-export default forwardRef<HTMLInputElement, NumberInputProps>(NumberInput);
+export default React.forwardRef(NumberInput);

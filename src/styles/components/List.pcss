@@ -1,0 +1,77 @@
+@import "../colors.pcss";
+@import "../theme.pcss";
+@import "../typography.pcss";
+@import "../prefix.pcss";
+
+.$(prefix) {
+  &--list {
+    margin-top: $size--spacing-03;
+    margin-bottom: $size--spacing-03;
+    margin-left: $size--spacing-08;
+    color: $color--font-text-01;
+
+    &-item {
+      @mixin type--body-02;
+    }
+
+    &-ordered {
+      list-style: decimal-leading-zero;
+      & > .$(prefix)--list-item {
+        position: relative;
+        margin-bottom: $size--spacing-01;
+      }
+    }
+
+    &-unordered {
+      list-style-type: none;
+
+      & > .$(prefix)--list-item {
+        position: relative;
+        margin-bottom: $size--spacing-01;
+
+        &::before {
+          content: "–";
+          position: absolute;
+          left: calc($size--spacing-05 * -1);
+        }
+      }
+    }
+
+    &-nested {
+      margin-top: $size--spacing-02;
+      margin-bottom: $size--spacing-02;
+      margin-left: $size--spacing-06;
+
+      & > .$(prefix)--list-nested {
+        &.$(prefix)--list-ordered {
+          position: relative;
+          list-style-type: lower-roman;
+        }
+        &.$(prefix)--list-unordered {
+          & > .$(prefix)--list-item {
+            &::before {
+              content: "–";
+              position: absolute;
+              left: calc($size--spacing-05 * -1);
+            }
+          }
+        }
+      }
+
+      &.$(prefix)--list-unordered {
+        & > .$(prefix)--list-item {
+          &::before {
+            content: "▪";
+            position: absolute;
+            left: calc($size--spacing-05 * -1);
+          }
+        }
+      }
+
+      &.$(prefix)--list-ordered {
+        position: relative;
+        list-style-type: upper-latin;
+      }
+    }
+  }
+}

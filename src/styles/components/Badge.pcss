@@ -14,68 +14,63 @@
     border: 0.0625rem solid;
     border-radius: $component--radius-default;
     outline: 0;
+    white-space: nowrap;
 
     &:focus {
       border-color: $color--focus;
     }
 
     &-red {
-      border-color: $color--border-default;
+      border-color: $color--badge-red-border;
       background-color: $color--badge-red-bg;
       color: $color--badge-red-font;
     }
 
     &-green {
-      border-color: $color--border-default;
+      border-color: $color--badge-green-border;
       background-color: $color--badge-green-bg;
       color: $color--badge-green-font;
     }
 
     &-yellow {
-      border-color: $color--border-default;
+      border-color: $color--badge-yellow-border;
       background-color: $color--badge-yellow-bg;
       color: $color--badge-yellow-font;
     }
 
     &-orange {
-      border-color: $color--border-default;
+      border-color: $color--badge-orange-border;
       background-color: $color--badge-orange-bg;
       color: $color--badge-orange-font;
     }
 
     &-blue {
-      border-color: $color--border-default;
+      border-color: $color--badge-blue-border;
       background-color: $color--badge-blue-bg;
       color: $color--badge-blue-font;
     }
 
-    &-warm-gray {
-      border-color: $color--border-default;
-      background-color: $color--badge-warm-gray-bg;
-      color: $color--badge-warm-gray-font;
-    }
-
-    &-cold-gray {
-      border-color: $color--border-default;
-      background-color: $color--badge-cold-gray-bg;
-      color: $color--badge-cold-gray-font;
+    &-gray {
+      border-color: $color--badge-gray-border;
+      background-color: $color--badge-gray-bg;
+      color: $color--badge-gray-font;
     }
 
     &-purple {
-      border-color: $color--border-default;
+      border-color: $color--badge-purple-border;
       background-color: $color--badge-purple-bg;
       color: $color--badge-purple-font;
     }
 
     &-cyan {
-      border-color: $color--border-default;
+      border-color: $color--badge-cyan-border;
       background-color: $color--badge-cyan-bg;
       color: $color--badge-cyan-font;
     }
 
     &-content {
       display: flex;
-      flex-direction: row;
+      flex-flow: row;
       align-items: center;
 
       & > p {
@@ -95,7 +90,7 @@
       transition: background-color $transition--app-01,
         border-color $transition--app-01;
       border: 0;
-      border-radius: $component--radius-subtle;
+      border-radius: calc($component--radius-default - 0.0625rem);
       outline: 0;
       background-color: $color--ghost-enabled;
       color: inherit;
@@ -108,7 +103,7 @@
         background-color: $color--ghost-active;
       }
 
-      &:focus-visible {
+      &:focus {
         border: 0.0625rem solid $color--focus;
       }
     }
@@ -116,5 +111,6 @@
 
   &--badge.$(prefix)--skeleton {
     transform: translateY(0.0625rem);
+    border: 0;
   }
 }

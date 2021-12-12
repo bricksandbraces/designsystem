@@ -1,7 +1,7 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import { IconChevronRight } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons";
 
 type SideNavItemExpanderProps = {
   /**
@@ -22,32 +22,40 @@ type SideNavItemExpanderProps = {
   /**
    * SideNavItemExpander Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
+
+  /**
+   * SideNavItemExpander FromHeader
+   */
+  fromHeader?: boolean;
 
   /**
    * SideNavItemExpander Icon
    */
-  icon: ReactNode;
-
-  /**
-   * SideNavItemExpander Selected
-   */
-  selected?: boolean;
+  icon?: React.ReactNode;
 
   /**
    * SideNavItemExpander OnClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const SideNavItemExpander = ({
   label,
   icon,
-  selected,
   className,
+  fromHeader,
   children
 }: SideNavItemExpanderProps) => {
   const [open, setOpen] = useState(false);
+
+  // selected when collapsed but one child is selected
+  const selected =
+    !open &&
+    React.Children.toArray(children).some(
+      (child: any) => !!child.props?.selected
+    );
+
   return (
     <>
       <button
@@ -58,16 +66,18 @@ const SideNavItemExpander = ({
           `${prefix}--sidenav-item ${prefix}--sidenav-item__expander`,
           {
             [`${prefix}--sidenav-item__selected`]: selected,
-            [`${prefix}--sidenav-item__expander-open`]: open
+            [`${prefix}--sidenav-item__expander-open`]: open,
+            [`${prefix}--sidenav-item__with-icon`]: icon,
+            [`${prefix}--sidenav-from-header`]: fromHeader
           },
           className
         )}
       >
-        <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+        {icon && <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>}
         <div className={`${prefix}--sidenav-item__container`}>
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
           <div className={`${prefix}--sidenav-item__chevron`}>
-            <IconChevronRight />
+            <IconChevronDown />
           </div>
         </div>
       </button>

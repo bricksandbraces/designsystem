@@ -1,8 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { useEffect, useRef } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import mergeRefs from "react-merge-refs";
 
-type CheckboxProps = {
+export type CheckboxProps = {
   /**
    * Checkbox ClassName
    */
@@ -16,7 +17,7 @@ type CheckboxProps = {
   /**
    * Checkbox Children
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Checkbox Label
@@ -29,28 +30,59 @@ type CheckboxProps = {
   readOnly?: boolean;
 
   /**
-   * Checked values
+   * Checkbox Checked property (controlled usage)
    */
   checked?: boolean;
+
+  /**
+   * Checkbox Default checked property (uncontrolled usage)
+   */
   defaultChecked?: boolean;
+
+  /**
+   * Checkbox OnChange Function
+   */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  /**
+   * Checkbox Disabled
+   */
   disabled?: boolean;
+
+  /**
+   * Checkbox Indeterminate
+   */
+  indeterminate?: boolean;
+
+  /**
+   * Checkbox Value
+   */
   value: string;
 };
 
-const Checkbox = ({
-  id,
-  value,
-  checked,
-  defaultChecked,
-  label,
-  readOnly,
-  className,
-  disabled,
-  children,
-  onChange,
-  ...rest
-}: CheckboxProps) => {
+const Checkbox = (
+  {
+    id,
+    value,
+    checked,
+    defaultChecked,
+    indeterminate,
+    label,
+    readOnly,
+    className,
+    disabled,
+    children,
+    onChange,
+    ...rest
+  }: CheckboxProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
+  const inputRef = useRef<HTMLInputElement>();
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.indeterminate = indeterminate ?? false;
+    }
+  }, [indeterminate]);
   return (
     <div
       className={cx(
@@ -64,9 +96,16 @@ const Checkbox = ({
     >
       <input
         tabIndex={0}
+        ref={mergeRefs([ref, inputRef])}
         className={`${prefix}--checkbox-input`}
         type="checkbox"
         value={value}
+        aria-checked={indeterminate ? "mixed" : undefined}
+        data-checkbox-state={
+          indeterminate
+            ? "mixed"
+            : JSON.stringify(checked ?? defaultChecked ?? false)
+        }
         id={id}
         checked={checked}
         defaultChecked={defaultChecked}
@@ -94,10 +133,17 @@ const Checkbox = ({
             rx="2"
             className={`${prefix}--checkbox-check__box`}
           />
-          <path
-            d="M9 12l2 2l4 -4"
-            className={`${prefix}--checkbox-check__mark`}
-          />
+          {indeterminate ? (
+            <path
+              d="M9 12l2 2l4 -4"
+              className={`${prefix}--checkbox-check__indeterminate-mark`}
+            />
+          ) : (
+            <path
+              d="M9 12l2 2l4 -4"
+              className={`${prefix}--checkbox-check__mark`}
+            />
+          )}
         </svg>
 
         <div>
@@ -113,4 +159,4 @@ const Checkbox = ({
   );
 };
 
-export default Checkbox;
+export default React.forwardRef(Checkbox);

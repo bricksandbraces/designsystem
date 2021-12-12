@@ -1,42 +1,31 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
 
-type SkeletonTextProps = {
+export type SkeletonTextProps = {
   /**
    * SkeletonText ClassName
    */
   className?: string;
 
   /**
-   * SkeletonText Width
+   * SkeletonText InlineStyle
    */
-  width?: number | "100%" | "80%" | "50%";
-
-  /**
-   * SkeletonText Size
-   */
-  size?: "large" | "default" | "small";
+  style?: React.CSSProperties;
 };
 
-const SkeletonText = ({
-  width,
-  size = "default",
-  className
-}: SkeletonTextProps) => {
+const SkeletonText = (
+  { className, ...rest }: SkeletonTextProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) => {
   return (
-    <div
-      className={cx(
-        `${prefix}--skeleton-text ${prefix}--skeleton-text__${size}`,
-        className
-      )}
-      style={
-        typeof width === "string"
-          ? { width: `${width}` }
-          : { width: `${width}px` }
-      }
+    <SkeletonAnimatedContainer
+      className={cx(`${prefix}--skeleton-text`, className)}
+      ref={ref}
+      {...rest}
     />
   );
 };
 
-export default SkeletonText;
+export default React.forwardRef(SkeletonText);

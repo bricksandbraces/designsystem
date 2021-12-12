@@ -1,28 +1,30 @@
 import Button from "./components/Button/Button";
-import CookieBanner from "./components/CookieBanner/CookieBanner";
-import Cookies from "./components/Cookies/Cookies";
+import CookieBanner from "./components/_web/CookieBanner/CookieBanner";
+import Cookies from "./components/_web/Cookies/Cookies";
 import Link from "./components/Link/Link";
-import LoginForm from "./components/LoginForm/LoginForm";
+import LoginForm from "./components/_web/LoginForm/LoginForm";
 import SnackBar from "./components/Notification/InlineNotification";
 import AspectRatio from "./components/AspectRatio/AspectRatio";
 import CodeSnippet from "./components/CodeSnippet/CodeSnippet";
 import CopyButton from "./components/CopyButton/CopyButton";
 import DatePicker from "./components/DatePicker/DatePicker";
 import { Grid, Column } from "./components/Grid/Grid";
-import Header from "./components/Header/Header";
-import LeadSpace from "./components/LeadSpace/LeadSpace";
+import WebHeader from "./components/_web/WebHeader/WebHeader";
+import LeadSpace from "./components/_web/LeadSpace/LeadSpace";
 import Logo from "./components/Logo/Logo";
 import SideNav from "./components/SideNav/SideNav";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Modal from "./components/Modal/Modal";
 import Divider from "./components/Divider/Divider";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/_web/Footer/Footer";
 import Checkbox from "./components/Checkbox/Checkbox";
 import Tabs from "./components/Tabs/Tabs";
 import Tab from "./components/Tabs/Tab";
 import Accordion from "./components/Accordion/Accordion";
 import AccordionItem from "./components/Accordion/AccordionItem";
-import CookieModal, { OptType } from "./components/CookieModal/CookieModal";
+import CookieModal, {
+  OptType
+} from "./components/_web/CookieModal/CookieModal";
 import TextInput from "./components/TextInput/TextInput";
 import PasswordInput from "./components/PasswordInput/PasswordInput";
 import Dropdown from "./components/Dropdown/Dropdown";
@@ -37,12 +39,14 @@ import TableRow from "./components/DataTable/TableRow";
 import TableCell from "./components/DataTable/TableCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
-import { HeaderData, RowData } from "./components/DataTable/DataTable";
+import { HeaderEntry, RowEntry } from "./components/DataTable/DataTable";
 import RadioButton from "./components/RadioButton/RadioButton";
 import RadioButtonGroup from "./components/RadioButton/RadioButtonGroup";
 import Select from "./components/Select/Select";
 import Toggle from "./components/Toggle/Toggle";
-import Skeleton from "./components/Skeleton/SkeletonAnimatedContainer";
+import SkeletonAnimatedContainer from "./components/Skeleton/SkeletonAnimatedContainer";
+import SkeletonContainer from "./components/Skeleton/SkeletonContainer";
+import SkeletonText from "./components/Skeleton/SkeletonText";
 import Avatar from "./components/Avatar/Avatar";
 import AvatarGroup from "./components/Avatar/AvatarGroup";
 import RangeInput from "./components/RangeInput/RangeInput";
@@ -59,7 +63,7 @@ export {
   CopyButton,
   Grid,
   Column,
-  Header,
+  WebHeader,
   LeadSpace,
   Logo,
   SideNav,
@@ -96,11 +100,13 @@ export {
   RadioButtonGroup,
   Select,
   Toggle,
-  Skeleton,
+  SkeletonAnimatedContainer,
+  SkeletonContainer,
+  SkeletonText,
   Avatar,
   AvatarGroup,
   RangeInput,
   ButtonGroup
 };
 
-export type { HeaderData, RowData };
+export type { HeaderEntry, RowEntry };

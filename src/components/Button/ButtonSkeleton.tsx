@@ -22,17 +22,12 @@ export type ButtonSkeletonProps = {
 
 const ButtonSkeleton = ({
   size = "default",
-  light,
+
   className
 }: ButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
-    light={light}
-    width={128}
-    className={cx(
-      `${prefix}--button-${size}`,
-
-      className
-    )}
+    style={{ width: "8rem" }}
+    className={cx(`${prefix}--button ${prefix}--button-${size}`, className)}
   />
 );
 

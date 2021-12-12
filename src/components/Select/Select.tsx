@@ -1,45 +1,62 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React from "react";
 import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
-import useControlled from "../../hooks/useControlled";
+import { useControlledValue } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
 
-type SelectOptionGroup = { group: string; options: SelectOption[] };
+export type SelectOptionGroup = {
+  /**
+   * SelectOptionGroup Group name
+   */
+  group: string;
 
-type SelectOption = {
+  /**
+   * SelectOptionGroup Options
+   */
+  options: SelectOption[];
+};
+
+export type SelectOption = {
+  /**
+   * SelectOption Value
+   */
   value: string;
+
+  /**
+   * SelectOption Text
+   */
   text: string;
 };
 
-type SelectProps = {
+export type SelectProps = {
   /**
-   * Options data for the selectable items
+   * Select Options data for the selectable items
    * */
   options: (SelectOption | SelectOptionGroup)[];
 
   /**
-   * Mandatory id
+   * Select Id
    */
   id: string;
 
   /**
-   * Controlled selected value
+   * Select Controlled selected value
    */
   value?: string;
 
   /**
-   * Uncontrolled default selected value
+   * Select Uncontrolled default selected value
    */
   defaultValue?: string;
 
   /**
-   * onChange with new value
+   * Select onChange with new value
    */
-  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (event?: React.ChangeEvent<HTMLSelectElement>) => void;
 
   /**
-   * React className
+   * Select ClassName
    */
   className?: string;
 
@@ -54,61 +71,70 @@ type SelectProps = {
   label?: string;
 
   /**
-   * Disabled select
+   * Select disabled
    */
   disabled?: boolean;
 
   /**
-   * Disabled select
+   * Select Disabled
    */
   readOnly?: boolean;
 
   /**
-   * True if error state is present
+   * Select True if error state is present
    */
   error?: boolean;
 
   /**
-   * The error text to display
+   * Select The error text to display
    */
   errorText?: string;
 
   /**
-   * True if warning state is present
+   * Select True if warning state is present
    */
   warning?: boolean;
 
   /**
-   * The warning text to display
+   * Select The warning text to display
    */
   warningText?: string;
 };
 
-const Select = ({
-  size,
-  id,
-  label,
-  className,
-  error,
-  errorText,
-  warning,
-  warningText,
-  disabled,
-  readOnly,
-  options,
-  value,
-  defaultValue,
-  onChange
-}: SelectProps) => {
-  const controlled = useControlled(value);
-  const [selectedValue, setSelectedValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? (options[0] as SelectOption).value
+const Select = (
+  {
+    size,
+    id,
+    label,
+    className,
+    error,
+    errorText,
+    warning,
+    warningText,
+    disabled,
+    readOnly,
+    options,
+    value,
+    defaultValue,
+    onChange
+  }: SelectProps,
+  ref: React.ForwardedRef<HTMLSelectElement>
+) => {
+  const firstAsGroup = options[0] as SelectOptionGroup;
+  const first =
+    firstAsGroup.group && firstAsGroup.options?.length > 0
+      ? firstAsGroup.options[0]
+      : (options[0] as SelectOption);
+
+  const [, performSelect] = useControlledValue(
+    value,
+    defaultValue,
+    onChange &&
+      ((newValue, event) => {
+        onChange(event as React.ChangeEvent<HTMLSelectElement>);
+      }),
+    first.value
   );
-  useEffect(() => {
-    if (controlled) {
-      setSelectedValue(value ?? "");
-    }
-  }, [value]);
 
   const renderOption = (option: SelectOption) => {
     return (
@@ -136,12 +162,11 @@ const Select = ({
           })}
           id={id}
           disabled={disabled || readOnly}
-          value={selectedValue}
-          onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-            if (!controlled) {
-              setSelectedValue(event.target.value);
-            }
-            onChange?.(event);
+          value={value}
+          ref={ref}
+          defaultValue={defaultValue}
+          onChange={(event) => {
+            performSelect(event.target.value, event);
           }}
         >
           {options.map((option) => {
@@ -192,4 +217,4 @@ const Select = ({
   );
 };
 
-export default Select;
+export default React.forwardRef(Select);

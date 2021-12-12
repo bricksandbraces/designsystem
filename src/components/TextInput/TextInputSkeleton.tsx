@@ -2,18 +2,13 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
+import { SkeletonText } from "../..";
 
-type TextInputSkeletonProps = {
+export type TextInputSkeletonProps = {
   /**
    * TextInputSkeleton ClassName
    */
   className?: string;
-
-  /**
-   * TextInputSkeleton fluid
-   */
-  fluid?: boolean;
 
   /**
    * TextInputSkeleton Size
@@ -23,35 +18,25 @@ type TextInputSkeletonProps = {
 
 const TextInputSkeleton = ({
   size = "default",
-  fluid,
   className
 }: TextInputSkeletonProps) => {
   return (
-    <SkeletonContainer
+    <div
       className={cx(
-        `${prefix}--textinput`,
-        {
-          [`${prefix}--textinput-fluid`]: fluid
-        },
+        `${prefix}--textinput ${prefix}--skeleton ${prefix}--textinput-${size}`,
 
         className
       )}
     >
-      {!fluid && (
-        <SkeletonAnimatedContainer
-          width={64}
-          className={cx(
-            `${prefix}--typography-label`,
-
-            className
-          )}
-        />
-      )}
-      <SkeletonAnimatedContainer
-        width={256}
-        className={`${prefix}--textinput-${size}`}
+      <SkeletonText
+        style={{ width: "4rem" }}
+        className={cx(`${prefix}--typography-label`)}
       />
-    </SkeletonContainer>
+      <SkeletonAnimatedContainer
+        style={{ width: "16rem" }}
+        className={`${prefix}--textinput-${size}`}
+      ></SkeletonAnimatedContainer>
+    </div>
   );
 };
 

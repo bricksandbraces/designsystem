@@ -1,20 +1,39 @@
 import React from "react";
+import cx from "classnames";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
 
-type SideNavHeadlineProps = {
+export type SideNavHeadlineProps = {
+  /**
+   * SideNavHeadlineProps ClassName
+   */
+  className?: string;
+
   /**
    * SideNavHeadline Children
    */
   children: string;
+
+  /**
+   * SideNavHeadline FromHeader
+   */
+  fromHeader?: boolean;
 };
 
-const SideNavHeadline = ({ children }: SideNavHeadlineProps) => {
+const SideNavHeadline = (
+  { className, children, fromHeader }: SideNavHeadlineProps,
+  ref: React.ForwardedRef<HTMLHeadingElement>
+) => {
   return (
-    <div className={`${prefix}--sidenav-headline`}>
-      <Label>{children}</Label>
+    <div
+      className={cx(
+        `${prefix}--sidenav-headline`,
+        { [`${prefix}--sidenav-from-header`]: fromHeader },
+        className
+      )}
+    >
+      <h3 ref={ref}>{children}</h3>
     </div>
   );
 };
 
-export default SideNavHeadline;
+export default React.forwardRef(SideNavHeadline);

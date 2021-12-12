@@ -2,66 +2,74 @@
 @import "../typography.pcss";
 @import "../theme.pcss";
 
-.$(prefix)--cookiebanner {
-  @mixin type--body-02;
+.$(prefix) {
+  &--cookiebanner {
+    @mixin type--body-02;
 
-  display: flex;
-  visibility: hidden;
-  position: fixed;
-  z-index: 3;
-  bottom: 0;
-  left: 0;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100vw;
-  min-height: 64px;
-  padding: 0 32px;
-  transform: translate(0, 6px);
-  transition: $transition-01;
-  border-top: 0.0625rem solid #1a1a1a;
-  opacity: 0%;
-  background-color: #000;
-  color: #fff;
+    visibility: hidden;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    padding: $size--spacing-05 0;
+    transform: translate(0, $size--spacing-03);
+    transition: $transition--app-01;
+    border-top: 0.0625rem solid $color--border;
+    opacity: 0;
+    background-color: $black;
+    color: $color--font-text-01;
 
-  &--label {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 14px 0;
-    padding: 0;
-  }
+    &-grid {
+      height: 100%;
+    }
 
-  &--label > p {
-    margin: 0 4px 0 0;
-    padding: 0;
-  }
+    &-label {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $size--spacing-02;
+      margin: 0;
+      padding: 0 $size--spacing-05;
 
-  &--open {
-    visibility: visible;
-    transform: translate(0, 0);
-    opacity: 100%;
-  }
-}
+      &__container {
+        & > div {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+      }
+    }
 
-.$(prefix)--cookiebanner > div > .$(prefix)--button {
-  margin: 14px 0;
-}
+    &-open {
+      visibility: visible;
+      transform: translate(0, 0);
+      opacity: 1;
+    }
 
-@media screen and (max-width: 671px) {
-  .$(prefix)--cookiebanner {
-    padding: 24px;
+    &-button {
+      &__container {
+        padding: 0 $size--spacing-05;
 
-    &--label {
-      margin: 0 0 8px;
+        & > div {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
     }
   }
+}
 
-  .$(prefix)--cookiebanner > div {
-    width: 100%;
-  }
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix) {
+    &--cookiebanner {
+      &-button.$(prefix)--button {
+        width: 100%;
+      }
 
-  .$(prefix)--cookiebanner > div > .$(prefix)--button {
-    width: 100%;
-    margin: 14px 0 0;
+      &-label {
+        margin-bottom: $size--spacing-05;
+      }
+    }
   }
 }

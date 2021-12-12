@@ -1,12 +1,13 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { IconSearch, IconX } from "@tabler/icons";
+import React from "react";
 import cx from "classnames";
+import { IconSearch, IconX } from "@tabler/icons";
 import Button from "../Button/Button";
-import useControlled from "../../hooks/useControlled";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
+import { useControlledInput } from "../../hooks/useControlled";
+import mergeRefs from "react-merge-refs";
 
-type SearchInputProps = {
+export type SearchInputProps = {
   /**
    * SearchInput Size
    */
@@ -45,7 +46,10 @@ type SearchInputProps = {
   /**
    * SearchInput OnChange Function
    */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    newValue: string,
+    event?: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 
   /**
    * SearchInput Defaults to true. If false, the submit button is being dropped.
@@ -74,41 +78,62 @@ type SearchInputProps = {
         >
       | React.KeyboardEvent<HTMLInputElement>
   ) => void;
+
+  /**
+   * SearchInput OnFocus
+   */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * SearchInput OnBlur
+   */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * SearchInput OnClickInput
+   */
   onClickInput?: React.MouseEventHandler<HTMLInputElement>;
+
+  /**
+   * SearchInput OnKeyDown
+   */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
-const SearchInput = ({
-  id,
-  value,
-  clearLabel = "Clear search results",
+const SearchInput = (
+  {
+    id,
+    value,
+    clearLabel = "Clear search results",
 
-  label = "Search",
-  size = "default",
-  placeholder = "Search",
-  withSubmit = true,
-  submitLabel = "Go!",
-  submitIcon = <IconSearch />,
-  defaultValue,
-  onSubmit,
-  onClickInput,
-  onFocus,
-  onBlur,
-  onChange,
-  onKeyDown
-}: SearchInputProps) => {
-  const controlled = useControlled(value);
-  const [textValue, setTextValue] = useState<string>(
-    (controlled ? value : defaultValue) ?? ""
-  );
-
-  useEffect(() => {
-    if (controlled) {
-      setTextValue(value ?? "");
-    }
-  }, [value]);
+    label = "Search",
+    size = "default",
+    placeholder = "Search",
+    withSubmit = true,
+    submitLabel = "Go!",
+    submitIcon = <IconSearch />,
+    defaultValue,
+    onSubmit,
+    onClickInput,
+    onFocus,
+    onBlur,
+    onChange,
+    onKeyDown
+  }: SearchInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
+  const [inputRef, currentValue, handleChange, setValueManually] =
+    useControlledInput(
+      value,
+      defaultValue,
+      onChange &&
+        ((newValue, event) => {
+          onChange(
+            newValue ?? "",
+            event as React.ChangeEvent<HTMLInputElement>
+          );
+        })
+    );
   return (
     <div
       role="search"
@@ -125,33 +150,32 @@ const SearchInput = ({
       </label>
       <input
         role="searchbox"
+        ref={mergeRefs([inputRef, ref])}
         onFocus={onFocus}
         onBlur={onBlur}
         onClick={onClickInput}
         autoComplete="off"
         type="text"
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          if (!controlled) {
-            setTextValue(event.target.value);
-          }
-          onChange?.(event);
-        }}
+        onChange={handleChange()}
         onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            onSubmit?.(textValue, event);
+          if (event.key === "Enter" && !event.repeat) {
+            onSubmit?.(currentValue ?? "", event);
           }
           onKeyDown?.(event);
         }}
         className={cx(`${prefix}--search-input`)}
         id={id}
         placeholder={placeholder}
-        value={textValue}
+        value={value}
+        defaultValue={defaultValue}
       />
       <div className={cx(`${prefix}--search-buttons`)}>
-        {!!textValue && (
+        {!!currentValue && (
           <IconOnlyButton
             onClick={() => {
-              setTextValue("");
+              const newValue = "";
+              setValueManually(newValue);
+              onChange?.(newValue);
             }}
             kind="ghost"
             size={size}
@@ -164,7 +188,7 @@ const SearchInput = ({
         {withSubmit &&
           (submitLabel ? (
             <Button
-              onClick={(event) => onSubmit?.(textValue, event)}
+              onClick={(event) => onSubmit?.(currentValue ?? "", event)}
               icon={submitIcon}
               kind="primary"
               size={size}
@@ -176,7 +200,7 @@ const SearchInput = ({
             </Button>
           ) : (
             <IconOnlyButton
-              onClick={(event) => onSubmit?.(textValue, event)}
+              onClick={(event) => onSubmit?.(currentValue ?? "", event)}
               kind="primary"
               size={size}
               icon={<IconSearch />}
@@ -190,4 +214,4 @@ const SearchInput = ({
   );
 };
 
-export default SearchInput;
+export default React.forwardRef(SearchInput);

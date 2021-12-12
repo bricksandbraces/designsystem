@@ -1,0 +1,205 @@
+@import "../prefix.pcss";
+@import "../typography.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--navigation {
+    display: flex;
+    flex-flow: row-reverse;
+    height: 100%;
+
+    &-header {
+      display: flex;
+      position: sticky;
+      z-index: 10000;
+      top: 0;
+      right: 0;
+      left: 0;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: $size--container-05;
+      padding: $component--padding-inside;
+      border-bottom: 0.0625rem solid $color--border;
+      background-color: $color--background;
+      gap: $component--padding-inside;
+
+      &__nav {
+        display: flex;
+        height: $size--container-04;
+        gap: $component--padding-inside;
+        padding: 0 $size--spacing-04;
+
+        &-trigger {
+          & > svg {
+            min-width: $size--container-01;
+            max-width: $size--container-01;
+            min-height: $size--container-01;
+            max-height: $size--container-01;
+            margin-left: $size--spacing-03;
+            transition: transform $transition--app-01;
+          }
+
+          &--open {
+            &.$(prefix)--navigation-header__nav-link {
+              background-color: $color--selected;
+              color: $color--font-selected;
+            }
+
+            & > svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        &-link {
+          @mixin type--body-02;
+
+          display: inline-flex;
+          position: relative;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          padding: 0 $size--spacing-04;
+          transition: background-color $transition--app-01,
+            color $transition--app-01, border-color $transition--app-01;
+          border: 0.0625rem solid transparent;
+          border-radius: $component--radius-default;
+          background-color: transparent;
+          color: $color--font-unselected;
+          white-space: nowrap;
+
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: calc($size--container-01 / 4);
+            transition: width $transition--app-01, opacity $transition--app-01;
+            border-radius: calc($component--radius-subtle * 2);
+            opacity: 0;
+            background-color: $color--decoration;
+          }
+
+          &--selected {
+            background-color: $color--selected;
+            color: $color--font-selected;
+
+            &::before {
+              width: calc(100% - $size--spacing-04 * 2);
+              opacity: 1;
+            }
+          }
+
+          &:hover {
+            background-color: $color--hover;
+            color: $color--font-text-01;
+          }
+
+          &:active {
+            background-color: $color--active;
+          }
+
+          &:focus-visible {
+            border-color: $color--focus;
+          }
+        }
+      }
+
+      &__divider.$(prefix)--divider {
+        width: 0.0625rem;
+        height: calc(100% + $component--padding-inside * 2);
+        margin: 0 $size--spacing-03;
+        transform: translateY(calc($component--padding-inside * -1));
+      }
+
+      &__action {
+        display: inline-flex;
+        height: $size--container-04;
+        gap: $component--padding-inside;
+
+        &-item {
+          @mixin type--body-02;
+
+          display: inline-flex;
+          position: relative;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+          min-width: $size--container-04;
+          max-width: $size--container-04;
+          min-height: $size--container-04;
+          max-height: $size--container-04;
+          transition: background-color $transition--app-01,
+            color $transition--app-01, border-color $transition--app-01;
+          border: 0.0625rem solid transparent;
+          border-radius: $component--radius-default;
+          background-color: transparent;
+          color: $color--font-unselected;
+          white-space: nowrap;
+
+          & > svg {
+            min-width: $size--container-01;
+            max-width: $size--container-01;
+            min-height: $size--container-01;
+            max-height: $size--container-01;
+          }
+
+          &--selected {
+            background-color: $color--selected;
+            color: $color--font-selected;
+          }
+
+          &:hover {
+            background-color: $color--hover;
+            color: $color--font-text-01;
+          }
+
+          &:active {
+            background-color: $color--active;
+          }
+
+          &:focus-visible {
+            border-color: $color--focus;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-md) {
+  .$(prefix)--navigation-header {
+    &__menu-button {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix)--navigation-header {
+    & + .$(prefix)--sidenav {
+      top: $size--container-05;
+    }
+
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-lg) {
+  .$(prefix)--navigation-header {
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
+  .$(prefix)--navigation-header {
+    justify-content: flex-end;
+  }
+}

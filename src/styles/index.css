@@ -6,22 +6,27 @@
 @import "./typography.pcss";
 
 @import "./components/LoginForm.pcss";
+@import "./components/BackToTop.pcss";
+@import "./components/Breadcrumb.pcss";
 @import "./components/Button.pcss";
 @import "./components/Notification.pcss";
 @import "./components/CookieBanner.pcss";
+@import "./components/Navigation.pcss";
 @import "./components/Link.pcss";
 @import "./components/UserProfile.pcss";
-
+@import "./components/Pagination.pcss";
 @import "./components/Logo.pcss";
+@import "./components/List.pcss";
 @import "./components/Tooltip.pcss";
+@import "./components/OverflowMenu.pcss";
 @import "./components/CopyButton.pcss";
 @import "./components/CodeSnippet.pcss";
 @import "./components/Grid.pcss";
 @import "./components/AspectRatio.pcss";
 @import "./components/Typography.pcss";
 @import "./components/LeadSpace.pcss";
-@import "./components/Header.pcss";
-@import "./components/Footer.pcss";
+@import "./components/WebHeader.pcss";
+@import "./components/WebFooter.pcss";
 @import "./components/Modal.pcss";
 @import "./components/Checkbox.pcss";
 @import "./components/CookieModal.pcss";
@@ -104,7 +109,7 @@ a {
 hr {
   margin: 1rem 0;
   border: 0;
-  opacity: 25%;
+  opacity: 0.25;
   background-color: currentColor;
   color: inherit;
 }

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type SideNavItemProps = {
+export type SideNavItemProps = {
   /**
    * SideNavItem Href
    */
@@ -26,7 +26,12 @@ type SideNavItemProps = {
   /**
    * SideNavItem Icon
    */
-  icon: ReactNode;
+  icon?: ReactNode;
+
+  /**
+   * SideNavItem FromHeader
+   */
+  fromHeader?: boolean;
 
   /**
    * SideNavItem Selected
@@ -36,45 +41,59 @@ type SideNavItemProps = {
   /**
    * SideNavItem OnClick Function
    */
-  onClick?: (event: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const SideNavItem = ({
-  href,
-  label,
-  icon,
-  selected,
-  className,
-  onClick
-}: SideNavItemProps) => {
+const SideNavItem = (
+  {
+    href,
+    label,
+    icon,
+    selected,
+    fromHeader,
+    className,
+    onClick
+  }: SideNavItemProps,
+  ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+) => {
   return (
     <>
       {href ? (
         <a
+          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
           href={href}
           className={cx(
             `${prefix}--sidenav-item`,
             {
-              [`${prefix}--sidenav-item__selected`]: selected
+              [`${prefix}--sidenav-item__selected`]: selected,
+              [`${prefix}--sidenav-item__with-icon`]: icon,
+              [`${prefix}--sidenav-from-header`]: fromHeader
             },
             className
           )}
         >
-          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          {icon && (
+            <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          )}
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </a>
       ) : (
         <button
+          ref={ref as React.ForwardedRef<HTMLButtonElement>}
           onClick={onClick}
           className={cx(
             `${prefix}--sidenav-item`,
             {
-              [`${prefix}--sidenav-item__selected`]: selected
+              [`${prefix}--sidenav-item__selected`]: selected,
+              [`${prefix}--sidenav-item__with-icon`]: icon,
+              [`${prefix}--sidenav-from-header`]: fromHeader
             },
             className
           )}
         >
-          <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          {icon && (
+            <div className={`${prefix}--sidenav-item__icon`}>{icon}</div>
+          )}
           <div className={`${prefix}--sidenav-item__label`}>{label}</div>
         </button>
       )}
@@ -82,4 +101,4 @@ const SideNavItem = ({
   );
 };
 
-export default SideNavItem;
+export default React.forwardRef(SideNavItem);

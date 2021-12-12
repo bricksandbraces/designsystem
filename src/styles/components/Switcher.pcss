@@ -6,16 +6,19 @@
   &--switcher {
     white-space: wrap;
 
+    &-small,
     &-small > div > .$(prefix)--switcher-btn {
       min-height: $size--field-small;
       max-height: $size--field-small;
     }
 
+    &-default,
     &-default > div > .$(prefix)--switcher-btn {
       min-height: $size--field-default;
       max-height: $size--field-default;
     }
 
+    &-large,
     &-large > div > .$(prefix)--switcher-btn {
       min-height: $size--field-large;
       max-height: $size--field-large;
@@ -28,26 +31,49 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-
-      /* min-width: calc($size--container-06 * 3); */
       padding: 0 $size--spacing-05;
       overflow: hidden;
-      transition: $transition-01;
-      border-top: 0.0625rem solid $color--border-default;
-      border-bottom: 0.0625rem solid $color--border-default;
+      transition: $transition--app-01;
+      border-top: 0.0625rem solid $color--border;
+      border-bottom: 0.0625rem solid $color--border;
       background-color: $color--background;
       color: $color--font-unselected;
 
       &:first-child {
-        border-left: 0.0625rem solid $color--border-default;
+        border-left: 0.0625rem solid $color--border;
         border-top-left-radius: $component--radius-default;
         border-bottom-left-radius: $component--radius-default;
       }
 
       &:last-child {
-        border-right: 0.0625rem solid $color--border-default;
+        border-right: 0.0625rem solid $color--border;
         border-top-right-radius: $component--radius-default;
         border-bottom-right-radius: $component--radius-default;
+      }
+
+      &:not(:first-child) {
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 0.0625rem;
+          height: 50%;
+          transition: opacity $transition--app-01;
+          opacity: 1;
+          background-color: $color--border;
+        }
+
+        &:hover {
+          &::after {
+            opacity: 0;
+          }
+
+          & + .$(prefix)--switcher-btn {
+            &::after {
+              opacity: 0;
+            }
+          }
+        }
       }
 
       &:disabled {
@@ -91,6 +117,16 @@
         color: $color--font-selected;
         pointer-events: none;
 
+        &::after {
+          opacity: 0;
+        }
+
+        & + .$(prefix)--switcher-btn {
+          &::after {
+            opacity: 0;
+          }
+        }
+
         & > .typography {
           font-weight: 600;
         }
@@ -104,29 +140,47 @@
       &__item {
         transform: translate(0, -0.375rem);
         transition: $transition--app-02;
-        opacity: 0%;
+        opacity: 0;
 
         &-selected {
           transform: translate(0, 0);
-          opacity: 100%;
+          opacity: 1;
         }
       }
     }
   }
-}
+  &--switcher.$(prefix)--skeleton {
+    display: inline-flex;
+    position: unset;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: unset;
+    border: 0.0625rem solid;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
 
-.$(prefix)--responsivetabs {
-  &-tabs {
-    display: block;
-    @media screen and (max-width: $size--breakpoint-md) {
-      display: none;
-    }
-  }
+    & > .$(prefix)--skeleton-container > .$(prefix)--skeleton-animated {
+      justify-content: flex-start;
+      padding: 0 $size--spacing-05;
+      border-radius: 0;
 
-  &-accordion {
-    display: block;
-    @media screen and (min-width: $size--breakpoint-md) {
-      display: none;
+      & + div {
+        display: flex;
+        position: relative;
+        align-items: center;
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          width: 0.0625rem;
+          height: 50%;
+          background-color: $color--skeleton-02;
+        }
+      }
     }
   }
 }

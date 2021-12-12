@@ -1,3 +1,4 @@
+import { action, actions } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
@@ -5,6 +6,8 @@ import Toggle from "./Toggle";
 import ToggleSkeleton from "./ToggleSkeleton";
 
 export default { title: "Components/A_REFA_Toggle", decorators: [withKnobs] };
+
+const toggleActions = actions("onBlur", "onFocus", "onChange", "onClick");
 
 export const Small = () => {
   return (
@@ -17,6 +20,7 @@ export const Small = () => {
           value="c1"
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
+          {...actions}
         />
         <Toggle
           size="small"
@@ -26,6 +30,7 @@ export const Small = () => {
           value="c2"
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
+          {...actions}
         />
       </div>
     </div>
@@ -42,6 +47,7 @@ export const Default = () => {
           value="c1"
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
+          {...actions}
         />
         <Toggle
           label={text("label", "Toggle label")}
@@ -50,6 +56,7 @@ export const Default = () => {
           value="c2"
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
+          {...actions}
         />
       </div>
     </div>
@@ -65,13 +72,16 @@ export const Controlled = () => {
           label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
+          {...toggleActions}
         />
         <Toggle
           label={text("label", "Toggle label")}
           id="checkbox-2"
           checked={checked}
+          {...toggleActions}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setChecked(event.target.checked);
+            action("onChange")(event);
           }}
           value="c2"
         />
@@ -88,11 +98,13 @@ export const WithChildren = () => {
           label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
+          {...toggleActions}
         />
         <Toggle
           label={text("label", "Toggle label")}
           id="checkbox-2"
           value="c2"
+          {...toggleActions}
         >
           <Body type="body-02" style={{ marginTop: "8px", display: "block" }}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -119,7 +131,6 @@ export const Skeleton = () => {
         }}
       >
         <ToggleSkeleton />
-        <ToggleSkeleton size="small" />
       </div>
     </div>
   );
