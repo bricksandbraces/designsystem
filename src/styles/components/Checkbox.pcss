@@ -40,14 +40,13 @@
       }
     }
 
-    & > [data-checkbox-state="mixed"] + label {
-      color: yellow;
+    & > .$(prefix)--checkbox-input[data-checkbox-state="mixed"] + label {
+      color: $color--font-text-01;
       & > .$(prefix)--checkbox-check {
-        color: yellow;
+        color: $color--font-text-01;
         & > .$(prefix)--checkbox-check__indeterminate-mark {
           visibility: visible;
           stroke-width: 0.125rem;
-          color: blue;
         }
 
         & > .$(prefix)--checkbox-check__box {

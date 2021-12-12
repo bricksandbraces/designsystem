@@ -134,9 +134,12 @@ const Checkbox = (
             className={`${prefix}--checkbox-check__box`}
           />
           {indeterminate ? (
-            <path
-              d="M9 12l2 2l4 -4"
+            <line
               className={`${prefix}--checkbox-check__indeterminate-mark`}
+              x1="9"
+              y1="12"
+              x2="15"
+              y2="12"
             />
           ) : (
             <path

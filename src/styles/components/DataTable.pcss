@@ -11,89 +11,35 @@
 
     &-table {
       width: 100%;
+      overflow: hidden;
       table-layout: fixed;
-    }
-
-    & > div > div > table {
-      & > thead > tr {
-        & > th {
-          transition: background-color $transition--app-01;
-          border: 0.0625rem solid $color--border;
-          border-right: 0;
-          border-left: 0;
-          outline: 0;
-          background-color: $color--background;
-
-          &:first-child {
-            border-left: 0.0625rem solid $color--border;
-            border-top-left-radius: $component--radius-default;
-            border-bottom-left-radius: $component--radius-default;
-          }
-
-          &:last-child {
-            border-right: 0.0625rem solid $color--border;
-            border-top-right-radius: $component--radius-default;
-            border-bottom-right-radius: $component--radius-default;
-          }
-
-          & > .$(prefix)--datatable-head__cell-label {
-            & > .$(prefix)--datatable-head__cell-sorticon {
-              opacity: 0;
-            }
-            &
-              > .$(prefix)--datatable-head__cell-sorticon.$(prefix)--datatable-head__cell-sorticon__active {
-              opacity: 1;
-            }
-          }
-
-          & > .$(prefix)--datatable-head__cell-label:hover {
-            & > .$(prefix)--datatable-head__cell-sorticon {
-              opacity: 1;
-            }
-          }
-        }
-
-        & > th.interactive:hover {
-          background-color: $color--hover;
-        }
-
-        & th.interactive:active {
-          background-color: $color--active;
-        }
-      }
+      border: 0.0625rem solid $color--border;
+      border-radius: $component--radius-default;
+      box-shadow: $component--shadow-subtle;
     }
 
     & > div > div > table > tbody > tr > td {
       border-bottom: 0.0625rem solid $color--border;
     }
 
-    &-small > div > div > table {
-      & > thead > tr > th,
-      & > tbody > tr > td {
-        height: calc($size--field-small + $component--padding-inside * 2);
-        padding: $size--spacing-04 $size--spacing-05;
-      }
-    }
-
-    &-default > div > div > table {
-      & > thead > tr > th,
-      & > tbody > tr > td {
-        height: calc($size--field-default + $component--padding-inside * 2);
-        padding: $size--spacing-04 $size--spacing-05;
-      }
-    }
-
-    &-large > div > div > table {
-      & > thead > tr > th,
-      & > tbody > tr > td {
-        height: calc($size--field-large + $component--padding-inside * 2);
-        padding: $size--spacing-04 $size--spacing-05;
-      }
-    }
-
     &-head {
       &__cell {
+        padding: 0 $size--spacing-05;
         overflow: hidden;
+        transition: background-color $transition--app-01;
+        border-right: 0;
+        border-bottom: 0.0625rem solid $color--border;
+        border-left: 0;
+        outline: 0;
+        background-color: $color--table-background;
+
+        &-icon {
+          opacity: 0;
+
+          &__active {
+            opacity: 1;
+          }
+        }
 
         &-label {
           @mixin type--label;
@@ -105,13 +51,31 @@
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+
+        &:hover {
+          &
+            > .$(prefix)--datatable-head__cell-label
+            > .$(prefix)--datatable-head__cell-icon {
+            opacity: 1;
+          }
+        }
       }
     }
 
     &-cell {
       @mixin type--body-02;
 
+      padding: 0 $size--spacing-05;
+      background-color: $color--background;
       color: $color--font-text-01;
+    }
+
+    &-row {
+      &:last-child {
+        & > .$(prefix)--datatable-cell {
+          border-bottom: 0;
+        }
+      }
     }
   }
 }

@@ -57,8 +57,8 @@ const TableHeadCell = (
         {children}{" "}
         {HeaderIcon && (
           <HeaderIcon
-            className={cx(`${prefix}--datatable-head__cell-sorticon`, {
-              [`${prefix}--datatable-head__cell-sorticon__active`]:
+            className={cx(`${prefix}--datatable-head__cell-icon`, {
+              [`${prefix}--datatable-head__cell-icon__active`]:
                 sortState && sortState !== "unsorted"
             })}
           />
