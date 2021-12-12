@@ -37,17 +37,19 @@ const useTableSort = (): [
   };
 
   const toggleHeaderSorting = (header: HeaderEntry) => {
-    // check if current header toggling
-    if (header.key === sortByColumn) {
-      if (sortDirection === "ascending") {
-        setSortDirection("descending");
-      } else if (sortDirection === "descending") {
-        disableSorting();
+    if (header.sortable) {
+      // check if current header toggling
+      if (header.key === sortByColumn) {
+        if (sortDirection === "ascending") {
+          setSortDirection("descending");
+        } else if (sortDirection === "descending") {
+          disableSorting();
+        }
+      } else {
+        setSortDirection("ascending");
+        setSortByColumn(header.key);
+        setSortFn(header.sortFn);
       }
-    } else {
-      setSortDirection("ascending");
-      setSortByColumn(header.key);
-      setSortFn(header.sortFn);
     }
   };
 
