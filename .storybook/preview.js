@@ -4,8 +4,8 @@ import { themes } from "@storybook/theming";
 import { configureActions } from "@storybook/addon-actions";
 
 import Layout from "./layout";
-import LogoWhite from "./public/logo-white.svg";
-import LogoBlack from "./public/logo-black.svg";
+import LogoWhite from "./assets/logo-white.svg";
+import LogoBlack from "./assets/logo-black.svg";
 
 addDecorator((storyFn) => <Layout>{storyFn()}</Layout>);
 

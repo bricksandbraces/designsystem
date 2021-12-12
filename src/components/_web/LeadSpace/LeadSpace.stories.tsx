@@ -90,7 +90,7 @@ export const WithHeader = () => {
           { href: "#", label: "What we do", showChevron: true },
           { href: "#", label: "Learn more about us", showChevron: false }
         ])}
-        videoUrl={text("videoUrl", "video.mp4")}
+        videoUrl={text("videoUrl", "assets/video.mp4")}
         backgroundImage={text(
           "backgroundImage",
           "https://i.pinimg.com/originals/30/c6/c3/30c6c39d2ad38b4be22a4932707b0550.png"
