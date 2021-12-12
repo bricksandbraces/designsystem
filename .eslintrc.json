@@ -7,11 +7,19 @@
     "__CONFIG__": true,
     "__ENV__": true
   },
-  "plugins": ["@typescript-eslint", "import", "react", "jsx-a11y", "jest"],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "react",
+    "jsx-a11y",
+    "jest",
+    "storybook"
+  ],
   "extends": [
     "airbnb-typescript",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:storybook/recommended",
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "prettier"

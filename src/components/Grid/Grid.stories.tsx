@@ -62,7 +62,7 @@ export const ResponsiveBreakpoints = () => {
   );
 };
 
-export const narrow = () => {
+export const Narrow = () => {
   return (
     <Grid narrow>
       <Column sm={4} md={8} lg={4} xlg={4}>
@@ -81,7 +81,7 @@ export const narrow = () => {
   );
 };
 
-export const condensed = () => {
+export const Condensed = () => {
   return (
     <Grid condensed>
       <Column sm={4} md={8} lg={4} xlg={4}>
