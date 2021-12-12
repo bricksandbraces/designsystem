@@ -22,6 +22,16 @@
       padding: 0 0 $size--spacing-03 0;
     }
 
+    &-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      padding: $size--spacing-05;
+      gap: $size--spacing-05;
+      border-top: 0.0625rem solid $color--border;
+    }
+
     &-title {
       @mixin type--headline-04;
 
@@ -75,10 +85,10 @@
         }
 
         &-selection {
-          width: $size--container-04;
-          min-width: $size--container-04;
-          max-width: $size--container-04;
-          padding: 0 $size--spacing-03;
+          width: $size--container-05;
+          min-width: $size--container-05;
+          max-width: $size--container-05;
+          padding: 0 $size--spacing-04;
           & > .$(prefix)--datatable-head__cell-label {
             & > .$(prefix)--checkbox {
               margin: 0;
@@ -136,10 +146,10 @@
         }
 
         &-selection {
-          width: $size--container-04;
-          min-width: $size--container-04;
-          max-width: $size--container-04;
-          padding: 0 $size--spacing-03;
+          width: $size--container-05;
+          min-width: $size--container-05;
+          max-width: $size--container-05;
+          padding: 0 $size--spacing-04;
 
           &--checked {
             border-color: $color--border-selected;

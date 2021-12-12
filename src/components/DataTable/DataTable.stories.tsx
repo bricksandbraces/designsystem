@@ -16,7 +16,8 @@ import {
   Checkbox,
   Button,
   ButtonGroup,
-  Link
+  Link,
+  Select
 } from "../..";
 
 import Pagination from "../Pagination/Pagination";
@@ -44,6 +45,7 @@ import {
 import ModalHeader from "../Modal/ModalHeader";
 import ModalBody from "../Modal/ModalBody";
 import ModalFooter from "../Modal/ModalFooter";
+import TableFooter from "./TableFooter";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -766,6 +768,9 @@ export const DataTableWithPagination = () => {
             }) => {
               return (
                 <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with Pagination</TableTitle>
+                  </TableHeader>
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -790,12 +795,22 @@ export const DataTableWithPagination = () => {
                         </TableRow>
                       ))}
                     </TableBody>
+                  </Table>
+                  <TableFooter>
                     <Pagination
                       totalPages={pagesCount}
                       page={page}
                       onPageChange={(newPage) => setPage(newPage)}
                     />
-                  </Table>
+                    <Select
+                      id="1"
+                      options={[
+                        { value: "50", text: "50 Items" },
+                        { value: "100", text: "100 Items" },
+                        { value: "200", text: "200 Items" }
+                      ]}
+                    />
+                  </TableFooter>
                 </TableContainer>
               );
             }}
