@@ -61,7 +61,12 @@ const TableHeadCell = (
     <th
       className={cx(
         `${prefix}--datatable-head__cell`,
-        { interactive },
+        {
+          [`${prefix}--datatable-head__cell-interactive`]:
+            sortState !== undefined,
+          [`${prefix}--datatable-head__cell-active`]:
+            sortState === "ascending" || "descending"
+        },
         className
       )}
       scope="col"
