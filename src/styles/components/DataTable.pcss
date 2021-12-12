@@ -4,17 +4,48 @@
 
 .$(prefix) {
   &--datatable {
+    overflow: hidden;
+    border: 0.0625rem solid $color--border;
+    border-radius: $component--radius-default;
+    background-color: $color--background;
+    box-shadow: $component--shadow-subtle;
+
     &-container {
       table-layout: auto;
     }
 
+    &-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      min-height: calc($size--container-04 * 2);
+      padding: 0 0 $size--spacing-03 0;
+    }
+
+    &-title {
+      @mixin type--headline-04;
+
+      margin: 0;
+      padding: $size--spacing-05;
+      color: $color--font-text-01;
+    }
+
+    &-toolbar {
+      @mixin type--body-02;
+
+      display: flex;
+      padding: $size--spacing-05;
+      color: $color--font-text-01;
+      gap: $size--spacing-03;
+
+      & > .$(prefix)--search {
+        width: $size--container-08;
+      }
+    }
+
     &-table {
       width: 100%;
-      overflow: hidden;
       table-layout: auto;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
-      box-shadow: $component--shadow-subtle;
     }
 
     &-head {
@@ -27,6 +58,21 @@
         border-left: 0;
         outline: 0;
         background-color: $color--table-background;
+
+        &-interactive {
+          &:hover {
+            background-color: $color--hover;
+          }
+
+          &:active {
+            background-color: $color--active;
+          }
+        }
+
+        &-active {
+          border-color: $color--border-selected;
+          background-color: $color--selected;
+        }
 
         &-selection {
           width: $size--container-04;
@@ -84,6 +130,10 @@
         border-bottom: 0.0625rem solid $color--border;
         background-color: $color--background;
         color: $color--font-text-03;
+
+        &-actions {
+          text-align: end;
+        }
 
         &-selection {
           width: $size--container-04;

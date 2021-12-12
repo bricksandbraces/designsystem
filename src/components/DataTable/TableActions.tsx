@@ -1,5 +1,6 @@
 import React from "react";
 import TableCell from "./TableCell";
+import { prefix } from "../../settings";
 
 export type TableActionsProps = {
   /**
@@ -13,7 +14,11 @@ const TableActions = (
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   return (
-    <TableCell {...rest} ref={ref}>
+    <TableCell
+      className={`${prefix}--datatable-body__cell-actions`}
+      {...rest}
+      ref={ref}
+    >
       {children}
     </TableCell>
   );

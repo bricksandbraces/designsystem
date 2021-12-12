@@ -26,6 +26,7 @@ const TableToolbarFilterButton = (
   return (
     <IconOnlyButton
       ref={ref}
+      kind="ghost"
       icon={<IconFilter fill={activeFiltersCount ? "white" : undefined} />}
       onClick={withoutPropagation(() => setFilterPanelOpen(true))}
       {...rest}

@@ -14,9 +14,11 @@ import {
   SearchInput,
   Modal,
   Checkbox,
-  Button
+  Button,
+  ButtonGroup,
+  Link
 } from "../..";
-import NumberInput from "../NumberInput/NumberInput";
+
 import Pagination from "../Pagination/Pagination";
 import Headline from "../Typography/Headline";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
@@ -30,6 +32,18 @@ import TableToolbarFilterButton from "./TableToolbarFilterButton";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
+import TableTitle from "./TableTitle";
+import TableHeader from "./TableHeader";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import {
+  IconAlertCircle,
+  IconDots,
+  IconDotsVertical,
+  IconFilter
+} from "@tabler/icons";
+import ModalHeader from "../Modal/ModalHeader";
+import ModalBody from "../Modal/ModalBody";
+import ModalFooter from "../Modal/ModalFooter";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -325,7 +339,10 @@ export const DataTableWithHeader = () => {
               getTableHeadProps
             }) => {
               return (
-                <TableContainer {...getTableContainerProps()} title="Tableau">
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with Header</TableTitle>
+                  </TableHeader>
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -368,8 +385,6 @@ export const DataTableWithToolbar = () => {
   const [itemsToShow, setItemsToShow] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string | undefined>("");
 
-  console.log(itemsToShow);
-
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -388,29 +403,29 @@ export const DataTableWithToolbar = () => {
               getTableHeadProps
             }) => {
               return (
-                <TableContainer {...getTableContainerProps()}>
-                  <TableToolbar>
-                    Show
-                    <NumberInput
-                      value={itemsToShow}
-                      min={0}
-                      max={unprocessedRows.length}
-                      onChange={(event, { parsedValue }) => {
-                        if (parsedValue != null) {
-                          setItemsToShow(parsedValue);
-                        }
-                      }}
-                    />
-                    entries
-                    <SearchInput
-                      id="datatable-search"
-                      label="Search"
-                      onChange={(newValue) => {
-                        setSearchQuery(newValue);
-                      }}
-                      withSubmit={false}
-                    />
-                  </TableToolbar>
+                <TableContainer
+                  {...getTableContainerProps()}
+                  title="Data Table with Header"
+                >
+                  <TableHeader>
+                    <TableTitle>Datatable with Toolbar</TableTitle>
+                    <TableToolbar>
+                      <SearchInput
+                        id="datatable-search"
+                        label="Search"
+                        onChange={(newValue) => {
+                          setSearchQuery(newValue);
+                        }}
+                        withSubmit={false}
+                      />
+                      <IconOnlyButton icon={<IconFilter />} />
+                      <Button>Add new Order</Button>
+                      <IconOnlyButton
+                        kind="ghost"
+                        icon={<IconDotsVertical />}
+                      />
+                    </TableToolbar>
+                  </TableHeader>
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -489,38 +504,49 @@ export const DataTableFilterPanel = () => {
               getTableHeadProps
             }) => {
               return (
-                <TableContainer {...getTableContainerProps()}>
-                  <TableToolbar>
-                    {/** Extract to TableToolbarFilter Buttton */}
-                    <TableToolbarFilterButton
-                      activeFiltersCount={activeFiltersCount}
-                      setFilterPanelOpen={setFilterPanelOpen}
-                    />
-                    <Modal
-                      open={filterPanelOpen}
-                      onClose={() => setFilterPanelOpen(false)}
-                    >
-                      <Headline type="h6">Location</Headline>
-                      <Checkbox
-                        id="location-filter-ger"
-                        label="Germany"
-                        value="Germany"
-                        onChange={() => toggleLocationFilter("Germany")}
+                <TableContainer
+                  {...getTableContainerProps()}
+                  title="Datatable with Icons"
+                >
+                  <TableHeader>
+                    <TableTitle>Datatable with Filter panel</TableTitle>
+                    <TableToolbar>
+                      <TableToolbarFilterButton
+                        activeFiltersCount={activeFiltersCount}
+                        setFilterPanelOpen={setFilterPanelOpen}
                       />
-                      <Checkbox
-                        id="location-filter-jap"
-                        label="Japan"
-                        value="Japan"
-                        onChange={() => toggleLocationFilter("Japan")}
-                      />
-                      <Checkbox
-                        id="location-filter-usa"
-                        label="USA"
-                        value="USA"
-                        onChange={() => toggleLocationFilter("USA")}
-                      />
-                    </Modal>
-                  </TableToolbar>
+                      <Modal
+                        open={filterPanelOpen}
+                        onClose={() => setFilterPanelOpen(false)}
+                      >
+                        <ModalHeader
+                          headline="Location"
+                          subHeadline="Choose your location"
+                        />
+                        <ModalBody>
+                          <Checkbox
+                            id="location-filter-ger"
+                            label="Germany"
+                            value="Germany"
+                            onChange={() => toggleLocationFilter("Germany")}
+                          />
+                          <Checkbox
+                            id="location-filter-jap"
+                            label="Japan"
+                            value="Japan"
+                            onChange={() => toggleLocationFilter("Japan")}
+                          />
+                          <Checkbox
+                            id="location-filter-usa"
+                            label="USA"
+                            value="USA"
+                            onChange={() => toggleLocationFilter("USA")}
+                          />
+                        </ModalBody>
+                      </Modal>
+                    </TableToolbar>
+                  </TableHeader>
+
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -597,15 +623,14 @@ export const DataTableRowActions = () => {
                             </TableCell>
                           ))}
                           <TableActions>
-                            <Button
+                            <Link
                               key="edit"
                               onClick={(event) => {
                                 action("onClick")(event, row);
                               }}
-                              kind="ghost"
                             >
                               Edit
-                            </Button>
+                            </Link>
                           </TableActions>
                         </TableRow>
                       ))}
@@ -642,26 +667,34 @@ export const DataTableWithBatchActions = () => {
             }) => {
               return (
                 <TableContainer {...getTableContainerProps()}>
-                  <TableToolbar
-                    selectedIDs={selectedIDs}
-                    batchActions={
-                      <>
-                        <p>{selectedIDs.length} items selected</p>
-                        <Button>Delete</Button>
-                        <Button>Download</Button>
-                         |
-                        <Button
-                          onClick={() => {
-                            toggleAll(false);
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                      </>
-                    }
-                  >
-                    <Button>Add new</Button>
-                  </TableToolbar>
+                  <TableHeader>
+                    <TableTitle>
+                      {selectedIDs.length > 0
+                        ? `${selectedIDs.length} items selected`
+                        : `Datatable Header`}
+                    </TableTitle>
+                    <TableToolbar
+                      selectedIDs={selectedIDs}
+                      batchActions={
+                        <>
+                          <ButtonGroup withDivider>
+                            <Button>Delete</Button>
+                            <Button>Download</Button>
+                            <Button
+                              onClick={() => {
+                                toggleAll(false);
+                              }}
+                            >
+                              Cancel
+                            </Button>
+                          </ButtonGroup>
+                        </>
+                      }
+                    >
+                      <Button>Add new</Button>
+                    </TableToolbar>
+                  </TableHeader>
+
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}

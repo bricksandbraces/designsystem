@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import { IconArrowDown, IconArrowsSort, IconArrowUp } from "@tabler/icons";
+import { IconArrowDown, IconSortDescending, IconArrowUp } from "@tabler/icons";
 
 export type TableHeadCellProps = {
   /**
@@ -52,7 +52,7 @@ const TableHeadCell = (
   } else if (sortState === "descending") {
     HeaderIcon = IconArrowUp;
   } else if (sortState === "unsorted") {
-    HeaderIcon = IconArrowsSort;
+    HeaderIcon = IconSortDescending;
   } else {
     HeaderIcon = null;
   }
@@ -65,7 +65,7 @@ const TableHeadCell = (
           [`${prefix}--datatable-head__cell-interactive`]:
             sortState !== undefined,
           [`${prefix}--datatable-head__cell-active`]:
-            sortState === "ascending" || "descending"
+            sortState === "ascending" || sortState === "descending"
         },
         className
       )}
@@ -73,6 +73,7 @@ const TableHeadCell = (
       onClick={onClick}
       {...rest}
       ref={ref}
+      role="button"
     >
       <div className={`${prefix}--datatable-head__cell-label`}>
         {children}
