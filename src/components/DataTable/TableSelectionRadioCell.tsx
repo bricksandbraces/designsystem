@@ -1,5 +1,7 @@
 import React from "react";
 import { RadioButton, TableCell } from "../..";
+import { prefix } from "../../settings";
+import cx from "classnames";
 
 export type TableSelectionRadioCellProps = {
   /**
@@ -40,7 +42,13 @@ const TableSelectionRadioCell = (
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   return (
-    <TableCell ref={ref} {...rest}>
+    <TableCell
+      className={cx(`${prefix}--datatable-body__cell-selection`, {
+        [`${prefix}--datatable-body__cell-selection--checked`]: checked
+      })}
+      ref={ref}
+      {...rest}
+    >
       <RadioButton
         id={id}
         value="radio-selection"

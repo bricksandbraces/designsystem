@@ -10,6 +10,11 @@ export type TableHeadCellProps = {
   children?: React.ReactNode;
 
   /**
+   * TableHeadCell ReactChildren usually used as title
+   */
+  className?: string;
+
+  /**
    * TableHeadCell Interactive tells if the HeadCell should be interactive
    */
   interactive?: boolean;
@@ -27,7 +32,14 @@ export type TableHeadCellProps = {
 };
 
 const TableHeadCell = (
-  { children, interactive, onClick, sortState, ...rest }: TableHeadCellProps,
+  {
+    children,
+    interactive,
+    className,
+    onClick,
+    sortState,
+    ...rest
+  }: TableHeadCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   let HeaderIcon:
@@ -47,14 +59,18 @@ const TableHeadCell = (
 
   return (
     <th
-      className={cx(`${prefix}--datatable-head__cell`, { interactive })}
+      className={cx(
+        `${prefix}--datatable-head__cell`,
+        { interactive },
+        className
+      )}
       scope="col"
       onClick={onClick}
       {...rest}
       ref={ref}
     >
       <div className={`${prefix}--datatable-head__cell-label`}>
-        {children}{" "}
+        {children}
         {HeaderIcon && (
           <HeaderIcon
             className={cx(`${prefix}--datatable-head__cell-icon`, {

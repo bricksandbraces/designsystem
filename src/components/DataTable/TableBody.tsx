@@ -1,4 +1,5 @@
 import React from "react";
+import { prefix } from "../../settings";
 
 export type TableBodyProps = {
   /**
@@ -12,7 +13,7 @@ const TableBody = (
   ref: React.ForwardedRef<HTMLTableSectionElement>
 ) => {
   return (
-    <tbody {...rest} ref={ref}>
+    <tbody {...rest} ref={ref} className={`${prefix}--datatable-body`}>
       {children}
     </tbody>
   );

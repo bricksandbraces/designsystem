@@ -5,21 +5,16 @@
 .$(prefix) {
   &--datatable {
     &-container {
-      width: 100%;
-      table-layout: fixed;
+      table-layout: auto;
     }
 
     &-table {
       width: 100%;
       overflow: hidden;
-      table-layout: fixed;
+      table-layout: auto;
       border: 0.0625rem solid $color--border;
       border-radius: $component--radius-default;
       box-shadow: $component--shadow-subtle;
-    }
-
-    & > div > div > table > tbody > tr > td {
-      border-bottom: 0.0625rem solid $color--border;
     }
 
     &-head {
@@ -33,7 +28,23 @@
         outline: 0;
         background-color: $color--table-background;
 
+        &-selection {
+          width: $size--container-04;
+          min-width: $size--container-04;
+          max-width: $size--container-04;
+          padding: 0 $size--spacing-03;
+          & > .$(prefix)--datatable-head__cell-label {
+            & > .$(prefix)--checkbox {
+              margin: 0;
+            }
+          }
+        }
+
         &-icon {
+          min-width: calc($size--container-01 * 1.25);
+          max-width: calc($size--container-01 * 1.25);
+          min-height: calc($size--container-01 * 1.25);
+          max-height: calc($size--container-01 * 1.25);
           opacity: 0;
 
           &__active {
@@ -44,8 +55,11 @@
         &-label {
           @mixin type--label;
 
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           overflow: hidden;
-          color: $color--font-text-02;
+          color: $color--font-text-01;
           font-weight: 600;
           text-align: left;
           text-overflow: ellipsis;
@@ -62,18 +76,103 @@
       }
     }
 
-    &-cell {
-      @mixin type--body-02;
+    &-body {
+      &__cell {
+        @mixin type--body-02;
 
-      padding: 0 $size--spacing-05;
-      background-color: $color--background;
-      color: $color--font-text-01;
+        padding: 0 $size--spacing-05;
+        border-bottom: 0.0625rem solid $color--border;
+        background-color: $color--background;
+        color: $color--font-text-03;
+
+        &-selection {
+          width: $size--container-04;
+          min-width: $size--container-04;
+          max-width: $size--container-04;
+          padding: 0 $size--spacing-03;
+
+          &--checked {
+            border-color: $color--border-selected;
+            background-color: $color--selected;
+            & ~ .$(prefix)--datatable-body__cell {
+              border-color: $color--border-selected;
+              background-color: $color--selected;
+            }
+          }
+
+          & > .$(prefix)--checkbox,
+          & > .$(prefix)--radiobutton {
+            margin: 0;
+          }
+        }
+      }
     }
 
     &-row {
       &:last-child {
-        & > .$(prefix)--datatable-cell {
+        & > .$(prefix)--datatable-body__cell {
           border-bottom: 0;
+        }
+      }
+
+      &:hover {
+        & > .$(prefix)--datatable-body__cell {
+          border-color: $color--border-selected;
+          background-color: $color--hover;
+        }
+      }
+    }
+
+    &-small {
+      &
+        > .$(prefix)--datatable-container
+        > .$(prefix)--datatable-container__content
+        > .$(prefix)--datatable-table {
+        &
+          > .$(prefix)--datatable-head
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-head__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-body__cell {
+          height: $size--field-small;
+        }
+      }
+    }
+
+    &-default {
+      &
+        > .$(prefix)--datatable-container
+        > .$(prefix)--datatable-container__content
+        > .$(prefix)--datatable-table {
+        &
+          > .$(prefix)--datatable-head
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-head__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-body__cell {
+          height: $size--field-default;
+        }
+      }
+    }
+
+    &-large {
+      &
+        > .$(prefix)--datatable-container
+        > .$(prefix)--datatable-container__content
+        > .$(prefix)--datatable-table {
+        &
+          > .$(prefix)--datatable-head
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-head__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-body__cell {
+          height: $size--field-large;
         }
       }
     }
