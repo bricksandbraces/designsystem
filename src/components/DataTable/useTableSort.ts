@@ -52,10 +52,9 @@ const useTableSort = (): [
   };
 
   const getSortState = (header: HeaderEntry) => {
-    const headerSortable = header.sortable ? "unsorted" : undefined;
-    const sortState =
-      sortByColumn === header.key ? sortDirection : headerSortable;
-    return sortState;
+    if (!header.sortable) return undefined;
+    if (sortByColumn !== header.key) return "unsorted";
+    return sortDirection;
   };
 
   return [
