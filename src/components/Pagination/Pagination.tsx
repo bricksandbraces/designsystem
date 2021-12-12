@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactHTML } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
@@ -62,24 +62,28 @@ export type PaginationProps = {
    * Pagination Loop
    */
   loop?: boolean;
+
+  /**
+   * Pagination NavWrapper wraps the pagination into
+   */
+  navWrapper?: boolean;
 };
 
 const Pagination = (
   {
     totalPages,
     pagesShown,
-
     defaultPage,
     page,
     onPageChange,
-
+    navWrapper,
     loop = true,
     hideNav,
     hideFastforward,
     size = "default",
     className
   }: PaginationProps,
-  ref: React.ForwardedRef<HTMLElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   const [currentIndex, performPageChange] = useControlledValue(
     page,
@@ -88,15 +92,17 @@ const Pagination = (
     0
   );
 
-  // positionOfCurrentIndexInPageArray
   const visiblePagesArray = generateVisiblePagesArray(
     totalPages,
     pagesShown ?? totalPages,
     currentIndex
   );
 
+  const WrapperElement = React.createElement(navWrapper ? "nav" : "div")
+    .type as unknown as ReactHTML["div"] | ReactHTML["nav"];
+
   return (
-    <nav
+    <WrapperElement
       className={cx(
         `${prefix}--pagination ${prefix}--pagination-${size}`,
         className
@@ -197,7 +203,7 @@ const Pagination = (
           </li>
         )}
       </ul>
-    </nav>
+    </WrapperElement>
   );
 };
 
