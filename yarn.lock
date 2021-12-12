@@ -2092,7 +2092,7 @@ __metadata:
     "@wojtekmaj/enzyme-adapter-react-17": ^0.6.5
     autoprefixer: ^10.4.0
     babel-loader: ^8.2.3
-    browserlist: ^1.0.1
+    browserslist: ^4.18.1
     classnames: ^2.3.1
     copyfiles: ^2.4.1
     cssnano: ^5.0.12
@@ -5926,17 +5926,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserlist@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "browserlist@npm:1.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fbrowserlist%2F-%2Fbrowserlist-1.0.1.tgz"
-  dependencies:
-    chalk: ^2.4.1
-  bin:
-    browserlist: ./cli.js
-  checksum: db4dc273b59637f4e716676978d2c8a2431fb021860ec8ea9552eebe24bff67e955630d42c3995a9b03c1606819b18fb032ab943103b54b830933ec4d695e516
-  languageName: node
-  linkType: hard
-
 "browserslist@npm:4.14.2":
   version: 4.14.2
   resolution: "browserslist@npm:4.14.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fbrowserslist%2F-%2Fbrowserslist-4.14.2.tgz"
@@ -6219,9 +6208,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001272, caniuse-lite@npm:^1.0.30001280":
-  version: 1.0.30001284
-  resolution: "caniuse-lite@npm:1.0.30001284::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcaniuse-lite%2F-%2Fcaniuse-lite-1.0.30001284.tgz"
-  checksum: 67196113186dc38dc579b8d28c660ab45465594d4bb55a4e263779525ed3c3ed208d369775469faf706e9f68ef7071b14e4890c197406d79c8b936f6fabac458
+  version: 1.0.30001286
+  resolution: "caniuse-lite@npm:1.0.30001286::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcaniuse-lite%2F-%2Fcaniuse-lite-1.0.30001286.tgz"
+  checksum: 04de4742552d4aeb713677b40693d9ac1fbd259573e0ff739565278bcecb6f398f3227546a4e930f4d5cf95b61458f4a53c9c1f90f5b0c4f6063b32e4c54b89e
   languageName: node
   linkType: hard
 
