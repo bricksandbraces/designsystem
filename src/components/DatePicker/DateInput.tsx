@@ -7,6 +7,7 @@ import { useControlled, useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type DateInputProps = {
   /**
@@ -48,6 +49,11 @@ export type DateInputProps = {
    * DateInput OnBlur
    */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnClick on the Input
+   */
+  onInput?: React.MouseEventHandler<HTMLInputElement>;
 
   /**
    * DateInput OnFocus
@@ -93,6 +99,7 @@ const DateInput = (
     onChange,
     onDateChanged,
     onKeyDown,
+    onClick,
     onFocus,
     onBlur,
     ...props
@@ -151,6 +158,7 @@ const DateInput = (
           filterForKeys(["Enter"], () => handleSubmit())(event);
           onKeyDown?.(event);
         }}
+        onClick={withoutPropagation(onClick)}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />
