@@ -27,7 +27,6 @@
       align-items: flex-end;
       justify-content: center;
       width: 100%;
-      padding: $size--spacing-05;
       gap: $size--spacing-05;
       border-top: 0.0625rem solid $color--border;
     }
@@ -179,6 +178,104 @@
         & > .$(prefix)--datatable-body__cell {
           border-color: $color--border-selected;
           background-color: $color--hover;
+        }
+      }
+    }
+
+    &-pagination {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 0 0 $size--spacing-05;
+
+      &__rows {
+        display: inline-flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: $size--spacing-05;
+
+        & > .$(prefix)--select {
+          width: unset;
+          min-width: unset;
+          max-width: unset;
+
+          & > .$(prefix)--select-input__wrapper > .$(prefix)--select-input {
+            border: 0;
+            border-radius: 0;
+          }
+        }
+
+        & > p {
+          @mixin type--body-02;
+
+          margin: 0;
+          color: $color--font-text-01;
+          white-space: nowrap;
+        }
+      }
+
+      &__list {
+        display: inline-flex;
+        list-style: none;
+
+        &-item {
+          & > .$(prefix)--button {
+            border-radius: 0;
+
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              width: 0;
+              height: calc($size--container-01 / 4);
+              transition: width $transition--app-01, opacity $transition--app-01;
+              border-radius: calc($component--radius-subtle * 2);
+              opacity: 0;
+              background-color: $color--decoration;
+            }
+          }
+          &--active > .$(prefix)--button {
+            position: relative;
+            background-color: $color--selected;
+
+            &::before {
+              width: $size--container-02;
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      & > ul > li > .$(prefix)--button {
+        padding: 0;
+      }
+
+      &__default {
+        & > ul > li > .$(prefix)--button {
+          min-width: $size--field-default;
+          max-width: $size--field-default;
+          min-height: $size--field-default;
+          max-height: $size--field-default;
+        }
+      }
+
+      &__small {
+        & > ul > li > .$(prefix)--button {
+          min-width: $size--field-small;
+          max-width: $size--field-small;
+          min-height: $size--field-small;
+          max-height: $size--field-small;
+        }
+      }
+
+      &__large {
+        & > ul > li > .$(prefix)--button {
+          min-width: $size--field-large;
+          max-width: $size--field-large;
+          min-height: $size--field-large;
+          max-height: $size--field-large;
         }
       }
     }

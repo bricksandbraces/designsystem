@@ -20,8 +20,7 @@ import {
   Select
 } from "../..";
 
-import Pagination from "../Pagination/Pagination";
-import Headline from "../Typography/Headline";
+import TablePagination from "./TablePagination";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
 import TableActions from "./TableActions";
 import TableSelectionCell from "./TableSelectionCell";
@@ -36,15 +35,9 @@ import { useTableSort } from "./useTableSort";
 import TableTitle from "./TableTitle";
 import TableHeader from "./TableHeader";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import {
-  IconAlertCircle,
-  IconDots,
-  IconDotsVertical,
-  IconFilter
-} from "@tabler/icons";
+import { IconDotsVertical, IconFilter } from "@tabler/icons";
 import ModalHeader from "../Modal/ModalHeader";
 import ModalBody from "../Modal/ModalBody";
-import ModalFooter from "../Modal/ModalFooter";
 import TableFooter from "./TableFooter";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
@@ -52,23 +45,48 @@ export default { title: "Components/DataTable", decorators: [withKnobs] };
 const defaultRows: RowEntry[] = [
   {
     id: "0",
-    name: "Max Nustermann",
+    name: "Max Mustermann",
     location: "Germany",
-    profession: "Fachkraft"
+    profession: "Accountant"
   },
   {
     id: "1",
-    name: "Joe Nustermann",
-    location: "USA",
-    profession: "Fachkraft"
+    name: "Joe Mustermann",
+    location: "United States",
+    profession: "Content Creator"
   },
   {
     id: "2",
-    name: "Lilsa Nustermann",
+    name: "Lisa Liguster",
     location: "Japan",
-    profession: "Fachkraft"
+    profession: "Firefighter"
+  },
+  {
+    id: "3",
+    name: "Harry Motter",
+    location: "United Kingdom",
+    profession: "F1 Driver"
+  },
+  {
+    id: "4",
+    name: "Ginni Wusely",
+    location: "Spain",
+    profession: "Queen of Spain"
+  },
+  {
+    id: "5",
+    name: "Neville Shortbottom",
+    location: "Guatemala",
+    profession: "White-Collar Worker"
+  },
+  {
+    id: "6",
+    name: "Hermine Stranger",
+    location: "Italy",
+    profession: "Witch"
   }
 ];
+
 const defaultHeaders: HeaderEntry[] = [
   { title: "Full Name", key: "name", sortable: true },
   { title: "Location (Country)", key: "location", sortable: true },
@@ -742,7 +760,7 @@ export const DataTableWithBatchActions = () => {
   );
 };
 
-export const DataTableWithPagination = () => {
+export const DataTableWithTablePagination = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -756,7 +774,7 @@ export const DataTableWithPagination = () => {
             rows={unprocessedRows}
             headers={unprocessedHeaders}
             page={page}
-            itemsPerPage={1}
+            itemsPerPage={3}
           >
             {({
               rows,
@@ -769,7 +787,7 @@ export const DataTableWithPagination = () => {
               return (
                 <TableContainer {...getTableContainerProps()}>
                   <TableHeader>
-                    <TableTitle>Datatable with Pagination</TableTitle>
+                    <TableTitle>Datatable with TablePagination</TableTitle>
                   </TableHeader>
                   <Table {...getTableProps()}>
                     <TableHead
@@ -797,18 +815,10 @@ export const DataTableWithPagination = () => {
                     </TableBody>
                   </Table>
                   <TableFooter>
-                    <Pagination
+                    <TablePagination
                       totalPages={pagesCount}
                       page={page}
                       onPageChange={(newPage) => setPage(newPage)}
-                    />
-                    <Select
-                      id="1"
-                      options={[
-                        { value: "50", text: "50 Items" },
-                        { value: "100", text: "100 Items" },
-                        { value: "200", text: "200 Items" }
-                      ]}
                     />
                   </TableFooter>
                 </TableContainer>
