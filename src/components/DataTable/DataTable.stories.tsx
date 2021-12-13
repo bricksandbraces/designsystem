@@ -46,43 +46,106 @@ const defaultRows: RowEntry[] = [
   {
     id: "0",
     name: "Max Mustermann",
-    location: "Germany",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/de.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Germany
+      </>
+    ),
     profession: "Accountant"
   },
   {
     id: "1",
     name: "Joe Mustermann",
-    location: "United States",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/us.png"
+          style={{ marginRight: "1rem" }}
+        />
+        United States
+      </>
+    ),
     profession: "Content Creator"
   },
   {
     id: "2",
     name: "Lisa Liguster",
-    location: "Japan",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/jp.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Japan
+      </>
+    ),
     profession: "Firefighter"
   },
   {
     id: "3",
     name: "Harry Motter",
-    location: "United Kingdom",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/gb.png"
+          style={{ marginRight: "1rem" }}
+        />
+        United Kingdom
+      </>
+    ),
     profession: "F1 Driver"
   },
   {
     id: "4",
     name: "Ginni Wusely",
-    location: "Spain",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/es.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Spain
+      </>
+    ),
     profession: "Queen of Spain"
   },
   {
     id: "5",
     name: "Neville Shortbottom",
-    location: "Guatemala",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/pl.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Poland
+      </>
+    ),
     profession: "White-Collar Worker"
   },
   {
     id: "6",
     name: "Hermine Stranger",
-    location: "Italy",
+    location: (
+      <>
+        <img
+          width="16"
+          src="https://flagcdn.com/w160/it.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Italy
+      </>
+    ),
     profession: "Witch"
   }
 ];

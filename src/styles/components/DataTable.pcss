@@ -223,18 +223,6 @@
         &-item {
           & > .$(prefix)--button {
             border-radius: 0;
-
-            &::before {
-              content: "";
-              position: absolute;
-              bottom: 0;
-              width: 0;
-              height: calc($size--container-01 / 4);
-              transition: width $transition--app-01, opacity $transition--app-01;
-              border-radius: calc($component--radius-subtle * 2);
-              opacity: 0;
-              background-color: $color--decoration;
-            }
           }
           &--active > .$(prefix)--button {
             position: relative;
