@@ -71,7 +71,7 @@ const CheckboxGroup = (
     disabled,
     className,
     children,
-    orientation,
+    orientation = "vertical",
     name
   }: CheckboxGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
