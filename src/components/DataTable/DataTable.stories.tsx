@@ -33,7 +33,13 @@ import { useTableSort } from "./useTableSort";
 import TableTitle from "./TableTitle";
 import TableHeader from "./TableHeader";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import { IconDotsVertical, IconFilter, IconTrash } from "@tabler/icons";
+import {
+  IconDotsVertical,
+  IconFilter,
+  IconListSearch,
+  IconSearch,
+  IconTrash
+} from "@tabler/icons";
 import TableFooter from "./TableFooter";
 import TableToolbarActions from "./TableToolbarActions";
 import CheckboxGroup from "../Checkbox/CheckboxGroup";
@@ -41,6 +47,7 @@ import TableFilterPanel from "./TableFilterPanel";
 import TableSkeletonCell from "./TableSkeletonCell";
 import OverflowMenu from "../OverflowMenu/OverflowMenu";
 import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
+import EmptyState from "../EmptyState/EmptyState";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -532,6 +539,18 @@ export const WithToolbar = () => {
                           ))}
                         </TableRow>
                       ))}
+                      {searchQuery?.length > 0 && rows.length === 0 && (
+                        <TableRow>
+                          <td colspan="3">
+                            <EmptyState
+                              orientation="horizontal"
+                              icon={<IconSearch />}
+                              title="Whooops!"
+                              subTitle="We couldn't find any single bread crumb. Please review your input."
+                            />
+                          </td>
+                        </TableRow>
+                      )}
                     </TableBody>
                   </Table>
                 </TableContainer>

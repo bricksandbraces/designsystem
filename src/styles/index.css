@@ -6,6 +6,7 @@
 @import "./typography.pcss";
 
 @import "./components/LoginForm.pcss";
+@import "./components/EmptyState.pcss";
 @import "./components/BackToTop.pcss";
 @import "./components/Breadcrumb.pcss";
 @import "./components/Button.pcss";
