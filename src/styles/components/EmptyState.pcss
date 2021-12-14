@@ -24,8 +24,8 @@
     &-title {
       max-width: calc($size--container-08 + $size--container-04);
       margin-top: 0;
-      margin-bottom: $size--spacing-02;
-      color: $color--font-text-02;
+      margin-bottom: $size--spacing-03;
+      color: $color--font-text-03;
     }
 
     &-subtitle {
@@ -41,14 +41,16 @@
     &-icon {
       width: $size--container-06;
       height: $size--container-06;
-      margin-right: $size--spacing-06;
+      margin-right: $size--spacing-08;
+      margin-bottom: $size--spacing-06;
       color: $color--app-03;
 
-      & > svg {
-        min-width: $size--container-05;
-        max-width: $size--container-05;
-        min-height: $size--container-05;
-        max-height: $size--container-05;
+      & > svg,
+      img {
+        min-width: $size--container-06;
+        max-width: $size--container-06;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
       }
     }
   }
