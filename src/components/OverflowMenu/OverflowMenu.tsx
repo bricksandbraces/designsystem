@@ -25,6 +25,11 @@ type OverflowMenuProps = {
    * OverflowMenu Size
    */
   size?: "large" | "default" | "small";
+
+  /**
+   * OverflowMenu Light
+   */
+  light?: boolean;
 };
 
 const OverflowMenu = ({
@@ -32,6 +37,7 @@ const OverflowMenu = ({
   children,
   icon = <IconDotsVertical />,
   className,
+  light,
   ...props
 }: OverflowMenuProps) => {
   return (
@@ -40,7 +46,8 @@ const OverflowMenu = ({
         interactive
         arrow={false}
         className={cx(
-          `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`
+          `${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`,
+          { [`${prefix}--overflowmenu-light`]: light }
         )}
         animation="bbds-animation"
         trigger="click"

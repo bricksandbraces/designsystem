@@ -247,7 +247,14 @@
         color: $color--font-text-03;
 
         &-actions {
+          padding: 0 calc($size--spacing-03 / 2);
           text-align: end;
+
+          &--label {
+            display: inline-flex;
+            align-items: center;
+            gap: $component--padding-inside;
+          }
         }
 
         &-selection {
@@ -404,6 +411,16 @@
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-small;
+
+          & > div > .$(prefix)--button {
+            &.$(prefix)--button-icon-only {
+              min-width: calc($size--field-small - ($size--container-01/2));
+              max-width: calc($size--field-small - ($size--container-01/2));
+            }
+
+            min-height: calc($size--field-small - ($size--container-01/2));
+            max-height: calc($size--field-small - ($size--container-01/2));
+          }
         }
       }
     }
@@ -426,6 +443,16 @@
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-default;
+
+          & > div > .$(prefix)--button {
+            &.$(prefix)--button-icon-only {
+              min-width: calc($size--field-default - ($size--container-01/2));
+              max-width: calc($size--field-default - ($size--container-01/2));
+            }
+
+            min-height: calc($size--field-default - ($size--container-01/2));
+            max-height: calc($size--field-default - ($size--container-01/2));
+          }
         }
       }
     }
@@ -448,6 +475,16 @@
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-large;
+
+          & > div > .$(prefix)--button {
+            &.$(prefix)--button-icon-only {
+              min-width: calc($size--field-large - ($size--container-01/2));
+              max-width: calc($size--field-large - ($size--container-01/2));
+            }
+
+            min-height: calc($size--field-large - ($size--container-01/2));
+            max-height: calc($size--field-large - ($size--container-01/2));
+          }
         }
       }
     }

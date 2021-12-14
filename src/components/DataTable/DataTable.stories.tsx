@@ -33,12 +33,14 @@ import { useTableSort } from "./useTableSort";
 import TableTitle from "./TableTitle";
 import TableHeader from "./TableHeader";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import { IconDotsVertical, IconFilter } from "@tabler/icons";
+import { IconDotsVertical, IconFilter, IconTrash } from "@tabler/icons";
 import TableFooter from "./TableFooter";
 import TableToolbarActions from "./TableToolbarActions";
 import CheckboxGroup from "../Checkbox/CheckboxGroup";
 import TableFilterPanel from "./TableFilterPanel";
 import TableSkeletonCell from "./TableSkeletonCell";
+import OverflowMenu from "../OverflowMenu/OverflowMenu";
+import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -745,14 +747,20 @@ export const WithRowActions = () => {
                             </TableBodyCell>
                           ))}
                           <TableActions>
-                            <Link
-                              key="edit"
-                              onClick={(event) => {
-                                action("onClick")(event, row);
-                              }}
-                            >
-                              Edit
-                            </Link>
+                            <Button kind="ghost">Edit</Button>
+                            <IconOnlyButton kind="ghost" icon={<IconTrash />} />
+                            <OverflowMenu light>
+                              <OverflowMenuItem onClick={() => {}}>
+                                Enable 2FA
+                              </OverflowMenuItem>
+                              <OverflowMenuItem href="#">
+                                Turn on accessibility
+                              </OverflowMenuItem>
+
+                              <OverflowMenuItem>
+                                Check connectivity
+                              </OverflowMenuItem>
+                            </OverflowMenu>
                           </TableActions>
                         </TableRow>
                       ))}

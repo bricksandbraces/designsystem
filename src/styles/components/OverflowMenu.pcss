@@ -4,6 +4,14 @@
 @import "../prefix.pcss";
 
 .$(prefix) {
+  &--overflowmenu {
+    &-trigger {
+      &[aria-expanded="true"] {
+        background-color: $color--hover-light;
+      }
+    }
+  }
+
   &--overflowmenu.tippy-box {
     display: inline-flex;
     flex-wrap: wrap;
@@ -15,6 +23,23 @@
     border-radius: $component--radius-default;
     background-color: $color--background;
     box-shadow: $component--shadow-default;
+
+    &.$(prefix)--overflowmenu-light {
+      border-color: $color--border-light;
+      background-color: $color--background-light;
+
+      & > .tippy-content > div > .$(prefix)--overflowmenu-item {
+        background-color: $color--background-light;
+
+        &:hover {
+          background-color: $color--hover-light;
+        }
+
+        &:active {
+          background-color: $color--active-light;
+        }
+      }
+    }
 
     &.$(prefix)--overflowmenu-small
       .tippy-content

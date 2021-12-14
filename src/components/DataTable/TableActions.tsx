@@ -19,7 +19,9 @@ const TableActions = (
       {...rest}
       ref={ref}
     >
-      {children}
+      <div className={`${prefix}--datatable-body__cell-actions--label`}>
+        {children}
+      </div>
     </TableBodyCell>
   );
 };
