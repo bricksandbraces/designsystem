@@ -9,7 +9,7 @@
     z-index: 1000;
     left: 0;
     width: $size--container-08;
-    transform: translateY(80px);
+    transform: translateY($size--spacing-03);
     transition: opacity $transition--app-01, transform $transition--app-01,
       visibility $transition--app-01;
     border: 0.0625rem solid $color--border;
@@ -19,7 +19,7 @@
 
     &-hidden {
       visibility: hidden;
-      transform: translateY(45px);
+      transform: translateY(calc($size--spacing-03 * -1));
       opacity: 0;
     }
 

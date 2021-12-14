@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import mergeRefs from "react-merge-refs";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
@@ -137,7 +137,7 @@ const DateInput = (
   };
 
   return (
-    <>
+    <div>
       <TextInput
         icon={<IconCalendar />}
         placeholder={dateFormat}
@@ -170,10 +170,8 @@ const DateInput = (
         }
         onDateChanged?.(newDate, newTextValue);
       })}
-    </>
+    </div>
   );
 };
 
-export default React.memo(
-  forwardRef<HTMLInputElement, DateInputProps>(DateInput)
-);
+export default React.memo(React.forwardRef(DateInput));
