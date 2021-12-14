@@ -156,27 +156,3 @@ export const BlockWithoutCTA = () => {
     </>
   );
 };
-
-export const BlockWithNode = () => {
-  return (
-    <>
-      <LeadSpaceBlock
-        title={text("title", "What we do")}
-        text={
-          <>
-            <Dropdown
-              label={text("label", "Dropdown label")}
-              title={text("title", "Dropdown title")}
-              id="some-dropdown"
-              warningText={text("warningText", "")}
-              errorText={text("errorText", "")}
-              disabled={boolean("disabled", false)}
-              readOnly={boolean("readOnly", false)}
-              items={object("items", sampleItemConfig)}
-            />
-          </>
-        }
-      />
-    </>
-  );
-};
