@@ -29,6 +29,11 @@ export type SearchInputProps = {
   placeholder?: string;
 
   /**
+   * SearchInput Light
+   */
+  light?: boolean;
+
+  /**
    * SearchInput Clear Button Label
    */
   clearLabel?: string;
@@ -113,6 +118,7 @@ const SearchInput = (
     submitLabel = "Go!",
     submitIcon = <IconSearch />,
     defaultValue,
+    light,
     onSubmit,
     onClickInput,
     onFocus,
@@ -138,7 +144,9 @@ const SearchInput = (
     <div
       role="search"
       aria-labelledby={`${id}-search`}
-      className={cx(`${prefix}--search ${prefix}--search-${size}`)}
+      className={cx(`${prefix}--search ${prefix}--search-${size}`, {
+        [`${prefix}--search-light`]: light
+      })}
     >
       <IconSearch className={cx(`${prefix}--search-icon`)} />
       <label

@@ -16,8 +16,7 @@ import {
   Checkbox,
   Button,
   ButtonGroup,
-  Link,
-  Select
+  Link
 } from "../..";
 
 import TablePagination from "./TablePagination";
@@ -28,7 +27,7 @@ import TableSelectionHeadCell from "./TableSelectionHeadCell";
 import TableSelectionRadioCell from "./TableSelectionRadioCell";
 import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
 import TableToolbar from "./TableToolbar";
-import TableToolbarFilterButton from "./TableToolbarFilterButton";
+import TableFilterButton from "./TableFilterButton";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
@@ -39,6 +38,9 @@ import { IconDotsVertical, IconFilter } from "@tabler/icons";
 import ModalHeader from "../Modal/ModalHeader";
 import ModalBody from "../Modal/ModalBody";
 import TableFooter from "./TableFooter";
+import TableToolbarActions from "./TableToolbarActions";
+import CheckboxGroup from "../Checkbox/CheckboxGroup";
+import TableFilterPanel from "./TableFilterPanel";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -156,7 +158,7 @@ const defaultHeaders: HeaderEntry[] = [
   { title: "Profession", key: "profession" }
 ];
 
-export const DefaultAsDataTable = () => {
+export const Default = () => {
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   return (
@@ -208,7 +210,7 @@ export const DefaultAsDataTable = () => {
   );
 };
 
-export const DataTableWithSelection = () => {
+export const WithSelection = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -274,7 +276,7 @@ export const DataTableWithSelection = () => {
   );
 };
 
-export const DataTableWithRadioSelection = () => {
+export const WithRadioSelection = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -335,7 +337,7 @@ export const DataTableWithRadioSelection = () => {
   );
 };
 
-export const DataTableWithSortableHeaderCells = () => {
+export const WithSorting = () => {
   const [
     sortByColumn,
     sortDirection,
@@ -405,7 +407,7 @@ export const DataTableWithSortableHeaderCells = () => {
   );
 };
 
-export const DataTableWithHeader = () => {
+export const WithHeader = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -461,7 +463,7 @@ export const DataTableWithHeader = () => {
   );
 };
 
-export const DataTableWithToolbar = () => {
+export const WithToolbar = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -492,23 +494,21 @@ export const DataTableWithToolbar = () => {
                 >
                   <TableHeader>
                     <TableTitle>Datatable with Toolbar</TableTitle>
-                    <TableToolbar>
-                      <SearchInput
-                        id="datatable-search"
-                        label="Search"
-                        onChange={(newValue) => {
-                          setSearchQuery(newValue);
-                        }}
-                        withSubmit={false}
-                      />
-                      <IconOnlyButton icon={<IconFilter />} />
-                      <Button>Add new Order</Button>
-                      <IconOnlyButton
-                        kind="ghost"
-                        icon={<IconDotsVertical />}
-                      />
-                    </TableToolbar>
                   </TableHeader>
+                  <TableToolbar>
+                    <SearchInput
+                      light
+                      id="datatable-search"
+                      label="Search"
+                      onChange={(newValue) => {
+                        setSearchQuery(newValue);
+                      }}
+                      withSubmit={false}
+                    />
+                    <TableToolbarActions>
+                      <Button>Add new Order</Button>
+                    </TableToolbarActions>
+                  </TableToolbar>
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -544,7 +544,7 @@ export const DataTableWithToolbar = () => {
   );
 };
 
-export const DataTableFilterPanel = () => {
+export const WithFilterPanel = () => {
   const [filterPanelOpen, setFilterPanelOpen] = useState<boolean>(false);
   const { activeFilters, activeFiltersCount, registerFilter } =
     useTableFilter();
@@ -593,43 +593,57 @@ export const DataTableFilterPanel = () => {
                 >
                   <TableHeader>
                     <TableTitle>Datatable with Filter panel</TableTitle>
-                    <TableToolbar>
-                      <TableToolbarFilterButton
-                        activeFiltersCount={activeFiltersCount}
-                        setFilterPanelOpen={setFilterPanelOpen}
-                      />
-                      <Modal
-                        open={filterPanelOpen}
-                        onClose={() => setFilterPanelOpen(false)}
-                      >
-                        <ModalHeader
-                          headline="Location"
-                          subHeadline="Choose your location"
-                        />
-                        <ModalBody>
-                          <Checkbox
-                            id="location-filter-ger"
-                            label="Germany"
-                            value="Germany"
-                            onChange={() => toggleLocationFilter("Germany")}
-                          />
-                          <Checkbox
-                            id="location-filter-jap"
-                            label="Japan"
-                            value="Japan"
-                            onChange={() => toggleLocationFilter("Japan")}
-                          />
-                          <Checkbox
-                            id="location-filter-usa"
-                            label="USA"
-                            value="USA"
-                            onChange={() => toggleLocationFilter("USA")}
-                          />
-                        </ModalBody>
-                      </Modal>
-                    </TableToolbar>
                   </TableHeader>
-
+                  <TableToolbar>
+                    <SearchInput
+                      light
+                      id="datatable-search"
+                      label="Search"
+                      onChange={(newValue) => {
+                        setSearchQuery(newValue);
+                      }}
+                      withSubmit={false}
+                    />
+                    <TableToolbarActions>
+                      <TableFilterButton
+                        activeFiltersCount={activeFiltersCount}
+                        setFilterPanelOpen={() =>
+                          setFilterPanelOpen(!filterPanelOpen)
+                        }
+                      />
+                      <IconOnlyButton
+                        kind="ghost"
+                        icon={<IconDotsVertical />}
+                      />
+                      <Button>Add new Order</Button>
+                    </TableToolbarActions>
+                  </TableToolbar>
+                  <TableFilterPanel open={filterPanelOpen}>
+                    <CheckboxGroup
+                      orientation="horizontal"
+                      legendLabel="Location (Country)"
+                      name="filter"
+                    >
+                      <Checkbox
+                        id="location-filter-ger"
+                        label="Germany"
+                        value="Germany"
+                        onChange={() => toggleLocationFilter("Germany")}
+                      />
+                      <Checkbox
+                        id="location-filter-jap"
+                        label="Japan"
+                        value="Japan"
+                        onChange={() => toggleLocationFilter("Japan")}
+                      />
+                      <Checkbox
+                        id="location-filter-usa"
+                        label="USA"
+                        value="USA"
+                        onChange={() => toggleLocationFilter("USA")}
+                      />
+                    </CheckboxGroup>
+                  </TableFilterPanel>
                   <Table {...getTableProps()}>
                     <TableHead
                       headers={defaultHeaders}
@@ -665,7 +679,7 @@ export const DataTableFilterPanel = () => {
   );
 };
 
-export const DataTableRowActions = () => {
+export const WithRowActions = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
@@ -729,7 +743,7 @@ export const DataTableRowActions = () => {
   );
 };
 
-export const DataTableWithBatchActions = () => {
+export const WithBatchActions = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -823,7 +837,7 @@ export const DataTableWithBatchActions = () => {
   );
 };
 
-export const DataTableWithTablePagination = () => {
+export const WithTablePagination = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 

@@ -10,6 +10,17 @@
     color: $color--font-unselected;
 
     &-group {
+      display: flex;
+
+      &__horizontal {
+        flex-flow: row;
+        gap: $size--spacing-05;
+      }
+
+      &__vertical {
+        flex-flow: column;
+      }
+
       &__legend {
         @mixin type--label;
       }

@@ -14,12 +14,35 @@
       table-layout: auto;
     }
 
+    &-filterpanel {
+      width: 100%;
+      max-height: 0;
+      padding: 0 $size--spacing-05;
+      overflow: hidden;
+      transition: padding $transition--app-01, opacity $transition--app-01;
+      border-top: 0.0625rem solid $color--border-light;
+      border-bottom: 0.0625rem solid $color--border-light;
+      opacity: 0;
+      background-color: $color--background-light;
+      color: $color--font-text-01;
+
+      &__open {
+        max-height: unset;
+        padding: $size--spacing-05;
+        animation: datatable-filter-transition-in $transition--app-01;
+        opacity: 1;
+      }
+    }
+
     &-header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       min-height: calc($size--container-04 * 2);
-      padding: 0 0 $size--spacing-03 0;
+
+      & + .$(prefix)--datatable-toolbar {
+        padding-top: 0;
+      }
     }
 
     &-footer {
@@ -43,12 +66,20 @@
       @mixin type--body-02;
 
       display: flex;
+      justify-content: space-between;
       padding: $size--spacing-05;
       color: $color--font-text-01;
       gap: $size--spacing-03;
 
+      &__actions {
+        display: flex;
+        flex-flow: row;
+        gap: $component--padding-inside;
+      }
+
       & > .$(prefix)--search {
-        width: $size--container-08;
+        width: 100%;
+        max-width: calc($size--container-08 + $size--container-07);
       }
     }
 
@@ -70,7 +101,9 @@
 
         &-interactive {
           &:hover {
+            border-color: $color--border-light;
             background-color: $color--hover;
+            cursor: pointer;
           }
 
           &:active {
@@ -79,8 +112,18 @@
         }
 
         &-active {
-          border-color: $color--border-selected;
-          background-color: $color--selected;
+          border-color: $color--border-light;
+          background-color: $color--background-light;
+
+          &:hover {
+            border-color: $color--border-light;
+            background-color: $color--hover-light;
+            cursor: pointer;
+          }
+
+          &:active {
+            background-color: $color--active-light;
+          }
         }
 
         &-selection {
@@ -151,11 +194,12 @@
           padding: 0 $size--spacing-04;
 
           &--checked {
-            border-color: $color--border-selected;
-            background-color: $color--selected;
+            border-color: $color--border-light;
+            background-color: $color--background-light;
+
             & ~ .$(prefix)--datatable-body__cell {
-              border-color: $color--border-selected;
-              background-color: $color--selected;
+              border-color: $color--border-light;
+              background-color: $color--background-light;
             }
           }
 
@@ -176,8 +220,18 @@
 
       &:hover {
         & > .$(prefix)--datatable-body__cell {
-          border-color: $color--border-selected;
+          border-color: $color--border-light;
           background-color: $color--hover;
+        }
+
+        & > .$(prefix)--datatable-body__cell-selection--checked {
+          border-color: $color--border-light;
+          background-color: $color--hover-light;
+
+          & ~ .$(prefix)--datatable-body__cell {
+            border-color: $color--border-light;
+            background-color: $color--hover-light;
+          }
         }
       }
     }

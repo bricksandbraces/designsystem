@@ -15,6 +15,9 @@ $color--app-background: $gray-50;
 $color--background: $gray-100;
 $color--hover: $gray-150;
 $color--active: $gray-200;
+$color--background-light: $gray-150;
+$color--hover-light: $gray-200;
+$color--active-light: $gray-250;
 $color--focus: $white;
 $color--focus-inverse: $black;
 $color--divider-dark: rgba($black, 0.2);
@@ -36,7 +39,7 @@ $color--table-active: $gray-250;
 /* -- Border Colors -- */
 
 $color--border: $gray-150;
-$color--border-selected: $gray-200;
+$color--border-light: $gray-200;
 
 /* -- Divider Colors -- */
 
@@ -198,6 +201,19 @@ $transition--app-05: 0.75s cubic-bezier(1, 0.21, 0.71, 0.69);
   100% {
     padding: $size--spacing-04 $size--spacing-04 $size--spacing-04
       $size--spacing-04;
+    opacity: 1;
+  }
+}
+
+@keyframes datatable-filter-transition-in {
+  0% {
+    padding: 0 $size--spacing-05 $size--spacing-05 $size--spacing-05;
+    opacity: 0;
+  }
+
+  100% {
+    padding: $size--spacing-05 $size--spacing-05 $size--spacing-05
+      $size--spacing-05;
     opacity: 1;
   }
 }

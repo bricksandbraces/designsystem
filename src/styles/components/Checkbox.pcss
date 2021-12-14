@@ -9,6 +9,27 @@
     margin-bottom: 0.5rem;
     color: $color--font-unselected;
 
+    &-group {
+      display: flex;
+
+      & > .$(prefix)--checkbox {
+        margin: 0;
+      }
+
+      &__horizontal {
+        flex-flow: row;
+        gap: $size--spacing-05;
+      }
+
+      &__vertical {
+        flex-flow: column;
+      }
+
+      &__legend {
+        @mixin type--label;
+      }
+    }
+
     &
       > .$(prefix)--checkbox-input[type="checkbox"]
       + label

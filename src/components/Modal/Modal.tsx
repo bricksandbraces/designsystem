@@ -117,7 +117,7 @@ const Modal = (
   const mounted = useMounted();
 
   return (
-    <div>
+    <>
       {mounted &&
         ReactDOM.createPortal(
           <div
@@ -169,7 +169,7 @@ const Modal = (
           </div>,
           document.body
         )}
-    </div>
+    </>
   );
 };
 

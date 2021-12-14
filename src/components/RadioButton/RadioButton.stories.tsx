@@ -130,12 +130,13 @@ export const WithChildren = () => {
   );
 };
 
-export const AsGroupUncontrolled = () => {
+export const AsHorizontalGroupUncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <form>
           <RadioButtonGroup
+            orientation="horizontal"
             disabled={boolean("disabled", false)}
             legendLabel={text("legendLabel", "Legend Label")}
             name={text("name", "radio-grop-demo")}
@@ -163,13 +164,52 @@ export const AsGroupUncontrolled = () => {
   );
 };
 
-export const AsGroupControlled = () => {
+export const AsHorizontalGroupControlled = () => {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <form>
           <RadioButtonGroup
+            orientation="horizontal"
+            disabled={boolean("disabled", false)}
+            legendLabel={text("legendLabel", "Legend Label")}
+            name={text("name", "radio-grop-demo")}
+            value={selectedValue}
+            onChange={(newValue, event) => {
+              setSelectedValue(newValue);
+              action("onChange")(newValue, event);
+            }}
+          >
+            <RadioButton
+              id="c3"
+              value="coffee1"
+              label="Coffee"
+              onBlur={action("onBlur")}
+              onFocus={action("onFocus")}
+            />
+            <RadioButton
+              id="c42"
+              value="coffee2"
+              label="Espresso"
+              onBlur={action("onBlur")}
+              onFocus={action("onFocus")}
+            />
+          </RadioButtonGroup>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export const AsVerticalGroupControlled = () => {
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <form>
+          <RadioButtonGroup
+            orientation="vertical"
             disabled={boolean("disabled", false)}
             legendLabel={text("legendLabel", "Legend Label")}
             name={text("name", "radio-grop-demo")}
