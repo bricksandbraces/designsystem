@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, TableCell } from "../..";
+import { Checkbox, TableBodyCell } from "../..";
 import { prefix } from "../../settings";
 import cx from "classnames";
 
@@ -42,7 +42,7 @@ const TableSelectionCell = (
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   return (
-    <TableCell
+    <TableBodyCell
       className={cx(`${prefix}--datatable-body__cell-selection`, {
         [`${prefix}--datatable-body__cell-selection--checked`]: checked
       })}
@@ -57,7 +57,7 @@ const TableSelectionCell = (
         onChange={onChange}
         label={label}
       />
-    </TableCell>
+    </TableBodyCell>
   );
 };
 

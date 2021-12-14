@@ -10,9 +10,8 @@ import {
   TableHeadCell,
   TableContainer,
   TableBody,
-  TableCell,
+  TableBodyCell,
   SearchInput,
-  Modal,
   Checkbox,
   Button,
   ButtonGroup,
@@ -35,12 +34,11 @@ import TableTitle from "./TableTitle";
 import TableHeader from "./TableHeader";
 import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconDotsVertical, IconFilter } from "@tabler/icons";
-import ModalHeader from "../Modal/ModalHeader";
-import ModalBody from "../Modal/ModalBody";
 import TableFooter from "./TableFooter";
 import TableToolbarActions from "./TableToolbarActions";
 import CheckboxGroup from "../Checkbox/CheckboxGroup";
 import TableFilterPanel from "./TableFilterPanel";
+import TableSkeletonCell from "./TableSkeletonCell";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
@@ -192,9 +190,9 @@ export const Default = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -258,9 +256,9 @@ export const WithSelection = () => {
                             onChange={() => toggleSelectionForRow(row)}
                           />
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -319,9 +317,9 @@ export const WithRadioSelection = () => {
                             onChange={() => selectID(row.id)}
                           />
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -389,9 +387,9 @@ export const WithSorting = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -445,9 +443,9 @@ export const WithHeader = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -526,9 +524,9 @@ export const WithToolbar = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -618,9 +616,36 @@ export const WithFilterPanel = () => {
                       <Button>Add new Order</Button>
                     </TableToolbarActions>
                   </TableToolbar>
-                  <TableFilterPanel open={filterPanelOpen}>
+                  <TableFilterPanel
+                    open={filterPanelOpen}
+                    onClose={() => setFilterPanelOpen(!filterPanelOpen)}
+                  >
                     <CheckboxGroup
-                      orientation="horizontal"
+                      orientation="vertical"
+                      legendLabel="Location (Country)"
+                      name="filter"
+                    >
+                      <Checkbox
+                        id="location-filter-ger"
+                        label="Germany"
+                        value="Germany"
+                        onChange={() => toggleLocationFilter("Germany")}
+                      />
+                      <Checkbox
+                        id="location-filter-jap"
+                        label="Japan"
+                        value="Japan"
+                        onChange={() => toggleLocationFilter("Japan")}
+                      />
+                      <Checkbox
+                        id="location-filter-usa"
+                        label="USA"
+                        value="USA"
+                        onChange={() => toggleLocationFilter("USA")}
+                      />
+                    </CheckboxGroup>
+                    <CheckboxGroup
+                      orientation="vertical"
                       legendLabel="Location (Country)"
                       name="filter"
                     >
@@ -661,9 +686,9 @@ export const WithFilterPanel = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -715,9 +740,9 @@ export const WithRowActions = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                           <TableActions>
                             <Link
@@ -819,9 +844,9 @@ export const WithBatchActions = () => {
                             onChange={() => toggleSelectionForRow(row)}
                           />
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -883,9 +908,9 @@ export const WithTablePagination = () => {
                       {rows.map((row) => (
                         <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableCell key={`${row.id}-${header.key}`}>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
                               {row[header.key]}
-                            </TableCell>
+                            </TableBodyCell>
                           ))}
                         </TableRow>
                       ))}
@@ -898,6 +923,99 @@ export const WithTablePagination = () => {
                       onPageChange={(newPage) => setPage(newPage)}
                     />
                   </TableFooter>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [page, setPage] = useState<number>(0);
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            page={page}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with TablePagination</TableTitle>
+                  </TableHeader>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                    </TableBody>
+                  </Table>
                 </TableContainer>
               );
             }}

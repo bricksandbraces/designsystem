@@ -4,6 +4,7 @@
 
 .$(prefix) {
   &--datatable {
+    position: relative;
     overflow: hidden;
     border: 0.0625rem solid $color--border;
     border-radius: $component--radius-default;
@@ -15,22 +16,67 @@
     }
 
     &-filterpanel {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
       width: 100%;
-      max-height: 0;
-      padding: 0 $size--spacing-05;
+      max-width: $size--container-08;
+      height: 100%;
       overflow: hidden;
-      transition: padding $transition--app-01, opacity $transition--app-01;
-      border-top: 0.0625rem solid $color--border-light;
-      border-bottom: 0.0625rem solid $color--border-light;
+      transform: translateX($size--container-08);
+      transition: transform $transition--app-01, visibility $transition--app-01,
+        opacity $transition--app-01;
+      border-left: 0.0625rem solid $color--border;
       opacity: 0;
-      background-color: $color--background-light;
+      background-color: $color--background;
+      box-shadow: $component--shadow-default;
       color: $color--font-text-01;
 
       &__open {
-        max-height: unset;
-        padding: $size--spacing-05;
-        animation: datatable-filter-transition-in $transition--app-01;
+        visibility: visible;
+        transform: translateX(0);
         opacity: 1;
+      }
+
+      &__filter {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: $size--spacing-03 $size--spacing-05 $size--spacing-09
+          $size--spacing-05;
+        overflow-y: scroll;
+      }
+
+      &__header {
+        position: relative;
+        padding: $size--spacing-05 $size--spacing-05 $size--spacing-03
+          $size--spacing-05;
+
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: 1000;
+          bottom: calc($size--spacing-05 * -1 + 0.0625rem);
+          left: 0;
+          width: 100%;
+          height: $size--container-01;
+          background: linear-gradient(
+            to top,
+            rgba($color--background, 0),
+            rgba($color--background, 1)
+          );
+        }
+
+        & > .$(prefix)--typography {
+          margin: 0;
+        }
+      }
+
+      &__close {
+        position: absolute;
+        top: $size--spacing-03;
+        right: $size--spacing-03;
       }
     }
 
@@ -85,7 +131,24 @@
 
     &-table {
       width: 100%;
-      table-layout: auto;
+      table-layout: fixed;
+    }
+
+    &-skeleton {
+      &__cell {
+        padding: 0 $size--spacing-05;
+        border-bottom: 0.0625rem solid $color--border;
+        background-color: $color--background;
+        color: $color--font-text-03;
+        vertical-align: middle;
+
+        &-label {
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
 
     &-head {
@@ -213,7 +276,8 @@
 
     &-row {
       &:last-child {
-        & > .$(prefix)--datatable-body__cell {
+        & > .$(prefix)--datatable-body__cell,
+        & > .$(prefix)--datatable-skeleton__cell {
           border-bottom: 0;
         }
       }
@@ -334,7 +398,11 @@
         &
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
-          > .$(prefix)--datatable-body__cell {
+          > .$(prefix)--datatable-body__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-small;
         }
       }
@@ -352,7 +420,11 @@
         &
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
-          > .$(prefix)--datatable-body__cell {
+          > .$(prefix)--datatable-body__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-default;
         }
       }
@@ -370,7 +442,11 @@
         &
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
-          > .$(prefix)--datatable-body__cell {
+          > .$(prefix)--datatable-body__cell,
+        &
+          > .$(prefix)--datatable-body
+          > .$(prefix)--datatable-row
+          > .$(prefix)--datatable-skeleton__cell {
           height: $size--field-large;
         }
       }

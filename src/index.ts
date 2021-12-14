@@ -36,7 +36,7 @@ import Table from "./components/DataTable/Table";
 import TableHead from "./components/DataTable/TableHead";
 import TableHeadCell from "./components/DataTable/TableHeadCell";
 import TableRow from "./components/DataTable/TableRow";
-import TableCell from "./components/DataTable/TableCell";
+import TableBodyCell from "./components/DataTable/TableBodyCell";
 import TableContainer from "./components/DataTable/TableContainer";
 import TableBody from "./components/DataTable/TableBody";
 import { HeaderEntry, RowEntry } from "./components/DataTable/DataTable";
@@ -96,7 +96,7 @@ export {
   Search,
   SearchInput,
   Table,
-  TableCell,
+  TableBodyCell,
   TableBody,
   TableContainer,
   TableRow,

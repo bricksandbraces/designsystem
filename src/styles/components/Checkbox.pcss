@@ -11,14 +11,15 @@
 
     &-group {
       display: flex;
-
-      & > .$(prefix)--checkbox {
-        margin: 0;
-      }
+      margin-bottom: $size--spacing-03;
 
       &__horizontal {
         flex-flow: row;
         gap: $size--spacing-05;
+
+        & > .$(prefix)--checkbox {
+          margin: 0;
+        }
       }
 
       &__vertical {

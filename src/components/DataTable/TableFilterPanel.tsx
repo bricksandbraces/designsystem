@@ -1,6 +1,9 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import { Headline } from "../..";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconX } from "@tabler/icons";
 
 export type TableToolbarFilterPanelProps = {
   /**
@@ -12,10 +15,15 @@ export type TableToolbarFilterPanelProps = {
    * TableToolbarFilterPanel Open
    */
   open?: boolean;
+
+  /**
+   * TableToolbarFilterPanel OnClose
+   */
+  onClose?: () => void;
 };
 
 const TableToolbarFilterPanel = (
-  { open, children, ...rest }: TableToolbarFilterPanelProps,
+  { open, children, onClose, ...rest }: TableToolbarFilterPanelProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (
@@ -25,7 +33,19 @@ const TableToolbarFilterPanel = (
       })}
       {...rest}
     >
-      {children}
+      <div className={cx(`${prefix}--datatable-filterpanel__header`)}>
+        <IconOnlyButton
+          size="small"
+          kind="ghost"
+          onClick={onClose}
+          icon={<IconX />}
+          className={cx(`${prefix}--datatable-filterpanel__close`)}
+        />
+        <Headline type="h5">Filter</Headline>
+      </div>
+      <div className={cx(`${prefix}--datatable-filterpanel__filter`)}>
+        {children}
+      </div>
     </div>
   );
 };

@@ -2,20 +2,20 @@ import React from "react";
 import { prefix } from "../../settings";
 import cx from "classnames";
 
-export type TableCellProps = {
+export type TableBodyCellProps = {
   /**
-   * React children
+   * TableBodyCell Children
    */
   children: React.ReactNode;
 
   /**
-   * TableCell ClassName
+   * TableBodyCell ClassName
    */
   className?: string;
 };
 
-const TableCell = (
-  { children, className, ...rest }: TableCellProps,
+const TableBodyCell = (
+  { children, className, ...rest }: TableBodyCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   return (
@@ -29,4 +29,4 @@ const TableCell = (
   );
 };
 
-export default React.forwardRef(TableCell);
+export default React.forwardRef(TableBodyCell);
