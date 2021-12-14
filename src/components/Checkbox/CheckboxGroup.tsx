@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
+import { assert } from "@openbricksandbraces/eloguent";
+import { mapReactChildren } from "../../helpers/reactUtilities";
+import { useControlled } from "../../hooks/useControlled";
+import { RadioTileProps } from "../RadioTile/RadioTile";
 
 export type CheckboxGroupProps = {
   /**
@@ -19,14 +23,14 @@ export type CheckboxGroupProps = {
   children?: React.ReactNode;
 
   /**
-   * CheckboxGroup Value (Controlled). Use null for nothing selected but controlled.
+   * CheckboxGroup Value (Controlled).
    */
-  value?: string | null;
+  value?: string[];
 
   /**
    * CheckboxGroup Default Value (Uncontrolled)
    */
-  defaultValue?: string;
+  defaultValue?: string[];
 
   /**
    * CheckboxGroup Label
@@ -52,7 +56,7 @@ export type CheckboxGroupProps = {
    * OnChange values
    */
   onChange?: (
-    newValue: string | null,
+    newValue: string[],
     event: React.ChangeEvent<HTMLInputElement>
   ) => void;
 };
@@ -61,6 +65,9 @@ const CheckboxGroup = (
   {
     id,
     legendLabel,
+    value,
+    defaultValue,
+    onChange,
     disabled,
     className,
     children,
@@ -69,6 +76,15 @@ const CheckboxGroup = (
   }: CheckboxGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
 ) => {
+  const controlled = useControlled(value);
+  const [selectedValue, setSelectedValue] = useState<string[]>(
+    defaultValue ?? value ?? []
+  );
+  useEffect(() => {
+    if (controlled) {
+      setSelectedValue(value ?? []);
+    }
+  }, [value]);
   return (
     <fieldset
       id={id}
@@ -87,7 +103,32 @@ const CheckboxGroup = (
           {legendLabel}
         </legend>
       )}
-      {children}
+      {mapReactChildren<RadioTileProps>(children, ({ props, child }) => {
+        assert(
+          props.checked === undefined && props.defaultChecked === undefined,
+          `You provided either checked or defaultChecked property to the RadioTile
+           while it is a child of the RadioTileGroup. That is illegal. While using 
+           a RadioTileGroup you have to manage its value only on the group as those 
+           properties are being ignored on the child elements.`
+        );
+        return React.cloneElement(child, {
+          name,
+          checked: selectedValue.includes(props.value),
+          disabled: disabled || props.disabled,
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+            const newValue = !selectedValue.includes(props.value)
+              ? [...selectedValue, props.value]
+              : selectedValue.filter((val) => val !== props.value);
+
+            if (!controlled) {
+              setSelectedValue(newValue);
+            }
+
+            props.onChange?.(event);
+            onChange?.(newValue, event);
+          }
+        });
+      })}
     </fieldset>
   );
 };

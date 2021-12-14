@@ -113,7 +113,7 @@ export const AsGroupUncontrolled = () => {
           <RadioTileGroup
             disabled={boolean("disabled", false)}
             legendLabel={text("legendLabel", "Legend Label")}
-            name={text("name", "radio-grop-demo")}
+            name={text("name", "radio-group-demo")}
             defaultValue="coffee2"
             onChange={action("onChange")}
           >

@@ -3,6 +3,7 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import Body from "../Typography/Body";
 import Checkbox from "./Checkbox";
+import CheckboxGroup from "./CheckboxGroup";
 import CheckboxSkeleton from "./CheckboxSkeleton";
 
 export default { title: "Components/A_REFA_Checkbox", decorators: [withKnobs] };
@@ -85,6 +86,72 @@ export const WithChildren = () => {
           </Body>
         </Checkbox>
       </div>
+    </div>
+  );
+};
+
+export const AsGroupUncontrolled = () => {
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <form>
+        <CheckboxGroup
+          disabled={boolean("disabled", false)}
+          legendLabel={text("legendLabel", "Legend Label")}
+          name={text("name", "checkbox-group-demo")}
+          defaultValue={["fries"]}
+          onChange={action("onChange")}
+        >
+          <Checkbox
+            label={text("label1", "Checkbox label 1")}
+            id="checkbox-1"
+            value="fries"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+          <Checkbox
+            label={text("label2", "Checkbox label 2")}
+            id="checkbox-2"
+            value="wedges"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+        </CheckboxGroup>
+      </form>
+    </div>
+  );
+};
+
+export const AsGroupControlled = () => {
+  const [selectedList, setSelectedList] = useState<string[]>([]);
+  return (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <form>
+        <CheckboxGroup
+          disabled={boolean("disabled", false)}
+          legendLabel={text("legendLabel", "Legend Label")}
+          name={text("name", "checkbox-group-demo")}
+          value={selectedList}
+          onChange={(newValue, event) => {
+            setSelectedList(newValue);
+            action("onChange")(event);
+          }}
+        >
+          <Checkbox
+            label={text("label1", "Checkbox label 1")}
+            id="checkbox-1"
+            value="fries"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+          <Checkbox
+            label={text("label2", "Checkbox label 2")}
+            id="checkbox-2"
+            value="wedges"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+        </CheckboxGroup>
+      </form>
     </div>
   );
 };

@@ -45,6 +45,16 @@ export type CheckboxProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 
   /**
+   * Checkbox OnBlur Function
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * Checkbox OnFocus Function
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
    * Checkbox Disabled
    */
   disabled?: boolean;
@@ -73,6 +83,8 @@ const Checkbox = (
     disabled,
     children,
     onChange,
+    onBlur,
+    onFocus,
     ...rest
   }: CheckboxProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -110,6 +122,8 @@ const Checkbox = (
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
         {...rest}
       />
       <label className={`${prefix}--checkbox-label`} htmlFor={id}>
