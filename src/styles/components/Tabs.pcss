@@ -8,15 +8,22 @@
 
     &-btn {
       position: relative;
+      max-width: calc($size--container-07 + $size--container-05);
       height: $size--container-04;
-      padding: 0 $size--spacing-05;
+      margin-right: $size--spacing-01;
+      padding: 0 $size--spacing-05 0 $size--spacing-05;
+      overflow: hidden;
       transition: background-color $transition--app-01,
         border-color $transition--app-01;
       border: 0;
+      border-top: calc(0.0625rem * 3) solid transparent;
       border-bottom: calc(0.0625rem * 3) solid $color--background-light;
-      border-radius: 0;
+      border-radius: $component--radius-default;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
       background-color: transparent;
       color: $color--font-unselected;
+      text-align: start;
 
       &:disabled {
         color: $color--font-disabled;
@@ -34,41 +41,34 @@
 
       &__label {
         margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       &:hover {
-        border-color: $color--hover-light;
-        background-color: $color--hover;
+        border-bottom-color: $color--hover-light;
       }
 
       &:focus-visible {
+        border-radius: $component--radius-default;
         outline: 0.0625rem solid $color--focus;
         outline-offset: -0.0625rem;
       }
 
-      &:active {
-        background-color: $color--active;
-      }
-
       &__selected {
         position: relative;
-        border-color: $color--decoration;
+        border-bottom-color: $color--decoration;
         color: $color--font-selected;
-        pointer-events: none;
 
-        & > .typography {
-          font-weight: 600;
-        }
-
-        &::after {
-          opacity: 1;
+        &:hover {
+          border-bottom-color: $color--decoration;
         }
       }
     }
 
     &-content {
       width: 80%;
-      padding: $size--spacing-06 0;
+      padding: $size--spacing-05;
       color: $color--font-text-01;
 
       &__item {
