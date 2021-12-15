@@ -6,7 +6,7 @@ import TextInput from "./TextInput";
 import TextInputSkeleton from "./TextInputSkeleton";
 
 export default {
-  title: "Components/A_REFA_TextInput",
+  title: "Components Ready/TextInput",
   decorators: [withKnobs]
 };
 

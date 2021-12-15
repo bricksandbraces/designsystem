@@ -18,7 +18,7 @@ import ButtonSkeleton from "./ButtonSkeleton";
 import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
 
 export default {
-  title: "Components/A_REFA_Button",
+  title: "Components Ready/Button",
   decorators: [withKnobs]
 };
 

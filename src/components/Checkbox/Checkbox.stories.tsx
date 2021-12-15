@@ -6,7 +6,7 @@ import Checkbox from "./Checkbox";
 import CheckboxGroup from "./CheckboxGroup";
 import CheckboxSkeleton from "./CheckboxSkeleton";
 
-export default { title: "Components/A_REFA_Checkbox", decorators: [withKnobs] };
+export default { title: "Components Ready/Checkbox", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

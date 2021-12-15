@@ -4,7 +4,7 @@ import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
 import SkeletonContainer from "./SkeletonContainer";
 import SkeletonText from "./SkeletonText";
 
-export default { title: "Components/A_REFA_Skeleton", decorators: [withKnobs] };
+export default { title: "Components Ready/Skeleton", decorators: [withKnobs] };
 
 export const AnimatedContainer = () => {
   return (

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import TextArea from "./TextArea";
 import TextAreaSkeleton from "./TextAreaSkeleton";
 
-export default { title: "Components/A_REFA_TextArea", decorators: [withKnobs] };
+export default { title: "Components Ready/TextArea", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (

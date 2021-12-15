@@ -13,7 +13,7 @@ import DatePicker from "./DatePicker";
 import DatePickerSkeleton from "./DatePickerSkeleton";
 
 export default {
-  title: "Components/A_REFA_DatePicker",
+  title: "Components Ready/DatePicker",
   decorators: [withKnobs]
 };
 

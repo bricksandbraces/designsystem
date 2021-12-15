@@ -5,7 +5,7 @@ import React from "react";
 import Body from "../Typography/Body";
 import Link from "./Link";
 
-export default { title: "Components/A_REFA_Link", decorators: [withKnobs] };
+export default { title: "Components Ready/Link", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

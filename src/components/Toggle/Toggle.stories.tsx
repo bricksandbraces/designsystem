@@ -5,7 +5,7 @@ import Body from "../Typography/Body";
 import Toggle from "./Toggle";
 import ToggleSkeleton from "./ToggleSkeleton";
 
-export default { title: "Components/A_REFA_Toggle", decorators: [withKnobs] };
+export default { title: "Components Ready/Toggle", decorators: [withKnobs] };
 
 const toggleActions = actions("onBlur", "onFocus", "onChange", "onClick");
 

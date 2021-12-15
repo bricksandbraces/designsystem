@@ -4,7 +4,7 @@ import AspectRatio from "./AspectRatio";
 import { prefix } from "../../settings";
 
 export default {
-  title: "Components/A_REFA_AspectRatio",
+  title: "Components Ready/AspectRatio",
   decorators: [withKnobs]
 };
 

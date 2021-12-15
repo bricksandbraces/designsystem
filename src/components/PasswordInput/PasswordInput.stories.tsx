@@ -5,7 +5,7 @@ import PasswordInput from "./PasswordInput";
 import PasswordInputSkeleton from "./PasswordInputSkeleton";
 
 export default {
-  title: "Components/A_REFA_PasswordInput",
+  title: "Components Ready/PasswordInput",
   decorators: [withKnobs]
 };
 

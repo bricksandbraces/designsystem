@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import DropdownSkeleton from "./DropdownSkeleton";
 
-export default { title: "Components/A_REFA_Dropdown", decorators: [withKnobs] };
+export default { title: "Components Ready/Dropdown", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",

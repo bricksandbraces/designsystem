@@ -13,7 +13,7 @@ import NumberInput from "./NumberInput";
 import NumberInputSkeleton from "./NumberInputSkeleton";
 
 export default {
-  title: "Components/A_REFA_NumberInput",
+  title: "Components Ready/NumberInput",
   decorators: [withKnobs]
 };
 
