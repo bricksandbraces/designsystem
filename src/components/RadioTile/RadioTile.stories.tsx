@@ -28,6 +28,7 @@ export const Default = () => {
             }}
           >
             <RadioTile
+              light={boolean("light", false)}
               name="g1"
               id="checkbox-1"
               value="value-1"
@@ -38,6 +39,7 @@ export const Default = () => {
               {text("label", "Café Latte")}
             </RadioTile>
             <RadioTile
+              light={boolean("light", false)}
               name="g1"
               id="checkbox-2"
               value="value-2"
@@ -75,6 +77,7 @@ export const Controlled = () => {
             }}
           >
             <RadioTile
+              light={boolean("light", false)}
               value="value-1"
               id="checkbox-1"
               name="1"
@@ -87,6 +90,7 @@ export const Controlled = () => {
               {text("label", "Café Latte")}
             </RadioTile>
             <RadioTile
+              light={boolean("light", false)}
               value="value-2"
               id="checkbox-2"
               name="1"
@@ -117,10 +121,10 @@ export const AsGroupUncontrolled = () => {
             defaultValue="coffee2"
             onChange={action("onChange")}
           >
-            <RadioTile id="c1" value="coffee1">
+            <RadioTile light={boolean("light", false)} id="c1" value="coffee1">
               Coffee
             </RadioTile>
-            <RadioTile id="c2" value="coffee2">
+            <RadioTile light={boolean("light", false)} id="c2" value="coffee2">
               Espresso
             </RadioTile>
           </RadioTileGroup>

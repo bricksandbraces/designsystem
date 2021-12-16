@@ -89,6 +89,11 @@ export type NumberInputProps = {
   fluid?: boolean;
 
   /**
+   * NumberInput Light
+   */
+  light?: boolean;
+
+  /**
    * NumberInput HideButtons
    */
   hideButtons?: boolean;
@@ -147,6 +152,7 @@ const NumberInput = (
     size = "default",
     children,
     hideButtons,
+    light,
     step = 1,
     min,
     max,
@@ -204,6 +210,7 @@ const NumberInput = (
       className={cx(
         `${prefix}--numberinput`,
         {
+          [`${prefix}--numberinput-light`]: light,
           [`${prefix}--numberinput-fluid`]: fluid,
           [`${prefix}--numberinput-disabled`]: disabled,
           [`${prefix}--numberinput-readonly`]: readOnly

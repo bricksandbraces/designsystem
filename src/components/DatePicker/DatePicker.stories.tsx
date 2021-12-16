@@ -34,6 +34,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        light={boolean("light", false)}
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         defaultValue={format(defaultDate, dateFormat)}
@@ -71,6 +72,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        light={boolean("light", false)}
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         value={textValue}
@@ -115,6 +117,7 @@ export const SingleWithCalendarUncontrolled = () => {
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            light={boolean("light", false)}
             disabled={boolean("disabled", false)}
             readOnly={boolean("readOnly", false)}
             label="Single with calendar"
@@ -138,6 +141,7 @@ export const SingleWithCalendarUncontrolled = () => {
               const selectedDay = insertedDate ?? undefined;
               return (
                 <DatePicker
+                  light={boolean("light", false)}
                   open={open}
                   selectedDays={selectedDay}
                   onDayClick={(newDate) => {
@@ -176,6 +180,7 @@ export const SingleWithCalendarControlled = () => {
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
         >
           <DateInput
+            light={boolean("light", false)}
             disabled={boolean("disabled", false)}
             readOnly={boolean("readOnly", false)}
             label="Single with calendar"
@@ -199,6 +204,7 @@ export const SingleWithCalendarControlled = () => {
               const selectedDay = insertedDate ?? undefined;
               return (
                 <DatePicker
+                  light={boolean("light", false)}
                   open={open}
                   selectedDays={selectedDay}
                   onDayClick={(newDate) => {

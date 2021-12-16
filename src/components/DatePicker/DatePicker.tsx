@@ -3,7 +3,10 @@ import DayPicker, { DayPickerProps } from "react-day-picker";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-export type DatePickerProps = { open?: boolean } & DayPickerProps;
+export type DatePickerProps = {
+  open?: boolean;
+  light?: boolean;
+} & DayPickerProps;
 
 const months = [
   "Januar",
@@ -31,7 +34,7 @@ const weekdaysLong = [
 const weekdaysShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
 const DatePicker = (
-  { className, open, ...rest }: DatePickerProps,
+  { className, open, light, ...rest }: DatePickerProps,
   ref: React.ForwardedRef<DayPicker>
 ) => {
   return (
@@ -44,6 +47,7 @@ const DatePicker = (
       weekdaysShort={weekdaysShort}
       fixedWeeks
       className={cx(className, `${prefix}--datepicker`, {
+        [`${prefix}--datepicker-light`]: light,
         [`${prefix}--datepicker-hidden`]: !open
       })}
       {...rest}

@@ -7,6 +7,21 @@
     display: inline-flex;
     color: $color--font-unselected;
 
+    &-light {
+      & > .$(prefix)--tile {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        &:hover {
+          background-color: $color--hover-light;
+        }
+
+        &:active {
+          background-color: $color--active-light;
+        }
+      }
+    }
+
     &-group {
       display: flex;
       gap: $size--spacing-05;

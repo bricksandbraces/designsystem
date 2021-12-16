@@ -58,6 +58,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Dropdown
+        light={boolean("light", false)}
         label={text("label", "Dropdown label")}
         title={text("title", "Dropdown title")}
         size={select("size", sizeOptions, defaultSize) as any}
@@ -80,6 +81,7 @@ export const Controlled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Dropdown
+        light={boolean("light", false)}
         label={text("label", "Dropdown label")}
         title={text("title", "Dropdown title")}
         size={select("size", sizeOptions, defaultSize) as any}

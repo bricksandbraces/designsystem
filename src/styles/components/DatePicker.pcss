@@ -17,6 +17,45 @@
     background: $color--background;
     box-shadow: $component--shadow-default;
 
+    &-light {
+      border-color: $color--border-light;
+      background: $color--background-light;
+
+      &.DayPicker
+        > .DayPicker-wrapper
+        > .DayPicker-Months
+        > .DayPicker-Month
+        > .DayPicker-Weekdays
+        > .DayPicker-WeekdaysRow {
+        &::before {
+          background-color: $color--border-light;
+        }
+      }
+
+      &.$(prefix)--datepicker.DayPicker:not(.DayPicker--interactionDisabled)
+        .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
+        &:hover {
+          background-color: $color--hover-light;
+        }
+
+        &:active {
+          background-color: $color--active-light;
+        }
+      }
+
+      &.$(prefix)--datepicker > .DayPicker-wrapper > .DayPicker-NavBar {
+        & > .DayPicker-NavButton {
+          &:hover {
+            background-color: $color--hover-light;
+          }
+
+          &:active {
+            background-color: $color--active-light;
+          }
+        }
+      }
+    }
+
     &-hidden {
       visibility: hidden;
       transform: translateY(calc($size--spacing-03 * -1));
@@ -87,6 +126,11 @@
           &:hover {
             opacity: unset;
             background-color: $color--hover;
+          }
+
+          &:active {
+            opacity: unset;
+            background-color: $color--active;
           }
 
           &:focus-visible {
