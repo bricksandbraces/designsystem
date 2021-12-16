@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import mergeRefs from "react-merge-refs";
 import TextInput, { TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
@@ -7,6 +7,7 @@ import { useControlled, useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type DateInputProps = {
   /**
@@ -48,6 +49,11 @@ export type DateInputProps = {
    * DateInput OnBlur
    */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * DateInput OnClick on the Input
+   */
+  onInput?: React.MouseEventHandler<HTMLInputElement>;
 
   /**
    * DateInput OnFocus
@@ -93,6 +99,7 @@ const DateInput = (
     onChange,
     onDateChanged,
     onKeyDown,
+    onClick,
     onFocus,
     onBlur,
     ...props
@@ -130,7 +137,7 @@ const DateInput = (
   };
 
   return (
-    <>
+    <div>
       <TextInput
         icon={<IconCalendar />}
         placeholder={dateFormat}
@@ -151,6 +158,7 @@ const DateInput = (
           filterForKeys(["Enter"], () => handleSubmit())(event);
           onKeyDown?.(event);
         }}
+        onClick={withoutPropagation(onClick)}
         label={`${label} (${dateFormat.toLocaleLowerCase()})`}
         {...props}
       />
@@ -162,10 +170,8 @@ const DateInput = (
         }
         onDateChanged?.(newDate, newTextValue);
       })}
-    </>
+    </div>
   );
 };
 
-export default React.memo(
-  forwardRef<HTMLInputElement, DateInputProps>(DateInput)
-);
+export default React.memo(React.forwardRef(DateInput));

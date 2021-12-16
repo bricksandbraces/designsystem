@@ -10,10 +10,8 @@ import LogoBlack from "./assets/logo-black.svg";
 addDecorator((storyFn) => <Layout>{storyFn()}</Layout>);
 
 configureActions({
-  depth: 3,
   // Limit the number of items logged into the actions panel
-  limit: 15,
-  allowFunction: false
+  limit: 15
 });
 
 export const parameters = {
@@ -25,7 +23,7 @@ export const parameters = {
      */
     showRoots: true
   },
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: "^on.*" },
   backgrounds: {
     default: "app-bg",
     values: [
