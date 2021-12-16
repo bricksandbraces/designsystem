@@ -10,7 +10,7 @@ export type OverflowMenuProps = {
   /**
    * OverflowMenu Children
    */
-  children?: string | React.ReactNode;
+  children?: React.ReactNode | React.ReactNode[];
 
   /**
    * OverflowMenu Icon
@@ -21,7 +21,7 @@ export type OverflowMenuProps = {
    * OverflowMenu Size
    */
   size?: "large" | "default" | "small";
-} & Omit<TippyProps, "content">;
+} & Omit<TippyProps, "content" | "children">;
 
 const OverflowMenu = (
   {
