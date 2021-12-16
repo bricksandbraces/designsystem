@@ -28,6 +28,35 @@
       max-height: $size--field-large;
     }
 
+    &-light {
+      & > .$(prefix)--accordion-list {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        & > .$(prefix)--accordion-list__item {
+          background-color: $color--background-light;
+
+          & > .$(prefix)--accordion-list__item-title {
+            &:hover {
+              background: $color--hover-light;
+            }
+
+            &:active {
+              background: $color--active-light;
+            }
+
+            &:disabled {
+              background-color: $color--background-light;
+
+              &:hover {
+                background-color: $color--background-light;
+              }
+            }
+          }
+        }
+      }
+    }
+
     &-list {
       margin: 0;
       padding: 0;

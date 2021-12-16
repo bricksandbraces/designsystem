@@ -25,6 +25,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <TextInput
+        light={boolean("light", false)}
         size={select("size", sizeOptions, defaultSize) as any}
         fluid={boolean("fluid", false)}
         warningText={text("warningText", "")}
@@ -56,6 +57,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <TextInput
+        light={boolean("light", false)}
         size={select("size", sizeOptions, defaultSize) as any}
         fluid={boolean("fluid", false)}
         disabled={boolean("disabled", false)}

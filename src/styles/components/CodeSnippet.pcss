@@ -4,6 +4,18 @@
 
 .$(prefix) {
   &--codesnippet {
+    &-light {
+      &.$(prefix)--codesnippet-container {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        & > .$(prefix)--codesnippet-button__container {
+          border-color: $color--border-light;
+          background-color: $color--background-light;
+        }
+      }
+    }
+
     &-single {
       &.$(prefix)--codesnippet-container {
         min-height: $size--container-06;

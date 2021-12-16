@@ -37,6 +37,11 @@ export type CodeSnippetProps = {
   className?: string;
 
   /**
+   * CodeSnippet Light
+   */
+  light?: boolean;
+
+  /**
    * CodeSnippet Type
    */
   type?: "multi" | "single";
@@ -48,6 +53,7 @@ const CodeSnippet = (
     className,
     showMoreLabel = "Show more",
     showLessLabel = "Show less",
+    light,
     tooltipLabel = "Copy",
     tooltipLabelCopied = "Copy Cat!",
     type = "multi",
@@ -60,6 +66,7 @@ const CodeSnippet = (
     <div
       className={cx(
         `${prefix}--codesnippet-container ${prefix}--codesnippet-${type}`,
+        { [`${prefix}--codesnippet-light`]: light },
         className
       )}
       {...rest}

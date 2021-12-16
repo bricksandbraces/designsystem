@@ -1,4 +1,4 @@
-import { text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CodeSnippetSkeleton from "./CodeSnippetSkeleton";
 import CodeSnippet from "./CodeSnippet";
@@ -12,6 +12,7 @@ export const MultiLine = () => {
   return (
     <div style={{ padding: "32px" }}>
       <CodeSnippet
+        light={boolean("light", false)}
         code={text(
           "code",
           `"scripts": {
@@ -53,6 +54,7 @@ export const SingleLine = () => {
   return (
     <div style={{ padding: "32px" }}>
       <CodeSnippet
+        light={boolean("light", false)}
         type="single"
         code={text(
           "code",
