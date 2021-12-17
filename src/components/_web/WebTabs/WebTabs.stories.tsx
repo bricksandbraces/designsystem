@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Button from "../../Button/Button";
 import WebTab from "./WebTab";
 import WebTabs from "./WebTabs";
-import ResponsiveTabs from "./ResponsiveWebTabs";
 import { Grid, Column } from "../../Grid/Grid";
 import Headline from "../../Typography/Headline";
 import Body from "../../Typography/Body";

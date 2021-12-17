@@ -6,14 +6,9 @@ export type TableContainerProps = {
    * React children
    */
   children: React.ReactNode;
-
-  /**
-   * Table Title
-   */
-  title?: string;
 };
 
-const TableContainer = ({ children, title }: TableContainerProps) => {
+const TableContainer = ({ children }: TableContainerProps) => {
   return (
     <div className={`${prefix}--datatable-container`}>
       <div className={`${prefix}--datatable-container__content`}>

@@ -1,4 +1,4 @@
-import React, { ReactHTML } from "react";
+import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
@@ -62,11 +62,6 @@ export type TablePaginationProps = {
    * TablePagination Loop
    */
   loop?: boolean;
-
-  /**
-   * TablePagination NavWrapper wraps the pagination into
-   */
-  navWrapper?: boolean;
 };
 
 const TablePagination = (
@@ -76,7 +71,6 @@ const TablePagination = (
     defaultPage,
     page,
     onPageChange,
-    navWrapper,
     loop = true,
     hideNav,
     hideFastforward,

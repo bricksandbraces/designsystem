@@ -3,7 +3,7 @@ import cx from "classnames";
 import { prefix } from "../../../settings";
 import { SkeletonText } from "../../..";
 
-type WebTabsSkeletonProps = {
+export type WebTabsSkeletonProps = {
   /**
    * WebTabsSkeleton ClassName
    */
@@ -19,13 +19,19 @@ const WebTabsSkeleton = ({ className }: WebTabsSkeletonProps) => {
         className
       )}
     >
-      <div className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}>
+      <div
+        className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}
+      >
         <SkeletonText style={{ width: "100%" }} />
       </div>
-      <div className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}>
+      <div
+        className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}
+      >
         <SkeletonText style={{ width: "100%" }} />
       </div>
-      <div className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}>
+      <div
+        className={cx(`${prefix}--webtabs ${prefix}--webtabs-btn`, className)}
+      >
         <SkeletonText style={{ width: "100%" }} />
       </div>
     </div>

@@ -24,7 +24,7 @@ export type TableToolbarFilterPanelProps = {
 
 const TableToolbarFilterPanel = (
   { open, children, onClose, ...rest }: TableToolbarFilterPanelProps,
-  ref: React.ForwardedRef<HTMLButtonElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
     <div
@@ -32,6 +32,7 @@ const TableToolbarFilterPanel = (
         [`${prefix}--datatable-filterpanel__open`]: open
       })}
       {...rest}
+      ref={ref}
     >
       <div className={cx(`${prefix}--datatable-filterpanel__header`)}>
         <IconOnlyButton
