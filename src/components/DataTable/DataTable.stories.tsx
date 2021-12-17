@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import { object, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import {
@@ -14,8 +13,7 @@ import {
   SearchInput,
   Checkbox,
   Button,
-  ButtonGroup,
-  Link
+  ButtonGroup
 } from "../..";
 
 import TablePagination from "./TablePagination";
@@ -33,13 +31,7 @@ import { useTableSort } from "./useTableSort";
 import TableTitle from "./TableTitle";
 import TableHeader from "./TableHeader";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import {
-  IconDotsVertical,
-  IconFilter,
-  IconListSearch,
-  IconSearch,
-  IconTrash
-} from "@tabler/icons";
+import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
 import TableFooter from "./TableFooter";
 import TableToolbarActions from "./TableToolbarActions";
 import CheckboxGroup from "../Checkbox/CheckboxGroup";
@@ -59,6 +51,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Max Mustermann"
           src="https://flagcdn.com/w160/de.png"
           style={{ marginRight: "1rem" }}
         />
@@ -74,6 +67,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Joe Mustermann"
           src="https://flagcdn.com/w160/us.png"
           style={{ marginRight: "1rem" }}
         />
@@ -89,6 +83,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Lisa Liguster"
           src="https://flagcdn.com/w160/jp.png"
           style={{ marginRight: "1rem" }}
         />
@@ -104,6 +99,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Harry Motter"
           src="https://flagcdn.com/w160/gb.png"
           style={{ marginRight: "1rem" }}
         />
@@ -119,6 +115,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Ginni Wusely"
           src="https://flagcdn.com/w160/es.png"
           style={{ marginRight: "1rem" }}
         />
@@ -134,6 +131,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Neville Shortbottom"
           src="https://flagcdn.com/w160/pl.png"
           style={{ marginRight: "1rem" }}
         />
@@ -149,6 +147,7 @@ const defaultRows: RowEntry[] = [
       <>
         <img
           width="16"
+          alt="Hermine Stranger"
           src="https://flagcdn.com/w160/it.png"
           style={{ marginRight: "1rem" }}
         />
@@ -474,7 +473,6 @@ export const WithToolbar = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
-  const [itemsToShow, setItemsToShow] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string | undefined>("");
 
   return (
@@ -485,7 +483,6 @@ export const WithToolbar = () => {
             rows={unprocessedRows}
             headers={unprocessedHeaders}
             searchQuery={searchQuery}
-            itemsToShow={itemsToShow}
           >
             {({
               rows,
@@ -539,9 +536,9 @@ export const WithToolbar = () => {
                           ))}
                         </TableRow>
                       ))}
-                      {searchQuery?.length > 0 && rows.length === 0 && (
+                      {(searchQuery?.length ?? 0) > 0 && rows.length === 0 && (
                         <TableRow>
-                          <td colspan="3">
+                          <td colSpan={3}>
                             <EmptyState
                               orientation="horizontal"
                               icon={<IconSearch />}
@@ -567,6 +564,8 @@ export const WithFilterPanel = () => {
   const [filterPanelOpen, setFilterPanelOpen] = useState<boolean>(false);
   const { activeFilters, activeFiltersCount, registerFilter } =
     useTableFilter();
+
+  const [searchQuery, setSearchQuery] = useState<string | undefined>("");
 
   const [locationFilter, setLocationFilter] = useState<string[]>([]);
   const toggleLocationFilter = (location: string) => {
@@ -595,6 +594,7 @@ export const WithFilterPanel = () => {
         <Column sm={4} md={8} lg={16} xlg={16}>
           <DataTable
             activeFilters={activeFilters}
+            searchQuery={searchQuery}
             rows={object("Rows", defaultRows as RowEntry[])}
             headers={object("Headers", defaultHeaders) as HeaderEntry[]}
           >
@@ -820,7 +820,7 @@ export const WithBatchActions = () => {
                     <TableTitle>
                       {selectedIDs.length > 0
                         ? `${selectedIDs.length} items selected`
-                        : `Datatable Header`}
+                        : "Datatable Header"}
                     </TableTitle>
                     <TableToolbar
                       selectedIDs={selectedIDs}
@@ -964,19 +964,12 @@ export const Skeleton = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
-  const [page, setPage] = useState<number>(0);
-
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable
-            rows={unprocessedRows}
-            headers={unprocessedHeaders}
-            page={page}
-          >
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
             {({
-              rows,
               headers,
               getTableContainerProps,
               getTableProps,

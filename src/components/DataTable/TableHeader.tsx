@@ -5,7 +5,7 @@ export type TableHeaderProps = {
   /**
    * Table Children
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 const TableHeader = (

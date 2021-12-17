@@ -5,7 +5,7 @@ export type TableFooterProps = {
   /**
    * Table Children
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 const TableFooter = (
