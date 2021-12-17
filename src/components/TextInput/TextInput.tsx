@@ -114,6 +114,11 @@ export type TextInputProps = {
   ) => void;
 
   /**
+   * TextInput OnClick Function
+   */
+  onClick?: React.MouseEventHandler<HTMLInputElement>;
+
+  /**
    * TextInput OnBlur Function
    */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
@@ -152,6 +157,7 @@ const TextInput = (
     onBlur,
     onFocus,
     onKeyDown,
+    onClick,
     error,
     errorText,
     icon,
@@ -207,6 +213,7 @@ const TextInput = (
           onBlur={onBlur}
           onFocus={onFocus}
           onKeyDown={onKeyDown}
+          onClick={onClick}
         />
         {fluid && (
           <label

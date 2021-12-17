@@ -69,7 +69,7 @@ export type SearchInputProps = {
   /**
    * SearchInput Submit
    */
-  submitIcon?: React.ReactNode;
+  submitIcon?: React.ReactElement;
 
   /**
    * SearchInput onSearch Function

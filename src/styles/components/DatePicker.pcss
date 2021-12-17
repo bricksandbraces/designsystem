@@ -9,7 +9,7 @@
     z-index: 1000;
     left: 0;
     width: $size--container-08;
-    transform: translateY(0);
+    transform: translateY($size--spacing-03);
     transition: opacity $transition--app-01, transform $transition--app-01,
       visibility $transition--app-01;
     border: 0.0625rem solid $color--border;
@@ -58,25 +58,13 @@
 
     &-hidden {
       visibility: hidden;
-      transform: translateY(calc($size--spacing-03 * -1));
+      transform: translateY($size--spacing-02);
       opacity: 0;
     }
 
     &-container {
       display: inline-flex;
       position: relative;
-    }
-
-    &-default > .$(prefix)--datepicker {
-      top: calc(2.375rem + $size--field-default);
-    }
-
-    &-small > .$(prefix)--datepicker {
-      top: calc(2.375rem + $size--field-small);
-    }
-
-    &-large > .$(prefix)--datepicker {
-      top: calc(2.375rem + $size--field-large);
     }
 
     &.DayPicker:not(.DayPicker--interactionDisabled)

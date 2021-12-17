@@ -37,4 +37,4 @@ const Tooltip = (
   );
 };
 
-export default Tooltip;
+export default React.forwardRef(Tooltip);
