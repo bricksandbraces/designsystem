@@ -4,9 +4,9 @@ import BreadcrumbItem from "./BreadcrumbItem";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbSkeleton from "./BreadcrumbSkeleton";
 import { IconDots, IconFolder } from "@tabler/icons";
+import { action } from "@storybook/addon-actions";
 import OverflowMenu from "../OverflowMenu/OverflowMenu";
 import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
-import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/Breadcrumb", decorators: [withKnobs] };
 
@@ -38,16 +38,18 @@ export const WithOverflowMenu = () => {
         <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
           Home
         </BreadcrumbItem>
-        <BreadcrumbItem linkProps={{ onClick: action("onClick") }} isOverflow>
-          <OverflowMenu icon={<IconDots />} size="small">
-            <OverflowMenuItem onClick={action("onClick")}>
-              Private Account
-            </OverflowMenuItem>
-            <OverflowMenuItem onClick={action("onClick")}>
-              Financial Details
-            </OverflowMenuItem>
-          </OverflowMenu>
-        </BreadcrumbItem>
+        <BreadcrumbItem
+          overflowMenu={
+            <OverflowMenu icon={<IconDots />}>
+              <OverflowMenuItem onClick={action("onClick")}>
+                Private Account
+              </OverflowMenuItem>
+              <OverflowMenuItem onClick={action("onClick")}>
+                Financial Details
+              </OverflowMenuItem>
+            </OverflowMenu>
+          }
+        ></BreadcrumbItem>
         <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
           Bank Details
         </BreadcrumbItem>
