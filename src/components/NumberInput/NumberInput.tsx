@@ -203,7 +203,7 @@ const NumberInput = (
     if (inputRef.current) {
       setValueManually(newValue);
 
-      const parsedValue = parseToNumber(newValue);
+      const parsedValue = parseToNumber(newValue, float);
 
       onChange?.({ newValue, parsedValue }, undefined);
     }
@@ -261,19 +261,26 @@ const NumberInput = (
           defaultValue={defaultValue}
           onChange={handleChange()}
           onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
-            const parsedValue = parseToNumber(textValue);
+            const parsedValue = parseToNumber(textValue, float);
             correctValIntoBorders(parsedValue);
             onBlur?.(event);
           }}
           onFocus={onFocus}
-          onKeyDown={filterForKeys(
-            ["Enter"],
-            (event: React.KeyboardEvent<HTMLInputElement>) => {
-              const parsedValue = parseToNumber(textValue);
+          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === "Enter") {
+              const parsedValue = parseToNumber(textValue, float);
               correctValIntoBorders(parsedValue);
               onKeyDown?.(event);
+            } else {
+              filterForKeys(
+                ["`", "e", "+", "´"],
+                (ev: React.KeyboardEvent<HTMLInputElement>) => {
+                  ev.preventDefault();
+                  onKeyDown?.(ev);
+                }
+              )(event);
             }
-          )}
+          }}
           min={min}
           max={max}
           step={step}
@@ -291,7 +298,7 @@ const NumberInput = (
               size={size}
               onClick={() => {
                 if (textValue != null) {
-                  const parsedValue = parseToNumber(textValue);
+                  const parsedValue = parseToNumber(textValue, float);
                   if (Number.isNaN(parsedValue)) {
                     return;
                   }
@@ -315,7 +322,7 @@ const NumberInput = (
               size={size}
               onClick={() => {
                 if (textValue != null) {
-                  const parsedValue = parseToNumber(textValue);
+                  const parsedValue = parseToNumber(textValue, float);
                   if (Number.isNaN(parsedValue)) {
                     return;
                   }
