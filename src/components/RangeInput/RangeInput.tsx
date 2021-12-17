@@ -133,7 +133,7 @@ const RangeInput = (
     defaultValue,
     label,
     min,
-    float,
+    float = false,
     minLabel,
     max,
     maxLabel,
