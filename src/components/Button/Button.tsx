@@ -88,9 +88,9 @@ export type ButtonProps = {
   size?: "large" | "default" | "small";
 
   /**
-   * Button Icon
+   * Button Icon Element
    */
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 
   /**
    * Button IconPosition

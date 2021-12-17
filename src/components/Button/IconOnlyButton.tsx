@@ -14,7 +14,12 @@ export type IconOnlyButtonProps = {
    * IconOnlyButton HideTooltip
    */
   hideTooltip?: boolean;
-} & ButtonProps;
+
+  /**
+   * IconOnlyButton Icon
+   */
+  icon: React.ReactElement;
+} & Omit<ButtonProps, "icon">;
 
 const IconOnlyButton = (
   {

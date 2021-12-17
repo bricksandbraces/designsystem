@@ -15,7 +15,7 @@ export type OverflowMenuProps = {
   /**
    * OverflowMenu Icon
    */
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 
   /**
    * OverflowMenu Size
