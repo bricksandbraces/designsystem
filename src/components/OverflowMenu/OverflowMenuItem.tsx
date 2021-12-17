@@ -46,43 +46,36 @@ type OverflowMenuItemProps = {
 
 const OverflowMenuItem = ({
   children,
-  tabIndex,
   icon,
   danger,
   href,
-  onClick
+  ...rest
 }: OverflowMenuItemProps) => {
+  const classes = cx(`${prefix}--overflowmenu-item`, {
+    [`${prefix}--overflowmenu-item__danger`]: danger
+  });
   return (
     <>
-      {onClick ? (
+      {href ? (
+        <a href={href} title={children} className={classes} {...rest}>
+          <div>
+            <p>{children}</p>
+            {icon}
+          </div>
+        </a>
+      ) : (
         <button
           aria-label={children}
           title={children}
           type="button"
-          tabIndex={tabIndex}
-          className={cx(`${prefix}--overflowmenu-item`, {
-            [`${prefix}--overflowmenu-item__danger`]: danger
-          })}
+          className={classes}
+          {...rest}
         >
           <div>
             <p>{children}</p>
             {icon}
           </div>
         </button>
-      ) : (
-        <a
-          href={href}
-          title={children}
-          tabIndex={tabIndex}
-          className={cx(`${prefix}--overflowmenu-item`, {
-            [`${prefix}--overflowmenu-item__danger`]: danger
-          })}
-        >
-          <div>
-            <p>{children}</p>
-            {icon}
-          </div>
-        </a>
       )}
     </>
   );

@@ -14,7 +14,7 @@ export type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem Icon
    */
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 
   /**
    * BreadcrumbItem IsOverflow
@@ -29,7 +29,7 @@ export type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem LinkProps
    */
-  linkProps?: LinkProps;
+  linkProps?: Omit<LinkProps, "children">;
 };
 
 const BreadcrumbItem = (
