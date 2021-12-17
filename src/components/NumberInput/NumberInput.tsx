@@ -37,15 +37,23 @@ export type NumberInputProps = {
   id?: string;
 
   /**
-   * NumberInput Error State & Text
+   * NumberInput Error State
    */
   error?: boolean;
+
+  /**
+   * NumberInput ErrorText
+   */
   errorText?: string;
 
   /**
-   * NumberInput Warning State & Text
+   * NumberInput Warning State
    */
   warning?: boolean;
+
+  /**
+   * NumberInput WarningText
+   */
   warningText?: string;
 
   /**
@@ -112,11 +120,23 @@ export type NumberInputProps = {
    * NumberInput OnChange Function
    */
   onChange?: (
-    event: React.ChangeEvent<HTMLInputElement> | undefined,
-    additionalData: { parsedValue?: number; newValue?: string }
+    additionalData: { parsedValue?: number; newValue?: string },
+    event?: React.ChangeEvent<HTMLInputElement> | undefined
   ) => void;
+
+  /**
+   * NumberInput OnBlur
+   */
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * NumberInput OnFocus
+   */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * NumberInput OnKeyFocus
+   */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 
   /**
@@ -166,14 +186,16 @@ const NumberInput = (
       value != null ? `${value}` : undefined,
       defaultValue != null ? `${defaultValue}` : undefined,
       onChange &&
-        ((_, event) => {
-          const newValue = event?.target?.value;
+        ((newValue, event) => {
           const parsedValue = parseToNumber(newValue, float);
 
-          onChange(event as React.ChangeEvent<HTMLInputElement>, {
-            newValue,
-            parsedValue
-          });
+          onChange(
+            {
+              newValue,
+              parsedValue
+            },
+            event as React.ChangeEvent<HTMLInputElement>
+          );
         })
     );
 
@@ -183,7 +205,7 @@ const NumberInput = (
 
       const parsedValue = parseToNumber(newValue);
 
-      onChange?.(undefined, { newValue, parsedValue });
+      onChange?.({ newValue, parsedValue }, undefined);
     }
   };
 
