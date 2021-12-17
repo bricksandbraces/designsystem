@@ -173,7 +173,7 @@ const RangeInput = (
     if (controlled) {
       const newPreparedValue = `${prepareValue(value)}`;
       setTextValue(newPreparedValue);
-      const newParsedValue = parseToNumber(textValue, float);
+      const newParsedValue = parseToNumber(newPreparedValue, float);
       setLocalSliderValue(newParsedValue);
     }
   }, [value]);
@@ -183,7 +183,7 @@ const RangeInput = (
       | React.ChangeEvent<HTMLInputElement>
       | React.KeyboardEvent<HTMLInputElement>
   ) => {
-    const newParsedValue = clamp(min, parseToNumber(textValue, float), max);
+    const newParsedValue = clamp(parseToNumber(textValue, float), min, max);
     let newValue: number;
     if (!Number.isNaN(newParsedValue)) {
       if (!controlled) {

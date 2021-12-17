@@ -67,7 +67,7 @@ export const Controlled = () => {
           size={select("size", sizeOptions, defaultSize) as any}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
-          id="checkbox"
+          id="range-input"
           label={text("Label", "Slider")}
           min={number("Min", 30)}
           step={number("Step", 2)}
