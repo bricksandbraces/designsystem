@@ -85,7 +85,9 @@ const LeadSpaceBlock = (
                         kind={i === 0 ? "primary" : "secondary"}
                         href={cta.href}
                         iconPosition="right"
-                        icon={cta.showChevron && <IconChevronRight />}
+                        icon={
+                          cta.showChevron ? <IconChevronRight /> : undefined
+                        }
                       >
                         {cta.label}
                       </Button>

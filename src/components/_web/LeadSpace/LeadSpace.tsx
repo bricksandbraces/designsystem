@@ -152,7 +152,9 @@ const LeadSpace = (
                         kind={i === 0 ? "primary" : "ghost"}
                         href={cta.href}
                         iconPosition="right"
-                        icon={cta.showChevron && <IconChevronRight />}
+                        icon={
+                          cta.showChevron ? <IconChevronRight /> : undefined
+                        }
                       >
                         {cta.label}
                       </Button>
