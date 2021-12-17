@@ -95,7 +95,6 @@ export const Controlled = () => {
         step={number("step", 1)}
         float={float}
       />
-      <Label>textValue: {textValue}</Label>
       <Label>parsedValue: {parsedValue}</Label>
     </div>
   );

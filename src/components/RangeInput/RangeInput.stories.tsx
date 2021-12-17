@@ -89,8 +89,6 @@ export const Controlled = () => {
           onFocus={action("onFocus")}
         />
       </div>
-      <Label>textValue: {textValue}</Label>
-      <br />
       <Label>parsedValue: {parsedValue}</Label>
     </div>
   );
