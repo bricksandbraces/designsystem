@@ -13,7 +13,7 @@ import NumberInput from "./NumberInput";
 import NumberInputSkeleton from "./NumberInputSkeleton";
 
 export default {
-  title: "Components/A_REFA_NumberInput",
+  title: "Components Ready/NumberInput",
   decorators: [withKnobs]
 };
 
@@ -32,6 +32,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
+        light={boolean("light", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
@@ -67,6 +68,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
+        light={boolean("light", false)}
         fluid={boolean("fluid", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}

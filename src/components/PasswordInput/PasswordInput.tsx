@@ -17,6 +17,11 @@ export type PasswordInputProps = {
   defaultVisible?: boolean;
 
   /**
+   * PasswordInput Light
+   */
+  light?: boolean;
+
+  /**
    * PasswordInput onVisibilityChange
    */
   onVisibilityChange?: (

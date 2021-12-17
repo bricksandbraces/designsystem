@@ -40,6 +40,11 @@ export type AccordionProps = {
    * Accordion Open Indices
    */
   openIndices?: number[];
+
+  /**
+   * Accordion Light
+   */
+  light?: boolean;
 };
 
 export enum AnimationType {
@@ -54,6 +59,7 @@ const Accordion = (
     className,
     onChange,
     size = "default",
+    light,
     defaultOpenIndices,
     openIndices
   }: AccordionProps,
@@ -99,6 +105,7 @@ const Accordion = (
     <div
       className={cx(
         `${prefix}--accordion ${prefix}--accordion-${size} `,
+        { [`${prefix}--accordion-light`]: light },
         className
       )}
     >

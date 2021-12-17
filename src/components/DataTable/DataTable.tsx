@@ -3,6 +3,7 @@ import { TableProps } from "./Table";
 import { TableContainerProps } from "./TableContainer";
 import { TableHeadProps } from "./TableHead";
 import { chunk } from "lodash";
+import { prefix } from "../../settings";
 
 export type HeaderEntry = {
   title: string;
@@ -40,6 +41,7 @@ export type DataTableProps = {
   actions?: (row: RowEntry) => JSX.Element[];
   page?: number;
   itemsPerPage?: number;
+  size?: "large" | "default" | "small";
 };
 
 const DataTable = ({
@@ -48,6 +50,7 @@ const DataTable = ({
   activeFilters,
   sortedByColumn,
   customSortFn,
+  size = "default",
   sortDirection = "ascending",
   itemsToShow,
   searchQuery,
@@ -135,7 +138,7 @@ const DataTable = ({
   }
 
   return (
-    <>
+    <div className={`${prefix}--datatable ${prefix}--datatable-${size}`}>
       {children?.({
         rows: processedRows,
         headers: processedHeaders,
@@ -144,7 +147,7 @@ const DataTable = ({
         getTableHeadProps: () => tableHeadProps,
         pagesCount
       })}
-    </>
+    </div>
   );
 };
 

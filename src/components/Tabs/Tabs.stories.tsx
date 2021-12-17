@@ -10,7 +10,7 @@ import Body from "../Typography/Body";
 import { action } from "@storybook/addon-actions";
 import TabsSkeleton from "./TabsSkeleton";
 
-export default { title: "Components/A_REFA_Tabs", decorators: [withKnobs] };
+export default { title: "Components Ready/Tabs", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (
@@ -18,7 +18,7 @@ export const Uncontrolled = () => {
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
           <Tabs defaultIndex={1} onChange={action("onChange")}>
-            <Tab title="Web &amp; Mobile Design">
+            <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>
               <Body type="body-02">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -74,7 +74,7 @@ export const Controlled = () => {
               action("onChange")(newIndex);
             }}
           >
-            <Tab title="Web &amp; Mobile Design">
+            <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>
               <Body type="body-02">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -118,7 +118,7 @@ export const ResponsiveUncontrolled = () => {
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
           <ResponsiveTabs defaultIndex={1} onChange={action("onChange")}>
-            <Tab title="Web &amp; Mobile Design">
+            <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>
               <Body type="body-02">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -170,7 +170,7 @@ export const ResponsiveControlled = () => {
               action("onChange")(newIndex);
             }}
           >
-            <Tab title="Web &amp; Mobile Design">
+            <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>
               <Body type="body-02">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed

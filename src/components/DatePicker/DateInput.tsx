@@ -27,6 +27,11 @@ export type DateInputProps = {
   value?: string;
 
   /**
+   * DateInput Light
+   */
+  light?: boolean;
+
+  /**
    * DateInput Size
    */
   size?: "large" | "small" | "default";
@@ -94,6 +99,7 @@ const DateInput = (
     dateFormat = "dd-MM-yyyy",
     defaultValue,
     value,
+    light,
     label,
     size,
     onChange,
@@ -143,6 +149,7 @@ const DateInput = (
         placeholder={dateFormat}
         className={cx(`${prefix}--datepicker-input`)}
         value={value}
+        light={light}
         defaultValue={defaultValue}
         ref={mergeRefs([ref, inputRef])}
         type="text"

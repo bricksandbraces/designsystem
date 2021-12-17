@@ -12,7 +12,7 @@
     height: $size--field-xsmall;
     transition: border-color $transition--app-01;
     border: 0.0625rem solid;
-    border-radius: $component--radius-default;
+    border-radius: 4rem;
     outline: 0;
     white-space: nowrap;
 
@@ -90,7 +90,7 @@
       transition: background-color $transition--app-01,
         border-color $transition--app-01;
       border: 0;
-      border-radius: calc($component--radius-default - 0.0625rem);
+      border-radius: 4rem;
       outline: 0;
       background-color: $color--ghost-enabled;
       color: inherit;
@@ -112,5 +112,6 @@
   &--badge.$(prefix)--skeleton {
     transform: translateY(0.0625rem);
     border: 0;
+    border-radius: 4rem;
   }
 }

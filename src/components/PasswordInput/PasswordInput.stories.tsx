@@ -5,7 +5,7 @@ import PasswordInput from "./PasswordInput";
 import PasswordInputSkeleton from "./PasswordInputSkeleton";
 
 export default {
-  title: "Components/A_REFA_PasswordInput",
+  title: "Components Ready/PasswordInput",
   decorators: [withKnobs]
 };
 
@@ -28,6 +28,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <PasswordInput
+        light={boolean("light", false)}
         size={select("size", sizeOptions, defaultSize) as any}
         fluid={boolean("fluid", false)}
         warningText={text("warningText", "")}
@@ -48,6 +49,7 @@ export const ControlledTextValue = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <PasswordInput
+        light={boolean("light", false)}
         size={select("size", sizeOptions, defaultSize) as any}
         fluid={boolean("fluid", false)}
         warningText={text("warningText", "")}

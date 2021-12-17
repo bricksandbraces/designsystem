@@ -4,7 +4,7 @@ import React from "react";
 import UserProfile from "./UserProfile";
 
 export default {
-  title: "Components/A_REFA_UserProfile",
+  title: "Components Ready/UserProfile",
   decorators: [withKnobs]
 };
 

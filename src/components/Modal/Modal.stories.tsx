@@ -7,7 +7,7 @@ import ModalFooter from "./ModalFooter";
 import Button from "../Button/Button";
 import { action } from "@storybook/addon-actions";
 
-export default { title: "Components/A_REFA_Modal", decorators: [withKnobs] };
+export default { title: "Components Ready/Modal", decorators: [withKnobs] };
 
 const options = {
   Small: "sm",

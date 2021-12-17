@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import { object, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import {
@@ -10,150 +9,214 @@ import {
   TableHeadCell,
   TableContainer,
   TableBody,
-  TableCell,
+  TableBodyCell,
   SearchInput,
-  Modal,
   Checkbox,
-  Button
+  Button,
+  ButtonGroup
 } from "../..";
-import { prefix } from "../../settings";
-import NumberInput from "../NumberInput/NumberInput";
-import Pagination from "../Pagination/Pagination";
-import Headline from "../Typography/Headline";
+
+import TablePagination from "./TablePagination";
 import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
 import TableActions from "./TableActions";
 import TableSelectionCell from "./TableSelectionCell";
-import TableSelectionHeaderCell from "./TableSelectionHeaderCell";
+import TableSelectionHeadCell from "./TableSelectionHeadCell";
 import TableSelectionRadioCell from "./TableSelectionRadioCell";
 import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
 import TableToolbar from "./TableToolbar";
-import TableToolbarFilterButton from "./TableToolbarFilterButton";
+import TableFilterButton from "./TableFilterButton";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
+import TableTitle from "./TableTitle";
+import TableHeader from "./TableHeader";
+import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
+import TableFooter from "./TableFooter";
+import TableToolbarActions from "./TableToolbarActions";
+import CheckboxGroup from "../Checkbox/CheckboxGroup";
+import TableFilterPanel from "./TableFilterPanel";
+import TableSkeletonCell from "./TableSkeletonCell";
+import OverflowMenu from "../OverflowMenu/OverflowMenu";
+import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
+import EmptyState from "../EmptyState/EmptyState";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 
 const defaultRows: RowEntry[] = [
   {
     id: "0",
-    name: "Max Nustermann",
-    location: "Germany",
-    profession: "Fachkraft"
+    name: "Max Mustermann",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Max Mustermann"
+          src="https://flagcdn.com/w160/de.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Germany
+      </>
+    ),
+    profession: "Accountant"
   },
   {
     id: "1",
-    name: "Joe Nustermann",
-    location: "USA",
-    profession: "Fachkraft"
+    name: "Joe Mustermann",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Joe Mustermann"
+          src="https://flagcdn.com/w160/us.png"
+          style={{ marginRight: "1rem" }}
+        />
+        United States
+      </>
+    ),
+    profession: "Content Creator"
   },
   {
     id: "2",
-    name: "Lilsa Nustermann",
-    location: "Japan",
-    profession: "Fachkraft"
+    name: "Lisa Liguster",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Lisa Liguster"
+          src="https://flagcdn.com/w160/jp.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Japan
+      </>
+    ),
+    profession: "Firefighter"
+  },
+  {
+    id: "3",
+    name: "Harry Motter",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Harry Motter"
+          src="https://flagcdn.com/w160/gb.png"
+          style={{ marginRight: "1rem" }}
+        />
+        United Kingdom
+      </>
+    ),
+    profession: "F1 Driver"
+  },
+  {
+    id: "4",
+    name: "Ginni Wusely",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Ginni Wusely"
+          src="https://flagcdn.com/w160/es.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Spain
+      </>
+    ),
+    profession: "Queen of Spain"
+  },
+  {
+    id: "5",
+    name: "Neville Shortbottom",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Neville Shortbottom"
+          src="https://flagcdn.com/w160/pl.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Poland
+      </>
+    ),
+    profession: "White-Collar Worker"
+  },
+  {
+    id: "6",
+    name: "Hermine Stranger",
+    location: (
+      <>
+        <img
+          width="16"
+          alt="Hermine Stranger"
+          src="https://flagcdn.com/w160/it.png"
+          style={{ marginRight: "1rem" }}
+        />
+        Italy
+      </>
+    ),
+    profession: "Witch"
   }
 ];
+
 const defaultHeaders: HeaderEntry[] = [
   { title: "Full Name", key: "name", sortable: true },
   { title: "Location (Country)", key: "location", sortable: true },
   { title: "Profession", key: "profession" }
 ];
 
-export const DefaultPlainTable = () => {
+export const Default = () => {
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <TableContainer>
-              <Table>
-                <TableHead headers={defaultHeaders}>
-                  <TableRow>
-                    {unprocessedHeaders.map((header) => (
-                      <TableHeadCell key={header.key}>
-                        {header.title}
-                      </TableHeadCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {unprocessedRows.map((row) => (
-                    <TableRow key={row.id}>
-                      {unprocessedHeaders.map((header) => (
-                        <TableCell key={`${row.id}-${header.key}`}>
-                          {row[header.key]}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
-        </Column>
-      </Grid>
-    </div>
-  );
-};
-
-export const DefaultAsDataTable = () => {
-  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
-  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
-  return (
-    <div style={{ marginTop: "16px" }}>
-      <Grid narrow>
-        <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithSelection = () => {
+export const WithSelection = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -164,64 +227,62 @@ export const DataTableWithSelection = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
-                          <TableSelectionHeaderCell
-                            toggleAll={toggleAll}
-                            unprocessedRows={unprocessedRows}
-                            selectedRows={selectedIDs}
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        <TableSelectionHeadCell
+                          toggleAll={toggleAll}
+                          unprocessedRows={unprocessedRows}
+                          selectedRows={selectedIDs}
+                        />
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          <TableSelectionCell
+                            id={row.id + "-selection"}
+                            checked={selectedIDs.includes(row.id)}
+                            onChange={() => toggleSelectionForRow(row)}
                           />
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            <TableSelectionCell
-                              id={row.id + "-selection"}
-                              checked={selectedIDs.includes(row.id)}
-                              onChange={() => toggleSelectionForRow(row)}
-                            />
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithRadioSelection = () => {
+export const WithRadioSelection = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -231,60 +292,58 @@ export const DataTableWithRadioSelection = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
-                          <TableSelectionRadioHeaderCell />
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        <TableSelectionRadioHeaderCell />
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          <TableSelectionRadioCell
+                            id={row.id + "-selection"}
+                            checked={selectedID === row.id}
+                            onChange={() => selectID(row.id)}
+                          />
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            <TableSelectionRadioCell
-                              id={row.id + "-selection"}
-                              checked={selectedID === row.id}
-                              onChange={() => selectID(row.id)}
-                            />
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithSortableHeaderCells = () => {
+export const WithSorting = () => {
   const [
     sortByColumn,
     sortDirection,
@@ -297,211 +356,216 @@ export const DataTableWithSortableHeaderCells = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
-              sortedByColumn={sortByColumn}
-              sortDirection={sortDirection}
-              customSortFn={sortFn}
-            >
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
-                          {headers.map((header) => {
-                            return (
-                              <TableHeadCell
-                                key={header.key}
-                                onClick={() => toggleHeaderSorting(header)}
-                                sortState={getSortState(header)}
-                              >
-                                {header.title}
-                              </TableHeadCell>
-                            );
-                          })}
+          <DataTable
+            rows={object("Rows", defaultRows as RowEntry[])}
+            headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            sortedByColumn={sortByColumn}
+            sortDirection={sortDirection}
+            customSortFn={sortFn}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => {
+                          return (
+                            <TableHeadCell
+                              key={header.key}
+                              onClick={() => toggleHeaderSorting(header)}
+                              sortState={getSortState(header)}
+                            >
+                              {header.title}
+                            </TableHeadCell>
+                          );
+                        })}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          {headers.map((header) => (
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
+                          ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithHeader = () => {
+export const WithHeader = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
-            >
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()} title="Tableau">
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
+          <DataTable
+            rows={object("Rows", defaultRows as RowEntry[])}
+            headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with Header</TableTitle>
+                  </TableHeader>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithToolbar = () => {
+export const WithToolbar = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
-  const [itemsToShow, setItemsToShow] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string | undefined>("");
-
-  console.log(itemsToShow);
 
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={unprocessedRows}
-              headers={unprocessedHeaders}
-              searchQuery={searchQuery}
-              itemsToShow={itemsToShow}
-            >
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <TableToolbar>
-                      Show
-                      <NumberInput
-                        value={itemsToShow}
-                        min={0}
-                        max={unprocessedRows.length}
-                        onChange={(event, { parsedValue }) => {
-                          if (parsedValue != null) {
-                            setItemsToShow(parsedValue);
-                          }
-                        }}
-                      />
-                      entries
-                      <SearchInput
-                        id="datatable-search"
-                        label="Search"
-                        onChange={(newValue) => {
-                          setSearchQuery(newValue);
-                        }}
-                        withSubmit={false}
-                      />
-                    </TableToolbar>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            searchQuery={searchQuery}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer
+                  {...getTableContainerProps()}
+                  title="Data Table with Header"
+                >
+                  <TableHeader>
+                    <TableTitle>Datatable with Toolbar</TableTitle>
+                  </TableHeader>
+                  <TableToolbar>
+                    <SearchInput
+                      light
+                      id="datatable-search"
+                      label="Search"
+                      onChange={(newValue) => {
+                        setSearchQuery(newValue);
+                      }}
+                      withSubmit={false}
+                    />
+                    <TableToolbarActions>
+                      <Button>Add new Order</Button>
+                    </TableToolbarActions>
+                  </TableToolbar>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                      {(searchQuery?.length ?? 0) > 0 && rows.length === 0 && (
+                        <TableRow>
+                          <td colSpan={3}>
+                            <EmptyState
+                              orientation="horizontal"
+                              icon={<IconSearch />}
+                              title="Whooops!"
+                              subTitle="We couldn't find any single bread crumb. Please review your input."
+                            />
+                          </td>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableFilterPanel = () => {
+export const WithFilterPanel = () => {
   const [filterPanelOpen, setFilterPanelOpen] = useState<boolean>(false);
   const { activeFilters, activeFiltersCount, registerFilter } =
     useTableFilter();
+
+  const [searchQuery, setSearchQuery] = useState<string | undefined>("");
 
   const [locationFilter, setLocationFilter] = useState<string[]>([]);
   const toggleLocationFilter = (location: string) => {
@@ -528,156 +592,210 @@ export const DataTableFilterPanel = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              activeFilters={activeFilters}
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
-            >
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <TableToolbar>
-                      {/** Extract to TableToolbarFilter Buttton */}
-                      <TableToolbarFilterButton
+          <DataTable
+            activeFilters={activeFilters}
+            searchQuery={searchQuery}
+            rows={object("Rows", defaultRows as RowEntry[])}
+            headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer
+                  {...getTableContainerProps()}
+                  title="Datatable with Icons"
+                >
+                  <TableHeader>
+                    <TableTitle>Datatable with Filter panel</TableTitle>
+                  </TableHeader>
+                  <TableToolbar>
+                    <SearchInput
+                      light
+                      id="datatable-search"
+                      label="Search"
+                      onChange={(newValue) => {
+                        setSearchQuery(newValue);
+                      }}
+                      withSubmit={false}
+                    />
+                    <TableToolbarActions>
+                      <TableFilterButton
                         activeFiltersCount={activeFiltersCount}
-                        setFilterPanelOpen={setFilterPanelOpen}
+                        setFilterPanelOpen={() =>
+                          setFilterPanelOpen(!filterPanelOpen)
+                        }
                       />
-                      <Modal
-                        open={filterPanelOpen}
-                        onClose={() => setFilterPanelOpen(false)}
-                      >
-                        <Headline type="h6">Location</Headline>
-                        <Checkbox
-                          id="location-filter-ger"
-                          label="Germany"
-                          value="Germany"
-                          onChange={() => toggleLocationFilter("Germany")}
-                        />
-                        <Checkbox
-                          id="location-filter-jap"
-                          label="Japan"
-                          value="Japan"
-                          onChange={() => toggleLocationFilter("Japan")}
-                        />
-                        <Checkbox
-                          id="location-filter-usa"
-                          label="USA"
-                          value="USA"
-                          onChange={() => toggleLocationFilter("USA")}
-                        />
-                      </Modal>
-                    </TableToolbar>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
+                      <IconOnlyButton
+                        kind="ghost"
+                        icon={<IconDotsVertical />}
+                      />
+                      <Button>Add new Order</Button>
+                    </TableToolbarActions>
+                  </TableToolbar>
+                  <TableFilterPanel
+                    open={filterPanelOpen}
+                    onClose={() => setFilterPanelOpen(!filterPanelOpen)}
+                  >
+                    <CheckboxGroup
+                      orientation="vertical"
+                      legendLabel="Location (Country)"
+                      name="filter"
+                    >
+                      <Checkbox
+                        id="location-filter-ger"
+                        label="Germany"
+                        value="Germany"
+                        onChange={() => toggleLocationFilter("Germany")}
+                      />
+                      <Checkbox
+                        id="location-filter-jap"
+                        label="Japan"
+                        value="Japan"
+                        onChange={() => toggleLocationFilter("Japan")}
+                      />
+                      <Checkbox
+                        id="location-filter-usa"
+                        label="USA"
+                        value="USA"
+                        onChange={() => toggleLocationFilter("USA")}
+                      />
+                    </CheckboxGroup>
+                    <CheckboxGroup
+                      orientation="vertical"
+                      legendLabel="Location (Country)"
+                      name="filter"
+                    >
+                      <Checkbox
+                        id="location-filter-ger"
+                        label="Germany"
+                        value="Germany"
+                        onChange={() => toggleLocationFilter("Germany")}
+                      />
+                      <Checkbox
+                        id="location-filter-jap"
+                        label="Japan"
+                        value="Japan"
+                        onChange={() => toggleLocationFilter("Japan")}
+                      />
+                      <Checkbox
+                        id="location-filter-usa"
+                        label="USA"
+                        value="USA"
+                        onChange={() => toggleLocationFilter("USA")}
+                      />
+                    </CheckboxGroup>
+                  </TableFilterPanel>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableRowActions = () => {
+export const WithRowActions = () => {
   return (
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={object("Rows", defaultRows as RowEntry[])}
-              headers={object("Headers", defaultHeaders) as HeaderEntry[]}
-            >
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
-                          {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
-                          ))}
-                          <TableHeadCell />
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                            <TableActions>
-                              <Button
-                                key="edit"
-                                onClick={(event) => {
-                                  action("onClick")(event, row);
-                                }}
-                                kind="ghost"
-                              >
-                                Edit
-                              </Button>
-                            </TableActions>
-                          </TableRow>
+          <DataTable
+            rows={object("Rows", defaultRows as RowEntry[])}
+            headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+          >
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
                         ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                        <TableHeadCell />
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          {headers.map((header) => (
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
+                          ))}
+                          <TableActions>
+                            <Button kind="ghost">Edit</Button>
+                            <IconOnlyButton kind="ghost" icon={<IconTrash />} />
+                            <OverflowMenu light>
+                              <OverflowMenuItem onClick={() => {}}>
+                                Enable 2FA
+                              </OverflowMenuItem>
+                              <OverflowMenuItem href="#">
+                                Turn on accessibility
+                              </OverflowMenuItem>
+
+                              <OverflowMenuItem>
+                                Check connectivity
+                              </OverflowMenuItem>
+                            </OverflowMenu>
+                          </TableActions>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithBatchActions = () => {
+export const WithBatchActions = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -688,84 +806,90 @@ export const DataTableWithBatchActions = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
-              {({
-                rows,
-                headers,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+            {({
+              rows,
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>
+                      {selectedIDs.length > 0
+                        ? `${selectedIDs.length} items selected`
+                        : "Datatable Header"}
+                    </TableTitle>
                     <TableToolbar
                       selectedIDs={selectedIDs}
                       batchActions={
                         <>
-                          <p>{selectedIDs.length} items selected</p>
-                          <Button>Delete</Button>
-                          <Button>Download</Button>
-                           |
-                          <Button
-                            onClick={() => {
-                              toggleAll(false);
-                            }}
-                          >
-                            Cancel
-                          </Button>
+                          <ButtonGroup withDivider>
+                            <Button>Delete</Button>
+                            <Button>Download</Button>
+                            <Button
+                              onClick={() => {
+                                toggleAll(false);
+                              }}
+                            >
+                              Cancel
+                            </Button>
+                          </ButtonGroup>
                         </>
                       }
                     >
                       <Button>Add new</Button>
                     </TableToolbar>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
-                          <TableSelectionHeaderCell
-                            toggleAll={toggleAll}
-                            unprocessedRows={unprocessedRows}
-                            selectedRows={selectedIDs}
+                  </TableHeader>
+
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        <TableSelectionHeadCell
+                          toggleAll={toggleAll}
+                          unprocessedRows={unprocessedRows}
+                          selectedRows={selectedIDs}
+                        />
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          <TableSelectionCell
+                            id={row.id + "-selection"}
+                            checked={selectedIDs.includes(row.id)}
+                            onChange={() => toggleSelectionForRow(row)}
                           />
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            <TableSelectionCell
-                              id={row.id + "-selection"}
-                              checked={selectedIDs.includes(row.id)}
-                              onChange={() => toggleSelectionForRow(row)}
-                            />
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>
   );
 };
 
-export const DataTableWithPagination = () => {
+export const WithTablePagination = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
 
@@ -775,58 +899,147 @@ export const DataTableWithPagination = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <div className={`${prefix}--datatable ${prefix}--datatable-default`}>
-            <DataTable
-              rows={unprocessedRows}
-              headers={unprocessedHeaders}
-              page={page}
-              itemsPerPage={1}
-            >
-              {({
-                rows,
-                headers,
-                pagesCount,
-                getTableContainerProps,
-                getTableProps,
-                getTableHeadProps
-              }) => {
-                return (
-                  <TableContainer {...getTableContainerProps()}>
-                    <Table {...getTableProps()}>
-                      <TableHead
-                        headers={defaultHeaders}
-                        {...getTableHeadProps()}
-                      >
-                        <TableRow>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            page={page}
+            itemsPerPage={3}
+          >
+            {({
+              rows,
+              headers,
+              pagesCount,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with TablePagination</TableTitle>
+                  </TableHeader>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
                           {headers.map((header) => (
-                            <TableHeadCell key={header.key}>
-                              {header.title}
-                            </TableHeadCell>
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
                           ))}
                         </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow key={row.id}>
-                            {headers.map((header) => (
-                              <TableCell key={`${row.id}-${header.key}`}>
-                                {row[header.key]}
-                              </TableCell>
-                            ))}
-                          </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                  <TableFooter>
+                    <TablePagination
+                      totalPages={pagesCount}
+                      page={page}
+                      onPageChange={(newPage) => setPage(newPage)}
+                    />
+                  </TableFooter>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
+export const Skeleton = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+            {({
+              headers,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>Datatable with TablePagination</TableTitle>
+                  </TableHeader>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
                         ))}
-                      </TableBody>
-                      <Pagination
-                        totalPages={pagesCount}
-                        page={page}
-                        onPageChange={(newPage) => setPage(newPage)}
-                      />
-                    </Table>
-                  </TableContainer>
-                );
-              }}
-            </DataTable>
-          </div>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                      <TableRow>
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                        <TableSkeletonCell />
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
         </Column>
       </Grid>
     </div>

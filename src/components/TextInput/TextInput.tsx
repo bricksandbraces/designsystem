@@ -96,6 +96,11 @@ export type TextInputProps = {
   icon?: ReactNode;
 
   /**
+   * TextInput Light
+   */
+  light?: boolean;
+
+  /**
    * TextInput Fluid
    */
   fluid?: boolean;
@@ -145,6 +150,7 @@ const TextInput = (
     value,
     defaultValue,
     disabled,
+    light,
     readOnly,
     autoComplete,
     onChange,
@@ -177,7 +183,8 @@ const TextInput = (
         {
           [`${prefix}--textinput-fluid`]: fluid,
           [`${prefix}--textinput-disabled`]: disabled,
-          [`${prefix}--textinput-readonly`]: readOnly
+          [`${prefix}--textinput-readonly`]: readOnly,
+          [`${prefix}--textinput-light`]: light
         },
         className
       )}

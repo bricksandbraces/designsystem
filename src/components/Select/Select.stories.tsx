@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import Select from "./Select";
 import SelectSkeleton from "./SelectSkeleton";
 
-export default { title: "Components/A_REFA_Select", decorators: [withKnobs] };
+export default { title: "Components Ready/Select", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",

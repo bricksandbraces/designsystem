@@ -103,7 +103,7 @@ export type SelectProps = {
 
 const Select = (
   {
-    size,
+    size = "default",
     id,
     label,
     className,
@@ -152,7 +152,7 @@ const Select = (
         className
       )}
     >
-      <Label htmlFor={id}>{label}</Label>
+      {label && <Label htmlFor={id}>{label}</Label>}
       <div className={cx(`${prefix}--select-input__wrapper`)}>
         <select
           className={cx(`${prefix}--select-input ${prefix}--select-${size}`, {

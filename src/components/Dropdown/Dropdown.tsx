@@ -41,6 +41,11 @@ export type DropdownProps = {
   id: string;
 
   /**
+   * Dropdown Light
+   */
+  light?: boolean;
+
+  /**
    * Dropdown ClassName
    */
   className?: string;
@@ -137,6 +142,7 @@ const Dropdown = (
     size = "default",
     label,
     className,
+    light,
     title,
     items,
     error,
@@ -214,6 +220,7 @@ const Dropdown = (
       className={cx(
         `${prefix}--dropdown`,
         {
+          [`${prefix}--dropdown-light`]: light,
           [`${prefix}--dropdown-error`]: error || errorText,
           [`${prefix}--dropdown-warning`]:
             !(error || errorText) && (warning || warningText),

@@ -5,7 +5,7 @@ import InlineNotification from "./InlineNotification";
 import ToastNotification from "./ToastNotification";
 
 export default {
-  title: "Components/A_REFA_Notification",
+  title: "Components Ready/Notification",
   decorators: [withKnobs]
 };
 

@@ -10,7 +10,7 @@ export type OverflowMenuProps = {
   /**
    * OverflowMenu Children
    */
-  children?: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode;
 
   /**
    * OverflowMenu Icon
@@ -21,12 +21,18 @@ export type OverflowMenuProps = {
    * OverflowMenu Size
    */
   size?: "large" | "default" | "small";
+
+  /**
+   * OverflowMenu Light
+   */
+  light?: boolean;
 } & Omit<TippyProps, "content" | "children">;
 
 const OverflowMenu = (
   {
     size = "default",
     children,
+    light,
     icon = <IconDotsVertical />,
     className,
     ...props
@@ -38,7 +44,9 @@ const OverflowMenu = (
       ref={ref}
       interactive
       arrow={false}
-      className={cx(`${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`)}
+      className={cx(`${prefix}--overflowmenu ${prefix}--overflowmenu-${size}`, {
+        [`${prefix}--overflowmenu-light`]: light
+      })}
       animation="bbds-animation"
       trigger="click"
       placement="bottom-start"

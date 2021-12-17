@@ -13,7 +13,7 @@ import DatePicker from "./DatePicker";
 import DatePickerSkeleton from "./DatePickerSkeleton";
 
 export default {
-  title: "Components/A_REFA_DatePicker",
+  title: "Components Ready/DatePicker",
   decorators: [withKnobs]
 };
 
@@ -34,6 +34,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        light={boolean("light", false)}
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         defaultValue={format(defaultDate, dateFormat)}
@@ -71,6 +72,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <DateInput
+        light={boolean("light", false)}
         disabled={boolean("disabled", false)}
         readOnly={boolean("readOnly", false)}
         value={textValue}
@@ -111,6 +113,7 @@ export const SingleWithCalendarUncontrolled = () => {
         className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
       >
         <DateInput
+          light={boolean("light", false)}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
           label="Single with calendar"
@@ -144,6 +147,7 @@ export const SingleWithCalendarUncontrolled = () => {
                 }}
               >
                 <DatePicker
+                  light={boolean("light", false)}
                   open={open}
                   selectedDays={selectedDay}
                   onDayClick={(newDate) => {
@@ -175,67 +179,60 @@ export const SingleWithCalendarControlled = () => {
 
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <OutsideClickHandler
-        onOutsideClick={() => {
-          setOpen(false);
-          action("onOutsideClick")(event);
-        }}
+      <div
+        ref={containerRef}
+        className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
       >
-        <div
-          ref={containerRef}
-          className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
+        <DateInput
+          light={boolean("light", false)}
+          disabled={boolean("disabled", false)}
+          readOnly={boolean("readOnly", false)}
+          label="Single with calendar"
+          value={formatDate(chosenDate, dateFormat, "")}
+          dateFormat={dateFormat}
+          onChange={action("onChange")}
+          size={select("size", sizeOptions, defaultSize) as any}
+          onDateChanged={(date) => {
+            setChosenDate(date);
+            action("onDateChanged")(date);
+          }}
+          onFocus={() => {
+            setOpen(true);
+            action("onFocus")(event);
+          }}
+          onBlur={action("onBlur")}
+          onKeyDown={action("onKeyDown")}
         >
-          <DateInput
-            disabled={boolean("disabled", false)}
-            readOnly={boolean("readOnly", false)}
-            label="Single with calendar"
-            value={formatDate(chosenDate, dateFormat, "")}
-            dateFormat={dateFormat}
-            onChange={action("onChange")}
-            size={select("size", sizeOptions, defaultSize) as any}
-            onDateChanged={(date) => {
-              setChosenDate(date);
-              action("onDateChanged")(date);
-            }}
-            onFocus={() => {
-              setOpen(true);
-              action("onFocus")(event);
-            }}
-            onBlur={action("onBlur")}
-            onKeyDown={action("onKeyDown")}
-          >
-            {(insertedDate, changeDate) => {
-              // inserted date may be invalid and is a live representation from the text
-              const selectedDay = insertedDate ?? undefined;
-              return (
-                <OutsideClickHandler
-                  onOutsideClick={(event) => {
-                    if (
-                      !containerRef.current?.contains(
-                        event.target as HTMLElement
-                      )
-                    ) {
-                      setOpen(false);
-                    }
-                    action("onOutsideClick")(event);
+          {(insertedDate, changeDate) => {
+            // inserted date may be invalid and is a live representation from the text
+            const selectedDay = insertedDate ?? undefined;
+            return (
+              <OutsideClickHandler
+                onOutsideClick={(event) => {
+                  if (
+                    !containerRef.current?.contains(event.target as HTMLElement)
+                  ) {
+                    setOpen(false);
+                  }
+                  action("onOutsideClick")(event);
+                }}
+              >
+                <DatePicker
+                  open={open}
+                  light={boolean("light", false)}
+                  selectedDays={selectedDay}
+                  onDayClick={(newDate) => {
+                    changeDate(newDate);
+                    setOpen(false);
+                    action("onDayClick")(newDate);
                   }}
-                >
-                  <DatePicker
-                    open={open}
-                    selectedDays={selectedDay}
-                    onDayClick={(newDate) => {
-                      changeDate(newDate);
-                      setOpen(false);
-                      action("onDayClick")(newDate);
-                    }}
-                    initialMonth={selectedDay}
-                  />
-                </OutsideClickHandler>
-              );
-            }}
-          </DateInput>
-        </div>
-      </OutsideClickHandler>
+                  initialMonth={selectedDay}
+                />
+              </OutsideClickHandler>
+            );
+          }}
+        </DateInput>
+      </div>
       <br />
       <Label>Chosen date value: {chosenDate?.toISOString()}</Label>
       <br />

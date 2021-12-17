@@ -7,6 +7,32 @@
     display: inline-flex;
     flex-flow: column;
 
+    &-light {
+      & > .$(prefix)--dropdown-toggle {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+      }
+
+      & > .$(prefix)--dropdown-menu {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        & > .$(prefix)--dropdown-menu__item {
+          &:hover {
+            background-color: $color--hover-light;
+          }
+
+          &:active {
+            background-color: $color--active-light;
+          }
+
+          &.$(prefix)--dropdown-menu__item-selected {
+            background-color: $color--selected-light;
+          }
+        }
+      }
+    }
+
     &-toggle {
       display: inline-flex;
       position: relative;

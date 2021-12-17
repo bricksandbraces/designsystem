@@ -8,7 +8,7 @@ import Marketing from "./Marketing";
 import Quote from "./Quote";
 
 export default {
-  title: "Components/A_REFA_Typography",
+  title: "Components Ready/Typography",
   decorators: [withKnobs]
 };
 

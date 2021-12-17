@@ -2,7 +2,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Loading from "./Loading";
 
-export default { title: "Components/A_REFA_Loading", decorators: [withKnobs] };
+export default { title: "Components Ready/Loading", decorators: [withKnobs] };
 
 const sizeOptions = {
   Inline: "inline",

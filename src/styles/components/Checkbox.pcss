@@ -9,6 +9,28 @@
     margin-bottom: 0.5rem;
     color: $color--font-unselected;
 
+    &-group {
+      display: flex;
+      margin-bottom: $size--spacing-03;
+
+      &__horizontal {
+        flex-flow: row;
+        gap: $size--spacing-05;
+
+        & > .$(prefix)--checkbox {
+          margin: 0;
+        }
+      }
+
+      &__vertical {
+        flex-flow: column;
+      }
+
+      &__legend {
+        @mixin type--label;
+      }
+    }
+
     &
       > .$(prefix)--checkbox-input[type="checkbox"]
       + label
@@ -29,6 +51,7 @@
         & > .$(prefix)--checkbox-check__mark {
           visibility: visible;
           stroke-width: 0.125rem;
+          stroke: $color--app-05;
           color: $color--app-05;
         }
 
@@ -40,14 +63,13 @@
       }
     }
 
-    & > [data-checkbox-state="mixed"] + label {
-      color: yellow;
+    & > .$(prefix)--checkbox-input[data-checkbox-state="mixed"] + label {
+      color: $color--font-text-01;
       & > .$(prefix)--checkbox-check {
-        color: yellow;
+        color: $color--font-text-01;
         & > .$(prefix)--checkbox-check__indeterminate-mark {
           visibility: visible;
           stroke-width: 0.125rem;
-          color: blue;
         }
 
         & > .$(prefix)--checkbox-check__box {
@@ -148,6 +170,7 @@
       user-select: none;
 
       &__text {
+        margin-left: $size--spacing-03;
         transform: translateY(0.125rem);
         transition: color $transition--app-01;
       }
@@ -167,13 +190,13 @@
       display: inline-block;
       min-width: $size--container-02;
       min-height: $size--container-02;
-      margin-right: $size--spacing-03;
       transition: outline $transition--app-01;
       color: $color--font-unselected;
     }
 
     &-content {
       margin-top: $size--spacing-03;
+      margin-left: $size--spacing-03;
       transition: color $transition--app-01;
     }
   }

@@ -8,6 +8,13 @@
     flex-flow: column wrap;
     width: $size--container-08;
 
+    &-light {
+      & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+      }
+    }
+
     &-default {
       min-height: $size--field-default;
       max-height: $size--field-default;

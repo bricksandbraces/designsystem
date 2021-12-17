@@ -3,29 +3,26 @@ import React from "react";
 import { withoutPropagation } from "../../helpers/eventUtilities";
 import IconOnlyButton from "../Button/IconOnlyButton";
 
-export type TableToolbarFilterButtonProps = {
+export type TableFilterButtonProps = {
   /**
-   * TableToolbarFilterButton ActiveFiltersCount
+   * TableFilterButton ActiveFiltersCount
    */
   activeFiltersCount: number;
 
   /**
-   * TableToolbarFilterButton On Change
+   * TableFilterButton On Change
    */
   setFilterPanelOpen: (open: boolean) => void;
 };
 
-const TableToolbarFilterButton = (
-  {
-    activeFiltersCount,
-    setFilterPanelOpen,
-    ...rest
-  }: TableToolbarFilterButtonProps,
+const TableFilterButton = (
+  { activeFiltersCount, setFilterPanelOpen, ...rest }: TableFilterButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (
     <IconOnlyButton
       ref={ref}
+      kind="ghost"
       icon={<IconFilter fill={activeFiltersCount ? "white" : undefined} />}
       onClick={withoutPropagation(() => setFilterPanelOpen(true))}
       {...rest}
@@ -33,4 +30,4 @@ const TableToolbarFilterButton = (
   );
 };
 
-export default React.forwardRef(TableToolbarFilterButton);
+export default React.forwardRef(TableFilterButton);

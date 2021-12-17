@@ -25,6 +25,11 @@ export type RadioTileProps = {
   value: string;
 
   /**
+   * RadioTile Light
+   */
+  light?: boolean;
+
+  /**
    * RadioTile Name
    */
   name?: string;
@@ -75,6 +80,7 @@ const RadioTile = (
     className,
     readOnly,
     disabled,
+    light,
     children,
     onChange,
     ...rest
@@ -86,6 +92,7 @@ const RadioTile = (
       className={cx(
         `${prefix}--radiotile`,
         {
+          [`${prefix}--radiotile-light`]: light,
           [`${prefix}--radiotile-readonly`]: readOnly,
           [`${prefix}--radiotile-disabled`]: disabled
         },

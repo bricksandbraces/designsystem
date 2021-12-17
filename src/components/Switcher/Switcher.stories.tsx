@@ -7,7 +7,7 @@ import Body from "../Typography/Body";
 import { action } from "@storybook/addon-actions";
 import SwitcherSkeleton from "./SwitcherSkeleton";
 
-export default { title: "Components/A_REFA_Switcher", decorators: [withKnobs] };
+export default { title: "Components Ready/Switcher", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

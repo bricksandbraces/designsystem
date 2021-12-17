@@ -16,7 +16,7 @@ import AvatarSkeleton from "./AvatarSkeleton";
 import AvatarGroupSkeleton from "./AvatarGroupSkeleton";
 import { action } from "@storybook/addon-actions";
 
-export default { title: "Components/A_REFA_Avatar", decorators: [withKnobs] };
+export default { title: "Components Ready/Avatar", decorators: [withKnobs] };
 
 const sizeOptions = {
   Small: "small",

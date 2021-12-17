@@ -1,11 +1,11 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import Accordion from "./Accordion";
 import AccordionItem from "./AccordionItem";
 import AccordionSkeleton from "./AccordionSkeleton";
 
 export default {
-  title: "Components/A_REFA_Accordion",
+  title: "Components Ready/Accordion",
   decorators: [withKnobs]
 };
 
@@ -20,7 +20,10 @@ const defaultSize = "default";
 export const Uncontrolled = () => {
   return (
     <div style={{ margin: "32px" }}>
-      <Accordion size={select("size", sizeOptions, defaultSize) as any}>
+      <Accordion
+        size={select("size", sizeOptions, defaultSize) as any}
+        light={boolean("light", false)}
+      >
         <AccordionItem id="c1" title="Title 1" disabled>
           Content 1
         </AccordionItem>
@@ -41,6 +44,7 @@ export const Controlled = () => {
     <div style={{ margin: "32px" }}>
       <Accordion
         size={select("Size", sizeOptions, defaultSize) as any}
+        light={boolean("light", false)}
         openIndices={openIndices}
         onChange={(i, newOpenState, newOpenIndexList) => {
           setOpenIndices(newOpenIndexList);

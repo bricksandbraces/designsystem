@@ -1,0 +1,57 @@
+@import "../prefix.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+
+.$(prefix) {
+  &--emptystate {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: $size--spacing-08;
+
+    &-vertical {
+      flex-flow: column;
+    }
+
+    &-horizontal {
+      flex-flow: row;
+    }
+
+    &-text {
+      flex-flow: column;
+    }
+
+    &-title {
+      max-width: calc($size--container-08 + $size--container-04);
+      margin-top: 0;
+      margin-bottom: $size--spacing-03;
+      color: $color--font-text-03;
+    }
+
+    &-subtitle {
+      max-width: calc($size--container-08 + $size--container-06);
+      margin: 0;
+      color: $color--font-text-04;
+    }
+
+    &-actions {
+      margin-top: $size--spacing-06;
+    }
+
+    &-icon {
+      width: $size--container-06;
+      height: $size--container-06;
+      margin-right: $size--spacing-08;
+      margin-bottom: $size--spacing-06;
+      color: $color--app-03;
+
+      & > svg,
+      img {
+        min-width: $size--container-06;
+        max-width: $size--container-06;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+      }
+    }
+  }
+}

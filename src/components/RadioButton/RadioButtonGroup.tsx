@@ -48,6 +48,11 @@ export type RadioButtonGroupProps = {
   disabled?: boolean;
 
   /**
+   * RadioButtonGroup Orientation
+   */
+  orientation?: "vertical" | "horizontal";
+
+  /**
    * OnChange values
    */
   onChange?: (
@@ -63,7 +68,7 @@ const RadioButtonGroup = (
     disabled,
     className,
     children,
-
+    orientation,
     defaultValue,
     value,
     name,
@@ -84,7 +89,10 @@ const RadioButtonGroup = (
   return (
     <fieldset
       id={id}
-      className={cx(`${prefix}--radiobutton-group`, className)}
+      className={cx(
+        `${prefix}--radiobutton-group ${prefix}--radiobutton-group__${orientation}`,
+        className
+      )}
       name={name}
       disabled={disabled}
       ref={ref}
@@ -117,7 +125,6 @@ const RadioButtonGroup = (
           }
         });
       })}
-      )
     </fieldset>
   );
 };

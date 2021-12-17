@@ -11,6 +11,13 @@
     position: relative;
     align-items: center;
 
+    &-light {
+      & > .$(prefix)--search-input {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+      }
+    }
+
     &-icon {
       position: absolute;
       width: $size--container-01;
@@ -200,10 +207,38 @@
     }
 
     &-close {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
+        margin-top: 0.0625rem;
+        margin-right: 0.0625rem;
+        margin-bottom: 0.0625rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: calc($component--radius-default - 0.0625rem);
+        border-bottom-right-radius: calc(
+          $component--radius-default - 0.0625rem
+        );
+        border-bottom-left-radius: 0;
+      }
+
+      &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-default {
+        min-width: calc($size--container-04 - $size--spacing-01);
+        max-width: calc($size--container-04 - $size--spacing-01);
+        min-height: calc($size--container-04 - $size--spacing-01);
+        max-height: calc($size--container-04 - $size--spacing-01);
+      }
+
+      &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-small {
+        min-width: calc($size--container-03 - $size--spacing-01);
+        max-width: calc($size--container-03 - $size--spacing-01);
+        min-height: calc($size--container-03 - $size--spacing-01);
+        max-height: calc($size--container-03 - $size--spacing-01);
+      }
+
+      &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-large {
+        min-width: calc($size--container-05 - $size--spacing-01);
+        max-width: calc($size--container-05 - $size--spacing-01);
+        min-height: calc($size--container-05 - $size--spacing-01);
+        max-height: calc($size--container-05 - $size--spacing-01);
+      }
     }
 
     &-buttons {

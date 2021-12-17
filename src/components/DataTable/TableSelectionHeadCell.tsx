@@ -1,37 +1,38 @@
 import React from "react";
 import { Checkbox, TableHeadCell } from "../..";
 import { RowEntry } from "./DataTable";
+import { prefix } from "../../settings";
 
-export type TableSelectionHeaderCellProps = {
+export type TableSelectionHeadCellProps = {
   /**
-   * TableSelectionHeaderCell Unprocessed Rows
+   * TableSelectionHeadCell Unprocessed Rows
    */
   unprocessedRows: RowEntry[];
 
   /**
-   * TableSelectionHeaderCell Selected Rows (only used for length comparison)
+   * TableSelectionHeadCell Selected Rows (only used for length comparison)
    */
   selectedRows: any[];
 
   /**
-   * TableSelectionHeaderCell toggleAll from useTableSelection hook
+   * TableSelectionHeadCell toggleAll from useTableSelection hook
    */
   toggleAll: (selection?: boolean) => void;
 
   /**
-   * TableSelectionHeaderCell Title
+   * TableSelectionHeadCell Title
    */
   title?: string;
 };
 
-const TableSelectionHeaderCell = (
+const TableSelectionHeadCell = (
   {
     selectedRows,
     unprocessedRows,
     toggleAll,
     title,
     ...rest
-  }: TableSelectionHeaderCellProps,
+  }: TableSelectionHeadCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
 ) => {
   const allSelected =
@@ -42,7 +43,12 @@ const TableSelectionHeaderCell = (
     );
   const noneSelected = selectedRows.length === 0;
   return (
-    <TableHeadCell ref={ref} interactive {...rest}>
+    <TableHeadCell
+      className={`${prefix}--datatable-head__cell-selection`}
+      ref={ref}
+      interactive
+      {...rest}
+    >
       <Checkbox
         id="head-selection"
         value="selection"
@@ -61,4 +67,4 @@ const TableSelectionHeaderCell = (
   );
 };
 
-export default React.forwardRef(TableSelectionHeaderCell);
+export default React.forwardRef(TableSelectionHeadCell);
