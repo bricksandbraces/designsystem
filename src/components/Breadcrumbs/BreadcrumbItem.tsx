@@ -14,12 +14,12 @@ export type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem Icon
    */
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 
   /**
-   * BreadcrumbItem IsOverflow
+   * BreadcrumbItem OverflowMenu
    */
-  isOverflow?: boolean;
+  overflowMenu?: React.ReactNode;
 
   /**
    * BreadcrumbItem CurrentItem
@@ -29,14 +29,14 @@ export type BreadcrumbItemProps = {
   /**
    * BreadcrumbItem LinkProps
    */
-  linkProps?: LinkProps;
+  linkProps?: Omit<LinkProps, "children">;
 };
 
 const BreadcrumbItem = (
   {
     children,
     currentItem,
-    isOverflow,
+    overflowMenu,
     icon,
     linkProps,
     ...rest
@@ -47,15 +47,21 @@ const BreadcrumbItem = (
     <li
       className={cx(`${prefix}--breadcrumb-item`, {
         [`${prefix}--breadcrumb-item__current`]: currentItem,
-        [`${prefix}--breadcrumb-item__overflow`]: isOverflow
+        [`${prefix}--breadcrumb-item__overflow`]: !!overflowMenu
       })}
       {...rest}
     >
       <div>
-        {icon}
-        <Link {...linkProps} ref={ref}>
-          {children}
-        </Link>
+        {overflowMenu ? (
+          overflowMenu
+        ) : (
+          <>
+            {icon}
+            <Link {...linkProps} ref={ref}>
+              {children}
+            </Link>
+          </>
+        )}
       </div>
       <IconChevronRight aria-hidden />
     </li>

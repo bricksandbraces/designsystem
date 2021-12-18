@@ -18,6 +18,11 @@ export type OverflowMenuProps = {
   icon?: React.ReactElement;
 
   /**
+   * OverflowMenu Custom TriggerNode. Ignores Icon
+   */
+  triggerElement?: React.ReactElement;
+
+  /**
    * OverflowMenu Size
    */
   size?: "large" | "default" | "small";
@@ -35,6 +40,7 @@ const OverflowMenu = (
     light,
     icon = <IconDotsVertical />,
     className,
+    triggerElement,
     ...props
   }: OverflowMenuProps,
   ref: React.ForwardedRef<HTMLElement>
@@ -55,13 +61,17 @@ const OverflowMenu = (
       allowHTML
       content={children}
     >
-      <IconOnlyButton
-        icon={icon}
-        size={size}
-        kind="ghost"
-        hideTooltip
-        className={cx(`${prefix}--overflowmenu-trigger`)}
-      />
+      {triggerElement ? (
+        triggerElement
+      ) : (
+        <IconOnlyButton
+          icon={icon}
+          size={size}
+          kind="ghost"
+          hideTooltip
+          className={cx(`${prefix}--overflowmenu-trigger`)}
+        />
+      )}
     </Tippy>
   );
 };
