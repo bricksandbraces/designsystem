@@ -8,12 +8,31 @@
     align-items: center;
     transition: outline $transition--app-01;
     border: 0;
+    border-radius: $component--radius-default;
     outline: 0.0625rem solid transparent;
     outline-offset: $size--spacing-01;
     background-color: transparent;
     color: $color--font-text-01;
     text-decoration: none;
     vertical-align: baseline;
+
+    &-icon {
+      &__start {
+        flex-flow: row-reverse;
+
+        & > svg {
+          margin-right: $size--spacing-03;
+        }
+      }
+
+      &__end {
+        flex-flow: row;
+
+        & > svg {
+          margin-left: $size--spacing-03;
+        }
+      }
+    }
 
     &-small {
       & > .$(prefix)--link-label {
@@ -89,7 +108,6 @@
     &-label + svg {
       width: $size--container-01;
       height: $size--container-01;
-      margin-left: $size--spacing-03;
     }
   }
 }

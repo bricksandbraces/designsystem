@@ -56,8 +56,7 @@ const BreadcrumbItem = (
           overflowMenu
         ) : (
           <>
-            {icon}
-            <Link {...linkProps} ref={ref}>
+            <Link icon={icon} iconPosition="start" {...linkProps} ref={ref}>
               {children}
             </Link>
           </>

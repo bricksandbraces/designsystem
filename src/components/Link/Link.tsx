@@ -39,6 +39,11 @@ export type LinkProps = {
   icon?: ReactNode;
 
   /**
+   * Link IconPosition
+   */
+  iconPosition?: "start" | "end";
+
+  /**
    * Link OnClick Event
    */
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
@@ -51,6 +56,7 @@ const Link = ({
   inline,
   size = "default",
   icon,
+  iconPosition = "end",
   onClick,
   className,
   ...rest
@@ -62,6 +68,7 @@ const Link = ({
       className={cx(
         `${prefix}--link ${prefix}--link-${size}`,
         {
+          [`${prefix}--link-icon__${iconPosition}`]: iconPosition,
           [`${prefix}--link-inline`]: inline
         },
         className

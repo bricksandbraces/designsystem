@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import { SkeletonContainer } from "../..";
+import { SkeletonContainer, SkeletonText } from "../..";
 
 type SwitcherSkeletonProps = {
   /**
@@ -32,14 +32,17 @@ const SwitcherSkeleton = ({
         style={{ width: "100%" }}
         className={`${prefix}--switcher-${size}`}
       >
-        <SkeletonAnimatedContainer
-          style={{ width: "33.3%" }}
-          className={`${prefix}--switcher-${size}`}
-        />
-        <div
-          style={{ width: "33.3%" }}
-          className={`${prefix}--switcher-${size}`}
-        />
+        <div>
+          <SkeletonText />
+        </div>
+
+        <div>
+          <SkeletonText />
+        </div>
+
+        <div>
+          <SkeletonText />
+        </div>
       </SkeletonContainer>
     </div>
   );

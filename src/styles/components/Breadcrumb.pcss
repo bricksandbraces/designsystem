@@ -21,6 +21,7 @@
       align-items: center;
       gap: $size--spacing-03;
       color: $color--font-text-01;
+      white-space: nowrap;
 
       &__overflow {
         & > div {
@@ -39,14 +40,15 @@
       & > div {
         display: inline-block;
 
-        & > svg {
-          min-width: $size--container-01;
-          max-width: $size--container-01;
-          min-height: $size--container-01;
-          max-height: $size--container-01;
-          margin-right: $size--spacing-02;
-          transform: translateY(-0.0625rem);
-          stroke: currentColor;
+        & > .$(prefix)--link {
+          & > svg {
+            min-width: $size--container-01;
+            max-width: $size--container-01;
+            min-height: $size--container-01;
+            max-height: $size--container-01;
+            transform: translateY(-0.0625rem);
+            stroke: currentColor;
+          }
         }
       }
 
