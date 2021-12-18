@@ -2,17 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-export type BreadcrumbProps = {
-  /**
-   * Breadcrumb Children
-   */
-  children?: React.ReactNode;
-
-  /**
-   * Breadcrumb ClassName
-   */
-  className?: string;
-};
+export type BreadcrumbProps = {} & React.HTMLAttributes<HTMLElement>;
 
 const Breadcrumb = (
   { className, children, ...rest }: BreadcrumbProps,

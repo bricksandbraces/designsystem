@@ -28,7 +28,9 @@ const defaultSize = "default";
 export const Uncontrolled = () => {
   const defaultValue = number("defaultValue", 0);
   // this is only a monitoring value since uncontrolled input holds the value
-  const [reference, setReference] = useState<number | undefined>(defaultValue);
+  const [parsedValue, setReference] = useState<number | undefined>(
+    defaultValue
+  );
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
@@ -36,7 +38,7 @@ export const Uncontrolled = () => {
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultValue={defaultValue}
-        onChange={(event, params) => {
+        onChange={(params, event) => {
           setReference(params.parsedValue);
           action("onChange")(event, params);
         }}
@@ -55,16 +57,15 @@ export const Uncontrolled = () => {
         max={number("max", 50)}
         step={number("step", 1)}
       />
-      <Label>Reference value: {reference}</Label>
+      <Label>Reference parsedValue: {parsedValue}</Label>
     </div>
   );
 };
 
 export const Controlled = () => {
-  // this is the single source of truth
   const [textValue, setValue] = useState<string>("1e42");
   const float = boolean("float", false);
-  const value = parseToNumber(textValue, float);
+  const parsedValue = parseToNumber(textValue, float);
   return (
     <div style={{ height: "100vh", padding: "32px", color: "white" }}>
       <NumberInput
@@ -81,20 +82,20 @@ export const Controlled = () => {
         onBlur={action("onBlur")}
         onFocus={action("onFocus")}
         onKeyDown={action("onKeyDown")}
-        onChange={(event, params) => {
+        onChange={(params, event) => {
           if (params.parsedValue != null && !Number.isNaN(params.parsedValue)) {
             setValue(`${params.parsedValue}`);
           } else {
             setValue(params.newValue ?? "");
           }
-          action("onChange")(event, params);
+          action("onChange")(params, event);
         }}
         min={number("min", -50)}
         max={number("max", 50)}
         step={number("step", 1)}
         float={float}
       />
-      <Label>SSoT value: {value}</Label>
+      <Label>parsedValue: {parsedValue}</Label>
     </div>
   );
 };
