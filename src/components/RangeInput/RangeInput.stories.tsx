@@ -28,6 +28,7 @@ export const Uncontrolled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
+          light={boolean("light", false)}
           size={select("size", sizeOptions, defaultSize) as any}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
@@ -53,6 +54,7 @@ export const Controlled = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <RangeInput
+          light={boolean("light", false)}
           size={select("size", sizeOptions, defaultSize) as any}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}

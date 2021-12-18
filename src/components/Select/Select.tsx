@@ -86,6 +86,11 @@ export type SelectProps = {
   error?: boolean;
 
   /**
+   * Select Light
+   */
+  light?: boolean;
+
+  /**
    * Select The error text to display
    */
   errorText?: string;
@@ -108,6 +113,7 @@ const Select = (
     label,
     className,
     error,
+    light,
     errorText,
     warning,
     warningText,
@@ -148,7 +154,11 @@ const Select = (
     <div
       className={cx(
         `${prefix}--select`,
-        { [`${prefix}--select-readonly`]: readOnly },
+
+        {
+          [`${prefix}--select-light`]: light,
+          [`${prefix}--select-readonly`]: readOnly
+        },
         className
       )}
     >

@@ -12,6 +12,14 @@
       & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
         border-color: $color--border-light;
         background-color: $color--background-light;
+
+        &[disabled] {
+          border-color: $color--disabled;
+        }
+
+        &[readonly] {
+          border-color: $color--readonly;
+        }
       }
     }
 

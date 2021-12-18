@@ -15,6 +15,14 @@
         > .$(prefix)--numberinput-input {
         border-color: $color--border-light;
         background-color: $color--background-light;
+
+        &[disabled] {
+          border-color: $color--disabled;
+        }
+
+        &[readonly] {
+          border-color: $color--readonly;
+        }
       }
     }
 

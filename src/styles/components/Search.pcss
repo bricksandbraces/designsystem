@@ -16,6 +16,24 @@
         border-color: $color--border-light;
         background-color: $color--background-light;
       }
+
+      & + .$(prefix)--search-box {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        &
+          > .$(prefix)--search-box__content
+          > .$(prefix)--search-box__content-items
+          > .$(prefix)--search-box__content-list-item {
+          &:hover {
+            background-color: $color--hover-light;
+          }
+
+          &:active {
+            background-color: $color--active-light;
+          }
+        }
+      }
     }
 
     &-icon {

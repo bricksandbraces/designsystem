@@ -27,6 +27,7 @@ export const InputWithSubmit = () => {
   return (
     <div style={{ padding: "32px" }}>
       <SearchInput
+        light={boolean("light", false)}
         id="search-1"
         label={text("Label", "Search")}
         submitLabel={text("Submit Label", "Go!")}
@@ -49,6 +50,7 @@ export const InputWithoutSubmit = () => {
   return (
     <div style={{ padding: "32px" }}>
       <SearchInput
+        light={boolean("light", false)}
         id="search-2"
         withSubmit={false}
         label={text("Label", "Search")}
@@ -72,6 +74,7 @@ export const ControlledInput = () => {
   return (
     <div style={{ padding: "32px" }}>
       <SearchInput
+        light={boolean("light", false)}
         id="search-1"
         label={text("Label", "Search")}
         withSubmit={false}
@@ -97,6 +100,7 @@ export const FullSearchWithContainer = () => {
   return (
     <div style={{ padding: "32px" }}>
       <Search
+        light={boolean("light", false)}
         id={text("ID", "search-1") as any}
         onBlur={action("onBlur")}
         onFocus={action("onFocus")}

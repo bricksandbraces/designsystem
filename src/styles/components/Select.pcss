@@ -9,6 +9,21 @@
     width: 100%;
     max-width: $size--container-08;
 
+    &-light {
+      & > .$(prefix)--select-input__wrapper > .$(prefix)--select-input {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        &[disabled] {
+          border-color: $color--disabled;
+        }
+
+        &[readonly] {
+          border-color: $color--readonly;
+        }
+      }
+    }
+
     &-default {
       height: $size--field-default;
     }
