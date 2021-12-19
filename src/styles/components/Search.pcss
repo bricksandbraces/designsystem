@@ -1,6 +1,6 @@
-@import "../../styles/colors.pcss";
-@import "../../styles/theme.pcss";
-@import "../../styles/typography.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+@import "../typography.pcss";
 @import "../prefix.pcss";
 
 .$(prefix) {
@@ -13,24 +13,24 @@
 
     &-light {
       & > .$(prefix)--search-input {
-        border-color: $color--border-light;
-        background-color: $color--background-light;
+        border-color: var(--color-border-light);
+        background-color: var(--color-background-light);
       }
 
       & + .$(prefix)--search-box {
-        border-color: $color--border-light;
-        background-color: $color--background-light;
+        border-color: var(--color-border-light);
+        background-color: var(--color-background-light);
 
         &
           > .$(prefix)--search-box__content
           > .$(prefix)--search-box__content-items
           > .$(prefix)--search-box__content-list-item {
           &:hover {
-            background-color: $color--hover-light;
+            background-color: var(--color-hover-light);
           }
 
           &:active {
-            background-color: $color--active-light;
+            background-color: var(--color-active-light);
           }
         }
       }
@@ -38,32 +38,32 @@
 
     &-icon {
       position: absolute;
-      width: $size--container-01;
-      min-width: $size--container-01;
-      height: $size--container-01;
-      min-height: $size--container-01;
-      margin-left: $size--spacing-05;
-      color: $color--font-placeholder;
+      width: var(--size-container-01);
+      min-width: var(--size-container-01);
+      height: var(--size-container-01);
+      min-height: var(--size-container-01);
+      margin-left: var(--size-spacing-05);
+      color: var(--color-font-placeholder);
     }
 
     &-box {
       visibility: hidden;
       margin: 0;
-      padding: $component--padding-inside;
-      transition: transform $transition--app-01, opacity $transition--app-01,
-        visibility $transition--app-01;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
+      padding: var(--component-padding-inside);
+      transition: transform var(--transition-app-01),
+        opacity var(--transition-app-01), visibility var(--transition-app-01);
+      border: 0.0625rem solid var(--color-border);
+      border-radius: var(--component-radius-default);
       outline: 0;
       opacity: 0;
       background-color: transparent;
-      background-color: $color--background;
-      box-shadow: $component--shadow-default;
-      color: $color--font-text-01;
+      background-color: var(--color-background);
+      box-shadow: var(--component-shadow-default);
+      color: var(--color-font-text-01);
 
       &__open {
         visibility: visible;
-        transform: translateY($size--spacing-03);
+        transform: translateY(var(--size-spacing-03));
         opacity: 1;
       }
 
@@ -72,78 +72,78 @@
 
         &-items {
           display: flex;
-          gap: $component--padding-inside;
+          gap: var(--component-padding-inside);
           flex-flow: column wrap;
         }
 
         &-badges {
           display: flex;
           flex-wrap: wrap;
-          padding: $size--spacing-04;
+          padding: var(--size-spacing-04);
 
           &--manual-hover {
-            background-color: $color--secondary-hover;
+            background-color: var(--color-secondary-hover);
           }
 
           & > * {
-            margin-right: $size--spacing-03;
-            margin-bottom: $size--spacing-03;
+            margin-right: var(--size-spacing-03);
+            margin-bottom: var(--size-spacing-03);
           }
         }
 
         &-list-item {
           display: flex;
           align-items: center;
-          padding: 0 $size--spacing-05;
-          transition: background-color $transition--app-01;
-          border-radius: $component--radius-default;
+          padding: 0 var(--size-spacing-05);
+          transition: background-color var(--transition-app-01);
+          border-radius: var(--component-radius-default);
 
           &--manual-hover {
-            background-color: $color--hover;
+            background-color: var(--color-hover);
           }
 
           &--recent {
             &__icon {
-              margin-right: $size--spacing-03;
+              margin-right: var(--size-spacing-03);
               color: currentColor;
             }
 
-            color: $color--font-decoration;
+            color: var(--color-font-decoration);
           }
 
           &--result {
-            color: $color--font-text-01;
+            color: var(--color-font-text-01);
           }
         }
       }
     }
 
     &-default {
-      height: $size--field-default;
+      height: var(--size-field-default);
 
       & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
-          height: $size--field-default;
+          height: var(--size-field-default);
         }
       }
     }
 
     &-large {
-      height: $size--field-large;
+      height: var(--size-field-large);
 
       & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
-          height: $size--field-large;
+          height: var(--size-field-large);
         }
       }
     }
 
     &-small {
-      height: $size--field-small;
+      height: var(--size-field-small);
 
       & + .$(prefix)--search-box > .$(prefix)--search-box__content > div {
         & > .$(prefix)--search-box__content-list-item {
-          height: $size--field-small;
+          height: var(--size-field-small);
         }
       }
     }
@@ -162,21 +162,22 @@
 
       width: 100%;
       height: 100%;
-      padding: 0 $size--spacing-05 0 $size--spacing-08;
-      transition: border $transition--app-01;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
+      padding: 0 var(--size-spacing-05) 0 var(--size-spacing-08);
+      transition: border var(--transition-app-01);
+      border: 0.0625rem solid var(--color-border);
+      border-radius: var(--component-radius-default);
       outline: 0;
-      background-color: $color--background;
-      color: $color--font-text-01;
+      background-color: var(--color-background);
+      color: var(--color-font-text-01);
 
       &::placeholder {
-        transition: transform $transition--app-01, opacity $transition--app-01;
-        color: $color--font-placeholder;
+        transition: transform var(--transition-app-01),
+          opacity var(--transition-app-01);
+        color: var(--color-font-placeholder);
       }
 
       &:focus {
-        border-color: $color--focus;
+        border-color: var(--color-focus);
 
         &::placeholder {
           transform: translateX(0.125rem);
@@ -184,7 +185,7 @@
         }
 
         & + div > .$(prefix)--search-go {
-          border-color: $color--focus;
+          border-color: var(--color-focus);
         }
       }
     }
@@ -201,25 +202,25 @@
         width: 0.0625rem;
         height: 100%;
         margin-left: -0.0625rem;
-        transition: background-color $transition--app-01;
-        background-color: $color--primary-enabled;
+        transition: background-color var(--transition-app-01);
+        background-color: var(--color-primary-enabled);
       }
 
       &:hover {
         &::before {
-          background-color: $color--primary-hover;
+          background-color: var(--color-primary-hover);
         }
       }
 
       &:active {
         &::before {
-          background-color: $color--primary-active;
+          background-color: var(--color-primary-active);
         }
       }
 
       &:focus-visible {
         &::before {
-          background-color: $color--focus;
+          background-color: var(--color-focus);
         }
       }
     }
@@ -230,32 +231,34 @@
         margin-right: 0.0625rem;
         margin-bottom: 0.0625rem;
         border-top-left-radius: 0;
-        border-top-right-radius: calc($component--radius-default - 0.0625rem);
+        border-top-right-radius: calc(
+          var(--component-radius-default) - 0.0625rem
+        );
         border-bottom-right-radius: calc(
-          $component--radius-default - 0.0625rem
+          var(--component-radius-default) - 0.0625rem
         );
         border-bottom-left-radius: 0;
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-default {
-        min-width: calc($size--container-04 - $size--spacing-01);
-        max-width: calc($size--container-04 - $size--spacing-01);
-        min-height: calc($size--container-04 - $size--spacing-01);
-        max-height: calc($size--container-04 - $size--spacing-01);
+        min-width: calc(var(--size-container-04) - var(--size-spacing-01));
+        max-width: calc(var(--size-container-04) - var(--size-spacing-01));
+        min-height: calc(var(--size-container-04) - var(--size-spacing-01));
+        max-height: calc(var(--size-container-04) - var(--size-spacing-01));
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-small {
-        min-width: calc($size--container-03 - $size--spacing-01);
-        max-width: calc($size--container-03 - $size--spacing-01);
-        min-height: calc($size--container-03 - $size--spacing-01);
-        max-height: calc($size--container-03 - $size--spacing-01);
+        min-width: calc(var(--size-container-03) - var(--size-spacing-01));
+        max-width: calc(var(--size-container-03) - var(--size-spacing-01));
+        min-height: calc(var(--size-container-03) - var(--size-spacing-01));
+        max-height: calc(var(--size-container-03) - var(--size-spacing-01));
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-large {
-        min-width: calc($size--container-05 - $size--spacing-01);
-        max-width: calc($size--container-05 - $size--spacing-01);
-        min-height: calc($size--container-05 - $size--spacing-01);
-        max-height: calc($size--container-05 - $size--spacing-01);
+        min-width: calc(var(--size-container-05) - var(--size-spacing-01));
+        max-width: calc(var(--size-container-05) - var(--size-spacing-01));
+        min-height: calc(var(--size-container-05) - var(--size-spacing-01));
+        max-height: calc(var(--size-container-05) - var(--size-spacing-01));
       }
     }
 
@@ -282,12 +285,12 @@
 
     & > .$(prefix)--skeleton-animated {
       justify-content: flex-start;
-      padding: 0 $size--spacing-05;
-      border-radius: $component--radius-default;
+      padding: 0 var(--size-spacing-05);
+      border-radius: var(--component-radius-default);
 
       & > svg {
         transform: translateX(-0.0625rem);
-        stroke: $color--skeleton-03;
+        stroke: var(--color-skeleton-03);
       }
     }
   }
