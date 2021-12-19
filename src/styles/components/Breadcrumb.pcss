@@ -21,6 +21,7 @@
       align-items: center;
       gap: var(--size-spacing-03);
       color: var(--color-font-text-01);
+      white-space: nowrap;
 
       &__overflow {
         & > div {
@@ -39,14 +40,16 @@
       & > div {
         display: inline-block;
 
-        & > svg {
-          min-width: var(--size-container-01);
-          max-width: var(--size-container-01);
-          min-height: var(--size-container-01);
-          max-height: var(--size-container-01);
-          margin-right: var(--size-spacing-02);
-          transform: translateY(-0.0625rem);
-          stroke: currentColor;
+        & > .$(prefix)--link {
+          & > svg {
+            min-width: var(--size-container-01);
+            max-width: var(--size-container-01);
+            min-height: var(--size-container-01);
+            max-height: var(--size-container-01);
+            margin-right: var(--size-spacing-02);
+            transform: translateY(-0.0625rem);
+            stroke: currentColor;
+          }
         }
       }
 

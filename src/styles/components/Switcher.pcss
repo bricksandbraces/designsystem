@@ -6,6 +6,41 @@
   &--switcher {
     white-space: wrap;
 
+    &-light {
+      & > .$(prefix)--switcher-btn__container {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+
+        & > .$(prefix)--switcher-btn {
+          &::before {
+            background-color: $color--background-light;
+          }
+
+          &::after {
+            background-color: $color--border-light;
+          }
+
+          &:hover {
+            &::before {
+              background-color: $color--hover-light;
+            }
+          }
+
+          &:active {
+            &::before {
+              background-color: $color--active-light;
+            }
+          }
+
+          &.$(prefix)--switcher-btn__selected {
+            &::before {
+              background-color: $color--decoration;
+            }
+          }
+        }
+      }
+    }
+
     &-small,
     &-small > div > .$(prefix)--switcher-btn {
       min-height: $size--field-small;
@@ -32,48 +67,33 @@
       justify-content: center;
       width: 100%;
       padding: 0 $size--spacing-05;
-      overflow: hidden;
-      transition: $transition--app-01;
-      border-top: 0.0625rem solid $color--border;
-      border-bottom: 0.0625rem solid $color--border;
-      background-color: $color--background;
+      border: 0.0625rem solid transparent;
+      background-color: transparent;
       color: $color--font-unselected;
 
-      &:first-child {
-        border-left: 0.0625rem solid $color--border;
-        border-top-left-radius: $component--radius-default;
-        border-bottom-left-radius: $component--radius-default;
-      }
+      &:not(:last-child) {
+        margin-right: 0.0625rem;
 
-      &:last-child {
-        border-right: 0.0625rem solid $color--border;
-        border-top-right-radius: $component--radius-default;
-        border-bottom-right-radius: $component--radius-default;
-      }
-
-      &:not(:first-child) {
         &::after {
           content: "";
           position: absolute;
-          left: 0;
+          right: -0.125rem;
           width: 0.0625rem;
           height: 50%;
-          transition: opacity $transition--app-01;
           opacity: 1;
           background-color: $color--border;
         }
+      }
 
-        &:hover {
-          &::after {
-            opacity: 0;
-          }
-
-          & + .$(prefix)--switcher-btn {
-            &::after {
-              opacity: 0;
-            }
-          }
-        }
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        width: calc(100% - $component--padding-inside);
+        height: calc(100% - $component--padding-inside);
+        transition: background-color $transition--app-01;
+        border-radius: calc($component--radius-default - 0.0625rem);
+        background-color: $color--background;
       }
 
       &:disabled {
@@ -88,9 +108,13 @@
       &__container {
         display: flex;
         width: 100%;
+        border: 0.0625rem solid $color--border;
+        border-radius: $component--radius-default;
+        background-color: $color--background;
       }
 
       &__label {
+        z-index: 2;
         max-width: 100%;
         margin-bottom: 0;
         overflow: hidden;
@@ -99,32 +123,29 @@
       }
 
       &:hover {
-        background-color: $color--hover;
+        &::before {
+          background-color: $color--hover;
+        }
       }
 
       &:focus-visible {
-        border: 0.0625rem solid $color--focus;
+        &::before {
+          border: 0.0625rem solid $color--focus;
+        }
       }
 
       &:active {
-        background-color: $color--active;
+        &::before {
+          background-color: $color--active;
+        }
       }
 
       &__selected.$(prefix)--switcher-btn {
         position: relative;
-        border-color: transparent;
-        background-color: $color--decoration;
         color: $color--font-selected;
-        pointer-events: none;
 
-        &::after {
-          opacity: 0;
-        }
-
-        & + .$(prefix)--switcher-btn {
-          &::after {
-            opacity: 0;
-          }
+        &::before {
+          background-color: $color--decoration;
         }
 
         & > .typography {
@@ -152,7 +173,7 @@
   &--switcher.$(prefix)--skeleton {
     display: inline-flex;
     position: unset;
-    flex-flow: column;
+    flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
@@ -162,23 +183,29 @@
     background-color: transparent;
     box-shadow: none;
 
-    & > .$(prefix)--skeleton-container > .$(prefix)--skeleton-animated {
-      justify-content: flex-start;
-      padding: 0 $size--spacing-05;
-      border-radius: 0;
+    & > .$(prefix)--skeleton-container {
+      flex-flow: row nowrap;
 
-      & + div {
-        display: flex;
+      & > div {
+        display: inline-flex;
         position: relative;
         align-items: center;
+        width: 100%;
+        padding: $size--spacing-05;
 
-        &::after {
-          content: "";
-          position: absolute;
-          right: 0;
-          width: 0.0625rem;
-          height: 50%;
-          background-color: $color--skeleton-02;
+        &:not(:last-child) {
+          &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 0.0625rem;
+            height: 50%;
+            background-color: $color--skeleton-02;
+          }
+        }
+
+        & > .$(prefix)--skeleton-text {
+          width: 100%;
         }
       }
     }

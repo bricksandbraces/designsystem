@@ -20,6 +20,11 @@ export type RangeInputProps = {
   id: string;
 
   /**
+   * RangeInput Light
+   */
+  light?: boolean;
+
+  /**
    * RangeInput Min
    */
   min: number;
@@ -137,6 +142,7 @@ const RangeInput = (
     minLabel,
     max,
     maxLabel,
+    light,
     size,
     step = 1,
     marks,
@@ -205,6 +211,7 @@ const RangeInput = (
       className={cx(
         `${prefix}--rangeinput`,
         {
+          [`${prefix}--rangeinput-light`]: light,
           [`${prefix}--rangeinput-disabled`]: disabled,
           [`${prefix}--rangeinput-readonly`]: readOnly
         },
@@ -218,6 +225,7 @@ const RangeInput = (
         {!hideInput && (
           <NumberInput
             hideButtons
+            light={light}
             className={cx(`${prefix}--rangeinput-numberinput`)}
             disabled={disabled}
             id={id}

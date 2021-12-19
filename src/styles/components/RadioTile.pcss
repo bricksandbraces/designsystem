@@ -130,6 +130,15 @@
           border-color: transparent;
           background-color: $color--disabled;
           color: $color--font-disabled;
+
+          & > .$(prefix)--radiotile-selected {
+            color: $color--disabled;
+
+            & > circle {
+              stroke: $color--font-disabled;
+              fill: $color--font-disabled;
+            }
+          }
         }
       }
 

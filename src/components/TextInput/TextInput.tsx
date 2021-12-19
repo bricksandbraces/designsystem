@@ -181,10 +181,10 @@ const TextInput = (
       className={cx(
         `${prefix}--textinput`,
         {
+          [`${prefix}--textinput-light`]: light,
           [`${prefix}--textinput-fluid`]: fluid,
           [`${prefix}--textinput-disabled`]: disabled,
-          [`${prefix}--textinput-readonly`]: readOnly,
-          [`${prefix}--textinput-light`]: light
+          [`${prefix}--textinput-readonly`]: readOnly
         },
         className
       )}

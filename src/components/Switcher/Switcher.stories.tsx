@@ -1,4 +1,4 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useEffect, useState } from "react";
 import SwitcherItem from "./SwitcherItem";
 import Switcher from "./Switcher";
@@ -23,6 +23,7 @@ export const Uncontrolled = () => {
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
           <Switcher
+            light={boolean("light", false)}
             defaultIndex={1}
             size={select("size", sizeOptions, defaultSize) as any}
             onChange={action("onChange")}
@@ -72,6 +73,7 @@ export const Controlled = () => {
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
           <Switcher
+            light={boolean("light", false)}
             index={selectedIndex}
             onChange={(newIndex) => {
               setSelectedIndex(newIndex);

@@ -8,12 +8,31 @@
     align-items: center;
     transition: outline var(--transition-app-01);
     border: 0;
+    border-radius: $component--radius-default;
     outline: 0.0625rem solid transparent;
     outline-offset: var(--size-spacing-01);
     background-color: transparent;
     color: var(--color-font-text-01);
     text-decoration: none;
     vertical-align: baseline;
+
+    &-icon {
+      &__start {
+        flex-flow: row-reverse;
+
+        & > svg {
+          margin-right: $size--spacing-03;
+        }
+      }
+
+      &__end {
+        flex-flow: row;
+
+        & > svg {
+          margin-left: $size--spacing-03;
+        }
+      }
+    }
 
     &-small {
       & > .$(prefix)--link-label {
@@ -90,7 +109,6 @@
     &-label + svg {
       width: var(--size-container-01);
       height: var(--size-container-01);
-      margin-left: var(--size-spacing-03);
     }
   }
 }

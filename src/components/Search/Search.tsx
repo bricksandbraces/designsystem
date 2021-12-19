@@ -126,6 +126,11 @@ export type SearchProps = {
   open?: boolean;
 
   /**
+   * Search Light
+   */
+  light?: boolean;
+
+  /**
    * Search Open State (Uncontrolled)
    */
   defaultOpen?: boolean;
@@ -169,6 +174,8 @@ const Search = (
     value,
     defaultValue,
     onChange,
+
+    light,
 
     open,
     defaultOpen,
@@ -244,42 +251,41 @@ const Search = (
     performFocusChange(newFocusedIndex);
   };
 
-  const handleKeyboardNavigation: React.KeyboardEventHandler<
-    HTMLInputElement
-  > = (event) => {
-    const navigation = event.key === "ArrowUp" || event.key === "ArrowDown";
-    const up = event.key === "ArrowUp";
-    if (navigation) {
-      event.preventDefault();
-      performOpenChange(true);
+  const handleKeyboardNavigation: React.KeyboardEventHandler<HTMLInputElement> =
+    (event) => {
+      const navigation = event.key === "ArrowUp" || event.key === "ArrowDown";
+      const up = event.key === "ArrowUp";
+      if (navigation) {
+        event.preventDefault();
+        performOpenChange(true);
 
-      let newFocusedIndex;
-      if (focusedIndex == null) {
-        newFocusedIndex = up ? overallArray.length - 1 : 0;
-      } else if (up) {
-        newFocusedIndex =
-          focusedIndex - 1 < 0 ? overallArray.length - 1 : focusedIndex - 1;
-      } else {
-        newFocusedIndex =
-          focusedIndex + 1 >= overallArray.length ? 0 : focusedIndex + 1;
+        let newFocusedIndex;
+        if (focusedIndex == null) {
+          newFocusedIndex = up ? overallArray.length - 1 : 0;
+        } else if (up) {
+          newFocusedIndex =
+            focusedIndex - 1 < 0 ? overallArray.length - 1 : focusedIndex - 1;
+        } else {
+          newFocusedIndex =
+            focusedIndex + 1 >= overallArray.length ? 0 : focusedIndex + 1;
+        }
+
+        updateFocusIndexAndTextValue(newFocusedIndex);
+      } else if (event.key === "Enter" && !event.repeat) {
+        performOpenChange(false);
+
+        if (focusedItemIndex != null) {
+          const newValue = focusedItem?.label ?? "";
+          setValueManually(newValue);
+          onChange?.(newValue);
+          performFocusChange(null);
+        }
+
+        onSubmit?.(currentValue ?? "", event);
+      } else if (event.key === "Escape") {
+        performOpenChange(false);
       }
-
-      updateFocusIndexAndTextValue(newFocusedIndex);
-    } else if (event.key === "Enter" && !event.repeat) {
-      performOpenChange(false);
-
-      if (focusedItemIndex != null) {
-        const newValue = focusedItem?.label ?? "";
-        setValueManually(newValue);
-        onChange?.(newValue);
-        performFocusChange(null);
-      }
-
-      onSubmit?.(currentValue ?? "", event);
-    } else if (event.key === "Escape") {
-      performOpenChange(false);
-    }
-  };
+    };
 
   // combine recent with result as their component is the same
   const searchListItems = idfy(
@@ -297,6 +303,7 @@ const Search = (
     <>
       <SearchInput
         id={id}
+        light={light}
         ref={mergeRefs([inputRef, ref])}
         value={value}
         defaultValue={defaultValue}
