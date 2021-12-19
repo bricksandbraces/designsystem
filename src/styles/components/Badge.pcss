@@ -9,63 +9,63 @@
 
     display: inline-flex;
     align-items: center;
-    height: $size--field-xsmall;
-    transition: border-color $transition--app-01;
+    height: var(--size-field-xsmall);
+    transition: border-color var(--transition-app-01);
     border: 0.0625rem solid;
     border-radius: 4rem;
     outline: 0;
     white-space: nowrap;
 
     &:focus {
-      border-color: $color--focus;
+      border-color: var(--color-focus);
     }
 
     &-red {
-      border-color: $color--badge-red-border;
-      background-color: $color--badge-red-bg;
-      color: $color--badge-red-font;
+      border-color: var(--color-badge-red-border);
+      background-color: var(--color-badge-red-bg);
+      color: var(--color-badge-red-font);
     }
 
     &-green {
-      border-color: $color--badge-green-border;
-      background-color: $color--badge-green-bg;
-      color: $color--badge-green-font;
+      border-color: var(--color-badge-green-border);
+      background-color: var(--color-badge-green-bg);
+      color: var(--color-badge-green-font);
     }
 
     &-yellow {
-      border-color: $color--badge-yellow-border;
-      background-color: $color--badge-yellow-bg;
-      color: $color--badge-yellow-font;
+      border-color: var(--color-badge-yellow-border);
+      background-color: var(--color-badge-yellow-bg);
+      color: var(--color-badge-yellow-font);
     }
 
     &-orange {
-      border-color: $color--badge-orange-border;
-      background-color: $color--badge-orange-bg;
-      color: $color--badge-orange-font;
+      border-color: var(--color-badge-orange-border);
+      background-color: var(--color-badge-orange-bg);
+      color: var(--color-badge-orange-font);
     }
 
     &-blue {
-      border-color: $color--badge-blue-border;
-      background-color: $color--badge-blue-bg;
-      color: $color--badge-blue-font;
+      border-color: var(--color-badge-blue-border);
+      background-color: var(--color-badge-blue-bg);
+      color: var(--color-badge-blue-font);
     }
 
     &-gray {
-      border-color: $color--badge-gray-border;
-      background-color: $color--badge-gray-bg;
-      color: $color--badge-gray-font;
+      border-color: var(--color-badge-gray-border);
+      background-color: var(--color-badge-gray-bg);
+      color: var(--color-badge-gray-font);
     }
 
     &-purple {
-      border-color: $color--badge-purple-border;
-      background-color: $color--badge-purple-bg;
-      color: $color--badge-purple-font;
+      border-color: var(--color-badge-purple-border);
+      background-color: var(--color-badge-purple-bg);
+      color: var(--color-badge-purple-font);
     }
 
     &-cyan {
-      border-color: $color--badge-cyan-border;
-      background-color: $color--badge-cyan-bg;
-      color: $color--badge-cyan-font;
+      border-color: var(--color-badge-cyan-border);
+      background-color: var(--color-badge-cyan-bg);
+      color: var(--color-badge-cyan-font);
     }
 
     &-content {
@@ -75,7 +75,7 @@
 
       & > p {
         margin: 0;
-        padding: 0 $size--spacing-03;
+        padding: 0 var(--size-spacing-03);
       }
     }
 
@@ -83,28 +83,28 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: calc($size--container-01 * 1.25);
-      height: calc($size--container-01 * 1.25);
-      margin-right: calc($size--spacing-01 / 2);
+      width: calc(var(--size-container-01) * 1.25);
+      height: calc(var(--size-container-01) * 1.25);
+      margin-right: calc(var(--size-spacing-01) / 2);
       padding: 0;
-      transition: background-color $transition--app-01,
-        border-color $transition--app-01;
+      transition: background-color var(--transition-app-01),
+        border-color var(--transition-app-01);
       border: 0;
       border-radius: 4rem;
       outline: 0;
-      background-color: $color--ghost-enabled;
+      background-color: var(--color-ghost-enabled);
       color: inherit;
 
       &:hover {
-        background-color: $color--ghost-hover;
+        background-color: var(--color-ghost-hover);
       }
 
       &:active {
-        background-color: $color--ghost-active;
+        background-color: var(--color-ghost-active);
       }
 
       &:focus {
-        border: 0.0625rem solid $color--focus;
+        border: 0.0625rem solid var(--color-focus);
       }
     }
   }

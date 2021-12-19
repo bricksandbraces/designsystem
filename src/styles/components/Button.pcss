@@ -10,31 +10,31 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    padding: 0 $size--spacing-05;
-    transition: background-color $transition--app-01,
-      border-color $transition--app-01, color $transition--app-01;
+    padding: 0 var(--size-spacing-05);
+    transition: background-color var(--transition-app-01),
+      border-color var(--transition-app-01), color var(--transition-app-01);
     border: 0.0625rem solid;
-    border-radius: $component--radius-default;
+    border-radius: var(--component-radius-default);
     background-color: transparent;
-    color: $color--font-text-01;
+    color: var(--color-font-text-01);
 
     &:disabled {
       cursor: not-allowed;
     }
 
     &-small {
-      min-height: $size--field-small;
-      max-height: $size--field-small;
+      min-height: var(--size-field-small);
+      max-height: var(--size-field-small);
     }
 
     &-default {
-      min-height: $size--field-default;
-      max-height: $size--field-default;
+      min-height: var(--size-field-default);
+      max-height: var(--size-field-default);
     }
 
     &-large {
-      min-height: $size--field-large;
-      max-height: $size--field-large;
+      min-height: var(--size-field-large);
+      max-height: var(--size-field-large);
     }
 
     &-fluid {
@@ -67,56 +67,56 @@
 
     &-primary {
       border-color: transparent;
-      background-color: $color--primary-enabled;
+      background-color: var(--color-primary-enabled);
 
       &:hover {
-        background-color: $color--primary-hover;
+        background-color: var(--color-primary-hover);
       }
 
       &:active {
-        background-color: $color--primary-active;
+        background-color: var(--color-primary-active);
       }
     }
 
     &-secondary {
       border-color: transparent;
-      background-color: $color--secondary-enabled;
+      background-color: var(--color-secondary-enabled);
 
       &:hover {
-        background-color: $color--secondary-hover;
+        background-color: var(--color-secondary-hover);
       }
 
       &:active {
-        background-color: $color--secondary-active;
+        background-color: var(--color-secondary-active);
       }
     }
 
     &-tertiary {
-      border-color: $color--tertiary-enabled;
+      border-color: var(--color-tertiary-enabled);
       background-color: transparent;
 
       &:hover {
-        border-color: $color--tertiary-hover;
-        background-color: $color--tertiary-hover;
-        color: $color--font-text-inverse;
+        border-color: var(--color-tertiary-hover);
+        background-color: var(--color-tertiary-hover);
+        color: var(--color-font-text-inverse);
       }
 
       &:active {
-        border-color: $color--tertiary-active;
-        background-color: $color--tertiary-active;
+        border-color: var(--color-tertiary-active);
+        background-color: var(--color-tertiary-active);
       }
     }
 
     &-ghost {
       border-color: transparent;
-      background-color: $color--ghost-enabled;
+      background-color: var(--color-ghost-enabled);
 
       &:hover {
-        background-color: $color--ghost-hover;
+        background-color: var(--color-ghost-hover);
       }
 
       &:active {
-        background-color: $color--ghost-active;
+        background-color: var(--color-ghost-active);
       }
     }
 
@@ -131,9 +131,9 @@
             right: -0.0625rem;
             width: 0.0625rem;
             height: 50%;
-            transition: opacity $transition--app-01;
+            transition: opacity var(--transition-app-01);
             opacity: 1;
-            background-color: $color--divider-dark;
+            background-color: var(--color-divider-dark);
           }
 
           &:hover {
@@ -154,7 +154,7 @@
 
       & > .$(prefix)--button-ghost:not(:last-child) {
         &::before {
-          background-color: $color--divider-light;
+          background-color: var(--color-divider-light);
         }
       }
 
@@ -163,13 +163,13 @@
       }
 
       & > button:first-child {
-        border-top-left-radius: $component--radius-default;
-        border-bottom-left-radius: $component--radius-default;
+        border-top-left-radius: var(--component-radius-default);
+        border-bottom-left-radius: var(--component-radius-default);
       }
 
       & > button:last-child {
-        border-top-right-radius: $component--radius-default;
-        border-bottom-right-radius: $component--radius-default;
+        border-top-right-radius: var(--component-radius-default);
+        border-bottom-right-radius: var(--component-radius-default);
       }
     }
   }
@@ -179,37 +179,37 @@
 .$(prefix)--button.$(prefix)--button-ghost:focus-visible,
 .$(prefix)--button.$(prefix)--button-primary:focus-visible,
 .$(prefix)--button.$(prefix)--button-secondary:focus-visible {
-  border-color: $color--focus;
+  border-color: var(--color-focus);
   outline: 0;
 }
 
 .$(prefix)--button__focus.$(prefix)--button-tertiary,
 .$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
-  border-color: $color--focus;
+  border-color: var(--color-focus);
   outline: 0;
-  background-color: $color--tertiary-hover;
+  background-color: var(--color-tertiary-hover);
   box-shadow: inset 0 0 0 0.0625rem $black,
-    inset 0 0 0 0.0125rem $color--tertiary-hover;
-  color: $color--font-text-inverse;
+    inset 0 0 0 0.0125rem var(--color-tertiary-hover);
+  color: var(--color-font-text-inverse);
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-disabled,
 .$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-disabled,
 .$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-disabled {
-  border-color: $color--disabled;
-  background-color: $color--disabled;
-  color: $color--font-disabled;
+  border-color: var(--color-disabled);
+  background-color: var(--color-disabled);
+  color: var(--color-font-disabled);
 
   &::before {
-    background-color: $color--font-disabled;
+    background-color: var(--color-font-disabled);
   }
 
   &:hover,
   &:focus,
   &:active {
-    border-color: $color--disabled;
-    background-color: $color--disabled;
-    color: $color--font-disabled;
+    border-color: var(--color-disabled);
+    background-color: var(--color-disabled);
+    color: var(--color-font-disabled);
 
     &::before {
       opacity: 1;
@@ -218,65 +218,65 @@
 }
 
 .$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-disabled {
-  border-color: $color--disabled;
-  color: $color--font-disabled;
+  border-color: var(--color-disabled);
+  color: var(--color-font-disabled);
 
   &:hover,
   &:focus,
   &:active {
-    border-color: $color--disabled;
+    border-color: var(--color-disabled);
     background-color: inherit;
-    color: $color--font-disabled;
+    color: var(--color-font-disabled);
   }
 }
 
 .$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-danger,
 .$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-danger {
-  background-color: $color--danger;
+  background-color: var(--color-danger);
 
   &:hover {
-    background-color: $color--danger-hover;
+    background-color: var(--color-danger-hover);
   }
 
   &:active {
-    background-color: $color--danger-active;
+    background-color: var(--color-danger-active);
   }
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-danger {
   background-color: transparent;
-  color: $color--danger;
+  color: var(--color-danger);
 
   &:hover {
-    background-color: $color--danger-hover;
-    color: $color--font-text-01;
+    background-color: var(--color-danger-hover);
+    color: var(--color-font-text-01);
   }
 
   &:active {
-    background-color: $color--danger-active;
+    background-color: var(--color-danger-active);
   }
 }
 
 .$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-danger {
-  border-color: $color--danger;
-  color: $color--danger;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
 
   &:hover {
-    border-color: $color--danger-hover;
-    background-color: $color--danger-hover;
-    color: $color--font-text-01;
+    border-color: var(--color-danger-hover);
+    background-color: var(--color-danger-hover);
+    color: var(--color-font-text-01);
   }
 
   &:active {
-    border-color: $color--danger-active;
-    background-color: $color--danger-active;
-    color: $color--font-text-01;
+    border-color: var(--color-danger-active);
+    background-color: var(--color-danger-active);
+    color: var(--color-font-text-01);
   }
 }
 
 .$(prefix)--button-icon-only.$(prefix)--button-default {
-  min-width: $size--field-default;
-  max-width: $size--field-default;
+  min-width: var(--size-field-default);
+  max-width: var(--size-field-default);
   padding: 0;
 
   &:focus + .$(prefix)--tooltip--text {
@@ -288,14 +288,14 @@
 }
 
 .$(prefix)--button-icon-only.$(prefix)--button-large {
-  min-width: $size--field-large;
-  max-width: $size--field-large;
+  min-width: var(--size-field-large);
+  max-width: var(--size-field-large);
   padding: 0;
 }
 
 .$(prefix)--button-icon-only.$(prefix)--button-small {
-  min-width: $size--field-small;
-  max-width: $size--field-small;
+  min-width: var(--size-field-small);
+  max-width: var(--size-field-small);
   padding: 0;
 }
 
@@ -308,41 +308,41 @@
 }
 
 .$(prefix)--button-icon-only > div > svg {
-  width: $size--container-01;
-  height: $size--container-01;
+  width: var(--size-container-01);
+  height: var(--size-container-01);
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-left > div > svg {
-  width: $size--container-01;
-  height: $size--container-01;
-  margin-right: $size--spacing-03;
+  width: var(--size-container-01);
+  height: var(--size-container-01);
+  margin-right: var(--size-spacing-03);
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-icon-right > div > svg {
-  width: $size--container-01;
-  height: $size--container-01;
-  margin-left: $size--spacing-03;
+  width: var(--size-container-01);
+  height: var(--size-container-01);
+  margin-left: var(--size-spacing-03);
   stroke-width: 0.125rem;
 }
 
 .$(prefix)--button-fluid.$(prefix)--button-icon-left > div > svg {
   position: absolute;
-  left: $size--spacing-06;
+  left: var(--size-spacing-06);
   margin-right: 0;
 }
 
 .$(prefix)--button-fluid.$(prefix)--button-icon-right > div > svg {
   position: absolute;
-  right: $size--spacing-06;
+  right: var(--size-spacing-06);
   margin-right: 0;
 }
 
 .$(prefix)--spinner-border.$(prefix)--loading {
   position: absolute;
-  width: $size--container-01;
-  height: $size--container-01;
+  width: var(--size-container-01);
+  height: var(--size-container-01);
   border: 0.125rem solid currentColor;
   border-right-color: transparent;
 }

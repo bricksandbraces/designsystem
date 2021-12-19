@@ -5,51 +5,51 @@
 .$(prefix) {
   &--accordion {
     width: 100%;
-    max-width: calc($size--spacing-13 * 3);
+    max-width: calc(var(--size-spacing-13) * 3);
 
     &-small > ul > li,
     &-small > ul > li > button,
     &-small > .$(prefix)--skeleton {
-      min-height: $size--field-small;
-      max-height: $size--field-small;
+      min-height: var(--size-field-small);
+      max-height: var(--size-field-small);
     }
 
     &-default > ul > li,
     &-default > ul > li > button,
     &-default > .$(prefix)--skeleton {
-      min-height: $size--field-default;
-      max-height: $size--field-default;
+      min-height: var(--size-field-default);
+      max-height: var(--size-field-default);
     }
 
     &-large > ul > li,
     &-large > ul > li > button,
     &-large > .$(prefix)--skeleton {
-      min-height: $size--field-large;
-      max-height: $size--field-large;
+      min-height: var(--size-field-large);
+      max-height: var(--size-field-large);
     }
 
     &-light {
       & > .$(prefix)--accordion-list {
-        border-color: $color--border-light;
-        background-color: $color--background-light;
+        border-color: var(--color-border-light);
+        background-color: var(--color-background-light);
 
         & > .$(prefix)--accordion-list__item {
-          background-color: $color--background-light;
+          background-color: var(--color-background-light);
 
           & > .$(prefix)--accordion-list__item-title {
             &:hover {
-              background: $color--hover-light;
+              background: var(--color-hover-light);
             }
 
             &:active {
-              background: $color--active-light;
+              background: var(--color-active-light);
             }
 
             &:disabled {
-              background-color: $color--background-light;
+              background-color: var(--color-background-light);
 
               &:hover {
-                background-color: $color--background-light;
+                background-color: var(--color-background-light);
               }
             }
           }
@@ -61,19 +61,19 @@
       margin: 0;
       padding: 0;
       list-style-type: none;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
-      background-color: $color--background;
+      border: 0.0625rem solid var(--color-border);
+      border-radius: var(--component-radius-default);
+      background-color: var(--color-background);
 
       &__item {
         box-sizing: content-box;
         height: 100%;
-        max-height: $size--field-default;
-        margin: $component--padding-inside;
+        max-height: var(--size-field-default);
+        margin: var(--component-padding-inside);
         overflow: hidden;
-        transition: max-height $transition--app-01;
+        transition: max-height var(--transition---app-01);
         border: 0.0625rem solid transparent;
-        background-color: $color--background;
+        background-color: var(--color-background);
 
         &-title {
           display: flex;
@@ -81,31 +81,31 @@
           justify-content: space-between;
           width: 100%;
           height: 100%;
-          padding: 0 $size--spacing-04;
-          transition: background-color $transition--app-01,
-            border-color $transition--app-01;
+          padding: 0 var(--size-spacing-04);
+          transition: background-color var(--transition---app-01),
+            border-color var(--transition---app-01);
           border: 0.0625rem solid transparent;
-          border-radius: $component--radius-default;
+          border-radius: var(--component-radius-default);
           outline: 0;
           background-color: transparent;
-          color: $color--font-text-01;
+          color: var(--color-font-text-01);
 
           &:hover {
-            background-color: $color--hover;
+            background-color: var(--color-hover);
           }
 
           &:active {
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
 
           &:focus-visible {
-            border-radius: $component--radius-default;
-            border-color: $color--focus;
+            border-radius: var(--component-radius-default);
+            border-color: var(--color-focus);
           }
 
           &:disabled {
             background-color: transparent;
-            color: $color--font-disabled;
+            color: var(--color-font-disabled);
             cursor: not-allowed;
           }
 
@@ -116,7 +116,7 @@
           }
 
           &--icon {
-            transition: transform $transition--app-01;
+            transition: transform var(--transition---app-01);
           }
         }
 
@@ -127,9 +127,9 @@
           width: 80%;
           height: 100%;
           margin: 0;
-          padding: $size--spacing-04 $size--spacing-04 $size--spacing-04
-            $size--spacing-04;
-          color: $color--font-text-02;
+          padding: var(--size-spacing-04) var(--size-spacing-04)
+            var(--size-spacing-04) var(--size-spacing-04);
+          color: var(--color-font-text-02);
         }
 
         &-open {
@@ -150,27 +150,27 @@
 
         &-expand {
           & > .$(prefix)--accordion-list__item-content {
-            animation: accordion-transition-in $transition--app-01;
+            animation: accordion-transition-in var(--transition---app-01);
           }
         }
       }
     }
   }
   &--accordion.$(prefix)--skeleton {
-    padding: $component--padding-inside;
-    gap: $component--padding-inside;
+    padding: var(--component-padding-inside);
+    gap: var(--component-padding-inside);
     border: 0.0625rem solid transparent;
 
     & > .$(prefix)--accordion-list__item-title {
       justify-content: space-between;
 
       & > svg {
-        min-width: $size--container-01;
-        max-width: $size--container-01;
-        min-height: $size--container-01;
-        max-height: $size--container-01;
+        min-width: var(--size-container-01);
+        max-width: var(--size-container-01);
+        min-height: var(--size-container-01);
+        max-height: var(--size-container-01);
         transform: translateX(-0.0625rem);
-        stroke: $color--skeleton-02;
+        stroke: var(--color-skeleton-02);
       }
     }
   }

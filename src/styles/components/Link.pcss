@@ -6,12 +6,12 @@
   &--link {
     display: inline-flex;
     align-items: center;
-    transition: outline $transition--app-01;
+    transition: outline var(--transition-app-01);
     border: 0;
     outline: 0.0625rem solid transparent;
-    outline-offset: $size--spacing-01;
+    outline-offset: var(--size-spacing-01);
     background-color: transparent;
-    color: $color--font-text-01;
+    color: var(--color-font-text-01);
     text-decoration: none;
     vertical-align: baseline;
 
@@ -21,8 +21,8 @@
       }
 
       & > .$(prefix)--link-label + svg {
-        width: calc($size--container-01 * 0.75);
-        height: calc($size--container-01 * 0.75);
+        width: calc(var(--size-container-01) * 0.75);
+        height: calc(var(--size-container-01) * 0.75);
       }
     }
 
@@ -32,8 +32,8 @@
       }
 
       & > .$(prefix)--link-label + svg {
-        width: $size--container-01;
-        height: $size--container-01;
+        width: var(--size-container-01);
+        height: var(--size-container-01);
       }
     }
 
@@ -43,13 +43,13 @@
       }
 
       & > .$(prefix)--link-label + svg {
-        width: calc($size--container-01 * 1.25);
-        height: calc($size--container-01 * 1.25);
+        width: calc(var(--size-container-01) * 1.25);
+        height: calc(var(--size-container-01) * 1.25);
       }
     }
 
     &:hover {
-      color: $color--font-text-01;
+      color: var(--color-font-text-01);
 
       & > .$(prefix)--link-label {
         &::after {
@@ -67,7 +67,7 @@
       display: flex;
       position: relative;
       align-items: center;
-      transition: color $transition--app-01;
+      transition: color var(--transition-app-01);
       font-size: inherit;
       line-height: inherit;
 
@@ -78,8 +78,9 @@
         bottom: 0;
         width: 0;
         height: 0.0625rem;
-        transition: width $transition--app-02, opacity $transition--app-02,
-          background-color $transition--app-01;
+        transition: width var(--transition-app-02),
+          opacity var(--transition-app-02),
+          background-color var(--transition-app-01);
         opacity: 0;
         background: currentColor;
         pointer-events: none;
@@ -87,9 +88,9 @@
     }
 
     &-label + svg {
-      width: $size--container-01;
-      height: $size--container-01;
-      margin-left: $size--spacing-03;
+      width: var(--size-container-01);
+      height: var(--size-container-01);
+      margin-left: var(--size-spacing-03);
     }
   }
 }
@@ -99,10 +100,10 @@
   line-height: inherit;
 
   & > .$(prefix)--link-label {
-    color: $color--font-link;
+    color: var(--color-font-link);
 
     &::after {
-      bottom: $size--spacing-01;
+      bottom: var(--size-spacing-01);
       width: 100%;
       opacity: 1;
       background: currentColor;
@@ -112,7 +113,7 @@
 
   &:hover {
     & > .$(prefix)--link-label {
-      color: $color--font-link-hover;
+      color: var(--color-font-link-hover);
     }
   }
 }

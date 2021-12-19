@@ -11,18 +11,18 @@
     margin-left: auto;
 
     & > div > div {
-      padding-right: $size--spacing-05;
-      padding-left: $size--spacing-05;
+      padding-right: var(--size-spacing-05);
+      padding-left: var(--size-spacing-05);
     }
 
     &__no-gutter-left > div > div {
-      padding-right: $size--spacing-05;
+      padding-right: var(--size-spacing-05);
       padding-left: 0;
     }
 
     &__no-gutter-right > div > div {
       padding-right: 0;
-      padding-left: $size--spacing-05;
+      padding-left: var(--size-spacing-05);
     }
 
     &__no-gutter > div > div {
@@ -108,7 +108,7 @@
 }
 
 /* < md */
-@media screen and (max-width: $size--breakpoint-md) {
+@media screen and (max-width: $breakpoint-md) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(4, minmax(auto, 1fr));
   }
@@ -155,7 +155,7 @@
 }
 
 /* md */
-@media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
+@media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(8, minmax(auto, 1fr));
   }
@@ -234,7 +234,7 @@
 }
 
 /* lg */
-@media screen and (min-width: $size--breakpoint-lg) and (max-width: $size--breakpoint-xlg) {
+@media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 1fr));
   }
@@ -410,7 +410,7 @@
 }
 
 /* xlg */
-@media screen and (min-width: $size--breakpoint-xlg) {
+@media screen and (min-width: $breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 1fr));
   }
@@ -586,7 +586,7 @@
 }
 
 /* < md */
-@media screen and (max-width: $size--breakpoint-md) {
+@media screen and (max-width: $breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: 0;
     padding-left: 0;
@@ -598,44 +598,44 @@
   }
 
   .$(prefix)--grid-container {
-    padding-right: $size--spacing-05;
-    padding-left: $size--spacing-05;
+    padding-right: var(--size-spacing-05);
+    padding-left: var(--size-spacing-05);
   }
 }
 
 /* > md */
-@media screen and (min-width: $size--breakpoint-md) {
+@media screen and (min-width: $breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
-    padding-right: $size--spacing-05;
-    padding-left: $size--spacing-05;
+    padding-right: var(--size-spacing-05);
+    padding-left: var(--size-spacing-05);
   }
 
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
-    padding-right: $size--spacing-05;
-    padding-left: $size--spacing-05;
+    padding-right: var(--size-spacing-05);
+    padding-left: var(--size-spacing-05);
   }
 
   .$(prefix)--grid-container {
-    padding-right: $size--spacing-07;
-    padding-left: $size--spacing-07;
+    padding-right: var(--size-spacing-07);
+    padding-left: var(--size-spacing-07);
   }
 }
 
 /* > max */
-@media screen and (min-width: $size--breakpoint-max) {
+@media screen and (min-width: $breakpoint-max) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
-    padding-right: $size--spacing-06;
-    padding-left: $size--spacing-06;
+    padding-right: var(--size-spacing-06);
+    padding-left: var(--size-spacing-06);
   }
 
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter-left {
-    padding-right: $size--spacing-06;
-    padding-left: $size--spacing-06;
+    padding-right: var(--size-spacing-06);
+    padding-left: var(--size-spacing-06);
   }
 
   .$(prefix)--grid-container {
-    padding-right: $size--spacing-08;
-    padding-left: $size--spacing-08;
+    padding-right: var(--size-spacing-08);
+    padding-left: var(--size-spacing-08);
   }
 }
 

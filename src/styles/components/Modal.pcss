@@ -15,47 +15,50 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    transition: opacity $transition--app-01, visibility $transition--app-01;
+    transition: opacity var(--transition-app-01),
+      visibility var(--transition-app-01);
     opacity: 0;
-    background-color: $component--overlay;
+    background-color: var(--component-overlay);
 
     &-close {
       position: absolute;
-      top: $size--spacing-04;
-      right: $size--spacing-04;
+      top: var(--size-spacing-04);
+      right: var(--size-spacing-04);
     }
 
     &-header {
       position: relative;
       width: 100%;
-      padding: $size--spacing-06 $size--spacing-11 0 $size--spacing-06;
+      padding: var(--size-spacing-06) var(--size-spacing-11) 0
+        var(--size-spacing-06);
       pointer-events: none;
 
-      @media screen and (max-width: $size--breakpoint-md) {
-        padding: $size--spacing-06 $size--spacing-10 0 $size--spacing-06;
+      @media screen and (max-width: $breakpoint-md) {
+        padding: var(--size-spacing-06) var(--size-spacing-10) 0
+          var(--size-spacing-06);
       }
 
       &::after {
         content: "";
         position: absolute;
-        bottom: calc($size--spacing-05 * -1 + 0.0625rem);
+        bottom: calc(var(--size-spacing-05) * -1 + 0.0625rem);
         left: 0;
         width: 100%;
-        height: $size--container-01;
+        height: var(--size-container-01);
         background: linear-gradient(
           to top,
-          rgba($color--background, 0),
-          rgba($color--background, 1)
+          rgba(var(--color-background), 0),
+          rgba(var(--color-background), 1)
         );
       }
 
       &__headline {
-        margin: 0 0 $size--spacing-03 0;
+        margin: 0 0 var(--size-spacing-03) 0;
       }
 
       &__subheadline {
-        margin: 0 0 $size--spacing-03 0;
-        color: $color--font-text-03;
+        margin: 0 0 var(--size-spacing-03) 0;
+        color: var(--color-font-text-03);
       }
     }
 
@@ -67,14 +70,14 @@
       &__content {
         height: 100%;
         margin: 0;
-        padding: $size--spacing-05 $size--spacing-11 $size--spacing-05
-          $size--spacing-06;
+        padding: var(--size-spacing-05) var(--size-spacing-11)
+          var(--size-spacing-05) var(--size-spacing-06);
         overflow: scroll;
-        color: $color--font-text-01;
+        color: var(--color-font-text-01);
 
-        @media screen and (max-width: $size--breakpoint-md) {
-          padding: $size--spacing-05 $size--spacing-10 $size--spacing-05
-            $size--spacing-06;
+        @media screen and (max-width: $breakpoint-md) {
+          padding: var(--size-spacing-05) var(--size-spacing-10)
+            var(--size-spacing-05) var(--size-spacing-06);
         }
       }
     }
@@ -84,31 +87,31 @@
       position: relative;
       justify-content: flex-end;
       width: 100%;
-      padding: $size--spacing-06;
+      padding: var(--size-spacing-06);
 
       &__primary {
         margin: 0;
       }
 
       &__secondary {
-        margin: 0 $size--spacing-05 0 0;
+        margin: 0 var(--size-spacing-05) 0 0;
       }
 
       &::before {
         content: "";
         position: absolute;
-        top: calc($size--spacing-05 * -1 + 0.0625rem);
+        top: calc(var(--size-spacing-05) * -1 + 0.0625rem);
         left: 0;
         width: 100%;
-        height: $size--container-01;
+        height: var(--size-container-01);
         background: linear-gradient(
           to bottom,
-          rgba($color--background, 0),
-          rgba($color--background, 1)
+          rgba(var(--color-background), 0),
+          rgba(var(--color-background), 1)
         );
       }
 
-      @media screen and (max-width: $size--breakpoint-md) {
+      @media screen and (max-width: $breakpoint-md) {
         flex-flow: row wrap;
 
         &__primary {
@@ -117,14 +120,14 @@
 
         &__secondary {
           width: 100%;
-          margin: 0 0 $size--spacing-06 0;
+          margin: 0 0 var(--size-spacing-06) 0;
         }
       }
     }
 
     &-open {
       visibility: visible;
-      transition: opacity $transition--app-01;
+      transition: opacity var(--transition-app-01);
       opacity: 1;
     }
 
@@ -138,18 +141,18 @@
       height: 100%;
       max-height: 100%;
       overflow: hidden;
-      transform: translate3d(0, $size--spacing-05, 0);
+      transform: translate3d(0, var(--size-spacing-05), 0);
       transform-origin: top center;
-      transition: transform $transition--app-01, opacity $transition--app-01,
-        visibility 0ms;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
-      background-color: $color--background;
-      box-shadow: $component--shadow-subtle;
-      color: $color--font-text-01;
+      transition: transform var(--transition-app-01),
+        opacity var(--transition-app-01), visibility 0ms;
+      border: 0.0625rem solid var(--color-border);
+      border-radius: var(--component-radius-default);
+      background-color: var(--color-background);
+      box-shadow: var(--component-shadow-subtle);
+      color: var(--color-font-text-01);
       cursor: auto;
 
-      @media screen and (min-width: $size--breakpoint-md) {
+      @media screen and (min-width: $breakpoint-md) {
         position: static;
         width: 84%;
         height: auto;
@@ -176,7 +179,7 @@
 }
 
 .$(prefix)--modal--container-sm > div > .$(prefix)--modal--body-content {
-  padding: 0 $size--spacing-06;
+  padding: 0 var(--size-spacing-06);
 }
 
 .$(prefix)--modal--container-sm > .$(prefix)--modal--footer {
@@ -186,14 +189,14 @@
 .$(prefix)--modal-container__sm
   > .$(prefix)--modal-footer
   > .$(prefix)--modal-footer__secondary {
-  @media screen and (max-width: $size--breakpoint-md) {
-    margin: 0 0 $size--spacing-05 0;
+  @media screen and (max-width: $breakpoint-md) {
+    margin: 0 0 var(--size-spacing-05) 0;
   }
 }
 
 .$(prefix)--modal-with-divider > div > .$(prefix)--modal-header {
-  padding-bottom: $size--spacing-05;
-  border-bottom: 0.0625rem solid $color--border;
+  padding-bottom: var(--size-spacing-05);
+  border-bottom: 0.0625rem solid var(--color-border);
 
   &::after {
     display: none;
@@ -201,11 +204,11 @@
 }
 
 .$(prefix)--modal-with-divider > div > div > .$(prefix)--modal-body__content {
-  padding: $size--spacing-06 $size--spacing-11 $size--spacing-06
-    $size--spacing-06;
+  padding: var(--size-spacing-06) var(--size-spacing-11) var(--size-spacing-06)
+    var(--size-spacing-06);
 
-  @media screen and (max-width: $size--breakpoint-md) {
-    padding: $size--spacing-06;
+  @media screen and (max-width: $breakpoint-md) {
+    padding: var(--size-spacing-06);
   }
 }
 
@@ -213,12 +216,12 @@
   > .$(prefix)--modal-container__small
   > div
   > .$(prefix)--modal-body__content {
-  padding: $size--spacing-06;
+  padding: var(--size-spacing-06);
 }
 
 .$(prefix)--modal-with-divider > div > .$(prefix)--modal-footer {
   margin: 0;
-  border-top: 0.0625rem solid $color--border;
+  border-top: 0.0625rem solid var(--color-border);
 
   &::before {
     display: none;

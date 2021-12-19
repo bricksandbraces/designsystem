@@ -19,32 +19,32 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      height: $size--container-05;
-      padding: $component--padding-inside;
-      border-bottom: 0.0625rem solid $color--border;
-      background-color: $color--background;
-      gap: $component--padding-inside;
+      height: var(--size-container-05);
+      padding: var(--component-padding-inside);
+      border-bottom: 0.0625rem solid var(--color-border);
+      background-color: var(--color-background);
+      gap: var(--component-padding-inside);
 
       &__nav {
         display: flex;
-        height: $size--container-04;
-        gap: $component--padding-inside;
-        padding: 0 $size--spacing-04;
+        height: var(--size-container-04);
+        gap: var(--component-padding-inside);
+        padding: 0 var(--size-spacing-04);
 
         &-trigger {
           & > svg {
-            min-width: $size--container-01;
-            max-width: $size--container-01;
-            min-height: $size--container-01;
-            max-height: $size--container-01;
-            margin-left: $size--spacing-03;
-            transition: transform $transition--app-01;
+            min-width: var(--size-container-01);
+            max-width: var(--size-container-01);
+            min-height: var(--size-container-01);
+            max-height: var(--size-container-01);
+            margin-left: var(--size-spacing-03);
+            transition: transform var(--transition-app-01);
           }
 
           &--open {
             &.$(prefix)--navigation-header__nav-link {
-              background-color: $color--selected;
-              color: $color--font-selected;
+              background-color: var(--color-selected);
+              color: var(--color-font-selected);
             }
 
             & > svg {
@@ -62,13 +62,14 @@
           align-items: center;
           justify-content: center;
           height: 100%;
-          padding: 0 $size--spacing-04;
-          transition: background-color $transition--app-01,
-            color $transition--app-01, border-color $transition--app-01;
+          padding: 0 var(--size-spacing-04);
+          transition: background-color var(--transition-app-01),
+            color var(--transition-app-01),
+            border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: $component--radius-default;
+          border-radius: var(--component-radius-default);
           background-color: transparent;
-          color: $color--font-unselected;
+          color: var(--color-font-unselected);
           white-space: nowrap;
 
           &::before {
@@ -76,49 +77,50 @@
             position: absolute;
             bottom: 0;
             width: 0;
-            height: calc($size--container-01 / 4);
-            transition: width $transition--app-01, opacity $transition--app-01;
-            border-radius: calc($component--radius-subtle * 2);
+            height: calc(var(--size-container-01) / 4);
+            transition: width var(--transition-app-01),
+              opacity var(--transition-app-01);
+            border-radius: calc(var(--component-radius-subtle) * 2);
             opacity: 0;
-            background-color: $color--decoration;
+            background-color: var(--color-decoration);
           }
 
           &--selected {
-            background-color: $color--selected;
-            color: $color--font-selected;
+            background-color: var(--color-selected);
+            color: var(--color-font-selected);
 
             &::before {
-              width: calc(100% - $size--spacing-04 * 2);
+              width: calc(100% - var(--size-spacing-04) * 2);
               opacity: 1;
             }
           }
 
           &:hover {
-            background-color: $color--hover;
-            color: $color--font-text-01;
+            background-color: var(--color-hover);
+            color: var(--color-font-text-01);
           }
 
           &:active {
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
 
           &:focus-visible {
-            border-color: $color--focus;
+            border-color: var(--color-focus);
           }
         }
       }
 
       &__divider.$(prefix)--divider {
         width: 0.0625rem;
-        height: calc(100% + $component--padding-inside * 2);
-        margin: 0 $size--spacing-03;
-        transform: translateY(calc($component--padding-inside * -1));
+        height: calc(100% + var(--component-padding-inside) * 2);
+        margin: 0 var(--size-spacing-03);
+        transform: translateY(calc(var(--component-padding-inside) * -1));
       }
 
       &__action {
         display: inline-flex;
-        height: $size--container-04;
-        gap: $component--padding-inside;
+        height: var(--size-container-04);
+        gap: var(--component-padding-inside);
 
         &-item {
           @mixin type--body-02;
@@ -128,41 +130,42 @@
           flex-wrap: nowrap;
           align-items: center;
           justify-content: center;
-          min-width: $size--container-04;
-          max-width: $size--container-04;
-          min-height: $size--container-04;
-          max-height: $size--container-04;
-          transition: background-color $transition--app-01,
-            color $transition--app-01, border-color $transition--app-01;
+          min-width: var(--size-container-04);
+          max-width: var(--size-container-04);
+          min-height: var(--size-container-04);
+          max-height: var(--size-container-04);
+          transition: background-color var(--transition-app-01),
+            color var(--transition-app-01),
+            border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: $component--radius-default;
+          border-radius: var(--component-radius-default);
           background-color: transparent;
-          color: $color--font-unselected;
+          color: var(--color-font-unselected);
           white-space: nowrap;
 
           & > svg {
-            min-width: $size--container-01;
-            max-width: $size--container-01;
-            min-height: $size--container-01;
-            max-height: $size--container-01;
+            min-width: var(--size-container-01);
+            max-width: var(--size-container-01);
+            min-height: var(--size-container-01);
+            max-height: var(--size-container-01);
           }
 
           &--selected {
-            background-color: $color--selected;
-            color: $color--font-selected;
+            background-color: var(--color-selected);
+            color: var(--color-font-selected);
           }
 
           &:hover {
-            background-color: $color--hover;
-            color: $color--font-text-01;
+            background-color: var(--color-hover);
+            color: var(--color-font-text-01);
           }
 
           &:active {
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
 
           &:focus-visible {
-            border-color: $color--focus;
+            border-color: var(--color-focus);
           }
         }
       }
@@ -170,7 +173,7 @@
   }
 }
 
-@media screen and (min-width: $size--breakpoint-md) {
+@media screen and (min-width: $breakpoint-md) {
   .$(prefix)--navigation-header {
     &__menu-button {
       display: none;
@@ -178,10 +181,10 @@
   }
 }
 
-@media screen and (max-width: $size--breakpoint-md) {
+@media screen and (max-width: $breakpoint-md) {
   .$(prefix)--navigation-header {
     & + .$(prefix)--sidenav {
-      top: $size--container-05;
+      top: var(--size-container-05);
     }
 
     &__nav {
@@ -190,7 +193,7 @@
   }
 }
 
-@media screen and (max-width: $size--breakpoint-lg) {
+@media screen and (max-width: $breakpoint-lg) {
   .$(prefix)--navigation-header {
     &__nav {
       display: none;
@@ -198,7 +201,7 @@
   }
 }
 
-@media screen and (min-width: $size--breakpoint-md) and (max-width: $size--breakpoint-lg) {
+@media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
   .$(prefix)--navigation-header {
     justify-content: flex-end;
   }

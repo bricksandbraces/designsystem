@@ -5,33 +5,33 @@
 
 .$(prefix) {
   &--breadcrumb {
-    min-height: $size--container-02;
-    max-height: $size--container-02;
+    min-height: var(--size-container-02);
+    max-height: var(--size-container-02);
 
     &-list {
       display: inline-flex;
-      min-height: $size--container-02;
-      max-height: $size--container-02;
+      min-height: var(--size-container-02);
+      max-height: var(--size-container-02);
       list-style-type: none;
-      gap: $size--spacing-03;
+      gap: var(--size-spacing-03);
     }
 
     &-item {
       display: inline-flex;
       align-items: center;
-      gap: $size--spacing-03;
-      color: $color--font-text-01;
+      gap: var(--size-spacing-03);
+      color: var(--color-font-text-01);
 
       &__overflow {
         & > div {
-          min-height: $size--container-02;
-          max-height: $size--container-02;
+          min-height: var(--size-container-02);
+          max-height: var(--size-container-02);
 
           & > .$(prefix)--button {
-            min-width: $size--container-02;
-            max-width: $size--container-02;
-            min-height: $size--container-02;
-            max-height: $size--container-02;
+            min-width: var(--size-container-02);
+            max-width: var(--size-container-02);
+            min-height: var(--size-container-02);
+            max-height: var(--size-container-02);
           }
         }
       }
@@ -40,11 +40,11 @@
         display: inline-block;
 
         & > svg {
-          min-width: $size--container-01;
-          max-width: $size--container-01;
-          min-height: $size--container-01;
-          max-height: $size--container-01;
-          margin-right: $size--spacing-02;
+          min-width: var(--size-container-01);
+          max-width: var(--size-container-01);
+          min-height: var(--size-container-01);
+          max-height: var(--size-container-01);
+          margin-right: var(--size-spacing-02);
           transform: translateY(-0.0625rem);
           stroke: currentColor;
         }
@@ -57,23 +57,23 @@
       }
 
       & > svg {
-        min-width: $size--container-01;
-        max-width: $size--container-01;
-        min-height: $size--container-01;
-        max-height: $size--container-01;
-        stroke: $color--app-03;
+        min-width: var(--size-container-01);
+        max-width: var(--size-container-01);
+        min-height: var(--size-container-01);
+        max-height: var(--size-container-01);
+        stroke: var(--color-app-03);
       }
 
       &__current {
-        color: $color--font-decoration;
+        color: var(--color-font-decoration);
         pointer-events: none;
         & > div > .$(prefix)--link {
-          color: $color--font-decoration;
+          color: var(--color-font-decoration);
         }
       }
     }
     & > div > div > .$(prefix)--skeleton {
-      height: $size--field-xsmall;
+      height: var(--size-field-xsmall);
       transform: translateY(0.0625rem);
     }
   }
@@ -81,11 +81,11 @@
     display: inline-flex;
     flex-flow: row;
     align-items: center;
-    min-height: $size--container-02;
-    max-height: $size--container-02;
+    min-height: var(--size-container-02);
+    max-height: var(--size-container-02);
 
     & > div > div > svg {
-      stroke: $color--skeleton-02;
+      stroke: var(--color-skeleton-02);
     }
   }
 }

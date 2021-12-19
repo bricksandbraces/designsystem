@@ -6,10 +6,10 @@
   &--datatable {
     position: relative;
     overflow: hidden;
-    border: 0.0625rem solid $color--border;
-    border-radius: $component--radius-default;
-    background-color: $color--background;
-    box-shadow: $component--shadow-subtle;
+    border: 0.0625rem solid var(--color-border);
+    border-radius: var(--component-radius-default);
+    background-color: var(--color-background);
+    box-shadow: var(--component-shadow-subtle);
 
     &-container {
       table-layout: auto;
@@ -21,17 +21,17 @@
       top: 0;
       right: 0;
       width: 100%;
-      max-width: $size--container-08;
+      max-width: var(--size-container-08);
       height: 100%;
       overflow: hidden;
-      transform: translateX($size--container-08);
-      transition: transform $transition--app-01, visibility $transition--app-01,
-        opacity $transition--app-01;
-      border-left: 0.0625rem solid $color--border;
+      transform: translateX(var(--size-container-08));
+      transition: transform var(--transition-app-01),
+        visibility var(--transition-app-01), opacity var(--transition-app-01);
+      border-left: 0.0625rem solid var(--color-border);
       opacity: 0;
-      background-color: $color--background;
-      box-shadow: $component--shadow-default;
-      color: $color--font-text-01;
+      background-color: var(--color-background);
+      box-shadow: var(--component-shadow-default);
+      color: var(--color-font-text-01);
 
       &__open {
         visibility: visible;
@@ -43,28 +43,28 @@
         position: relative;
         width: 100%;
         height: 100%;
-        padding: $size--spacing-03 $size--spacing-05 $size--spacing-09
-          $size--spacing-05;
+        padding: var(--size-spacing-03) var(--size-spacing-05)
+          var(--size-spacing-09) var(--size-spacing-05);
         overflow-y: scroll;
       }
 
       &__header {
         position: relative;
-        padding: $size--spacing-05 $size--spacing-05 $size--spacing-03
-          $size--spacing-05;
+        padding: var(--size-spacing-05) var(--size-spacing-05)
+          var(--size-spacing-03) var(--size-spacing-05);
 
         &::after {
           content: "";
           position: absolute;
           z-index: 1000;
-          bottom: calc($size--spacing-05 * -1 + 0.0625rem);
+          bottom: calc(var(--size-spacing-05) * -1 + 0.0625rem);
           left: 0;
           width: 100%;
-          height: $size--container-01;
+          height: var(--size-container-01);
           background: linear-gradient(
             to top,
-            rgba($color--background, 0),
-            rgba($color--background, 1)
+            rgba(var(--color-background), 0),
+            rgba(var(--color-background), 1)
           );
         }
 
@@ -75,8 +75,8 @@
 
       &__close {
         position: absolute;
-        top: $size--spacing-03;
-        right: $size--spacing-03;
+        top: var(--size-spacing-03);
+        right: var(--size-spacing-03);
       }
     }
 
@@ -84,7 +84,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      min-height: calc($size--container-04 * 2);
+      min-height: calc(var(--size-container-04) * 2);
 
       & + .$(prefix)--datatable-toolbar {
         padding-top: 0;
@@ -96,16 +96,16 @@
       align-items: flex-end;
       justify-content: center;
       width: 100%;
-      gap: $size--spacing-05;
-      border-top: 0.0625rem solid $color--border;
+      gap: var(--size-spacing-05);
+      border-top: 0.0625rem solid var(--color-border);
     }
 
     &-title {
       @mixin type--headline-04;
 
       margin: 0;
-      padding: $size--spacing-05;
-      color: $color--font-text-01;
+      padding: var(--size-spacing-05);
+      color: var(--color-font-text-01);
     }
 
     &-toolbar {
@@ -113,19 +113,19 @@
 
       display: flex;
       justify-content: space-between;
-      padding: $size--spacing-05;
-      color: $color--font-text-01;
-      gap: $size--spacing-03;
+      padding: var(--size-spacing-05);
+      color: var(--color-font-text-01);
+      gap: var(--size-spacing-03);
 
       &__actions {
         display: flex;
         flex-flow: row;
-        gap: $component--padding-inside;
+        gap: var(--component-padding-inside);
       }
 
       & > .$(prefix)--search {
         width: 100%;
-        max-width: calc($size--container-08 + $size--container-07);
+        max-width: calc(var(--size-container-08) + var(--size-container-07));
       }
     }
 
@@ -136,10 +136,10 @@
 
     &-skeleton {
       &__cell {
-        padding: 0 $size--spacing-05;
-        border-bottom: 0.0625rem solid $color--border;
-        background-color: $color--background;
-        color: $color--font-text-03;
+        padding: 0 var(--size-spacing-05);
+        border-bottom: 0.0625rem solid var(--color-border);
+        background-color: var(--color-background);
+        color: var(--color-font-text-03);
         vertical-align: middle;
 
         &-label {
@@ -153,47 +153,47 @@
 
     &-head {
       &__cell {
-        padding: 0 $size--spacing-05;
+        padding: 0 var(--size-spacing-05);
         overflow: hidden;
-        transition: background-color $transition--app-01;
+        transition: background-color var(--transition-app-01);
         border-right: 0;
-        border-bottom: 0.0625rem solid $color--border;
+        border-bottom: 0.0625rem solid var(--color-border);
         border-left: 0;
         outline: 0;
-        background-color: $color--table-background;
+        background-color: var(--color-table-background);
 
         &-interactive {
           &:hover {
-            border-color: $color--border-light;
-            background-color: $color--hover;
+            border-color: var(--color-border-light);
+            background-color: var(--color-hover);
             cursor: pointer;
           }
 
           &:active {
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
         }
 
         &-active {
-          border-color: $color--border-light;
-          background-color: $color--background-light;
+          border-color: var(--color-border-light);
+          background-color: var(--color-background-light);
 
           &:hover {
-            border-color: $color--border-light;
-            background-color: $color--hover-light;
+            border-color: var(--color-border-light);
+            background-color: var(--color-hover-light);
             cursor: pointer;
           }
 
           &:active {
-            background-color: $color--active-light;
+            background-color: var(--color-active-light);
           }
         }
 
         &-selection {
-          width: $size--container-05;
-          min-width: $size--container-05;
-          max-width: $size--container-05;
-          padding: 0 $size--spacing-04;
+          width: var(--size-container-05);
+          min-width: var(--size-container-05);
+          max-width: var(--size-container-05);
+          padding: 0 var(--size-spacing-04);
           & > .$(prefix)--datatable-head__cell-label {
             & > .$(prefix)--checkbox {
               margin: 0;
@@ -202,10 +202,10 @@
         }
 
         &-icon {
-          min-width: calc($size--container-01 * 1.25);
-          max-width: calc($size--container-01 * 1.25);
-          min-height: calc($size--container-01 * 1.25);
-          max-height: calc($size--container-01 * 1.25);
+          min-width: calc(var(--size-container-01) * 1.25);
+          max-width: calc(var(--size-container-01) * 1.25);
+          min-height: calc(var(--size-container-01) * 1.25);
+          max-height: calc(var(--size-container-01) * 1.25);
           opacity: 0;
 
           &__active {
@@ -220,7 +220,7 @@
           align-items: center;
           justify-content: space-between;
           overflow: hidden;
-          color: $color--font-text-01;
+          color: var(--color-font-text-01);
           font-weight: 600;
           text-align: left;
           text-overflow: ellipsis;
@@ -241,35 +241,35 @@
       &__cell {
         @mixin type--body-02;
 
-        padding: 0 $size--spacing-05;
-        border-bottom: 0.0625rem solid $color--border;
-        background-color: $color--background;
-        color: $color--font-text-03;
+        padding: 0 var(--size-spacing-05);
+        border-bottom: 0.0625rem solid var(--color-border);
+        background-color: var(--color-background);
+        color: var(--color-font-text-03);
 
         &-actions {
-          padding: 0 calc($size--spacing-03 / 2);
+          padding: 0 calc(var(--size-spacing-03) / 2);
           text-align: end;
 
           &--label {
             display: inline-flex;
             align-items: center;
-            gap: $component--padding-inside;
+            gap: var(--component-padding-inside);
           }
         }
 
         &-selection {
-          width: $size--container-05;
-          min-width: $size--container-05;
-          max-width: $size--container-05;
-          padding: 0 $size--spacing-04;
+          width: var(--size-container-05);
+          min-width: var(--size-container-05);
+          max-width: var(--size-container-05);
+          padding: 0 var(--size-spacing-04);
 
           &--checked {
-            border-color: $color--border-light;
-            background-color: $color--background-light;
+            border-color: var(--color-border-light);
+            background-color: var(--color-background-light);
 
             & ~ .$(prefix)--datatable-body__cell {
-              border-color: $color--border-light;
-              background-color: $color--background-light;
+              border-color: var(--color-border-light);
+              background-color: var(--color-background-light);
             }
           }
 
@@ -291,17 +291,17 @@
 
       &:hover {
         & > .$(prefix)--datatable-body__cell {
-          border-color: $color--border-light;
-          background-color: $color--hover;
+          border-color: var(--color-border-light);
+          background-color: var(--color-hover);
         }
 
         & > .$(prefix)--datatable-body__cell-selection--checked {
-          border-color: $color--border-light;
-          background-color: $color--hover-light;
+          border-color: var(--color-border-light);
+          background-color: var(--color-hover-light);
 
           & ~ .$(prefix)--datatable-body__cell {
-            border-color: $color--border-light;
-            background-color: $color--hover-light;
+            border-color: var(--color-border-light);
+            background-color: var(--color-hover-light);
           }
         }
       }
@@ -313,13 +313,13 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 0 0 0 $size--spacing-05;
+      padding: 0 0 0 var(--size-spacing-05);
 
       &__rows {
         display: inline-flex;
         flex-flow: row nowrap;
         align-items: center;
-        gap: $size--spacing-05;
+        gap: var(--size-spacing-05);
 
         & > .$(prefix)--select {
           width: unset;
@@ -336,7 +336,7 @@
           @mixin type--body-02;
 
           margin: 0;
-          color: $color--font-text-01;
+          color: var(--color-font-text-01);
           white-space: nowrap;
         }
       }
@@ -351,10 +351,10 @@
           }
           &--active > .$(prefix)--button {
             position: relative;
-            background-color: $color--selected;
+            background-color: var(--color-selected);
 
             &::before {
-              width: $size--container-02;
+              width: var(--size-container-02);
               opacity: 1;
             }
           }
@@ -367,28 +367,28 @@
 
       &__default {
         & > ul > li > .$(prefix)--button {
-          min-width: $size--field-default;
-          max-width: $size--field-default;
-          min-height: $size--field-default;
-          max-height: $size--field-default;
+          min-width: var(--size-field-default);
+          max-width: var(--size-field-default);
+          min-height: var(--size-field-default);
+          max-height: var(--size-field-default);
         }
       }
 
       &__small {
         & > ul > li > .$(prefix)--button {
-          min-width: $size--field-small;
-          max-width: $size--field-small;
-          min-height: $size--field-small;
-          max-height: $size--field-small;
+          min-width: var(--size-field-small);
+          max-width: var(--size-field-small);
+          min-height: var(--size-field-small);
+          max-height: var(--size-field-small);
         }
       }
 
       &__large {
         & > ul > li > .$(prefix)--button {
-          min-width: $size--field-large;
-          max-width: $size--field-large;
-          min-height: $size--field-large;
-          max-height: $size--field-large;
+          min-width: var(--size-field-large);
+          max-width: var(--size-field-large);
+          min-height: var(--size-field-large);
+          max-height: var(--size-field-large);
         }
       }
     }
@@ -410,16 +410,24 @@
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
-          height: $size--field-small;
+          height: var(--size-field-small);
 
           & > div > .$(prefix)--button {
             &.$(prefix)--button-icon-only {
-              min-width: calc($size--field-small - ($size--container-01/2));
-              max-width: calc($size--field-small - ($size--container-01/2));
+              min-width: calc(
+                var(--size-field-small) - (var(--size-container-01) / 2)
+              );
+              max-width: calc(
+                var(--size-field-small) - (var(--size-container-01) / 2)
+              );
             }
 
-            min-height: calc($size--field-small - ($size--container-01/2));
-            max-height: calc($size--field-small - ($size--container-01/2));
+            min-height: calc(
+              var(--size-field-small) - (var(--size-container-01) / 2)
+            );
+            max-height: calc(
+              var(--size-field-small) - (var(--size-container-01) / 2)
+            );
           }
         }
       }
@@ -442,16 +450,24 @@
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
-          height: $size--field-default;
+          height: var(--size-field-default);
 
           & > div > .$(prefix)--button {
             &.$(prefix)--button-icon-only {
-              min-width: calc($size--field-default - ($size--container-01/2));
-              max-width: calc($size--field-default - ($size--container-01/2));
+              min-width: calc(
+                var(--size-field-default) - (var(--size-container-01) / 2)
+              );
+              max-width: calc(
+                var(--size-field-default) - (var(--size-container-01) / 2)
+              );
             }
 
-            min-height: calc($size--field-default - ($size--container-01/2));
-            max-height: calc($size--field-default - ($size--container-01/2));
+            min-height: calc(
+              var(--size-field-default) - (var(--size-container-01) / 2)
+            );
+            max-height: calc(
+              var(--size-field-default) - (var(--size-container-01) / 2)
+            );
           }
         }
       }
@@ -474,16 +490,24 @@
           > .$(prefix)--datatable-body
           > .$(prefix)--datatable-row
           > .$(prefix)--datatable-skeleton__cell {
-          height: $size--field-large;
+          height: var(--size-field-large);
 
           & > div > .$(prefix)--button {
             &.$(prefix)--button-icon-only {
-              min-width: calc($size--field-large - ($size--container-01/2));
-              max-width: calc($size--field-large - ($size--container-01/2));
+              min-width: calc(
+                var(--size-field-large) - (var(--size-container-01) / 2)
+              );
+              max-width: calc(
+                var(--size-field-large) - (var(--size-container-01) / 2)
+              );
             }
 
-            min-height: calc($size--field-large - ($size--container-01/2));
-            max-height: calc($size--field-large - ($size--container-01/2));
+            min-height: calc(
+              var(--size-field-large) - (var(--size-container-01) / 2)
+            );
+            max-height: calc(
+              var(--size-field-large) - (var(--size-container-01) / 2)
+            );
           }
         }
       }
