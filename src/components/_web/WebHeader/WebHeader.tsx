@@ -67,7 +67,7 @@ const WebHeader = (
     <>
       <header className={cx(`${prefix}--webheader`)} ref={ref}>
         <div>
-          <Grid narrow fullWidth>
+          <Grid narrow>
             <Column className={cx(`${prefix}--webheader-container`)}>
               <a href={baseUrl} className={cx(`${prefix}--webheader-logo`)}>
                 <Logo type="logotype" color="black" size="xsmall" />
@@ -113,7 +113,7 @@ const WebHeader = (
               `${prefix}--webheader-logo ${prefix}--webheader-menu__logo`
             )}
           >
-            {logo ?? <Logo type="logotype" color="white" size="xsmall" />}
+            {logo ?? <Logo type="logomark" color="white" size="xlarge" />}
           </a>
         </div>
       </div>

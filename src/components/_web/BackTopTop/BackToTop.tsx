@@ -3,12 +3,11 @@ import cx from "classnames";
 import { prefix } from "../../../settings";
 import IconOnlyButton from "../../Button/IconOnlyButton";
 import { IconArrowBarToUp } from "@tabler/icons";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 type BackToTopProps = {};
 
 const BackToTop = ({}: BackToTopProps) => {
-  const { height } = useWindowDimensions();
+  const height = 128;
   const [showScroll, setShowScroll] = useState(false);
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > height) {

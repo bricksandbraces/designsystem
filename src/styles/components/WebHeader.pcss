@@ -10,7 +10,7 @@
     top: 0;
     width: 100%;
     height: $size--container-06;
-    border-bottom: 0.0625rem solid rgba($color--border, 0.25);
+    border-bottom: 0.0625rem solid $color--divider-subtle;
     background-color: $color--app-01;
 
     & > div {
@@ -83,7 +83,6 @@
       overflow-y: scroll;
       transform: translateX(calc($size--container-08 * 2));
       transition: transform $transition--app-01, visibility $transition--app-01;
-      border-left: 0.0625rem solid rgba($white, 0.2);
       background: $color--decoration;
 
       &__logo {
@@ -95,6 +94,11 @@
 
           &:focus-visible {
             outline: 0.125rem solid $color--focus;
+          }
+
+          & > .$(prefix)--logo,
+          & > .$(prefix)--logo > path {
+            fill: $purple-450;
           }
         }
       }

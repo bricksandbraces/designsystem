@@ -15,6 +15,11 @@ export type ClickableTileProps = {
   href?: string;
 
   /**
+   * ClickableTile Light
+   */
+  light?: boolean;
+
+  /**
    * ClickableTile Target
    */
   target?: string;
@@ -67,6 +72,7 @@ const ClickableTile = (
     disabled,
     readOnly,
     onClick,
+    light,
     href,
     ...rest
   }: ClickableTileProps,
@@ -75,6 +81,7 @@ const ClickableTile = (
   const classes = cx(
     `${prefix}--tile ${prefix}--tile-clickable`,
     {
+      [`${prefix}--tile-light`]: light,
       [`${prefix}--tile-disabled`]: disabled,
       [`${prefix}--tile-readonly`]: readOnly
     },

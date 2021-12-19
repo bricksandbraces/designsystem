@@ -5,21 +5,29 @@
 
 .$(prefix) {
   &--webfooter {
-    min-height: $size--container-08;
-    background-color: $black;
-
-    &-divider {
-      background-color: $color--app-03;
-    }
+    background-color: $color--app-background;
 
     &-grid {
       height: 100%;
     }
 
+    &-logo {
+      align-self: flex-start;
+    }
+
     &-column {
       display: flex;
-      padding: $size--spacing-07 $size--spacing-05 $size--spacing-09
+      padding: $size--spacing-07 $size--spacing-05 $size--spacing-07
         $size--spacing-05;
+    }
+
+    &-row {
+      display: flex;
+      padding: 0 $size--spacing-05 $size--spacing-05 $size--spacing-05;
+    }
+
+    &-divider.$(prefix)--divider {
+      margin-bottom: $size--spacing-05;
     }
 
     &-column > div {
@@ -31,10 +39,8 @@
     &-label {
       @mixin type--label;
 
-      display: inline-flex;
-      flex-flow: column;
       margin: 0 0 $size--spacing-03;
-      color: $color--font-text-03;
+      color: $color--font-text-04;
 
       & > .$(prefix)--link {
         margin-top: $size--spacing-05;

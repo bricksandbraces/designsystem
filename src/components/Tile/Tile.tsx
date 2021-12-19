@@ -14,6 +14,11 @@ export type TileProps = {
   disabled?: boolean;
 
   /**
+   * Tile Light
+   */
+  light?: boolean;
+
+  /**
    * Tile ReadOnly
    */
   readOnly?: boolean;
@@ -25,7 +30,7 @@ export type TileProps = {
 };
 
 const Tile = (
-  { children, disabled, readOnly, className, ...rest }: TileProps,
+  { children, light, disabled, readOnly, className, ...rest }: TileProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => {
   return (
@@ -34,6 +39,7 @@ const Tile = (
       className={cx(
         `${prefix}--tile`,
         {
+          [`${prefix}--tile-light`]: light,
           [`${prefix}--tile-disabled`]: disabled,
           [`${prefix}--tile-readonly`]: readOnly
         },

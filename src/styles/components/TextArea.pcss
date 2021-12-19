@@ -8,6 +8,27 @@
     flex-flow: column wrap;
     width: calc($size--container-08 * 2);
 
+    &-light {
+      & > .$(prefix)--textarea-input__container > .$(prefix)--textarea-input {
+        border-color: $color--border-light;
+        background-color: $color--background-light;
+      }
+
+      &.$(prefix)--textarea-readonly
+        > .$(prefix)--textarea-input__container
+        > .$(prefix)--textarea-input {
+        border-color: $color--readonly;
+        background-color: $color--readonly;
+      }
+
+      &.$(prefix)--textarea-disabled
+        > .$(prefix)--textarea-input__container
+        > .$(prefix)--textarea-input {
+        border-color: $color--disabled;
+        background-color: $color--disabled;
+      }
+    }
+
     &-top {
       display: inline-flex;
       justify-content: space-between;
