@@ -3,6 +3,7 @@ import React from "react";
 import { Column, Grid } from "../../..";
 import Headline from "../../Typography/Headline";
 import Marketing from "../../Typography/Marketing";
+import CTASection from "../CTASection/CTASection";
 import Footer from "../Footer/Footer";
 import LeadSpace from "../LeadSpace/LeadSpace";
 import WebHeader from "../WebHeader/WebHeader";
@@ -57,6 +58,7 @@ export const Default = () => {
         </Column>
       </Grid>
       <BackToTop />
+      <CTASection />
       <Footer
         baseUrl="#"
         linkItems={[

@@ -2,7 +2,7 @@ import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import Footer from "./Footer";
 
-export default { title: "Web/A_REFA_Footer", decorators: [withKnobs] };
+export default { title: "Web/Footer", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

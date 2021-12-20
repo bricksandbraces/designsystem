@@ -3,44 +3,21 @@
 @import "../theme.pcss";
 @import "../typography.pcss";
 
-@keyframes word-band-animation {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(100vw);
-  }
-}
-
 .$(prefix) {
   &--wordband {
+    padding: $size--spacing-05 0;
     overflow: hidden;
     background-color: $purple-50;
+    user-select: none;
 
     &-words {
       margin: 0;
-      animation: word-band-animation 30s linear infinite;
       color: $purple-500;
       font-size: 0.75rem;
       font-weight: 200;
       letter-spacing: 0.25rem;
       text-transform: uppercase;
       white-space: nowrap;
-    }
-
-    &-grid {
-      height: 100%;
-    }
-
-    &-column {
-      display: flex;
-      padding: $size--spacing-05;
-    }
-
-    &-column > div {
-      display: flex;
-      width: 100%;
     }
   }
 }
