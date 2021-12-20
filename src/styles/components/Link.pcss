@@ -8,7 +8,7 @@
     align-items: center;
     transition: outline var(--transition-app-01);
     border: 0;
-    border-radius: $component--radius-default;
+    border-radius: var(--component-radius-default);
     outline: 0.0625rem solid transparent;
     outline-offset: var(--size-spacing-01);
     background-color: transparent;
@@ -21,7 +21,7 @@
         flex-flow: row-reverse;
 
         & > svg {
-          margin-right: $size--spacing-03;
+          margin-right: var(--size-spacing-03);
         }
       }
 
@@ -29,7 +29,7 @@
         flex-flow: row;
 
         & > svg {
-          margin-left: $size--spacing-03;
+          margin-left: var(--size-spacing-03);
         }
       }
     }
