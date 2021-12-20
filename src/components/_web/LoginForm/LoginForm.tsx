@@ -1,9 +1,7 @@
 import React from "react";
 import TextInput from "../../TextInput/TextInput";
 import PasswordInput from "../../PasswordInput/PasswordInput";
-import Link from "../../Link/Link";
 import { prefix } from "../../../settings";
-import Label from "../../Typography/Label";
 import { useControlledInput } from "../../../hooks/useControlled";
 
 export type LoginFormProps = {

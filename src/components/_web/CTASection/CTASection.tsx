@@ -1,8 +1,6 @@
 import React from "react";
-import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
-import Ticker from "react-ticker";
-import { Button, Column, Grid, Headline, Marketing, TextInput } from "../../..";
+import { Button, Column, Grid, TextInput } from "../../..";
 import { IconArrowNarrowRight } from "@tabler/icons";
 
 export type CTASectionProps = {

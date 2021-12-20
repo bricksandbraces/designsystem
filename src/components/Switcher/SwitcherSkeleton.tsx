@@ -1,7 +1,6 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
 import { SkeletonContainer, SkeletonText } from "../..";
 
 type SwitcherSkeletonProps = {

@@ -7,10 +7,8 @@ import {
 } from "@tabler/icons";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import { useControlled } from "../../hooks/useControlled";
-import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import { withoutPropagation } from "../../helpers/eventUtilities";
 import Tippy from "@tippyjs/react";
 
 export type DropdownItem = {
