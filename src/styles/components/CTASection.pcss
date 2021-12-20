@@ -13,8 +13,8 @@
 
     &-column {
       display: flex;
-      padding: $size--spacing-07 $size--spacing-05 $size--spacing-07
-        $size--spacing-05;
+      padding: var(--size-spacing-07) var(--size-spacing-05)
+        var(--size-spacing-07) var(--size-spacing-05);
     }
 
     &-headline {
@@ -29,23 +29,23 @@
 
         &:hover {
           & > svg {
-            margin-left: $size--spacing-06;
+            margin-left: var(--size-spacing-06);
           }
         }
 
         &:focus-visible {
-          outline: 0.125rem solid $color--focus;
+          outline: 0.125rem solid var(--color-focus);
         }
 
         & > svg {
-          width: $size--container-05;
-          min-width: $size--container-05;
-          max-width: $size--container-05;
-          height: $size--container-05;
-          min-height: $size--container-05;
-          max-height: $size--container-05;
-          margin-left: $size--spacing-03;
-          transition: margin $transition--app-01;
+          width: var(--size-container-05);
+          min-width: var(--size-container-05);
+          max-width: var(--size-container-05);
+          height: var(--size-container-05);
+          min-height: var(--size-container-05);
+          max-height: var(--size-container-05);
+          margin-left: var(--size-spacing-03);
+          transition: margin var(--transition-app-01);
           stroke-width: 1.5;
         }
       }
@@ -57,26 +57,26 @@
         position: relative;
         flex-flow: row;
         width: 70%;
-        height: $size--container-06;
-        min-height: $size--container-06;
-        max-height: $size--container-06;
-        margin-top: $size--spacing-10;
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
+        margin-top: var(--size-spacing-10);
         overflow: hidden;
-        transition: border-color $transition--app-01;
+        transition: border-color var(--transition-app-01);
         border: 0.0625rem solid transparent;
-        border-radius: $component--radius-default;
+        border-radius: var(--compoent-radius-default);
 
         &:focus-within {
-          border-color: $color--focus;
+          border-color: var(--color-focus);
         }
       }
 
       &__button {
         top: 0;
         right: 0;
-        height: $size--container-06;
-        min-height: $size--container-06;
-        max-height: $size--container-06;
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
         border-radius: 0;
         @mixin type--headline-04;
 
@@ -89,9 +89,9 @@
       & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
         @mixin type--headline-04;
 
-        height: $size--container-06;
-        min-height: $size--container-06;
-        max-height: $size--container-06;
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
         border-radius: 0;
         border-color: transparent;
         background-color: $purple-150;
@@ -111,7 +111,7 @@
   }
 }
 
-@media screen and (max-width: $size--breakpoint-md) {
+@media screen and (max-width: $breakpoint-md) {
   .$(prefix)--ctasection {
     &-input {
       &__container {
