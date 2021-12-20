@@ -4,7 +4,7 @@ import { Badge } from "../../..";
 import ThemeProvider from "./ThemeProvider";
 
 export default {
-  title: "Util/ThemeProvider",
+  title: "Utilities/ThemeProvider",
   decorators: [withKnobs]
 };
 
@@ -19,7 +19,15 @@ export const Example = () => {
             dark: { "--color-badge-gray-font": "#0F0" }
           }}
         >
-          <Badge>Outer theme, dynamically from system</Badge>
+          <Badge>Inner theme, with custom themes</Badge>
+        </ThemeProvider>
+        <ThemeProvider
+          theme={{
+            light: { "--color-badge-gray-font": "#FFF" },
+            dark: { "--color-badge-gray-font": "#FFF" }
+          }}
+        >
+          <Badge>Inner constant theme, always light font</Badge>
         </ThemeProvider>
       </ThemeProvider>
     </div>
