@@ -33,6 +33,21 @@
       }
     }
 
+    &-light {
+      border-color: $color--border-light;
+      background-color: $color--background-light;
+
+      &.$(prefix)--tile-clickable {
+        &:hover {
+          background-color: $color--hover-light;
+        }
+
+        &:active {
+          background-color: $color--active-light;
+        }
+      }
+    }
+
     &-disabled {
       border-color: transparent;
       background-color: $color--disabled;

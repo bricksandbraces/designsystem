@@ -4,7 +4,7 @@ import LeadSpace from "./LeadSpace";
 import Header from "../WebHeader/WebHeader";
 import LeadSpaceBlock from "./LeadSpaceBlock";
 
-export default { title: "Web/A_REFA_LeadSpace", decorators: [withKnobs] };
+export default { title: "Web/LeadSpace", decorators: [withKnobs] };
 
 export const WithImage = () => {
   return (

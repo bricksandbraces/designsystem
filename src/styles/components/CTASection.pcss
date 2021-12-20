@@ -1,0 +1,122 @@
+@import "../prefix.pcss";
+@import "../colors.pcss";
+@import "../theme.pcss";
+@import "../typography.pcss";
+
+.$(prefix) {
+  &--ctasection {
+    background-color: $purple-100;
+
+    &-grid {
+      height: 100%;
+    }
+
+    &-column {
+      display: flex;
+      padding: $size--spacing-07 $size--spacing-05 $size--spacing-07
+        $size--spacing-05;
+    }
+
+    &-headline {
+      @mixin type--headline-01;
+
+      margin: 0;
+      color: $purple-750;
+
+      & > a {
+        color: $purple-900;
+        white-space: nowrap;
+
+        &:hover {
+          & > svg {
+            margin-left: $size--spacing-06;
+          }
+        }
+
+        &:focus-visible {
+          outline: 0.125rem solid $color--focus;
+        }
+
+        & > svg {
+          width: $size--container-05;
+          min-width: $size--container-05;
+          max-width: $size--container-05;
+          height: $size--container-05;
+          min-height: $size--container-05;
+          max-height: $size--container-05;
+          margin-left: $size--spacing-03;
+          transition: margin $transition--app-01;
+          stroke-width: 1.5;
+        }
+      }
+    }
+
+    &-input {
+      &__container {
+        display: inline-flex;
+        position: relative;
+        flex-flow: row;
+        width: 70%;
+        height: $size--container-06;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+        margin-top: $size--spacing-10;
+        overflow: hidden;
+        transition: border-color $transition--app-01;
+        border: 0.0625rem solid transparent;
+        border-radius: $component--radius-default;
+
+        &:focus-within {
+          border-color: $color--focus;
+        }
+      }
+
+      &__button {
+        top: 0;
+        right: 0;
+        height: $size--container-06;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+        border-radius: 0;
+        @mixin type--headline-04;
+
+        font-weight: 300;
+      }
+
+      &.$(prefix)--textinput {
+        width: 100%;
+      }
+      & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+        @mixin type--headline-04;
+
+        height: $size--container-06;
+        min-height: $size--container-06;
+        max-height: $size--container-06;
+        border-radius: 0;
+        border-color: transparent;
+        background-color: $purple-150;
+        font-weight: 300;
+
+        &::placeholder {
+          color: $purple-500;
+        }
+      }
+    }
+
+    &-column > div {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $size--breakpoint-md) {
+  .$(prefix)--ctasection {
+    &-input {
+      &__container {
+        width: 100%;
+      }
+    }
+  }
+}

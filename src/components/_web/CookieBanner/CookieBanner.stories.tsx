@@ -3,7 +3,7 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import CookieBanner from "./CookieBanner";
 
-export default { title: "Web/A_REFA_CookieBanner", decorators: [withKnobs] };
+export default { title: "Web/CookieBanner", decorators: [withKnobs] };
 
 export const Default = () => {
   const [open, setOpen] = useState(true);

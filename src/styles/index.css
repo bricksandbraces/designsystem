@@ -11,6 +11,8 @@
 @import "./components/Breadcrumb.pcss";
 @import "./components/Button.pcss";
 @import "./components/Notification.pcss";
+@import "./components/WordBand.pcss";
+@import "./components/CTASection.pcss";
 @import "./components/CookieBanner.pcss";
 @import "./components/Navigation.pcss";
 @import "./components/Link.pcss";

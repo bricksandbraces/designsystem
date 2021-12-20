@@ -3,7 +3,7 @@ import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import CookieModal, { OptType } from "./CookieModal";
 
-export default { title: "Web/A_REFA_CookieModal", decorators: [withKnobs] };
+export default { title: "Web/CookieModal", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

@@ -2,26 +2,34 @@
 @import "../colors.pcss";
 
 .$(prefix)--loginform {
-  &--email.$(prefix)--textinput--input {
-    border-bottom: 0.0625rem solid transparent;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  &--password.$(prefix)--textinput--input {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+  &-email.$(prefix)--textinput {
+    width: 100%;
+    & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+      border-bottom: 0.0625rem solid transparent;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:focus {
+        border-bottom: 0.0625rem solid $color--focus;
+      }
+    }
   }
 
-  &--password {
-    &-link {
-      position: absolute;
-      top: 11px;
-      right: 40px;
+  &-password {
+    &.$(prefix)--textinput {
+      width: 100%;
+    }
 
+    & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    &__link {
       & > a {
         color: $gray-800;
       }

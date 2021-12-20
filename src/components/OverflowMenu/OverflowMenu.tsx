@@ -58,6 +58,7 @@ const OverflowMenu = (
       placement="bottom-start"
       theme="dark"
       {...props}
+      offset={[0, 8]}
       allowHTML
       content={children}
     >

@@ -2140,6 +2140,7 @@ __metadata:
     react-focus-lock: ^2.6.0
     react-merge-refs: ^1.1.0
     react-outside-click-handler: ^1.3.0
+    react-ticker: ^1.3.0
     react-use: ^17.3.1
     rimraf: ^3.0.2
     serve: ^13.0.2
@@ -16411,6 +16412,17 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
   checksum: da3d0192825df3d9f27eef33e7eddf928359a7e3e2b01ae7f7f672ecf4e5c1f7a34f27bdde9ccc24e2e9fbe1d1b9dd2a39c7d47323c9bdf63e7b9bd05c325a71
+  languageName: node
+  linkType: hard
+
+"react-ticker@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "react-ticker@npm:1.3.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freact-ticker%2F-%2Freact-ticker-1.3.0.tgz"
+  peerDependencies:
+    prop-types: ^15.5.4
+    react: ^16.7.0
+    react-dom: ^16.7.0
+  checksum: b19c54dbee5db786352e3288849c5f27e97f4837e9420c5486e7062810a5c324be64b94f88c5ab32c73df91f90a52a32215f0914b8d09c81565b0ccf2b4434ed
   languageName: node
   linkType: hard
 
