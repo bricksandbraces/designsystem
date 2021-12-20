@@ -9,9 +9,9 @@
     z-index: 10000;
     top: 0;
     width: 100%;
-    height: $size--container-06;
-    border-bottom: 0.0625rem solid $color--divider-subtle;
-    background-color: $color--app-01;
+    height: var(--size-container-06);
+    border-bottom: 0.0625rem solid var(--color-divider-subtle);
+    background-color: var(--color-app-01);
 
     & > div {
       position: relative;
@@ -35,33 +35,33 @@
       right: 0;
       align-items: center;
       justify-content: center;
-      width: $size--container-06;
-      height: $size--container-06;
+      width: var(--size-container-06);
+      height: var(--size-container-06);
       padding: 0;
-      transition: background-color $transition--app-01,
-        outline $transition--app-01;
+      transition: background-color var(--transition-app-01),
+        outline var(--transition-app-01);
       outline: 0.125rem solid transparent;
-      outline-offset: calc($size--spacing-02 * -1);
+      outline-offset: calc(var(--size-spacing-02) * -1);
       background-color: transparent;
-      color: $color--font-text-01;
+      color: var(--color-font-text-01);
 
       &:hover {
-        background-color: rgba($color--app-05, 0.05);
+        background-color: rgba(var(--color-app-05), 0.05);
       }
 
       &:active {
-        background-color: rgba($color--app-05, 0.1);
+        background-color: rgba(var(--color-app-05), 0.1);
       }
 
       &:focus-visible {
-        outline: 0.125rem solid $color--focus;
+        outline: 0.125rem solid var(--color-focus);
       }
 
       &__open {
-        color: $color--font-text-01;
+        color: var(--color-font-text-01);
 
         &:focus-visible {
-          outline: 0.125rem solid $color--focus;
+          outline: 0.125rem solid var(--color-focus);
         }
       }
     }
@@ -77,23 +77,24 @@
       align-content: space-between;
       justify-content: space-between;
       width: 100%;
-      max-width: calc($size--container-08 * 2);
+      max-width: calc(var(--size-container-08) * 2);
       height: 100%;
-      padding: $size--spacing-07;
+      padding: var(--size-spacing-07);
       overflow-y: scroll;
-      transform: translateX(calc($size--container-08 * 2));
-      transition: transform $transition--app-01, visibility $transition--app-01;
-      background: $color--decoration;
+      transform: translateX(calc(var(--size-container-08) * 2));
+      transition: transform var(--transition-app-01),
+        visibility var(--transition-app-01);
+      background: var(--color-decoration);
 
       &__logo {
-        margin-top: $size--spacing-10;
+        margin-top: var(--size-spacing-10);
         &.$(prefix)--webheader-logo {
           display: inline-flex;
           margin-left: 0;
           padding-left: 0;
 
           &:focus-visible {
-            outline: 0.125rem solid $color--focus;
+            outline: 0.125rem solid var(--color-focus);
           }
         }
       }
@@ -101,7 +102,7 @@
       &__open {
         visibility: visible;
         transform: unset;
-        box-shadow: $component--shadow-harsh;
+        box-shadow: var(--component-shadow-harsh);
 
         & + .$(prefix)--webheader-overlay {
           visibility: visible;
@@ -115,11 +116,11 @@
 
       display: table;
       position: relative;
-      margin-bottom: $size--spacing-03;
-      transition: opacity $transition--app-02;
+      margin-bottom: var(--size-spacing-03);
+      transition: opacity var(--transition-app-02);
       outline: 0.0625rem solid transparent;
-      outline-offset: $size--spacing-01;
-      color: $color--font-text-01;
+      outline-offset: var(--size-spacing-01);
+      color: var(--color-font-text-01);
 
       &::after {
         content: "";
@@ -128,8 +129,9 @@
         bottom: 0;
         width: 0;
         height: 0.125rem;
-        transition: width $transition--app-02, opacity $transition--app-02,
-          background-color $transition--app-01;
+        transition: width var(--transition-app-02),
+          opacity var(--transition-app-02),
+          background-color var(--transition-app-01);
         opacity: 0;
         background: currentColor;
         pointer-events: none;
@@ -143,7 +145,7 @@
       }
 
       &:focus-visible {
-        outline: 0.125rem solid $color--focus;
+        outline: 0.125rem solid var(--color-focus);
       }
     }
 
@@ -155,24 +157,25 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      transition: visibility $transition--app-01, opacity $transition--app-01;
+      transition: visibility var(--transition-app-01),
+        opacity var(--transition-app-01);
       opacity: 0;
-      background-color: $component--overlay;
+      background-color: var(--component-overlay);
     }
 
     &-logo {
       display: flex;
-      margin-left: $size--spacing-05;
-      transition: outline $transition--app-01;
+      margin-left: var(--size-spacing-05);
+      transition: outline var(--transition-app-01);
       outline: 0.125rem solid transparent;
-      outline-offset: $size--spacing-03;
+      outline-offset: var(--size-spacing-03);
 
       & > svg > path {
-        fill: $color--font-text-01;
+        fill: var(--color-font-text-01);
       }
 
       &:focus-visible {
-        outline: 0.125rem solid $color--focus;
+        outline: 0.125rem solid var(--color-focus);
       }
     }
   }

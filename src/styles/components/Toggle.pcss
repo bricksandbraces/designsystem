@@ -5,9 +5,9 @@
 .$(prefix) {
   &--toggle {
     display: flex;
-    min-height: $size--container-01;
-    margin-bottom: $size--spacing-03;
-    color: $color--font-text-03;
+    min-height: var(--size-container-01);
+    margin-bottom: var(--size-spacing-03);
+    color: var(--color-font-text-03);
 
     &-label {
       @mixin type--body-02;
@@ -32,48 +32,48 @@
         display: inline-flex;
         position: relative;
         align-items: center;
-        width: $size--container-03;
-        min-width: $size--container-03;
-        height: $size--container-01;
-        min-height: $size--container-01;
-        margin-right: $size--spacing-04;
-        transform: translate($size--spacing-01, $size--spacing-01);
-        transition: background-color $transition--app-01;
+        width: var(--size-container-03);
+        min-width: var(--size-container-03);
+        height: var(--size-container-01);
+        min-height: var(--size-container-01);
+        margin-right: var(--size-spacing-04);
+        transform: translate(var(--size-spacing-01), var(--size-spacing-01));
+        transition: background-color var(--transition-app-01);
         border: 0.0625rem solid transparent;
         border-radius: 1rem;
-        background-color: $color--app-05;
+        background-color: var(--color-app-05);
 
         &::before {
           content: "";
           position: absolute;
-          width: calc($size--container-01 - 0.125rem);
-          height: calc($size--container-01 - 0.125rem);
-          transition: transform $transition--app-01,
-            background-color $transition--app-01;
+          width: calc(var(--size-container-01) - 0.125rem);
+          height: calc(var(--size-container-01) - 0.125rem);
+          transition: transform var(--transition-app-01),
+            background-color var(--transition-app-01);
           border-radius: 50%;
-          background-color: $color--app-04;
+          background-color: var(--color-app-04);
         }
 
         & + div > .$(prefix)--toggle-label__text {
-          transition: color $transition--app-01;
+          transition: color var(--transition-app-01);
         }
 
         & > .$(prefix)--toggle-checked {
-          width: calc($size--container-01 / 2);
-          height: calc($size--container-01 / 2);
-          margin-left: $size--spacing-02;
-          transition: opacity $transition--app-01;
-          stroke-width: calc($size--container-01 / 4);
+          width: calc(var(--size-container-01) / 2);
+          height: calc(var(--size-container-01) / 2);
+          margin-left: var(--size-spacing-02);
+          transition: opacity var(--transition-app-01);
+          stroke-width: calc(var(--size-container-01) / 4);
           opacity: 0;
         }
       }
 
       & > .$(prefix)--toggle-switch.$(prefix)--skeleton {
-        width: $size--container-03;
-        min-width: $size--container-03;
-        height: $size--container-01;
-        min-height: $size--container-01;
-        margin-right: $size--spacing-04;
+        width: var(--size-container-03);
+        min-width: var(--size-container-03);
+        height: var(--size-container-01);
+        min-height: var(--size-container-01);
+        margin-right: var(--size-spacing-04);
         border-radius: 1rem;
       }
     }
@@ -83,40 +83,40 @@
         display: inline-flex;
         position: relative;
         align-items: center;
-        width: $size--container-04;
-        min-width: $size--container-04;
-        height: $size--container-02;
-        min-height: $size--container-02;
-        margin-right: $size--spacing-04;
-        transform: translate($size--spacing-01, $size--spacing-01);
-        transition: background-color $transition--app-01;
+        width: var(--size-container-04);
+        min-width: var(--size-container-04);
+        height: var(--size-container-02);
+        min-height: var(--size-container-02);
+        margin-right: var(--size-spacing-04);
+        transform: translate(var(--size-spacing-01), var(--size-spacing-01));
+        transition: background-color var(--transition-app-01);
         border: 0.0625rem solid transparent;
         border-radius: 1rem;
-        background-color: $color--app-05;
+        background-color: var(--color-app-05);
 
         &::before {
           content: "";
           position: absolute;
-          width: calc($size--container-02 - 0.125rem);
-          height: calc($size--container-02 - 0.125rem);
-          transition: transform $transition--app-01,
-            background-color $transition--app-01;
+          width: calc(var(--size-container-02) - 0.125rem);
+          height: calc(var(--size-container-02) - 0.125rem);
+          transition: transform var(--transition-app-01),
+            background-color var(--transition-app-01);
           border-radius: 50%;
-          background-color: $color--app-04;
+          background-color: var(--color-app-04);
         }
 
         & + div > .$(prefix)--toggle-label__text {
           transform: translateY(0.1875rem);
-          transition: color $transition--app-01;
+          transition: color var(--transition-app-01);
         }
       }
 
       & > .$(prefix)--toggle-switch.$(prefix)--skeleton {
-        width: $size--container-04;
-        min-width: $size--container-04;
-        height: $size--container-02;
-        min-height: $size--container-02;
-        margin-right: $size--spacing-04;
+        width: var(--size-container-04);
+        min-width: var(--size-container-04);
+        height: var(--size-container-02);
+        min-height: var(--size-container-02);
+        margin-right: var(--size-spacing-04);
         border-radius: 1rem;
       }
     }
@@ -125,7 +125,7 @@
     display: inline-flex;
     flex-flow: row;
     align-items: center;
-    min-height: $size--container-01;
+    min-height: var(--size-container-01);
     margin: 0;
     transform: translate(0.125rem, 0.125rem);
   }
@@ -134,21 +134,21 @@
 /* Switch */
 
 .$(prefix)--toggle input[type="checkbox"] + label > .$(prefix)--toggle-switch {
-  background-color: $color--app-02;
+  background-color: var(--color-app-02);
 }
 
 .$(prefix)--toggle-input[type="checkbox"]:checked + label {
-  color: $color--font-text-01;
+  color: var(--color-font-text-01);
   & > .$(prefix)--toggle-switch {
-    background-color: $color--decoration;
+    background-color: var(--color-decoration);
 
     & > .$(prefix)--toggle-checked {
       opacity: 1;
     }
 
     &::before {
-      transform: translateX($size--spacing-05);
-      background-color: $color--app-05;
+      transform: translateX(var(--size-spacing-05));
+      background-color: var(--color-app-05);
     }
   }
 }
@@ -156,14 +156,14 @@
 /* Disabled */
 
 .$(prefix)--toggle-input[type="checkbox"]:disabled + label {
-  color: $color--font-disabled;
+  color: var(--color-font-disabled);
   cursor: not-allowed;
 
   & > .$(prefix)--toggle-switch {
-    background-color: $color--disabled;
+    background-color: var(--color-disabled);
 
     &::before {
-      background-color: $color--font-disabled;
+      background-color: var(--color-font-disabled);
     }
   }
 }
@@ -171,13 +171,13 @@
 /* ReadOnly */
 
 .$(prefix)--toggle-input[type="checkbox"][readonly] + label {
-  color: $color--font-readonly;
+  color: var(--color-font-readonly);
 
   & > .$(prefix)--toggle-switch {
-    background-color: $color--readonly;
+    background-color: var(--color-readonly);
 
     &::before {
-      background-color: $color--font-readonly;
+      background-color: var(--color-font-readonly);
     }
   }
 }
@@ -187,5 +187,5 @@
 .$(prefix)--toggle-input[type="checkbox"]:focus-visible
   + .$(prefix)--toggle-label
   > span {
-  box-shadow: 0 0 0 0.0625rem $color--focus;
+  box-shadow: 0 0 0 0.0625rem var(--color-focus);
 }

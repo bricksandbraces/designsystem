@@ -7,23 +7,23 @@
 .$(prefix)--tooltip.tippy-box {
   @mixin type--label;
 
-  border-radius: $component--radius-default;
-  box-shadow: $component--shadow-default;
+  border-radius: var(--component-radius-default);
+  box-shadow: var(--component-shadow-default);
 
   & > .tippy-content {
-    padding: $size--spacing-02 $size--spacing-04;
+    padding: var(--size-spacing-02) var(--size-spacing-04);
   }
 
   &.$(prefix)--tooltip-container {
-    width: $size--container-08;
+    width: var(--size-container-08);
 
     > .tippy-content {
-      padding: $size--spacing-04;
+      padding: var(--size-spacing-04);
 
       & > div > .$(prefix)--tooltip-container__title {
         @mixin type--headline-06;
 
-        margin-bottom: $size--spacing-02;
+        margin-bottom: var(--size-spacing-02);
       }
 
       & > div > .$(prefix)--tooltip-container__body {
@@ -39,23 +39,23 @@
   }
 
   &[data-theme~="bbds-dark"] {
-    background-color: $color--background;
-    color: $color--font-text-01;
+    background-color: var(--color-background);
+    color: var(--color-font-text-01);
 
     & > .tippy-svg-arrow {
       & > svg > path {
-        fill: $color--background;
+        fill: var(--color-background);
       }
     }
   }
 
   &[data-theme~="bbds-light"] {
-    background-color: $color--app-05;
-    color: $color--font-text-inverse;
+    background-color: var(--color-app-05);
+    color: var(--color-font-text-inverse);
 
     & > .tippy-svg-arrow {
       & > svg > path {
-        fill: $color--app-05;
+        fill: var(--color-app-05);
       }
     }
   }
@@ -69,10 +69,10 @@
 .$(prefix)--tooltip-icontrigger {
   display: inline-flex;
   padding: 0;
-  transition: outline $transition--app-01;
+  transition: outline var(--transition-app-01);
   background-color: transparent;
 
   &:focus {
-    outline: 0.0625rem solid $color--focus;
+    outline: 0.0625rem solid var(--color-focus);
   }
 }

@@ -9,7 +9,8 @@
     padding: 0;
 
     &-trigger {
-      transition: box-shadow $transition--app-01, filter $transition--app-01;
+      transition: box-shadow var(--transition-app-01),
+        filter var(--transition-app-01);
       border-radius: 50%;
       outline: 0;
       background-color: transparent;
@@ -23,8 +24,8 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.125rem $color--focus-inverse,
-          0 0 0 0.1875rem $color--focus;
+        box-shadow: 0 0 0 0.125rem var(--color-focus-inverse),
+          0 0 0 0.1875rem var(--color-focus);
       }
     }
 
@@ -37,12 +38,12 @@
     }
 
     &-link {
-      margin: 0 0 $size--spacing-02 0;
+      margin: 0 0 var(--size-spacing-02) 0;
       padding: 0;
     }
 
     &-linklist {
-      margin: $size--spacing-04 0 0 0;
+      margin: var(--size-spacing-04) 0 0 0;
       padding: 0;
     }
 
@@ -54,10 +55,10 @@
     &-menu {
       visibility: hidden;
       position: absolute;
-      width: $size--container-08;
-      padding: $size--spacing-05;
+      width: var(--size-container-08);
+      padding: var(--size-spacing-05);
       transform: translate(0, 0);
-      transition: $transition--app-01;
+      transition: var(--transition-app-01);
       opacity: 0;
 
       &__user {
@@ -66,33 +67,33 @@
 
       &__open {
         visibility: visible;
-        transform: translate(0, $size--spacing-03);
+        transform: translate(0, var(--size-spacing-03));
         opacity: 1;
       }
 
       &__avatar {
-        margin-right: $size--spacing-05;
+        margin-right: var(--size-spacing-05);
         padding: 0;
       }
     }
 
     &-name {
-      margin-bottom: $size--spacing-01;
+      margin-bottom: var(--size-spacing-01);
       padding: 0;
-      color: $color--font-text-01;
+      color: var(--color-font-text-01);
     }
 
     &-divider.$(prefix)--divider {
-      width: calc(100% + $size--spacing-07);
-      margin: $size--spacing-05 0;
-      transform: translate(calc($size--spacing-05 * -1), 0);
+      width: calc(100% + var(--size-spacing-07));
+      margin: var(--size-spacing-05) 0;
+      transform: translate(calc(var(--size-spacing-05) * -1), 0);
       color: inherit;
     }
 
     &-subname {
       margin: 0;
       padding: 0;
-      color: $color--font-text-05;
+      color: var(--color-font-text-05);
     }
   }
 }

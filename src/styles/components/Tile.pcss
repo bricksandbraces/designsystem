@@ -7,51 +7,51 @@
     @mixin type--body-02;
 
     display: inline-flex;
-    min-width: $size--container-08;
-    min-height: $size--container-07;
-    padding: $size--spacing-05;
-    transition: background-color $transition--app-01,
-      border-color $transition--app-01;
-    border: 0.0625rem solid $color--border;
-    border-radius: $component--radius-default;
-    background-color: $color--background;
-    color: $color--font-text-01;
+    min-width: var(--size-container-08);
+    min-height: var(--size-container-07);
+    padding: var(--size-spacing-05);
+    transition: background-color var(--transition-app-01),
+      border-color var(--transition-app-01);
+    border: 0.0625rem solid var(--color-border);
+    border-radius: var(--transition-radius-default);
+    background-color: var(--color-background);
+    color: var(--color-font-text-01);
 
     &.$(prefix)--tile-clickable {
       cursor: pointer;
 
       &:hover {
-        background-color: $color--hover;
+        background-color: var(--color-hover);
       }
 
       &:active {
-        background-color: $color--active;
+        background-color: var(--color-active);
       }
 
       &:focus-visible {
-        border-color: $color--focus;
+        border-color: var(--color-focus);
       }
     }
 
     &-light {
-      border-color: $color--border-light;
-      background-color: $color--background-light;
+      border-color: var(--color-border-light);
+      background-color: var(--color-background-light);
 
       &.$(prefix)--tile-clickable {
         &:hover {
-          background-color: $color--hover-light;
+          background-color: var(--color-hover-light);
         }
 
         &:active {
-          background-color: $color--active-light;
+          background-color: var(--color-active-light);
         }
       }
     }
 
     &-disabled {
       border-color: transparent;
-      background-color: $color--disabled;
-      color: $color--font-disabled;
+      background-color: var(--color-disabled);
+      color: var(--color-font-disabled);
       pointer-events: none;
       user-select: none;
 
@@ -62,8 +62,8 @@
 
     &-readonly {
       border-color: transparent;
-      background-color: $color--readonly;
-      color: $color--font-readonly;
+      background-color: var(--color-readonly);
+      color: var(--color-font-readonly);
       pointer-events: none;
       user-select: none;
     }
