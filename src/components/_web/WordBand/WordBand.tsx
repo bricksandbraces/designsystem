@@ -30,10 +30,10 @@ const WordBand = (
   return (
     <section className={`${prefix}--wordband`} ref={ref}>
       <Ticker speed={3} direction="toRight" mode="chain" offset="100%">
-        {(index) => (
+        {() => (
           <p className={`${prefix}--wordband-words`}>
             {indexedWordItems?.map((word) => {
-              return <span>{word.label}&nbsp;/&nbsp;</span>;
+              return <span key={word.id}>{word.label}&nbsp;/&nbsp;</span>;
             })}
           </p>
         )}
