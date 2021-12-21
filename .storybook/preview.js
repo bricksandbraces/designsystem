@@ -25,6 +25,7 @@ export const parameters = {
   },
   actions: { argTypesRegex: "^on.*" },
   backgrounds: {
+    disabled: true,
     default: "app-bg",
     values: [
       { name: "white", value: "#ffffff" },

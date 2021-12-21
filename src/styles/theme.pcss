@@ -250,11 +250,12 @@
   --transition-app-05: $transition-app-05;
 }
 
-/* = = = = DARK MODE = = = = */
+/* = = = = DARK/LIGHT MODE = = = = */
 
 @media (prefers-color-scheme: dark) {
   /* TODO Dark mode overrides go over here */
   :root {
+    --color-app-background: $white;
     --color-focus: $blue-500;
     --color-badge-gray-font: $white;
   }
