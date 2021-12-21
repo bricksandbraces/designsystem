@@ -7,17 +7,15 @@ import "./storybook.css";
 const Layout = ({ children }) => {
   const isDark = useDarkMode();
 
+  // TODO: use modules themes light & dark
   const currentTheme = !isDark
-    ? { "--color-app-background": "#fff" }
-    : { "--color-app-background": "#000" };
+    ? { "color-app-background": "#fff" }
+    : { "color-app-background": "#000" };
 
   useEffect(() => {
     Object.keys(currentTheme).forEach((token) => {
-      document.body.style.setProperty(token, currentTheme[token]);
+      document.body.style.setProperty("--" + token, currentTheme[token]);
     });
-
-    console.log("New theme is ");
-    console.log(currentTheme);
   }, [currentTheme]);
 
   return <>{children}</>;

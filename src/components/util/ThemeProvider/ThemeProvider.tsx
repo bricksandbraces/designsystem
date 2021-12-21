@@ -8,7 +8,8 @@ export type ThemeProviderProps = {
   children?: React.ReactNode;
 
   /**
-   * ThemeProvider Theme
+   * ThemeProvider Theme: Accepts the definitions for the light and dark system theme.
+   * Automatically prefixes the token definitions with --.
    */
   theme?: { light?: Record<string, string>; dark?: Record<string, string> };
 
@@ -29,12 +30,18 @@ const ThemeProvider = ({
   style,
   children
 }: ThemeProviderProps) => {
-  const currentTheme = usePreferredColorScheme("light");
+  const currentThemeSetting = usePreferredColorScheme("light");
+  const currentTheme = theme?.[currentThemeSetting] ?? {};
   return (
     <div
       data-theme-provider
       className={className}
-      style={{ ...theme?.[currentTheme], ...style }}
+      style={{
+        ...Object.keys(currentTheme).reduce((prev, currentToken) => {
+          return { ...prev, [`--${currentToken}`]: currentTheme[currentToken] };
+        }, {}),
+        ...style
+      }}
     >
       {children}
     </div>
