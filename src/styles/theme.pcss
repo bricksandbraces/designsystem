@@ -1,14 +1,19 @@
 :root {
+  /* = = = Colors = = = */
+
   /* -- Root Colors -- */
   --color-app-01: $gray-50;
   --color-app-02: $gray-200;
   --color-app-03: $gray-300;
   --color-app-04: $gray-500;
   --color-app-05: $white;
+  --color-app-05-alpha-5: rgba($white, 0.05);
+  --color-app-05-alpha-10: rgba($white, 0.1);
   --color-app-background: $gray-50;
 
   /* -- Background Colors -- */
   --color-background: $gray-100;
+  --color-background-alpha-0: rgba($gray-100, 0);
   --color-hover: $gray-150;
   --color-active: $gray-200;
   --color-background-light: $gray-150;
@@ -27,6 +32,7 @@
   --color-skeleton-01: $gray-100;
   --color-skeleton-02: $gray-150;
   --color-skeleton-03: $gray-250;
+  --color-skeleton-04: rgba($gray-250, 0.25);
 
   /* -- Table Colors -- */
   --color-table-background: $gray-100;
@@ -108,139 +114,143 @@
   --color-badge-purple-font: $purple-900;
   --color-badge-purple-border: $purple-200;
 
-  /* Type Scale */
-  --font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
-    roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-family-code: dm mono, sfmono-regular, menlo, monaco, consolas,
-    "Liberation Mono", "Courier New", monospace;
+  /* = = = Typography = = = */
+
+  /* -- Type Scale -- */
+  --font-family: $font-family;
+  --font-family-code: $font-family-code;
 
   /* Learn more under https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
 
-  --font-caption-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
-  --font-label-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
-  --font-body-01-size: clamp(1rem, 1rem + 0vw, 1rem);
-  --font-body-02-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
-  --font-headline-01-size: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
-  --font-headline-02-size: clamp(1.73rem, 1.58rem + 0.75vw, 2.37rem);
-  --font-headline-03-size: clamp(1.44rem, 1.36rem + 0.4vw, 1.78rem);
-  --font-headline-04-size: clamp(1.2rem, 1.17rem + 0.16vw, 1.33rem);
-  --font-headline-05-size: clamp(1rem, 1rem + 0vw, 1rem);
-  --font-headline-06-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
-  --font-marketing-01-size: clamp(2.99rem, 2.37rem + 3.09vw, 5.61rem);
-  --font-marketing-02-size: clamp(2.49rem, 2.08rem + 2.02vw, 4.21rem);
-  --font-quote-01-size: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
-  --font-quote-02-size: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
-  --font-code-size: clamp(2.07rem, 1.82rem + 1.28vw, 3.16rem);
+  --font-caption-size: $font-caption-size;
+  --font-label-size: $font-label-size;
+  --font-body-01-size: $font-body-01-size;
+  --font-body-02-size: $font-body-02-size;
+  --font-headline-01-size: $font-headline-01-size;
+  --font-headline-02-size: $font-headline-02-size;
+  --font-headline-03-size: $font-headline-03-size;
+  --font-headline-04-size: $font-headline-04-size;
+  --font-headline-05-size: $font-headline-05-size;
+  --font-headline-06-size: $font-headline-06-size;
+  --font-marketing-01-size: $font-marketing-01-size;
+  --font-marketing-02-size: $font-marketing-02-size;
+  --font-quote-01-size: $font-quote-01-size;
+  --font-quote-02-size: $font-quote-02-size;
+  --font-code-size: $font-code-size;
 
   /* -- Font weights -- */
-  --font-caption-weight: normal;
-  --font-label-weight: normal;
-  --font-body-01-weight: normal;
-  --font-body-02-weight: normal;
-  --font-headline-01-weight: 300;
-  --font-headline-02-weight: 300;
-  --font-headline-03-weight: 300;
-  --font-headline-04-weight: normal;
-  --font-headline-05-weight: 600;
-  --font-headline-06-weight: 600;
-  --font-marketing-01-weight: 200;
-  --font-marketing-02-weight: 200;
-  --font-quote-01-weight: 200;
-  --font-quote-02-weight: 500;
-  --font-code-weight: 400;
+  --font-caption-weight: $font-caption-weight;
+  --font-label-weight: $font-label-weight;
+  --font-body-01-weight: $font-body-01-weight;
+  --font-body-02-weight: $font-body-02-weight;
+  --font-headline-01-weight: $font-headline-01-weight;
+  --font-headline-02-weight: $font-headline-02-weight;
+  --font-headline-03-weight: $font-headline-03-weight;
+  --font-headline-04-weight: $font-headline-04-weight;
+  --font-headline-05-weight: $font-headline-05-weight;
+  --font-headline-06-weight: $font-headline-06-weight;
+  --font-marketing-01-weight: $font-marketing-01-weight;
+  --font-marketing-02-weight: $font-marketing-02-weight;
+  --font-quote-01-weight: $font-quote-01-weight;
+  --font-quote-02-weight: $font-quote-02-weight;
+  --font-code-weight: $font-code-weight;
 
   /* -- Font styles -- */
-  --font-caption-style: normal;
-  --font-label-style: normal;
-  --font-body-01-style: normal;
-  --font-body-02-style: normal;
-  --font-headline-01-style: normal;
-  --font-headline-02-style: normal;
-  --font-headline-03-style: normal;
-  --font-headline-04-style: normal;
-  --font-headline-05-style: normal;
-  --font-headline-06-style: normal;
-  --font-marketing-01-style: normal;
-  --font-marketing-02-style: normal;
-  --font-quote-01-style: normal;
-  --font-quote-02-style: normal;
-  --font-code-style: normal;
+  --font-caption-style: $font-caption-style;
+  --font-label-style: $font-label-style;
+  --font-body-01-style: $font-body-01-style;
+  --font-body-02-style: $font-body-02-style;
+  --font-headline-01-style: $font-headline-01-style;
+  --font-headline-02-style: $font-headline-02-style;
+  --font-headline-03-style: $font-headline-03-style;
+  --font-headline-04-style: $font-headline-04-style;
+  --font-headline-05-style: $font-headline-05-style;
+  --font-headline-06-style: $font-headline-06-style;
+  --font-marketing-01-style: $font-marketing-01-style;
+  --font-marketing-02-style: $font-marketing-02-style;
+  --font-quote-01-style: $font-quote-01-style;
+  --font-quote-02-style: $font-quote-02-style;
+  --font-code-style: $font-code-style;
 
   /* -- Line heights -- */
-  --font-caption-leading: 150%;
-  --font-label-leading: 150%;
-  --font-body-01-leading: 150%;
-  --font-body-02-leading: 150%;
-  --font-headline-01-leading: 120%;
-  --font-headline-02-leading: 120%;
-  --font-headline-03-leading: 140%;
-  --font-headline-04-leading: 150%;
-  --font-headline-05-leading: 150%;
-  --font-headline-06-leading: 150%;
-  --font-marketing-01-leading: 150%;
-  --font-marketing-02-leading: 150%;
-  --font-quote-01-leading: 150%;
-  --font-quote-02-leading: 150%;
-  --font-code-leading: 100%;
+  --font-caption-leading: $font-caption-leading;
+  --font-label-leading: $font-label-leading;
+  --font-body-01-leading: $font-body-01-leading;
+  --font-body-02-leading: $font-body-02-leading;
+  --font-headline-01-leading: $font-headline-01-leading;
+  --font-headline-02-leading: $font-headline-02-leading;
+  --font-headline-03-leading: $font-headline-03-leading;
+  --font-headline-04-leading: $font-headline-04-leading;
+  --font-headline-05-leading: $font-headline-05-leading;
+  --font-headline-06-leading: $font-headline-06-leading;
+  --font-marketing-01-leading: $font-marketing-01-leading;
+  --font-marketing-02-leading: $font-marketing-02-leading;
+  --font-quote-01-leading: $font-quote-01-leading;
+  --font-quote-02-leading: $font-quote-02-leading;
+  --font-code-leading: $font-code-leading;
 
-  /* Sizes */
+  /* = = = Sizes = = = */
 
   /* -- Container Sizes -- */
-  --size-container-01: 1rem;
-  --size-container-02: 1.5rem;
-  --size-container-03: 2rem;
-  --size-container-04: 2.5rem;
-  --size-container-05: 3rem;
-  --size-container-06: 4rem;
-  --size-container-07: 8rem;
-  --size-container-08: 16rem;
+  --size-container-01: $container-01;
+  --size-container-02: $container-02;
+  --size-container-03: $container-03;
+  --size-container-04: $container-04;
+  --size-container-05: $container-05;
+  --size-container-06: $container-06;
+  --size-container-07: $container-07;
+  --size-container-08: $container-08;
 
   /* -- Field Sizes -- */
-  --size-field-xsmall: 1.5rem;
-  --size-field-small: 2rem;
-  --size-field-default: 2.5rem;
-  --size-field-large: 3rem;
+  --size-field-xsmall: $field-xsmall;
+  --size-field-small: $field-small;
+  --size-field-default: $field-default;
+  --size-field-large: $field-large;
 
   /* -- Spacing Sizes -- */
-  --size-spacing-01: 0.125rem;
-  --size-spacing-02: 0.25rem;
-  --size-spacing-03: 0.5rem;
-  --size-spacing-04: 0.75rem;
-  --size-spacing-05: 1rem;
-  --size-spacing-06: 1.5rem;
-  --size-spacing-07: 2rem;
-  --size-spacing-08: 2.5rem;
-  --size-spacing-09: 3rem;
-  --size-spacing-10: 4rem;
-  --size-spacing-11: 6rem;
-  --size-spacing-12: 8rem;
-  --size-spacing-13: 16rem;
+  --size-spacing-01: $spacing-01;
+  --size-spacing-02: $spacing-02;
+  --size-spacing-03: $spacing-03;
+  --size-spacing-04: $spacing-04;
+  --size-spacing-05: $spacing-05;
+  --size-spacing-06: $spacing-06;
+  --size-spacing-07: $spacing-07;
+  --size-spacing-08: $spacing-08;
+  --size-spacing-09: $spacing-09;
+  --size-spacing-10: $spacing-10;
+  --size-spacing-11: $spacing-11;
+  --size-spacing-12: $spacing-12;
+  --size-spacing-13: $spacing-13;
+
+  /* = = = Component = = = */
 
   /* -- Border Radius -- */
-  --component-radius-subtle: 0.0625rem;
-  --component-radius-default: 0.25rem;
-  --component-radius-harsh: 0.5rem;
+  --component-radius-subtle: $radius-subtle;
+  --component-radius-default: $radius-default;
+  --component-radius-harsh: $radius-harsh;
 
   /* -- Component Inside Padding -- */
-  --component-padding-inside: 0.25rem;
+  --component-padding-inside: $padding-inside;
 
   /* -- Box Shadow -- */
-  --component-shadow-subtle: 0 2px 10px 0 rgba(0, 0, 0, 20%);
-  --component-shadow-default: 0 4px 10px 0 rgba(0, 0, 0, 30%);
-  --component-shadow-harsh: 0 6px 64px 0 rgba(0, 0, 0, 20%);
+  --component-shadow-subtle: $shadow-subtle;
+  --component-shadow-default: $shadow-default;
+  --component-shadow-harsh: $shadow-harsh;
 
   /* -- Overlay -- */
-  --component-overlay: rgba(0, 0, 0, 60%);
+  --component-overlay: $overlay;
 
-  /* Transitions */
+  /* = = = Transitions = = = */
 
   /* -- Static Transitions -- */
-  --transition-app-01: 0.15s ease-in-out;
-  --transition-app-02: 0.3s ease-in-out;
-  --transition-app-03: 0.45s ease-in-out;
-  --transition-app-04: 3s ease-in-out;
-  --transition-app-05: 0.75s cubic-bezier(1, 0.21, 0.71, 0.69);
+  --transition-app-01: $transition-app-01;
+  --transition-app-02: $transition-app-02;
+  --transition-app-03: $transition-app-03;
+  --transition-app-04: $transition-app-04;
+  --transition-app-05: $transition-app-05;
 }
+
+/* = = = = DARK MODE = = = = */
 
 @media (prefers-color-scheme: dark) {
   /* TODO Dark mode overrides go over here */
@@ -265,9 +275,15 @@
   }
 }
 
-/* -- Breakpoint Sizes -- */
-$breakpoint-sm: 20rem;
-$breakpoint-md: 42rem;
-$breakpoint-lg: 68rem;
-$breakpoint-xlg: 82rem;
-$breakpoint-max: 99rem;
+@keyframes loading {
+  0%,
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}
