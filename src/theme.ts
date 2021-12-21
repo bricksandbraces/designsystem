@@ -8,7 +8,7 @@ const rgba = (hex: string, alpha?: number) => {
   return Color(hex).alpha(alpha ?? 1);
 };
 
-export default {
+const theme = {
   light: {
     /* " Root Colors " */
     "color-app-01": colors["gray-50"],
@@ -508,3 +508,5 @@ export default {
     "transition-app-05": animations["transition-app-05"]
   }
 };
+
+export default theme;
