@@ -5,6 +5,8 @@
 *.config.cjs
 config/
 
+tasks/
+
 # <<<<<<<<<<< General >>>>>>>>>>>>>>
 
 # dependencies
