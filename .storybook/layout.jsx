@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDarkMode } from "storybook-dark-mode";
+import baseTheme from "../src/theme";
 
 import "../src/styles/index.css";
 import "./storybook.css";
@@ -7,10 +8,10 @@ import "./storybook.css";
 const Layout = ({ children }) => {
   const isDark = useDarkMode();
 
-  // TODO: use modules themes light & dark
+  // TODO: Remove the placeholder variable definitions as soon as the light is defined.
   const currentTheme = !isDark
-    ? { "color-app-background": "#fff" }
-    : { "color-app-background": "#000" };
+    ? { ...baseTheme.light, "color-app-background": "#fff" }
+    : { ...baseTheme.dark, "color-app-background": "#000" };
 
   useEffect(() => {
     Object.keys(currentTheme).forEach((token) => {

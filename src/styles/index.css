@@ -4,6 +4,7 @@
 @import "@openbricksandbraces/designtokens/dist/pcss/index.pcss";
 @import "./theme.pcss";
 @import "./mixins.pcss";
+@import "./keyframes.pcss";
 
 @import "./components/LoginForm.pcss";
 @import "./components/EmptyState.pcss";
