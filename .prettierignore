@@ -2,6 +2,8 @@
 
 # <<<<<<<<<<< General >>>>>>>>>>>>>>
 
+normalize.css
+
 # dependencies
 node_modules
 .pnp
