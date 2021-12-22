@@ -1,25 +1,21 @@
-@import "../prefix.pcss";
-@import "../theme.pcss";
-@import "../typography.pcss";
-
 .$(prefix) {
   &--codesnippet {
     &-light {
       &.$(prefix)--codesnippet-container {
-        border-color: $color--border-light;
-        background-color: $color--background-light;
+        border-color: var(--color-border-light);
+        background-color: var(--color-background-light);
 
         & > .$(prefix)--codesnippet-button__container {
-          border-color: $color--border-light;
-          background-color: $color--background-light;
+          border-color: var(--color-border-light);
+          background-color: var(--color-background-light);
         }
       }
     }
 
     &-single {
       &.$(prefix)--codesnippet-container {
-        min-height: $size--container-06;
-        max-height: $size--container-06;
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
       }
       & > .$(prefix)--codesnippet-button__container {
         display: inline-flex;
@@ -28,21 +24,21 @@
         left: unset;
         align-items: center;
         justify-content: center;
-        min-width: $size--container-05;
-        max-width: $size--container-05;
-        min-height: $size--container-06;
-        max-height: $size--container-06;
+        min-width: var(--size-container-05);
+        max-width: var(--size-container-05);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
         border-top: 0;
-        border-left: 0.0625rem solid $color--border;
-        background-color: $color--background;
+        border-left: 0.0625rem solid var(--color-border);
+        background-color: var(--color-background);
       }
 
       & > .$(prefix)--codesnippet-innercontainer {
         display: flex;
         align-items: center;
-        min-height: $size--container-06;
-        max-height: $size--container-06;
-        padding: 0 $size--spacing-05;
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
+        padding: 0 var(--size-spacing-05);
 
         & > .$(prefix)--codesnippet-pre {
           display: inline-flex;
@@ -50,7 +46,7 @@
           white-space: nowrap;
 
           & > .$(prefix)--codesnippet-code {
-            padding-right: $size--spacing-10;
+            padding-right: var(--size-spacing-10);
           }
         }
       }
@@ -59,11 +55,11 @@
     &-container {
       position: relative;
       width: 100%;
-      max-width: calc($size--container-08 * 3);
+      max-width: calc(var(--size-container-08) * 3);
       overflow: hidden;
-      border: 0.0625rem solid $color--border;
-      border-radius: $component--radius-default;
-      background-color: $color--background;
+      border: 0.0625rem solid var(--color-border);
+      border-radius: var(--component-radius-default);
+      background-color: var(--color-background);
     }
 
     &-button {
@@ -76,19 +72,19 @@
         align-items: center;
         justify-content: flex-end;
         width: 100%;
-        height: calc($size--field-small + ($size--spacing-03 * 2));
-        padding: $size--spacing-03;
-        border-top: 0.0625rem solid $color--border;
-        background-color: $color--background;
-        gap: $size--spacing-03;
+        height: calc(var(--size-field-small) + (var(--size-spacing-03) * 2));
+        padding: var(--size-spacing-03);
+        border-top: 0.0625rem solid var(--color-border);
+        background-color: var(--color-background);
+        gap: var(--size-spacing-03);
       }
     }
 
     &-innercontainer {
-      min-height: $size--field-default;
-      max-height: $size--container-08;
-      padding: $size--spacing-05 $size--spacing-05 $size--spacing-10
-        $size--spacing-05;
+      min-height: var(--size-field-default);
+      max-height: var(--size-container-08);
+      padding: var(--size-spacing-05) var(--size-spacing-05)
+        var(--size-spacing-10) var(--size-spacing-05);
       overflow: scroll;
 
       &__expanded {
@@ -99,7 +95,7 @@
     &-code {
       @mixin code;
 
-      color: $color--font-text-01;
+      color: var(--color-font-text-01);
     }
 
     &-pre {
@@ -112,8 +108,8 @@
     &.$(prefix)--codesnippet-single {
       display: flex;
       align-items: center;
-      min-height: $size--container-06;
-      max-height: $size--container-06;
+      min-height: var(--size-container-06);
+      max-height: var(--size-container-06);
 
       & > div {
         display: inline-flex;
@@ -122,8 +118,8 @@
 
     position: relative;
     align-items: flex-start;
-    max-width: calc($size--spacing-13 * 3);
-    height: $size--container-08;
-    padding: $size--spacing-05;
+    max-width: calc(var(--size-spacing-13) * 3);
+    height: var(--size-container-08);
+    padding: var(--size-spacing-05);
   }
 }

@@ -13,6 +13,11 @@ export type SwitcherProps = {
   children?: React.ReactNode;
 
   /**
+   * Switcher Light
+   */
+  light?: boolean;
+
+  /**
    * Switcher OnChange Function
    */
   onChange?: (selectedIndex: number) => void;
@@ -43,6 +48,7 @@ const Switcher = (
     children,
     onChange,
     defaultIndex,
+    light,
     className,
     index,
     size = "default"
@@ -60,6 +66,7 @@ const Switcher = (
     <div
       className={cx(
         `${prefix}--switcher ${prefix}--switcher-${size}`,
+        { [`${prefix}--switcher-light`]: light },
         className
       )}
       ref={ref}

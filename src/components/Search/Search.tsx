@@ -126,6 +126,11 @@ export type SearchProps = {
   open?: boolean;
 
   /**
+   * Search Light
+   */
+  light?: boolean;
+
+  /**
    * Search Open State (Uncontrolled)
    */
   defaultOpen?: boolean;
@@ -169,6 +174,8 @@ const Search = (
     value,
     defaultValue,
     onChange,
+
+    light,
 
     open,
     defaultOpen,
@@ -297,6 +304,7 @@ const Search = (
     <>
       <SearchInput
         id={id}
+        light={light}
         ref={mergeRefs([inputRef, ref])}
         value={value}
         defaultValue={defaultValue}

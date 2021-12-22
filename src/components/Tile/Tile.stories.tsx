@@ -11,6 +11,7 @@ export const Default = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <Tile
+          light={boolean("light", false)}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
         >
@@ -26,6 +27,7 @@ export const Clickable = () => {
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px" }}>
         <ClickableTile
+          light={boolean("light", false)}
           disabled={boolean("disabled", false)}
           readOnly={boolean("readOnly", false)}
           href={text("href", "#")}

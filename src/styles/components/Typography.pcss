@@ -1,7 +1,3 @@
-@import "../prefix.pcss";
-@import "../typography.pcss";
-@import "../theme.pcss";
-
 .$(prefix) {
   &--typography {
     &-caption {
@@ -11,14 +7,14 @@
     &-label {
       @mixin type--label;
 
-      margin-bottom: $size--spacing-03;
-      color: $color--font-text-03;
+      margin-bottom: var(--size-spacing-03);
+      color: var(--color-font-text-03);
     }
 
     &-label.$(prefix)--skeleton {
       align-self: flex-start;
-      height: calc($size--container-01 * 0.75);
-      margin-bottom: $size--spacing-04;
+      height: calc(var(--size-container-01) * 0.75);
+      margin-bottom: var(--size-spacing-04);
     }
 
     &-body-01 {
@@ -78,40 +74,40 @@
 
         & > blockquote {
           width: 100%;
-          margin-left: $size--spacing-04;
+          margin-left: var(--size-spacing-04);
         }
       }
 
       &__name {
         position: relative;
         width: 100%;
-        margin: $size--spacing-06 0 $size--spacing-02
-          calc($size--spacing-04 + $size--spacing-09);
-        color: $color--font-text-01;
+        margin: var(--size-spacing-06) 0 var(--size-spacing-02)
+          calc(var(--size-spacing-04) + var(--size-spacing-09));
+        color: var(--color-font-text-01);
 
         &::before {
           content: "";
           position: absolute;
-          top: $size--spacing-03;
-          left: calc($size--spacing-09 * -1);
-          width: $size--container-02;
+          top: var(--size-spacing-03);
+          left: calc(var(--size-spacing-09) * -1);
+          width: var(--size-container-02);
           height: 0.0625rem;
-          margin-bottom: $size--spacing-04;
-          background-color: $color--app-02;
+          margin-bottom: var(--size-spacing-04);
+          background-color: var(--color-app-02);
         }
       }
 
       &__position {
         width: 100%;
         margin-bottom: 0;
-        margin-left: calc($size--spacing-04 + $size--spacing-09);
-        color: $color--font-text-03;
+        margin-left: calc(var(--size-spacing-04) + var(--size-spacing-09));
+        color: var(--color-font-text-03);
       }
 
       &__company {
         width: 100%;
-        margin-left: calc($size--spacing-04 + $size--spacing-09);
-        color: $color--font-text-03;
+        margin-left: calc(var(--size-spacing-04) + var(--size-spacing-09));
+        color: var(--color-font-text-03);
       }
     }
   }

@@ -24,6 +24,11 @@ export type TextAreaProps = {
   maxLength?: number;
 
   /**
+   * TextArea Light
+   */
+  light?: boolean;
+
+  /**
    * TextArea OnChange Function
    */
   onChange?: (
@@ -60,6 +65,7 @@ const TextArea = (
     characterLimit,
     characterLimitExceededText,
     maxLength,
+    light,
     autoComplete,
     className,
     label,
@@ -90,6 +96,7 @@ const TextArea = (
   return (
     <div
       className={cx(`${prefix}--textarea`, {
+        [`${prefix}--textarea-light`]: light,
         [`${prefix}--textarea-disabled`]: disabled,
         [`${prefix}--textarea-readonly`]: readOnly
       })}

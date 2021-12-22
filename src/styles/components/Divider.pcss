@@ -1,6 +1,3 @@
-@import "../prefix.pcss";
-@import "../theme.pcss";
-
 .$(prefix) {
   &--divider {
     width: 100%;
@@ -10,15 +7,15 @@
     opacity: 1;
 
     &-default {
-      background-color: $color--divider-default;
+      background-color: var(--color-divider-default);
     }
 
     &-subtle {
-      background-color: $color--divider-subtle;
+      background-color: var(--color-divider-subtle);
     }
 
     &-harsh {
-      background-color: $color--divider-harsh;
+      background-color: var(--color-divider-harsh);
     }
   }
 }

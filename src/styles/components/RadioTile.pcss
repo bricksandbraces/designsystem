@@ -1,30 +1,26 @@
-@import "../prefix.pcss";
-@import "../typography.pcss";
-@import "../theme.pcss";
-
 .$(prefix) {
   &--radiotile {
     display: inline-flex;
-    color: $color--font-unselected;
+    color: var(--color-font-unselected);
 
     &-light {
       & > .$(prefix)--tile {
-        border-color: $color--border-light;
-        background-color: $color--background-light;
+        border-color: var(--color-border-light);
+        background-color: var(--color-background-light);
 
         &:hover {
-          background-color: $color--hover-light;
+          background-color: var(--color-hover-light);
         }
 
         &:active {
-          background-color: $color--active-light;
+          background-color: var(--color-active-light);
         }
       }
     }
 
     &-group {
       display: flex;
-      gap: $size--spacing-05;
+      gap: var(--size-spacing-05);
 
       &__legend {
         @mixin type--label;
@@ -32,7 +28,7 @@
     }
 
     & > input[type="radio"]:focus-visible + label {
-      border-color: $color--focus;
+      border-color: var(--color-focus);
     }
 
     &-label {
@@ -40,21 +36,23 @@
 
       display: inline-flex;
       position: relative;
-      transition: color $transition--app-01,
-        background-color $transition--app-01, border-color $transition--app-01;
-      color: $color--font-unselected;
+      transition: color var(--transition-app-01),
+        background-color var(--transition-app-01),
+        border-color var(--transition-app-01);
+      color: var(--color-font-unselected);
       cursor: pointer;
     }
 
     &-selected {
       position: absolute;
-      right: $size--spacing-05;
-      bottom: $size--spacing-05;
+      right: var(--size-spacing-05);
+      bottom: var(--size-spacing-05);
       width: 0;
       height: 0;
-      transition: opacity $transition--app-01, transform $transition--app-01;
+      transition: opacity var(--transition-app-01),
+        transform var(--transition-app-01);
       opacity: 0;
-      color: $color--font-selected;
+      color: var(--color-font-selected);
     }
 
     &-input {
@@ -68,8 +66,8 @@
     }
 
     & > [type="radio"]:checked + label {
-      border-color: $color--decoration;
-      color: $color--font-selected;
+      border-color: var(--color-decoration);
+      color: var(--color-font-selected);
 
       & > .$(prefix)--radiotile-selected {
         width: unset;
@@ -77,30 +75,30 @@
         opacity: 1;
 
         & > circle {
-          stroke: $color--decoration;
-          fill: $color--decoration;
+          stroke: var(--color-decoration);
+          fill: var(--color-decoration);
         }
       }
     }
 
     &-readonly {
-      color: $color--font-readonly;
+      color: var(--color-font-readonly);
 
       & > [type="radio"] {
         & + label {
           border-color: transparent;
-          background-color: $color--readonly;
-          color: $color--font-readonly;
+          background-color: var(--color-readonly);
+          color: var(--color-font-readonly);
 
           & > .$(prefix)--radiotile-selected {
-            color: $color--font-readonly;
+            color: var(--color-font-readonly);
           }
         }
 
         &:checked + label {
           border-color: transparent;
-          background-color: $color--readonly;
-          color: $color--font-readonly;
+          background-color: var(--color-readonly);
+          color: var(--color-font-readonly);
         }
       }
 
@@ -112,24 +110,33 @@
     }
 
     &-disabled {
-      color: $color--font-disabled;
+      color: var(--color-font-disabled);
       cursor: not-allowed;
 
       & > [type="radio"] {
         & + label {
           border-color: transparent;
-          background-color: $color--disabled;
-          color: $color--font-disabled;
+          background-color: var(--color-disabled);
+          color: var(--color-font-disabled);
 
           & > .$(prefix)--radiotile-selected {
-            color: $color--font-disabled;
+            color: var(--color-font-disabled);
           }
         }
 
         &:checked + label {
           border-color: transparent;
-          background-color: $color--disabled;
-          color: $color--font-disabled;
+          background-color: var(--color-disabled);
+          color: var(--color-font-disabled);
+
+          & > .$(prefix)--radiotile-selected {
+            color: var(--color-disabled);
+
+            & > circle {
+              stroke: var(--color-font-disabled);
+              fill: var(--color-font-disabled);
+            }
+          }
         }
       }
 
@@ -154,7 +161,7 @@
       border: 0;
 
       &:first-child {
-        margin-right: $size--spacing-03;
+        margin-right: var(--size-spacing-03);
       }
     }
   }

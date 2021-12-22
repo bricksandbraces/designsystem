@@ -1,25 +1,22 @@
 @import "react-day-picker/lib/style.css";
-@import "../prefix.pcss";
-@import "../typography.pcss";
-@import "../theme.pcss";
 
 .$(prefix) {
   &--datepicker {
     position: absolute;
     z-index: 1000;
     left: 0;
-    width: $size--container-08;
-    transform: translateY($size--spacing-03);
-    transition: opacity $transition--app-01, transform $transition--app-01,
-      visibility $transition--app-01;
-    border: 0.0625rem solid $color--border;
-    border-radius: $component--radius-default;
-    background: $color--background;
-    box-shadow: $component--shadow-default;
+    width: var(--size-container-08);
+    transform: translateY(var(--size-spacing-03));
+    transition: opacity var(--transition-app-01),
+      transform var(--transition-app-01), visibility var(--transition-app-01);
+    border: 0.0625rem solid var(--color-border);
+    border-radius: var(--component-radius-default);
+    background: var(--color-background);
+    box-shadow: var(--component-shadow-default);
 
     &-light {
-      border-color: $color--border-light;
-      background: $color--background-light;
+      border-color: var(--color-border-light);
+      background: var(--color-background-light);
 
       &.DayPicker
         > .DayPicker-wrapper
@@ -28,29 +25,29 @@
         > .DayPicker-Weekdays
         > .DayPicker-WeekdaysRow {
         &::before {
-          background-color: $color--border-light;
+          background-color: var(--color-border-light);
         }
       }
 
       &.$(prefix)--datepicker.DayPicker:not(.DayPicker--interactionDisabled)
         .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
         &:hover {
-          background-color: $color--hover-light;
+          background-color: var(--color-hover-light);
         }
 
         &:active {
-          background-color: $color--active-light;
+          background-color: var(--color-active-light);
         }
       }
 
       &.$(prefix)--datepicker > .DayPicker-wrapper > .DayPicker-NavBar {
         & > .DayPicker-NavButton {
           &:hover {
-            background-color: $color--hover-light;
+            background-color: var(--color-hover-light);
           }
 
           &:active {
-            background-color: $color--active-light;
+            background-color: var(--color-active-light);
           }
         }
       }
@@ -58,7 +55,7 @@
 
     &-hidden {
       visibility: hidden;
-      transform: translateY($size--spacing-02);
+      transform: translateY(var(--size-spacing-02));
       opacity: 0;
     }
 
@@ -70,22 +67,22 @@
     &.DayPicker:not(.DayPicker--interactionDisabled)
       .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
       &:hover {
-        background-color: $color--hover;
+        background-color: var(--color-hover);
       }
 
       &:active {
-        background-color: $color--active;
+        background-color: var(--color-active);
       }
     }
 
     & > .DayPicker-wrapper {
       padding-bottom: 0;
-      transition: border-color $transition--app-01;
+      transition: border-color var(--transition-app-01);
       border: 0.0625rem solid transparent;
-      border-radius: $component--radius-default;
+      border-radius: var(--component-radius-default);
 
       &:focus-visible {
-        border-color: $color--focus;
+        border-color: var(--color-focus);
         outline: 0;
       }
 
@@ -93,36 +90,36 @@
         display: inline-flex;
         position: absolute;
         right: 0;
-        margin: $size--spacing-03;
+        margin: var(--size-spacing-03);
         margin-top: 0.65rem;
-        gap: $size--spacing-02;
+        gap: var(--size-spacing-02);
 
         & > .DayPicker-NavButton {
           position: unset;
           z-index: 1;
           right: 0;
-          width: $size--container-03;
-          height: $size--container-03;
+          width: var(--size-container-03);
+          height: var(--size-container-03);
           margin-top: 0;
           margin-right: 0;
-          transition: background-color $transition--app-01,
-            border-color $transition--app-01;
+          transition: background-color var(--transition-app-01),
+            border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: $component--radius-default;
+          border-radius: var(--component-radius-default);
           background-size: 50%;
 
           &:hover {
             opacity: unset;
-            background-color: $color--hover;
+            background-color: var(--color-hover);
           }
 
           &:active {
             opacity: unset;
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
 
           &:focus-visible {
-            border-color: $color--focus;
+            border-color: var(--color-focus);
             outline: 0;
           }
 
@@ -141,13 +138,13 @@
       & > .DayPicker-Months {
         & > .DayPicker-Month {
           width: 100%;
-          margin: $size--spacing-05;
+          margin: var(--size-spacing-05);
 
           & > .DayPicker-Caption {
             @mixin type--headline-06;
 
-            margin-bottom: $size--spacing-05;
-            padding: 0 $size--spacing-01;
+            margin-bottom: var(--size-spacing-05);
+            padding: 0 var(--size-spacing-01);
 
             & > div {
               font-size: unset;
@@ -166,22 +163,24 @@
               &::before {
                 content: "";
                 position: absolute;
-                width: calc(100% + $size--spacing-05 * 2 - 0.125rem);
+                width: calc(100% + var(--size-spacing-05) * 2 - 0.125rem);
                 height: 0.0625rem;
-                transform: translateX(calc($size--spacing-05 * -1 + 0.0625rem));
-                background-color: $color--border;
+                transform: translateX(
+                  calc(var(--size-spacing-05) * -1 + 0.0625rem)
+                );
+                background-color: var(--color-border);
               }
 
               & > .DayPicker-Weekday {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: $size--container-03;
-                height: $size--container-03;
-                margin-top: $size--spacing-03;
-                margin-bottom: $size--spacing-03;
+                width: var(--size-container-03);
+                height: var(--size-container-03);
+                margin-top: var(--size-spacing-03);
+                margin-bottom: var(--size-spacing-03);
                 padding: 0;
-                color: $color--font-text-05;
+                color: var(--color-font-text-05);
 
                 & > abbr {
                   @mixin type--body-02;
@@ -200,41 +199,41 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: $size--container-03;
-                height: $size--container-03;
+                width: var(--size-container-03);
+                height: var(--size-container-03);
                 padding: 0;
-                transition: background-color $transition--app-01,
-                  border-color $transition--app-01;
+                transition: background-color var(--transition-app-01),
+                  border-color var(--transition-app-01);
                 border: 0.0625rem solid transparent;
-                border-radius: $component--radius-default;
+                border-radius: var(--component-radius-default);
                 cursor: pointer;
 
                 &:focus-visible {
-                  border-color: $color--focus;
+                  border-color: var(--color-focus);
                   outline: 0;
                 }
               }
 
               &
                 > .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-                background-color: $color--decoration;
-                color: $color--font-text-01;
+                background-color: var(--color-decoration);
+                color: var(--color-font-text-01);
               }
 
               & > .DayPicker-Day--outside {
-                color: $color--font-text-05;
+                color: var(--color-font-text-05);
                 cursor: unset;
               }
 
               & > .DayPicker-Day--today {
-                color: $color--font-decoration;
+                color: var(--color-font-decoration);
 
                 &::after {
                   content: "";
                   position: absolute;
-                  width: calc($size--container-01 / 4);
-                  height: calc($size--container-01 / 4);
-                  transform: translateY(calc($size--container-01 / 4 * 3));
+                  width: calc(var(--size-container-01) / 4);
+                  height: calc(var(--size-container-01) / 4);
+                  transform: translateY(calc(var(--size-container-01) / 4 * 3));
                   border-radius: 50%;
                   background-color: currentColor;
                 }
@@ -258,12 +257,12 @@
 
     & > .$(prefix)--skeleton-animated {
       justify-content: flex-end;
-      padding: 0 $size--spacing-05;
-      border-radius: $component--radius-default;
+      padding: 0 var(--size-spacing-05);
+      border-radius: var(--component-radius-default);
 
       & > svg {
         transform: translateX(-0.0625rem);
-        stroke: $color--skeleton-03;
+        stroke: var(--color-skeleton-03);
       }
     }
   }

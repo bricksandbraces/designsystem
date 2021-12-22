@@ -1,9 +1,7 @@
 import React from "react";
 import TextInput from "../../TextInput/TextInput";
 import PasswordInput from "../../PasswordInput/PasswordInput";
-import Link from "../../Link/Link";
 import { prefix } from "../../../settings";
-import Label from "../../Typography/Label";
 import { useControlledInput } from "../../../hooks/useControlled";
 
 export type LoginFormProps = {
@@ -82,16 +80,6 @@ export type LoginFormProps = {
     newValue: string,
     event?: React.ChangeEvent<HTMLInputElement>
   ) => void;
-
-  /**
-   * LoginForm ForgotPasswordText
-   */
-  forgotPasswordText?: string;
-
-  /**
-   * LoginForm ForgotPasswordLink
-   */
-  forgotPasswordLink?: string;
 };
 
 const LoginForm = (
@@ -107,9 +95,7 @@ const LoginForm = (
     invalidPassword,
     invalidEmail,
     onEmailChange,
-    onPasswordChange,
-    forgotPasswordText,
-    forgotPasswordLink = "#"
+    onPasswordChange
   }: LoginFormProps,
   ref: React.ForwardedRef<HTMLFormElement>
 ) => {
@@ -140,7 +126,7 @@ const LoginForm = (
   return (
     <form className={className} ref={ref}>
       <TextInput
-        className={`${prefix}--loginform--email`}
+        className={`${prefix}--loginform-email`}
         fluid
         type="email"
         error={invalidEmail}
@@ -152,7 +138,7 @@ const LoginForm = (
         autoComplete="off"
       />
       <PasswordInput
-        className={`${prefix}--loginform--password`}
+        className={`${prefix}--loginform-password`}
         error={invalidPassword}
         fluid
         id={id + "-password"}
@@ -161,11 +147,7 @@ const LoginForm = (
         defaultValue={defaultPasswordValue}
         onChange={handlePasswordOnChange()}
         autoComplete="off"
-      >
-        <Label className={`${prefix}--loginform--password-link`}>
-          <Link href={forgotPasswordLink}>{forgotPasswordText}</Link>
-        </Label>
-      </PasswordInput>
+      ></PasswordInput>
     </form>
   );
 };

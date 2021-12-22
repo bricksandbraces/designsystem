@@ -1,32 +1,28 @@
-@import "../prefix.pcss";
-@import "../typography.pcss";
-@import "../theme.pcss";
-
 .$(prefix) {
   &--tabs {
     white-space: normal;
 
     &-btn {
       position: relative;
-      max-width: calc($size--container-07 + $size--container-05);
-      height: $size--container-04;
-      margin-right: $size--spacing-01;
-      padding: 0 $size--spacing-05 0 $size--spacing-05;
+      max-width: calc(var(--size-container-07) + var(--size-container-05));
+      height: var(--size-container-04);
+      margin-right: var(--size-spacing-01);
+      padding: 0 var(--size-spacing-05) 0 var(--size-spacing-05);
       overflow: hidden;
-      transition: background-color $transition--app-01,
-        border-color $transition--app-01;
+      transition: background-color var(--transition-app-01),
+        border-color var(--transition-app-01);
       border: 0;
       border-top: calc(0.0625rem * 3) solid transparent;
-      border-bottom: calc(0.0625rem * 3) solid $color--background-light;
-      border-radius: $component--radius-default;
+      border-bottom: calc(0.0625rem * 3) solid var(--color-background-light);
+      border-radius: var(--component-radius-default);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
       background-color: transparent;
-      color: $color--font-unselected;
+      color: var(--color-font-unselected);
       text-align: start;
 
       &:disabled {
-        color: $color--font-disabled;
+        color: var(--color-font-disabled);
         cursor: not-allowed;
 
         &:hover {
@@ -46,30 +42,30 @@
       }
 
       &:hover {
-        border-bottom-color: $color--hover-light;
+        border-bottom-color: var(--color-hover-light);
       }
 
       &:focus-visible {
-        border-radius: $component--radius-default;
-        outline: 0.0625rem solid $color--focus;
+        border-radius: var(--component-radius-default);
+        outline: 0.0625rem solid var(--color-focus);
         outline-offset: -0.0625rem;
       }
 
       &__selected {
         position: relative;
-        border-bottom-color: $color--decoration;
-        color: $color--font-selected;
+        border-bottom-color: var(--color-decoration);
+        color: var(--color-font-selected);
 
         &:hover {
-          border-bottom-color: $color--decoration;
+          border-bottom-color: var(--color-decoration);
         }
       }
     }
 
     &-content {
       width: 80%;
-      padding: $size--spacing-05;
-      color: $color--font-text-01;
+      padding: var(--size-spacing-05);
+      color: var(--color-font-text-01);
 
       &__item {
         opacity: 0;
@@ -97,7 +93,7 @@
       display: inline-flex;
       position: relative;
       align-items: center;
-      min-width: $size--container-07;
+      min-width: var(--size-container-07);
 
       &::after {
         display: none;
@@ -113,14 +109,14 @@
 .$(prefix)--responsivetabs {
   &-tabs {
     display: block;
-    @media screen and (max-width: $size--breakpoint-md) {
+    @media screen and (max-width: $breakpoint-md) {
       display: none;
     }
   }
 
   &-accordion {
     display: block;
-    @media screen and (min-width: $size--breakpoint-md) {
+    @media screen and (min-width: $breakpoint-md) {
       display: none;
     }
   }

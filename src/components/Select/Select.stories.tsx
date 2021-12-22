@@ -37,6 +37,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
+        light={boolean("light", false)}
         id="some-select"
         label={text("label", "Label")}
         size={select("size", sizeOptions, defaultSize) as any}
@@ -57,6 +58,7 @@ export const Controlled = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <Select
+        light={boolean("light", false)}
         id="some-dropdown"
         label={text("label", "Label")}
         size={select("size", sizeOptions, defaultSize) as any}

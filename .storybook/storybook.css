@@ -30,6 +30,11 @@
   }
 }
 
+body.sb-show-main {
+  transition: background-color 0.2s !important;
+  background-color: var(--color-app-background);
+}
+
 .bb--grid-example {
   padding: 1rem;
   border: 0.0625rem dashed #7633ff;

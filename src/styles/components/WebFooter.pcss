@@ -1,25 +1,23 @@
-@import "../prefix.pcss";
-@import "../colors.pcss";
-@import "../theme.pcss";
-@import "../typography.pcss";
-
 .$(prefix) {
   &--webfooter {
-    min-height: $size--container-08;
-    background-color: $black;
-
-    &-divider {
-      background-color: $color--app-03;
-    }
+    background-color: var(--color-app-background);
 
     &-grid {
       height: 100%;
     }
 
+    &-logo {
+      align-self: flex-start;
+    }
+
     &-column {
       display: flex;
-      padding: $size--spacing-07 $size--spacing-05 $size--spacing-09
-        $size--spacing-05;
+      padding: var(--size-spacing-07) var(--size-spacing-05)
+        var(--size-spacing-07) var(--size-spacing-05);
+    }
+
+    &-divider.$(prefix)--divider {
+      margin-bottom: var(--size-spacing-05);
     }
 
     &-column > div {
@@ -31,13 +29,11 @@
     &-label {
       @mixin type--label;
 
-      display: inline-flex;
-      flex-flow: column;
-      margin: 0 0 $size--spacing-03;
-      color: $color--font-text-03;
+      margin: 0 0 var(--size-spacing-03);
+      color: var(--color-font-text-04);
 
       & > .$(prefix)--link {
-        margin-top: $size--spacing-05;
+        margin-top: var(--size-spacing-05);
         & > .$(prefix)--link-label {
           @mixin type--label;
         }
@@ -49,26 +45,30 @@
       justify-content: flex-end;
 
       &__item {
-        margin: 0 0 0 $size--spacing-06;
+        margin: 0 0 0 var(--size-spacing-06);
       }
     }
   }
 }
 
-@media screen and (max-width: $size--breakpoint-md) {
+@media screen and (max-width: $breakpoint-md) {
   .$(prefix)--webfooter {
     &-column {
       display: flex;
-      padding: $size--spacing-05;
+      padding: var(--size-spacing-05);
+    }
+
+    &-logo {
+      margin-top: var(--size-spacing-05);
+      margin-bottom: var(--size-spacing-05);
     }
 
     &-linksection {
       display: flex;
       justify-content: flex-start;
-      margin: 0 0 $size--spacing-05;
 
       &__item {
-        margin: 0 $size--spacing-06 0 0;
+        margin: 0 var(--size-spacing-06) 0 0;
       }
     }
   }

@@ -1,14 +1,9 @@
-@import "../colors.pcss";
-@import "../theme.pcss";
-@import "../typography.pcss";
-@import "../prefix.pcss";
-
 .$(prefix) {
   &--list {
-    margin-top: $size--spacing-03;
-    margin-bottom: $size--spacing-03;
-    margin-left: $size--spacing-08;
-    color: $color--font-text-01;
+    margin-top: var(--size-spacing-03);
+    margin-bottom: var(--size-spacing-03);
+    margin-left: var(--size-spacing-08);
+    color: var(--color-font-text-01);
 
     &-item {
       @mixin type--body-02;
@@ -18,7 +13,7 @@
       list-style: decimal-leading-zero;
       & > .$(prefix)--list-item {
         position: relative;
-        margin-bottom: $size--spacing-01;
+        margin-bottom: var(--size-spacing-01);
       }
     }
 
@@ -27,20 +22,20 @@
 
       & > .$(prefix)--list-item {
         position: relative;
-        margin-bottom: $size--spacing-01;
+        margin-bottom: var(--size-spacing-01);
 
         &::before {
           content: "–";
           position: absolute;
-          left: calc($size--spacing-05 * -1);
+          left: calc(var(--size-spacing-05) * -1);
         }
       }
     }
 
     &-nested {
-      margin-top: $size--spacing-02;
-      margin-bottom: $size--spacing-02;
-      margin-left: $size--spacing-06;
+      margin-top: var(--size-spacing-02);
+      margin-bottom: var(--size-spacing-02);
+      margin-left: var(--size-spacing-06);
 
       & > .$(prefix)--list-nested {
         &.$(prefix)--list-ordered {
@@ -52,7 +47,7 @@
             &::before {
               content: "–";
               position: absolute;
-              left: calc($size--spacing-05 * -1);
+              left: calc(var(--size-spacing-05) * -1);
             }
           }
         }
@@ -63,7 +58,7 @@
           &::before {
             content: "▪";
             position: absolute;
-            left: calc($size--spacing-05 * -1);
+            left: calc(var(--size-spacing-05) * -1);
           }
         }
       }

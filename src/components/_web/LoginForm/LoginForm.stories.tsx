@@ -34,8 +34,6 @@ export const DefaultUncontrolled = () => (
         passwordPlaceholder={text("Password Placeholder", "Password")}
         defaultEmailValue={text("Default Email Value", "max@mustermann.de")}
         defaultPasswordValue={text("Default Password Value", "12345678")}
-        forgotPasswordLink={text("Forgot Password Link", "#")}
-        forgotPasswordText={text("Forgot Password Text", "Forgot password?")}
         onEmailChange={action("onEmailChange")}
         onPasswordChange={action("onPasswordChange")}
       />

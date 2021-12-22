@@ -1,12 +1,19 @@
 @import "rc-slider/assets/index.css";
-@import "../typography.pcss";
-@import "../theme.pcss";
-@import "../prefix.pcss";
 
 .$(prefix) {
   &--rangeinput {
     display: inline-flex;
     flex-flow: column;
+
+    &-light {
+      &
+        > .$(prefix)--rangeinput-container
+        > .$(prefix)--rangeinput-slider__container
+        > .$(prefix)--rangeinput-slider
+        > .rc-slider-rail {
+        background-color: var(--color-background-light);
+      }
+    }
 
     &-container {
       display: inline-flex;
@@ -14,8 +21,8 @@
       align-items: center;
 
       & > .$(prefix)--numberinput {
-        width: $size--container-06;
-        margin-right: $size--spacing-05;
+        width: var(--size-container-06);
+        margin-right: var(--size-spacing-05);
 
         & > div > .$(prefix)--numberinput-input {
           appearance: textfield;
@@ -33,36 +40,34 @@
     &-slider {
       &.rc-slider {
         & > .rc-slider-rail {
-          background-color: $color--background;
+          background-color: var(--color-background);
         }
 
         & > .rc-slider-handle {
           width: 0.5rem;
           height: 0.5rem;
           margin-top: -2px;
-          transition: box-shadow $transition--app-01;
           border-color: transparent;
-          background-color: $color--app-05;
-          box-shadow: 0 0 0 0 rgba($color--app-05, 0.25);
+          background-color: var(--color-app-05);
 
           &:active,
           &:focus {
             width: 1rem;
             height: 1rem;
             margin-top: -6px;
-            box-shadow: inset 0 0 0 2px $color--background;
+            box-shadow: inset 0 0 0 2px var(--color-background);
           }
         }
 
         & > .rc-slider-track {
-          background-color: $color--decoration;
+          background-color: var(--color-decoration);
         }
       }
 
       &__container {
         display: inline-flex;
         align-items: center;
-        width: $size--container-08;
+        width: var(--size-container-08);
         height: 100%;
 
         & > .$(prefix)--skeleton {
@@ -75,20 +80,20 @@
 
         display: inline-flex;
         justify-content: space-between;
-        color: $color--font-text-03;
+        color: var(--color-font-text-03);
         user-select: none;
 
         &:first-of-type {
-          margin-right: $size--spacing-05;
+          margin-right: var(--size-spacing-05);
         }
 
         &:last-of-type {
-          margin-left: $size--spacing-05;
+          margin-left: var(--size-spacing-05);
         }
       }
 
       &.$(prefix)--skeleton {
-        height: calc($size--container-01 / 4);
+        height: calc(var(--size-container-01) / 4);
       }
     }
 
@@ -97,7 +102,7 @@
       user-select: none;
       & > div > .$(prefix)--rangeinput-slider__container {
         & > .$(prefix)--rangeinput-slider__label {
-          color: $color--font-disabled;
+          color: var(--color-font-disabled);
         }
       }
 
@@ -106,17 +111,19 @@
           background-color: transparent;
 
           & > .rc-slider-rail {
-            background-color: $color--disabled;
+            background-color: var(--color-disabled);
           }
 
           & > .rc-slider-handle {
             width: 0.5rem;
             height: 0.5rem;
             margin-top: -2px;
-            transition: width $transition--app-01, height $transition--app-01,
-              margin-top $transition--app-01, border-color $transition--app-01;
+            transition: width var(--transition-app-01),
+              height var(--transition-app-01),
+              margin-top var(--transition-app-01),
+              border-color var(--transition-app-01);
             border-color: transparent;
-            background-color: $color--disabled;
+            background-color: var(--color-disabled);
             box-shadow: unset;
 
             &:active,
@@ -130,7 +137,7 @@
           }
 
           & > .rc-slider-track {
-            background-color: $color--disabled;
+            background-color: var(--color-disabled);
           }
 
           &:hover {
@@ -150,7 +157,7 @@
       user-select: none;
       & > div > .$(prefix)--rangeinput-slider__container {
         & > .$(prefix)--rangeinput-slider__label {
-          color: $color--font-readonly;
+          color: var(--color-font-readonly);
         }
       }
 
@@ -159,7 +166,7 @@
           background-color: transparent;
 
           & > .rc-slider-rail {
-            background-color: $color--background;
+            background-color: var(--color-background);
           }
 
           & > .rc-slider-handle {
@@ -168,7 +175,7 @@
           }
 
           & > .rc-slider-track {
-            background-color: $color--decoration;
+            background-color: var(--color-decoration);
           }
         }
       }

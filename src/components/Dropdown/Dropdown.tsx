@@ -7,10 +7,9 @@ import {
 } from "@tabler/icons";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import { useControlled } from "../../hooks/useControlled";
-import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
 import { prefix } from "../../settings";
 import Label from "../Typography/Label";
-import { withoutPropagation } from "../../helpers/eventUtilities";
+import Tippy from "@tippyjs/react";
 
 export type DropdownItem = {
   /**
@@ -231,28 +230,85 @@ const Dropdown = (
       ref={ref}
     >
       <Label htmlFor={`${id}-toggle-button`}>{label}</Label>
-      <button
-        id={`${id}-toggle-button`}
-        disabled={disabled}
-        ref={btnRef}
-        aria-expanded={open}
-        className={cx(`${prefix}--dropdown-${size} ${prefix}--dropdown-toggle`)}
-        onClick={withoutPropagation(() => {
-          setOpen(!open);
+      <Tippy
+        ref={ref}
+        interactive
+        arrow={false}
+        className={cx(`${prefix}--dropdown-menu ${prefix}--drodown-${size}`, {
+          [`${prefix}--dropdown-light`]: light
         })}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        animation="bbds-animation"
+        trigger="click"
+        placement="bottom-start"
+        theme="dark"
+        offset={[0, 8]}
+        allowHTML
+        content={
+          <ul role="menu" aria-hidden={!open}>
+            {items.map((item, i) => {
+              return (
+                <li
+                  key={item.value}
+                  className={cx(
+                    `${prefix}--dropdown-menu__item ${prefix}--dropdown-${size}`,
+                    {
+                      [`${prefix}--dropdown-menu__item-disabled`]:
+                        item.disabled,
+                      [`${prefix}--dropdown-menu__item-selected`]:
+                        selectedValue === item.value
+                    }
+                  )}
+                  id={item.id}
+                  value={item.value}
+                  title={item.text}
+                >
+                  <div
+                    role="button"
+                    className={`${prefix}--dropdown-menu__item-interactible`}
+                    tabIndex={item.disabled || !open ? -1 : 0}
+                    onClick={(event) => {
+                      selectValue(item.value, event);
+                      setOpen(false);
+                    }}
+                    onKeyDown={(event) =>
+                      handleKeyPressOnItem(event, event.key, item.value, i)
+                    }
+                  >
+                    <div
+                      className={`${prefix}--dropdown-menu__item-text`}
+                      role="button"
+                    >
+                      <span title={item.text}>{item.text}</span>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        }
       >
-        <p className={`${prefix}--dropdown-toggle__title`} title={selectedText}>
-          {selectedValue == null ? title : selectedText}
-        </p>
-        <IconChevronDown
-          size={16}
-          className={cx(`${prefix}--dropdown-icon`, {
-            [`${prefix}--dropdown-icon__open`]: open
-          })}
-        />
-      </button>
+        <button
+          id={`${id}-toggle-button`}
+          disabled={disabled}
+          ref={btnRef}
+          className={cx(
+            `${prefix}--dropdown-${size} ${prefix}--dropdown-toggle`
+          )}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        >
+          <p
+            className={`${prefix}--dropdown-toggle__title`}
+            title={selectedText}
+          >
+            {selectedValue == null ? title : selectedText}
+          </p>
+          <IconChevronDown
+            size={16}
+            className={cx(`${prefix}--dropdown-icon`)}
+          />
+        </button>
+      </Tippy>
       {errorText && !warningText && (
         <div className={`${prefix}--dropdown-error__text`}>
           <IconAlertCircle size={16} />
@@ -267,60 +323,6 @@ const Dropdown = (
           {warningText}
         </div>
       )}
-      <OutsideClickListener
-        onClickOutside={() => {
-          setOpen(false);
-        }}
-        disabled={!open}
-        ref={ulRef}
-      >
-        <ul
-          role="menu"
-          className={cx(`${prefix}--dropdown-menu`, {
-            [`${prefix}--dropdown-menu__open`]: open
-          })}
-          aria-hidden={!open}
-        >
-          {items.map((item, i) => {
-            return (
-              <li
-                key={item.value}
-                className={cx(
-                  `${prefix}--dropdown-menu__item ${prefix}--dropdown-${size}`,
-                  {
-                    [`${prefix}--dropdown-menu__item-disabled`]: item.disabled,
-                    [`${prefix}--dropdown-menu__item-selected`]:
-                      selectedValue === item.value
-                  }
-                )}
-                id={item.id}
-                value={item.value}
-                title={item.text}
-              >
-                <div
-                  role="button"
-                  className={`${prefix}--dropdown-menu__item-interactible`}
-                  tabIndex={item.disabled || !open ? -1 : 0}
-                  onClick={(event) => {
-                    selectValue(item.value, event);
-                    setOpen(false);
-                  }}
-                  onKeyDown={(event) =>
-                    handleKeyPressOnItem(event, event.key, item.value, i)
-                  }
-                >
-                  <div
-                    className={`${prefix}--dropdown-menu__item-text`}
-                    role="button"
-                  >
-                    <span title={item.text}>{item.text}</span>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </OutsideClickListener>
     </div>
   );
 };

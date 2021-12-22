@@ -1,13 +1,8 @@
-@import "../colors.pcss";
-@import "../theme.pcss";
-@import "../typography.pcss";
-@import "../prefix.pcss";
-
 .$(prefix) {
   &--overflowmenu {
     &-trigger {
       &[aria-expanded="true"] {
-        background-color: $color--hover-light;
+        background-color: var(--color-hover-light);
       }
     }
   }
@@ -15,28 +10,28 @@
   &--overflowmenu.tippy-box {
     display: inline-flex;
     flex-wrap: wrap;
-    width: calc($size--container-07 + $size--container-06);
-    padding: $component--padding-inside;
-    transition: transform $transition--app-01, opacity $transition--app-01,
-      visibility $transition--app-01 !important;
-    border: 0.0625rem solid $color--border;
-    border-radius: $component--radius-default;
-    background-color: $color--background;
-    box-shadow: $component--shadow-default;
+    width: calc(var(--size-container-07) + var(--size-container-06));
+    padding: var(--component-padding-inside);
+    transition: transform var(--transition-app-01),
+      opacity var(--transition-app-01), visibility var(--transition-app-01) !important;
+    border: 0.0625rem solid var(--color-border);
+    border-radius: var(--component-radius-default);
+    background-color: var(--color-background);
+    box-shadow: var(--component-shadow-default);
 
     &.$(prefix)--overflowmenu-light {
-      border-color: $color--border-light;
-      background-color: $color--background-light;
+      border-color: var(--color-border-light);
+      background-color: var(--color-background-light);
 
       & > .tippy-content > div > .$(prefix)--overflowmenu-item {
-        background-color: $color--background-light;
+        background-color: var(--color-background-light);
 
         &:hover {
-          background-color: $color--hover-light;
+          background-color: var(--color-hover-light);
         }
 
         &:active {
-          background-color: $color--active-light;
+          background-color: var(--color-active-light);
         }
       }
     }
@@ -45,21 +40,21 @@
       .tippy-content
       > div
       > .$(prefix)--overflowmenu-item {
-      height: $size--field-small;
+      height: var(--size-field-small);
     }
 
     &.$(prefix)--overflowmenu-default
       > .tippy-content
       > div
       > .$(prefix)--overflowmenu-item {
-      height: $size--field-default;
+      height: var(--size-field-default);
     }
 
     &.$(prefix)--overflowmenu-large
       > .tippy-content
       > div
       > .$(prefix)--overflowmenu-item {
-      height: $size--field-large;
+      height: var(--size-field-large);
     }
 
     & > .tippy-content {
@@ -69,13 +64,13 @@
       & > div {
         display: flex;
         flex-flow: column;
-        gap: $component--padding-inside;
+        gap: var(--component-padding-inside);
       }
 
       & > div > {
         &.$(prefix)--divider {
-          min-width: calc(100% + $component--padding-inside * 2);
-          transform: translateX(calc($component--padding-inside * -1));
+          min-width: calc(100% + var(--component-padding-inside) * 2);
+          transform: translateX(calc(var(--component-padding-inside) * -1));
         }
 
         &.$(prefix)--overflowmenu-item {
@@ -85,13 +80,13 @@
           align-items: center;
           justify-content: flex-start;
           width: 100%;
-          padding: 0 $size--spacing-04;
-          transition: background-color $transition--app-01,
-            border-color $transition--app-01;
+          padding: 0 var(--size-spacing-04);
+          transition: background-color var(--transition-app-01),
+            border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: $component--radius-default;
-          background-color: $color--background;
-          color: $color--font-text-01;
+          border-radius: var(--component-radius-default);
+          background-color: var(--color-background);
+          color: var(--color-font-text-01);
           white-space: nowrap;
 
           & > div {
@@ -101,7 +96,7 @@
             width: 100%;
 
             & > p {
-              margin: 0 $size--spacing-05 0 0;
+              margin: 0 var(--size-spacing-05) 0 0;
               padding: 0;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -109,32 +104,32 @@
             }
 
             & > svg {
-              min-width: $size--container-01;
-              max-width: $size--container-01;
-              min-height: $size--container-01;
-              max-height: $size--container-01;
+              min-width: var(--size-container-01);
+              max-width: var(--size-container-01);
+              min-height: var(--size-container-01);
+              max-height: var(--size-container-01);
             }
           }
 
           &:hover {
-            background-color: $color--hover;
+            background-color: var(--color-hover);
           }
 
           &:active {
-            background-color: $color--active;
+            background-color: var(--color-active);
           }
 
           &:focus-visible {
-            border-color: $color--focus;
+            border-color: var(--color-focus);
           }
 
           &__danger {
             &:hover {
-              background-color: $color--danger-hover;
+              background-color: var(--color-danger-hover);
             }
 
             &:active {
-              background-color: $color--danger-active;
+              background-color: var(--color-danger-active);
             }
           }
         }
@@ -142,7 +137,7 @@
     }
 
     &[data-animation="bbds-animation"][data-state="hidden"] {
-      transform: translateY(calc($component--padding-inside * -1));
+      transform: translateY(calc(var(--component-padding-inside) * -1));
       opacity: 0;
     }
   }

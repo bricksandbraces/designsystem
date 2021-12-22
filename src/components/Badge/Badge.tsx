@@ -13,7 +13,7 @@ export type BadgeColor =
   | "orange"
   | "green";
 
-type ButtonOrDiv = HTMLButtonElement | HTMLDivElement;
+export type ButtonOrDiv = HTMLButtonElement | HTMLDivElement;
 
 export type BadgeProps = {
   /**

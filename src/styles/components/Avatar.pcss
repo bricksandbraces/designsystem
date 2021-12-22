@@ -1,7 +1,3 @@
-@import "../theme.pcss";
-@import "../typography.pcss";
-@import "../prefix.pcss";
-
 .$(prefix) {
   &--avatar {
     width: 100%;
@@ -10,56 +6,56 @@
     border-radius: 50%;
 
     &-default {
-      width: $size--field-default;
-      min-width: $size--field-default;
-      max-width: $size--field-default;
-      height: $size--field-default;
-      min-height: $size--field-default;
-      max-height: $size--field-default;
+      width: var(--size-field-default);
+      min-width: var(--size-field-default);
+      max-width: var(--size-field-default);
+      height: var(--size-field-default);
+      min-height: var(--size-field-default);
+      max-height: var(--size-field-default);
 
       & > div > .$(prefix)--avatar-container {
-        width: $size--field-default;
-        min-width: $size--field-default;
-        max-width: $size--field-default;
-        height: $size--field-default;
-        min-height: $size--field-default;
-        max-height: $size--field-default;
+        width: var(--size-field-default);
+        min-width: var(--size-field-default);
+        max-width: var(--size-field-default);
+        height: var(--size-field-default);
+        min-height: var(--size-field-default);
+        max-height: var(--size-field-default);
       }
     }
 
     &-large {
-      width: $size--field-large;
-      min-width: $size--field-large;
-      max-width: $size--field-large;
-      height: $size--field-large;
-      min-height: $size--field-large;
-      max-height: $size--field-large;
+      width: var(--size-field-large);
+      min-width: var(--size-field-large);
+      max-width: var(--size-field-large);
+      height: var(--size-field-large);
+      min-height: var(--size-field-large);
+      max-height: var(--size-field-large);
 
       & > div > .$(prefix)--avatar-container {
-        width: $size--field-large;
-        min-width: $size--field-large;
-        max-width: $size--field-large;
-        height: $size--field-large;
-        min-height: $size--field-large;
-        max-height: $size--field-large;
+        width: var(--size-field-large);
+        min-width: var(--size-field-large);
+        max-width: var(--size-field-large);
+        height: var(--size-field-large);
+        min-height: var(--size-field-large);
+        max-height: var(--size-field-large);
       }
     }
 
     &-small {
-      width: $size--field-small;
-      min-width: $size--field-small;
-      max-width: $size--field-small;
-      height: $size--field-small;
-      min-height: $size--field-small;
-      max-height: $size--field-small;
+      width: var(--size-field-small);
+      min-width: var(--size-field-small);
+      max-width: var(--size-field-small);
+      height: var(--size-field-small);
+      min-height: var(--size-field-small);
+      max-height: var(--size-field-small);
 
       & > div > .$(prefix)--avatar--container {
-        width: $size--field-small;
-        min-width: $size--field-small;
-        max-width: $size--field-small;
-        height: $size--field-small;
-        min-height: $size--field-small;
-        max-height: $size--field-small;
+        width: var(--size-field-small);
+        min-width: var(--size-field-small);
+        max-width: var(--size-field-small);
+        height: var(--size-field-small);
+        min-height: var(--size-field-small);
+        max-height: var(--size-field-small);
       }
     }
 
@@ -73,21 +69,21 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      background-color: $color--app-02;
-      color: $color--app-05;
+      background-color: var(--color-app-02);
+      color: var(--color-app-05);
 
       & > .$(prefix)--avatar-alt__text {
         @mixin type--body-02;
 
         margin: 0;
-        color: $color--font-text-04;
+        color: var(--color-font-text-04);
       }
 
       & > svg {
-        width: calc($size--container-01 * 1.25);
-        height: calc($size--container-01 * 1.25);
+        width: calc(var(--size-container-01) * 1.25);
+        height: calc(var(--size-container-01) * 1.25);
         stroke-width: 0.125rem;
-        color: $color--font-text-04;
+        color: var(--color-font-text-04);
       }
     }
 
@@ -97,22 +93,22 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      gap: $size--spacing-04;
+      gap: var(--size-spacing-04);
 
       & > .$(prefix)--avatar-group__container {
         display: inline-flex;
         & > .$(prefix)--avatar-container:not(:first-child),
-        & > div:not(:first-child) > .$(prefix)--avatar-container {
-          margin-left: calc($size--spacing-04 * -1);
+        & > div:not(:first-child) > .$(prefix) --avatar-container {
+          margin-left: calc(var(--size-spacing-04) * -1);
 
           & > .$(prefix)--avatar {
-            box-shadow: $color--app-background 0 0 0 0.1875rem;
+            box-shadow: var(--color-app-background) 0 0 0 0.1875rem;
           }
         }
       }
 
       &__btn {
-        border-radius: $size--field-default;
+        border-radius: var(--size-field-default);
       }
     }
 
@@ -124,28 +120,28 @@
       &__panel {
         width: 100%;
         max-width: max-content;
-        padding: $component--padding-inside;
+        padding: var(--component-padding-inside);
       }
 
       &__footer {
         display: flex;
         align-items: center;
-        margin-top: $size--spacing-02;
-        padding: $size--spacing-04;
-        gap: $size--spacing-05;
+        margin-top: var(--size-spacing-02);
+        padding: var(--size-spacing-04);
+        gap: var(--size-spacing-05);
       }
 
       &__item {
         display: flex;
         align-items: center;
-        height: $size--field-large;
-        max-height: $size--field-large;
-        padding: 0 $size--spacing-04;
-        transition: background-color $transition--app-01;
-        border-radius: $component--radius-default;
+        height: var(--size-field-large);
+        max-height: var(--size-field-large);
+        padding: 0 var(--size-spacing-04);
+        transition: background-color var(--transition-app-01);
+        border-radius: var(--component-radius-default);
 
         &:hover {
-          background-color: $color--hover;
+          background-color: var(--color-hover);
         }
 
         &-container {
@@ -157,23 +153,23 @@
           &--actions {
             display: flex;
             flex-wrap: nowrap;
-            gap: $size--spacing-03;
+            gap: var(--size-spacing-03);
           }
         }
 
         &-text {
           width: 100%;
-          margin-right: $size--spacing-12;
-          margin-left: $size--spacing-05;
+          margin-right: var(--size-spacing-12);
+          margin-left: var(--size-spacing-05);
 
           &--heading {
             @mixin type--body-02;
 
             width: 100%;
-            max-width: calc($size--field-default * 3);
+            max-width: calc(var(--size-field-default) * 3);
             margin: 0;
             overflow: hidden;
-            color: $color--font-text-01;
+            color: var(--color-font-text-01);
             text-overflow: ellipsis;
             white-space: nowrap;
           }
@@ -182,10 +178,10 @@
             @mixin type--label;
 
             width: 100%;
-            max-width: $size--container-07;
+            max-width: var(--size-container-07);
             margin: 0;
             overflow: hidden;
-            color: $color--font-text-03;
+            color: var(--color-font-text-03);
             text-overflow: ellipsis;
             white-space: nowrap;
           }

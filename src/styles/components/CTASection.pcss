@@ -1,0 +1,117 @@
+.$(prefix) {
+  &--ctasection {
+    background-color: $purple-100;
+
+    &-grid {
+      height: 100%;
+    }
+
+    &-column {
+      display: flex;
+      padding: var(--size-spacing-07) var(--size-spacing-05)
+        var(--size-spacing-07) var(--size-spacing-05);
+    }
+
+    &-headline {
+      @mixin type--headline-01;
+
+      margin: 0;
+      color: $purple-750;
+
+      & > a {
+        color: $purple-900;
+        white-space: nowrap;
+
+        &:hover {
+          & > svg {
+            margin-left: var(--size-spacing-06);
+          }
+        }
+
+        &:focus-visible {
+          outline: 0.125rem solid var(--color-focus);
+        }
+
+        & > svg {
+          width: var(--size-container-05);
+          min-width: var(--size-container-05);
+          max-width: var(--size-container-05);
+          height: var(--size-container-05);
+          min-height: var(--size-container-05);
+          max-height: var(--size-container-05);
+          margin-left: var(--size-spacing-03);
+          transition: margin var(--transition-app-01);
+          stroke-width: 1.5;
+        }
+      }
+    }
+
+    &-input {
+      &__container {
+        display: inline-flex;
+        position: relative;
+        flex-flow: row;
+        width: 70%;
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
+        margin-top: var(--size-spacing-10);
+        overflow: hidden;
+        transition: border-color var(--transition-app-01);
+        border: 0.0625rem solid transparent;
+        border-radius: var(--compoent-radius-default);
+
+        &:focus-within {
+          border-color: var(--color-focus);
+        }
+      }
+
+      &__button {
+        top: 0;
+        right: 0;
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
+        border-radius: 0;
+        @mixin type--headline-04;
+
+        font-weight: 300;
+      }
+
+      &.$(prefix)--textinput {
+        width: 100%;
+      }
+      & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+        @mixin type--headline-04;
+
+        height: var(--size-container-06);
+        min-height: var(--size-container-06);
+        max-height: var(--size-container-06);
+        border-radius: 0;
+        border-color: transparent;
+        background-color: $purple-150;
+        font-weight: 300;
+
+        &::placeholder {
+          color: $purple-500;
+        }
+      }
+    }
+
+    &-column > div {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .$(prefix)--ctasection {
+    &-input {
+      &__container {
+        width: 100%;
+      }
+    }
+  }
+}

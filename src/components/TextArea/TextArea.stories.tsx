@@ -10,6 +10,7 @@ export const Uncontrolled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextArea
+        light={boolean("light", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         id={text("id", "textfield-01")}
@@ -32,6 +33,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextArea
+        light={boolean("light", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         value={value ?? ""}
@@ -57,6 +59,7 @@ export const WithCharacterCounter = () => {
   return (
     <div style={{ height: "100vh", padding: "32px" }}>
       <TextArea
+        light={boolean("light", false)}
         warningText={text("warningText", "")}
         errorText={text("errorText", "")}
         defaultValue={text("defaultValue", "Henlo")}

@@ -3,7 +3,7 @@ import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import WebHeader from "./WebHeader";
 
-export default { title: "Web/A_REFA_WebHeader", decorators: [withKnobs] };
+export default { title: "Web/WebHeader", decorators: [withKnobs] };
 
 export const DefaultUncontrolled = () => {
   return (

@@ -22,7 +22,6 @@ export type ButtonSkeletonProps = {
 
 const ButtonSkeleton = ({
   size = "default",
-
   className
 }: ButtonSkeletonProps) => (
   <SkeletonAnimatedContainer
