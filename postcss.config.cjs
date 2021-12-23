@@ -2,7 +2,7 @@ module.exports = (ctx) => ({
   map: ctx.options.map,
   parser: ctx.options.parser,
   plugins: [
-    require("postcss-import")(require("postcss-normalize")().postcssImport()),
+    require("postcss-import")(),
     require("postcss-preset-env"),
     require("postcss-flexbugs-fixes"),
     require("postcss-each")({

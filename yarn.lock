@@ -1479,13 +1479,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/normalize.css@npm:*":
-  version: 12.0.0
-  resolution: "@csstools/normalize.css@npm:12.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40csstools%2Fnormalize.css%2F-%2Fnormalize.css-12.0.0.tgz"
-  checksum: fbef0f7fe4edbc3ce31b41257f0fa06e0442f11260e41c082a98de9b824997786a16900e7a5c0f4ca8f736dcd25dfd01c153d1c994a07d42c93c0a526ce0774d
-  languageName: node
-  linkType: hard
-
 "@discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.6
   resolution: "@discoveryjs/json-ext@npm:0.5.6::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40discoveryjs%2Fjson-ext%2F-%2Fjson-ext-0.5.6.tgz"
@@ -2091,6 +2084,7 @@ __metadata:
     classnames: ^2.3.1
     color: ^4.1.0
     copyfiles: ^2.4.1
+    css-validator: ^0.10.0
     cssnano: ^5.0.14
     date-fns: ^2.27.0
     enzyme: ^3.11.0
@@ -2122,7 +2116,6 @@ __metadata:
     postcss-import: ^14.0.2
     postcss-mixins: ^8.1.0
     postcss-nested: ^5.0.6
-    postcss-normalize: ^10.0.1
     postcss-preset-env: ^7.1.0
     postcss-simple-vars: ^6.0.3
     postcss-size: ^4.0.1
@@ -5498,6 +5491,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async@npm:~3.2.0":
+  version: 3.2.2
+  resolution: "async@npm:3.2.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fasync%2F-%2Fasync-3.2.2.tgz"
+  checksum: 90712c98df0c6d0ef0190f8bee9797bf6c7035a1317c9a036b80306a8d2246396b3ee356b4540ff349e29e625fafa25d4f04e11b6ac1c5f6b4c74c803e641137
+  languageName: node
+  linkType: hard
+
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fasynckit%2F-%2Fasynckit-0.4.0.tgz"
@@ -6907,6 +6907,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:~7.1.0":
+  version: 7.1.0
+  resolution: "commander@npm:7.1.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcommander%2F-%2Fcommander-7.1.0.tgz"
+  checksum: 99c120b939b610b1fb4a14424b48dc6431643ec46836f251a26434ad77b1eed22577a36378cfd66ed4b56fc69f98553f7dcb30f1539e3685874fd77cfb6e52fb
+  languageName: node
+  linkType: hard
+
 "common-path-prefix@npm:^3.0.0":
   version: 3.0.0
   resolution: "common-path-prefix@npm:3.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcommon-path-prefix%2F-%2Fcommon-path-prefix-3.0.0.tgz"
@@ -7437,6 +7444,22 @@ __metadata:
     mdn-data: 2.0.14
     source-map: ^0.6.1
   checksum: 79f9b81803991b6977b7fcb1588799270438274d89066ce08f117f5cdb5e20019b446d766c61506dd772c839df84caa16042d6076f20c97187f5abe3b50e7d1f
+  languageName: node
+  linkType: hard
+
+"css-validator@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "css-validator@npm:0.10.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcss-validator%2F-%2Fcss-validator-0.10.0.tgz"
+  dependencies:
+    async: ~3.2.0
+    commander: ~7.1.0
+    form-data: ~4.0.0
+    obj-extend: ~0.1.0
+    readable-stream: ~3.6.0
+    sax: ~1.2.4
+  bin:
+    css-validator: bin/css-validator
+  checksum: 48a8c2b03d5233b91916e40cc0340c38ab300654679307870547cfeb6ba00d67765e927fc13c686eefc137bb7aa942045446112748a72b5a1f04c3cccfc25215
   languageName: node
   linkType: hard
 
@@ -9444,6 +9467,17 @@ __metadata:
     combined-stream: ^1.0.8
     mime-types: ^2.1.12
   checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
+"form-data@npm:~4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fform-data%2F-%2Fform-data-4.0.0.tgz"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -13796,6 +13830,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"obj-extend@npm:~0.1.0":
+  version: 0.1.0
+  resolution: "obj-extend@npm:0.1.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fobj-extend%2F-%2Fobj-extend-0.1.0.tgz"
+  checksum: f6f5193fd0ddea6fb03c96a100daf8b05bcade87fedefd178c16a515be7c2646a962d79676167f1709f68a6f9b780f1c0bff9d59fc55317f24980b7bd2574bdf
+  languageName: node
+  linkType: hard
+
 "object-assign@npm:^4.1.0, object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fobject-assign%2F-%2Fobject-assign-4.1.1.tgz"
@@ -14577,16 +14618,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-browser-comments@npm:^4":
-  version: 4.0.0
-  resolution: "postcss-browser-comments@npm:4.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-browser-comments%2F-%2Fpostcss-browser-comments-4.0.0.tgz"
-  peerDependencies:
-    browserslist: ">=4"
-    postcss: ">=8"
-  checksum: 9b8e7094838c2d7bd1ab3ca9cb8d0a78a9a6c8e22f43133ba02db8862fb6c141630e9f590e46f7125cfa4723cacd27b74fa00c05a9907b364dc1f6f17cf13f6f
-  languageName: node
-  linkType: hard
-
 "postcss-calc@npm:^8.0.0":
   version: 8.0.0
   resolution: "postcss-calc@npm:8.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-calc%2F-%2Fpostcss-calc-8.0.0.tgz"
@@ -15306,20 +15337,6 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.15
   checksum: cefb27d2443d4a8fc34aa2a0aebd470d7d5a58d9adcf39f5e2a80455f4ab37b171a24f58dc47b3111232c1adbb1c8702f80c0ecac1cfcef03e48e00dac6a4a58
-  languageName: node
-  linkType: hard
-
-"postcss-normalize@npm:^10.0.1":
-  version: 10.0.1
-  resolution: "postcss-normalize@npm:10.0.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpostcss-normalize%2F-%2Fpostcss-normalize-10.0.1.tgz"
-  dependencies:
-    "@csstools/normalize.css": "*"
-    postcss-browser-comments: ^4
-    sanitize.css: "*"
-  peerDependencies:
-    browserslist: ">= 4"
-    postcss: ">= 8"
-  checksum: af67ade84e5d65de0cf84cde479840da96ffb2037fe6bf86737788216f67e414622e718e7d84182885ad65fa948150e4a0c3e454ca63e619dd5c7b4eb4224c39
   languageName: node
   linkType: hard
 
@@ -16725,7 +16742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:^3.6.0":
+"readable-stream@npm:^3.6.0, readable-stream@npm:~3.6.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freadable-stream%2F-%2Freadable-stream-3.6.0.tgz"
   dependencies:
@@ -17399,10 +17416,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sanitize.css@npm:*":
-  version: 13.0.0
-  resolution: "sanitize.css@npm:13.0.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsanitize.css%2F-%2Fsanitize.css-13.0.0.tgz"
-  checksum: a99ca77c4d135800a4a93c3555e5aa4a2eb040a833df716dbe9132e1f2086fbf9acdb8021a579f40dcf77166d2d50f3358b4b6121a247d26fed5a0e6f5af3bb7
+"sax@npm:~1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fsax%2F-%2Fsax-1.2.4.tgz"
+  checksum: d3df7d32b897a2c2f28e941f732c71ba90e27c24f62ee918bd4d9a8cfb3553f2f81e5493c7f0be94a11c1911b643a9108f231dd6f60df3fa9586b5d2e3e9e1fe
   languageName: node
   linkType: hard
 
