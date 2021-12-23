@@ -40,7 +40,7 @@ export const Default = () => {
           xlg={12}
           xlgOffset={2}
         >
-          <div style={{ color: "#e0e0e0", marginTop: "40px", padding: "1rem" }}>
+          <div style={{ color: "#e0e0e0", padding: "0 1rem" }}>
             <Marketing type="marketing-01">Hello &amp; Hi!</Marketing>
             <Headline type="h1">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
