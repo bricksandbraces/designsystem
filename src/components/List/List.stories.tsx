@@ -1,6 +1,6 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Body from "../Typography/Body";
+import Body from "../Typography";
 import ListItem from "./ListItem";
 import OrderedList from "./OrderedList";
 import UnorderedList from "./UnorderedList";

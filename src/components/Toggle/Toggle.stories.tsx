@@ -1,7 +1,7 @@
 import { action, actions } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Body from "../Typography/Body";
+import Body from "../Typography";
 import Toggle from "./Toggle";
 import ToggleSkeleton from "./ToggleSkeleton";
 

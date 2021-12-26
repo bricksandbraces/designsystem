@@ -7,7 +7,7 @@ import {
   IconPlus
 } from "@tabler/icons";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import mergeRefs from "react-merge-refs";

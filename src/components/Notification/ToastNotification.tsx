@@ -9,8 +9,8 @@ import {
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import Headline from "../Typography/Headline";
-import Body from "../Typography/Body";
+import Headline from "../Typography";
+import Body from "../Typography";
 
 export type ToastNotificationProps = {
   /**

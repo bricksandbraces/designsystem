@@ -3,7 +3,7 @@ import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
 import { useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import { TextInputProps } from "../TextInput/TextInput";
 import mergeRefs from "react-merge-refs";
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SwitcherItem from "./SwitcherItem";
 import Switcher from "./Switcher";
 import { Grid, Column } from "../Grid/Grid";
-import Body from "../Typography/Body";
+import Body from "../Typography";
 import { action } from "@storybook/addon-actions";
 import SwitcherSkeleton from "./SwitcherSkeleton";
 

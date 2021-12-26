@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import TextInput from "./TextInput";
 import TextInputSkeleton from "./TextInputSkeleton";
 

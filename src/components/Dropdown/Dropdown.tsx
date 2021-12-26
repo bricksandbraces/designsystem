@@ -8,7 +8,7 @@ import {
 import { findNextItem } from "../../helpers/arrayUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import Tippy from "@tippyjs/react";
 
 export type DropdownItem = {

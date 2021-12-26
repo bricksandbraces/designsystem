@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Body from "../Typography/Body";
+import Body from "../Typography";
 import RadioButton from "./RadioButton";
 import RadioButtonGroup from "./RadioButtonGroup";
 import RadioButtonSkeleton from "./RadioButtonSkeleton";

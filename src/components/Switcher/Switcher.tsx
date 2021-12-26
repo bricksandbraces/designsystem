@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { SwitcherItemProps } from "./SwitcherItem";
 import { prefix } from "../../settings";
-import Body from "../Typography/Body";
+import Body from "../Typography";
 import { useControlledValue } from "../../hooks/useControlled";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 

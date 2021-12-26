@@ -4,7 +4,7 @@ import cx from "classnames";
 import { useControlled } from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import NumberInput from "../NumberInput/NumberInput";
 import { parseToNumber } from "../../helpers/numberUtilities";
 

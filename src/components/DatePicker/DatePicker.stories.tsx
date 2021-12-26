@@ -7,7 +7,7 @@ import { Button } from "../..";
 import { formatDate } from "../../helpers/dateUtilities";
 import { prefix } from "../../settings";
 
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import DateInput from "./DateInput";
 import DatePicker from "./DatePicker";
 import DatePickerSkeleton from "./DatePickerSkeleton";

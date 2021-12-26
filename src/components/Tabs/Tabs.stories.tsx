@@ -5,8 +5,8 @@ import Tab from "./Tab";
 import Tabs from "./Tabs";
 import ResponsiveTabs from "./ResponsiveTabs";
 import { Grid, Column } from "../Grid/Grid";
-import Headline from "../Typography/Headline";
-import Body from "../Typography/Body";
+import Headline from "../Typography";
+import Body from "../Typography";
 import { action } from "@storybook/addon-actions";
 import TabsSkeleton from "./TabsSkeleton";
 

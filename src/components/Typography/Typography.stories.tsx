@@ -1,12 +1,6 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Headline from "./Headline";
-import Body from "./Body";
-import Label from "./Label";
-import Caption from "./Caption";
-import Marketing from "./Marketing";
-import Quote from "./Quote";
-
+import { Body, Caption, Headline, Label, Marketing, Quote } from "../..";
 export default {
   title: "Components Ready/Typography",
   decorators: [withKnobs]

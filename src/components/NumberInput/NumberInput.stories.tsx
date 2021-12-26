@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { parseToNumber } from "../../helpers/numberUtilities";
-import Label from "../Typography/Label";
+import Label from "../Typography";
 import NumberInput from "./NumberInput";
 import NumberInputSkeleton from "./NumberInputSkeleton";
 
