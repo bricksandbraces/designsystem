@@ -109,7 +109,7 @@ export type MarketingProps = {
   className?: string;
 } & React.HTMLAttributes<HTMLParagraphElement>;
 
-const Headline = (
+const HeadlineComponent = (
   { children, className, type = "h1", ...rest }: HeadlineProps,
   ref: React.ForwardedRef<HTMLHeadElement>
 ) => {
@@ -128,7 +128,7 @@ const Headline = (
   );
 };
 
-const Body = (
+const BodyComponent = (
   { children, className, type = "body-01", ...rest }: BodyProps,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ) => {
@@ -146,7 +146,7 @@ const Body = (
   );
 };
 
-const Label = (
+const LabelComponent = (
   { children, className, ...rest }: LabelProps,
   ref: React.ForwardedRef<HTMLLabelElement>
 ) => {
@@ -164,7 +164,7 @@ const Label = (
   );
 };
 
-const Caption = (
+const CaptionComponent = (
   { children, className, ...rest }: CaptionProps,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ) => {
@@ -182,7 +182,7 @@ const Caption = (
   );
 };
 
-const Quote = (
+const QuoteComponent = (
   { children, name, position, company, className, type, ...rest }: QuoteProps,
   ref: React.ForwardedRef<HTMLQuoteElement>
 ) => {
@@ -205,36 +205,36 @@ const Quote = (
           {children}
         </blockquote>
         {name && (
-          <Headline
+          <HeadlineComponent
             type="h6"
             className={cx(`${prefix}--typography-blockquote__name`)}
           >
             {name}
-          </Headline>
+          </HeadlineComponent>
         )}
         {position && (
-          <Body
+          <BodyComponent
             type="body-02"
             className={cx(`${prefix}--typography-blockquote__position`)}
           >
             {position}
-          </Body>
+          </BodyComponent>
         )}
 
         {company && (
-          <Body
+          <BodyComponent
             type="body-02"
             className={cx(`${prefix}--typography-blockquote__company`)}
           >
             {company}
-          </Body>
+          </BodyComponent>
         )}
       </div>
     </div>
   );
 };
 
-const Marketing = (
+const MarketingComponent = (
   { children, className, type, ...rest }: MarketingProps,
   ref: React.ForwardedRef<HTMLParagraphElement>
 ) => {
@@ -252,11 +252,9 @@ const Marketing = (
   );
 };
 
-export default {
-  Headline: React.forwardRef(Headline),
-  Body: React.forwardRef(Body),
-  Label: React.forwardRef(Label),
-  Caption: React.forwardRef(Caption),
-  Marketing: React.forwardRef(Marketing),
-  Quote: React.forwardRef(Quote)
-};
+export const Headline = React.forwardRef(HeadlineComponent);
+export const Body = React.forwardRef(BodyComponent);
+export const Label = React.forwardRef(LabelComponent);
+export const Caption = React.forwardRef(CaptionComponent);
+export const Marketing = React.forwardRef(MarketingComponent);
+export const Quote = React.forwardRef(QuoteComponent);

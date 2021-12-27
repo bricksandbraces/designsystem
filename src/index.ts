@@ -16,9 +16,14 @@ import WordBand from "./components/_web/WordBand/WordBand";
 
 // Components
 
-import Marketing from "./components/Typography/Typography";
-import Quote from "./components/Typography/Typography";
-import Body from "./components/Typography/Typography";
+import {
+  Marketing,
+  Body,
+  Headline,
+  Caption,
+  Label,
+  Quote
+} from "./components/Typography/Typography";
 import { Grid, Column } from "./components/Grid/Grid";
 import { HeaderEntry, RowEntry } from "./components/DataTable/DataTable";
 import Accordion from "./components/Accordion/Accordion";
@@ -100,6 +105,14 @@ export {
   Tab,
   Accordion,
   AccordionItem,
+  AccordionSkeleton,
+  AvatarGroupSkeleton,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbSkeleton,
+  AvatarList,
+  AvatarListItem,
+  AvatarSkeleton,
   Cookies,
   OptType,
   CookieBanner,
@@ -109,6 +122,7 @@ export {
   DatePicker,
   Dropdown,
   Badge,
+  BadgeSkeleton,
   Loading,
   Search,
   SearchInput,
