@@ -1,7 +1,7 @@
-import React from "react";
-import { prefix } from "../../../settings";
-import { Button, Column, Grid, TextInput } from "../../..";
 import { IconArrowNarrowRight } from "@tabler/icons";
+import React from "react";
+import { Button, Column, Grid, TextInput } from "../../..";
+import { prefix } from "../../../settings";
 
 export type CTASectionProps = {
   /**

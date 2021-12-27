@@ -1,7 +1,7 @@
+import { IconMenu2, IconX } from "@tabler/icons";
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
-import { IconMenu2, IconX } from "@tabler/icons";
 
 export type HeaderMenuButtonProps = {
   /**

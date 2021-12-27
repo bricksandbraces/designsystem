@@ -1,7 +1,7 @@
-const colors = require("@openbricksandbraces/designtokens/dist/json/colors.json");
-const typography = require("@openbricksandbraces/designtokens/dist/json/typography.json");
-const metrics = require("@openbricksandbraces/designtokens/dist/json/metrics.json");
 const animations = require("@openbricksandbraces/designtokens/dist/json/animations.json");
+const colors = require("@openbricksandbraces/designtokens/dist/json/colors.json");
+const metrics = require("@openbricksandbraces/designtokens/dist/json/metrics.json");
+const typography = require("@openbricksandbraces/designtokens/dist/json/typography.json");
 const Color = require("color");
 
 const rgba = (hex, alpha) => {

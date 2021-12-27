@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import { IconX } from "@tabler/icons";
 import cx from "classnames";
-import FocusLock from "react-focus-lock";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
+import FocusLock from "react-focus-lock";
+import { withoutPropagation } from "../../helpers/eventUtilities";
+import { setRef } from "../../helpers/refUtilities";
 import { useMounted } from "../../hooks/useMounted";
 import { prefix } from "../../settings";
-import { setRef } from "../../helpers/refUtilities";
-import { IconX } from "@tabler/icons";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { withoutPropagation } from "../../helpers/eventUtilities";
+import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
 
 export type ModalProps = {
   /**

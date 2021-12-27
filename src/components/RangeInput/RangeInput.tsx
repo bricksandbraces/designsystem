@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Slider from "rc-slider";
 import cx from "classnames";
-import { useControlled } from "../../hooks/useControlled";
+import Slider from "rc-slider";
+import React, { useEffect, useState } from "react";
 import { clamp } from "../../helpers/mathUtilities";
-import { prefix } from "../../settings";
-import { Label } from "../Typography/Typography";
-import { NumberInput } from "../NumberInput/NumberInput";
 import { parseToNumber } from "../../helpers/numberUtilities";
+import { useControlled } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import { NumberInput } from "../NumberInput/NumberInput";
+import { Label } from "../Typography/Typography";
 
 export type RangeInputProps = {
   /**

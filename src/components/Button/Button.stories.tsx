@@ -1,6 +1,5 @@
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { actions } from "@storybook/addon-actions";
-import React from "react";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import {
   Icon3dCubeSphere,
   IconAlignCenter,
@@ -11,11 +10,12 @@ import {
   IconLayoutGridAdd,
   IconUnderline
 } from "@tabler/icons";
+import React from "react";
 import { Button } from "./Button";
-import { IconOnlyButton } from "./IconOnlyButton";
-import { IconOnlyButtonSkeleton } from "./IconOnlyButtonSkeleton";
 import { ButtonSkeleton } from "./ButtonSkeleton";
+import { IconOnlyButton } from "./IconOnlyButton";
 import { IconOnlyButtonGroup } from "./IconOnlyButtonGroup";
+import { IconOnlyButtonSkeleton } from "./IconOnlyButtonSkeleton";
 
 export default {
   title: "Components Ready/Button",

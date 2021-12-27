@@ -1,4 +1,4 @@
-import { text, object, withKnobs } from "@storybook/addon-knobs";
+import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { WebHeader } from "../../..";
 import { LeadSpace } from "./LeadSpace";

@@ -1,10 +1,10 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { IconDotsVertical } from "@tabler/icons";
 import type { TippyProps } from "@tippyjs/react";
 import Tippy from "@tippyjs/react";
+import cx from "classnames";
+import React from "react";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type OverflowMenuProps = {
   /**

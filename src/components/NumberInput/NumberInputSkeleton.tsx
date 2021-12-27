@@ -1,11 +1,11 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { IconOnlyButtonGroup } from "../Button/IconOnlyButtonGroup";
-import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { IconMinus, IconPlus } from "@tabler/icons";
-import { SkeletonText } from "../Skeleton/SkeletonText";
+import cx from "classnames";
+import React from "react";
 import { SkeletonAnimatedContainer } from "../..";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { IconOnlyButtonGroup } from "../Button/IconOnlyButtonGroup";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 
 export type NumberInputSkeletonProps = {
   /**

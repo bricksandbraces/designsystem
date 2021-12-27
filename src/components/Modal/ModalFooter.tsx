@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
+import { withoutPropagation } from "../../helpers/eventUtilities";
 import { prefix } from "../../settings";
 import { Button } from "../Button/Button";
-import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type ModalFooterProps = {
   /**

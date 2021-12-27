@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { text, boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { InlineNotification, ToastNotification } from "../..";
 

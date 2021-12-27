@@ -1,8 +1,8 @@
 import React from "react";
-import { TextInput } from "../../TextInput/TextInput";
-import { PasswordInput } from "../../PasswordInput/PasswordInput";
-import { prefix } from "../../../settings";
 import { useControlledInput } from "../../../hooks/useControlled";
+import { prefix } from "../../../settings";
+import { PasswordInput } from "../../PasswordInput/PasswordInput";
+import { TextInput } from "../../TextInput/TextInput";
 
 export type LoginFormProps = {
   /**

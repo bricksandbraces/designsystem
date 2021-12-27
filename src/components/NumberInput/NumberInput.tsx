@@ -1,19 +1,19 @@
-import React from "react";
-import cx from "classnames";
 import {
   IconAlertCircle,
   IconAlertTriangle,
   IconMinus,
   IconPlus
 } from "@tabler/icons";
-import { prefix } from "../../settings";
-import { Label } from "../Typography/Typography";
+import cx from "classnames";
+import React from "react";
+import mergeRefs from "react-merge-refs";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
-import mergeRefs from "react-merge-refs";
 import { useControlledInput } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { IconOnlyButtonGroup } from "../Button/IconOnlyButtonGroup";
+import { Label } from "../Typography/Typography";
 
 export type NumberInputProps = {
   /**

@@ -1,7 +1,7 @@
+import cx from "classnames";
 import React from "react";
 import { TableHeadCell } from "../..";
 import { prefix } from "../../settings";
-import cx from "classnames";
 
 export type TableSelectionRadioHeaderCellProps = {};
 

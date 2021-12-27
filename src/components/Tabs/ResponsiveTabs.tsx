@@ -1,7 +1,7 @@
 import React from "react";
-import { Tabs } from "./Tabs";
-import { Accordion } from "../Accordion/Accordion";
 import { prefix } from "../../settings";
+import { Accordion } from "../Accordion/Accordion";
+import { Tabs } from "./Tabs";
 
 export type ResonsiveTabsProps = {
   /**

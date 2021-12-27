@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import cx from "classnames";
-import { Loading } from "../Loading/Loading";
+import React, { useState } from "react";
 import { prefix } from "../../settings";
+import { Loading } from "../Loading/Loading";
 import animation from "./loadinganimation.json";
 
 export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;

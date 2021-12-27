@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import cx from "classnames";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons";
-import { CopyButton } from "../CopyButton/CopyButton";
+import cx from "classnames";
+import React, { useState } from "react";
 import { prefix } from "../../settings";
 import { Button } from "../Button/Button";
+import { CopyButton } from "../CopyButton/CopyButton";
 
 export type CodeSnippetProps = {
   /**

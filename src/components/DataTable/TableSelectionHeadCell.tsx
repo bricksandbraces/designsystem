@@ -1,7 +1,7 @@
 import React from "react";
 import { Checkbox, TableHeadCell } from "../..";
-import { RowEntry } from "./DataTable";
 import { prefix } from "../../settings";
+import { RowEntry } from "./DataTable";
 
 export type TableSelectionHeadCellProps = {
   /**

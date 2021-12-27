@@ -1,8 +1,8 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { Body, Headline } from "../..";
 import { IconAB } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import { Body, Headline } from "../..";
+import { prefix } from "../../settings";
 
 export type EmptyStateProps = {
   /**

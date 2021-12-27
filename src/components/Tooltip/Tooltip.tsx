@@ -1,7 +1,7 @@
-import React from "react";
 import Tippy from "@tippyjs/react";
 import type { TippyProps } from "@tippyjs/react";
 import cx from "classnames";
+import React from "react";
 import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 

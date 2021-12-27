@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import cx from "classnames";
 import {
   IconAlertCircle,
   IconAlertTriangle,
   IconChevronDown
 } from "@tabler/icons";
+import Tippy from "@tippyjs/react";
+import cx from "classnames";
+import React, { useEffect, useRef, useState } from "react";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { Label } from "../Typography/Typography";
-import Tippy from "@tippyjs/react";
 
 export type DropdownItem = {
   /**

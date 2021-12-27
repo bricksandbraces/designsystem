@@ -1,8 +1,8 @@
-import React from "react";
+import { IconMenu, IconX } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { IconMenu, IconX } from "@tabler/icons";
 
 export type SideNavMobileHeaderProps = {
   /**

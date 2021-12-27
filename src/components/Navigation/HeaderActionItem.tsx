@@ -1,7 +1,7 @@
-import React from "react";
-import { prefix } from "../../settings";
 import cx from "classnames";
+import React from "react";
 import { ButtonOrAnchor } from "../..";
+import { prefix } from "../../settings";
 
 export type HeaderActionItemProps = {
   /**

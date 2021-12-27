@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { text, object, withKnobs } from "@storybook/addon-knobs";
+import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { UserProfile } from "./UserProfile";
 

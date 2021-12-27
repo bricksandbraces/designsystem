@@ -1,9 +1,9 @@
-import React from "react";
+import { IconEye } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
+import { SkeletonText } from "../..";
 import { prefix } from "../../settings";
 import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
-import { SkeletonText } from "../..";
-import { IconEye } from "@tabler/icons";
 
 export type PasswordInputSkeletonProps = {
   /**

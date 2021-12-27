@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCookie } from "react-use";
-import CookieBanner from "../CookieBanner/CookieBanner";
 import { useConstant } from "../../../hooks/useConstant";
+import CookieBanner from "../CookieBanner/CookieBanner";
 import CookieModal, {
   CookieSetting,
   CookieSettingWithState,

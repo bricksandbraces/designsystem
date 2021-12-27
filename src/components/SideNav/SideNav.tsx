@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
-import { useControlledValue } from "../../hooks/useControlled";
+import React from "react";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
+import { useControlledValue } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 export type SideNavProps = {
   /**

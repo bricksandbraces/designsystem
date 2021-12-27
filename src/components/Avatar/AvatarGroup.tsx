@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import cx from "classnames";
 import { IconPlus, IconUsers } from "@tabler/icons";
+import cx from "classnames";
+import React, { ReactNode } from "react";
+import { prefix } from "../../settings";
 import { Button } from "../Button/Button";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { prefix } from "../../settings";
 
 export type AvatarGroupProps = {
   /**

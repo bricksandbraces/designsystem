@@ -1,7 +1,7 @@
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { prefix } from "../../settings";
-import { Grid, Column } from "./Grid";
+import { Column, Grid } from "./Grid";
 
 export default { title: "Components Ready/Grid", decorators: [withKnobs] };
 

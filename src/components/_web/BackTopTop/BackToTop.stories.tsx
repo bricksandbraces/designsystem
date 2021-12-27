@@ -2,8 +2,8 @@ import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import {
   BackToTop,
-  Column,
   CTASection,
+  Column,
   Footer,
   Grid,
   LeadSpace,

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
 import { IconChevronDown } from "@tabler/icons";
+import cx from "classnames";
+import React, { useState } from "react";
+import { prefix } from "../../settings";
 
 export type SideNavItemExpanderProps = {
   /**

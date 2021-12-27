@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
-import { RadioTileProps } from "./RadioTile";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { mapReactChildren } from "../../helpers/reactUtilities";
+import { RadioTileProps } from "./RadioTile";
 
 export type RadioTileGroupProps = {
   /**

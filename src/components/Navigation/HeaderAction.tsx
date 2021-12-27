@@ -1,6 +1,6 @@
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
 
 export type HeaderActionProps = {
   /**

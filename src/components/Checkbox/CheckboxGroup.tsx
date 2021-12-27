@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
 import { assert } from "@openbricksandbraces/eloguent";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 import { RadioTileProps } from "../RadioTile/RadioTile";
 
 export type CheckboxGroupProps = {

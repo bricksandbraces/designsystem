@@ -1,10 +1,10 @@
 import { IconChevronDown } from "@tabler/icons";
-import React, { ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
-import { AccordionItemProps } from "./AccordionItem";
-import { prefix } from "../../settings";
-import { useControlled } from "../../hooks/useControlled";
+import React, { ReactNode, useEffect, useState } from "react";
 import { mapReactChildren } from "../../helpers/reactUtilities";
+import { useControlled } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import { AccordionItemProps } from "./AccordionItem";
 
 export type AccordionProps = {
   /**

@@ -1,12 +1,12 @@
-import { withKnobs } from "@storybook/addon-knobs";
-import React from "react";
-import { BreadcrumbItem } from "./BreadcrumbItem";
-import { Breadcrumb } from "./Breadcrumb";
-import { BreadcrumbSkeleton } from "./BreadcrumbSkeleton";
-import { IconDots, IconFolder } from "@tabler/icons";
 import { action } from "@storybook/addon-actions";
+import { withKnobs } from "@storybook/addon-knobs";
+import { IconDots, IconFolder } from "@tabler/icons";
+import React from "react";
 import { OverflowMenu } from "../OverflowMenu/OverflowMenu";
 import { OverflowMenuItem } from "../OverflowMenu/OverflowMenuItem";
+import { Breadcrumb } from "./Breadcrumb";
+import { BreadcrumbItem } from "./BreadcrumbItem";
+import { BreadcrumbSkeleton } from "./BreadcrumbSkeleton";
 
 export default { title: "Components/Breadcrumb", decorators: [withKnobs] };
 

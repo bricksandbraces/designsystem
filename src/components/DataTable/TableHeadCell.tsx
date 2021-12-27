@@ -1,7 +1,7 @@
-import React from "react";
+import { IconArrowDown, IconArrowUp, IconSortDescending } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import { IconArrowDown, IconSortDescending, IconArrowUp } from "@tabler/icons";
 
 export type TableHeadCellProps = {
   /**

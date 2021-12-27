@@ -1,6 +1,6 @@
 import React from "react";
-import { TableBodyCell } from "./TableBodyCell";
 import { prefix } from "../../settings";
+import { TableBodyCell } from "./TableBodyCell";
 
 export type TableActionsProps = {
   /**

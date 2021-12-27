@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
-import { TextInputProps, TextInput } from "../TextInput/TextInput";
-import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { prefix } from "../../settings";
+import React, { useEffect, useState } from "react";
 import { useControlled } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { TextInput, TextInputProps } from "../TextInput/TextInput";
 
 export type PasswordInputProps = {
   /**

@@ -1,7 +1,7 @@
 import React from "react";
+import Ticker from "react-ticker";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
-import Ticker from "react-ticker";
 
 export type WordItem = {
   /**

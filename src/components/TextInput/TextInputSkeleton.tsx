@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
+import { SkeletonText } from "../..";
 import { prefix } from "../../settings";
 import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
-import { SkeletonText } from "../..";
 
 export type TextInputSkeletonProps = {
   /**

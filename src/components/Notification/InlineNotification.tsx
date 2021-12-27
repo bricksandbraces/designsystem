@@ -1,15 +1,15 @@
-import React from "react";
 import {
   IconAlertTriangle,
   IconCheck,
-  IconInfoCircle,
   IconForbid,
+  IconInfoCircle,
   IconX
 } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { Headline, Body } from "../Typography/Typography";
+import { Body, Headline } from "../Typography/Typography";
 
 export type InlineNotificationProps = {
   /**

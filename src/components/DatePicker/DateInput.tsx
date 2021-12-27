@@ -1,13 +1,13 @@
+import { IconCalendar } from "@tabler/icons";
+import cx from "classnames";
 import React, { forwardRef, memo } from "react";
 import mergeRefs from "react-merge-refs";
-import { TextInput, TextInputProps } from "../TextInput/TextInput";
-import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
+import { withoutPropagation } from "../../helpers/eventUtilities";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { useControlled, useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import cx from "classnames";
-import { IconCalendar } from "@tabler/icons";
-import { withoutPropagation } from "../../helpers/eventUtilities";
+import { TextInput, TextInputProps } from "../TextInput/TextInput";
 
 export type DateInputProps = {
   /**

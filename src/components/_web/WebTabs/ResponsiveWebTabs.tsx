@@ -1,6 +1,6 @@
 import React from "react";
-import { Accordion } from "../../Accordion/Accordion";
 import { prefix } from "../../../settings";
+import { Accordion } from "../../Accordion/Accordion";
 import { WebTabs } from "./WebTabs";
 
 export type ResonsiveWebTabsProps = {

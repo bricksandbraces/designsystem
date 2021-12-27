@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import cx from "classnames";
 import Lottie, {
   AnimationConfig,
   AnimationConfigWithData,
   AnimationConfigWithPath,
   AnimationItem
 } from "lottie-web";
-import cx from "classnames";
+import React, { useEffect, useRef } from "react";
 import mergeRefs from "react-merge-refs";
 
 export type LottieProps = {

@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React from "react";
 import { Divider } from "../..";
+import { prefix } from "../../settings";
 
 export type HeaderDividerProps = {
   /**

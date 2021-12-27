@@ -1,6 +1,6 @@
-import React from "react";
-import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 import { SkeletonText } from "../Skeleton/SkeletonText";

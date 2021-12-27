@@ -1,6 +1,6 @@
 import React from "react";
-import { HeaderEntry } from "./DataTable";
 import { prefix } from "../../settings";
+import { HeaderEntry } from "./DataTable";
 
 export type TableHeadProps = {
   /**

@@ -1,9 +1,9 @@
+import { chunk } from "lodash";
 import React, { useState } from "react";
+import { prefix } from "../../settings";
 import { TableProps } from "./Table";
 import { TableContainerProps } from "./TableContainer";
 import { TableHeadProps } from "./TableHead";
-import { chunk } from "lodash";
-import { prefix } from "../../settings";
 
 export type HeaderEntry = {
   title: string;

@@ -1,16 +1,16 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { IconOnlyButton } from "../Button/IconOnlyButton";
 import {
   IconChevronLeft,
   IconChevronRight,
   IconChevronsLeft,
   IconChevronsRight
 } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
 import { Button, Select } from "../..";
-import { useControlledValue } from "../../hooks/useControlled";
 import { generateVisiblePagesArray } from "../../helpers/paginationUtilities";
+import { useControlledValue } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type TablePaginationProps = {
   /**

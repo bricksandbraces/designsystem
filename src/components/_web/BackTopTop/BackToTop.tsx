@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { IconArrowBarToUp } from "@tabler/icons";
 import cx from "classnames";
+import React, { useState } from "react";
 import { prefix } from "../../../settings";
 import { IconOnlyButton } from "../../Button/IconOnlyButton";
-import { IconArrowBarToUp } from "@tabler/icons";
 
 export type BackToTopProps = {};
 

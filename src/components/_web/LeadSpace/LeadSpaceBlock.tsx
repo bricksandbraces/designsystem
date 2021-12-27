@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
-import { Grid, Column } from "../../Grid/Grid";
-import { Button } from "../../Button/Button";
-import { prefix } from "../../../settings";
-import { idfy } from "../../../helpers/arrayUtilities";
+import cx from "classnames";
+import React, { ReactNode } from "react";
 import { CtaItem } from "../../..";
+import { idfy } from "../../../helpers/arrayUtilities";
+import { prefix } from "../../../settings";
+import { Button } from "../../Button/Button";
+import { Column, Grid } from "../../Grid/Grid";
 
 export type LeadSpaceBlockProps = {
   /**

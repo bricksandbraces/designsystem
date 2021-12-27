@@ -1,9 +1,9 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { Headline } from "../..";
-import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { IconX } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import { Headline } from "../..";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type TableToolbarFilterPanelProps = {
   /**

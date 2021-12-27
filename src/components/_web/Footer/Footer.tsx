@@ -1,6 +1,6 @@
-import React from "react";
 import cx from "classnames";
-import { Grid, Column, Link, Logo } from "../../..";
+import React from "react";
+import { Column, Grid, Link, Logo } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
 import { WordBand } from "../WordBand/WordBand";

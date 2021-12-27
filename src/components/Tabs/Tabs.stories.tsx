@@ -1,12 +1,12 @@
+import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Button } from "../Button/Button";
+import { Column, Grid } from "../Grid/Grid";
+import { Body, Headline } from "../Typography/Typography";
+import { ResponsiveTabs } from "./ResponsiveTabs";
 import { Tab } from "./Tab";
 import { Tabs } from "./Tabs";
-import { ResponsiveTabs } from "./ResponsiveTabs";
-import { Grid, Column } from "../Grid/Grid";
-import { Body, Headline } from "../Typography/Typography";
-import { action } from "@storybook/addon-actions";
 import { TabsSkeleton } from "./TabsSkeleton";
 
 export default { title: "Components Ready/Tabs", decorators: [withKnobs] };

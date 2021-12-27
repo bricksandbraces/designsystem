@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import {
   number,
   object,
@@ -5,10 +6,9 @@ import {
   text,
   withKnobs
 } from "@storybook/addon-knobs";
-import React from "react";
 import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons";
-import { action } from "@storybook/addon-actions";
-import { IconOnlyButton, Button } from "../..";
+import React from "react";
+import { Button, IconOnlyButton } from "../..";
 import { Avatar } from "./Avatar";
 import { AvatarGroup } from "./AvatarGroup";
 import { AvatarGroupSkeleton } from "./AvatarGroupSkeleton";

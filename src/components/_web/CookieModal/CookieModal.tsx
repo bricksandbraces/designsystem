@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, Modal, ModalHeader, ModalBody, ModalFooter } from "../../..";
+import { Checkbox, Modal, ModalBody, ModalFooter, ModalHeader } from "../../..";
 import { prefix } from "../../../settings";
 
 import { Body } from "../../Typography/Typography";

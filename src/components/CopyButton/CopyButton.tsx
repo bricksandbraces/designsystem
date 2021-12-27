@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { IconCheck, IconCopy } from "@tabler/icons";
 import cx from "classnames";
+import React, { useState } from "react";
 import { useCopyToClipboard } from "react-use";
-import { IconCopy, IconCheck } from "@tabler/icons";
 import { prefix } from "../../settings";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
 

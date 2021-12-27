@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
+import { prefix } from "../../settings";
 import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
 import { Avatar } from "./Avatar";
-import { prefix } from "../../settings";
 
 export type AvatarListItemProps = {
   /**

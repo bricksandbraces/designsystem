@@ -1,7 +1,7 @@
+import { IconChevronDown } from "@tabler/icons";
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
-import { IconChevronDown } from "@tabler/icons";
 
 export type HeaderNavTriggerProps = {
   /**

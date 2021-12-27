@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import cx from "classnames";
 import {
   IconChevronRight,
   IconPlayerPause,
   IconPlayerPlay
 } from "@tabler/icons";
-import { Grid, Column } from "../../Grid/Grid";
-import { Button } from "../../Button/Button";
-import { prefix } from "../../../settings";
+import cx from "classnames";
+import React, { useRef, useState } from "react";
 import { idfy } from "../../../helpers/arrayUtilities";
+import { prefix } from "../../../settings";
+import { Button } from "../../Button/Button";
 import { IconOnlyButton } from "../../Button/IconOnlyButton";
+import { Column, Grid } from "../../Grid/Grid";
 
 export type CtaItem = {
   /**

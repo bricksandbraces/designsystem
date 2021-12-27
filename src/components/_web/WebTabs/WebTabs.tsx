@@ -1,10 +1,10 @@
-import React from "react";
 import cx from "classnames";
-import { WebTabProps } from "./WebTab";
+import React from "react";
+import { mapReactChildren } from "../../../helpers/reactUtilities";
+import { useControlledValue } from "../../../hooks/useControlled";
 import { prefix } from "../../../settings";
 import { Body } from "../../Typography/Typography";
-import { useControlledValue } from "../../../hooks/useControlled";
-import { mapReactChildren } from "../../../helpers/reactUtilities";
+import { WebTabProps } from "./WebTab";
 
 export type WebTabsProps = {
   /**

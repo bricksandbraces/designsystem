@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
 import cx from "classnames";
-import { Link } from "../Link/Link";
-import { Button } from "../Button/Button";
-import { prefix } from "../../settings";
-import { idfy } from "../../helpers/arrayUtilities";
-import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
-import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
-import { Avatar } from "../Avatar/Avatar";
-import { Body } from "../Typography/Typography";
+import React, { useRef, useState } from "react";
 import { Divider, LinkItem } from "../..";
+import { idfy } from "../../helpers/arrayUtilities";
+import { prefix } from "../../settings";
+import { Avatar } from "../Avatar/Avatar";
+import { Button } from "../Button/Button";
+import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
+import { Link } from "../Link/Link";
+import { Body } from "../Typography/Typography";
+import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
 
 export type UserProfileProps = {
   /**

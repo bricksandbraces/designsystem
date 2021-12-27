@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
-import { RadioButtonProps } from "./RadioButton";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { mapReactChildren } from "../../helpers/reactUtilities";
+import { RadioButtonProps } from "./RadioButton";
 
 export type RadioButtonGroupProps = {
   /**

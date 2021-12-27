@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
-import { Button, ButtonProps } from "./Button";
+import React from "react";
 import { prefix } from "../../settings";
 import { Tooltip, TooltipProps } from "../Tooltip/Tooltip";
+import { Button, ButtonProps } from "./Button";
 
 export type IconOnlyButtonProps = {
   /**

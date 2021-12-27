@@ -1,10 +1,10 @@
+import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 
-import { Grid, Column } from "../../Grid/Grid";
-import { Body, Headline } from "../../Typography/Typography";
-import { action } from "@storybook/addon-actions";
 import { Button, TabsSkeleton } from "../../..";
+import { Column, Grid } from "../../Grid/Grid";
+import { Body, Headline } from "../../Typography/Typography";
 import { ResponsiveWebTabs } from "./ResponsiveWebTabs";
 import { WebTab } from "./WebTab";
 import { WebTabs } from "./WebTabs";

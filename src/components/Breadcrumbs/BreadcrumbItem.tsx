@@ -1,9 +1,9 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { Link } from "../..";
-import { LinkProps } from "../Link/Link";
 import { IconChevronRight } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import { Link } from "../..";
+import { prefix } from "../../settings";
+import { LinkProps } from "../Link/Link";
 
 export type BreadcrumbItemProps = {
   /**

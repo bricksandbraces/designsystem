@@ -1,11 +1,11 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
+import { Button } from "../Button/Button";
 import { Modal } from "./Modal";
-import { ModalHeader } from "./ModalHeader";
 import { ModalBody } from "./ModalBody";
 import { ModalFooter } from "./ModalFooter";
-import { Button } from "../Button/Button";
-import { action } from "@storybook/addon-actions";
+import { ModalHeader } from "./ModalHeader";
 
 export default { title: "Components Ready/Modal", decorators: [withKnobs] };
 

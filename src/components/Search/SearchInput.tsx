@@ -1,11 +1,11 @@
-import React from "react";
-import cx from "classnames";
 import { IconSearch, IconX } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import mergeRefs from "react-merge-refs";
+import { useControlledInput } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 import { Button } from "../Button/Button";
 import { IconOnlyButton } from "../Button/IconOnlyButton";
-import { prefix } from "../../settings";
-import { useControlledInput } from "../../hooks/useControlled";
-import mergeRefs from "react-merge-refs";
 
 export type SearchInputProps = {
   /**

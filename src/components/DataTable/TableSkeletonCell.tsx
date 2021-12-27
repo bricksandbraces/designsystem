@@ -1,7 +1,7 @@
-import React from "react";
-import { prefix } from "../../settings";
 import cx from "classnames";
+import React from "react";
 import { SkeletonText } from "../..";
+import { prefix } from "../../settings";
 
 export type TableSkeletonCellProps = {
   /**

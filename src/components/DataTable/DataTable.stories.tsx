@@ -1,32 +1,33 @@
 import { object, withKnobs } from "@storybook/addon-knobs";
+import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
 import React, { useState } from "react";
 import {
-  Grid,
-  Column,
-  Table,
-  TableRow,
-  TableHead,
-  TableHeadCell,
-  TableContainer,
-  TableBody,
-  TableBodyCell,
-  SearchInput,
-  Checkbox,
   Button,
   ButtonGroup,
+  Checkbox,
   CheckboxGroup,
+  Column,
   DataTable,
   EmptyState,
+  Grid,
   HeaderEntry,
   IconOnlyButton,
   OverflowMenu,
   OverflowMenuItem,
   RowEntry,
+  SearchInput,
+  Table,
   TableActions,
+  TableBody,
+  TableBodyCell,
+  TableContainer,
   TableFilterButton,
   TableFooter,
+  TableHead,
+  TableHeadCell,
   TableHeader,
   TablePagination,
+  TableRow,
   TableSelectionCell,
   TableSelectionHeadCell,
   TableSelectionRadioCell,
@@ -37,12 +38,10 @@ import {
   TableToolbarActions
 } from "../..";
 
+import { TableFilterPanel } from "./TableFilterPanel";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
-
-import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
-import { TableFilterPanel } from "./TableFilterPanel";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 

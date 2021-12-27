@@ -1,11 +1,11 @@
-import React, { forwardRef, memo } from "react";
-import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import cx from "classnames";
+import React, { forwardRef, memo } from "react";
+import mergeRefs from "react-merge-refs";
 import { useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { Label } from "../Typography/Typography";
 import { TextInputProps } from "../TextInput/TextInput";
-import mergeRefs from "react-merge-refs";
+import { Label } from "../Typography/Typography";
 
 export type TextAreaProps = {
   /**
