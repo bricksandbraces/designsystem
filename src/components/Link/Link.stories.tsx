@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { IconArrowNarrowRight } from "@tabler/icons";
 import React from "react";
-import Body from "../Typography";
+import { Body } from "../Typography/Typography";
 import Link from "./Link";
 
 export default { title: "Components Ready/Link", decorators: [withKnobs] };

@@ -9,8 +9,7 @@ import {
 import cx from "classnames";
 import { prefix } from "../../settings";
 import IconOnlyButton from "../Button/IconOnlyButton";
-import Headline from "../Typography";
-import Body from "../Typography";
+import { Headline, Body } from "../Typography/Typography";
 
 export type InlineNotificationProps = {
   /**

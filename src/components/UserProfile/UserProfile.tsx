@@ -8,7 +8,7 @@ import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListe
 import FloatingPanel from "../FloatingPanel/FloatingPanel";
 import Avatar from "../Avatar/Avatar";
 import Divider from "../Divider/Divider";
-import Body from "../Typography";
+import { Body } from "../Typography/Typography";
 
 export type LinkItem = {
   /**

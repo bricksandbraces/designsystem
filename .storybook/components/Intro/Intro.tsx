@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "../../../src/components/Logo/Logo";
-import Headline from "../../../src/components/Typography/Headline";
-import Body from "../../../src/components/Typography/Body";
+import { Body, Headline } from "../../../src/components/Typography/Typography";
 import packageJSON from "../../../package.json";
 
 const Intro = () => {

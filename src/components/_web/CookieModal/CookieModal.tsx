@@ -5,7 +5,7 @@ import Modal from "../../Modal/Modal";
 import ModalBody from "../../Modal/ModalBody";
 import ModalFooter from "../../Modal/ModalFooter";
 import ModalHeader from "../../Modal/ModalHeader";
-import Body from "../../Typography/Body";
+import { Body } from "../../Typography/Typography";
 
 export enum OptType {
   OPT_IN,

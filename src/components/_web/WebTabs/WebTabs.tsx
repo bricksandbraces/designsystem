@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { WebTabProps } from "./WebTab";
 import { prefix } from "../../../settings";
-import Body from "../../Typography/Body";
+import { Body } from "../../Typography/Typography";
 import { useControlledValue } from "../../../hooks/useControlled";
 import { mapReactChildren } from "../../../helpers/reactUtilities";
 

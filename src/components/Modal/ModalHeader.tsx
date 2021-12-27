@@ -1,8 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import Body from "../Typography";
-import Headline from "../Typography";
+import { Body, Headline } from "../Typography/Typography";
 
 type ModalHeaderProps = {
   /**

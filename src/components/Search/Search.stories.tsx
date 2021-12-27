@@ -7,7 +7,7 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Label from "../Typography";
+import { Label } from "../Typography/Typography";
 import Search from "./Search";
 import SearchInput from "./SearchInput";
 import SearchSkeleton from "./SearchSkeleton";
