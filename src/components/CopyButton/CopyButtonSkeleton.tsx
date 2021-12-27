@@ -1,5 +1,5 @@
 import React from "react";
-import IconOnlyButtonSkeleton from "../Button/IconOnlyButtonSkeleton";
+import { IconOnlyButtonSkeleton } from "../Button/IconOnlyButtonSkeleton";
 
 export type CopyButtonSkeletonProps = {
   /**
@@ -13,11 +13,9 @@ export type CopyButtonSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const CopyButtonSkeleton = ({
+export const CopyButtonSkeleton = function CopyButtonSkeleton({
   size = "default",
   className
-}: CopyButtonSkeletonProps) => (
-  <IconOnlyButtonSkeleton size={size} className={className} />
-);
-
-export default CopyButtonSkeleton;
+}: CopyButtonSkeletonProps) {
+  return <IconOnlyButtonSkeleton size={size} className={className} />;
+};

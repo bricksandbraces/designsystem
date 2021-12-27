@@ -22,10 +22,10 @@ export type WordBandProps = {
   words?: WordItem[];
 };
 
-const WordBand = (
+export const WordBand = React.forwardRef(function WordBand(
   { words = [{ label: "Innovation" }, { label: "Design" }] }: WordBandProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   const indexedWordItems = idfy(words);
   return (
     <section className={`${prefix}--wordband`} ref={ref}>
@@ -40,6 +40,4 @@ const WordBand = (
       </Ticker>
     </section>
   );
-};
-
-export default React.forwardRef(WordBand);
+});

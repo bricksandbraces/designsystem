@@ -31,7 +31,7 @@ export type EmptyStateProps = {
   orientation?: "vertical" | "horizontal";
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const EmptyState = (
+export const EmptyState = React.forwardRef(function EmptyState(
   {
     icon = <IconAB />,
     title,
@@ -43,7 +43,7 @@ const EmptyState = (
     ...rest
   }: EmptyStateProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -69,6 +69,4 @@ const EmptyState = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(EmptyState);
+});

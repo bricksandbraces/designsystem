@@ -17,10 +17,10 @@ export type TooltipProps = {
   tooltipContent: React.ReactNode;
 } & Omit<TippyProps, "content">;
 
-const Tooltip = (
+export const Tooltip = React.forwardRef(function Tooltip(
   { children, theme = "light", tooltipContent, ...props }: TooltipProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   return (
     <Tippy
       ref={ref}
@@ -35,6 +35,4 @@ const Tooltip = (
       {children}
     </Tippy>
   );
-};
-
-export default React.forwardRef(Tooltip);
+});

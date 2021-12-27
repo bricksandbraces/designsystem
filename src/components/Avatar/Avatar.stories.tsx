@@ -7,14 +7,13 @@ import {
 } from "@storybook/addon-knobs";
 import React from "react";
 import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons";
-import Avatar from "./Avatar";
-import AvatarGroup from "./AvatarGroup";
-import AvatarList, { AvatarListItem } from "./AvatarList";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import Button from "../Button/Button";
-import AvatarSkeleton from "./AvatarSkeleton";
-import AvatarGroupSkeleton from "./AvatarGroupSkeleton";
 import { action } from "@storybook/addon-actions";
+import { IconOnlyButton, Button } from "../..";
+import { Avatar } from "./Avatar";
+import { AvatarGroup } from "./AvatarGroup";
+import { AvatarGroupSkeleton } from "./AvatarGroupSkeleton";
+import { AvatarList, AvatarListItem } from "./AvatarList";
+import { AvatarSkeleton } from "./AvatarSkeleton";
 
 export default { title: "Components Ready/Avatar", decorators: [withKnobs] };
 

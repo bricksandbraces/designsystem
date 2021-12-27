@@ -1,6 +1,6 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import AspectRatio from "./AspectRatio";
+import { AspectRatio } from "./AspectRatio";
 import { prefix } from "../../settings";
 
 export default {

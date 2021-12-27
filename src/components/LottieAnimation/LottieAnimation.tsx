@@ -27,10 +27,10 @@ const defaultAnimationProps: Partial<AnimationConfig> = {
   autoplay: true
 };
 
-const LottieAnimation = (
+export const LottieAnimation = React.forwardRef(function LottieAnimation(
   { className, animationProps, onAnimationLoaded, ...rest }: LottieProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,6 +50,4 @@ const LottieAnimation = (
       {...rest}
     />
   );
-};
-
-export default React.forwardRef(LottieAnimation);
+});

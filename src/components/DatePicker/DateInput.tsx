@@ -1,6 +1,6 @@
-import React from "react";
+import React, { forwardRef, memo } from "react";
 import mergeRefs from "react-merge-refs";
-import TextInput, { TextInputProps } from "../TextInput/TextInput";
+import { TextInput, TextInputProps } from "../TextInput/TextInput";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import { useControlled, useControlledInput } from "../../hooks/useControlled";
@@ -92,93 +92,94 @@ export type DateInputProps = {
   "value" | "defaultValue" | "children" | "onChange" | "placeholder"
 >;
 
-const DateInput = (
-  {
-    children,
-    className,
-    dateFormat = "dd-MM-yyyy",
-    defaultValue,
-    value,
-    light,
-    label,
-    size,
-    onChange,
-    onDateChanged,
-    onKeyDown,
-    onClick,
-    onFocus,
-    onBlur,
-    ...props
-  }: DateInputProps,
-  ref: React.ForwardedRef<HTMLInputElement>
-) => {
-  const controlled = useControlled(value);
-  const [inputRef, textValue, handleChange, setValueManually] =
-    useControlledInput(
-      value,
+// eslint-disable-next-line react/display-name
+export const DateInput = memo(
+  forwardRef(function DateInput(
+    {
+      children,
+      className,
+      dateFormat = "dd-MM-yyyy",
       defaultValue,
-      onChange &&
-        ((newValue, event) => {
-          onChange(newValue ?? "", event);
-        })
+      value,
+      light,
+      label,
+      size,
+      onChange,
+      onDateChanged,
+      onKeyDown,
+      onClick,
+      onFocus,
+      onBlur,
+      ...props
+    }: DateInputProps,
+    ref: React.ForwardedRef<HTMLInputElement>
+  ) {
+    const controlled = useControlled(value);
+    const [inputRef, textValue, handleChange, setValueManually] =
+      useControlledInput(
+        value,
+        defaultValue,
+        onChange &&
+          ((newValue, event) => {
+            onChange(newValue ?? "", event);
+          })
+      );
+
+    /**
+     * When the text input is being submitted via keypress enter or onBlur the dateChange is executed.
+     * This also updates the textvalue for uncontrolled usage
+     */
+    const handleSubmit = () => {
+      // Parse Date from input
+      const newDate = parseDate(textValue, dateFormat, null);
+      // Reparse to formatted text date
+      const formattedDate = formatDate(newDate, dateFormat, textValue ?? "");
+
+      if (!controlled) {
+        // for uncontrolled usage the reparsed value has to be updated
+        // so that e.g. 1-1-2020 is being formatted to 01-01-2020.
+        setValueManually(formattedDate);
+      }
+
+      onDateChanged?.(newDate, formattedDate);
+    };
+
+    return (
+      <div>
+        <TextInput
+          icon={<IconCalendar />}
+          placeholder={dateFormat}
+          className={cx(`${prefix}--datepicker-input`)}
+          value={value}
+          light={light}
+          defaultValue={defaultValue}
+          ref={mergeRefs([ref, inputRef])}
+          type="text"
+          size={size}
+          autoComplete="off"
+          onChange={handleChange()}
+          onFocus={onFocus}
+          onBlur={(event) => {
+            onBlur?.(event);
+            handleSubmit();
+          }}
+          onKeyDown={(event) => {
+            filterForKeys(["Enter"], () => handleSubmit())(event);
+            onKeyDown?.(event);
+          }}
+          onClick={withoutPropagation(onClick)}
+          label={`${label} (${dateFormat.toLocaleLowerCase()})`}
+          {...props}
+        />
+        {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
+          // the selected date has to be updated also within the textfield
+          const newTextValue = formatDate(newDate, dateFormat, "");
+          if (!controlled) {
+            setValueManually(newTextValue);
+          }
+          onDateChanged?.(newDate, newTextValue);
+        })}
+      </div>
     );
-
-  /**
-   * When the text input is being submitted via keypress enter or onBlur the dateChange is executed.
-   * This also updates the textvalue for uncontrolled usage
-   */
-  const handleSubmit = () => {
-    // Parse Date from input
-    const newDate = parseDate(textValue, dateFormat, null);
-    // Reparse to formatted text date
-    const formattedDate = formatDate(newDate, dateFormat, textValue ?? "");
-
-    if (!controlled) {
-      // for uncontrolled usage the reparsed value has to be updated
-      // so that e.g. 1-1-2020 is being formatted to 01-01-2020.
-      setValueManually(formattedDate);
-    }
-
-    onDateChanged?.(newDate, formattedDate);
-  };
-
-  return (
-    <div>
-      <TextInput
-        icon={<IconCalendar />}
-        placeholder={dateFormat}
-        className={cx(`${prefix}--datepicker-input`)}
-        value={value}
-        light={light}
-        defaultValue={defaultValue}
-        ref={mergeRefs([ref, inputRef])}
-        type="text"
-        size={size}
-        autoComplete="off"
-        onChange={handleChange()}
-        onFocus={onFocus}
-        onBlur={(event) => {
-          onBlur?.(event);
-          handleSubmit();
-        }}
-        onKeyDown={(event) => {
-          filterForKeys(["Enter"], () => handleSubmit())(event);
-          onKeyDown?.(event);
-        }}
-        onClick={withoutPropagation(onClick)}
-        label={`${label} (${dateFormat.toLocaleLowerCase()})`}
-        {...props}
-      />
-      {children?.(parseDate(textValue, dateFormat, null), (newDate) => {
-        // the selected date has to be updated also within the textfield
-        const newTextValue = formatDate(newDate, dateFormat, "");
-        if (!controlled) {
-          setValueManually(newTextValue);
-        }
-        onDateChanged?.(newDate, newTextValue);
-      })}
-    </div>
-  );
-};
-
-export default React.memo(React.forwardRef(DateInput));
+  })
+);

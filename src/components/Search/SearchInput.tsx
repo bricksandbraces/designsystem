@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "classnames";
 import { IconSearch, IconX } from "@tabler/icons";
-import Button from "../Button/Button";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { Button } from "../Button/Button";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 import { useControlledInput } from "../../hooks/useControlled";
 import mergeRefs from "react-merge-refs";
@@ -105,7 +105,7 @@ export type SearchInputProps = {
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
-const SearchInput = (
+export const SearchInput = React.forwardRef(function SearchInput(
   {
     id,
     value,
@@ -127,7 +127,7 @@ const SearchInput = (
     onKeyDown
   }: SearchInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const [inputRef, currentValue, handleChange, setValueManually] =
     useControlledInput(
       value,
@@ -220,6 +220,4 @@ const SearchInput = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(SearchInput);
+});

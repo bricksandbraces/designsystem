@@ -3,14 +3,16 @@ import cx from "classnames";
 import { prefix } from "../../settings";
 import { SkeletonText } from "../..";
 
-type TabsSkeletonProps = {
+export type TabsSkeletonProps = {
   /**
    * TabsSkeleton ClassName
    */
   className?: string;
 };
 
-const TabsSkeleton = ({ className }: TabsSkeletonProps) => {
+export const TabsSkeleton = function TabsSkeleton({
+  className
+}: TabsSkeletonProps) {
   return (
     <div
       className={cx(
@@ -31,5 +33,3 @@ const TabsSkeleton = ({ className }: TabsSkeletonProps) => {
     </div>
   );
 };
-
-export default TabsSkeleton;

@@ -15,15 +15,13 @@ export type TableToolbarProps = {
   batchActions?: React.ReactNode;
 };
 
-const TableToolbar = (
+export const TableToolbar = React.forwardRef(function TableToolbar(
   { children, selectedIDs, batchActions, ...rest }: TableToolbarProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div className={`${prefix}--datatable-toolbar`} {...rest} ref={ref}>
       {selectedIDs?.length ? batchActions : children}
     </div>
   );
-};
-
-export default React.forwardRef(TableToolbar);
+});

@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconPlus, IconUsers } from "@tabler/icons";
-import Button from "../Button/Button";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { Button } from "../Button/Button";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 
 export type AvatarGroupProps = {
@@ -40,7 +40,7 @@ export type AvatarGroupProps = {
   >;
 };
 
-const AvatarGroup = (
+export const AvatarGroup = React.forwardRef(function AvatarGroup(
   {
     size = "default",
     handleAddClick,
@@ -50,7 +50,7 @@ const AvatarGroup = (
     children
   }: AvatarGroupProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const avatarAmount = React.Children.count(children);
   return (
     <div className={cx(`${prefix}--avatar-group`, className)} ref={ref}>
@@ -81,6 +81,4 @@ const AvatarGroup = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(AvatarGroup);
+});

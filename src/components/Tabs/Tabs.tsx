@@ -33,10 +33,10 @@ export type TabsProps = {
   className?: string;
 };
 
-const Tabs = (
+export const Tabs = React.forwardRef(function Tabs(
   { children, onChange, defaultIndex, className, index }: TabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [selectedIndex, performIndexChange] = useControlledValue(
     index,
     defaultIndex,
@@ -87,6 +87,4 @@ const Tabs = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(Tabs);
+});

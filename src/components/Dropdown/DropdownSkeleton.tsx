@@ -2,10 +2,10 @@ import React from "react";
 import cx from "classnames";
 import { IconChevronDown } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 import { SkeletonAnimatedContainer } from "../..";
 
-type DropdownSkeletonProps = {
+export type DropdownSkeletonProps = {
   /**
    * DropdownSkeleton ClassName
    */
@@ -17,10 +17,10 @@ type DropdownSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const DropdownSkeleton = ({
+export const DropdownSkeleton = function DropdownSkeleton({
   size = "default",
   className
-}: DropdownSkeletonProps) => {
+}: DropdownSkeletonProps) {
   return (
     <div
       className={cx(
@@ -42,5 +42,3 @@ const DropdownSkeleton = ({
     </div>
   );
 };
-
-export default DropdownSkeleton;

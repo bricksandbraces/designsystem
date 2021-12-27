@@ -7,8 +7,8 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Dropdown from "./Dropdown";
-import DropdownSkeleton from "./DropdownSkeleton";
+import { Dropdown } from "./Dropdown";
+import { DropdownSkeleton } from "./DropdownSkeleton";
 
 export default { title: "Components Ready/Dropdown", decorators: [withKnobs] };
 

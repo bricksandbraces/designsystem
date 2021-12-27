@@ -106,7 +106,7 @@ export type SelectProps = {
   warningText?: string;
 };
 
-const Select = (
+export const Select = React.forwardRef(function Select(
   {
     size = "default",
     id,
@@ -125,7 +125,7 @@ const Select = (
     onChange
   }: SelectProps,
   ref: React.ForwardedRef<HTMLSelectElement>
-) => {
+) {
   const firstAsGroup = options[0] as SelectOptionGroup;
   const first =
     firstAsGroup.group && firstAsGroup.options?.length > 0
@@ -225,6 +225,4 @@ const Select = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(Select);
+});

@@ -33,10 +33,10 @@ export type WebTabsProps = {
   className?: string;
 };
 
-const WebTabs = (
+export const WebTabs = React.forwardRef(function WebTabs(
   { children, onChange, defaultIndex, className, index }: WebTabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [selectedIndex, performIndexChange] = useControlledValue(
     index,
     defaultIndex,
@@ -87,6 +87,4 @@ const WebTabs = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(WebTabs);
+});

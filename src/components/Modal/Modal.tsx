@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import FocusLock from "react-focus-lock";
 import ReactDOM from "react-dom";
-import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
+import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
 import { useMounted } from "../../hooks/useMounted";
 import { prefix } from "../../settings";
 import { setRef } from "../../helpers/refUtilities";
 import { IconX } from "@tabler/icons";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { withoutPropagation } from "../../helpers/eventUtilities";
 
 export type ModalProps = {
@@ -62,7 +62,7 @@ export type ModalProps = {
   primaryFocus?: string;
 };
 
-const Modal = (
+export const Modal = React.forwardRef(function Modal(
   {
     id,
     size = "sm",
@@ -75,7 +75,7 @@ const Modal = (
     children
   }: ModalProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [modalEl, setModalEl] = useState<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -171,6 +171,4 @@ const Modal = (
         )}
     </>
   );
-};
-
-export default React.forwardRef<HTMLDivElement, ModalProps>(Modal);
+});

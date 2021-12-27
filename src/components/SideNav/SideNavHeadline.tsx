@@ -19,10 +19,10 @@ export type SideNavHeadlineProps = {
   fromHeader?: boolean;
 };
 
-const SideNavHeadline = (
+export const SideNavHeadline = React.forwardRef(function SideNavHeadline(
   { className, children, fromHeader }: SideNavHeadlineProps,
   ref: React.ForwardedRef<HTMLHeadingElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -34,6 +34,4 @@ const SideNavHeadline = (
       <h3 ref={ref}>{children}</h3>
     </div>
   );
-};
-
-export default React.forwardRef(SideNavHeadline);
+});

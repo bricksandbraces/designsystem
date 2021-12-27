@@ -29,13 +29,13 @@ export type ContainerTooltipProps = {
   body: ReactNode;
 } & Omit<TippyProps, "content">;
 
-const ContainerTooltip = ({
+export const ContainerTooltip = function ContainerTooltip({
   children,
   theme,
   title,
   body,
   ...props
-}: ContainerTooltipProps) => {
+}: ContainerTooltipProps) {
   return (
     <Tippy
       className={cx(`${prefix}--tooltip ${prefix}--tooltip-container`)}
@@ -58,5 +58,3 @@ const ContainerTooltip = ({
     </Tippy>
   );
 };
-
-export default ContainerTooltip;

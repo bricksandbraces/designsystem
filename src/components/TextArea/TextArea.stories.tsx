@@ -1,8 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import TextArea from "./TextArea";
-import TextAreaSkeleton from "./TextAreaSkeleton";
+import { TextArea } from "./TextArea";
+import { TextAreaSkeleton } from "./TextAreaSkeleton";
 
 export default { title: "Components Ready/TextArea", decorators: [withKnobs] };
 

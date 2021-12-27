@@ -7,8 +7,8 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Select from "./Select";
-import SelectSkeleton from "./SelectSkeleton";
+import { Select } from "./Select";
+import { SelectSkeleton } from "./SelectSkeleton";
 
 export default { title: "Components Ready/Select", decorators: [withKnobs] };
 

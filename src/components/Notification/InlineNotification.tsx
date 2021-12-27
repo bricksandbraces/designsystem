@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { Headline, Body } from "../Typography/Typography";
 
 export type InlineNotificationProps = {
@@ -48,7 +48,7 @@ export type InlineNotificationProps = {
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const InlineNotification = (
+export const InlineNotification = React.forwardRef(function InlineNotification(
   {
     className,
     title,
@@ -59,7 +59,7 @@ const InlineNotification = (
     onClose
   }: InlineNotificationProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const icons = {
     danger: IconForbid,
     success: IconCheck,
@@ -109,6 +109,4 @@ const InlineNotification = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(InlineNotification);
+});

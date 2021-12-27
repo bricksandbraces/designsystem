@@ -70,7 +70,7 @@ export type CheckboxProps = {
   value: string;
 };
 
-const Checkbox = (
+export const Checkbox = React.forwardRef(function Checkbox(
   {
     id,
     value,
@@ -88,7 +88,7 @@ const Checkbox = (
     ...rest
   }: CheckboxProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const inputRef = useRef<HTMLInputElement>();
   useEffect(() => {
     if (inputRef.current) {
@@ -174,6 +174,4 @@ const Checkbox = (
       </label>
     </div>
   );
-};
-
-export default React.forwardRef(Checkbox);
+});

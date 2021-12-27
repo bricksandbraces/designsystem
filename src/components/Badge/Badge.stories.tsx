@@ -1,7 +1,7 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Badge from "./Badge";
-import BadgeSkeleton from "./BadgeSkeleton";
+import { Badge } from "./Badge";
+import { BadgeSkeleton } from "./BadgeSkeleton";
 
 export default { title: "Components Ready/Badge", decorators: [withKnobs] };
 

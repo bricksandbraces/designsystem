@@ -1,8 +1,8 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
-import SkeletonContainer from "./SkeletonContainer";
-import SkeletonText from "./SkeletonText";
+import { SkeletonAnimatedContainer } from "./SkeletonAnimatedContainer";
+import { SkeletonContainer } from "./SkeletonContainer";
+import { SkeletonText } from "./SkeletonText";
 
 export default { title: "Components Ready/Skeleton", decorators: [withKnobs] };
 

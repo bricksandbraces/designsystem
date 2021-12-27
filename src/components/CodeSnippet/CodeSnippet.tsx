@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons";
-import CopyButton from "../CopyButton/CopyButton";
+import { CopyButton } from "../CopyButton/CopyButton";
 import { prefix } from "../../settings";
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 
 export type CodeSnippetProps = {
   /**
@@ -47,7 +47,7 @@ export type CodeSnippetProps = {
   type?: "multi" | "single";
 };
 
-const CodeSnippet = (
+export const CodeSnippet = React.forwardRef(function CodeSnippet(
   {
     code,
     className,
@@ -60,7 +60,7 @@ const CodeSnippet = (
     ...rest
   }: CodeSnippetProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [expanded, setExpanded] = useState(false);
   return (
     <div
@@ -106,6 +106,4 @@ const CodeSnippet = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(CodeSnippet);
+});

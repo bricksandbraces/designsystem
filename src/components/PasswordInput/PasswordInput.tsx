@@ -1,7 +1,7 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons";
-import TextInput, { TextInputProps } from "../TextInput/TextInput";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { TextInputProps, TextInput } from "../TextInput/TextInput";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { prefix } from "../../settings";
 import { useControlled } from "../../hooks/useControlled";
 
@@ -42,7 +42,7 @@ export type PasswordInputProps = {
   showPasswordLabel?: string;
 } & Omit<TextInputProps, "type">;
 
-const PasswordInput = (
+export const PasswordInput = React.forwardRef(function PasswordInput(
   {
     visible,
     defaultVisible,
@@ -54,7 +54,7 @@ const PasswordInput = (
     ...rest
   }: PasswordInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const controlled = useControlled(visible);
   const [passwordVisible, setPasswordVisibility] = useState<boolean>(
     (controlled ? visible : defaultVisible) ?? false
@@ -99,6 +99,4 @@ const PasswordInput = (
       {children}
     </TextInput>
   );
-};
-
-export default forwardRef<HTMLInputElement, PasswordInputProps>(PasswordInput);
+});

@@ -14,10 +14,10 @@ export type TableBodyCellProps = {
   className?: string;
 };
 
-const TableBodyCell = (
+export const TableBodyCell = React.forwardRef(function TableBodyCell(
   { children, className, ...rest }: TableBodyCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
+) {
   return (
     <td
       className={cx(`${prefix}--datatable-body__cell`, className)}
@@ -27,6 +27,4 @@ const TableBodyCell = (
       {children}
     </td>
   );
-};
-
-export default React.forwardRef(TableBodyCell);
+});

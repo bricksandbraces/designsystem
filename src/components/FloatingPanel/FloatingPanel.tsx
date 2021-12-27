@@ -4,10 +4,10 @@ import { prefix } from "../../settings";
 
 export type FloatingPanelProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
-const FloatingPanel = (
+export const FloatingPanel = React.forwardRef(function FloatingPanel(
   { className, children, ...rest }: FloatingPanelProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(`${prefix}--floatingpanel`, className)}
@@ -17,6 +17,4 @@ const FloatingPanel = (
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(FloatingPanel);
+});

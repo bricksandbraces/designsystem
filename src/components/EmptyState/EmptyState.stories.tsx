@@ -2,7 +2,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { IconSearch } from "@tabler/icons";
 import React from "react";
 import { Button } from "../..";
-import EmptyState from "./EmptyState";
+import { EmptyState } from "./EmptyState";
 
 export default {
   title: "Components/EmptyState",

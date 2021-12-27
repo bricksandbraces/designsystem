@@ -61,7 +61,7 @@ export type CheckboxGroupProps = {
   ) => void;
 };
 
-const CheckboxGroup = (
+export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
   {
     id,
     legendLabel,
@@ -75,7 +75,7 @@ const CheckboxGroup = (
     name
   }: CheckboxGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
-) => {
+) {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string[]>(
     defaultValue ?? value ?? []
@@ -131,6 +131,4 @@ const CheckboxGroup = (
       })}
     </fieldset>
   );
-};
-
-export default React.forwardRef(CheckboxGroup);
+});

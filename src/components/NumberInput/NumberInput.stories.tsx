@@ -9,8 +9,8 @@ import {
 import React, { useState } from "react";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import { Label } from "../Typography/Typography";
-import NumberInput from "./NumberInput";
-import NumberInputSkeleton from "./NumberInputSkeleton";
+import { NumberInput } from "./NumberInput";
+import { NumberInputSkeleton } from "./NumberInputSkeleton";
 
 export default {
   title: "Components Ready/NumberInput",

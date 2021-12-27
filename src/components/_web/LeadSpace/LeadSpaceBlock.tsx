@@ -2,26 +2,10 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { IconChevronRight } from "@tabler/icons";
 import { Grid, Column } from "../../Grid/Grid";
-import Button from "../../Button/Button";
+import { Button } from "../../Button/Button";
 import { prefix } from "../../../settings";
 import { idfy } from "../../../helpers/arrayUtilities";
-
-export type CtaItem = {
-  /**
-   * CtaItem Href
-   */
-  href: string;
-
-  /**
-   * CtaItem Label
-   */
-  label: string;
-
-  /**
-   * CtaItem Chevron
-   */
-  showChevron: boolean;
-};
+import { CtaItem } from "../../..";
 
 export type LeadSpaceBlockProps = {
   /**
@@ -40,10 +24,10 @@ export type LeadSpaceBlockProps = {
   ctaItems?: CtaItem[];
 };
 
-const LeadSpaceBlock = (
+export const LeadSpaceBlock = React.forwardRef(function LeadSpaceBlock(
   { text, title, ctaItems }: LeadSpaceBlockProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   const indexedCtaItems = idfy(ctaItems);
   return (
     <section
@@ -101,6 +85,4 @@ const LeadSpaceBlock = (
       </Grid>
     </section>
   );
-};
-
-export default React.forwardRef(LeadSpaceBlock);
+});

@@ -49,7 +49,7 @@ export type LinkProps = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-const Link = ({
+export const Link = React.forwardRef(function Link({
   children,
   href,
   target,
@@ -60,7 +60,7 @@ const Link = ({
   onClick,
   className,
   ...rest
-}: LinkProps) => {
+}: LinkProps) {
   const Element = React.createElement(href ? "a" : "button").type;
 
   return (
@@ -82,6 +82,4 @@ const Link = ({
       {!inline && icon}
     </Element>
   );
-};
-
-export default React.forwardRef(Link);
+});

@@ -13,13 +13,13 @@ import {
   IconBrandTinder,
   IconPlus
 } from "@tabler/icons";
-import SideNavItem from "./SideNavItem";
-import SideNavDivider from "./SideNavDivider";
-import SideNavHeadline from "./SideNavHeadline";
-import SideNavItemExpander from "./SideNavItemExpander";
+import { SideNavItem } from "./SideNavItem";
+import { SideNavDivider } from "./SideNavDivider";
+import { SideNavHeadline } from "./SideNavHeadline";
+import { SideNavItemExpander } from "./SideNavItemExpander";
 import { Logo, SideNav } from "../..";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import SideNavMobileHeader from "./SideNavMobileHeader";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { SideNavMobileHeader } from "./SideNavMobileHeader";
 import { action } from "@storybook/addon-actions";
 
 export default { title: "Components/SideNav", decorators: [withKnobs] };

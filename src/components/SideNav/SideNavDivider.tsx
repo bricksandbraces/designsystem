@@ -15,10 +15,10 @@ export type SideNavDividerProps = {
   fromHeader?: boolean;
 };
 
-const SideNavDivider = (
+export const SideNavDivider = React.forwardRef(function SideNavDivider(
   { className, fromHeader }: SideNavDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
-) => {
+) {
   return (
     <Divider
       type="default"
@@ -30,6 +30,4 @@ const SideNavDivider = (
       ref={ref}
     />
   );
-};
-
-export default React.forwardRef(SideNavDivider);
+});

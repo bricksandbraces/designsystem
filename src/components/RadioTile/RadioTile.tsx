@@ -70,7 +70,7 @@ export type RadioTileProps = {
   readOnly?: boolean;
 };
 
-const RadioTile = (
+export const RadioTile = React.forwardRef(function RadioTile(
   {
     id,
     value,
@@ -86,7 +86,7 @@ const RadioTile = (
     ...rest
   }: RadioTileProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -125,6 +125,4 @@ const RadioTile = (
       </label>
     </div>
   );
-};
-
-export default React.forwardRef(RadioTile);
+});

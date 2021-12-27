@@ -10,15 +10,13 @@ export type HeaderProps = {
   children: React.ReactNode;
 };
 
-const Header = (
+export const Header = React.forwardRef(function Header(
   { children }: HeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div ref={ref} className={cx(`${prefix}--navigation-header`)}>
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(Header);
+});

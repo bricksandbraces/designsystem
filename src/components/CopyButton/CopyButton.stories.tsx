@@ -1,8 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import CopyButton from "./CopyButton";
-import CopyButtonSkeleton from "./CopyButtonSkeleton";
+import { CopyButton } from "./CopyButton";
+import { CopyButtonSkeleton } from "./CopyButtonSkeleton";
 
 export default {
   title: "Components Ready/CopyButton",

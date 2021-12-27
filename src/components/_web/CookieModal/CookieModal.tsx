@@ -1,10 +1,7 @@
 import React from "react";
+import { Checkbox, Modal, ModalHeader, ModalBody, ModalFooter } from "../../..";
 import { prefix } from "../../../settings";
-import Checkbox from "../../Checkbox/Checkbox";
-import Modal from "../../Modal/Modal";
-import ModalBody from "../../Modal/ModalBody";
-import ModalFooter from "../../Modal/ModalFooter";
-import ModalHeader from "../../Modal/ModalHeader";
+
 import { Body } from "../../Typography/Typography";
 
 export enum OptType {

@@ -8,7 +8,9 @@ export type TableContainerProps = {
   children: React.ReactNode;
 };
 
-const TableContainer = ({ children }: TableContainerProps) => {
+export const TableContainer = function TableContainer({
+  children
+}: TableContainerProps) {
   return (
     <div className={`${prefix}--datatable-container`}>
       <div className={`${prefix}--datatable-container__content`}>
@@ -17,5 +19,3 @@ const TableContainer = ({ children }: TableContainerProps) => {
     </div>
   );
 };
-
-export default React.forwardRef(TableContainer);

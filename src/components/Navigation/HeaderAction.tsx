@@ -14,10 +14,10 @@ export type HeaderActionProps = {
   className?: string;
 };
 
-const HeaderAction = (
+export const HeaderAction = React.forwardRef(function HeaderAction(
   { className, children, ...rest }: HeaderActionProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       {...rest}
@@ -27,6 +27,4 @@ const HeaderAction = (
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(HeaderAction);
+});

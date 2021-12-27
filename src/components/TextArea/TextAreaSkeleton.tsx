@@ -10,7 +10,9 @@ export type TextAreaSkeletonProps = {
   className?: string;
 };
 
-const TextAreaSkeleton = ({ className }: TextAreaSkeletonProps) => {
+export const TextAreaSkeleton = function TextAreaSkeleton({
+  className
+}: TextAreaSkeletonProps) {
   return (
     <div
       className={cx(
@@ -36,5 +38,3 @@ const TextAreaSkeleton = ({ className }: TextAreaSkeletonProps) => {
     </div>
   );
 };
-
-export default TextAreaSkeleton;

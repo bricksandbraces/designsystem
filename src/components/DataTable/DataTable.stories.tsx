@@ -13,33 +13,36 @@ import {
   SearchInput,
   Checkbox,
   Button,
-  ButtonGroup
+  ButtonGroup,
+  CheckboxGroup,
+  DataTable,
+  EmptyState,
+  HeaderEntry,
+  IconOnlyButton,
+  OverflowMenu,
+  OverflowMenuItem,
+  RowEntry,
+  TableActions,
+  TableFilterButton,
+  TableFooter,
+  TableHeader,
+  TablePagination,
+  TableSelectionCell,
+  TableSelectionHeadCell,
+  TableSelectionRadioCell,
+  TableSelectionRadioHeaderCell,
+  TableSkeletonCell,
+  TableTitle,
+  TableToolbar,
+  TableToolbarActions
 } from "../..";
 
-import TablePagination from "./TablePagination";
-import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
-import TableActions from "./TableActions";
-import TableSelectionCell from "./TableSelectionCell";
-import TableSelectionHeadCell from "./TableSelectionHeadCell";
-import TableSelectionRadioCell from "./TableSelectionRadioCell";
-import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
-import TableToolbar from "./TableToolbar";
-import TableFilterButton from "./TableFilterButton";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
-import TableTitle from "./TableTitle";
-import TableHeader from "./TableHeader";
-import IconOnlyButton from "../Button/IconOnlyButton";
+
 import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
-import TableFooter from "./TableFooter";
-import TableToolbarActions from "./TableToolbarActions";
-import CheckboxGroup from "../Checkbox/CheckboxGroup";
-import TableFilterPanel from "./TableFilterPanel";
-import TableSkeletonCell from "./TableSkeletonCell";
-import OverflowMenu from "../OverflowMenu/OverflowMenu";
-import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
-import EmptyState from "../EmptyState/EmptyState";
+import { TableFilterPanel } from "./TableFilterPanel";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 

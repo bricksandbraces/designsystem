@@ -33,10 +33,10 @@ const weekdaysLong = [
 ];
 const weekdaysShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
-const DatePicker = (
+export const DatePicker = React.forwardRef(function DatePicker(
   { className, open, light, ...rest }: DatePickerProps,
   ref: React.ForwardedRef<DayPicker>
-) => {
+) {
   return (
     <DayPicker
       showOutsideDays
@@ -54,6 +54,4 @@ const DatePicker = (
       ref={ref}
     />
   );
-};
-
-export default React.forwardRef(DatePicker);
+});

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type OrderedListProps = {
+export type OrderedListProps = {
   /**
    * OrderedList Children
    */
@@ -19,7 +19,11 @@ type OrderedListProps = {
   nested?: boolean;
 };
 
-const OrderedList = ({ nested, children, className }: OrderedListProps) => {
+export const OrderedList = React.forwardRef(function OrderedList({
+  nested,
+  children,
+  className
+}: OrderedListProps) {
   return (
     <ol
       className={cx(
@@ -31,6 +35,4 @@ const OrderedList = ({ nested, children, className }: OrderedListProps) => {
       {children}
     </ol>
   );
-};
-
-export default OrderedList;
+});

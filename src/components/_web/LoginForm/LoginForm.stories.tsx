@@ -1,8 +1,8 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import LoginForm from "./LoginForm";
-import Button from "../../Button/Button";
-import Checkbox from "../../Checkbox/Checkbox";
+import { LoginForm } from "./LoginForm";
+import { Button } from "../../Button/Button";
+import { Checkbox } from "../../Checkbox/Checkbox";
 import { action } from "@storybook/addon-actions";
 
 export default { title: "Web/LoginForm", decorators: [withKnobs] };

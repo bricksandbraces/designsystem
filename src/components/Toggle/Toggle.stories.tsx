@@ -2,8 +2,8 @@ import { action, actions } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import { Body } from "../Typography/Typography";
-import Toggle from "./Toggle";
-import ToggleSkeleton from "./ToggleSkeleton";
+import { Toggle } from "./Toggle";
+import { ToggleSkeleton } from "./ToggleSkeleton";
 
 export default { title: "Components Ready/Toggle", decorators: [withKnobs] };
 

@@ -22,8 +22,8 @@ export type AccordionItemProps = {
   disabled?: boolean;
 };
 
-const AccordionItem = ({ children }: AccordionItemProps) => {
+export const AccordionItem = React.forwardRef(function AccordionItem({
+  children
+}: AccordionItemProps) {
   return <>{children}</>;
-};
-
-export default AccordionItem;
+});

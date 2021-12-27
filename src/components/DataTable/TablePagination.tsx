@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import {
   IconChevronLeft,
   IconChevronRight,
@@ -64,7 +64,7 @@ export type TablePaginationProps = {
   loop?: boolean;
 };
 
-const TablePagination = (
+export const TablePagination = React.forwardRef(function TablePagination(
   {
     totalPages,
     pagesShown,
@@ -78,7 +78,7 @@ const TablePagination = (
     className
   }: TablePaginationProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [currentIndex, performPageChange] = useControlledValue(
     page,
     defaultPage,
@@ -207,6 +207,4 @@ const TablePagination = (
       </ul>
     </div>
   );
-};
-
-export default React.forwardRef(TablePagination);
+});

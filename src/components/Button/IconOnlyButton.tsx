@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "classnames";
-import Button, { ButtonProps } from "./Button";
+import { Button, ButtonProps } from "./Button";
 import { prefix } from "../../settings";
-import Tooltip, { TooltipProps } from "../Tooltip/Tooltip";
+import { Tooltip, TooltipProps } from "../Tooltip/Tooltip";
 
 export type IconOnlyButtonProps = {
   /**
@@ -21,7 +21,7 @@ export type IconOnlyButtonProps = {
   icon: React.ReactElement;
 } & Omit<ButtonProps, "icon">;
 
-const IconOnlyButton = (
+export const IconOnlyButton = React.forwardRef(function IconOnlyButton(
   {
     kind = "primary",
     size = "default",
@@ -37,7 +37,7 @@ const IconOnlyButton = (
     ...rest
   }: IconOnlyButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-) => {
+) {
   const WrapperElement: any = hideTooltip ? React.Fragment : Tooltip;
   const wrapperProps = hideTooltip
     ? {}
@@ -59,6 +59,4 @@ const IconOnlyButton = (
       />
     </WrapperElement>
   );
-};
-
-export default React.forwardRef(IconOnlyButton);
+});

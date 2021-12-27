@@ -1,26 +1,14 @@
 import React, { useRef, useState } from "react";
 import cx from "classnames";
-import Link from "../Link/Link";
-import Button from "../Button/Button";
+import { Link } from "../Link/Link";
+import { Button } from "../Button/Button";
 import { prefix } from "../../settings";
 import { idfy } from "../../helpers/arrayUtilities";
-import OutsideClickListener from "../util/OutsideClickListener/OutsideClickListener";
-import FloatingPanel from "../FloatingPanel/FloatingPanel";
-import Avatar from "../Avatar/Avatar";
-import Divider from "../Divider/Divider";
+import { OutsideClickListener } from "../util/OutsideClickListener/OutsideClickListener";
+import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
+import { Avatar } from "../Avatar/Avatar";
 import { Body } from "../Typography/Typography";
-
-export type LinkItem = {
-  /**
-   * UserProfile LinkItem Href
-   */
-  href: string;
-
-  /**
-   * UserProfile LinkItem Label
-   */
-  label: string;
-};
+import { Divider, LinkItem } from "../..";
 
 export type UserProfileProps = {
   /**
@@ -64,7 +52,7 @@ export type UserProfileProps = {
   onPrimaryAction: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const UserProfile = (
+export const UserProfile = React.forwardRef(function UserProfile(
   {
     name,
     subName,
@@ -79,7 +67,7 @@ const UserProfile = (
     onPrimaryAction
   }: UserProfileProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   const [open, setOpen] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
@@ -164,6 +152,4 @@ const UserProfile = (
       </OutsideClickListener>
     </>
   );
-};
-
-export default React.forwardRef(UserProfile);
+});

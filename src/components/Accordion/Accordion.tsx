@@ -53,7 +53,7 @@ export enum AnimationType {
   EXPAND
 }
 
-const Accordion = (
+export const Accordion = React.forwardRef(function Accordion(
   {
     children,
     className,
@@ -64,7 +64,7 @@ const Accordion = (
     openIndices
   }: AccordionProps,
   ref: React.ForwardedRef<HTMLUListElement>
-) => {
+) {
   const controlled = useControlled(openIndices);
   const [openIndexList, setOpenIndexList] = useState<number[]>(
     (controlled ? openIndices : defaultOpenIndices) ?? []
@@ -177,6 +177,4 @@ const Accordion = (
       </ul>
     </div>
   );
-};
-
-export default React.forwardRef(Accordion);
+});

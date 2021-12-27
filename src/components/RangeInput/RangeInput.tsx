@@ -5,7 +5,7 @@ import { useControlled } from "../../hooks/useControlled";
 import { clamp } from "../../helpers/mathUtilities";
 import { prefix } from "../../settings";
 import { Label } from "../Typography/Typography";
-import NumberInput from "../NumberInput/NumberInput";
+import { NumberInput } from "../NumberInput/NumberInput";
 import { parseToNumber } from "../../helpers/numberUtilities";
 
 export type RangeInputProps = {
@@ -131,7 +131,7 @@ export type RangeInputProps = {
   float?: boolean;
 };
 
-const RangeInput = (
+export const RangeInput = React.forwardRef(function RangeInput(
   {
     id,
     value,
@@ -158,7 +158,7 @@ const RangeInput = (
     onInputKeyDown
   }: RangeInputProps,
   ref: React.ForwardedRef<any>
-) => {
+) {
   const controlled = useControlled(value);
 
   const prepareValue = (val: string | number | undefined) => {
@@ -285,6 +285,4 @@ const RangeInput = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(RangeInput);
+});

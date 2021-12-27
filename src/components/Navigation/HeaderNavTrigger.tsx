@@ -30,10 +30,10 @@ export type HeaderNavTriggerProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const HeaderNavTrigger = (
+export const HeaderNavTrigger = React.forwardRef(function HeaderNavTrigger(
   { className, label, onClick, open, selected, ...rest }: HeaderNavTriggerProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   return (
     <button
       onClick={onClick}
@@ -52,6 +52,4 @@ const HeaderNavTrigger = (
       <IconChevronDown />
     </button>
   );
-};
-
-export default React.forwardRef(HeaderNavTrigger);
+});

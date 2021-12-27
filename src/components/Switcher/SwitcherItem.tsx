@@ -17,8 +17,8 @@ export type SwitcherItemProps = {
   disabled?: boolean;
 };
 
-const SwitcherItem = ({ children }: SwitcherItemProps) => {
+export const SwitcherItem = function SwitcherItem({
+  children
+}: SwitcherItemProps) {
   return <>{children}</>;
 };
-
-export default SwitcherItem;

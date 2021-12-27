@@ -65,7 +65,7 @@ export type ClickableTileProps = {
   children?: React.ReactNode;
 };
 
-const ClickableTile = (
+export const ClickableTile = React.forwardRef(function ClickableTile(
   {
     children,
     className,
@@ -77,7 +77,7 @@ const ClickableTile = (
     ...rest
   }: ClickableTileProps,
   ref: React.ForwardedRef<ButtonOrAnchor>
-) => {
+) {
   const classes = cx(
     `${prefix}--tile ${prefix}--tile-clickable`,
     {
@@ -111,6 +111,4 @@ const ClickableTile = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(ClickableTile);
+});

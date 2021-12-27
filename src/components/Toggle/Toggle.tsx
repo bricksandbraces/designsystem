@@ -69,7 +69,7 @@ export type ToggleProps = {
   readOnly?: boolean;
 };
 
-const Toggle = (
+export const Toggle = React.forwardRef(function Toggle(
   {
     id,
     value,
@@ -85,7 +85,7 @@ const Toggle = (
     ...rest
   }: ToggleProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -141,6 +141,4 @@ const Toggle = (
       </label>
     </div>
   );
-};
-
-export default React.forwardRef(Toggle);
+});

@@ -1,24 +1,13 @@
 import React from "react";
 import cx from "classnames";
 import { IconMenu, IconX } from "@tabler/icons";
-import Logo from "../../Logo/Logo";
+import { Logo } from "../../Logo/Logo";
 import { Grid, Column } from "../../Grid/Grid";
 import { prefix } from "../../../settings";
 import { idfy } from "../../../helpers/arrayUtilities";
-import WebHeaderLink from "./WebHeaderLink";
+import { WebHeaderLink } from "./WebHeaderLink";
 import { useControlledValue } from "../../../hooks/useControlled";
-
-export type LinkItem = {
-  /**
-   * LinkItem Href
-   */
-  href: string;
-
-  /**
-   * LinkItem Label
-   */
-  label: string;
-};
+import { LinkItem } from "../../..";
 
 export type WebHeaderProps = {
   /**
@@ -52,10 +41,10 @@ export type WebHeaderProps = {
   onOpenChange?: (newOpen: boolean) => void;
 };
 
-const WebHeader = (
+export const WebHeader = React.forwardRef(function WebHeader(
   { open, defaultOpen, onOpenChange, linkItems, logo, baseUrl }: WebHeaderProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   const [headerOpen, setHeaderOpen] = useControlledValue(
     open,
     defaultOpen,
@@ -120,6 +109,4 @@ const WebHeader = (
       <div className={cx(`${prefix}--webheader-overlay`)} />
     </>
   );
-};
-
-export default React.forwardRef(WebHeader);
+});

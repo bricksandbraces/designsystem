@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 import { SkeletonText } from "../..";
 
 export type TextInputSkeletonProps = {
@@ -16,10 +16,10 @@ export type TextInputSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const TextInputSkeleton = ({
+export const TextInputSkeleton = function TextInputSkeleton({
   size = "default",
   className
-}: TextInputSkeletonProps) => {
+}: TextInputSkeletonProps) {
   return (
     <div
       className={cx(
@@ -39,5 +39,3 @@ const TextInputSkeleton = ({
     </div>
   );
 };
-
-export default TextInputSkeleton;

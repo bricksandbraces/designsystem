@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
  * @param defaultTheme The default theme to set for the first rendering
  * @returns The current theme
  */
-const usePreferredColorScheme = (defaultTheme: "light" | "dark") => {
+export const usePreferredColorScheme = (defaultTheme: "light" | "dark") => {
   const mediaQuery = "(prefers-color-scheme: dark)";
   const [theme, setTheme] = useState<"light" | "dark">(defaultTheme);
 
@@ -20,5 +20,3 @@ const usePreferredColorScheme = (defaultTheme: "light" | "dark") => {
 
   return theme;
 };
-
-export default usePreferredColorScheme;

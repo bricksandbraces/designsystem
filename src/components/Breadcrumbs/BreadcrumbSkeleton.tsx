@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import { IconChevronRight } from "@tabler/icons";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 
 export type BreadcrumbSkeletonProps = {
   /**
@@ -11,7 +11,9 @@ export type BreadcrumbSkeletonProps = {
   className?: string;
 };
 
-const BreadcrumbSkeleton = ({ className }: BreadcrumbSkeletonProps) => {
+export const BreadcrumbSkeleton = function BreadcrumbSkeleton({
+  className
+}: BreadcrumbSkeletonProps) {
   return (
     <div className={cx(`${prefix}--skeleton ${prefix}--breadcrumb`, className)}>
       <div className={cx(`${prefix}--breadcrumb-list`)}>
@@ -31,5 +33,3 @@ const BreadcrumbSkeleton = ({ className }: BreadcrumbSkeletonProps) => {
     </div>
   );
 };
-
-export default BreadcrumbSkeleton;

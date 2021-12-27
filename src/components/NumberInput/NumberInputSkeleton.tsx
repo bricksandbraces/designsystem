@@ -1,13 +1,13 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButtonGroup } from "../Button/IconOnlyButtonGroup";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import { IconMinus, IconPlus } from "@tabler/icons";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 import { SkeletonAnimatedContainer } from "../..";
 
-type NumberInputSkeletonProps = {
+export type NumberInputSkeletonProps = {
   /**
    * NumberInputSkeleton ClassName
    */
@@ -24,11 +24,11 @@ type NumberInputSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const NumberInputSkeleton = ({
+export const NumberInputSkeleton = function NumberInputSkeleton({
   size = "default",
   fluid,
   className
-}: NumberInputSkeletonProps) => {
+}: NumberInputSkeletonProps) {
   return (
     <div
       className={cx(
@@ -76,5 +76,3 @@ const NumberInputSkeleton = ({
     </div>
   );
 };
-
-export default NumberInputSkeleton;

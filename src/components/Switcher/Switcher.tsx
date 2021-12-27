@@ -43,7 +43,7 @@ export type SwitcherProps = {
   className?: string;
 };
 
-const Switcher = (
+export const Switcher = React.forwardRef(function Switcher(
   {
     children,
     onChange,
@@ -54,7 +54,7 @@ const Switcher = (
     size = "default"
   }: SwitcherProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [selectedIndex, performIndexChange] = useControlledValue(
     index,
     defaultIndex,
@@ -118,6 +118,4 @@ const Switcher = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(Switcher);
+});

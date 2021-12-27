@@ -5,9 +5,7 @@ import { useRef } from "react";
  * @param value The value to fix
  * @returns Always the initial value
  */
-const useConstant = <T>(value: T) => {
+export const useConstant = <T>(value: T) => {
   const ref = useRef(value);
   return ref.current;
 };
-
-export default useConstant;

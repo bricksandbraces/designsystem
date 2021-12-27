@@ -14,10 +14,10 @@ export type TableHeadProps = {
   headers: HeaderEntry[];
 };
 
-const TableHead = (
+export const TableHead = React.forwardRef(function TableHead(
   { children, headers }: TableHeadProps,
   ref: React.ForwardedRef<HTMLTableSectionElement>
-) => {
+) {
   return (
     <thead className={`${prefix}--datatable-head`} ref={ref}>
       {children}
@@ -26,6 +26,4 @@ const TableHead = (
       </tr>
     </thead>
   );
-};
-
-export default React.forwardRef(TableHead);
+});

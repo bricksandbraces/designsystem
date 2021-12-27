@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
 export type IconOnlyButtonSkeletonProps = {
   /**
@@ -20,16 +20,18 @@ export type IconOnlyButtonSkeletonProps = {
   light?: boolean;
 };
 
-const IconOnlyButtonSkeleton = ({
-  size = "default",
-  className
-}: IconOnlyButtonSkeletonProps) => (
-  <SkeletonAnimatedContainer
-    className={cx(
-      `${prefix}--button ${prefix}--button-icon-only ${prefix}--button-${size}`,
-      className
-    )}
-  />
+export const IconOnlyButtonSkeleton = React.forwardRef(
+  function IconOnlyButtonSkeleton({
+    size = "default",
+    className
+  }: IconOnlyButtonSkeletonProps) {
+    return (
+      <SkeletonAnimatedContainer
+        className={cx(
+          `${prefix}--button ${prefix}--button-icon-only ${prefix}--button-${size}`,
+          className
+        )}
+      />
+    );
+  }
 );
-
-export default IconOnlyButtonSkeleton;

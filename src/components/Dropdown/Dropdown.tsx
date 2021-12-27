@@ -130,7 +130,7 @@ export type DropdownProps = {
   onBlur?: React.FocusEventHandler<HTMLButtonElement>;
 };
 
-const Dropdown = (
+export const Dropdown = React.forwardRef(function Dropdown(
   {
     value,
     id,
@@ -152,7 +152,7 @@ const Dropdown = (
     readOnly
   }: DropdownProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const controlled = useControlled(value);
 
   const ulRef = useRef<HTMLUListElement>(null);
@@ -325,6 +325,4 @@ const Dropdown = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(Dropdown);
+});

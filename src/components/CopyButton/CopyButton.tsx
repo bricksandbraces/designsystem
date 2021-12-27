@@ -3,11 +3,11 @@ import cx from "classnames";
 import { useCopyToClipboard } from "react-use";
 import { IconCopy, IconCheck } from "@tabler/icons";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type CopyButtonProps = {
   /**
-   * CopyButton Provide optional click handler for the button
+   * CopyButton Provide optional click handler for the buttons
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 
@@ -42,7 +42,7 @@ export type CopyButtonProps = {
   size?: "large" | "default" | "small";
 };
 
-const CopyButton = (
+export const CopyButton = React.forwardRef(function CopyButton(
   {
     tooltipLabelCopied = "Copied",
     size = "default",
@@ -53,7 +53,7 @@ const CopyButton = (
     valueToCopy
   }: CopyButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   const [showState, setShowState] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
   return (
@@ -81,6 +81,4 @@ const CopyButton = (
       ref={ref}
     />
   );
-};
-
-export default CopyButton;
+});

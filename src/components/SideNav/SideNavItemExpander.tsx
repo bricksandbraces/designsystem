@@ -3,7 +3,7 @@ import cx from "classnames";
 import { prefix } from "../../settings";
 import { IconChevronDown } from "@tabler/icons";
 
-type SideNavItemExpanderProps = {
+export type SideNavItemExpanderProps = {
   /**
    * SideNavItemExpander Href
    */
@@ -40,13 +40,13 @@ type SideNavItemExpanderProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const SideNavItemExpander = ({
+export const SideNavItemExpander = function SideNavItemExpander({
   label,
   icon,
   className,
   fromHeader,
   children
-}: SideNavItemExpanderProps) => {
+}: SideNavItemExpanderProps) {
   const [open, setOpen] = useState(false);
 
   // selected when collapsed but one child is selected
@@ -85,5 +85,3 @@ const SideNavItemExpander = ({
     </>
   );
 };
-
-export default SideNavItemExpander;

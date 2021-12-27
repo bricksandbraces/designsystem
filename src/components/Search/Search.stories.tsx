@@ -8,9 +8,9 @@ import {
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Label } from "../Typography/Typography";
-import Search from "./Search";
-import SearchInput from "./SearchInput";
-import SearchSkeleton from "./SearchSkeleton";
+import { Search } from "./Search";
+import { SearchInput } from "./SearchInput";
+import { SearchSkeleton } from "./SearchSkeleton";
 
 export default { title: "Components Ready/Search", decorators: [withKnobs] };
 

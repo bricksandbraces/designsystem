@@ -1,9 +1,9 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
-type AvatarSkeletonProps = {
+export type AvatarSkeletonProps = {
   /**
    * AvatarSkeleton ClassName
    */
@@ -15,7 +15,10 @@ type AvatarSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const AvatarSkeleton = ({ size, className }: AvatarSkeletonProps) => {
+export const AvatarSkeleton = function AvatarSkeleton({
+  size,
+  className
+}: AvatarSkeletonProps) {
   return (
     <SkeletonAnimatedContainer
       className={cx(
@@ -26,5 +29,3 @@ const AvatarSkeleton = ({ size, className }: AvatarSkeletonProps) => {
     />
   );
 };
-
-export default AvatarSkeleton;

@@ -2,10 +2,10 @@ import React from "react";
 import cx from "classnames";
 import { IconCalendar } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 
-type DatePickerSkeletonProps = {
+export type DatePickerSkeletonProps = {
   /**
    * DatePickerSkeleton ClassName
    */
@@ -17,10 +17,10 @@ type DatePickerSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const DatePickerSkeleton = ({
+export const DatePickerSkeleton = function DatePickerSkeleton({
   size = "default",
   className
-}: DatePickerSkeletonProps) => {
+}: DatePickerSkeletonProps) {
   return (
     <div
       className={cx(
@@ -42,5 +42,3 @@ const DatePickerSkeleton = ({
     </div>
   );
 };
-
-export default DatePickerSkeleton;

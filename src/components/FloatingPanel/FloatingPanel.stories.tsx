@@ -1,6 +1,6 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import FloatingPanel from "./FloatingPanel";
+import { FloatingPanel } from "./FloatingPanel";
 
 export default {
   title: "Utilities/FloatingPanel",

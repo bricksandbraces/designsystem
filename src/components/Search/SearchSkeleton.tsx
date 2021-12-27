@@ -2,9 +2,9 @@ import React from "react";
 import cx from "classnames";
 import { IconSearch } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
-type SearchSkeletonProps = {
+export type SearchSkeletonProps = {
   /**
    * SearchSkeleton ClassName
    */
@@ -16,10 +16,10 @@ type SearchSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const SearchSkeleton = ({
+export const SearchSkeleton = function SearchSkeleton({
   size = "default",
   className
-}: SearchSkeletonProps) => {
+}: SearchSkeletonProps) {
   return (
     <div
       className={cx(
@@ -37,5 +37,3 @@ const SearchSkeleton = ({
     </div>
   );
 };
-
-export default SearchSkeleton;

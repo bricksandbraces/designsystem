@@ -10,7 +10,9 @@ export type WebTabsSkeletonProps = {
   className?: string;
 };
 
-const WebTabsSkeleton = ({ className }: WebTabsSkeletonProps) => {
+export const WebTabsSkeleton = function WebTabsSkeleton({
+  className
+}: WebTabsSkeletonProps) {
   return (
     <div
       className={cx(
@@ -37,5 +39,3 @@ const WebTabsSkeleton = ({ className }: WebTabsSkeletonProps) => {
     </div>
   );
 };
-
-export default WebTabsSkeleton;

@@ -8,8 +8,8 @@ import {
 } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Label } from "../..";
-import RangeInput from "./RangeInput";
-import RangeInputSkeleton from "./RangeInputSkeleton";
+import { RangeInput } from "./RangeInput";
+import { RangeInputSkeleton } from "./RangeInputSkeleton";
 
 export default {
   title: "Components Ready/RangeInput",

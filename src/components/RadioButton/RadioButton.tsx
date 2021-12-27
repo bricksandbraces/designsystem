@@ -69,7 +69,7 @@ export type RadioButtonProps = {
   readOnly?: boolean;
 };
 
-const RadioButton = (
+export const RadioButton = React.forwardRef(function RadioButton(
   {
     id,
     value,
@@ -85,7 +85,7 @@ const RadioButton = (
     ...rest
   }: RadioButtonProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -147,6 +147,4 @@ const RadioButton = (
       </label>
     </div>
   );
-};
-
-export default React.forwardRef(RadioButton);
+});

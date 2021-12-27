@@ -1,13 +1,13 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Button from "../../Button/Button";
-import WebTab from "./WebTab";
-import WebTabs from "./WebTabs";
+
 import { Grid, Column } from "../../Grid/Grid";
 import { Body, Headline } from "../../Typography/Typography";
 import { action } from "@storybook/addon-actions";
-import TabsSkeleton from "./WebTabsSkeleton";
-import ResponsiveWebTabs from "./ResponsiveWebTabs";
+import { Button, TabsSkeleton } from "../../..";
+import { ResponsiveWebTabs } from "./ResponsiveWebTabs";
+import { WebTab } from "./WebTab";
+import { WebTabs } from "./WebTabs";
 
 export default { title: "Web/WebTabs", decorators: [withKnobs] };
 

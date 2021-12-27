@@ -19,10 +19,10 @@ export type SkeletonContainerProps = {
   style?: React.CSSProperties;
 };
 
-const SkeletonContainer = (
+export const SkeletonContainer = React.forwardRef(function SkeletonContainer(
   { children, className, ...rest }: SkeletonContainerProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -35,6 +35,4 @@ const SkeletonContainer = (
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(SkeletonContainer);
+});

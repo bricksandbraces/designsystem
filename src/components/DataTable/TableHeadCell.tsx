@@ -31,7 +31,7 @@ export type TableHeadCellProps = {
   onClick?: React.MouseEventHandler<HTMLTableCellElement>;
 };
 
-const TableHeadCell = (
+export const TableHeadCell = React.forwardRef(function TableHeadCell(
   {
     children,
     interactive,
@@ -41,7 +41,7 @@ const TableHeadCell = (
     ...rest
   }: TableHeadCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
+) {
   let HeaderIcon:
     | React.FC<React.HTMLAttributes<HTMLOrSVGElement>>
     | (() => JSX.Element)
@@ -88,6 +88,4 @@ const TableHeadCell = (
       </div>
     </th>
   );
-};
-
-export default React.forwardRef(TableHeadCell);
+});

@@ -2,9 +2,9 @@ import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import { Body } from "../Typography/Typography";
-import RadioButton from "./RadioButton";
-import RadioButtonGroup from "./RadioButtonGroup";
-import RadioButtonSkeleton from "./RadioButtonSkeleton";
+import { RadioButton } from "./RadioButton";
+import { RadioButtonGroup } from "./RadioButtonGroup";
+import { RadioButtonSkeleton } from "./RadioButtonSkeleton";
 
 export default {
   title: "Components Ready/RadioButton",

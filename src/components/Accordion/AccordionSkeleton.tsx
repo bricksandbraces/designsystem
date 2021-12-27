@@ -2,10 +2,10 @@ import React from "react";
 import cx from "classnames";
 import { IconChevronDown } from "@tabler/icons";
 import { prefix } from "../../settings";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonContainer } from "../Skeleton/SkeletonContainer";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 
-type AccordionSkeletonProps = {
+export type AccordionSkeletonProps = {
   /**
    * AccordionSkeleton ClassName
    */
@@ -17,7 +17,10 @@ type AccordionSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const AccordionSkeleton = ({ size, className }: AccordionSkeletonProps) => {
+export const AccordionSkeleton = function AccordionSkeleton({
+  size,
+  className
+}: AccordionSkeletonProps) {
   return (
     <SkeletonContainer
       style={{ width: "100%" }}
@@ -48,5 +51,3 @@ const AccordionSkeleton = ({ size, className }: AccordionSkeletonProps) => {
     </SkeletonContainer>
   );
 };
-
-export default AccordionSkeleton;

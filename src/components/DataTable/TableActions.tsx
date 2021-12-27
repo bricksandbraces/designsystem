@@ -1,5 +1,5 @@
 import React from "react";
-import TableBodyCell from "./TableBodyCell";
+import { TableBodyCell } from "./TableBodyCell";
 import { prefix } from "../../settings";
 
 export type TableActionsProps = {
@@ -9,10 +9,10 @@ export type TableActionsProps = {
   children: React.ReactNode;
 };
 
-const TableActions = (
+export const TableActions = React.forwardRef(function TableActions(
   { children, ...rest }: TableActionsProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
+) {
   return (
     <TableBodyCell
       className={`${prefix}--datatable-body__cell-actions`}
@@ -24,6 +24,4 @@ const TableActions = (
       </div>
     </TableBodyCell>
   );
-};
-
-export default React.forwardRef(TableActions);
+});

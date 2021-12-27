@@ -44,7 +44,7 @@ export type DataTableProps = {
   size?: "large" | "default" | "small";
 };
 
-const DataTable = ({
+export const DataTable = React.forwardRef(function DataTable({
   rows,
   headers,
   activeFilters,
@@ -58,7 +58,7 @@ const DataTable = ({
   itemsPerPage,
   customSearchFilterFn,
   children
-}: DataTableProps): JSX.Element => {
+}: DataTableProps): JSX.Element {
   const [tableContainerProps] = useState<Partial<TableContainerProps>>({});
   const [tableProps] = useState<Partial<TableProps>>({});
   const [tableHeadProps] = useState<Partial<TableHeadProps>>();
@@ -149,6 +149,4 @@ const DataTable = ({
       })}
     </div>
   );
-};
-
-export default DataTable;
+});

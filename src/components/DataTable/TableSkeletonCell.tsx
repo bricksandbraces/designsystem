@@ -10,10 +10,10 @@ export type TableSkeletonCellProps = {
   className?: string;
 };
 
-const TableSkeletonCell = (
+export const TableSkeletonCell = React.forwardRef(function TableSkeletonCell(
   { className, ...rest }: TableSkeletonCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
+) {
   return (
     <td
       className={cx(`${prefix}--datatable-skeleton__cell`, className)}
@@ -25,6 +25,4 @@ const TableSkeletonCell = (
       </span>
     </td>
   );
-};
-
-export default React.forwardRef(TableSkeletonCell);
+});

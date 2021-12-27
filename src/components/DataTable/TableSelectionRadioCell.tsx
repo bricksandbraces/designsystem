@@ -30,35 +30,35 @@ export type TableSelectionRadioCellProps = {
   label?: string;
 };
 
-const TableSelectionRadioCell = (
-  {
-    id,
-    defaultChecked,
-    checked,
-    onChange,
-    label,
-    ...rest
-  }: TableSelectionRadioCellProps,
-  ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
-  return (
-    <TableBodyCell
-      className={cx(`${prefix}--datatable-body__cell-selection`, {
-        [`${prefix}--datatable-body__cell-selection--checked`]: checked
-      })}
-      ref={ref}
-      {...rest}
-    >
-      <RadioButton
-        id={id}
-        value="radio-selection"
-        checked={checked}
-        defaultChecked={defaultChecked}
-        onChange={onChange}
-        label={label}
-      />
-    </TableBodyCell>
-  );
-};
-
-export default React.forwardRef(TableSelectionRadioCell);
+export const TableSelectionRadioCell = React.forwardRef(
+  function TableSelectionRadioCell(
+    {
+      id,
+      defaultChecked,
+      checked,
+      onChange,
+      label,
+      ...rest
+    }: TableSelectionRadioCellProps,
+    ref: React.ForwardedRef<HTMLTableCellElement>
+  ) {
+    return (
+      <TableBodyCell
+        className={cx(`${prefix}--datatable-body__cell-selection`, {
+          [`${prefix}--datatable-body__cell-selection--checked`]: checked
+        })}
+        ref={ref}
+        {...rest}
+      >
+        <RadioButton
+          id={id}
+          value="radio-selection"
+          checked={checked}
+          defaultChecked={defaultChecked}
+          onChange={onChange}
+          label={label}
+        />
+      </TableBodyCell>
+    );
+  }
+);

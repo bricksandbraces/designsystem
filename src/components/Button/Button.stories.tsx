@@ -11,11 +11,11 @@ import {
   IconLayoutGridAdd,
   IconUnderline
 } from "@tabler/icons";
-import Button from "./Button";
-import IconOnlyButton from "./IconOnlyButton";
-import IconOnlyButtonSkeleton from "./IconOnlyButtonSkeleton";
-import ButtonSkeleton from "./ButtonSkeleton";
-import IconOnlyButtonGroup from "./IconOnlyButtonGroup";
+import { Button } from "./Button";
+import { IconOnlyButton } from "./IconOnlyButton";
+import { IconOnlyButtonSkeleton } from "./IconOnlyButtonSkeleton";
+import { ButtonSkeleton } from "./ButtonSkeleton";
+import { IconOnlyButtonGroup } from "./IconOnlyButtonGroup";
 
 export default {
   title: "Components Ready/Button",

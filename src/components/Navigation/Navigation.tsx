@@ -10,15 +10,13 @@ export type NavigationProps = {
   children: React.ReactNode;
 };
 
-const Navigation = (
+export const Navigation = React.forwardRef(function Navigation(
   { children }: NavigationProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   return (
     <header className={cx(`${prefix}--navigation`)} ref={ref}>
       {children}
     </header>
   );
-};
-
-export default React.forwardRef(Navigation);
+});

@@ -20,10 +20,10 @@ type ModalHeaderProps = {
   subHeadline?: string;
 };
 
-const ModalHeader = (
+export const ModalHeader = React.forwardRef(function ModalHeader(
   { className, headline, subHeadline }: ModalHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div className={cx(`${prefix}--modal-header`, className)} ref={ref}>
       <Headline type="h4" className={`${prefix}--modal-header__headline`}>
@@ -34,6 +34,4 @@ const ModalHeader = (
       </Body>
     </div>
   );
-};
-
-export default React.forwardRef(ModalHeader);
+});

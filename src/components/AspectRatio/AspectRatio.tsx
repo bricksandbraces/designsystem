@@ -19,12 +19,12 @@ export type AspectRatioProps = {
   className?: string;
 };
 
-const AspectRatio = ({
+export const AspectRatio = function AspectRatio({
   children,
   ratio,
   className,
   ...rest
-}: AspectRatioProps) => {
+}: AspectRatioProps) {
   return (
     <div
       className={cx(
@@ -37,5 +37,3 @@ const AspectRatio = ({
     </div>
   );
 };
-
-export default AspectRatio;

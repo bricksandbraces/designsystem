@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type OverflowMenuItemProps = {
+export type OverflowMenuItemProps = {
   /**
    * OverflowMenuItem Message
    */
@@ -44,13 +44,13 @@ type OverflowMenuItemProps = {
   onClick?: (event: any) => void;
 };
 
-const OverflowMenuItem = ({
+export const OverflowMenuItem = function ({
   children,
   icon,
   danger,
   href,
   ...rest
-}: OverflowMenuItemProps) => {
+}: OverflowMenuItemProps) {
   const classes = cx(`${prefix}--overflowmenu-item`, {
     [`${prefix}--overflowmenu-item__danger`]: danger
   });
@@ -80,5 +80,3 @@ const OverflowMenuItem = ({
     </>
   );
 };
-
-export default OverflowMenuItem;

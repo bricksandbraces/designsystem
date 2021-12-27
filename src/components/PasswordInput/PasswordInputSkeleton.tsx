@@ -1,11 +1,11 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 import { SkeletonText } from "../..";
 import { IconEye } from "@tabler/icons";
 
-type PasswordInputSkeletonProps = {
+export type PasswordInputSkeletonProps = {
   /**
    * PasswordInputSkeleton ClassName
    */
@@ -17,10 +17,10 @@ type PasswordInputSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const PasswordInputSkeleton = ({
+export const PasswordInputSkeleton = function PasswordInputSkeleton({
   size = "default",
   className
-}: PasswordInputSkeletonProps) => {
+}: PasswordInputSkeletonProps) {
   return (
     <div
       className={cx(
@@ -42,5 +42,3 @@ const PasswordInputSkeleton = ({
     </div>
   );
 };
-
-export default PasswordInputSkeleton;

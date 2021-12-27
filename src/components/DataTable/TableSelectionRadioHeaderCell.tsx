@@ -5,19 +5,19 @@ import cx from "classnames";
 
 export type TableSelectionRadioHeaderCellProps = {};
 
-const TableSelectionRadioHeaderCell = (
-  { ...rest }: TableSelectionRadioHeaderCellProps,
-  ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
-  return (
-    <TableHeadCell
-      className={cx(`${prefix}--datatable-body__cell-selection`)}
-      ref={ref}
-      {...rest}
-    >
-      <span />
-    </TableHeadCell>
-  );
-};
-
-export default React.forwardRef(TableSelectionRadioHeaderCell);
+export const TableSelectionRadioHeaderCell = React.forwardRef(
+  function TableSelectionRadioHeaderCell(
+    { ...rest }: TableSelectionRadioHeaderCellProps,
+    ref: React.ForwardedRef<HTMLTableCellElement>
+  ) {
+    return (
+      <TableHeadCell
+        className={cx(`${prefix}--datatable-body__cell-selection`)}
+        ref={ref}
+        {...rest}
+      >
+        <span />
+      </TableHeadCell>
+    );
+  }
+);

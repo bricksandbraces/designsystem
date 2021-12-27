@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "./SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "./SkeletonAnimatedContainer";
 
 export type SkeletonTextProps = {
   /**
@@ -15,10 +15,10 @@ export type SkeletonTextProps = {
   style?: React.CSSProperties;
 };
 
-const SkeletonText = (
+export const SkeletonText = React.forwardRef(function SkeletonText(
   { className, ...rest }: SkeletonTextProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <SkeletonAnimatedContainer
       className={cx(`${prefix}--skeleton-text`, className)}
@@ -26,6 +26,4 @@ const SkeletonText = (
       {...rest}
     />
   );
-};
-
-export default React.forwardRef(SkeletonText);
+});

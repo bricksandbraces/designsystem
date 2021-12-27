@@ -35,6 +35,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "import/prefer-default-export": "off",
     "import/no-cycle": "off",
     "arrow-body-style": "off",
     "@typescript-eslint/indent": "off",

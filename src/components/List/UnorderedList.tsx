@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 
-type UnorderedListProps = {
+export type UnorderedListProps = {
   /**
    * UnorderedList Children
    */
@@ -19,7 +19,11 @@ type UnorderedListProps = {
   nested?: boolean;
 };
 
-const UnorderedList = ({ nested, children, className }: UnorderedListProps) => {
+export const UnorderedList = function UnorderedList({
+  nested,
+  children,
+  className
+}: UnorderedListProps) {
   return (
     <ul
       className={cx(
@@ -32,5 +36,3 @@ const UnorderedList = ({ nested, children, className }: UnorderedListProps) => {
     </ul>
   );
 };
-
-export default UnorderedList;

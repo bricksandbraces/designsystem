@@ -44,7 +44,7 @@ export type SideNavItemProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const SideNavItem = (
+export const SideNavItem = React.forwardRef(function SideNavItem(
   {
     href,
     label,
@@ -55,7 +55,7 @@ const SideNavItem = (
     onClick
   }: SideNavItemProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-) => {
+) {
   return (
     <>
       {href ? (
@@ -99,6 +99,4 @@ const SideNavItem = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(SideNavItem);
+});

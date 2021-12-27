@@ -1,7 +1,7 @@
 import React, { ReactHTML } from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 import {
   IconChevronLeft,
   IconChevronRight,
@@ -69,7 +69,7 @@ export type PaginationProps = {
   navWrapper?: boolean;
 };
 
-const Pagination = (
+export const Pagination = React.forwardRef(function Pagination(
   {
     totalPages,
     pagesShown,
@@ -84,7 +84,7 @@ const Pagination = (
     className
   }: PaginationProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [currentIndex, performPageChange] = useControlledValue(
     page,
     defaultPage,
@@ -205,6 +205,4 @@ const Pagination = (
       </ul>
     </WrapperElement>
   );
-};
-
-export default React.forwardRef(Pagination);
+});

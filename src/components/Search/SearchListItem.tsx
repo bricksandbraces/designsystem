@@ -54,7 +54,7 @@ export type SearchListItemProps = {
   manuallyHovered?: boolean;
 };
 
-const SearchListItem = (
+export const SearchListItem = React.forwardRef(function SearchListItem(
   {
     className,
     type,
@@ -66,7 +66,7 @@ const SearchListItem = (
     onMouseLeave
   }: SearchListItemProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
-) => {
+) {
   const [hovered, setHovered] = useState<boolean>(manuallyHovered ?? false);
   useEffect(() => {
     if (manuallyHovered !== undefined) {
@@ -111,8 +111,4 @@ const SearchListItem = (
       {label}
     </a>
   );
-};
-
-export default React.forwardRef<HTMLAnchorElement, SearchListItemProps>(
-  SearchListItem
-);
+});

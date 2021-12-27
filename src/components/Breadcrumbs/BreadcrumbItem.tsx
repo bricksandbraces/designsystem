@@ -32,7 +32,7 @@ export type BreadcrumbItemProps = {
   linkProps?: Omit<LinkProps, "children">;
 };
 
-const BreadcrumbItem = (
+export const BreadcrumbItem = React.forwardRef(function BreadcrumpItem(
   {
     children,
     currentItem,
@@ -42,7 +42,7 @@ const BreadcrumbItem = (
     ...rest
   }: BreadcrumbItemProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-) => {
+) {
   return (
     <li
       className={cx(`${prefix}--breadcrumb-item`, {
@@ -65,6 +65,4 @@ const BreadcrumbItem = (
       <IconChevronRight aria-hidden />
     </li>
   );
-};
-
-export default React.forwardRef(BreadcrumbItem);
+});
