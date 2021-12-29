@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { InlineNotification, ToastNotification } from "../..";
 
 export default {
-  title: "Components Ready/Notification",
+  title: "Components/Notification",
   decorators: [withKnobs]
 };
 

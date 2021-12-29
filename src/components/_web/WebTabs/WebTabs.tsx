@@ -3,7 +3,7 @@ import React from "react";
 import { mapReactChildren } from "../../../helpers/reactUtilities";
 import { useControlledValue } from "../../../hooks/useControlled";
 import { prefix } from "../../../settings";
-import { Body } from "../../Typography/Typography";
+import { Caption } from "../../Typography/Typography";
 import { WebTabProps } from "./WebTab";
 
 export type WebTabsProps = {
@@ -61,9 +61,12 @@ export const WebTabs = React.forwardRef(function WebTabs(
                 performIndexChange(i);
               }}
             >
-              <Body type="body-02" className={`${prefix}--webtabs-btn__label`}>
+              <Caption
+                type="body-02"
+                className={`${prefix}--webtabs-btn__label`}
+              >
                 {props.title}
-              </Body>
+              </Caption>
             </button>
           );
         })}

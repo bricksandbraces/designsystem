@@ -3,7 +3,7 @@ import React from "react";
 import { prefix } from "../../settings";
 import { Column, Grid } from "./Grid";
 
-export default { title: "Components Ready/Grid", decorators: [withKnobs] };
+export default { title: "Components/Grid", decorators: [withKnobs] };
 
 export const Auto = () => {
   return (

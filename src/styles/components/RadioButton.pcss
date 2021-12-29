@@ -55,7 +55,6 @@
       + .$(prefix)--radiobutton-label
       > svg
       > .$(prefix)--radiobutton-selected__box {
-      transition: color var(--transition-app-01);
       color: var(--color-focus);
     }
 
@@ -148,7 +147,6 @@
       &__text {
         margin-left: var(--size-spacing-03);
         transform: translateY(0.125rem);
-        transition: color var(--transition-app-01);
       }
     }
 
@@ -171,7 +169,6 @@
 
     &-content {
       margin-left: var(--size-spacing-03);
-      transition: color var(--transition-app-01);
     }
   }
 
@@ -184,6 +181,10 @@
     }
     & > .$(prefix)--skeleton-animated.$(prefix)--radiobutton {
       margin: 0;
+    }
+
+    & > .$(prefix)--skeleton-animated.$(prefix)--skeleton-text {
+      margin-left: var(--size-spacing-03);
     }
     & > .$(prefix)--skeleton-animated {
       border: 0;

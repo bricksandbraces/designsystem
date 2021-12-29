@@ -5,7 +5,7 @@ import { CopyButton } from "./CopyButton";
 import { CopyButtonSkeleton } from "./CopyButtonSkeleton";
 
 export default {
-  title: "Components Ready/CopyButton",
+  title: "Components/CopyButton",
   decorators: [withKnobs]
 };
 

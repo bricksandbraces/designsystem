@@ -5,7 +5,7 @@ import { AccordionItem } from "./AccordionItem";
 import { AccordionSkeleton } from "./AccordionSkeleton";
 
 export default {
-  title: "Components Ready/Accordion",
+  title: "Components/Accordion",
   decorators: [withKnobs]
 };
 

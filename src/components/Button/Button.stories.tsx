@@ -18,7 +18,7 @@ import { IconOnlyButtonGroup } from "./IconOnlyButtonGroup";
 import { IconOnlyButtonSkeleton } from "./IconOnlyButtonSkeleton";
 
 export default {
-  title: "Components Ready/Button",
+  title: "Components/Button",
   decorators: [withKnobs]
 };
 

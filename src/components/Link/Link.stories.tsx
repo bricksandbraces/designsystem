@@ -5,7 +5,7 @@ import React from "react";
 import { Body } from "../Typography/Typography";
 import { Link } from "./Link";
 
-export default { title: "Components Ready/Link", decorators: [withKnobs] };
+export default { title: "Components/Link", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

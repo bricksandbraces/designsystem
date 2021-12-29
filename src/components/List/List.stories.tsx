@@ -5,7 +5,7 @@ import { ListItem } from "./ListItem";
 import { OrderedList } from "./OrderedList";
 import { UnorderedList } from "./UnorderedList";
 
-export default { title: "Components Ready/List", decorators: [withKnobs] };
+export default { title: "Components/List", decorators: [withKnobs] };
 
 export const Ordered = () => {
   return (

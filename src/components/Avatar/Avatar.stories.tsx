@@ -15,7 +15,7 @@ import { AvatarGroupSkeleton } from "./AvatarGroupSkeleton";
 import { AvatarList, AvatarListItem } from "./AvatarList";
 import { AvatarSkeleton } from "./AvatarSkeleton";
 
-export default { title: "Components Ready/Avatar", decorators: [withKnobs] };
+export default { title: "Components/Avatar", decorators: [withKnobs] };
 
 const sizeOptions = {
   Small: "small",

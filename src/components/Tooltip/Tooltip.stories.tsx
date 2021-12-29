@@ -4,7 +4,7 @@ import { IconInfoCircle } from "@tabler/icons";
 import React from "react";
 import { Button, ContainerTooltip, IconTrigger, Tooltip } from "../..";
 
-export default { title: "Components Ready/Tooltip", decorators: [withKnobs] };
+export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
 const themeOptions = {
   light: "light",

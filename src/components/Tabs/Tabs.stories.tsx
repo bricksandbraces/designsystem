@@ -9,7 +9,7 @@ import { Tab } from "./Tab";
 import { Tabs } from "./Tabs";
 import { TabsSkeleton } from "./TabsSkeleton";
 
-export default { title: "Components Ready/Tabs", decorators: [withKnobs] };
+export default { title: "Components/Tabs", decorators: [withKnobs] };
 
 export const Uncontrolled = () => {
   return (
