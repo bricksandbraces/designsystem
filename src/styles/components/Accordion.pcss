@@ -58,14 +58,14 @@
       padding: 0;
       list-style-type: none;
       border: 0.0625rem solid var(--color-border);
-      border-radius: var(--component-radius-default);
+      border-radius: var(--component-radius-02);
       background-color: var(--color-background);
 
       &__item {
         box-sizing: content-box;
         height: 100%;
         max-height: var(--size-field-default);
-        margin: var(--component-padding-inside);
+        margin: var(--size-spacing-inner);
         overflow: hidden;
         transition: max-height var(--transition-app-01);
         border: 0.0625rem solid transparent;
@@ -81,7 +81,7 @@
           transition: background-color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-default);
+          border-radius: var(--component-radius-02);
           outline: 0;
           background-color: transparent;
           color: var(--color-font-text-01);
@@ -95,7 +95,7 @@
           }
 
           &:focus-visible {
-            border-radius: var(--component-radius-default);
+            border-radius: var(--component-radius-02);
             border-color: var(--color-focus);
           }
 
@@ -153,8 +153,8 @@
     }
   }
   &--accordion.$(prefix)--skeleton {
-    padding: var(--component-padding-inside);
-    gap: var(--component-padding-inside);
+    padding: var(--size-spacing-inner);
+    gap: var(--size-spacing-inner);
     border: 0.0625rem solid transparent;
 
     & > .$(prefix)--accordion-list__item-title {

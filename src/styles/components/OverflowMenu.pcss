@@ -11,13 +11,13 @@
     display: inline-flex;
     flex-wrap: wrap;
     width: calc(var(--size-container-07) + var(--size-container-06));
-    padding: var(--component-padding-inside);
+    padding: var(--size-spacing-inner);
     transition: transform var(--transition-app-01),
       opacity var(--transition-app-01), visibility var(--transition-app-01) !important;
     border: 0.0625rem solid var(--color-border);
-    border-radius: var(--component-radius-default);
+    border-radius: var(--component-radius-02);
     background-color: var(--color-background);
-    box-shadow: var(--component-shadow-default);
+    box-shadow: var(--component-shadow-02);
 
     &.$(prefix)--overflowmenu-light {
       border-color: var(--color-border-light);
@@ -64,13 +64,13 @@
       & > div {
         display: flex;
         flex-flow: column;
-        gap: var(--component-padding-inside);
+        gap: var(--size-spacing-inner);
       }
 
       & > div > {
         &.$(prefix)--divider {
-          min-width: calc(100% + var(--component-padding-inside) * 2);
-          transform: translateX(calc(var(--component-padding-inside) * -1));
+          min-width: calc(100% + var(--size-spacing-inner) * 2);
+          transform: translateX(calc(var(--size-spacing-inner) * -1));
         }
 
         &.$(prefix)--overflowmenu-item {
@@ -84,7 +84,7 @@
           transition: background-color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-default);
+          border-radius: var(--component-radius-02);
           background-color: var(--color-background);
           color: var(--color-font-text-01);
           white-space: nowrap;
@@ -137,7 +137,7 @@
     }
 
     &[data-animation="bbds-animation"][data-state="hidden"] {
-      transform: translateY(calc(var(--component-padding-inside) * -1));
+      transform: translateY(calc(var(--size-spacing-inner) * -1));
       opacity: 0;
     }
   }

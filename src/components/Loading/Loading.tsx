@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { prefix } from "../../settings";
 import LottieAnimation from "../LottieAnimation/LottieAnimation";
-import loadingAnimation from "./animation.json";
+import defaultLoadingAnimation from "./animation.json";
 
 export type LoadingProps = {
   /**
@@ -40,6 +40,7 @@ const Loading = (
   {
     size = "default",
     loadingDescription,
+    loadingAnimation = defaultLoadingAnimation,
     active,
     className,
     withOverlay

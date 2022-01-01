@@ -44,16 +44,16 @@
     &-box {
       visibility: hidden;
       margin: 0;
-      padding: var(--component-padding-inside);
+      padding: var(--size-spacing-inner);
       transition: transform var(--transition-app-01),
         opacity var(--transition-app-01), visibility var(--transition-app-01);
       border: 0.0625rem solid var(--color-border);
-      border-radius: var(--component-radius-default);
+      border-radius: var(--component-radius-02);
       outline: 0;
       opacity: 0;
       background-color: transparent;
       background-color: var(--color-background);
-      box-shadow: var(--component-shadow-default);
+      box-shadow: var(--component-shadow-02);
       color: var(--color-font-text-01);
 
       &__open {
@@ -67,7 +67,7 @@
 
         &-items {
           display: flex;
-          gap: var(--component-padding-inside);
+          gap: var(--size-spacing-inner);
           flex-flow: column wrap;
         }
 
@@ -91,7 +91,7 @@
           align-items: center;
           padding: 0 var(--size-spacing-05);
           transition: background-color var(--transition-app-01);
-          border-radius: var(--component-radius-default);
+          border-radius: var(--component-radius-02);
 
           &--manual-hover {
             background-color: var(--color-hover);
@@ -160,7 +160,7 @@
       padding: 0 var(--size-spacing-05) 0 var(--size-spacing-08);
       transition: border var(--transition-app-01);
       border: 0.0625rem solid var(--color-border);
-      border-radius: var(--component-radius-default);
+      border-radius: var(--component-radius-02);
       outline: 0;
       background-color: var(--color-background);
       color: var(--color-font-text-01);
@@ -226,11 +226,9 @@
         margin-right: 0.0625rem;
         margin-bottom: 0.0625rem;
         border-top-left-radius: 0;
-        border-top-right-radius: calc(
-          var(--component-radius-default) - 0.0625rem
-        );
+        border-top-right-radius: calc(var(--component-radius-02) - 0.0625rem);
         border-bottom-right-radius: calc(
-          var(--component-radius-default) - 0.0625rem
+          var(--component-radius-02) - 0.0625rem
         );
         border-bottom-left-radius: 0;
       }
@@ -281,7 +279,7 @@
     & > .$(prefix)--skeleton-animated {
       justify-content: flex-start;
       padding: 0 var(--size-spacing-05);
-      border-radius: var(--component-radius-default);
+      border-radius: var(--component-radius-02);
 
       & > svg {
         transform: translateX(-0.0625rem);

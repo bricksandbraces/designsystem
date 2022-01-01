@@ -123,6 +123,9 @@ const dynamicTheme = {
     "color-badge-purple-font": colors["purple-900"],
     "color-badge-purple-border": colors["purple-200"],
 
+    /* " Overlay " */
+    "color-overlay": metrics.overlay,
+
     /* = = = Typography = = = */
 
     /* " Type Scale " */
@@ -230,24 +233,19 @@ const dynamicTheme = {
     "size-spacing-11": metrics["spacing-11"],
     "size-spacing-12": metrics["spacing-12"],
     "size-spacing-13": metrics["spacing-13"],
+    "size-spacing-inner": metrics["spacing-inner"],
 
     /* = = = Component = = = */
 
     /* " Border Radius " */
-    "component-radius-subtle": metrics["radius-subtle"],
-    "component-radius-default": metrics["radius-default"],
-    "component-radius-harsh": metrics["radius-harsh"],
-
-    /* " Component Inside Padding " */
-    "component-padding-inside": metrics["padding-inside"],
+    "component-radius-01": metrics["radius-01"],
+    "component-radius-02": metrics["radius-02"],
+    "component-radius-03": metrics["radius-03"],
 
     /* " Box Shadow " */
-    "component-shadow-subtle": metrics["shadow-subtle"],
-    "component-shadow-default": metrics["shadow-default"],
-    "component-shadow-harsh": metrics["shadow-harsh"],
-
-    /* " Overlay " */
-    "component-overlay": metrics.overlay,
+    "component-shadow-01": metrics["shadow-01"],
+    "component-shadow-02": metrics["shadow-02"],
+    "component-shadow-03": metrics["shadow-03"],
 
     /* = = = Transitions = = = */
 
@@ -372,6 +370,9 @@ const dynamicTheme = {
     "color-badge-purple-font": colors["purple-900"],
     "color-badge-purple-border": colors["purple-200"],
 
+    /* " Overlay " */
+    "color-overlay": metrics.overlay,
+
     /* = = = Typography = = = */
 
     /* " Type Scale " */
@@ -479,24 +480,19 @@ const dynamicTheme = {
     "size-spacing-11": metrics["spacing-11"],
     "size-spacing-12": metrics["spacing-12"],
     "size-spacing-13": metrics["spacing-13"],
+    "size-spacing-inner": metrics["spacing-inner"],
 
     /* = = = Component = = = */
 
     /* " Border Radius " */
-    "component-radius-subtle": metrics["radius-subtle"],
-    "component-radius-default": metrics["radius-default"],
-    "component-radius-harsh": metrics["radius-harsh"],
-
-    /* " Component Inside Padding " */
-    "component-padding-inside": metrics["padding-inside"],
+    "component-radius-01": metrics["radius-01"],
+    "component-radius-02": metrics["radius-02"],
+    "component-radius-03": metrics["radius-03"],
 
     /* " Box Shadow " */
-    "component-shadow-subtle": metrics["shadow-subtle"],
-    "component-shadow-default": metrics["shadow-default"],
-    "component-shadow-harsh": metrics["shadow-harsh"],
-
-    /* " Overlay " */
-    "component-overlay": metrics.overlay,
+    "component-shadow-01": metrics["shadow-04"],
+    "component-shadow-02": metrics["shadow-05"],
+    "component-shadow-03": metrics["shadow-06"],
 
     /* = = = Transitions = = = */
 

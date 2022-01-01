@@ -15,15 +15,15 @@
       justify-content: space-between;
       width: 100%;
       height: var(--size-container-05);
-      padding: var(--component-padding-inside);
+      padding: var(--size-spacing-inner);
       border-bottom: 0.0625rem solid var(--color-border);
       background-color: var(--color-background);
-      gap: var(--component-padding-inside);
+      gap: var(--size-spacing-inner);
 
       &__nav {
         display: flex;
         height: var(--size-container-04);
-        gap: var(--component-padding-inside);
+        gap: var(--size-spacing-inner);
         padding: 0 var(--size-spacing-04);
 
         &-trigger {
@@ -62,7 +62,7 @@
             color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-default);
+          border-radius: var(--component-radius-02);
           background-color: transparent;
           color: var(--color-font-unselected);
           white-space: nowrap;
@@ -75,7 +75,7 @@
             height: calc(var(--size-container-01) / 4);
             transition: width var(--transition-app-01),
               opacity var(--transition-app-01);
-            border-radius: calc(var(--component-radius-subtle) * 2);
+            border-radius: calc(var(--component-radius-01) * 2);
             opacity: 0;
             background-color: var(--color-decoration);
           }
@@ -107,15 +107,15 @@
 
       &__divider.$(prefix)--divider {
         width: 0.0625rem;
-        height: calc(100% + var(--component-padding-inside) * 2);
+        height: calc(100% + var(--size-spacing-inner) * 2);
         margin: 0 var(--size-spacing-03);
-        transform: translateY(calc(var(--component-padding-inside) * -1));
+        transform: translateY(calc(var(--size-spacing-inner) * -1));
       }
 
       &__action {
         display: inline-flex;
         height: var(--size-container-04);
-        gap: var(--component-padding-inside);
+        gap: var(--size-spacing-inner);
 
         &-item {
           @mixin type--body-02;
@@ -133,7 +133,7 @@
             color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-default);
+          border-radius: var(--component-radius-02);
           background-color: transparent;
           color: var(--color-font-unselected);
           white-space: nowrap;
