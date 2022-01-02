@@ -11,8 +11,8 @@
     min-width: var(--size-container-08);
     max-width: var(--size-container-08);
     height: 100%;
-    padding: 0 var(--component-padding-inside) var(--component-padding-inside)
-      var(--component-padding-inside);
+    padding: 0 var(--size-spacing-inner) var(--size-spacing-inner)
+      var(--size-spacing-inner);
     overflow-x: hidden;
     overflow-y: scroll;
     transition: transform var(--transition-app-01);
@@ -56,7 +56,7 @@
       transition: background-color var(--transition-app-01),
         border-color var(--transition-app-01), color var(--transition-app-01);
       border: 0.0625rem solid transparent;
-      border-radius: var(--component-radius-default);
+      border-radius: var(--component-radius-02);
       outline: 0;
       background-color: transparent;
       color: var(--color-font-text-03);
@@ -67,7 +67,7 @@
         left: 0;
         width: calc(var(--size-container-01) / 4);
         height: var(--size-container-02);
-        border-radius: calc(var(--component-radius-subtle) * 2);
+        border-radius: calc(var(--component-radius-01) * 2);
         opacity: 0;
         background-color: var(--color-decoration);
       }
@@ -155,7 +155,7 @@
           display: none;
           flex-wrap: wrap;
           width: 100%;
-          gap: var(--component-padding-inside);
+          gap: var(--size-spacing-inner);
 
           & > .$(prefix)--sidenav-item {
             padding-left: calc(var(--size-spacing-05) * 2);
@@ -173,9 +173,9 @@
     }
 
     &-divider {
-      min-width: calc(100% + var(--component-padding-inside) * 2);
-      max-width: calc(100% + var(--component-padding-inside) * 2);
-      margin: calc(var(--size-spacing-05) - var(--component-padding-inside)) 0;
+      min-width: calc(100% + var(--size-spacing-inner) * 2);
+      max-width: calc(100% + var(--size-spacing-inner) * 2);
+      margin: calc(var(--size-spacing-05) - var(--size-spacing-inner)) 0;
     }
 
     &-headline {
@@ -204,11 +204,11 @@
       top: 0;
       align-items: center;
       justify-content: space-between;
-      min-width: calc(100% + var(--component-padding-inside) * 2);
-      max-width: calc(100% + var(--component-padding-inside) * 2);
+      min-width: calc(100% + var(--size-spacing-inner) * 2);
+      max-width: calc(100% + var(--size-spacing-inner) * 2);
       height: calc(var(--size-container-06) + (var(--size-container-01) / 2));
       margin-bottom: var(--size-spacing-05);
-      padding: 0 calc(var(--size-spacing-05) + var(--component-padding-inside));
+      padding: 0 calc(var(--size-spacing-05) + var(--size-spacing-inner));
       background-color: var(--color-background);
 
       &::after {
@@ -267,12 +267,12 @@
         transition: visibility var(--transition-app-01),
           opacity var(--transition-app-01);
         opacity: 0;
-        background-color: var(--component-overlay);
+        background-color: var(--color-overlay);
       }
 
       &-open {
         transform: unset;
-        box-shadow: var(--component-shadow-default);
+        box-shadow: var(--component-shadow-02);
 
         & + .$(prefix)--sidenav-overlay {
           visibility: visible;

@@ -3,12 +3,12 @@
     display: inline-flex;
     flex-wrap: nowrap;
     width: 100%;
-    gap: var(--component-padding-inside);
+    gap: var(--size-spacing-inner);
 
     &-list {
       display: inline-flex;
       list-style: none;
-      gap: var(--component-padding-inside);
+      gap: var(--size-spacing-inner);
 
       &__item {
         & > .$(prefix)--button {
@@ -20,7 +20,7 @@
             height: calc(var(--size-container-01) / 4);
             transition: width var(--transition-app-01),
               opacity var(--transition-app-01);
-            border-radius: calc(var(--component-radius-subtle) * 2);
+            border-radius: calc(var(--component-radius-01) * 2);
             opacity: 0;
             background-color: var(--color-decoration);
           }

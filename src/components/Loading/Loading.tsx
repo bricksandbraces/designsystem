@@ -2,7 +2,7 @@ import cx from "classnames";
 import React, { forwardRef } from "react";
 import { prefix } from "../../settings";
 import { LottieAnimation } from "../LottieAnimation/LottieAnimation";
-import loadingAnimation from "./animation.json";
+import defaultLoadingAnimation from "./animation.json";
 
 export type LoadingProps = {
   /**
@@ -40,6 +40,7 @@ export const Loading = forwardRef(function Loading(
   {
     size = "default",
     loadingDescription,
+    loadingAnimation = defaultLoadingAnimation,
     active,
     className,
     withOverlay
