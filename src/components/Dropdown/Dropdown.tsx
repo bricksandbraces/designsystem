@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import cx from "classnames";
 import {
   IconAlertCircle,
   IconAlertTriangle,
   IconChevronDown
 } from "@tabler/icons";
+import Tippy from "@tippyjs/react";
+import cx from "classnames";
+import React, { useEffect, useRef, useState } from "react";
 import { findNextItem } from "../../helpers/arrayUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
-import Tippy from "@tippyjs/react";
+import { Label } from "../Typography/Typography";
 
 export type DropdownItem = {
   /**
@@ -130,7 +130,7 @@ export type DropdownProps = {
   onBlur?: React.FocusEventHandler<HTMLButtonElement>;
 };
 
-const Dropdown = (
+export const Dropdown = React.forwardRef(function Dropdown(
   {
     value,
     id,
@@ -152,7 +152,7 @@ const Dropdown = (
     readOnly
   }: DropdownProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const controlled = useControlled(value);
 
   const ulRef = useRef<HTMLUListElement>(null);
@@ -325,6 +325,4 @@ const Dropdown = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(Dropdown);
+});

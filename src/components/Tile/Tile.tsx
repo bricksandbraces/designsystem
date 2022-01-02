@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import cx from "classnames";
+import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
 export type TileProps = {
@@ -29,10 +29,10 @@ export type TileProps = {
   children?: ReactNode;
 };
 
-const Tile = (
+export const Tile = React.forwardRef(function Tile(
   { children, light, disabled, readOnly, className, ...rest }: TileProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       ref={ref}
@@ -50,6 +50,4 @@ const Tile = (
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(Tile);
+});

@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
-import Button from "../Button/Button";
+import React from "react";
 import { withoutPropagation } from "../../helpers/eventUtilities";
+import { prefix } from "../../settings";
+import { Button } from "../Button/Button";
 
 export type ModalFooterProps = {
   /**
@@ -31,7 +31,7 @@ export type ModalFooterProps = {
   onSecondaryClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const ModalFooter = (
+export const ModalFooter = React.forwardRef(function ModalFooter(
   {
     className,
     onSecondaryClick,
@@ -40,7 +40,7 @@ const ModalFooter = (
     primaryLabel
   }: ModalFooterProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div className={cx(`${prefix}--modal-footer`, className)} ref={ref}>
       {secondaryLabel && (
@@ -60,6 +60,4 @@ const ModalFooter = (
       </Button>
     </div>
   );
-};
-
-export default React.forwardRef(ModalFooter);
+});

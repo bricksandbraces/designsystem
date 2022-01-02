@@ -1,5 +1,5 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 
 export type LogoProps = {
@@ -29,10 +29,10 @@ export type LogoProps = {
   className?: string;
 };
 
-const Logo = (
+export const Logo = React.forwardRef(function Logo(
   { id, type, size, color, className }: LogoProps,
   ref: React.ForwardedRef<SVGSVGElement>
-) => {
+) {
   return (
     <>
       {type === "logomark" && (
@@ -81,6 +81,4 @@ const Logo = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(Logo);
+});

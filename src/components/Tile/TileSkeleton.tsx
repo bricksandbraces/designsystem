@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
 export type TileSkeletonProps = {
   /**
@@ -10,15 +10,17 @@ export type TileSkeletonProps = {
   className?: string;
 };
 
-const TileSkeleton = ({ className }: TileSkeletonProps) => (
-  <SkeletonAnimatedContainer
-    style={{ width: 128 }}
-    className={cx(
-      `${prefix}--tile`,
+export const TileSkeleton = function TileSkeleton({
+  className
+}: TileSkeletonProps) {
+  return (
+    <SkeletonAnimatedContainer
+      style={{ width: 128 }}
+      className={cx(
+        `${prefix}--tile`,
 
-      className
-    )}
-  />
-);
-
-export default TileSkeleton;
+        className
+      )}
+    />
+  );
+};

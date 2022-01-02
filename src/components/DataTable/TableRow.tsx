@@ -8,15 +8,13 @@ export type TableRowProps = {
   children: React.ReactNode;
 };
 
-const TableRow = (
+export const TableRow = React.forwardRef(function TableRow(
   { children, ...rest }: TableRowProps,
   ref: React.ForwardedRef<HTMLTableRowElement>
-) => {
+) {
   return (
     <tr className={`${prefix}--datatable-row`} {...rest} ref={ref}>
       {children}
     </tr>
   );
-};
-
-export default React.forwardRef(TableRow);
+});

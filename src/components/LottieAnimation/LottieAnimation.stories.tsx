@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
-import LottieAnimation from "./LottieAnimation";
-import animation from "./animation.json";
-import { Button } from "../..";
 import { AnimationItem } from "lottie-web";
+import React, { useEffect, useRef, useState } from "react";
+import { Button } from "../..";
+import animation from "./animation.json";
+import { LottieAnimation } from "./LottieAnimation";
 
 export default {
   title: "Components/LottieAnimation",

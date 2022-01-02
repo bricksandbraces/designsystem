@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
-import FloatingPanel from "../FloatingPanel/FloatingPanel";
-import Avatar from "./Avatar";
+import React from "react";
 import { prefix } from "../../settings";
+import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
+import { Avatar } from "./Avatar";
 
 export type AvatarListItemProps = {
   /**
@@ -79,10 +79,10 @@ export type AvatarListProps = {
   footer?: React.ReactNode;
 };
 
-const AvatarList = (
+export const AvatarList = React.forwardRef(function AvatarList(
   { id, className, children, footer }: AvatarListProps,
   ref: React.ForwardedRef<HTMLUListElement>
-) => {
+) {
   return (
     <FloatingPanel className={`${prefix}--avatar-list__panel`}>
       <ul id={id} className={cx(`${prefix}--avatar-list`, className)} ref={ref}>
@@ -93,6 +93,4 @@ const AvatarList = (
       )}
     </FloatingPanel>
   );
-};
-
-export default React.forwardRef(AvatarList);
+});

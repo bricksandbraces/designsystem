@@ -1,13 +1,15 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { Column, Grid } from "../../..";
-import Headline from "../../Typography/Headline";
-import Marketing from "../../Typography/Marketing";
-import CTASection from "../CTASection/CTASection";
-import Footer from "../Footer/Footer";
-import LeadSpace from "../LeadSpace/LeadSpace";
-import WebHeader from "../WebHeader/WebHeader";
-import BackToTop from "./BackToTop";
+import {
+  BackToTop,
+  CTASection,
+  Column,
+  Footer,
+  Grid,
+  LeadSpace,
+  WebHeader
+} from "../../..";
+import { Headline, Marketing } from "../../Typography/Typography";
 
 export default { title: "Web/BackToTop", decorators: [withKnobs] };
 

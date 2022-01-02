@@ -1,12 +1,12 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
-import Body from "../Typography/Body";
-import Checkbox from "./Checkbox";
-import CheckboxGroup from "./CheckboxGroup";
-import CheckboxSkeleton from "./CheckboxSkeleton";
+import { Body } from "../Typography/Typography";
+import { Checkbox } from "./Checkbox";
+import { CheckboxGroup } from "./CheckboxGroup";
+import { CheckboxSkeleton } from "./CheckboxSkeleton";
 
-export default { title: "Components Ready/Checkbox", decorators: [withKnobs] };
+export default { title: "Components/Checkbox", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

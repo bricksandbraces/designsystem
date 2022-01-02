@@ -1,13 +1,10 @@
-import React from "react";
 import "tippy.js/dist/tippy.css";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { select, withKnobs } from "@storybook/addon-knobs";
 import { IconInfoCircle } from "@tabler/icons";
-import { Button } from "../..";
-import Tooltip from "./Tooltip";
-import ContainerTooltip from "./ContainerTooltip";
-import IconTrigger from "./IconTrigger";
+import React from "react";
+import { Button, ContainerTooltip, IconTrigger, Tooltip } from "../..";
 
-export default { title: "Components Ready/Tooltip", decorators: [withKnobs] };
+export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
 const themeOptions = {
   light: "light",

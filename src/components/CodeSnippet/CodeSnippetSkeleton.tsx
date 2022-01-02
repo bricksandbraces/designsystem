@@ -1,10 +1,10 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import SkeletonContainer from "../Skeleton/SkeletonContainer";
-import SkeletonText from "../Skeleton/SkeletonText";
+import { SkeletonContainer } from "../Skeleton/SkeletonContainer";
+import { SkeletonText } from "../Skeleton/SkeletonText";
 
-type CodeSnippetSkeletonProps = {
+export type CodeSnippetSkeletonProps = {
   /**
    * CodeSnippetSkeleton ClassName
    */
@@ -16,10 +16,10 @@ type CodeSnippetSkeletonProps = {
   type?: "multi" | "single";
 };
 
-const CodeSnippetSkeleton = ({
+export const CodeSnippetSkeleton = function CodeSnippetSkeleton({
   type = "multi",
   className
-}: CodeSnippetSkeletonProps) => {
+}: CodeSnippetSkeletonProps) {
   return (
     <SkeletonContainer
       style={{ width: "100%" }}
@@ -43,5 +43,3 @@ const CodeSnippetSkeleton = ({
     </SkeletonContainer>
   );
 };
-
-export default CodeSnippetSkeleton;

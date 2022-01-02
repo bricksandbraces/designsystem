@@ -1,9 +1,9 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React from "react";
 import { SkeletonContainer, SkeletonText } from "../..";
+import { prefix } from "../../settings";
 
-type SwitcherSkeletonProps = {
+export type SwitcherSkeletonProps = {
   /**
    * SwitcherSkeleton ClassName
    */
@@ -15,10 +15,10 @@ type SwitcherSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const SwitcherSkeleton = ({
+export const SwitcherSkeleton = function SwitcherSkeleton({
   size = "default",
   className
-}: SwitcherSkeletonProps) => {
+}: SwitcherSkeletonProps) {
   return (
     <div
       className={cx(
@@ -46,5 +46,3 @@ const SwitcherSkeleton = ({
     </div>
   );
 };
-
-export default SwitcherSkeleton;

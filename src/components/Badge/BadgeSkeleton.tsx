@@ -1,9 +1,9 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
-type BadgeSkeletonProps = {
+export type BadgeSkeletonProps = {
   /**
    * BadgeSkeleton ClassName
    */
@@ -15,7 +15,10 @@ type BadgeSkeletonProps = {
   style?: React.CSSProperties;
 };
 
-const BadgeSkeleton = ({ className, style }: BadgeSkeletonProps) => {
+export const BadgeSkeleton = function BadgeSkeleton({
+  className,
+  style
+}: BadgeSkeletonProps) {
   return (
     <SkeletonAnimatedContainer
       style={{ width: 64, ...style }}
@@ -27,5 +30,3 @@ const BadgeSkeleton = ({ className, style }: BadgeSkeletonProps) => {
     />
   );
 };
-
-export default BadgeSkeleton;

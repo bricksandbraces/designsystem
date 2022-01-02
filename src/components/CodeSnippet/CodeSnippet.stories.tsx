@@ -1,10 +1,10 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import CodeSnippetSkeleton from "./CodeSnippetSkeleton";
-import CodeSnippet from "./CodeSnippet";
+import { CodeSnippet } from "./CodeSnippet";
+import { CodeSnippetSkeleton } from "./CodeSnippetSkeleton";
 
 export default {
-  title: "Components Ready/CodeSnippet",
+  title: "Components/CodeSnippet",
   decorators: [withKnobs]
 };
 

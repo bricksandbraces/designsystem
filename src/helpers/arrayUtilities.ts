@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
 import hash from "object-hash";
 import { useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * Helper function used for up/down navigation on an array list.

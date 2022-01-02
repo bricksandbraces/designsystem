@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import WebHeader from "./WebHeader";
+import { WebHeader } from "./WebHeader";
 
 export default { title: "Web/WebHeader", decorators: [withKnobs] };
 

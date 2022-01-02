@@ -1,7 +1,7 @@
 import { IconFilter } from "@tabler/icons";
 import React from "react";
 import { withoutPropagation } from "../../helpers/eventUtilities";
-import IconOnlyButton from "../Button/IconOnlyButton";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type TableFilterButtonProps = {
   /**
@@ -15,10 +15,10 @@ export type TableFilterButtonProps = {
   setFilterPanelOpen: (open: boolean) => void;
 };
 
-const TableFilterButton = (
+export const TableFilterButton = React.forwardRef(function TableFilterButton(
   { activeFiltersCount, setFilterPanelOpen, ...rest }: TableFilterButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   return (
     <IconOnlyButton
       ref={ref}
@@ -28,6 +28,4 @@ const TableFilterButton = (
       {...rest}
     />
   );
-};
-
-export default React.forwardRef(TableFilterButton);
+});

@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../../settings";
+import React from "react";
 import { SkeletonText } from "../../..";
+import { prefix } from "../../../settings";
 
 export type WebTabsSkeletonProps = {
   /**
@@ -10,7 +10,9 @@ export type WebTabsSkeletonProps = {
   className?: string;
 };
 
-const WebTabsSkeleton = ({ className }: WebTabsSkeletonProps) => {
+export const WebTabsSkeleton = function WebTabsSkeleton({
+  className
+}: WebTabsSkeletonProps) {
   return (
     <div
       className={cx(
@@ -37,5 +39,3 @@ const WebTabsSkeleton = ({ className }: WebTabsSkeletonProps) => {
     </div>
   );
 };
-
-export default WebTabsSkeleton;

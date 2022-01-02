@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
 import {
   Icon2fa,
@@ -14,21 +15,23 @@ import {
 
 import React, { useState } from "react";
 
-import Header from "./Header";
-import HeaderActionItem from "./HeaderActionItem";
-import HeaderAction from "./HeaderAction";
-import HeaderDivider from "./HeaderDivider";
-import HeaderNav from "./HeaderNav";
-import HeaderNavLink from "./HeaderNavLink";
-import Navigation from "./Navigation";
-import HeaderNavTrigger from "./HeaderNavTrigger";
-import { Logo, SideNav } from "../..";
-import { action } from "@storybook/addon-actions";
-import SideNavItem from "../SideNav/SideNavItem";
-import SideNavDivider from "../SideNav/SideNavDivider";
-import SideNavHeadline from "../SideNav/SideNavHeadline";
-import SideNavItemExpander from "../SideNav/SideNavItemExpander";
-import HeaderMenuButton from "./HeaderMenuButton";
+import {
+  Header,
+  HeaderAction,
+  HeaderActionItem,
+  HeaderDivider,
+  HeaderMenuButton,
+  HeaderNav,
+  HeaderNavLink,
+  HeaderNavTrigger,
+  Logo,
+  Navigation,
+  SideNav,
+  SideNavDivider,
+  SideNavHeadline,
+  SideNavItem,
+  SideNavItemExpander
+} from "../..";
 
 export default { title: "Components/Navigation", decorators: [withKnobs] };
 

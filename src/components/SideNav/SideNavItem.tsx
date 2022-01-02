@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import cx from "classnames";
+import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
 export type SideNavItemProps = {
@@ -44,7 +44,7 @@ export type SideNavItemProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const SideNavItem = (
+export const SideNavItem = React.forwardRef(function SideNavItem(
   {
     href,
     label,
@@ -55,7 +55,7 @@ const SideNavItem = (
     onClick
   }: SideNavItemProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-) => {
+) {
   return (
     <>
       {href ? (
@@ -99,6 +99,4 @@ const SideNavItem = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(SideNavItem);
+});

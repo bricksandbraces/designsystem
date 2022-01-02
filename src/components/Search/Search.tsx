@@ -1,20 +1,21 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
+import mergeRefs from "react-merge-refs";
+import { idfy } from "../../helpers/arrayUtilities";
 import {
-  useControlledValue,
-  useControlledInput
+  useControlledInput,
+  useControlledValue
 } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 import { BadgeColor } from "../Badge/Badge";
-import SearchListItem, {
+import { Button } from "../Button/Button";
+import { SearchContainer } from "./SeachContainer";
+import { SearchInput } from "./SearchInput";
+import {
+  SearchListItem,
   SearchListItemProps,
   SearchListItemType
 } from "./SearchListItem";
-import SearchInput from "./SearchInput";
-import SearchContainer from "./SeachContainer";
-import Button from "../Button/Button";
-import { idfy } from "../../helpers/arrayUtilities";
-import { prefix } from "../../settings";
-import mergeRefs from "react-merge-refs";
 
 export type SearchBadgeItem = {
   /**
@@ -168,7 +169,7 @@ export type SearchProps = {
   onItemFocusChange?: (newFocusedItemIndex: number | null) => void;
 };
 
-const Search = (
+export const Search = React.forwardRef(function Search(
   {
     id,
     value,
@@ -201,7 +202,7 @@ const Search = (
     onKeyDown
   }: SearchProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const indexedBadges = idfy(badges);
 
   // |- - textValue
@@ -384,6 +385,4 @@ const Search = (
       </SearchContainer>
     </>
   );
-};
-
-export default React.forwardRef(Search);
+});

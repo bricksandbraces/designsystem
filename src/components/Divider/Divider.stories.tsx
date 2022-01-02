@@ -1,8 +1,8 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Divider from "./Divider";
+import { Divider } from "./Divider";
 
-export default { title: "Components Ready/Divider", decorators: [withKnobs] };
+export default { title: "Components/Divider", decorators: [withKnobs] };
 
 const options = {
   subtle: "subtle",

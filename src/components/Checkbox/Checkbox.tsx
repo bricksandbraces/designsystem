@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React, { useEffect, useRef } from "react";
 import mergeRefs from "react-merge-refs";
+import { prefix } from "../../settings";
 
 export type CheckboxProps = {
   /**
@@ -70,7 +70,7 @@ export type CheckboxProps = {
   value: string;
 };
 
-const Checkbox = (
+export const Checkbox = React.forwardRef(function Checkbox(
   {
     id,
     value,
@@ -88,7 +88,7 @@ const Checkbox = (
     ...rest
   }: CheckboxProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const inputRef = useRef<HTMLInputElement>();
   useEffect(() => {
     if (inputRef.current) {
@@ -174,6 +174,4 @@ const Checkbox = (
       </label>
     </div>
   );
-};
-
-export default React.forwardRef(Checkbox);
+});

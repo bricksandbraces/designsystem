@@ -1,6 +1,6 @@
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
 
 export type HeaderNavProps = {
   /**
@@ -14,10 +14,10 @@ export type HeaderNavProps = {
   className?: string;
 };
 
-const HeaderNav = (
+export const HeaderNav = React.forwardRef(function HeaderNav(
   { className, children, ...rest }: HeaderNavProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   return (
     <nav
       {...rest}
@@ -27,6 +27,4 @@ const HeaderNav = (
       {children}
     </nav>
   );
-};
-
-export default React.forwardRef(HeaderNav);
+});

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
-import { RadioTileProps } from "./RadioTile";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { mapReactChildren } from "../../helpers/reactUtilities";
+import { RadioTileProps } from "./RadioTile";
 
-type RadioTileGroupProps = {
+export type RadioTileGroupProps = {
   /**
    * React className
    */
@@ -56,7 +56,7 @@ type RadioTileGroupProps = {
   ) => void;
 };
 
-const RadioTileGroup = (
+export const RadioTileGroup = React.forwardRef(function RadioTileGroup(
   {
     id,
     legendLabel,
@@ -70,7 +70,7 @@ const RadioTileGroup = (
     onChange
   }: RadioTileGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
-) => {
+) {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(
     defaultValue ?? value ?? null
@@ -118,6 +118,4 @@ const RadioTileGroup = (
       })}
     </fieldset>
   );
-};
-
-export default React.forwardRef(RadioTileGroup);
+});

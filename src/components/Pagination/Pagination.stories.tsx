@@ -1,6 +1,6 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Pagination from "./Pagination";
+import { Pagination } from "./Pagination";
 
 export default { title: "Components/Pagination", decorators: [withKnobs] };
 

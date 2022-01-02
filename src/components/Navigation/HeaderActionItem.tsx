@@ -1,8 +1,7 @@
-import React from "react";
-import { prefix } from "../../settings";
 import cx from "classnames";
-
-export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
+import React from "react";
+import { ButtonOrAnchor } from "../..";
+import { prefix } from "../../settings";
 
 export type HeaderActionItemProps = {
   /**
@@ -31,7 +30,7 @@ export type HeaderActionItemProps = {
   onClick?: React.MouseEventHandler<ButtonOrAnchor>;
 };
 
-const HeaderActionItem = (
+export const HeaderActionItem = React.forwardRef(function HeaderActionItem(
   {
     className,
     href,
@@ -41,7 +40,7 @@ const HeaderActionItem = (
     ...rest
   }: HeaderActionItemProps,
   ref: React.ForwardedRef<ButtonOrAnchor>
-) => {
+) {
   return (
     <>
       {href ? (
@@ -77,6 +76,4 @@ const HeaderActionItem = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(HeaderActionItem);
+});

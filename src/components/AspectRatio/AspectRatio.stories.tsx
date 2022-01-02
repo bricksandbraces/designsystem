@@ -1,10 +1,10 @@
 import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import AspectRatio from "./AspectRatio";
 import { prefix } from "../../settings";
+import { AspectRatio } from "./AspectRatio";
 
 export default {
-  title: "Components Ready/AspectRatio",
+  title: "Components/AspectRatio",
   decorators: [withKnobs]
 };
 

@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import cx from "classnames";
+import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
 export type AspectRatioProps = {
@@ -19,12 +19,12 @@ export type AspectRatioProps = {
   className?: string;
 };
 
-const AspectRatio = ({
+export const AspectRatio = function AspectRatio({
   children,
   ratio,
   className,
   ...rest
-}: AspectRatioProps) => {
+}: AspectRatioProps) {
   return (
     <div
       className={cx(
@@ -37,5 +37,3 @@ const AspectRatio = ({
     </div>
   );
 };
-
-export default AspectRatio;

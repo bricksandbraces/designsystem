@@ -1,11 +1,11 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import Body from "../Typography/Body";
-import ListItem from "./ListItem";
-import OrderedList from "./OrderedList";
-import UnorderedList from "./UnorderedList";
+import { Body } from "../Typography/Typography";
+import { ListItem } from "./ListItem";
+import { OrderedList } from "./OrderedList";
+import { UnorderedList } from "./UnorderedList";
 
-export default { title: "Components Ready/List", decorators: [withKnobs] };
+export default { title: "Components/List", decorators: [withKnobs] };
 
 export const Ordered = () => {
   return (

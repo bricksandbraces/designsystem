@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React from "react";
 import { Divider } from "../..";
+import { prefix } from "../../settings";
 
 export type SideNavDividerProps = {
   /**
@@ -15,10 +15,10 @@ export type SideNavDividerProps = {
   fromHeader?: boolean;
 };
 
-const SideNavDivider = (
+export const SideNavDivider = React.forwardRef(function SideNavDivider(
   { className, fromHeader }: SideNavDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
-) => {
+) {
   return (
     <Divider
       type="default"
@@ -30,6 +30,4 @@ const SideNavDivider = (
       ref={ref}
     />
   );
-};
-
-export default React.forwardRef(SideNavDivider);
+});

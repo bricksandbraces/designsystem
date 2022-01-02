@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React from "react";
 import { Divider } from "../..";
+import { prefix } from "../../settings";
 
 export type HeaderDividerProps = {
   /**
@@ -10,10 +10,10 @@ export type HeaderDividerProps = {
   className?: string;
 };
 
-const HeaderDivider = (
+export const HeaderDivider = React.forwardRef(function HeaderDivider(
   { className }: HeaderDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
-) => {
+) {
   return (
     <Divider
       type="default"
@@ -21,6 +21,4 @@ const HeaderDivider = (
       ref={ref}
     />
   );
-};
-
-export default React.forwardRef(HeaderDivider);
+});

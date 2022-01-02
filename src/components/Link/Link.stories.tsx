@@ -2,10 +2,10 @@ import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { IconArrowNarrowRight } from "@tabler/icons";
 import React from "react";
-import Body from "../Typography/Body";
-import Link from "./Link";
+import { Body } from "../Typography/Typography";
+import { Link } from "./Link";
 
-export default { title: "Components Ready/Link", decorators: [withKnobs] };
+export default { title: "Components/Link", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

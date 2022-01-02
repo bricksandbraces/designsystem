@@ -1,11 +1,11 @@
 import { action, actions } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import PasswordInput from "./PasswordInput";
-import PasswordInputSkeleton from "./PasswordInputSkeleton";
+import { PasswordInput } from "./PasswordInput";
+import { PasswordInputSkeleton } from "./PasswordInputSkeleton";
 
 export default {
-  title: "Components Ready/PasswordInput",
+  title: "Components/PasswordInput",
   decorators: [withKnobs]
 };
 

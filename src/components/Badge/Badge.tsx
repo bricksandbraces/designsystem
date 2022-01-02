@@ -1,6 +1,6 @@
-import React from "react";
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 
 export type BadgeColor =
@@ -87,7 +87,7 @@ export type BadgeProps = {
   onMouseLeave?: React.MouseEventHandler<ButtonOrDiv>;
 };
 
-const Badge = (
+export const Badge = React.forwardRef(function Badge(
   {
     children,
     className,
@@ -104,7 +104,7 @@ const Badge = (
     "aria-label": ariaLabel
   }: BadgeProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLDivElement>
-) => {
+) {
   const baseProps = {
     onMouseEnter,
     onMouseLeave,
@@ -148,6 +148,4 @@ const Badge = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(Badge);
+});

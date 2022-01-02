@@ -1,9 +1,9 @@
-import React from "react";
 import cx from "classnames";
-import Button from "../../Button/Button";
-import Link from "../../Link/Link";
+import React from "react";
 import { prefix } from "../../../settings";
+import { Button } from "../../Button/Button";
 import { Column, Grid } from "../../Grid/Grid";
+import { Link } from "../../Link/Link";
 
 export type CookieBannerProps = {
   /**

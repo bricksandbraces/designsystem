@@ -1,8 +1,8 @@
-import { text, object, withKnobs } from "@storybook/addon-knobs";
+import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import LeadSpace from "./LeadSpace";
-import Header from "../WebHeader/WebHeader";
-import LeadSpaceBlock from "./LeadSpaceBlock";
+import { WebHeader } from "../../..";
+import { LeadSpace } from "./LeadSpace";
+import { LeadSpaceBlock } from "./LeadSpaceBlock";
 
 export default { title: "Web/LeadSpace", decorators: [withKnobs] };
 
@@ -42,7 +42,7 @@ export const WithVideo = () => {
 export const WithHeader = () => {
   return (
     <>
-      <Header
+      <WebHeader
         baseUrl={text("baseUrl", "#")}
         linkItems={object("linkItems", [
           { href: "#", label: "About us" },
@@ -85,7 +85,7 @@ export const Block = () => {
 export const BlockWithHeader = () => {
   return (
     <>
-      <Header
+      <WebHeader
         baseUrl={text("baseUrl", "#")}
         linkItems={object("linkItems", [
           { href: "#", label: "About us" },

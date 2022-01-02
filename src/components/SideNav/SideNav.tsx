@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
-import { useControlledValue } from "../../hooks/useControlled";
+import React from "react";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
+import { useControlledValue } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 
 export type SideNavProps = {
   /**
@@ -48,7 +48,7 @@ export type SideNavProps = {
   basePath?: string;
 };
 
-const SideNav = (
+export const SideNav = React.forwardRef(function SideNav(
   {
     open,
     defaultOpen,
@@ -61,7 +61,7 @@ const SideNav = (
     logoAlt = "Logo"
   }: SideNavProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [currentlyOpen, setSideNavOpen] = useControlledValue(
     open,
     defaultOpen,
@@ -109,6 +109,4 @@ const SideNav = (
       />
     </>
   );
-};
-
-export default React.forwardRef(SideNav);
+});

@@ -1,10 +1,10 @@
 import { action } from "@storybook/addon-actions";
-import { text, object, withKnobs } from "@storybook/addon-knobs";
+import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import UserProfile from "./UserProfile";
+import { UserProfile } from "./UserProfile";
 
 export default {
-  title: "Components Ready/UserProfile",
+  title: "Components/UserProfile",
   decorators: [withKnobs]
 };
 

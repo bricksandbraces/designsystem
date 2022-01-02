@@ -1,7 +1,7 @@
+import cx from "classnames";
 import React from "react";
 import { Checkbox, TableBodyCell } from "../..";
 import { prefix } from "../../settings";
-import cx from "classnames";
 
 export type TableSelectionCellProps = {
   /**
@@ -30,7 +30,7 @@ export type TableSelectionCellProps = {
   label?: string;
 };
 
-const TableSelectionCell = (
+export const TableSelectionCell = React.forwardRef(function TableSelectionCell(
   {
     id,
     defaultChecked,
@@ -40,7 +40,7 @@ const TableSelectionCell = (
     ...rest
   }: TableSelectionCellProps,
   ref: React.ForwardedRef<HTMLTableCellElement>
-) => {
+) {
   return (
     <TableBodyCell
       className={cx(`${prefix}--datatable-body__cell-selection`, {
@@ -59,6 +59,4 @@ const TableSelectionCell = (
       />
     </TableBodyCell>
   );
-};
-
-export default React.forwardRef(TableSelectionCell);
+});

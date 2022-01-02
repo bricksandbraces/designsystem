@@ -1,10 +1,10 @@
-import React from "react";
 import cx from "classnames";
-import { TabProps } from "./Tab";
-import { prefix } from "../../settings";
-import Body from "../Typography/Body";
-import { useControlledValue } from "../../hooks/useControlled";
+import React from "react";
 import { mapReactChildren } from "../../helpers/reactUtilities";
+import { useControlledValue } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
+import { Body } from "../Typography/Typography";
+import { TabProps } from "./Tab";
 
 export type TabsProps = {
   /**
@@ -33,10 +33,10 @@ export type TabsProps = {
   className?: string;
 };
 
-const Tabs = (
+export const Tabs = React.forwardRef(function Tabs(
   { children, onChange, defaultIndex, className, index }: TabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [selectedIndex, performIndexChange] = useControlledValue(
     index,
     defaultIndex,
@@ -87,6 +87,4 @@ const Tabs = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(Tabs);
+});

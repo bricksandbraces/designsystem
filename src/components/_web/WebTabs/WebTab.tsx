@@ -17,8 +17,6 @@ export type WebTabProps = {
   disabled?: boolean;
 };
 
-const WebTab = ({ children }: WebTabProps) => {
+export const WebTab = function WebTab({ children }: WebTabProps) {
   return <>{children}</>;
 };
-
-export default WebTab;

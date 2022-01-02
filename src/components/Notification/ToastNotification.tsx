@@ -1,16 +1,15 @@
-import React from "react";
 import {
   IconAlertTriangle,
   IconCheck,
-  IconInfoCircle,
   IconForbid,
+  IconInfoCircle,
   IconX
 } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import Headline from "../Typography/Headline";
-import Body from "../Typography/Body";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { Body, Headline } from "../Typography/Typography";
 
 export type ToastNotificationProps = {
   /**
@@ -54,7 +53,7 @@ export type ToastNotificationProps = {
   onClose?: (event: any) => void;
 };
 
-const ToastNotification = (
+export const ToastNotification = React.forwardRef(function ToastNotification(
   {
     className,
     title,
@@ -66,7 +65,7 @@ const ToastNotification = (
     onClose
   }: ToastNotificationProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -141,6 +140,4 @@ const ToastNotification = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(ToastNotification);
+});

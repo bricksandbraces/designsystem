@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
 
   // TODO: Remove the placeholder variable definitions as soon as the light is defined.
   const currentTheme = !isDark
-    ? { ...baseTheme.light, "color-app-background": "#fff" }
-    : { ...baseTheme.dark, "color-app-background": "#000" };
+    ? { ...baseTheme.light, "color-app-background": "#F2F2F3" }
+    : { ...baseTheme.dark, "color-app-background": "#0C0C0D" };
 
   useEffect(() => {
     Object.keys(currentTheme).forEach((token) => {

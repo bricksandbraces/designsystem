@@ -1,5 +1,5 @@
 import React from "react";
-import usePreferredColorScheme from "../../../hooks/usePreferredColorScheme";
+import { usePreferredColorScheme } from "../../../hooks/usePreferredColorScheme";
 
 export type ThemeProviderProps = {
   /**
@@ -24,7 +24,7 @@ export type ThemeProviderProps = {
   className?: string;
 };
 
-const ThemeProvider = ({
+export const ThemeProvider = ({
   className,
   theme,
   style,
@@ -47,5 +47,3 @@ const ThemeProvider = ({
     </div>
   );
 };
-
-export default ThemeProvider;

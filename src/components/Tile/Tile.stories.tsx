@@ -1,10 +1,10 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import ClickableTile from "./ClickableTile";
-import Tile from "./Tile";
-import TileSkeleton from "./TileSkeleton";
+import { ClickableTile } from "./ClickableTile";
+import { Tile } from "./Tile";
+import { TileSkeleton } from "./TileSkeleton";
 
-export default { title: "Components Ready/Tile", decorators: [withKnobs] };
+export default { title: "Components/Tile", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

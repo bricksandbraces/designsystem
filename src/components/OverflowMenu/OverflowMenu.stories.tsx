@@ -8,8 +8,8 @@ import {
 } from "@tabler/icons";
 import React from "react";
 import { Divider } from "../..";
-import OverflowMenu from "./OverflowMenu";
-import OverflowMenuItem from "./OverflowMenuItem";
+import { OverflowMenu } from "./OverflowMenu";
+import { OverflowMenuItem } from "./OverflowMenuItem";
 
 export default {
   title: "Components/OverflowMenu",

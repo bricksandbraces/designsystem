@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
+import React, { forwardRef } from "react";
 import { prefix } from "../../settings";
-import LottieAnimation from "../LottieAnimation/LottieAnimation";
+import { LottieAnimation } from "../LottieAnimation/LottieAnimation";
 import defaultLoadingAnimation from "./animation.json";
 
 export type LoadingProps = {
@@ -36,7 +36,7 @@ export type LoadingProps = {
   size?: "small" | "default" | "large" | "inline";
 };
 
-const Loading = (
+export const Loading = forwardRef(function Loading(
   {
     size = "default",
     loadingDescription,
@@ -46,7 +46,7 @@ const Loading = (
     withOverlay
   }: LoadingProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <>
       {active && (
@@ -79,6 +79,4 @@ const Loading = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(Loading);
+});

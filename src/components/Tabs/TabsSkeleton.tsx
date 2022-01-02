@@ -1,16 +1,18 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
+import React from "react";
 import { SkeletonText } from "../..";
+import { prefix } from "../../settings";
 
-type TabsSkeletonProps = {
+export type TabsSkeletonProps = {
   /**
    * TabsSkeleton ClassName
    */
   className?: string;
 };
 
-const TabsSkeleton = ({ className }: TabsSkeletonProps) => {
+export const TabsSkeleton = function TabsSkeleton({
+  className
+}: TabsSkeletonProps) {
   return (
     <div
       className={cx(
@@ -31,5 +33,3 @@ const TabsSkeleton = ({ className }: TabsSkeletonProps) => {
     </div>
   );
 };
-
-export default TabsSkeleton;

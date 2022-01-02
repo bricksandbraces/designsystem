@@ -1,11 +1,11 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Accordion from "./Accordion";
-import AccordionItem from "./AccordionItem";
-import AccordionSkeleton from "./AccordionSkeleton";
+import { Accordion } from "./Accordion";
+import { AccordionItem } from "./AccordionItem";
+import { AccordionSkeleton } from "./AccordionSkeleton";
 
 export default {
-  title: "Components Ready/Accordion",
+  title: "Components/Accordion",
   decorators: [withKnobs]
 };
 

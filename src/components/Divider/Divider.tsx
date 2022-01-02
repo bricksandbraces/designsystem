@@ -1,5 +1,5 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 
 export type DividerProps = {
@@ -14,10 +14,10 @@ export type DividerProps = {
   className?: string;
 };
 
-const Divider = (
+export const Divider = React.forwardRef(function Divider(
   { type = "default", className }: DividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
-) => {
+) {
   return (
     <hr
       className={cx(
@@ -28,6 +28,4 @@ const Divider = (
       ref={ref}
     />
   );
-};
-
-export default React.forwardRef(Divider);
+});

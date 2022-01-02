@@ -1,13 +1,13 @@
+import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React, { useEffect, useState } from "react";
-import SwitcherItem from "./SwitcherItem";
-import Switcher from "./Switcher";
-import { Grid, Column } from "../Grid/Grid";
-import Body from "../Typography/Body";
-import { action } from "@storybook/addon-actions";
-import SwitcherSkeleton from "./SwitcherSkeleton";
+import { Column, Grid } from "../Grid/Grid";
+import { Body } from "../Typography/Typography";
+import { Switcher } from "./Switcher";
+import { SwitcherItem } from "./SwitcherItem";
+import { SwitcherSkeleton } from "./SwitcherSkeleton";
 
-export default { title: "Components Ready/Switcher", decorators: [withKnobs] };
+export default { title: "Components/Switcher", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

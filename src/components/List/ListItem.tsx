@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 
-type ListItemProps = {
+export type ListItemProps = {
   /**
    * ListItem Children
    */
@@ -14,8 +14,9 @@ type ListItemProps = {
   className?: string;
 };
 
-const ListItem = ({ children, className }: ListItemProps) => {
+export const ListItem = function ListItem({
+  children,
+  className
+}: ListItemProps) {
   return <li className={cx(`${prefix}--list-item`, className)}>{children}</li>;
 };
-
-export default ListItem;

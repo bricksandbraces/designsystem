@@ -8,19 +8,19 @@ export type TableToolbarActionsProps = {
   children: React.ReactNode;
 };
 
-const TableToolbarActions = (
-  { children, ...rest }: TableToolbarActionsProps,
-  ref: React.ForwardedRef<HTMLDivElement>
-) => {
-  return (
-    <div
-      className={`${prefix}--datatable-toolbar__actions`}
-      {...rest}
-      ref={ref}
-    >
-      {children}
-    </div>
-  );
-};
-
-export default React.forwardRef(TableToolbarActions);
+export const TableToolbarActions = React.forwardRef(
+  function TableToolbarActions(
+    { children, ...rest }: TableToolbarActionsProps,
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) {
+    return (
+      <div
+        className={`${prefix}--datatable-toolbar__actions`}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
+  }
+);

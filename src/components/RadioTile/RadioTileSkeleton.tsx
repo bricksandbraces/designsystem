@@ -1,7 +1,7 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
 export type RadioTileSkeletonProps = {
   /**
@@ -10,15 +10,17 @@ export type RadioTileSkeletonProps = {
   className?: string;
 };
 
-const RadioTileSkeleton = ({ className }: RadioTileSkeletonProps) => (
-  <SkeletonAnimatedContainer
-    style={{ width: 128 }}
-    className={cx(
-      `${prefix}--radiotile ${prefix}--tile`,
+export const RadioTileSkeleton = function RadioTileSkeleton({
+  className
+}: RadioTileSkeletonProps) {
+  return (
+    <SkeletonAnimatedContainer
+      style={{ width: 128 }}
+      className={cx(
+        `${prefix}--radiotile ${prefix}--tile`,
 
-      className
-    )}
-  />
-);
-
-export default RadioTileSkeleton;
+        className
+      )}
+    />
+  );
+};

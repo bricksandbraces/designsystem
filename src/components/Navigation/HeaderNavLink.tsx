@@ -1,6 +1,6 @@
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
 
 export type HeaderNavLinkProps = {
   /**
@@ -29,10 +29,10 @@ export type HeaderNavLinkProps = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-const HeaderNavLink = (
+export const HeaderNavLink = React.forwardRef(function HeaderNavLink(
   { className, href, label, selected, ...rest }: HeaderNavLinkProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
-) => {
+) {
   return (
     <a
       href={href}
@@ -47,6 +47,4 @@ const HeaderNavLink = (
       {label}
     </a>
   );
-};
-
-export default React.forwardRef(HeaderNavLink);
+});

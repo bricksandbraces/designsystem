@@ -1,8 +1,8 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import { Body, Headline } from "../..";
 import { IconAB } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import { Body, Headline } from "../..";
+import { prefix } from "../../settings";
 
 export type EmptyStateProps = {
   /**
@@ -31,7 +31,7 @@ export type EmptyStateProps = {
   orientation?: "vertical" | "horizontal";
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const EmptyState = (
+export const EmptyState = React.forwardRef(function EmptyState(
   {
     icon = <IconAB />,
     title,
@@ -43,7 +43,7 @@ const EmptyState = (
     ...rest
   }: EmptyStateProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -69,6 +69,4 @@ const EmptyState = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(EmptyState);
+});

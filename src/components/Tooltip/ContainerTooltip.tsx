@@ -1,10 +1,10 @@
-import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
 import Tippy from "@tippyjs/react";
 import type { TippyProps } from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
+import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
+import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 
 export type ContainerTooltipProps = {
@@ -29,13 +29,13 @@ export type ContainerTooltipProps = {
   body: ReactNode;
 } & Omit<TippyProps, "content">;
 
-const ContainerTooltip = ({
+export const ContainerTooltip = function ContainerTooltip({
   children,
   theme,
   title,
   body,
   ...props
-}: ContainerTooltipProps) => {
+}: ContainerTooltipProps) {
   return (
     <Tippy
       className={cx(`${prefix}--tooltip ${prefix}--tooltip-container`)}
@@ -58,5 +58,3 @@ const ContainerTooltip = ({
     </Tippy>
   );
 };
-
-export default ContainerTooltip;

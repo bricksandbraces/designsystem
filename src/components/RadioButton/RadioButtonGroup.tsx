@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
 import { assert } from "@openbricksandbraces/eloguent";
-import { RadioButtonProps } from "./RadioButton";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
+import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { mapReactChildren } from "../../helpers/reactUtilities";
+import { RadioButtonProps } from "./RadioButton";
 
 export type RadioButtonGroupProps = {
   /**
@@ -61,7 +61,7 @@ export type RadioButtonGroupProps = {
   ) => void;
 };
 
-const RadioButtonGroup = (
+export const RadioButtonGroup = React.forwardRef(function RadioButtonGroup(
   {
     id,
     legendLabel,
@@ -75,7 +75,7 @@ const RadioButtonGroup = (
     onChange
   }: RadioButtonGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
-) => {
+) {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string | null>(
     defaultValue ?? value ?? null
@@ -127,6 +127,4 @@ const RadioButtonGroup = (
       })}
     </fieldset>
   );
-};
-
-export default React.forwardRef(RadioButtonGroup);
+});

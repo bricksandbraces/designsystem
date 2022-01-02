@@ -1,45 +1,47 @@
 import { object, withKnobs } from "@storybook/addon-knobs";
+import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
 import React, { useState } from "react";
 import {
-  Grid,
+  Button,
+  ButtonGroup,
+  Checkbox,
+  CheckboxGroup,
   Column,
+  DataTable,
+  EmptyState,
+  Grid,
+  HeaderEntry,
+  IconOnlyButton,
+  OverflowMenu,
+  OverflowMenuItem,
+  RowEntry,
+  SearchInput,
   Table,
-  TableRow,
-  TableHead,
-  TableHeadCell,
-  TableContainer,
+  TableActions,
   TableBody,
   TableBodyCell,
-  SearchInput,
-  Checkbox,
-  Button,
-  ButtonGroup
+  TableContainer,
+  TableFilterButton,
+  TableFooter,
+  TableHead,
+  TableHeadCell,
+  TableHeader,
+  TablePagination,
+  TableRow,
+  TableSelectionCell,
+  TableSelectionHeadCell,
+  TableSelectionRadioCell,
+  TableSelectionRadioHeaderCell,
+  TableSkeletonCell,
+  TableTitle,
+  TableToolbar,
+  TableToolbarActions
 } from "../..";
 
-import TablePagination from "./TablePagination";
-import DataTable, { HeaderEntry, RowEntry } from "./DataTable";
-import TableActions from "./TableActions";
-import TableSelectionCell from "./TableSelectionCell";
-import TableSelectionHeadCell from "./TableSelectionHeadCell";
-import TableSelectionRadioCell from "./TableSelectionRadioCell";
-import TableSelectionRadioHeaderCell from "./TableSelectionRadioHeaderCell";
-import TableToolbar from "./TableToolbar";
-import TableFilterButton from "./TableFilterButton";
+import { TableFilterPanel } from "./TableFilterPanel";
 import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
-import TableTitle from "./TableTitle";
-import TableHeader from "./TableHeader";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
-import TableFooter from "./TableFooter";
-import TableToolbarActions from "./TableToolbarActions";
-import CheckboxGroup from "../Checkbox/CheckboxGroup";
-import TableFilterPanel from "./TableFilterPanel";
-import TableSkeletonCell from "./TableSkeletonCell";
-import OverflowMenu from "../OverflowMenu/OverflowMenu";
-import OverflowMenuItem from "../OverflowMenu/OverflowMenuItem";
-import EmptyState from "../EmptyState/EmptyState";
 
 export default { title: "Components/DataTable", decorators: [withKnobs] };
 

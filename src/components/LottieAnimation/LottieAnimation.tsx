@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import cx from "classnames";
 import Lottie, {
   AnimationConfig,
   AnimationConfigWithData,
   AnimationConfigWithPath,
   AnimationItem
 } from "lottie-web";
-import cx from "classnames";
+import React, { useEffect, useRef } from "react";
 import mergeRefs from "react-merge-refs";
 
 export type LottieProps = {
@@ -27,10 +27,10 @@ const defaultAnimationProps: Partial<AnimationConfig> = {
   autoplay: true
 };
 
-const LottieAnimation = (
+export const LottieAnimation = React.forwardRef(function LottieAnimation(
   { className, animationProps, onAnimationLoaded, ...rest }: LottieProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,6 +50,4 @@ const LottieAnimation = (
       {...rest}
     />
   );
-};
-
-export default React.forwardRef(LottieAnimation);
+});

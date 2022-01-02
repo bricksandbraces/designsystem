@@ -1,5 +1,5 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
 
 export type SearchContainerProps = {
@@ -19,10 +19,10 @@ export type SearchContainerProps = {
   children: React.ReactNode;
 };
 
-const SearchContainer = (
+export const SearchContainer = React.forwardRef(function SearchContainer(
   { open, children, className }: SearchContainerProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div
       className={cx(
@@ -37,6 +37,4 @@ const SearchContainer = (
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(SearchContainer);
+});

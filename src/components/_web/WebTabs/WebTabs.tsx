@@ -1,10 +1,10 @@
-import React from "react";
 import cx from "classnames";
-import { WebTabProps } from "./WebTab";
-import { prefix } from "../../../settings";
-import Body from "../../Typography/Body";
-import { useControlledValue } from "../../../hooks/useControlled";
+import React from "react";
 import { mapReactChildren } from "../../../helpers/reactUtilities";
+import { useControlledValue } from "../../../hooks/useControlled";
+import { prefix } from "../../../settings";
+import { Caption } from "../../Typography/Typography";
+import { WebTabProps } from "./WebTab";
 
 export type WebTabsProps = {
   /**
@@ -33,10 +33,10 @@ export type WebTabsProps = {
   className?: string;
 };
 
-const WebTabs = (
+export const WebTabs = React.forwardRef(function WebTabs(
   { children, onChange, defaultIndex, className, index }: WebTabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const [selectedIndex, performIndexChange] = useControlledValue(
     index,
     defaultIndex,
@@ -61,9 +61,9 @@ const WebTabs = (
                 performIndexChange(i);
               }}
             >
-              <Body type="body-02" className={`${prefix}--webtabs-btn__label`}>
+              <Caption className={`${prefix}--webtabs-btn__label`}>
                 {props.title}
-              </Body>
+              </Caption>
             </button>
           );
         })}
@@ -87,6 +87,4 @@ const WebTabs = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(WebTabs);
+});

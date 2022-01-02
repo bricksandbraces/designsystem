@@ -1,6 +1,6 @@
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../../settings";
-import cx from "classnames";
 
 export type WebHeaderLinkProps = {
   /**
@@ -24,10 +24,10 @@ export type WebHeaderLinkProps = {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-const WebHeaderLink = (
+export const WebHeaderLink = React.forwardRef(function WebHeaderLink(
   { className, href, children, ...rest }: WebHeaderLinkProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
-) => {
+) {
   return (
     <a
       href={href}
@@ -38,6 +38,4 @@ const WebHeaderLink = (
       {children}
     </a>
   );
-};
-
-export default React.forwardRef(WebHeaderLink);
+});

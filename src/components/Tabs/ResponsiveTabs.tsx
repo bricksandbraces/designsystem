@@ -1,7 +1,7 @@
 import React from "react";
-import Tabs from "./Tabs";
-import Accordion from "../Accordion/Accordion";
 import { prefix } from "../../settings";
+import { Accordion } from "../Accordion/Accordion";
+import { Tabs } from "./Tabs";
 
 export type ResonsiveTabsProps = {
   /**
@@ -25,10 +25,10 @@ export type ResonsiveTabsProps = {
   index?: number;
 };
 
-const ResponsiveTabs = (
+export const ResponsiveTabs = React.forwardRef(function ResponsiveTabs(
   { children, onChange, defaultIndex, index }: ResonsiveTabsProps,
   ref: React.ForwardedRef<HTMLDivElement | HTMLUListElement>
-) => {
+) {
   return (
     <>
       <Tabs
@@ -53,6 +53,4 @@ const ResponsiveTabs = (
       </Accordion>
     </>
   );
-};
-
-export default React.forwardRef(ResponsiveTabs);
+});

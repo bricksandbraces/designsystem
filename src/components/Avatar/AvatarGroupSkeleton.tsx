@@ -1,8 +1,8 @@
-import React from "react";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
-import AvatarGroup from "./AvatarGroup";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
+import { AvatarGroup } from "./AvatarGroup";
 
 export type AvatarGroupSkeletonProps = {
   /**
@@ -16,7 +16,10 @@ export type AvatarGroupSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const AvatarGroupSkeleton = ({ size, className }: AvatarGroupSkeletonProps) => {
+export const AvatarGroupSkeleton = function AvatarGroupSkeleton({
+  size,
+  className
+}: AvatarGroupSkeletonProps) {
   return (
     <AvatarGroup>
       <div className={cx(`${prefix}--avatar-container`, className)}>
@@ -49,5 +52,3 @@ const AvatarGroupSkeleton = ({ size, className }: AvatarGroupSkeletonProps) => {
     </AvatarGroup>
   );
 };
-
-export default AvatarGroupSkeleton;

@@ -1,7 +1,7 @@
+import { IconChevronDown } from "@tabler/icons";
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
-import { IconChevronDown } from "@tabler/icons";
 
 export type HeaderNavTriggerProps = {
   /**
@@ -30,10 +30,10 @@ export type HeaderNavTriggerProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const HeaderNavTrigger = (
+export const HeaderNavTrigger = React.forwardRef(function HeaderNavTrigger(
   { className, label, onClick, open, selected, ...rest }: HeaderNavTriggerProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   return (
     <button
       onClick={onClick}
@@ -52,6 +52,4 @@ const HeaderNavTrigger = (
       <IconChevronDown />
     </button>
   );
-};
-
-export default React.forwardRef(HeaderNavTrigger);
+});

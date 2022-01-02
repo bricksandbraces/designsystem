@@ -1,7 +1,7 @@
+import { IconMenu2, IconX } from "@tabler/icons";
+import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import cx from "classnames";
-import { IconMenu2, IconX } from "@tabler/icons";
 
 export type HeaderMenuButtonProps = {
   /**
@@ -30,10 +30,10 @@ export type HeaderMenuButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const HeaderMenuButton = (
+export const HeaderMenuButton = React.forwardRef(function HeaderMenuButton(
   { className, href, open, onClick, selected, ...rest }: HeaderMenuButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   return (
     <>
       <button
@@ -52,6 +52,4 @@ const HeaderMenuButton = (
       </button>
     </>
   );
-};
-
-export default React.forwardRef(HeaderMenuButton);
+});

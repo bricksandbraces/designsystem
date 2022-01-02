@@ -7,13 +7,13 @@ import { Button } from "../..";
 import { formatDate } from "../../helpers/dateUtilities";
 import { prefix } from "../../settings";
 
-import Label from "../Typography/Label";
-import DateInput from "./DateInput";
-import DatePicker from "./DatePicker";
-import DatePickerSkeleton from "./DatePickerSkeleton";
+import { Label } from "../Typography/Typography";
+import { DateInput } from "./DateInput";
+import { DatePicker } from "./DatePicker";
+import { DatePickerSkeleton } from "./DatePickerSkeleton";
 
 export default {
-  title: "Components Ready/DatePicker",
+  title: "Components/DatePicker",
   decorators: [withKnobs]
 };
 

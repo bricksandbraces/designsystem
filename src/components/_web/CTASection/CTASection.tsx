@@ -1,7 +1,7 @@
-import React from "react";
-import { prefix } from "../../../settings";
-import { Button, Column, Grid, TextInput } from "../../..";
 import { IconArrowNarrowRight } from "@tabler/icons";
+import React from "react";
+import { Button, Column, Grid, TextInput } from "../../..";
+import { prefix } from "../../../settings";
 
 export type CTASectionProps = {
   /**
@@ -20,14 +20,14 @@ export type CTASectionProps = {
   linkHref?: string;
 };
 
-const CTASection = (
+export const CTASection = React.forwardRef(function CTASection(
   {
     headline = "Let's create the next big innovation for the world of tomorrow.",
     linkHref = "#",
     linkTitle = "Together."
   }: CTASectionProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   return (
     <section className={`${prefix}--ctasection`} ref={ref}>
       <Grid narrow className={`${prefix}--ctasection-grid`}>
@@ -61,6 +61,4 @@ const CTASection = (
       </Grid>
     </section>
   );
-};
-
-export default React.forwardRef(CTASection);
+});

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
 import { assert } from "@openbricksandbraces/eloguent";
+import cx from "classnames";
+import React, { useEffect, useState } from "react";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlled } from "../../hooks/useControlled";
+import { prefix } from "../../settings";
 import { RadioTileProps } from "../RadioTile/RadioTile";
 
 export type CheckboxGroupProps = {
@@ -61,7 +61,7 @@ export type CheckboxGroupProps = {
   ) => void;
 };
 
-const CheckboxGroup = (
+export const CheckboxGroup = React.forwardRef(function CheckboxGroup(
   {
     id,
     legendLabel,
@@ -75,7 +75,7 @@ const CheckboxGroup = (
     name
   }: CheckboxGroupProps,
   ref: React.ForwardedRef<HTMLFieldSetElement>
-) => {
+) {
   const controlled = useControlled(value);
   const [selectedValue, setSelectedValue] = useState<string[]>(
     defaultValue ?? value ?? []
@@ -131,6 +131,4 @@ const CheckboxGroup = (
       })}
     </fieldset>
   );
-};
-
-export default React.forwardRef(CheckboxGroup);
+});

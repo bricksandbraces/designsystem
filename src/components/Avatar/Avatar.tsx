@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import cx from "classnames";
+import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
 export type AvatarProps = {
@@ -29,10 +29,10 @@ export type AvatarProps = {
   imgUrl?: string;
 };
 
-const Avatar = (
+export const Avatar = React.forwardRef(function Avatar(
   { size = "default", className, name, imgUrl, children }: AvatarProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div className={cx(`${prefix}--avatar-container`, className)} ref={ref}>
       <div className={cx(`${prefix}--avatar ${prefix}--avatar-${size}`)}>
@@ -53,6 +53,4 @@ const Avatar = (
       </div>
     </div>
   );
-};
-
-export default React.forwardRef(Avatar);
+});

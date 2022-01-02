@@ -1,7 +1,7 @@
-import React, { forwardRef, JSXElementConstructor, ReactElement } from "react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
+import React, { JSXElementConstructor, ReactElement } from "react";
 import { prefix } from "../../settings";
 
 export type IconTriggerProps = {
@@ -11,10 +11,10 @@ export type IconTriggerProps = {
   children?: ReactElement<any, string | JSXElementConstructor<any>>;
 };
 
-const IconTrigger = (
+export const IconTrigger = React.forwardRef(function IconTrigger(
   { children, ...props }: IconTriggerProps,
   ref: React.ForwardedRef<HTMLButtonElement>
-) => {
+) {
   return (
     <button
       type="button"
@@ -25,6 +25,4 @@ const IconTrigger = (
       {children}
     </button>
   );
-};
-
-export default forwardRef(IconTrigger);
+});

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import cx from "classnames";
-import Loading from "../Loading/Loading";
+import React, { useState } from "react";
 import { prefix } from "../../settings";
+import { Loading } from "../Loading/Loading";
 import animation from "./loadinganimation.json";
 
 export type ButtonOrAnchor = HTMLButtonElement | HTMLAnchorElement;
@@ -123,7 +123,7 @@ export type ButtonProps = {
   manualFocus?: boolean;
 };
 
-const Button = (
+export const Button = React.forwardRef(function Button(
   {
     kind = "primary",
     size = "default",
@@ -143,7 +143,7 @@ const Button = (
     ...rest
   }: ButtonProps,
   ref: React.ForwardedRef<ButtonOrAnchor>
-) => {
+) {
   /**
    * To maintain a consistent focus on our controls, we have to manually listen for the focus
    * state and can NOT use the focus-visible selector.
@@ -224,6 +224,4 @@ const Button = (
       )}
     </>
   );
-};
-
-export default React.forwardRef(Button);
+});

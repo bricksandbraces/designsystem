@@ -1,10 +1,10 @@
-import React from "react";
 import cx from "classnames";
-import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import React from "react";
 import { SkeletonText } from "../..";
+import { prefix } from "../../settings";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
-type RangeInputSkeletonProps = {
+export type RangeInputSkeletonProps = {
   /**
    * RangeInputSkeleton ClassName
    */
@@ -21,11 +21,11 @@ type RangeInputSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const RangeInputSkeleton = ({
+export const RangeInputSkeleton = React.forwardRef(function RangeInputSkeleton({
   size = "default",
   hideInput,
   className
-}: RangeInputSkeletonProps) => {
+}: RangeInputSkeletonProps) {
   return (
     <div
       className={cx(
@@ -65,6 +65,4 @@ const RangeInputSkeleton = ({
       </div>
     </div>
   );
-};
-
-export default RangeInputSkeleton;
+});

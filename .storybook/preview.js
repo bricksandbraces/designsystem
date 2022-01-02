@@ -25,16 +25,7 @@ export const parameters = {
   },
   actions: { argTypesRegex: "^on.*" },
   backgrounds: {
-    disabled: true,
-    default: "app-bg",
-    values: [
-      { name: "white", value: "#ffffff" },
-      { name: "app-bg", value: "#0c0c0d" },
-      {
-        name: "random-lynx",
-        value: 'url("https://luchs.hobbytes.de/image?width=1920&height=1080")'
-      }
-    ]
+    disabled: true
   },
   darkMode: {
     // Override the default dark theme

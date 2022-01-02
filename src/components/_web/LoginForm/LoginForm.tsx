@@ -1,8 +1,8 @@
 import React from "react";
-import TextInput from "../../TextInput/TextInput";
-import PasswordInput from "../../PasswordInput/PasswordInput";
-import { prefix } from "../../../settings";
 import { useControlledInput } from "../../../hooks/useControlled";
+import { prefix } from "../../../settings";
+import { PasswordInput } from "../../PasswordInput/PasswordInput";
+import { TextInput } from "../../TextInput/TextInput";
 
 export type LoginFormProps = {
   /**
@@ -82,7 +82,7 @@ export type LoginFormProps = {
   ) => void;
 };
 
-const LoginForm = (
+export const LoginForm = React.forwardRef(function LoginForm(
   {
     id,
     className,
@@ -98,7 +98,7 @@ const LoginForm = (
     onPasswordChange
   }: LoginFormProps,
   ref: React.ForwardedRef<HTMLFormElement>
-) => {
+) {
   const [, , handleEmailOnChange] = useControlledInput(
     emailValue,
     defaultEmailValue,
@@ -150,6 +150,4 @@ const LoginForm = (
       ></PasswordInput>
     </form>
   );
-};
-
-export default React.forwardRef(LoginForm);
+});

@@ -1,16 +1,15 @@
-import React from "react";
 import {
   IconAlertTriangle,
   IconCheck,
-  IconInfoCircle,
   IconForbid,
+  IconInfoCircle,
   IconX
 } from "@tabler/icons";
 import cx from "classnames";
+import React from "react";
 import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import Headline from "../Typography/Headline";
-import Body from "../Typography/Body";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { Body, Headline } from "../Typography/Typography";
 
 export type InlineNotificationProps = {
   /**
@@ -49,7 +48,7 @@ export type InlineNotificationProps = {
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const InlineNotification = (
+export const InlineNotification = React.forwardRef(function InlineNotification(
   {
     className,
     title,
@@ -60,7 +59,7 @@ const InlineNotification = (
     onClose
   }: InlineNotificationProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   const icons = {
     danger: IconForbid,
     success: IconCheck,
@@ -110,6 +109,4 @@ const InlineNotification = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(InlineNotification);
+});

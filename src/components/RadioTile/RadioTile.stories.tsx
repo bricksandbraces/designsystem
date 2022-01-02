@@ -1,12 +1,12 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import RadioTile from "./RadioTile";
-import RadioTileGroup from "./RadioTileGroup";
-import RadioTileSkeleton from "./RadioTileSkeleton";
+import { RadioTile } from "./RadioTile";
+import { RadioTileGroup } from "./RadioTileGroup";
+import { RadioTileSkeleton } from "./RadioTileSkeleton";
 
 export default {
-  title: "Components Ready/RadioTile",
+  title: "Components/RadioTile",
   decorators: [withKnobs]
 };
 

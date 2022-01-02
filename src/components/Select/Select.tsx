@@ -1,9 +1,9 @@
-import React from "react";
-import cx from "classnames";
 import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
 import { useControlledValue } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import { Label } from "../Typography/Typography";
 
 export type SelectOptionGroup = {
   /**
@@ -106,7 +106,7 @@ export type SelectProps = {
   warningText?: string;
 };
 
-const Select = (
+export const Select = React.forwardRef(function Select(
   {
     size = "default",
     id,
@@ -125,7 +125,7 @@ const Select = (
     onChange
   }: SelectProps,
   ref: React.ForwardedRef<HTMLSelectElement>
-) => {
+) {
   const firstAsGroup = options[0] as SelectOptionGroup;
   const first =
     firstAsGroup.group && firstAsGroup.options?.length > 0
@@ -225,6 +225,4 @@ const Select = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(Select);
+});

@@ -1,26 +1,26 @@
-import { boolean, withKnobs } from "@storybook/addon-knobs";
-import React, { useState } from "react";
-import {
-  IconSmartHome,
-  IconSend,
-  IconDatabase,
-  IconSearch,
-  IconApps,
-  Icon2fa,
-  IconAward,
-  IconCash,
-  IconAngle,
-  IconBrandTinder,
-  IconPlus
-} from "@tabler/icons";
-import SideNavItem from "./SideNavItem";
-import SideNavDivider from "./SideNavDivider";
-import SideNavHeadline from "./SideNavHeadline";
-import SideNavItemExpander from "./SideNavItemExpander";
-import { Logo, SideNav } from "../..";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import SideNavMobileHeader from "./SideNavMobileHeader";
 import { action } from "@storybook/addon-actions";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
+import {
+  Icon2fa,
+  IconAngle,
+  IconApps,
+  IconAward,
+  IconBrandTinder,
+  IconCash,
+  IconDatabase,
+  IconPlus,
+  IconSearch,
+  IconSend,
+  IconSmartHome
+} from "@tabler/icons";
+import React, { useState } from "react";
+import { Logo, SideNav } from "../..";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { SideNavDivider } from "./SideNavDivider";
+import { SideNavHeadline } from "./SideNavHeadline";
+import { SideNavItem } from "./SideNavItem";
+import { SideNavItemExpander } from "./SideNavItemExpander";
+import { SideNavMobileHeader } from "./SideNavMobileHeader";
 
 export default { title: "Components/SideNav", decorators: [withKnobs] };
 

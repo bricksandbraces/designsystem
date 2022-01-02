@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCookie } from "react-use";
+import { useConstant } from "../../../hooks/useConstant";
 import CookieBanner from "../CookieBanner/CookieBanner";
-import useConstant from "../../../hooks/useConstant";
 import CookieModal, {
   CookieSetting,
   CookieSettingWithState,
   OptType
 } from "../CookieModal/CookieModal";
 
-export type CookieModalProps = {
+export type CookiesComponentProps = {
   /**
    * Cookies BannerOpen - Override the banner open state.
    */
@@ -82,7 +82,7 @@ export type CookieModalProps = {
 /**
  * Full feature component for cookies.
  */
-const CookiesComponent = ({
+export const CookiesComponent = ({
   modalOpen,
   modalIntro,
   modalHeadline,
@@ -97,7 +97,7 @@ const CookiesComponent = ({
   settings,
   onClose,
   onSettingsSubmit
-}: CookieModalProps) => {
+}: CookiesComponentProps) => {
   const [cachedSettings, setCookieSettings, removeCookieSettings] =
     useCookie("cookieSettings");
   const [cachedRevision, setCookieRevision, removeCookieRevision] =
@@ -230,5 +230,3 @@ const CookiesComponent = ({
     </>
   );
 };
-
-export default CookiesComponent;

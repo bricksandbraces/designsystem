@@ -1,9 +1,9 @@
 import React from "react";
-import Accordion from "../../Accordion/Accordion";
 import { prefix } from "../../../settings";
-import WebTabs from "./WebTabs";
+import { Accordion } from "../../Accordion/Accordion";
+import { WebTabs } from "./WebTabs";
 
-export type ResonsiveTabsProps = {
+export type ResonsiveWebTabsProps = {
   /**
    * ResponsiveWebTabs ReactChildren
    */
@@ -25,10 +25,10 @@ export type ResonsiveTabsProps = {
   index?: number;
 };
 
-const ResponsiveWebTabs = (
-  { children, onChange, defaultIndex, index }: ResonsiveTabsProps,
+export const ResponsiveWebTabs = React.forwardRef(function ResponsiveWebTabs(
+  { children, onChange, defaultIndex, index }: ResonsiveWebTabsProps,
   ref: React.ForwardedRef<HTMLDivElement | HTMLUListElement>
-) => {
+) {
   return (
     <>
       <WebTabs
@@ -53,6 +53,4 @@ const ResponsiveWebTabs = (
       </Accordion>
     </>
   );
-};
-
-export default React.forwardRef(ResponsiveWebTabs);
+});

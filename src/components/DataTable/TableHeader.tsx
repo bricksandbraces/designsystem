@@ -8,15 +8,13 @@ export type TableHeaderProps = {
   children: React.ReactNode;
 };
 
-const TableHeader = (
+export const TableHeader = React.forwardRef(function TableHeader(
   { children }: TableHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
-) => {
+) {
   return (
     <div className={`${prefix}--datatable-header`} ref={ref}>
       {children}
     </div>
   );
-};
-
-export default React.forwardRef(TableHeader);
+});

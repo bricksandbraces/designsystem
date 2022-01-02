@@ -1,19 +1,19 @@
-import React from "react";
-import cx from "classnames";
 import {
   IconAlertCircle,
   IconAlertTriangle,
   IconMinus,
   IconPlus
 } from "@tabler/icons";
-import { prefix } from "../../settings";
-import Label from "../Typography/Label";
+import cx from "classnames";
+import React from "react";
+import mergeRefs from "react-merge-refs";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
-import mergeRefs from "react-merge-refs";
 import { useControlledInput } from "../../hooks/useControlled";
-import IconOnlyButton from "../Button/IconOnlyButton";
-import IconOnlyButtonGroup from "../Button/IconOnlyButtonGroup";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
+import { IconOnlyButtonGroup } from "../Button/IconOnlyButtonGroup";
+import { Label } from "../Typography/Typography";
 
 export type NumberInputProps = {
   /**
@@ -150,7 +150,7 @@ export type NumberInputProps = {
   float?: boolean;
 };
 
-const NumberInput = (
+export const NumberInput = React.forwardRef(function NumberInput(
   {
     id,
     className,
@@ -180,7 +180,7 @@ const NumberInput = (
     float = false
   }: NumberInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
-) => {
+) {
   const [inputRef, textValue, handleChange, setValueManually] =
     useControlledInput(
       value != null ? `${value}` : undefined,
@@ -368,6 +368,4 @@ const NumberInput = (
       )}
     </div>
   );
-};
-
-export default React.forwardRef(NumberInput);
+});

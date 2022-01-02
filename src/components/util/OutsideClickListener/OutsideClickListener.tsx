@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactElement, useEffect, useRef } from "react";
+import React, { ReactElement, useEffect, useRef } from "react";
 import mergeRefs from "react-merge-refs";
 
 export type OutsideClickListenerProps = {
@@ -7,39 +7,39 @@ export type OutsideClickListenerProps = {
   onClickOutside: (event: MouseEvent) => void;
 };
 
-const OutsideClickListener = (
-  { children, disabled = false, onClickOutside }: OutsideClickListenerProps,
-  ref: React.ForwardedRef<any>
-) => {
-  const elementRef = useRef<HTMLElement>();
+export const OutsideClickListener = React.forwardRef(
+  function OutsideClickListener(
+    { children, disabled = false, onClickOutside }: OutsideClickListenerProps,
+    ref: React.ForwardedRef<any>
+  ) {
+    const elementRef = useRef<HTMLElement>();
 
-  const handleGlobalClick = (event: MouseEvent) => {
-    const { current } = elementRef;
+    const handleGlobalClick = (event: MouseEvent) => {
+      const { current } = elementRef;
 
-    if (
-      !disabled &&
-      current?.contains &&
-      !current?.contains(event.target as Node)
-    ) {
-      onClickOutside(event);
-    }
-  };
-
-  useEffect(() => {
-    if (disabled) {
-      document.removeEventListener("click", handleGlobalClick);
-    } else {
-      document.addEventListener("click", handleGlobalClick);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleGlobalClick);
+      if (
+        !disabled &&
+        current?.contains &&
+        !current?.contains(event.target as Node)
+      ) {
+        onClickOutside(event);
+      }
     };
-  }, [disabled]);
 
-  return React.cloneElement(children, {
-    ref: mergeRefs([elementRef, ref])
-  });
-};
+    useEffect(() => {
+      if (disabled) {
+        document.removeEventListener("click", handleGlobalClick);
+      } else {
+        document.addEventListener("click", handleGlobalClick);
+      }
 
-export default forwardRef(OutsideClickListener);
+      return () => {
+        document.removeEventListener("click", handleGlobalClick);
+      };
+    }, [disabled]);
+
+    return React.cloneElement(children, {
+      ref: mergeRefs([elementRef, ref])
+    });
+  }
+);

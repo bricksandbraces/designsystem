@@ -1,10 +1,10 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconDotsVertical } from "@tabler/icons";
 import type { TippyProps } from "@tippyjs/react";
 import Tippy from "@tippyjs/react";
+import cx from "classnames";
+import React from "react";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
 export type OverflowMenuProps = {
   /**
@@ -33,7 +33,7 @@ export type OverflowMenuProps = {
   light?: boolean;
 } & Omit<TippyProps, "content" | "children">;
 
-const OverflowMenu = (
+export const OverflowMenu = React.forwardRef(function OverflowMenu(
   {
     size = "default",
     children,
@@ -44,7 +44,7 @@ const OverflowMenu = (
     ...props
   }: OverflowMenuProps,
   ref: React.ForwardedRef<HTMLElement>
-) => {
+) {
   return (
     <Tippy
       ref={ref}
@@ -75,6 +75,4 @@ const OverflowMenu = (
       )}
     </Tippy>
   );
-};
-
-export default React.forwardRef(OverflowMenu);
+});

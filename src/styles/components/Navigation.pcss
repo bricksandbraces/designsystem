@@ -14,11 +14,9 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      height: var(--size-container-05);
-      padding: var(--size-spacing-inner);
+      height: var(--size-container-04);
       border-bottom: 0.0625rem solid var(--color-border);
       background-color: var(--color-background);
-      gap: var(--size-spacing-inner);
 
       &__nav {
         display: flex;
@@ -62,7 +60,6 @@
             color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-02);
           background-color: transparent;
           color: var(--color-font-unselected);
           white-space: nowrap;
@@ -107,15 +104,13 @@
 
       &__divider.$(prefix)--divider {
         width: 0.0625rem;
-        height: calc(100% + var(--size-spacing-inner) * 2);
+        height: 100%;
         margin: 0 var(--size-spacing-03);
-        transform: translateY(calc(var(--size-spacing-inner) * -1));
       }
 
       &__action {
         display: inline-flex;
         height: var(--size-container-04);
-        gap: var(--size-spacing-inner);
 
         &-item {
           @mixin type--body-02;
@@ -133,7 +128,6 @@
             color var(--transition-app-01),
             border-color var(--transition-app-01);
           border: 0.0625rem solid transparent;
-          border-radius: var(--component-radius-02);
           background-color: transparent;
           color: var(--color-font-unselected);
           white-space: nowrap;

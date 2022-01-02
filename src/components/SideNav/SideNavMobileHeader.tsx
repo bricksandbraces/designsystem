@@ -1,10 +1,10 @@
-import React from "react";
-import cx from "classnames";
-import { prefix } from "../../settings";
-import IconOnlyButton from "../Button/IconOnlyButton";
 import { IconMenu, IconX } from "@tabler/icons";
+import cx from "classnames";
+import React from "react";
+import { prefix } from "../../settings";
+import { IconOnlyButton } from "../Button/IconOnlyButton";
 
-type SideNavMobileHeaderProps = {
+export type SideNavMobileHeaderProps = {
   /**
    * SideNavMobileHeader OnClick Function
    */
@@ -16,10 +16,10 @@ type SideNavMobileHeaderProps = {
   open?: boolean;
 };
 
-const SideNavMobileHeader = ({
+export const SideNavMobileHeader = function SideNavMobileHeader({
   open,
   onMenuClick
-}: SideNavMobileHeaderProps) => {
+}: SideNavMobileHeaderProps) {
   return (
     <div className={cx(`${prefix}--sidenav-mobileheader`)}>
       <IconOnlyButton
@@ -32,5 +32,3 @@ const SideNavMobileHeader = ({
     </div>
   );
 };
-
-export default SideNavMobileHeader;

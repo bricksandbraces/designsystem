@@ -1,11 +1,11 @@
-import React from "react";
-import cx from "classnames";
 import { IconChevronDown } from "@tabler/icons";
-import { prefix } from "../../settings";
-import SkeletonAnimatedContainer from "../Skeleton/SkeletonAnimatedContainer";
+import cx from "classnames";
+import React from "react";
 import { SkeletonText } from "../..";
+import { prefix } from "../../settings";
+import { SkeletonAnimatedContainer } from "../Skeleton/SkeletonAnimatedContainer";
 
-type SelectSkeletonProps = {
+export type SelectSkeletonProps = {
   /**
    * SelectSkeleton ClassName
    */
@@ -17,10 +17,10 @@ type SelectSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-const SelectSkeleton = ({
+export const SelectSkeleton = React.forwardRef(function SelectSkeleton({
   size = "default",
   className
-}: SelectSkeletonProps) => {
+}: SelectSkeletonProps) {
   return (
     <div
       className={cx(
@@ -41,6 +41,4 @@ const SelectSkeleton = ({
       </SkeletonAnimatedContainer>
     </div>
   );
-};
-
-export default SelectSkeleton;
+});

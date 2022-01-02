@@ -1,12 +1,12 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
-import Label from "../Typography/Label";
-import TextInput from "./TextInput";
-import TextInputSkeleton from "./TextInputSkeleton";
+import { Label } from "../Typography/Typography";
+import { TextInput } from "./TextInput";
+import { TextInputSkeleton } from "./TextInputSkeleton";
 
 export default {
-  title: "Components Ready/TextInput",
+  title: "Components/TextInput",
   decorators: [withKnobs]
 };
 

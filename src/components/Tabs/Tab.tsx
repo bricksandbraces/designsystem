@@ -17,8 +17,6 @@ export type TabProps = {
   disabled?: boolean;
 };
 
-const Tab = ({ children }: TabProps) => {
+export const Tab = function Tab({ children }: TabProps) {
   return <>{children}</>;
 };
-
-export default Tab;
