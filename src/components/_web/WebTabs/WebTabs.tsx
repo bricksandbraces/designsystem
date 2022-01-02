@@ -3,7 +3,6 @@ import React from "react";
 import { mapReactChildren } from "../../../helpers/reactUtilities";
 import { useControlledValue } from "../../../hooks/useControlled";
 import { prefix } from "../../../settings";
-import { Caption } from "../../Typography/Typography";
 import { WebTabProps } from "./WebTab";
 
 export type WebTabsProps = {
