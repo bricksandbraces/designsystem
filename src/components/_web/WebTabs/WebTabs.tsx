@@ -61,9 +61,12 @@ export const WebTabs = React.forwardRef(function WebTabs(
                 performIndexChange(i);
               }}
             >
-              <Caption className={`${prefix}--webtabs-btn__label`}>
+              <p
+                title={props.title}
+                className={`${prefix}--webtabs-btn__label`}
+              >
                 {props.title}
-              </Caption>
+              </p>
             </button>
           );
         })}
