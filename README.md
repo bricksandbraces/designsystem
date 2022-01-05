@@ -1,7 +1,6 @@
 <p align="center">
   <a href="https://bricksandbraces.com">
-    <img alt="Bricks & Braces - Designsystem" src="https://user-images.githubusercontent.com/8998518/141280567-d9442db3-fbff-4294-80c0-fca94d2a9f20.png" style="width: 100%; height: 280px; object-fit: cover;"
- />
+     <img width="1920" alt="Bricks & Braces - Designsystem" src="https://user-images.githubusercontent.com/33894877/148248514-6499eccf-2aae-4ebc-ab1a-7b033138df19.png"/>
   </a>
 </p>
 <h1 align="center">
