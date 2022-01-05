@@ -54,22 +54,34 @@
     }
 
     &-list {
+      display: flex;
+      flex-flow: column;
       margin: 0;
-      padding: 0;
+      padding: var(--size-spacing-inner);
       list-style-type: none;
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       background-color: var(--color-background);
+      gap: var(--size-spacing-inner);
 
       &__item {
         box-sizing: content-box;
         height: 100%;
         max-height: var(--size-field-default);
-        margin: var(--size-spacing-inner);
         overflow: hidden;
-        transition: max-height var(--transition-app-01);
-        border: 0.0625rem solid transparent;
+        transition: max-height var(--transition-app-01),
+          box-shadow var(--transition-app-01);
+        border: var(--size-border) var(--style-border) transparent;
+        border-radius: var(--component-radius-02);
         background-color: var(--color-background);
+        box-shadow: 0;
+
+        &:focus-within {
+          border-radius: var(--component-radius-02);
+          outline: 0;
+          box-shadow: 0 0 0 0.0625rem var(--color-focus),
+            0 0 0 0.25rem var(--color-focus-highlight);
+        }
 
         &-title {
           display: flex;
@@ -80,7 +92,7 @@
           padding: 0 var(--size-spacing-04);
           transition: background-color var(--transition-app-01),
             border-color var(--transition-app-01);
-          border: 0.0625rem solid transparent;
+          border: var(--size-border) var(--style-border) transparent;
           border-radius: var(--component-radius-02);
           outline: 0;
           background-color: transparent;
@@ -95,8 +107,7 @@
           }
 
           &:focus-visible {
-            border-radius: var(--component-radius-02);
-            border-color: var(--color-focus);
+            outline: 0;
           }
 
           &:disabled {
@@ -155,7 +166,7 @@
   &--accordion.$(prefix)--skeleton {
     padding: var(--size-spacing-inner);
     gap: var(--size-spacing-inner);
-    border: 0.0625rem solid transparent;
+    border: var(--size-border) var(--style-border) transparent;
 
     & > .$(prefix)--accordion-list__item-title {
       justify-content: space-between;

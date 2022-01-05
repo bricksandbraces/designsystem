@@ -9,6 +9,7 @@ For changing, consolidate src/theme.js and rerun the task. */
   --color-app-05: #000;
   --color-app-05-alpha-5: rgba(0, 0, 0, 0.05);
   --color-app-05-alpha-10: rgba(0, 0, 0, 0.1);
+  --color-app-01-alpha-80: rgba(242, 242, 243, 0.8);
   --color-app-background: #f2f2f3;
   --color-background: #e4e4e7;
   --color-background-alpha-0: rgba(228, 228, 231, 0);
@@ -17,11 +18,13 @@ For changing, consolidate src/theme.js and rerun the task. */
   --color-background-light: #d7d7db;
   --color-hover-light: #c9cacf;
   --color-active-light: #bcbcc3;
-  --color-focus: #000;
+  --color-focus: #5400ff;
+  --color-focus-highlight: rgba(84, 0, 255, 0.1);
+  --color-focus-danger: #fc033f;
+  --color-focus-danger-highlight: rgba(252, 3, 63, 0.1);
   --color-focus-inverse: #fff;
   --color-divider-dark: rgba(255, 255, 255, 0.2);
   --color-divider-light: rgba(0, 0, 0, 0.2);
-  --color-decoration: #5400ff;
   --color-selected: #d7d7db;
   --color-selected-light: #c9cacf;
   --color-unselected: #e4e4e7;
@@ -31,6 +34,10 @@ For changing, consolidate src/theme.js and rerun the task. */
   --color-skeleton-02: #d7d7db;
   --color-skeleton-03: #bcbcc3;
   --color-skeleton-04: rgba(188, 188, 195, 0.25);
+  --color-brand: #5400ff;
+  --color-brand-hover: #651aff;
+  --color-brand-active: #7633ff;
+  --color-onbrand: #f2f2f3;
   --color-table-background: #e4e4e7;
   --color-table-hover: #c9cacf;
   --color-table-active: #bcbcc3;
@@ -58,14 +65,14 @@ For changing, consolidate src/theme.js and rerun the task. */
   --color-font-info: #07c;
   --color-font-danger: #ca0232;
   --color-primary-enabled: #5400ff;
-  --color-primary-hover: #651aff;
-  --color-primary-active: #7633ff;
-  --color-secondary-enabled: #aeafb7;
+  --color-primary-hover: #4900e5;
+  --color-primary-active: #4300cc;
+  --color-secondary-enabled: #c9cacf;
   --color-secondary-hover: #bcbcc3;
-  --color-secondary-active: #c9cacf;
+  --color-secondary-active: #aeafb7;
   --color-tertiary-enabled: #000;
-  --color-tertiary-hover: #868793;
-  --color-tertiary-active: #93949f;
+  --color-tertiary-hover: #bcbcc3;
+  --color-tertiary-active: #aeafb7;
   --color-ghost-enabled: transparent;
   --color-ghost-hover: rgba(0, 0, 0, 0.1);
   --color-ghost-active: rgba(0, 0, 0, 0.2);
@@ -75,34 +82,55 @@ For changing, consolidate src/theme.js and rerun the task. */
   --color-danger: #fc033f;
   --color-danger-hover: #fd1c52;
   --color-danger-active: #fd3565;
+  --color-gradient-01: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.85) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
   --color-badge-gray-bg: #d7d7db;
+  --color-badge-gray-hover: #c9cacf;
+  --color-badge-gray-active: #bcbcc3;
   --color-badge-gray-font: #18181b;
   --color-badge-gray-border: #c9cacf;
   --color-badge-red-bg: #feb3c5;
+  --color-badge-red-hover: #fe9ab2;
+  --color-badge-red-active: #fe819f;
   --color-badge-red-font: #32010d;
   --color-badge-red-border: #fe9ab2;
   --color-badge-green-bg: #dff4be;
+  --color-badge-green-hover: #d5f0a8;
+  --color-badge-green-active: #caec93;
   --color-badge-green-font: #1e2b08;
   --color-badge-green-border: #d5f0a8;
   --color-badge-yellow-bg: #ffeeb2;
+  --color-badge-yellow-hover: #ffe999;
+  --color-badge-yellow-active: #ffe380;
   --color-badge-yellow-font: #332800;
   --color-badge-yellow-border: #ffe999;
   --color-badge-blue-bg: #b3dfff;
+  --color-badge-blue-hover: #99d4ff;
+  --color-badge-blue-active: #80caff;
   --color-badge-blue-font: #001e33;
   --color-badge-blue-border: #99d4ff;
   --color-badge-cyan-bg: #baedf7;
+  --color-badge-cyan-hover: #a3e7f5;
+  --color-badge-cyan-active: #8ce2f2;
   --color-badge-cyan-font: #05272e;
   --color-badge-cyan-border: #a3e7f5;
   --color-badge-orange-bg: #ffdfb2;
+  --color-badge-orange-hover: #ffd599;
+  --color-badge-orange-active: #ffca80;
   --color-badge-orange-font: #331e00;
   --color-badge-orange-border: #ffd599;
   --color-badge-purple-bg: #ccb3ff;
+  --color-badge-purple-hover: #b9f;
+  --color-badge-purple-active: #aa80ff;
   --color-badge-purple-font: #103;
   --color-badge-purple-border: #b9f;
   --color-overlay: rgba(0, 0, 0, 0.6);
   --font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
     roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-family-code: dm mono, sfmono-regular, menlo, monaco, consolas,
+  --font-family-code: "DM Mono", sfmono-regular, menlo, monaco, consolas,
     "Liberation Mono", "Courier New", monospace;
   --font-caption-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
   --font-label-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
@@ -176,6 +204,13 @@ For changing, consolidate src/theme.js and rerun the task. */
   --size-field-small: 2rem;
   --size-field-default: 2.5rem;
   --size-field-large: 3rem;
+  --size-border: 0;
+  --size-border-badge: 0.0625rem;
+  --size-border-state: 0.0625rem;
+  --size-focus: 0.0625rem;
+  --style-border: solid;
+  --size-divider: 0.0625rem;
+  --style-divider: solid;
   --size-spacing-01: 0.125rem;
   --size-spacing-02: 0.25rem;
   --size-spacing-03: 0.5rem;
@@ -212,6 +247,7 @@ For changing, consolidate src/theme.js and rerun the task. */
     --color-app-05: #fff;
     --color-app-05-alpha-5: rgba(255, 255, 255, 0.05);
     --color-app-05-alpha-10: rgba(255, 255, 255, 0.1);
+    --color-app-01-alpha-80: rgba(12, 12, 13, 0.8);
     --color-app-background: #0c0c0d;
     --color-background: #18181b;
     --color-background-alpha-0: rgba(24, 24, 27, 0);
@@ -221,10 +257,12 @@ For changing, consolidate src/theme.js and rerun the task. */
     --color-hover-light: #303136;
     --color-active-light: #3c3d43;
     --color-focus: #fff;
+    --color-focus-highlight: rgba(255, 255, 255, 0.25);
+    --color-focus-danger: #fc033f;
+    --color-focus-danger-highlight: rgba(252, 3, 63, 0.25);
     --color-focus-inverse: #000;
     --color-divider-dark: rgba(0, 0, 0, 0.2);
     --color-divider-light: rgba(255, 255, 255, 0.2);
-    --color-decoration: #5400ff;
     --color-selected: #242428;
     --color-selected-light: #303136;
     --color-unselected: #18181b;
@@ -234,6 +272,10 @@ For changing, consolidate src/theme.js and rerun the task. */
     --color-skeleton-02: #242428;
     --color-skeleton-03: #3c3d43;
     --color-skeleton-04: rgba(60, 61, 67, 0.25);
+    --color-brand: #5400ff;
+    --color-brand-hover: #651aff;
+    --color-brand-active: #7633ff;
+    --color-onbrand: #f2f2f3;
     --color-table-background: #18181b;
     --color-table-hover: #303136;
     --color-table-active: #3c3d43;
@@ -278,35 +320,56 @@ For changing, consolidate src/theme.js and rerun the task. */
     --color-danger: #fc033f;
     --color-danger-hover: #e30238;
     --color-danger-active: #ca0232;
+    --color-gradient-01: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.85) 20%,
+      rgba(0, 0, 0, 0) 100%
+    );
     --color-badge-gray-bg: #242428;
+    --color-badge-gray-hover: #303136;
+    --color-badge-gray-active: #3c3d43;
     --color-badge-gray-font: #e4e4e7;
     --color-badge-gray-border: #303136;
     --color-badge-red-bg: #4c0113;
+    --color-badge-red-hover: #650119;
+    --color-badge-red-active: #7e011f;
     --color-badge-red-font: #fecdd9;
     --color-badge-red-border: #650119;
     --color-badge-green-bg: #2d410b;
+    --color-badge-green-hover: #3c570f;
+    --color-badge-green-active: #4a6c13;
     --color-badge-green-font: #eaf7d4;
     --color-badge-green-border: #3c570f;
     --color-badge-yellow-bg: #4d3c00;
+    --color-badge-yellow-hover: #665000;
+    --color-badge-yellow-active: #806400;
     --color-badge-yellow-font: #fff4cc;
     --color-badge-yellow-border: #665000;
     --color-badge-blue-bg: #002c4d;
+    --color-badge-blue-hover: #003b66;
+    --color-badge-blue-active: #004a80;
     --color-badge-blue-font: #cceaff;
     --color-badge-blue-border: #003b66;
     --color-badge-cyan-bg: #083b45;
+    --color-badge-cyan-hover: #0a4e5c;
+    --color-badge-cyan-active: #0d6273;
     --color-badge-cyan-font: #d1f3fa;
     --color-badge-cyan-border: #0a4e5c;
     --color-badge-orange-bg: #4d2d00;
+    --color-badge-orange-hover: #663c00;
+    --color-badge-orange-active: #804a00;
     --color-badge-orange-font: #ffeacc;
     --color-badge-orange-border: #663c00;
     --color-badge-purple-bg: #19004c;
+    --color-badge-purple-hover: #206;
+    --color-badge-purple-active: #2a0080;
     --color-badge-purple-font: #dcf;
     --color-badge-purple-border: #206;
     --color-overlay: rgba(0, 0, 0, 0.6);
     --font-family: "HK Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI",
       roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
-    --font-family-code: dm mono, sfmono-regular, menlo, monaco, consolas,
+    --font-family-code: "DM Mono", sfmono-regular, menlo, monaco, consolas,
       "Liberation Mono", "Courier New", monospace;
     --font-caption-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
     --font-label-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
@@ -380,6 +443,14 @@ For changing, consolidate src/theme.js and rerun the task. */
     --size-field-small: 2rem;
     --size-field-default: 2.5rem;
     --size-field-large: 3rem;
+    --size-border: 0;
+    --size-border-badge: 0.0625rem;
+    --size-border-state: 0.0625rem;
+    --size-focus: 0.0625rem;
+    --style-border: solid;
+    --style-border-focus: solid;
+    --size-divider: 0.0625rem;
+    --style-divider: solid;
     --size-spacing-01: 0.125rem;
     --size-spacing-02: 0.25rem;
     --size-spacing-03: 0.5rem;

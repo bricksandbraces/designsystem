@@ -47,7 +47,7 @@
       padding: var(--size-spacing-inner);
       transition: transform var(--transition-app-01),
         opacity var(--transition-app-01), visibility var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       outline: 0;
       opacity: 0;
@@ -159,7 +159,7 @@
       height: 100%;
       padding: 0 var(--size-spacing-05) 0 var(--size-spacing-08);
       transition: border var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       outline: 0;
       background-color: var(--color-background);
@@ -172,15 +172,13 @@
       }
 
       &:focus {
-        border-color: var(--color-focus);
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
 
         &::placeholder {
           transform: translateX(0.125rem);
           opacity: 0;
-        }
-
-        & + div > .$(prefix)--search-go {
-          border-color: var(--color-focus);
         }
       }
     }
@@ -193,10 +191,9 @@
       &::before {
         content: "";
         position: absolute;
-        left: 0;
-        width: 0.0625rem;
-        height: 100%;
-        margin-left: -0.0625rem;
+        left: calc(var(--size-divider) * -1);
+        width: var(--size-border-focus);
+        height: calc(100% - var(--size-border-focus));
         transition: background-color var(--transition-app-01);
         background-color: var(--color-primary-enabled);
       }
@@ -215,7 +212,7 @@
 
       &:focus-visible {
         &::before {
-          background-color: var(--color-focus);
+          background-color: transparent;
         }
       }
     }
@@ -271,7 +268,7 @@
     justify-content: flex-start;
     width: 100%;
     overflow: unset;
-    border: 0.0625rem solid;
+    border: var(--size-border) var(--style-border);
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;

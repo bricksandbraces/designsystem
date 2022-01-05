@@ -31,6 +31,9 @@
       > .$(prefix)--checkbox-input[type="checkbox"]
       + label
       > .$(prefix)--checkbox-check {
+      transition: box-shadow var(--transition-app-01);
+      border-radius: 0.375rem;
+      box-shadow: 0;
       & > .$(prefix)--checkbox-check__box {
         stroke: var(--color-app-02);
       }
@@ -43,18 +46,18 @@
     & > [type="checkbox"]:checked + label {
       color: var(--color-font-selected);
       & > .$(prefix)--checkbox-check {
-        color: var(--color-decoration);
+        color: var(--color-brand);
         & > .$(prefix)--checkbox-check__mark {
           visibility: visible;
           stroke-width: 0.125rem;
-          stroke: var(--color-app-05);
-          color: var(--color-app-05);
+          stroke: var(--color-onbrand);
+          color: var(--color-onbrand);
         }
 
         & > .$(prefix)--checkbox-check__box {
-          border-color: var(--color-decoration);
-          stroke: var(--color-decoration);
-          fill: var(--color-decoration);
+          border-color: var(--color-brand);
+          stroke: var(--color-brand);
+          fill: var(--color-brand);
         }
       }
     }
@@ -66,12 +69,13 @@
         & > .$(prefix)--checkbox-check__indeterminate-mark {
           visibility: visible;
           stroke-width: 0.125rem;
+          stroke: var(--color-onbrand);
         }
 
         & > .$(prefix)--checkbox-check__box {
-          border-color: var(--color-decoration);
-          stroke: var(--color-decoration);
-          fill: var(--color-decoration);
+          border-color: var(--color-brand);
+          stroke: var(--color-brand);
+          fill: var(--color-brand);
         }
       }
     }
@@ -80,7 +84,10 @@
       > .$(prefix)--checkbox-input[type="checkbox"]:focus-visible
       + .$(prefix)--checkbox-label
       > svg {
-      outline: 0.0625rem solid var(--color-focus);
+      border-radius: 0.375rem;
+      outline: 0;
+      box-shadow: 0 0 0 0.0625rem var(--color-focus),
+        0 0 0 0.25rem var(--color-focus-highlight);
     }
 
     &-readonly {
@@ -185,7 +192,6 @@
       display: inline-block;
       min-width: var(--size-container-02);
       min-height: var(--size-container-02);
-      transition: outline var(--transition-app-01);
       color: var(--color-font-unselected);
     }
 

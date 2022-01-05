@@ -2046,7 +2046,7 @@ __metadata:
   resolution: "@openbricksandbraces/designsystem@workspace:."
   dependencies:
     "@babel/core": ^7.16.5
-    "@openbricksandbraces/designtokens": ^0.0.3
+    "@openbricksandbraces/designtokens": ^0.0.6
     "@openbricksandbraces/eloguent": ^0.1.2
     "@storybook/addon-a11y": ^6.4.9
     "@storybook/addon-actions": ^6.4.9
@@ -2153,10 +2153,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@openbricksandbraces/designtokens@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "@openbricksandbraces/designtokens@npm:0.0.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40openbricksandbraces%2Fdesigntokens%2F-%2Fdesigntokens-0.0.3.tgz"
-  checksum: 0422f89e9ccba0c7c79ffdfad02e3bcb0ebdb6265f635d6158527ca56fa18d492853511a4709c14e913101d51b59217a487a32828338b7f4d0b3619917d87d4a
+"@openbricksandbraces/designtokens@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@openbricksandbraces/designtokens@npm:0.0.6::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40openbricksandbraces%2Fdesigntokens%2F-%2Fdesigntokens-0.0.6.tgz"
+  checksum: 85a807e2866160432107e56c23b6009dd96749470bedf55c3a9e4fedd810bd774084b0c25cb81b4a979b26d031618153859682888ed435dc5a4c34d111bac0d8
   languageName: node
   linkType: hard
 

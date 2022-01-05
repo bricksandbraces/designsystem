@@ -1,4 +1,3 @@
-import { IconCircleCheck } from "@tabler/icons";
 import cx from "classnames";
 import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
@@ -118,10 +117,30 @@ export const RadioTile = React.forwardRef(function RadioTile(
         htmlFor={id}
       >
         {children}
-        <IconCircleCheck
-          size={24}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
           className={`${prefix}--radiotile-selected`}
-        />
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            className={`${prefix}--radiotile-selected__check-box`}
+          />
+          <path
+            d="M9 12l2 2l4 -4"
+            className={`${prefix}--radiotile-selected__check-mark`}
+          />
+        </svg>
       </label>
     </div>
   );

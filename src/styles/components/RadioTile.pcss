@@ -28,7 +28,9 @@
     }
 
     & > input[type="radio"]:focus-visible + label {
-      border-color: var(--color-focus);
+      outline: 0;
+      box-shadow: 0 0 0 0.0625rem var(--color-focus),
+        0 0 0 0.25rem var(--color-focus-highlight);
     }
 
     &-label {
@@ -38,8 +40,10 @@
       position: relative;
       transition: color var(--transition-app-01),
         background-color var(--transition-app-01),
-        border-color var(--transition-app-01);
-      border-radius: var(--component-radius-default);
+        box-shadow var(--transition-app-01);
+      border: var(--size-border) var(--style-border) var(--color-brand);
+      border-radius: var(--component-radius-02);
+      box-shadow: 0;
       color: var(--color-font-unselected);
       cursor: pointer;
     }
@@ -50,8 +54,6 @@
       bottom: var(--size-spacing-05);
       width: 0;
       height: 0;
-      transition: opacity var(--transition-app-01),
-        transform var(--transition-app-01);
       opacity: 0;
       color: var(--color-font-selected);
     }
@@ -67,7 +69,8 @@
     }
 
     & > [type="radio"]:checked + label {
-      border-color: var(--color-decoration);
+      outline: var(--size-divider) var(--style-divider) var(--color-brand);
+      outline-offset: calc(var(--size-divider) * -1);
       color: var(--color-font-selected);
 
       & > .$(prefix)--radiotile-selected {
@@ -75,9 +78,13 @@
         height: unset;
         opacity: 1;
 
-        & > circle {
-          stroke: var(--color-decoration);
-          fill: var(--color-decoration);
+        & > .$(prefix)--radiotile-selected__check-box {
+          stroke: var(--color-brand);
+          fill: var(--color-brand);
+        }
+
+        & > .$(prefix)--radiotile-selected__check-mark {
+          stroke: var(--color-onbrand);
         }
       }
     }

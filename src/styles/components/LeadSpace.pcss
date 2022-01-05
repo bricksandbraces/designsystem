@@ -69,11 +69,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.85) 20%,
-        rgba(0, 0, 0, 0) 100%
-      );
+      background: var(--color-gradient-01);
     }
   }
 }
@@ -129,7 +125,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: var(--color-app-01-alpha-80);
       }
     }
   }
@@ -180,7 +176,8 @@
         & > .$(prefix)--button-ghost {
           width: calc(100% - var(--size-field-large) - var(--size-spacing-05));
           margin-bottom: var(--size-spacing-05);
-          border: 0.0625rem solid var(--color-tertiary-enabled);
+          border: var(--size-border) var(--style-border)
+            var(--color-tertiary-enabled);
         }
 
         & > .$(prefix)--button-secondary {

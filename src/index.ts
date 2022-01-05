@@ -61,7 +61,6 @@ export * from "./components/Divider/Divider";
 export * from "./components/Dropdown/Dropdown";
 export * from "./components/Dropdown/DropdownSkeleton";
 export * from "./components/EmptyState/EmptyState";
-export * from "./components/FloatingPanel/FloatingPanel";
 export * from "./components/Grid/Grid";
 export * from "./components/Link/Link";
 export * from "./components/List/ListItem";

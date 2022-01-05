@@ -205,29 +205,20 @@ const QuoteComponent = (
           {children}
         </blockquote>
         {name && (
-          <HeadlineComponent
-            type="h6"
-            className={cx(`${prefix}--typography-blockquote__name`)}
-          >
+          <h6 className={cx(`${prefix}--typography-blockquote__name`)}>
             {name}
-          </HeadlineComponent>
+          </h6>
         )}
         {position && (
-          <BodyComponent
-            type="body-02"
-            className={cx(`${prefix}--typography-blockquote__position`)}
-          >
+          <p className={cx(`${prefix}--typography-blockquote__position`)}>
             {position}
-          </BodyComponent>
+          </p>
         )}
 
         {company && (
-          <BodyComponent
-            type="body-02"
-            className={cx(`${prefix}--typography-blockquote__company`)}
-          >
+          <p className={cx(`${prefix}--typography-blockquote__company`)}>
             {company}
-          </BodyComponent>
+          </p>
         )}
       </div>
     </div>

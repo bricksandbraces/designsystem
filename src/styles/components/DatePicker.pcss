@@ -9,7 +9,7 @@
     transform: translateY(var(--size-spacing-03));
     transition: opacity var(--transition-app-01),
       transform var(--transition-app-01), visibility var(--transition-app-01);
-    border: 0.0625rem solid var(--color-border);
+    border: var(--size-border) var(--style-border) var(--color-border);
     border-radius: var(--component-radius-02);
     background: var(--color-background);
     box-shadow: var(--component-shadow-02);
@@ -77,13 +77,15 @@
 
     & > .DayPicker-wrapper {
       padding-bottom: 0;
-      transition: border-color var(--transition-app-01);
-      border: 0.0625rem solid transparent;
+      transition: box-shadow var(--transition-app-01);
+      border: var(--size-border) var(--style-border) transparent;
       border-radius: var(--component-radius-02);
+      box-shadow: 0;
 
       &:focus-visible {
-        border-color: var(--color-focus);
         outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
       }
 
       & > .DayPicker-NavBar {
@@ -103,10 +105,11 @@
           margin-top: 0;
           margin-right: 0;
           transition: background-color var(--transition-app-01),
-            border-color var(--transition-app-01);
-          border: 0.0625rem solid transparent;
+            box-shadow var(--transition-app-01);
+          border: var(--size-border) var(--style-border) transparent;
           border-radius: var(--component-radius-02);
           background-size: 50%;
+          box-shadow: 0;
 
           &:hover {
             opacity: unset;
@@ -119,8 +122,9 @@
           }
 
           &:focus-visible {
-            border-color: var(--color-focus);
             outline: 0;
+            box-shadow: 0 0 0 0.0625rem var(--color-focus),
+              0 0 0 0.25rem var(--color-focus-highlight);
           }
 
           &.DayPicker-NavButton--prev {
@@ -145,6 +149,7 @@
 
             margin-bottom: var(--size-spacing-05);
             padding: 0 var(--size-spacing-01);
+            color: var(--color-font-text-01);
 
             & > div {
               font-size: unset;
@@ -203,21 +208,24 @@
                 height: var(--size-container-03);
                 padding: 0;
                 transition: background-color var(--transition-app-01),
-                  border-color var(--transition-app-01);
-                border: 0.0625rem solid transparent;
+                  box-shadow var(--transition-app-01);
+                border: var(--size-border) var(--style-border) transparent;
                 border-radius: var(--component-radius-02);
+                box-shadow: 0;
+                color: var(--color-font-text-01);
                 cursor: pointer;
 
                 &:focus-visible {
-                  border-color: var(--color-focus);
                   outline: 0;
+                  box-shadow: 0 0 0 0.0625rem var(--color-focus),
+                    0 0 0 0.25rem var(--color-focus-highlight);
                 }
               }
 
               &
                 > .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-                background-color: var(--color-decoration);
-                color: var(--color-font-text-01);
+                background-color: var(--color-brand);
+                color: var(--color-onbrand);
               }
 
               & > .DayPicker-Day--outside {
