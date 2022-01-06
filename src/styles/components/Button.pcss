@@ -93,17 +93,18 @@
     &-tertiary {
       border-color: var(--color-tertiary-enabled);
       background-color: transparent;
-      color: var(--color-font-text-01);
+      color: var(--color-tertiary-enabled);
 
       &:hover {
         border-color: var(--color-tertiary-hover);
         background-color: var(--color-tertiary-hover);
-        color: var(--color-font-text-inverse);
+        color: var(--color-font-text-inverse-01);
       }
 
       &:active {
         border-color: var(--color-tertiary-active);
         background-color: var(--color-tertiary-active);
+        color: var(--color-font-text-inverse-01);
       }
     }
 
@@ -194,7 +195,7 @@
   background-color: var(--color-tertiary-hover);
   box-shadow: 0 0 0 0.0625rem var(--color-focus),
     0 0 0 0.25rem var(--color-focus-highlight);
-  color: var(--color-font-text-inverse);
+  color: var(--color-font-text-inverse-01);
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-disabled,

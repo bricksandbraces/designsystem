@@ -8,6 +8,7 @@
 @import "./keyframes.pcss";
 
 @import "./components/LoginForm.pcss";
+@import "./components/PriceTag.pcss";
 @import "./components/EmptyState.pcss";
 @import "./components/BackToTop.pcss";
 @import "./components/Breadcrumb.pcss";
