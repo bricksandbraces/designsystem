@@ -171,6 +171,7 @@ export const Dropdown = React.forwardRef(function Dropdown(
       | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
       | React.KeyboardEvent<HTMLDivElement>
   ) => {
+    setOpen(false);
     if (!controlled) {
       setSelectedValue(newValue);
     }
