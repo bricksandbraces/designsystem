@@ -63,12 +63,14 @@ Aaaand you are done!
 
 > **Note: use the useInitialize() hook to initialize mandatory listeners (for viewport height correction an such magical stuff 🪄).**
 
-### Theming
+### System appearances
 
 #### Dark
+
  <img width="1920" alt="DS Dark" src="https://user-images.githubusercontent.com/33894877/148248514-6499eccf-2aae-4ebc-ab1a-7b033138df19.png"/>
 
 #### Light
+
 <img width="1920" alt="DS Light" src="https://user-images.githubusercontent.com/33894877/148248519-75db1e37-e195-4d23-aac6-b0f94a2905c8.png"/>
 
 ## Tech Stack
