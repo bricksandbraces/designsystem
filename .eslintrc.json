@@ -12,15 +12,15 @@
     "import",
     "react",
     "jsx-a11y",
-    "jest",
-    "storybook"
+    "storybook",
+    "cypress"
   ],
   "extends": [
     "airbnb-typescript",
     "plugin:import/recommended",
+    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:storybook/recommended",
-    "plugin:jest/recommended",
     "plugin:react/recommended",
     "prettier"
   ],
