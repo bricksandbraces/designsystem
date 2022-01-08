@@ -47,7 +47,7 @@ body.sb-show-main {
 
 .bb--grid-example {
   padding: 1rem;
-  border: 0.0625rem dashed var(--color-brand);
+  border: 0.0625rem dashed var(--color-brand-04);
   color: var(--color-font-text-01);
 }
 

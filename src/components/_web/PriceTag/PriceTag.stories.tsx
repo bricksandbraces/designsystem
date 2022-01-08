@@ -9,9 +9,52 @@ export const Default = () => {
     <div
       style={{ width: "256px", margin: "32px", display: "flex", gap: "32px" }}
     >
-      <PriceTag />
-      <PriceTag promotion />
-      <PriceTag />
+      <PriceTag
+        title="Starter"
+        time="Month"
+        currency="€"
+        price="25"
+        description="For most businesses that want to optimize web queries"
+        priceTagItems={[
+          { label: "Analytics Platform" },
+          { label: "Unlimited Mail sending" },
+          { label: "SAML SSO Login" },
+          { label: "Optimization of campaigns" },
+          { label: "24/7 Support" }
+        ]}
+        buttonLabel="Choose Plan"
+      />
+      <PriceTag
+        promotion
+        title="Expert"
+        time="Month"
+        currency="€"
+        price="99"
+        description="For most businesses that want to optimize web queries"
+        priceTagItems={[
+          { label: "Analytics Platform" },
+          { label: "Unlimited Mail sending" },
+          { label: "SAML SSO Login" },
+          { label: "Optimization of campaigns" },
+          { label: "24/7 Support" }
+        ]}
+        buttonLabel="Choose Plan"
+      />
+      <PriceTag
+        title="Pro"
+        time="Month"
+        currency="€"
+        price="129"
+        description="For most businesses that want to optimize web queries"
+        priceTagItems={[
+          { label: "Analytics Platform" },
+          { label: "Unlimited Mail sending" },
+          { label: "SAML SSO Login" },
+          { label: "Optimization of campaigns" },
+          { label: "24/7 Support" }
+        ]}
+        buttonLabel="Choose Plan"
+      />
     </div>
   );
 };
