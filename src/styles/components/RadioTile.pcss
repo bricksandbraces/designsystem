@@ -41,7 +41,7 @@
       transition: color var(--transition-app-01),
         background-color var(--transition-app-01),
         box-shadow var(--transition-app-01);
-      border: var(--size-border) var(--style-border) var(--color-brand);
+      border: var(--size-border) var(--style-border) var(--color-brand-04);
       border-radius: var(--component-radius-02);
       box-shadow: 0;
       color: var(--color-font-unselected);
@@ -69,7 +69,7 @@
     }
 
     & > [type="radio"]:checked + label {
-      outline: var(--size-divider) var(--style-divider) var(--color-brand);
+      outline: var(--size-divider) var(--style-divider) var(--color-brand-04);
       outline-offset: calc(var(--size-divider) * -1);
       color: var(--color-font-selected);
 
@@ -79,12 +79,12 @@
         opacity: 1;
 
         & > .$(prefix)--radiotile-selected__check-box {
-          stroke: var(--color-brand);
-          fill: var(--color-brand);
+          stroke: var(--color-brand-04);
+          fill: var(--color-brand-04);
         }
 
         & > .$(prefix)--radiotile-selected__check-mark {
-          stroke: var(--color-onbrand);
+          stroke: var(--color-onbrand-01);
         }
       }
     }

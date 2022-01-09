@@ -1,19 +1,62 @@
-import { IconCheckbox, IconCircleCheck } from "@tabler/icons";
+import { IconCircleCheck } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
-import { Button, Column, Grid } from "../../..";
+import { Button } from "../../..";
+import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
+
+export type PriceTagItem = {
+  /**
+   * PriceTagItem Label
+   */
+  label: string;
+};
 
 export type PriceTagProps = {
   /**
-   * PriceTag Headline
+   * PriceTagItems
    */
-  headline?: string;
+  priceTagItems?: PriceTagItem[];
 
   /**
    * PriceTag LinkTitle
    */
   cta?: React.ReactNode;
+
+  /**
+   * PriceTag Title
+   */
+  title?: string;
+
+  /**
+   * PriceTag Currency
+   */
+  currency?: string;
+
+  /**
+   * PriceTag Time
+   */
+  time?: string;
+
+  /**
+   * PriceTag Description
+   */
+  description?: string;
+
+  /**
+   * PriceTag ButtonLabel
+   */
+  buttonLabel?: string;
+
+  /**
+   * PriceTag Price
+   */
+  price?: string;
+
+  /**
+   * PriceTag onButtonClick
+   */
+  onButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
 
   /**
    * PriceTag LinkTitle
@@ -23,44 +66,55 @@ export type PriceTagProps = {
 
 export const PriceTag = React.forwardRef(function PriceTag(
   {
-    headline = "Let's create the next big innovation for the world of tomorrow.",
-    cta = "Together.",
-    promotion
+    promotion,
+    currency,
+    price,
+    title,
+    time,
+    description,
+    priceTagItems,
+    onButtonClick,
+    buttonLabel
   }: PriceTagProps,
-  ref: React.ForwardedRef<HTMLElement>
+  ref: React.ForwardedRef<HTMLDivElement>
 ) {
+  const indexedPriceTagItems = idfy(priceTagItems);
   return (
     <div
+      ref={ref}
       className={cx(`${prefix}--pricetag`, {
         [`${prefix}--pricetag-promotion`]: promotion
       })}
     >
-      <h4 className={`${prefix}--pricetag-title`}>Title</h4>
+      <h4 className={`${prefix}--pricetag-title`}>{title}</h4>
       <div className={`${prefix}--pricetag-price`}>
-        <div className={`${prefix}--pricetag-price__currency`}>$23</div>
+        <div className={`${prefix}--pricetag-price__currency`}>
+          {currency}
+          {price}
+        </div>
         <div className={`${prefix}--pricetag-price__time`}>
-          <span className={`${prefix}--pricetag-price__divider`}>/</span>Monat
+          <span className={`${prefix}--pricetag-price__divider`}>/</span>
+          {time}
         </div>
       </div>
-      <div className={`${prefix}--pricetag-description`}>
-        For most businesses that want to optimize web queries.
-      </div>
+      <div className={`${prefix}--pricetag-description`}>{description}</div>
       <ul className={`${prefix}--pricetag-list`}>
-        <li className={`${prefix}--pricetag-list__item`}>
-          <IconCircleCheck />
-          123
-        </li>
-        <li className={`${prefix}--pricetag-list__item`}>
-          <IconCircleCheck />
-          4567e8iofk ughrfejdokwl,dedfmrjf fiejdkolswdmjnf gjefdklmw
-        </li>
-        <li className={`${prefix}--pricetag-list__item`}>
-          <IconCircleCheck />
-          123
-        </li>
+        {indexedPriceTagItems?.map((item) => {
+          return (
+            <li key={item.id} className={`${prefix}--pricetag-list__item`}>
+              <IconCircleCheck />
+              {item.label}
+            </li>
+          );
+        })}
       </ul>
-      <Button className={`${prefix}--pricetag-button`} fluid kind="tertiary">
-        Choose Plan
+      <Button
+        className={`${prefix}--pricetag-button`}
+        fluid
+        kind="tertiary"
+        onClick={onButtonClick}
+      >
+        {buttonLabel}
       </Button>
     </div>
   );
