@@ -1,7 +1,6 @@
 <p align="center">
   <a href="https://bricksandbraces.com">
-    <img alt="Bricks & Braces - Designsystem" src="https://user-images.githubusercontent.com/8998518/141280567-d9442db3-fbff-4294-80c0-fca94d2a9f20.png" style="width: 100%; height: 280px; object-fit: cover;"
- />
+     <img width="1920" alt="Bricks & Braces - Designsystem" src="https://user-images.githubusercontent.com/33894877/148248514-6499eccf-2aae-4ebc-ab1a-7b033138df19.png"/>
   </a>
 </p>
 <h1 align="center">
@@ -63,6 +62,16 @@ Aaaand you are done!
 ![image](https://user-images.githubusercontent.com/8998518/125286009-934f4500-e31b-11eb-94d7-4238b41b446f.png)
 
 > **Note: use the useInitialize() hook to initialize mandatory listeners (for viewport height correction an such magical stuff 🪄).**
+
+### System appearances
+
+#### Dark
+
+ <img width="1920" alt="DS Dark" src="https://user-images.githubusercontent.com/33894877/148248514-6499eccf-2aae-4ebc-ab1a-7b033138df19.png"/>
+
+#### Light
+
+<img width="1920" alt="DS Light" src="https://user-images.githubusercontent.com/33894877/148248519-75db1e37-e195-4d23-aac6-b0f94a2905c8.png"/>
 
 ## Tech Stack
 

@@ -6,7 +6,9 @@ import {
 import Tippy from "@tippyjs/react";
 import cx from "classnames";
 import React, { useEffect, useRef, useState } from "react";
+import { OutsideClickListener } from "../..";
 import { findNextItem } from "../../helpers/arrayUtilities";
+import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { Label } from "../Typography/Typography";
@@ -171,6 +173,7 @@ export const Dropdown = React.forwardRef(function Dropdown(
       | React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
       | React.KeyboardEvent<HTMLDivElement>
   ) => {
+    setOpen(false);
     if (!controlled) {
       setSelectedValue(newValue);
     }
@@ -210,7 +213,6 @@ export const Dropdown = React.forwardRef(function Dropdown(
       btnRef.current?.focus();
     } else if (key === " " || key === "Enter") {
       selectValue(valueToSelect, event);
-      btnRef.current?.focus();
     }
   };
 
@@ -229,7 +231,15 @@ export const Dropdown = React.forwardRef(function Dropdown(
       )}
       ref={ref}
     >
-      <Label htmlFor={`${id}-toggle-button`}>{label}</Label>
+      <Label
+        htmlFor={`${id}-toggle-button`}
+        onClick={(event) => {
+          event.preventDefault();
+          setOpen(false);
+        }}
+      >
+        {label}
+      </Label>
       <Tippy
         ref={ref}
         interactive
@@ -238,53 +248,60 @@ export const Dropdown = React.forwardRef(function Dropdown(
           [`${prefix}--dropdown-light`]: light
         })}
         animation="bbds-animation"
+        visible={open}
         trigger="click"
         placement="bottom-start"
         theme="dark"
         offset={[0, 8]}
         allowHTML
+        onHidden={() => btnRef.current?.focus()}
         content={
-          <ul role="menu" aria-hidden={!open}>
-            {items.map((item, i) => {
-              return (
-                <li
-                  key={item.value}
-                  className={cx(
-                    `${prefix}--dropdown-menu__item ${prefix}--dropdown-${size}`,
-                    {
-                      [`${prefix}--dropdown-menu__item-disabled`]:
-                        item.disabled,
-                      [`${prefix}--dropdown-menu__item-selected`]:
-                        selectedValue === item.value
-                    }
-                  )}
-                  id={item.id}
-                  value={item.value}
-                  title={item.text}
-                >
-                  <div
-                    role="button"
-                    className={`${prefix}--dropdown-menu__item-interactible`}
-                    tabIndex={item.disabled || !open ? -1 : 0}
-                    onClick={(event) => {
-                      selectValue(item.value, event);
-                      setOpen(false);
-                    }}
-                    onKeyDown={(event) =>
-                      handleKeyPressOnItem(event, event.key, item.value, i)
-                    }
+          <OutsideClickListener
+            onClickOutside={() => setOpen(false)}
+            ref={ulRef}
+          >
+            <ul role="menu" aria-hidden={!open}>
+              {items.map((item, i) => {
+                return (
+                  <li
+                    key={item.value}
+                    className={cx(
+                      `${prefix}--dropdown-menu__item ${prefix}--dropdown-${size}`,
+                      {
+                        [`${prefix}--dropdown-menu__item-disabled`]:
+                          item.disabled,
+                        [`${prefix}--dropdown-menu__item-selected`]:
+                          selectedValue === item.value
+                      }
+                    )}
+                    id={item.id}
+                    value={item.value}
+                    title={item.text}
                   >
                     <div
-                      className={`${prefix}--dropdown-menu__item-text`}
                       role="button"
+                      className={`${prefix}--dropdown-menu__item-interactible`}
+                      tabIndex={item.disabled || !open ? -1 : 0}
+                      onClick={(event) => {
+                        selectValue(item.value, event);
+                        setOpen(false);
+                      }}
+                      onKeyDown={(event) =>
+                        handleKeyPressOnItem(event, event.key, item.value, i)
+                      }
                     >
-                      <span title={item.text}>{item.text}</span>
+                      <div
+                        className={`${prefix}--dropdown-menu__item-text`}
+                        role="button"
+                      >
+                        <span title={item.text}>{item.text}</span>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+                  </li>
+                );
+              })}
+            </ul>
+          </OutsideClickListener>
         }
       >
         <button
@@ -294,6 +311,17 @@ export const Dropdown = React.forwardRef(function Dropdown(
           className={cx(
             `${prefix}--dropdown-${size} ${prefix}--dropdown-toggle`
           )}
+          onClick={(event) => {
+            if (!open) {
+              event.stopPropagation();
+              setOpen(true);
+            }
+          }}
+          onKeyDown={(event) => {
+            filterForKeys(["Escape"], () => {
+              setOpen(false);
+            })(event);
+          }}
           onFocus={onFocus}
           onBlur={onBlur}
         >
