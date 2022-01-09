@@ -59,7 +59,8 @@ export const UserProfile = React.forwardRef(function UserProfile(
     imgUrl,
     profilesToShow,
     primaryLabel = "Sign Out",
-    onPrimaryAction
+    onPrimaryAction,
+    ...props
   }: UserProfileProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) {
@@ -75,8 +76,9 @@ export const UserProfile = React.forwardRef(function UserProfile(
         className={cx(`${prefix}--userprofile-menu`)}
         animation="bbds-animation"
         trigger="click"
-        placement="bottom-start"
         theme="dark"
+        {...props}
+        placement="bottom-start"
         offset={[0, 8]}
         allowHTML
         content={

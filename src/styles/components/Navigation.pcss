@@ -24,24 +24,21 @@
         gap: var(--size-spacing-inner);
         padding: 0 var(--size-spacing-04);
 
-        &-trigger {
-          & > svg {
-            min-width: var(--size-container-01);
-            max-width: var(--size-container-01);
-            min-height: var(--size-container-01);
-            max-height: var(--size-container-01);
-            margin-left: var(--size-spacing-03);
-            transition: transform var(--transition-app-01);
+        &-menu {
+          &.tippy-box > .tippy-svg-arrow {
+            fill: var(--color-background);
+
+            & > svg > path {
+              transform: translateY(0.0625rem);
+              stroke-width: var(--size-border);
+              stroke: var(--color-border);
+            }
           }
 
-          &--open {
-            &.$(prefix)--navigation-header__nav-link {
+          &--button {
+            &[aria-expanded="true"] {
               background-color: var(--color-selected);
               color: var(--color-font-selected);
-            }
-
-            & > svg {
-              transform: rotate(180deg);
             }
           }
         }

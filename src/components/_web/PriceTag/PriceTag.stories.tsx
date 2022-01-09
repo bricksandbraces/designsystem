@@ -15,7 +15,7 @@ export const Default = () => {
         currency="€"
         price="25"
         description="For most businesses that want to optimize web queries"
-        priceTagItems={[
+        features={[
           { label: "Analytics Platform" },
           { label: "Unlimited Mail sending" },
           { label: "SAML SSO Login" },
@@ -31,7 +31,7 @@ export const Default = () => {
         currency="€"
         price="99"
         description="For most businesses that want to optimize web queries"
-        priceTagItems={[
+        features={[
           { label: "Analytics Platform" },
           { label: "Unlimited Mail sending" },
           { label: "SAML SSO Login" },
@@ -46,7 +46,7 @@ export const Default = () => {
         currency="€"
         price="129"
         description="For most businesses that want to optimize web queries"
-        priceTagItems={[
+        features={[
           { label: "Analytics Platform" },
           { label: "Unlimited Mail sending" },
           { label: "SAML SSO Login" },

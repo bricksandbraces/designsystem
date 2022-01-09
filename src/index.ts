@@ -80,7 +80,7 @@ export * from "./components/Navigation/HeaderDivider";
 export * from "./components/Navigation/HeaderMenuButton";
 export * from "./components/Navigation/HeaderNav";
 export * from "./components/Navigation/HeaderNavLink";
-export * from "./components/Navigation/HeaderNavTrigger";
+export * from "./components/Navigation/HeaderNavMenu";
 export * from "./components/Navigation/Navigation";
 export * from "./components/Notification/InlineNotification";
 export * from "./components/Notification/ToastNotification";

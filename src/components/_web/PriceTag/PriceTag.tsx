@@ -5,7 +5,7 @@ import { Button } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
 
-export type PriceTagItem = {
+export type PriceTagFeature = {
   /**
    * PriceTagItem Label
    */
@@ -16,7 +16,7 @@ export type PriceTagProps = {
   /**
    * PriceTagItems
    */
-  priceTagItems?: PriceTagItem[];
+  features?: PriceTagFeature[];
 
   /**
    * PriceTag LinkTitle
@@ -72,13 +72,13 @@ export const PriceTag = React.forwardRef(function PriceTag(
     title,
     time,
     description,
-    priceTagItems,
+    features,
     onButtonClick,
     buttonLabel
   }: PriceTagProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
-  const indexedPriceTagItems = idfy(priceTagItems);
+  const indexedFeatures = idfy(features);
   return (
     <div
       ref={ref}
@@ -99,11 +99,11 @@ export const PriceTag = React.forwardRef(function PriceTag(
       </div>
       <div className={`${prefix}--pricetag-description`}>{description}</div>
       <ul className={`${prefix}--pricetag-list`}>
-        {indexedPriceTagItems?.map((item) => {
+        {indexedFeatures?.map((feature) => {
           return (
-            <li key={item.id} className={`${prefix}--pricetag-list__item`}>
+            <li key={feature.id} className={`${prefix}--pricetag-list__item`}>
               <IconCircleCheck />
-              {item.label}
+              {feature.label}
             </li>
           );
         })}
