@@ -5,8 +5,7 @@ import packageJSON from "../../../package.json";
 
 const Intro = () => {
   return (
-    <div
-      className="sb-intro--container">
+    <div className="sb-intro--container">
       <div className="sb-intro">
         <Headline type="h1" className="sb-intro--headline">
           Design System

@@ -35,7 +35,7 @@ export const CTASection = React.forwardRef(function CTASection(
           className={`${prefix}--ctasection-column`}
         >
           <h5 className={`${prefix}--ctasection-headline`}>
-            {headline}{" "}<span>{cta}</span>
+            {headline} <span>{cta}</span>
           </h5>
         </Column>
       </Grid>
