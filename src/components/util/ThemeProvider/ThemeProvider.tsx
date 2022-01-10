@@ -1,5 +1,7 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { usePreferredColorScheme } from "../../../hooks/usePreferredColorScheme";
+import { defaultTheme } from "../../../theme";
+import type { Theme } from "../../../theme";
 
 export type ThemeProviderProps = {
   /**
@@ -8,10 +10,10 @@ export type ThemeProviderProps = {
   children?: React.ReactNode;
 
   /**
-   * ThemeProvider Theme: Accepts the definitions for the light and dark system theme.
+   * ThemeProvider Theme: Accepts the definitions for the light and dark system appearance.
    * Automatically prefixes the token definitions with --.
    */
-  theme?: { light?: Record<string, string>; dark?: Record<string, string> };
+  theme?: Theme;
 
   /**
    * ThemeProvider Style
@@ -24,26 +26,41 @@ export type ThemeProviderProps = {
   className?: string;
 };
 
+const ThemeContext = createContext<Theme>(defaultTheme);
+
 export const ThemeProvider = ({
   className,
-  theme,
+  theme = defaultTheme,
   style,
   children
 }: ThemeProviderProps) => {
-  const currentThemeSetting = usePreferredColorScheme("light");
-  const currentTheme = theme?.[currentThemeSetting] ?? {};
+  const currentAppearanceSetting = usePreferredColorScheme("light");
+  const currentAppearance = theme?.[currentAppearanceSetting] ?? {};
   return (
-    <div
-      data-theme-provider
-      className={className}
-      style={{
-        ...Object.keys(currentTheme).reduce((prev, currentToken) => {
-          return { ...prev, [`--${currentToken}`]: currentTheme[currentToken] };
-        }, {}),
-        ...style
-      }}
-    >
-      {children}
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div
+        data-theme-provider
+        className={className}
+        style={{
+          ...Object.keys(currentAppearance).reduce((prev, currentToken) => {
+            return {
+              ...prev,
+              [`--${currentToken}`]: currentAppearance[currentToken]
+            };
+          }, {}),
+          ...style
+        }}
+      >
+        {children}
+      </div>
+    </ThemeContext.Provider>
   );
+};
+
+export const useTheme = () => {
+  const theme = useContext(ThemeContext);
+  if (theme === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return theme;
 };

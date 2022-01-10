@@ -1,6 +1,7 @@
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
+import { useTheme } from "../..";
 import { prefix } from "../../settings";
 
 export type BadgeColor =
@@ -105,6 +106,11 @@ export const Badge = React.forwardRef(function Badge(
   }: BadgeProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLDivElement>
 ) {
+  const currentTheme = useTheme();
+  console.log("= = = = =");
+  console.log(color);
+  console.log(currentTheme);
+  console.log("= = = = =");
   const baseProps = {
     onMouseEnter,
     onMouseLeave,
