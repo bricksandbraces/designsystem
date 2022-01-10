@@ -27,7 +27,7 @@
       }
     }
 
-    & > input[type="radio"]:focus-visible + label {
+    & > input[type="radio"]:focus + label {
       outline: 0;
       box-shadow: 0 0 0 0.0625rem var(--color-focus),
         0 0 0 0.25rem var(--color-focus-highlight);
@@ -41,9 +41,7 @@
       transition: color var(--transition-app-01),
         background-color var(--transition-app-01),
         box-shadow var(--transition-app-01);
-      border: var(--size-border) var(--style-border) var(--color-brand-04);
       border-radius: var(--component-radius-02);
-      box-shadow: 0;
       color: var(--color-font-unselected);
       cursor: pointer;
     }
@@ -69,8 +67,7 @@
     }
 
     & > [type="radio"]:checked + label {
-      outline: var(--size-divider) var(--style-divider) var(--color-brand-04);
-      outline-offset: calc(var(--size-divider) * -1);
+      box-shadow: 0 0 0 0.0625rem var(--color-focus);
       color: var(--color-font-selected);
 
       & > .$(prefix)--radiotile-selected {

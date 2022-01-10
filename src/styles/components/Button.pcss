@@ -13,7 +13,7 @@
     border: 0.0625rem var(--style-border);
     border-radius: var(--component-radius-02);
     background-color: transparent;
-    box-shadow: 0;
+    box-shadow: var(--component-shadow-01);
 
     &:disabled {
       cursor: not-allowed;
@@ -119,6 +119,10 @@
 
       &:active {
         background-color: var(--color-ghost-active);
+      }
+
+      &.$(prefix)--button {
+        box-shadow: 0 0 0 0;
       }
     }
 
@@ -365,6 +369,10 @@
   position: absolute;
   right: var(--size-spacing-06);
   margin-right: 0;
+}
+
+.$(prefix)--button.$(prefix)--skeleton {
+  box-shadow: 0 0 0 0;
 }
 
 .$(prefix)--spinner-border.$(prefix)--loading {

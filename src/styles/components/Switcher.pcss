@@ -4,6 +4,7 @@
     border: var(--size-border) var(--style-border) var(--color-border);
     border-radius: var(--component-radius-02);
     background-color: var(--color-background);
+    box-shadow: var(--component-shadow-01);
     white-space: nowrap;
 
     &-light {
@@ -85,7 +86,7 @@
       border: var(--size-border) var(--style-border) transparent;
       border-radius: calc(var(--component-radius-02) - 0.0625rem);
       background-color: transparent;
-      box-shadow: 0;
+      box-shadow: 0 0 0 0;
       color: var(--color-font-unselected);
 
       &:focus-visible {

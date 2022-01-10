@@ -50,7 +50,7 @@ const dynamicTheme = {
     "color-brand-03": colors["purple-700"],
     "color-brand-04": colors["purple-500"],
     "color-brand-05": colors["purple-50"],
-    "color-onbrand-01": colors["purple-950"],
+    "color-onbrand-01": colors.white,
     "color-onbrand-02": colors["purple-850"],
     "color-onbrand-03": colors["purple-750"],
     "color-onbrand-04": colors["purple-650"],
@@ -257,7 +257,7 @@ const dynamicTheme = {
     "size-field-large": metrics["field-large"],
 
     /* " Border Sizes " */
-    "size-border": "0rem",
+    "size-border": "0.0625rem",
     "size-border-badge": "0.0625rem",
     "size-border-state": "0.0625rem",
 
@@ -351,7 +351,7 @@ const dynamicTheme = {
     "color-brand-03": colors["purple-700"],
     "color-brand-04": colors["purple-500"],
     "color-brand-05": colors["purple-50"],
-    "color-onbrand-01": colors["purple-950"],
+    "color-onbrand-01": colors.white,
     "color-onbrand-02": colors["purple-850"],
     "color-onbrand-03": colors["purple-750"],
     "color-onbrand-04": colors["purple-650"],
@@ -558,7 +558,7 @@ const dynamicTheme = {
     "size-field-large": metrics["field-large"],
 
     /* " Border Sizes " */
-    "size-border": "0rem",
+    "size-border": "0.0625rem",
     "size-border-badge": "0.0625rem",
     "size-border-state": "0.0625rem",
 
