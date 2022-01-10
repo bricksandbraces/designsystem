@@ -61,7 +61,10 @@ export const IconAsTrigger = () => {
         }
       >
         <IconTrigger>
-          <IconInfoCircle color="white" size={16} />
+          <IconInfoCircle
+            style={{ color: "var(--color-font-text-01)" }}
+            size={16}
+          />
         </IconTrigger>
       </ContainerTooltip>
     </div>

@@ -10,23 +10,29 @@
   &--container {
     width: 100vw;
     height: 100vh;
+    background-image: var(--color-gradient-background);
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   &--headline {
-    color: white;
+    color: var(--color-font-text-01);
   }
 
   &--logo {
     position: absolute;
     bottom: 2rem;
     left: 2rem;
+    fill: var(--color-font-text-01);
+
+    & > path {
+      fill: var(--color-font-text-01);
+    }
   }
 
   &--subline {
     margin-top: 1rem;
-    color: white;
+    color: var(--color-font-text-01);
   }
 }
 
@@ -37,9 +43,8 @@ body.sb-show-main {
 
 .bb--grid-example {
   padding: 1rem;
-  border: 0.0625rem dashed #7633ff;
-  background-color: #206;
-  color: #fff;
+  border: 0.0625rem dashed var(--color-brand-04);
+  color: var(--color-font-text-01);
 }
 
 .bb--lottie-example {

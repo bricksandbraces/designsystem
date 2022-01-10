@@ -42,7 +42,7 @@ export const parameters = {
     // Override the default light theme
     light: {
       ...themes.normal,
-      appBg: "#F2F2F3",
+      appBg: "#ffffff",
       colorSecondary: "#5400ff",
       textColor: "#000",
       textInverseColor: "#000",

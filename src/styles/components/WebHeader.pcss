@@ -34,7 +34,7 @@
       height: var(--size-container-06);
       padding: 0;
       transition: background-color var(--transition-app-01),
-        outline var(--transition-app-01);
+        outline var(--transition-app-01), color var(--transition-app-01);
       outline: 0.125rem solid transparent;
       outline-offset: calc(var(--size-spacing-02) * -1);
       background-color: transparent;
@@ -49,14 +49,14 @@
       }
 
       &:focus-visible {
-        outline: 0.125rem solid var(--color-focus);
+        outline: 0.125rem solid var(--color-font-text-01);
       }
 
       &__open {
-        color: var(--color-font-text-01);
+        color: var(--color-onbrand-01);
 
         &:focus-visible {
-          outline: 0.125rem solid var(--color-focus);
+          outline: 0.125rem solid var(--color-onbrand-01);
         }
       }
     }
@@ -79,7 +79,7 @@
       transform: translateX(calc(var(--size-container-08) * 2));
       transition: transform var(--transition-app-01),
         visibility var(--transition-app-01);
-      background: var(--color-decoration);
+      background: var(--color-brand-04);
 
       &__logo {
         margin-top: var(--size-spacing-10);
@@ -88,8 +88,12 @@
           margin-left: 0;
           padding-left: 0;
 
+          & > svg > path {
+            fill: var(--color-onbrand-01);
+          }
+
           &:focus-visible {
-            outline: 0.125rem solid var(--color-focus);
+            outline: 0.125rem solid var(--color-font-text-01);
           }
         }
       }
@@ -113,9 +117,9 @@
       position: relative;
       margin-bottom: var(--size-spacing-03);
       transition: opacity var(--transition-app-02);
-      outline: 0.0625rem solid transparent;
+      outline: var(--size-border) var(--style-border) transparent;
       outline-offset: var(--size-spacing-01);
-      color: var(--color-font-text-01);
+      color: var(--color-onbrand-01);
 
       &::after {
         content: "";
@@ -140,7 +144,7 @@
       }
 
       &:focus-visible {
-        outline: 0.125rem solid var(--color-focus);
+        outline: 0.125rem solid var(--color-font-text-01);
       }
     }
 
@@ -170,7 +174,7 @@
       }
 
       &:focus-visible {
-        outline: 0.125rem solid var(--color-focus);
+        outline: 0.125rem solid var(--color-font-text-01);
       }
     }
   }

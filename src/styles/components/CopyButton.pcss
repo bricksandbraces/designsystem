@@ -4,14 +4,18 @@
   justify-content: center;
   width: max-content;
 
-  & > button > div > .icon.icon-tabler.icon-tabler-check {
+  & > button > div > .icon {
     position: absolute;
   }
 }
 
-.$(prefix)--copybutton.$(prefix)--copybutton--copied {
-  & > button > .$(prefix)--button--label {
+.$(prefix)--copybutton.$(prefix)--copybutton-copied {
+  & > .$(prefix)--button-label {
     justify-content: center;
+
+    & > svg {
+      stroke: var(--color-font-success);
+    }
 
     & > span {
       visibility: hidden;

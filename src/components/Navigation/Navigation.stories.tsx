@@ -4,13 +4,16 @@ import {
   Icon2fa,
   IconApps,
   IconAward,
+  IconCash,
   IconDatabase,
   IconLink,
   IconNotification,
   IconSearch,
   IconSend,
+  IconSettings,
   IconSmartHome,
-  IconUser
+  IconUser,
+  IconUsers
 } from "@tabler/icons";
 
 import React, { useState } from "react";
@@ -23,7 +26,7 @@ import {
   HeaderMenuButton,
   HeaderNav,
   HeaderNavLink,
-  HeaderNavTrigger,
+  HeaderNavMenu,
   Logo,
   Navigation,
   SideNav,
@@ -32,6 +35,7 @@ import {
   SideNavItem,
   SideNavItemExpander
 } from "../..";
+import { HeaderNavMenuItem } from "./HeaderNavMenuItem";
 
 export default { title: "Components/Navigation", decorators: [withKnobs] };
 
@@ -91,9 +95,20 @@ export const WithDropdown = () => {
           <HeaderNavLink href="#" label="Link 4" />
           <HeaderNavLink href="#" label="Link 5" />
           <HeaderDivider />
-          <HeaderNavTrigger label="Trigger 1" />
-          <HeaderNavTrigger label="Trigger 2" />
-          <HeaderNavTrigger label="Trigger 3" />
+          <HeaderNavMenu label="Menu">
+            <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
+            <HeaderNavMenuItem icon={<IconUsers />}>Account</HeaderNavMenuItem>
+            <HeaderNavMenuItem icon={<IconSettings />}>
+              Settings
+            </HeaderNavMenuItem>
+          </HeaderNavMenu>
+          <HeaderNavMenu label="Menu">
+            <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
+            <HeaderNavMenuItem icon={<IconUsers />}>Account</HeaderNavMenuItem>
+            <HeaderNavMenuItem icon={<IconSettings />}>
+              Settings
+            </HeaderNavMenuItem>
+          </HeaderNavMenu>
           <HeaderDivider />
         </HeaderNav>
         <HeaderAction>
@@ -129,9 +144,24 @@ export const WithSideNav = () => {
             <HeaderNavLink href="#" label="Link 4" />
             <HeaderNavLink href="#" label="Link 5" />
             <HeaderDivider />
-            <HeaderNavTrigger label="Trigger 1" />
-            <HeaderNavTrigger label="Trigger 2" />
-            <HeaderNavTrigger label="Trigger 3" />
+            <HeaderNavMenu label="Menu">
+              <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
+              <HeaderNavMenuItem icon={<IconUsers />}>
+                Account
+              </HeaderNavMenuItem>
+              <HeaderNavMenuItem icon={<IconSettings />}>
+                Settings
+              </HeaderNavMenuItem>
+            </HeaderNavMenu>
+            <HeaderNavMenu label="Menu">
+              <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
+              <HeaderNavMenuItem icon={<IconUsers />}>
+                Account
+              </HeaderNavMenuItem>
+              <HeaderNavMenuItem icon={<IconSettings />}>
+                Settings
+              </HeaderNavMenuItem>
+            </HeaderNavMenu>
             <HeaderDivider />
           </HeaderNav>
           <HeaderAction>

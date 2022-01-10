@@ -45,15 +45,18 @@
 
       height: var(--size-container-07);
       padding: var(--size-spacing-05);
-      transition: border-color var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      transition: box-shadow var(--transition-app-01);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       outline: 0;
       background-color: var(--color-background);
+      box-shadow: 0;
       color: var(--color-font-text-01);
 
       &:focus {
-        border-color: var(--color-focus);
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
 
         &::placeholder {
           transform: translateX(0.125rem);
@@ -104,7 +107,9 @@
     }
 
     &-error {
-      border-color: var(--color-danger);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-danger);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;
@@ -121,7 +126,9 @@
     }
 
     &-warning {
-      border-color: var(--color-warning);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-warning);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;

@@ -1,7 +1,6 @@
 import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
-import { FloatingPanel } from "../FloatingPanel/FloatingPanel";
 import { Avatar } from "./Avatar";
 
 export type AvatarListItemProps = {
@@ -84,13 +83,13 @@ export const AvatarList = React.forwardRef(function AvatarList(
   ref: React.ForwardedRef<HTMLUListElement>
 ) {
   return (
-    <FloatingPanel className={`${prefix}--avatar-list__panel`}>
+    <div className={`${prefix}--avatar-list__panel`}>
       <ul id={id} className={cx(`${prefix}--avatar-list`, className)} ref={ref}>
         {children}
       </ul>
       {footer && (
         <div className={`${prefix}--avatar-list__footer`}>{footer}</div>
       )}
-    </FloatingPanel>
+    </div>
   );
 });

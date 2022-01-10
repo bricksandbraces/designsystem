@@ -35,7 +35,7 @@
         margin-right: var(--size-spacing-04);
         transform: translate(var(--size-spacing-01), var(--size-spacing-01));
         transition: background-color var(--transition-app-01);
-        border: 0.0625rem solid transparent;
+        border: var(--size-divider) var(--style-border) transparent;
         border-radius: 1rem;
         background-color: var(--color-app-05);
 
@@ -86,7 +86,7 @@
         margin-right: var(--size-spacing-04);
         transform: translate(var(--size-spacing-01), var(--size-spacing-01));
         transition: background-color var(--transition-app-01);
-        border: 0.0625rem solid transparent;
+        border: var(--size-divider) var(--style-border) transparent;
         border-radius: 1rem;
         background-color: var(--color-app-05);
 
@@ -130,21 +130,24 @@
 /* Switch */
 
 .$(prefix)--toggle input[type="checkbox"] + label > .$(prefix)--toggle-switch {
+  transition: box-shadow var(--transition-app-01);
   background-color: var(--color-app-02);
+  box-shadow: 0;
 }
 
 .$(prefix)--toggle-input[type="checkbox"]:checked + label {
   color: var(--color-font-text-01);
   & > .$(prefix)--toggle-switch {
-    background-color: var(--color-decoration);
+    background-color: var(--color-brand-04);
 
     & > .$(prefix)--toggle-checked {
       opacity: 1;
+      color: var(--color-onbrand-01);
     }
 
     &::before {
       transform: translateX(var(--size-spacing-05));
-      background-color: var(--color-app-05);
+      background-color: var(--color-onbrand-01);
     }
   }
 }
@@ -183,5 +186,7 @@
 .$(prefix)--toggle-input[type="checkbox"]:focus-visible
   + .$(prefix)--toggle-label
   > span {
-  box-shadow: 0 0 0 0.0625rem var(--color-focus);
+  outline: 0;
+  box-shadow: 0 0 0 0.0625rem var(--color-focus),
+    0 0 0 0.25rem var(--color-focus-highlight);
 }

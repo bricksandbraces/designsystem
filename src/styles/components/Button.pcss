@@ -8,11 +8,12 @@
     justify-content: center;
     padding: 0 var(--size-spacing-05);
     transition: background-color var(--transition-app-01),
-      border-color var(--transition-app-01), color var(--transition-app-01);
-    border: 0.0625rem solid;
+      border-color var(--transition-app-01), color var(--transition-app-01),
+      box-shadow var(--transition-app-01);
+    border: 0.0625rem var(--style-border);
     border-radius: var(--component-radius-02);
     background-color: transparent;
-    color: var(--color-font-text-01);
+    box-shadow: 0;
 
     &:disabled {
       cursor: not-allowed;
@@ -64,6 +65,7 @@
     &-primary {
       border-color: transparent;
       background-color: var(--color-primary-enabled);
+      color: var(--color-onbrand-01);
 
       &:hover {
         background-color: var(--color-primary-hover);
@@ -77,6 +79,7 @@
     &-secondary {
       border-color: transparent;
       background-color: var(--color-secondary-enabled);
+      color: var(--color-font-text-01);
 
       &:hover {
         background-color: var(--color-secondary-hover);
@@ -90,22 +93,25 @@
     &-tertiary {
       border-color: var(--color-tertiary-enabled);
       background-color: transparent;
+      color: var(--color-tertiary-enabled);
 
       &:hover {
         border-color: var(--color-tertiary-hover);
         background-color: var(--color-tertiary-hover);
-        color: var(--color-font-text-inverse);
+        color: var(--color-font-text-inverse-01);
       }
 
       &:active {
         border-color: var(--color-tertiary-active);
         background-color: var(--color-tertiary-active);
+        color: var(--color-font-text-inverse-01);
       }
     }
 
     &-ghost {
       border-color: transparent;
       background-color: var(--color-ghost-enabled);
+      color: var(--color-font-text-01);
 
       &:hover {
         background-color: var(--color-ghost-hover);
@@ -175,18 +181,21 @@
 .$(prefix)--button.$(prefix)--button-ghost:focus-visible,
 .$(prefix)--button.$(prefix)--button-primary:focus-visible,
 .$(prefix)--button.$(prefix)--button-secondary:focus-visible {
-  border-color: var(--color-focus);
+  z-index: 2000;
   outline: 0;
+  box-shadow: 0 0 0 0.0625rem var(--color-focus),
+    0 0 0 0.25rem var(--color-focus-highlight);
 }
 
 .$(prefix)--button__focus.$(prefix)--button-tertiary,
 .$(prefix)--button.$(prefix)--button-tertiary:focus-visible {
-  border-color: var(--color-focus);
+  z-index: 2000;
+  border-color: transparent;
   outline: 0;
   background-color: var(--color-tertiary-hover);
-  box-shadow: inset 0 0 0 0.0625rem $black,
-    inset 0 0 0 0.0125rem var(--color-tertiary-hover);
-  color: var(--color-font-text-inverse);
+  box-shadow: 0 0 0 0.0625rem var(--color-focus),
+    0 0 0 0.25rem var(--color-focus-highlight);
+  color: var(--color-font-text-inverse-01);
 }
 
 .$(prefix)--button.$(prefix)--button-ghost.$(prefix)--button-disabled,
@@ -229,6 +238,7 @@
 .$(prefix)--button.$(prefix)--button-primary.$(prefix)--button-danger,
 .$(prefix)--button.$(prefix)--button-secondary.$(prefix)--button-danger {
   background-color: var(--color-danger);
+  color: var(--color-onbrand-01);
 
   &:hover {
     background-color: var(--color-danger-hover);
@@ -236,6 +246,12 @@
 
   &:active {
     background-color: var(--color-danger-active);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.0625rem var(--color-focus-danger),
+      0 0 0 0.25rem var(--color-focus-danger-highlight);
   }
 }
 
@@ -251,6 +267,14 @@
   &:active {
     background-color: var(--color-danger-active);
   }
+
+  &:focus-visible {
+    outline: 0;
+    background-color: var(--color-danger);
+    box-shadow: 0 0 0 0.0625rem var(--color-focus-danger),
+      0 0 0 0.25rem var(--color-focus-danger-highlight);
+    color: var(--color-onbrand-01);
+  }
 }
 
 .$(prefix)--button.$(prefix)--button-tertiary.$(prefix)--button-danger {
@@ -260,13 +284,21 @@
   &:hover {
     border-color: var(--color-danger-hover);
     background-color: var(--color-danger-hover);
-    color: var(--color-font-text-01);
+    color: var(--color-onbrand-01);
   }
 
   &:active {
     border-color: var(--color-danger-active);
     background-color: var(--color-danger-active);
     color: var(--color-font-text-01);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    background-color: var(--color-danger);
+    box-shadow: 0 0 0 0.0625rem var(--color-focus-danger),
+      0 0 0 0.25rem var(--color-focus-danger-highlight);
+    color: var(--color-onbrand-01);
   }
 }
 

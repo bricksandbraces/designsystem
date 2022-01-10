@@ -53,7 +53,7 @@ export const Inline = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
       <div style={{ width: "405px", color: "white" }}>
-        <Body type="body-02">
+        <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea

@@ -10,7 +10,9 @@ export default { title: "Components/List", decorators: [withKnobs] };
 export const Ordered = () => {
   return (
     <div style={{ padding: "32px", color: "white" }}>
-      <Body type="body-02">Ordered List</Body>
+      <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
+        Ordered List
+      </Body>
       <OrderedList>
         <ListItem>Level 1 Item</ListItem>
         <ListItem>Level 1 Item</ListItem>
@@ -24,7 +26,9 @@ export const Ordered = () => {
 export const OrderedNested = () => {
   return (
     <div style={{ padding: "32px", color: "white" }}>
-      <Body type="body-02">Ordered List Nested</Body>
+      <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
+        Ordered List Nested
+      </Body>
       <OrderedList>
         <ListItem>Level 1 Item</ListItem>
         <ListItem>Level 1 Item</ListItem>
@@ -45,7 +49,9 @@ export const OrderedNested = () => {
 export const Unordered = () => {
   return (
     <div style={{ padding: "32px", color: "white" }}>
-      <Body type="body-02">Unordered List</Body>
+      <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
+        Unordered List
+      </Body>
       <UnorderedList>
         <ListItem>Level 1 Item</ListItem>
         <ListItem>Level 1 Item</ListItem>
@@ -59,7 +65,9 @@ export const Unordered = () => {
 export const UnorderedNested = () => {
   return (
     <div style={{ padding: "32px", color: "white" }}>
-      <Body type="body-02">Unordered List Nested</Body>
+      <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
+        Unordered List Nested
+      </Body>
       <UnorderedList>
         <ListItem>Level 1 Item</ListItem>
         <ListItem>Level 1 Item</ListItem>

@@ -48,7 +48,7 @@
 
   &[data-theme~="bbds-light"] {
     background-color: var(--color-app-05);
-    color: var(--color-font-text-inverse);
+    color: var(--color-font-text-inverse-01);
 
     & > .tippy-svg-arrow {
       & > svg > path {
@@ -66,10 +66,14 @@
 .$(prefix)--tooltip-icontrigger {
   display: inline-flex;
   padding: 0;
-  transition: outline var(--transition-app-01);
+  transition: box-shadow var(--transition-app-01);
+  border-radius: var(--component-radius-02);
   background-color: transparent;
+  box-shadow: 0;
 
   &:focus {
-    outline: 0.0625rem solid var(--color-focus);
+    outline: 0;
+    box-shadow: 0 0 0 0.0625rem var(--color-focus),
+      0 0 0 0.25rem var(--color-focus-highlight);
   }
 }

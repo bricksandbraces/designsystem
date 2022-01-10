@@ -37,15 +37,18 @@
     & > [type="radio"]:checked + label {
       color: var(--color-font-selected);
       & > .$(prefix)--radiobutton-selected {
-        color: var(--color-decoration);
+        transition: box-shadow var(--transition-app-01);
+        border-radius: 50%;
+        box-shadow: 0;
+        color: var(--color-brand-04);
 
         & > .$(prefix)--radiobutton-selected__box {
-          stroke: var(--color-decoration);
-          fill: var(--color-decoration);
+          stroke: var(--color-brand-04);
+          fill: var(--color-brand-04);
         }
         & > .$(prefix)--radiobutton-selected__mark {
           visibility: visible;
-          fill: white;
+          fill: var(--color-onbrand-01);
         }
       }
     }
@@ -53,9 +56,11 @@
     &
       > .$(prefix)--radiobutton-input[type="radio"]:focus-visible
       + .$(prefix)--radiobutton-label
-      > svg
-      > .$(prefix)--radiobutton-selected__box {
-      color: var(--color-focus);
+      > svg {
+      border-radius: 50%;
+      outline: 0;
+      box-shadow: 0 0 0 0.0625rem var(--color-focus),
+        0 0 0 0.25rem var(--color-focus-highlight);
     }
 
     &-readonly {

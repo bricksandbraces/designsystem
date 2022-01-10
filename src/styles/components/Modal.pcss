@@ -140,7 +140,7 @@
       transform-origin: top center;
       transition: transform var(--transition-app-01),
         opacity var(--transition-app-01), visibility 0ms;
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       background-color: var(--color-background);
       box-shadow: var(--component-shadow-01);
@@ -191,7 +191,7 @@
 
 .$(prefix)--modal-with-divider > div > .$(prefix)--modal-header {
   padding-bottom: var(--size-spacing-05);
-  border-bottom: 0.0625rem solid var(--color-border);
+  border-bottom: var(--size-border) var(--style-border) var(--color-border);
 
   &::after {
     display: none;
@@ -216,7 +216,7 @@
 
 .$(prefix)--modal-with-divider > div > .$(prefix)--modal-footer {
   margin: 0;
-  border-top: 0.0625rem solid var(--color-border);
+  border-top: var(--size-border) var(--style-border) var(--color-border);
 
   &::before {
     display: none;

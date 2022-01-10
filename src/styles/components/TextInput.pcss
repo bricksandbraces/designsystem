@@ -51,11 +51,12 @@
 
       width: 100%;
       padding: 0 var(--size-spacing-05);
-      transition: border var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      transition: box-shadow var(--transition-app-01);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       outline: 0;
       background-color: var(--color-background);
+      box-shadow: 0;
       color: var(--color-font-text-01);
 
       &::-webkit-credentials-auto-fill-button {
@@ -70,7 +71,9 @@
       }
 
       &:focus {
-        border-color: var(--color-focus);
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
 
         &::placeholder {
           transform: translateX(var(--size-spacing-01));
@@ -133,6 +136,7 @@
       align-items: center;
       height: 100%;
       padding: 0 var(--size-spacing-05);
+      color: var(--color-font-text-05);
       pointer-events: none;
 
       & + .$(prefix)--textinput-input {
@@ -153,36 +157,38 @@
       right: 0;
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-ghost {
-        margin-top: 0.0625rem;
-        margin-right: 0.0625rem;
-        margin-bottom: 0.0625rem;
+        margin-top: var(--size-border);
+        margin-right: var(--size-border);
+        margin-bottom: var(--size-border);
         border-top-left-radius: 0;
-        border-top-right-radius: calc(var(--component-radius-02) - 0.0625rem);
+        border-top-right-radius: calc(
+          var(--component-radius-02) - var(--size-border)
+        );
         border-bottom-right-radius: calc(
-          var(--component-radius-02) - 0.0625rem
+          var(--component-radius-02) - var(--size-border)
         );
         border-bottom-left-radius: 0;
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-default {
-        min-width: calc(var(--size-container-04) - var(--size-spacing-01));
-        max-width: calc(var(--size-container-04) - var(--size-spacing-01));
-        min-height: calc(var(--size-container-04) - var(--size-spacing-01));
-        max-height: calc(var(--size-container-04) - var(--size-spacing-01));
+        min-width: calc(var(--size-container-04) - var(--size-border));
+        max-width: calc(var(--size-container-04) - var(--size-border));
+        min-height: calc(var(--size-container-04) - var(--size-border));
+        max-height: calc(var(--size-container-04) - var(--size-border));
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-small {
-        min-width: calc(var(--size-container-03) - var(--size-spacing-01));
-        max-width: calc(var(--size-container-03) - var(--size-spacing-01));
-        min-height: calc(var(--size-container-03) - var(--size-spacing-01));
-        max-height: calc(var(--size-container-03) - var(--size-spacing-01));
+        min-width: calc(var(--size-container-03) - var(--size-border));
+        max-width: calc(var(--size-container-03) - var(--size-border));
+        min-height: calc(var(--size-container-03) - var(--size-border));
+        max-height: calc(var(--size-container-03) - var(--size-border));
       }
 
       &.$(prefix)--button.$(prefix)--button-icon-only.$(prefix)--button-large {
-        min-width: calc(var(--size-container-05) - var(--size-spacing-01));
-        max-width: calc(var(--size-container-05) - var(--size-spacing-01));
-        min-height: calc(var(--size-container-05) - var(--size-spacing-01));
-        max-height: calc(var(--size-container-05) - var(--size-spacing-01));
+        min-width: calc(var(--size-container-05) - var(--size-border));
+        max-width: calc(var(--size-container-05) - var(--size-border));
+        min-height: calc(var(--size-container-05) - var(--size-border));
+        max-height: calc(var(--size-container-05) - var(--size-border));
       }
     }
 
@@ -231,7 +237,9 @@
     }
 
     &-error {
-      border-color: var(--color-danger);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-danger);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;
@@ -248,7 +256,9 @@
     }
 
     &-warning {
-      border-color: var(--color-warning);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-warning);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;

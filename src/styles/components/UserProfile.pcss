@@ -13,24 +13,25 @@
       background-color: transparent;
 
       &:hover {
-        filter: brightness(0.9);
+        filter: brightness(0.95);
       }
 
       &:active {
-        filter: brightness(0.8);
+        filter: brightness(0.9);
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.125rem var(--color-focus-inverse),
-          0 0 0 0.1875rem var(--color-focus);
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
       }
     }
 
     &-open {
-      filter: brightness(0.7);
+      filter: brightness(0.9);
 
       &:hover {
-        filter: brightness(0.9);
+        filter: brightness(0.85);
       }
     }
 
@@ -49,35 +50,41 @@
       flex-wrap: wrap;
     }
 
-    &-menu {
-      visibility: hidden;
+    &-menu.tippy-box {
       position: absolute;
       width: var(--size-container-08);
       padding: var(--size-spacing-05);
-      transform: translate(0, 0);
-      transition: var(--transition-app-01);
-      opacity: 0;
+      transition: transform var(--transition-app-01),
+        opacity var(--transition-app-01), visibility var(--transition-app-01) !important;
+      background-color: var(--color-background);
+      box-shadow: var(--component-shadow-02);
 
-      &__user {
-        display: flex;
-      }
-
-      &__open {
-        visibility: visible;
-        transform: translate(0, var(--size-spacing-03));
-        opacity: 1;
-      }
-
-      &__avatar {
-        margin-right: var(--size-spacing-05);
+      & > .tippy-content {
         padding: 0;
-      }
-    }
 
-    &-name {
-      margin-bottom: var(--size-spacing-01);
-      padding: 0;
-      color: var(--color-font-text-01);
+        & > div > .$(prefix)--userprofile-menu__user {
+          display: flex;
+          flex-flow: row;
+
+          & > div > .$(prefix)--userprofile-name {
+            margin-bottom: var(--size-spacing-01);
+            padding: 0;
+            color: var(--color-font-text-01);
+          }
+
+          & > .$(prefix)--userprofile-menu__avatar {
+            display: inline-flex;
+            margin-right: var(--size-spacing-05);
+            padding: 0;
+          }
+        }
+      }
+
+      &[data-animation="bbds-animation"][data-state="hidden"] {
+        visibility: hidden;
+        transform: translateY(calc(var(--size-spacing-inner) * -1));
+        opacity: 0;
+      }
     }
 
     &-divider.$(prefix)--divider {

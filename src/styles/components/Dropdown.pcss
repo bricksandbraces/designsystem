@@ -48,8 +48,9 @@
       max-width: var(--size-container-08);
       padding: 0 var(--size-spacing-05);
       overflow: hidden;
-      transition: background-color var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      transition: background-color var(--transition-app-01),
+        box-shadow var(--transition-app-01);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       background-color: var(--color-background);
       color: var(--color-font-text-01);
@@ -69,8 +70,10 @@
         background-color: var(--color-active);
       }
 
-      &:focus-visible {
-        border-color: var(--color-focus);
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
       }
 
       &:disabled {
@@ -180,7 +183,9 @@
 
     &-error {
       & > .$(prefix)--dropdown-toggle {
-        border-color: var(--color-danger);
+        outline: var(--size-border-state) var(--style-border-focus)
+          var(--color-danger);
+        outline-offset: calc(var(--size-border-focus) * -1);
       }
 
       &__text {
@@ -198,7 +203,9 @@
     }
 
     &-warning {
-      border-color: var(--color-warning);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-warning);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;
@@ -225,7 +232,7 @@
         overflow-y: scroll;
         transition: transform var(--transition-app-01),
           opacity var(--transition-app-01), visibility var(--transition-app-01) !important;
-        border: 0.0625rem solid var(--color-border);
+        border: var(--size-border) var(--style-border) var(--color-border);
         border-radius: var(--component-radius-02);
         background-color: var(--color-background);
         box-shadow: var(--component-shadow-02);
@@ -257,7 +264,7 @@
         width: 100%;
         transition: background-color var(--transition-app-01),
           color var(--transition-app-01);
-        border: 0.0625rem solid transparent;
+        border: var(--size-border) var(--style-border) transparent;
         border-radius: var(--component-radius-02);
         outline: 0;
         color: var(--color-font-unselected);
@@ -269,7 +276,7 @@
           height: var(--size-container-02);
           border-radius: calc(var(--component-radius-01) * 2);
           opacity: 0;
-          background-color: var(--color-decoration);
+          background-color: var(--color-brand-04);
         }
 
         &.$(prefix)--dropdown-menu__item-selected {
@@ -283,12 +290,16 @@
           align-items: center;
           width: 100%;
           height: 100%;
-          border: 0.0625rem solid transparent;
+          transition: box-shadow var(--transition-app-01);
+          border: var(--size-border) var(--style-border) transparent;
           border-radius: var(--component-radius-02);
           outline: 0;
+          box-shadow: 0;
 
           &:focus-visible {
-            border-color: var(--color-focus);
+            outline: 0;
+            box-shadow: 0 0 0 0.0625rem var(--color-focus),
+              0 0 0 0.25rem var(--color-focus-highlight);
           }
         }
 

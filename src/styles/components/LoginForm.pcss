@@ -2,15 +2,11 @@
   &-email.$(prefix)--textinput {
     width: 100%;
     & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
-      border-bottom: 0.0625rem solid transparent;
+      border-bottom: var(--size-border) var(--style-border) transparent;
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-
-      &:focus {
-        border-bottom: 0.0625rem solid var(--color-focus);
-      }
     }
   }
 
@@ -20,6 +16,7 @@
     }
 
     & > .$(prefix)--textinput-input__container > .$(prefix)--textinput-input {
+      border-top: var(--size-divider) var(--style-divider) var(--color-border);
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 2px;
