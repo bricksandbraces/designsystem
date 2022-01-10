@@ -599,9 +599,9 @@ const dynamicTheme = {
     "component-radius-03": metrics["radius-03"],
 
     /* " Box Shadow " */
-    "component-shadow-01": metrics["shadow-04"],
-    "component-shadow-02": metrics["shadow-05"],
-    "component-shadow-03": metrics["shadow-06"],
+    "component-shadow-01": metrics["shadow-01"],
+    "component-shadow-02": metrics["shadow-02"],
+    "component-shadow-03": metrics["shadow-03"],
 
     /* = = = Transitions = = = */
 
