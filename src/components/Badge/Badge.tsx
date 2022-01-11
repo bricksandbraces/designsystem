@@ -106,11 +106,6 @@ export const Badge = React.forwardRef(function Badge(
   }: BadgeProps,
   ref: React.ForwardedRef<HTMLButtonElement | HTMLDivElement>
 ) {
-  const currentTheme = useTheme();
-  console.log("= = = = =");
-  console.log(color);
-  console.log(currentTheme);
-  console.log("= = = = =");
   const baseProps = {
     onMouseEnter,
     onMouseLeave,
