@@ -1,7 +1,6 @@
 import { IconX } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
-import { useTheme } from "../..";
 import { prefix } from "../../settings";
 
 export type BadgeColor =
