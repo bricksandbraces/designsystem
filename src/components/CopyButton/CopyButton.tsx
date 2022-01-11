@@ -60,7 +60,7 @@ export const CopyButton = React.forwardRef(function CopyButton(
     <IconOnlyButton
       className={cx(
         `${prefix}--copybutton`,
-        { [`${prefix}--copybutton--copied`]: showState },
+        { [`${prefix}--copybutton-copied`]: showState },
         className
       )}
       kind="ghost"
@@ -69,7 +69,7 @@ export const CopyButton = React.forwardRef(function CopyButton(
         tooltipContent: showState ? tooltipLabelCopied : tooltipLabel
       }}
       // TODO: adjust color to be extended from a config
-      icon={showState ? <IconCheck color="#7FD55D" /> : <IconCopy />}
+      icon={showState ? <IconCheck /> : <IconCopy />}
       onClick={(event) => {
         setShowState(true);
         copyToClipboard(valueToCopy);

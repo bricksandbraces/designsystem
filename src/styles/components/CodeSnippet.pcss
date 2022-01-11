@@ -29,7 +29,8 @@
         min-height: var(--size-container-06);
         max-height: var(--size-container-06);
         border-top: 0;
-        border-left: 0.0625rem solid var(--color-border);
+        border-left: var(--size-divider) var(--style-divider)
+          var(--color-border);
         background-color: var(--color-background);
       }
 
@@ -57,9 +58,10 @@
       width: 100%;
       max-width: calc(var(--size-container-08) * 3);
       overflow: hidden;
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       background-color: var(--color-background);
+      box-shadow: var(--component-shadow-01);
     }
 
     &-button {
@@ -74,7 +76,7 @@
         width: 100%;
         height: calc(var(--size-field-small) + (var(--size-spacing-03) * 2));
         padding: var(--size-spacing-03);
-        border-top: 0.0625rem solid var(--color-border);
+        border-top: var(--size-divider) var(--style-divider) var(--color-border);
         background-color: var(--color-background);
         gap: var(--size-spacing-03);
       }

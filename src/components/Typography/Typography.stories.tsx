@@ -9,12 +9,24 @@ export default {
 export const Headlines = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
-      <Headline type="h1">This is Headline 1</Headline>
-      <Headline type="h2">This is Headline 2</Headline>
-      <Headline type="h3">This is Headline 3</Headline>
-      <Headline type="h4">This is Headline 4</Headline>
-      <Headline type="h5">This is Headline 5</Headline>
-      <Headline type="h6">This is Headline 6</Headline>
+      <Headline type="h1" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 1
+      </Headline>
+      <Headline type="h2" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 2
+      </Headline>
+      <Headline type="h3" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 3
+      </Headline>
+      <Headline type="h4" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 4
+      </Headline>
+      <Headline type="h5" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 5
+      </Headline>
+      <Headline type="h6" style={{ color: "var(--color-font-text-01)" }}>
+        This is Headline 6
+      </Headline>
     </div>
   );
 };
@@ -22,8 +34,18 @@ export const Headlines = () => {
 export const MarketingHeadlines = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
-      <Marketing type="marketing-01">This is a Marketing Heading 1</Marketing>
-      <Marketing type="marketing-02">This is a Marketing Heading 2</Marketing>
+      <Marketing
+        type="marketing-01"
+        style={{ color: "var(--color-font-text-01)" }}
+      >
+        This is a Marketing Heading 1
+      </Marketing>
+      <Marketing
+        type="marketing-02"
+        style={{ color: "var(--color-font-text-01)" }}
+      >
+        This is a Marketing Heading 2
+      </Marketing>
     </div>
   );
 };
@@ -40,19 +62,19 @@ export const QuoteType = () => {
     >
       <Quote
         type="quote-01"
-        name="Pinar"
+        name="Hendrik"
         position="Marketing Campaign Lead"
-        company="IBM Deutschland"
+        company="Bricks &amp; Braces of Hamburg"
       >
-        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
+        This is a quote and can be used to emphasize external views.
       </Quote>
       <Quote
         type="quote-02"
-        name="Pinar"
+        name="Hendrik"
         position="Marketing Campaign Lead"
-        company="IBM Deutschland"
+        company="Bricks &amp; Braces of Hamburg"
       >
-        Die Boiz sind 1fach richtig nais und machen n(ice)n kram.
+        This is a quote and can be used to emphasize external views.
       </Quote>
     </div>
   );
@@ -61,10 +83,10 @@ export const QuoteType = () => {
 export const BodyType = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
-      <Body type="body-01">
+      <Body type="body-01" style={{ color: "var(--color-font-text-01)" }}>
         Hello. I am a body text. I am a B1 body text. Nice to meet you.
       </Body>
-      <Body type="body-02">
+      <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
         Hello. I am a body text. I am a B2 body text. Nice to meet you.
       </Body>
     </div>
@@ -75,7 +97,9 @@ export const LabelAndCaption = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
       <Label>Hello. I am a Label.</Label>
-      <Caption>Hello. I am a Caption.</Caption>
+      <Caption style={{ color: "var(--color-font-text-01)" }}>
+        Hello. I am a Caption.
+      </Caption>
     </div>
   );
 };

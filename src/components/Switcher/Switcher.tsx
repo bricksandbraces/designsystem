@@ -3,7 +3,6 @@ import React from "react";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlledValue } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
-import { Body } from "../Typography/Typography";
 import { SwitcherItemProps } from "./SwitcherItem";
 
 export type SwitcherProps = {
@@ -61,7 +60,7 @@ export const Switcher = React.forwardRef(function Switcher(
     onChange,
     0
   );
-
+  const childrenCount = React.Children.count(children);
   return (
     <div
       className={cx(
@@ -71,32 +70,39 @@ export const Switcher = React.forwardRef(function Switcher(
       )}
       ref={ref}
     >
-      <div className={`${prefix}--switcher-btn__container`}>
+      <div
+        className={`${prefix}--switcher-btn__container`}
+        data-childrencount={childrenCount}
+      >
         {mapReactChildren<SwitcherItemProps>(
           children,
           ({ props, key, index: i }) => {
             return (
-              <button
-                disabled={props.disabled}
-                type="button"
-                key={key}
-                className={cx(`${prefix}--switcher-btn`, {
-                  [`${prefix}--switcher-btn__selected`]: selectedIndex === i
-                })}
-                onClick={() => {
-                  performIndexChange(i);
-                }}
-              >
-                <Body
-                  type="body-02"
-                  className={`${prefix}--switcher-btn__label`}
+              <>
+                <button
+                  disabled={props.disabled}
+                  data-itemcount={i + 1}
+                  type="button"
+                  key={key}
+                  className={cx(`${prefix}--switcher-btn`, {
+                    [`${prefix}--switcher-btn__selected`]: selectedIndex === i
+                  })}
+                  onClick={() => {
+                    performIndexChange(i);
+                  }}
                 >
-                  {props.title}
-                </Body>
-              </button>
+                  <p className={`${prefix}--switcher-btn__label`}>
+                    {props.title}
+                  </p>
+                </button>
+                {i + 1 < childrenCount && (
+                  <span className={`${prefix}--switcher-btn__divider`} />
+                )}
+              </>
             );
           }
         )}
+        <span className={`${prefix}--switcher-indicator`} />
       </div>
       <div className={`${prefix}--switcher-content`}>
         {mapReactChildren<SwitcherItemProps>(

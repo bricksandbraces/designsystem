@@ -29,7 +29,11 @@ export const Default = () => {
       }}
     >
       <span style={{ display: "flex", alignItems: "center" }}>
-        <span style={{ paddingRight: "24px" }}>{valueToCopy}</span>
+        <span
+          style={{ paddingRight: "24px", color: "var(--color-font-text-01)" }}
+        >
+          {valueToCopy}
+        </span>
         <CopyButton
           tooltipLabelCopied={text("tooltipLabelCopied", "Copied!")}
           tooltipLabel={text("tooltipLabel", "Copy")}

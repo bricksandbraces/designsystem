@@ -55,12 +55,13 @@
       width: 100%;
       padding: 0 var(--size-spacing-09) 0 var(--size-spacing-05);
       overflow: hidden;
-      transition: border var(--transition-app-01),
+      transition: box-shadow var(--transition-app-01),
         background-color var(--transition-app-01);
-      border: 0.0625rem solid var(--color-border);
+      border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       outline: 0;
       background-color: var(--color-background);
+      box-shadow: var(--component-shadow-01);
       color: var(--color-font-text-01);
       white-space: nowrap;
       cursor: pointer;
@@ -75,7 +76,9 @@
       }
 
       &:focus {
-        border-color: var(--color-focus);
+        outline: 0;
+        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+          0 0 0 0.25rem var(--color-focus-highlight);
       }
 
       &:disabled {
@@ -124,7 +127,9 @@
 
     &-error {
       & > .$(prefix)--dropdown-toggle {
-        border-color: var(--color-danger);
+        outline: var(--size-border-state) var(--style-border-focus)
+          var(--color-danger);
+        outline-offset: calc(var(--size-border-focus) * -1);
       }
 
       &__text {
@@ -142,7 +147,9 @@
     }
 
     &-warning {
-      border-color: var(--color-warning);
+      outline: var(--size-border-state) var(--style-border-focus)
+        var(--color-warning);
+      outline-offset: calc(var(--size-border-focus) * -1);
 
       &__text {
         @mixin type--label;

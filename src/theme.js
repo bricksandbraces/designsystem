@@ -11,66 +11,83 @@ const rgba = (hex, alpha) => {
 const dynamicTheme = {
   light: {
     /* " Root Colors " */
-    "color-app-01": colors["gray-950"],
-    "color-app-02": colors["gray-800"],
-    "color-app-03": colors["gray-700"],
-    "color-app-04": colors["gray-500"],
+    "color-app-01": colors.white,
+    "color-app-02": colors["gray-850"],
+    "color-app-03": colors["gray-750"],
+    "color-app-04": colors["gray-550"],
     "color-app-05": colors.black,
     "color-app-05-alpha-5": rgba(colors.black, 0.05),
     "color-app-05-alpha-10": rgba(colors.black, 0.1),
-    "color-app-background": colors["gray-950"],
+    "color-app-01-alpha-80": rgba(colors.white, 0.8),
+    "color-app-background": colors.white,
 
     /* " Background Colors " */
-    "color-background": colors["gray-900"],
-    "color-background-alpha-0": rgba(colors["gray-900"], 0),
-    "color-hover": colors["gray-850"],
-    "color-active": colors["gray-800"],
-    "color-background-light": colors["gray-850"],
-    "color-hover-light": colors["gray-800"],
+    "color-background": colors["gray-950"],
+    "color-background-alpha-0": rgba(colors["gray-950"], 0),
+    "color-hover": colors["gray-900"],
+    "color-active": colors["gray-850"],
+    "color-background-light": colors["gray-900"],
+    "color-hover-light": colors["gray-850"],
     "color-active-light": colors["gray-750"],
-    "color-focus": colors.black,
+    "color-focus": colors["purple-500"],
+    "color-focus-highlight": rgba(colors["purple-500"], 0.1),
+    "color-focus-danger": colors["red-500"],
+    "color-focus-danger-highlight": rgba(colors["red-500"], 0.1),
     "color-focus-inverse": colors.white,
     "color-divider-dark": rgba(colors.white, 0.2),
     "color-divider-light": rgba(colors.black, 0.2),
-    "color-decoration": colors["purple-500"],
-    "color-selected": colors["gray-850"],
-    "color-selected-light": colors["gray-800"],
-    "color-unselected": colors["gray-900"],
-    "color-readonly": colors["gray-900"],
-    "color-disabled": colors["gray-850"],
-    "color-skeleton-01": colors["gray-900"],
-    "color-skeleton-02": colors["gray-850"],
+    "color-selected": colors["gray-900"],
+    "color-selected-light": colors["gray-850"],
+    "color-unselected": colors["gray-950"],
+    "color-readonly": colors["gray-950"],
+    "color-disabled": colors["gray-900"],
+    "color-skeleton-01": colors["gray-950"],
+    "color-skeleton-02": colors["gray-900"],
     "color-skeleton-03": colors["gray-750"],
     "color-skeleton-04": rgba(colors["gray-750"], 0.25),
+    "color-brand-01": colors["purple-950"],
+    "color-brand-02": colors["purple-800"],
+    "color-brand-03": colors["purple-700"],
+    "color-brand-04": colors["purple-500"],
+    "color-brand-05": colors["purple-50"],
+    "color-onbrand-01": colors.white,
+    "color-onbrand-02": colors["purple-850"],
+    "color-onbrand-03": colors["purple-750"],
+    "color-onbrand-04": colors["purple-650"],
+    "color-onbrand-05": colors["purple-500"],
 
     /* " Table Colors " */
-    "color-table-background": colors["gray-900"],
-    "color-table-hover": colors["gray-800"],
+    "color-table-background": colors["gray-950"],
+    "color-table-hover": colors["gray-850"],
     "color-table-active": colors["gray-750"],
 
     /* " Border Colors " */
-    "color-border": colors["gray-850"],
-    "color-border-light": colors["gray-800"],
+    "color-border": colors["gray-900"],
+    "color-border-light": colors["gray-850"],
 
     /* " Divider Colors " */
-    "color-divider-subtle": colors["gray-900"],
-    "color-divider-default": colors["gray-850"],
-    "color-divider-harsh": colors["gray-700"],
+    "color-divider-subtle": colors["gray-950"],
+    "color-divider-default": colors["gray-900"],
+    "color-divider-harsh": colors["gray-750"],
 
     /* " Font Colors " */
     "color-font-selected": colors.black,
-    "color-font-unselected": colors["gray-300"],
-    "color-font-text-01": colors["gray-50"],
-    "color-font-text-02": colors["gray-150"],
-    "color-font-text-03": colors["gray-250"],
-    "color-font-text-04": colors["gray-350"],
-    "color-font-text-05": colors["gray-500"],
-    "color-font-text-inverse": colors["gray-950"],
+    "color-font-unselected": colors["gray-350"],
+    "color-font-text-01": colors["gray-100"],
+    "color-font-text-02": colors["gray-200"],
+    "color-font-text-03": colors["gray-300"],
+    "color-font-text-04": colors["gray-400"],
+    "color-font-text-05": colors["gray-550"],
+    "color-font-text-inverse-01": colors.white,
+    "color-font-text-inverse-02": colors["gray-900"],
+    "color-font-text-inverse-03": colors["gray-750"],
+    "color-font-text-inverse-04": colors["gray-650"],
+    "color-font-text-inverse-05": colors["gray-550"],
     "color-font-decoration": colors["purple-250"],
     "color-font-link": colors["blue-400"],
     "color-font-link-hover": colors["blue-300"],
-    "color-font-placeholder": colors["gray-600"],
-    "color-font-readonly": colors["gray-350"],
+    "color-font-placeholder": colors["gray-650"],
+    "color-font-readonly": colors["gray-400"],
     "color-font-disabled": colors["gray-750"],
     "color-font-warning": colors["yellow-400"],
     "color-font-success": colors["green-400"],
@@ -79,14 +96,14 @@ const dynamicTheme = {
 
     /* " Button & Interactive Colors " */
     "color-primary-enabled": colors["purple-500"],
-    "color-primary-hover": colors["purple-550"],
-    "color-primary-active": colors["purple-600"],
-    "color-secondary-enabled": colors["gray-700"],
+    "color-primary-hover": colors["purple-450"],
+    "color-primary-active": colors["purple-400"],
+    "color-secondary-enabled": colors["gray-850"],
     "color-secondary-hover": colors["gray-750"],
-    "color-secondary-active": colors["gray-800"],
-    "color-tertiary-enabled": colors.black,
-    "color-tertiary-hover": colors["gray-550"],
-    "color-tertiary-active": colors["gray-600"],
+    "color-secondary-active": colors["gray-750"],
+    "color-tertiary-enabled": colors["purple-500"],
+    "color-tertiary-hover": colors["purple-450"],
+    "color-tertiary-active": colors["purple-400"],
     "color-ghost-enabled": "transparent",
     "color-ghost-hover": rgba(colors.black, 0.1),
     "color-ghost-active": rgba(colors.black, 0.2),
@@ -97,29 +114,49 @@ const dynamicTheme = {
     "color-danger-hover": colors["red-550"],
     "color-danger-active": colors["red-600"],
 
+    /* " Gradients " */
+    "color-gradient-01":
+      "linear-gradient(90deg, rgba(255, 255, 255, 0.85) 20%, rgba(255, 255, 255, 0) 100%)",
+
     /* " Badge Colors " */
-    "color-badge-gray-bg": colors["gray-850"],
-    "color-badge-gray-font": colors["gray-100"],
-    "color-badge-gray-border": colors["gray-800"],
+    "color-badge-gray-bg": colors["gray-900"],
+    "color-badge-gray-hover": colors["gray-850"],
+    "color-badge-gray-active": colors["gray-750"],
+    "color-badge-gray-font": colors["gray-150"],
+    "color-badge-gray-border": colors["gray-850"],
     "color-badge-red-bg": colors["red-850"],
+    "color-badge-red-hover": colors["red-800"],
+    "color-badge-red-active": colors["red-750"],
     "color-badge-red-font": colors["red-100"],
     "color-badge-red-border": colors["red-800"],
     "color-badge-green-bg": colors["green-850"],
+    "color-badge-green-hover": colors["green-800"],
+    "color-badge-green-active": colors["green-750"],
     "color-badge-green-font": colors["green-100"],
     "color-badge-green-border": colors["green-800"],
     "color-badge-yellow-bg": colors["yellow-850"],
+    "color-badge-yellow-hover": colors["yellow-800"],
+    "color-badge-yellow-active": colors["yellow-750"],
     "color-badge-yellow-font": colors["yellow-100"],
     "color-badge-yellow-border": colors["yellow-800"],
     "color-badge-blue-bg": colors["blue-850"],
+    "color-badge-blue-hover": colors["blue-800"],
+    "color-badge-blue-active": colors["blue-750"],
     "color-badge-blue-font": colors["blue-100"],
     "color-badge-blue-border": colors["blue-800"],
     "color-badge-cyan-bg": colors["cyan-850"],
+    "color-badge-cyan-hover": colors["cyan-800"],
+    "color-badge-cyan-active": colors["cyan-750"],
     "color-badge-cyan-font": colors["cyan-100"],
     "color-badge-cyan-border": colors["cyan-800"],
     "color-badge-orange-bg": colors["orange-850"],
+    "color-badge-orange-hover": colors["orange-800"],
+    "color-badge-orange-active": colors["orange-750"],
     "color-badge-orange-font": colors["orange-100"],
     "color-badge-orange-border": colors["orange-800"],
     "color-badge-purple-bg": colors["purple-850"],
+    "color-badge-purple-hover": colors["purple-800"],
+    "color-badge-purple-active": colors["purple-750"],
     "color-badge-purple-font": colors["purple-100"],
     "color-badge-purple-border": colors["purple-800"],
 
@@ -219,6 +256,23 @@ const dynamicTheme = {
     "size-field-default": metrics["field-default"],
     "size-field-large": metrics["field-large"],
 
+    /* " Border Sizes " */
+    "size-border": "0.0625rem",
+    "size-border-badge": "0.0625rem",
+    "size-border-state": "0.0625rem",
+
+    /* " Focus Sizes " */
+    "size-focus": "0.0625rem",
+
+    /* " Border Style " */
+    "style-border": "solid",
+
+    /* " Divider Sizes " */
+    "size-divider": "0.0625rem",
+
+    /* " Divider Style " */
+    "style-divider": "solid",
+
     /* " Spacing Sizes " */
     "size-spacing-01": metrics["spacing-01"],
     "size-spacing-02": metrics["spacing-02"],
@@ -265,6 +319,7 @@ const dynamicTheme = {
     "color-app-05": colors.white,
     "color-app-05-alpha-5": rgba(colors.white, 0.05),
     "color-app-05-alpha-10": rgba(colors.white, 0.1),
+    "color-app-01-alpha-80": rgba(colors["gray-50"], 0.8),
     "color-app-background": colors["gray-50"],
 
     /* " Background Colors " */
@@ -276,10 +331,12 @@ const dynamicTheme = {
     "color-hover-light": colors["gray-200"],
     "color-active-light": colors["gray-250"],
     "color-focus": colors.white,
+    "color-focus-highlight": rgba(colors.white, 0.25),
+    "color-focus-danger": colors["red-500"],
+    "color-focus-danger-highlight": rgba(colors["red-500"], 0.25),
     "color-focus-inverse": colors.black,
     "color-divider-dark": rgba(colors.black, 0.2),
     "color-divider-light": rgba(colors.white, 0.2),
-    "color-decoration": colors["purple-500"],
     "color-selected": colors["gray-150"],
     "color-selected-light": colors["gray-200"],
     "color-unselected": colors["gray-100"],
@@ -289,6 +346,16 @@ const dynamicTheme = {
     "color-skeleton-02": colors["gray-150"],
     "color-skeleton-03": colors["gray-250"],
     "color-skeleton-04": rgba(colors["gray-250"], 0.25),
+    "color-brand-01": colors["purple-950"],
+    "color-brand-02": colors["purple-800"],
+    "color-brand-03": colors["purple-700"],
+    "color-brand-04": colors["purple-500"],
+    "color-brand-05": colors["purple-50"],
+    "color-onbrand-01": colors.white,
+    "color-onbrand-02": colors["purple-850"],
+    "color-onbrand-03": colors["purple-750"],
+    "color-onbrand-04": colors["purple-650"],
+    "color-onbrand-05": colors["purple-500"],
 
     /* " Table Colors " */
     "color-table-background": colors["gray-100"],
@@ -312,7 +379,11 @@ const dynamicTheme = {
     "color-font-text-03": colors["gray-750"],
     "color-font-text-04": colors["gray-650"],
     "color-font-text-05": colors["gray-500"],
-    "color-font-text-inverse": colors["gray-50"],
+    "color-font-text-inverse-01": colors["gray-50"],
+    "color-font-text-inverse-02": colors["gray-150"],
+    "color-font-text-inverse-03": colors["gray-250"],
+    "color-font-text-inverse-04": colors["gray-350"],
+    "color-font-text-inverse-05": colors["gray-500"],
     "color-font-decoration": colors["purple-750"],
     "color-font-link": colors["blue-600"],
     "color-font-link-hover": colors["blue-700"],
@@ -344,29 +415,49 @@ const dynamicTheme = {
     "color-danger-hover": colors["red-450"],
     "color-danger-active": colors["red-400"],
 
+    /* " Gradients " */
+    "color-gradient-01":
+      "linear-gradient(90deg, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0) 100%)",
+
     /* " Badge Colors " */
     "color-badge-gray-bg": colors["gray-150"],
+    "color-badge-gray-hover": colors["gray-200"],
+    "color-badge-gray-active": colors["gray-250"],
     "color-badge-gray-font": colors["gray-900"],
     "color-badge-gray-border": colors["gray-200"],
     "color-badge-red-bg": colors["red-150"],
+    "color-badge-red-hover": colors["red-200"],
+    "color-badge-red-active": colors["red-250"],
     "color-badge-red-font": colors["red-900"],
     "color-badge-red-border": colors["red-200"],
     "color-badge-green-bg": colors["green-150"],
+    "color-badge-green-hover": colors["green-200"],
+    "color-badge-green-active": colors["green-250"],
     "color-badge-green-font": colors["green-900"],
     "color-badge-green-border": colors["green-200"],
     "color-badge-yellow-bg": colors["yellow-150"],
+    "color-badge-yellow-hover": colors["yellow-200"],
+    "color-badge-yellow-active": colors["yellow-250"],
     "color-badge-yellow-font": colors["yellow-900"],
     "color-badge-yellow-border": colors["yellow-200"],
     "color-badge-blue-bg": colors["blue-150"],
+    "color-badge-blue-hover": colors["blue-200"],
+    "color-badge-blue-active": colors["blue-250"],
     "color-badge-blue-font": colors["blue-900"],
     "color-badge-blue-border": colors["blue-200"],
     "color-badge-cyan-bg": colors["cyan-150"],
+    "color-badge-cyan-hover": colors["cyan-200"],
+    "color-badge-cyan-active": colors["cyan-250"],
     "color-badge-cyan-font": colors["cyan-900"],
     "color-badge-cyan-border": colors["cyan-200"],
     "color-badge-orange-bg": colors["orange-150"],
+    "color-badge-orange-hover": colors["orange-200"],
+    "color-badge-orange-active": colors["orange-250"],
     "color-badge-orange-font": colors["orange-900"],
     "color-badge-orange-border": colors["orange-200"],
     "color-badge-purple-bg": colors["purple-150"],
+    "color-badge-purple-hover": colors["purple-200"],
+    "color-badge-purple-active": colors["purple-250"],
     "color-badge-purple-font": colors["purple-900"],
     "color-badge-purple-border": colors["purple-200"],
 
@@ -466,6 +557,24 @@ const dynamicTheme = {
     "size-field-default": metrics["field-default"],
     "size-field-large": metrics["field-large"],
 
+    /* " Border Sizes " */
+    "size-border": "0.0625rem",
+    "size-border-badge": "0.0625rem",
+    "size-border-state": "0.0625rem",
+
+    /* " Focus Sizes " */
+    "size-focus": "0.0625rem",
+
+    /* " Border Style " */
+    "style-border": "solid",
+    "style-border-focus": "solid",
+
+    /* " Divider Sizes " */
+    "size-divider": "0.0625rem",
+
+    /* " Border Style " */
+    "style-divider": "solid",
+
     /* " Spacing Sizes " */
     "size-spacing-01": metrics["spacing-01"],
     "size-spacing-02": metrics["spacing-02"],
@@ -490,9 +599,9 @@ const dynamicTheme = {
     "component-radius-03": metrics["radius-03"],
 
     /* " Box Shadow " */
-    "component-shadow-01": metrics["shadow-04"],
-    "component-shadow-02": metrics["shadow-05"],
-    "component-shadow-03": metrics["shadow-06"],
+    "component-shadow-01": metrics["shadow-01"],
+    "component-shadow-02": metrics["shadow-02"],
+    "component-shadow-03": metrics["shadow-03"],
 
     /* = = = Transitions = = = */
 

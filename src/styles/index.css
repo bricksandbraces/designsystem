@@ -8,6 +8,7 @@
 @import "./keyframes.pcss";
 
 @import "./components/LoginForm.pcss";
+@import "./components/PriceTag.pcss";
 @import "./components/EmptyState.pcss";
 @import "./components/BackToTop.pcss";
 @import "./components/Breadcrumb.pcss";
@@ -54,7 +55,6 @@
 @import "./components/NumberInput.pcss";
 @import "./components/Skeleton.pcss";
 @import "./components/Avatar.pcss";
-@import "./components/FloatingPanel.pcss";
 @import "./components/RangeInput.pcss";
 @import "./components/SideNav.pcss";
 @import "./components/Switcher.pcss";
