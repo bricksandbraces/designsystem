@@ -19,10 +19,38 @@
       margin-bottom: var(--size-spacing-10);
     }
 
+    &-product {
+      &.$(prefix)--leadspace {
+        height: 100vh;
+
+        &::before {
+          background: var(--color-overlay);
+        }
+      }
+
+      & > .$(prefix)--leadspace-video {
+        height: 100vh;
+      }
+    }
+
     &-headline {
       @mixin type--marketing-01;
 
       margin-top: 0;
+      margin-bottom: var(--size-spacing-06);
+      color: var(--color-font-text-01);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    &-text {
+      @mixin type--headline-03;
+
+      display: flex;
+      width: 100%;
+      margin-bottom: var(--size-spacing-09);
+      color: var(--color-font-text-01);
+      font-weight: 300;
     }
 
     &-grid {
@@ -74,9 +102,19 @@
   }
 }
 
-.$(prefix)--webheader ~ .$(prefix)--leadspace {
+.$(prefix)--header ~ .$(prefix)--leadspace {
   top: var(--size-container-06);
-  margin-bottom: var(--size-container-06);
+
+  & ~ * {
+    margin-top: var(--size-container-06);
+  }
+}
+
+.$(prefix)--header ~ .$(prefix)--leadspace-product {
+  top: 0;
+  & > div > div > div > div > div > .$(prefix)--leadspace-headline {
+    margin-top: var(--size-container-06);
+  }
 }
 
 /* Lead Space Block */

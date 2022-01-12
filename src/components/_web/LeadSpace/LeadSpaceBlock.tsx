@@ -41,10 +41,10 @@ export const LeadSpaceBlock = React.forwardRef(function LeadSpaceBlock(
           smOffset={0}
           md={6}
           mdOffset={1}
-          lg={12}
-          lgOffset={2}
-          xlg={12}
-          xlgOffset={2}
+          lg={14}
+          lgOffset={1}
+          xlg={14}
+          xlgOffset={1}
           className={`${prefix}--leadspace-column`}
         >
           <div className={`${prefix}--leadspace-container`}>

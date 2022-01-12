@@ -27,44 +27,44 @@ export type CtaItem = {
   showChevron: boolean;
 };
 
-export type LeadSpaceProps = {
+export type LeadSpaceProductProps = {
   /**
-   * LeadSpace BackgroundImage
+   * LeadSpaceProduct BackgroundImage
    */
   backgroundImage?: string;
 
   /**
-   * LeadSpace VideoUrl
+   * LeadSpaceProduct VideoUrl
    */
   videoUrl?: string;
 
   /**
-   * LeadSpace VideoPlayLabel
+   * LeadSpaceProduct VideoPlayLabel
    */
   videoPlayLabel?: string;
 
   /**
-   * LeadSpace VideoPauseLabel
+   * LeadSpaceProduct VideoPauseLabel
    */
   videoPauseLabel?: string;
 
   /**
-   * LeadSpace Title
+   * LeadSpaceProduct Title
    */
   title?: string;
 
   /**
-   * LeadSpace Text
+   * LeadSpaceProduct Text
    */
   text?: string;
 
   /**
-   * LeadSpace CtaItems
+   * LeadSpaceProduct CtaItems
    */
   ctaItems?: CtaItem[];
 };
 
-export const LeadSpace = React.forwardRef(function LeadSpace(
+export const LeadSpaceProduct = React.forwardRef(function LeadSpaceProduct(
   {
     backgroundImage,
     videoUrl,
@@ -73,7 +73,7 @@ export const LeadSpace = React.forwardRef(function LeadSpace(
     title,
     text,
     ctaItems
-  }: LeadSpaceProps,
+  }: LeadSpaceProductProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   const video = useRef<HTMLVideoElement>(null);
@@ -82,7 +82,7 @@ export const LeadSpace = React.forwardRef(function LeadSpace(
   return (
     <section
       id="leadspace"
-      className={cx(`${prefix}--leadspace`, {
+      className={cx(`${prefix}--leadspace ${prefix}--leadspace-product`, {
         [`${prefix}--leadspace-video__player`]: videoUrl
       })}
       style={{

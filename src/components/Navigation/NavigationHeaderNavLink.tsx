@@ -2,35 +2,35 @@ import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
 
-export type HeaderNavLinkProps = {
+export type NavigationHeaderNavLinkProps = {
   /**
-   * HeaderNavLink Label
+   * NavigationHeaderNavLink Label
    */
   label?: string;
 
   /**
-   * HeaderNavLink ClassName
+   * NavigationHeaderNavLink ClassName
    */
   className?: string;
 
   /**
-   * HeaderNavLink Href
+   * NavigationHeaderNavLink Href
    */
   href?: string;
 
   /**
-   * HeaderNavLink Selected
+   * NavigationHeaderNavLink Selected
    */
   selected?: boolean;
 
   /**
-   * HeaderNavLink OnClick Function
+   * NavigationHeaderNavLink OnClick Function
    */
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-export const HeaderNavLink = React.forwardRef(function HeaderNavLink(
-  { className, href, label, selected, ...rest }: HeaderNavLinkProps,
+export const NavigationHeaderNavLink = React.forwardRef(function NavigationHeaderNavLink(
+  { className, href, label, selected, ...rest }: NavigationHeaderNavLinkProps,
   ref: React.ForwardedRef<HTMLAnchorElement>
 ) {
   return (

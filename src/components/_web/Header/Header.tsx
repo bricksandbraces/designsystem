@@ -7,42 +7,42 @@ import { useControlledValue } from "../../../hooks/useControlled";
 import { prefix } from "../../../settings";
 import { Column, Grid } from "../../Grid/Grid";
 import { Logo } from "../../Logo/Logo";
-import { WebHeaderLink } from "./WebHeaderLink";
+import { HeaderLink } from "./HeaderLink";
 
-export type WebHeaderProps = {
+export type HeaderProps = {
   /**
-   * WebHeader LinkItems
+   * Header LinkItems
    */
   linkItems?: LinkItem[];
 
   /**
-   * WebHeader Logo
+   * Header Logo
    */
   logo?: React.ReactNode;
 
   /**
-   * WebHeader BaseUrl
+   * Header BaseUrl
    */
   baseUrl?: string;
 
   /**
-   * WebHeader Open
+   * Header Open
    */
   open?: boolean;
 
   /**
-   * WebHeader DefaultOpen
+   * Header DefaultOpen
    */
   defaultOpen?: boolean;
 
   /**
-   * WebHeader OnOpenChange
+   * Header OnOpenChange
    */
   onOpenChange?: (newOpen: boolean) => void;
 };
 
-export const WebHeader = React.forwardRef(function WebHeader(
-  { open, defaultOpen, onOpenChange, linkItems, logo, baseUrl }: WebHeaderProps,
+export const Header = React.forwardRef(function Header(
+  { open, defaultOpen, onOpenChange, linkItems, logo, baseUrl }: HeaderProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   const [headerOpen, setHeaderOpen] = useControlledValue(
@@ -54,11 +54,11 @@ export const WebHeader = React.forwardRef(function WebHeader(
   const indexedLinkItems = idfy(linkItems);
   return (
     <>
-      <header className={cx(`${prefix}--webheader`)} ref={ref}>
+      <header className={cx(`${prefix}--header`)} ref={ref}>
         <div>
           <Grid narrow>
-            <Column className={cx(`${prefix}--webheader-container`)}>
-              <a href={baseUrl} className={cx(`${prefix}--webheader-logo`)}>
+            <Column className={cx(`${prefix}--header-container`)}>
+              <a href={baseUrl} className={cx(`${prefix}--header-logo`)}>
                 <Logo type="logotype" color="black" size="xsmall" />
               </a>
             </Column>
@@ -66,8 +66,8 @@ export const WebHeader = React.forwardRef(function WebHeader(
         </div>
       </header>
       <button
-        className={cx(`${prefix}--webheader-toggle`, {
-          [`${prefix}--webheader-toggle__open`]: headerOpen
+        className={cx(`${prefix}--header-toggle`, {
+          [`${prefix}--header-toggle__open`]: headerOpen
         })}
         onClick={() => {
           setHeaderOpen(!headerOpen);
@@ -76,14 +76,14 @@ export const WebHeader = React.forwardRef(function WebHeader(
         {headerOpen ? <IconX /> : <IconMenu />}
       </button>
       <div
-        className={cx(`${prefix}--webheader-menu`, {
-          [`${prefix}--webheader-menu__open`]: headerOpen
+        className={cx(`${prefix}--header-menu`, {
+          [`${prefix}--header-menu__open`]: headerOpen
         })}
       >
         <div>
           {indexedLinkItems?.map((link) => {
             return (
-              <WebHeaderLink
+              <HeaderLink
                 key={link.id}
                 href={link.href}
                 onClick={() => {
@@ -91,7 +91,7 @@ export const WebHeader = React.forwardRef(function WebHeader(
                 }}
               >
                 {link.label}
-              </WebHeaderLink>
+              </HeaderLink>
             );
           })}
         </div>
@@ -99,14 +99,14 @@ export const WebHeader = React.forwardRef(function WebHeader(
           <a
             href={baseUrl}
             className={cx(
-              `${prefix}--webheader-logo ${prefix}--webheader-menu__logo`
+              `${prefix}--header-logo ${prefix}--header-menu__logo`
             )}
           >
             {logo ?? <Logo type="logomark" color="white" size="xlarge" />}
           </a>
         </div>
       </div>
-      <div className={cx(`${prefix}--webheader-overlay`)} />
+      <div className={cx(`${prefix}--header-overlay`)} />
     </>
   );
 });

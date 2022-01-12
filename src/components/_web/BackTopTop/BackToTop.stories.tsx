@@ -7,7 +7,7 @@ import {
   Footer,
   Grid,
   LeadSpace,
-  WebHeader
+  Header
 } from "../../..";
 import { Headline, Marketing } from "../../Typography/Typography";
 
@@ -16,7 +16,7 @@ export default { title: "Web/BackToTop", decorators: [withKnobs] };
 export const Default = () => {
   return (
     <div style={{ width: "100vw" }}>
-      <WebHeader
+      <Header
         baseUrl="#"
         linkItems={[
           { href: "#", label: "About us" },

@@ -68,7 +68,7 @@ export const Link = React.forwardRef(function Link({
       className={cx(
         `${prefix}--link ${prefix}--link-${size}`,
         {
-          [`${prefix}--link-icon__${iconPosition}`]: iconPosition,
+          [`${prefix}--link-icon__${iconPosition}`]: iconPosition && icon,
           [`${prefix}--link-inline`]: inline
         },
         className

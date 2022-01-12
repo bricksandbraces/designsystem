@@ -2,20 +2,20 @@ import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
 
-export type HeaderNavProps = {
+export type NavigationHeaderNavProps = {
   /**
-   * HeaderNav Children
+   * NavigationHeaderNav Children
    */
   children?: React.ReactNode;
 
   /**
-   * HeaderNav ClassName
+   * NavigationHeaderNav ClassName
    */
   className?: string;
 };
 
-export const HeaderNav = React.forwardRef(function HeaderNav(
-  { className, children, ...rest }: HeaderNavProps,
+export const NavigationHeaderNav = React.forwardRef(function NavigationHeaderNav(
+  { className, children, ...rest }: NavigationHeaderNavProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   return (

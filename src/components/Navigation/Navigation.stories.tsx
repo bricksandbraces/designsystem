@@ -19,14 +19,14 @@ import {
 import React, { useState } from "react";
 
 import {
-  Header,
-  HeaderAction,
-  HeaderActionItem,
-  HeaderDivider,
-  HeaderMenuButton,
-  HeaderNav,
-  HeaderNavLink,
-  HeaderNavMenu,
+  NavigationHeader,
+  NavigationHeaderAction,
+  NavigationHeaderActionItem,
+  NavigationHeaderDivider,
+  NavigationHeaderMenuButton,
+  NavigationHeaderNav,
+  NavigationHeaderNavLink,
+  NavigationHeaderNavMenu,
   Logo,
   Navigation,
   SideNav,
@@ -35,24 +35,24 @@ import {
   SideNavItem,
   SideNavItemExpander
 } from "../..";
-import { HeaderNavMenuItem } from "./HeaderNavMenuItem";
+import { NavigationHeaderNavMenuItem } from "./NavigationHeaderNavMenuItem";
 
 export default { title: "Components/Navigation", decorators: [withKnobs] };
 
 export const WithNav = () => {
   return (
     <Navigation>
-      <Header>
-        <HeaderNav>
-          <HeaderNavLink href="#" label="Link 1" />
-          <HeaderNavLink href="#" label="Link 2" />
-          <HeaderNavLink href="#" label="Link 3" />
-          <HeaderDivider />
-          <HeaderNavLink href="#" label="Link 4" />
-          <HeaderNavLink href="#" label="Link 5" />
-          <HeaderDivider />
-        </HeaderNav>
-      </Header>
+      <NavigationHeader>
+        <NavigationHeaderNav>
+          <NavigationHeaderNavLink href="#" label="Link 1" />
+          <NavigationHeaderNavLink href="#" label="Link 2" />
+          <NavigationHeaderNavLink href="#" label="Link 3" />
+          <NavigationHeaderDivider />
+          <NavigationHeaderNavLink href="#" label="Link 4" />
+          <NavigationHeaderNavLink href="#" label="Link 5" />
+          <NavigationHeaderDivider />
+        </NavigationHeaderNav>
+      </NavigationHeader>
     </Navigation>
   );
 };
@@ -60,25 +60,25 @@ export const WithNav = () => {
 export const WithActions = () => {
   return (
     <Navigation>
-      <Header>
-        <HeaderNav>
-          <HeaderNavLink href="#" label="Link 1" />
-          <HeaderNavLink href="#" label="Link 2" />
-          <HeaderNavLink href="#" label="Link 3" />
-          <HeaderDivider />
-          <HeaderNavLink href="#" label="Link 4" />
-          <HeaderNavLink href="#" label="Link 5" />
-          <HeaderDivider />
-        </HeaderNav>
-        <HeaderAction>
-          <HeaderActionItem selected>
+      <NavigationHeader>
+        <NavigationHeaderNav>
+          <NavigationHeaderNavLink href="#" label="Link 1" />
+          <NavigationHeaderNavLink href="#" label="Link 2" />
+          <NavigationHeaderNavLink href="#" label="Link 3" />
+          <NavigationHeaderDivider />
+          <NavigationHeaderNavLink href="#" label="Link 4" />
+          <NavigationHeaderNavLink href="#" label="Link 5" />
+          <NavigationHeaderDivider />
+        </NavigationHeaderNav>
+        <NavigationHeaderAction>
+          <NavigationHeaderActionItem selected>
             <IconNotification />
-          </HeaderActionItem>
-          <HeaderActionItem>
+          </NavigationHeaderActionItem>
+          <NavigationHeaderActionItem>
             <IconUser />
-          </HeaderActionItem>
-        </HeaderAction>
-      </Header>
+          </NavigationHeaderActionItem>
+        </NavigationHeaderAction>
+      </NavigationHeader>
     </Navigation>
   );
 };
@@ -86,40 +86,48 @@ export const WithActions = () => {
 export const WithDropdown = () => {
   return (
     <Navigation>
-      <Header>
-        <HeaderNav>
-          <HeaderNavLink href="#" label="Link 1" />
-          <HeaderNavLink href="#" label="Link 2" />
-          <HeaderNavLink href="#" label="Link 3" />
-          <HeaderDivider />
-          <HeaderNavLink href="#" label="Link 4" />
-          <HeaderNavLink href="#" label="Link 5" />
-          <HeaderDivider />
-          <HeaderNavMenu label="Menu">
-            <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
-            <HeaderNavMenuItem icon={<IconUsers />}>Account</HeaderNavMenuItem>
-            <HeaderNavMenuItem icon={<IconSettings />}>
+      <NavigationHeader>
+        <NavigationHeaderNav>
+          <NavigationHeaderNavLink href="#" label="Link 1" />
+          <NavigationHeaderNavLink href="#" label="Link 2" />
+          <NavigationHeaderNavLink href="#" label="Link 3" />
+          <NavigationHeaderDivider />
+          <NavigationHeaderNavLink href="#" label="Link 4" />
+          <NavigationHeaderNavLink href="#" label="Link 5" />
+          <NavigationHeaderDivider />
+          <NavigationHeaderNavMenu label="Menu">
+            <NavigationHeaderNavMenuItem icon={<IconCash />}>
+              Billing
+            </NavigationHeaderNavMenuItem>
+            <NavigationHeaderNavMenuItem icon={<IconUsers />}>
+              Account
+            </NavigationHeaderNavMenuItem>
+            <NavigationHeaderNavMenuItem icon={<IconSettings />}>
               Settings
-            </HeaderNavMenuItem>
-          </HeaderNavMenu>
-          <HeaderNavMenu label="Menu">
-            <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
-            <HeaderNavMenuItem icon={<IconUsers />}>Account</HeaderNavMenuItem>
-            <HeaderNavMenuItem icon={<IconSettings />}>
+            </NavigationHeaderNavMenuItem>
+          </NavigationHeaderNavMenu>
+          <NavigationHeaderNavMenu label="Menu">
+            <NavigationHeaderNavMenuItem icon={<IconCash />}>
+              Billing
+            </NavigationHeaderNavMenuItem>
+            <NavigationHeaderNavMenuItem icon={<IconUsers />}>
+              Account
+            </NavigationHeaderNavMenuItem>
+            <NavigationHeaderNavMenuItem icon={<IconSettings />}>
               Settings
-            </HeaderNavMenuItem>
-          </HeaderNavMenu>
-          <HeaderDivider />
-        </HeaderNav>
-        <HeaderAction>
-          <HeaderActionItem selected>
+            </NavigationHeaderNavMenuItem>
+          </NavigationHeaderNavMenu>
+          <NavigationHeaderDivider />
+        </NavigationHeaderNav>
+        <NavigationHeaderAction>
+          <NavigationHeaderActionItem selected>
             <IconNotification />
-          </HeaderActionItem>
-          <HeaderActionItem>
+          </NavigationHeaderActionItem>
+          <NavigationHeaderActionItem>
             <IconUser />
-          </HeaderActionItem>
-        </HeaderAction>
-      </Header>
+          </NavigationHeaderActionItem>
+        </NavigationHeaderAction>
+      </NavigationHeader>
     </Navigation>
   );
 };
@@ -129,50 +137,54 @@ export const WithSideNav = () => {
   return (
     <div style={{ height: "100vh" }}>
       <Navigation>
-        <Header>
-          <HeaderMenuButton
+        <NavigationHeader>
+          <NavigationHeaderMenuButton
             open={openMenu}
             onClick={() => {
               setOpenMenu(!openMenu);
             }}
           />
-          <HeaderNav>
-            <HeaderNavLink href="#" label="Link 1" />
-            <HeaderNavLink href="#" label="Link 2" />
-            <HeaderNavLink href="#" label="Link 3" />
-            <HeaderDivider />
-            <HeaderNavLink href="#" label="Link 4" />
-            <HeaderNavLink href="#" label="Link 5" />
-            <HeaderDivider />
-            <HeaderNavMenu label="Menu">
-              <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
-              <HeaderNavMenuItem icon={<IconUsers />}>
+          <NavigationHeaderNav>
+            <NavigationHeaderNavLink href="#" label="Link 1" />
+            <NavigationHeaderNavLink href="#" label="Link 2" />
+            <NavigationHeaderNavLink href="#" label="Link 3" />
+            <NavigationHeaderDivider />
+            <NavigationHeaderNavLink href="#" label="Link 4" />
+            <NavigationHeaderNavLink href="#" label="Link 5" />
+            <NavigationHeaderDivider />
+            <NavigationHeaderNavMenu label="Menu">
+              <NavigationHeaderNavMenuItem icon={<IconCash />}>
+                Billing
+              </NavigationHeaderNavMenuItem>
+              <NavigationHeaderNavMenuItem icon={<IconUsers />}>
                 Account
-              </HeaderNavMenuItem>
-              <HeaderNavMenuItem icon={<IconSettings />}>
+              </NavigationHeaderNavMenuItem>
+              <NavigationHeaderNavMenuItem icon={<IconSettings />}>
                 Settings
-              </HeaderNavMenuItem>
-            </HeaderNavMenu>
-            <HeaderNavMenu label="Menu">
-              <HeaderNavMenuItem icon={<IconCash />}>Billing</HeaderNavMenuItem>
-              <HeaderNavMenuItem icon={<IconUsers />}>
+              </NavigationHeaderNavMenuItem>
+            </NavigationHeaderNavMenu>
+            <NavigationHeaderNavMenu label="Menu">
+              <NavigationHeaderNavMenuItem icon={<IconCash />}>
+                Billing
+              </NavigationHeaderNavMenuItem>
+              <NavigationHeaderNavMenuItem icon={<IconUsers />}>
                 Account
-              </HeaderNavMenuItem>
-              <HeaderNavMenuItem icon={<IconSettings />}>
+              </NavigationHeaderNavMenuItem>
+              <NavigationHeaderNavMenuItem icon={<IconSettings />}>
                 Settings
-              </HeaderNavMenuItem>
-            </HeaderNavMenu>
-            <HeaderDivider />
-          </HeaderNav>
-          <HeaderAction>
-            <HeaderActionItem>
+              </NavigationHeaderNavMenuItem>
+            </NavigationHeaderNavMenu>
+            <NavigationHeaderDivider />
+          </NavigationHeaderNav>
+          <NavigationHeaderAction>
+            <NavigationHeaderActionItem>
               <IconNotification />
-            </HeaderActionItem>
-            <HeaderActionItem>
+            </NavigationHeaderActionItem>
+            <NavigationHeaderActionItem>
               <IconUser />
-            </HeaderActionItem>
-          </HeaderAction>
-        </Header>
+            </NavigationHeaderActionItem>
+          </NavigationHeaderAction>
+        </NavigationHeader>
         <SideNav
           logo={<Logo type="logotype" color="white" size="xsmall" />}
           onLogoClick={action("onLogoClick")}

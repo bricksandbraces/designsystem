@@ -3,35 +3,35 @@ import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
 
-export type HeaderMenuButtonProps = {
+export type NavigationHeaderMenuButtonProps = {
   /**
-   * HeaderMenuButton open
+   * NavigationHeaderMenuButton open
    */
   open?: boolean;
 
   /**
-   * HeaderMenuButton ClassName
+   * NavigationHeaderMenuButton ClassName
    */
   className?: string;
 
   /**
-   * HeaderMenuButton Href
+   * NavigationHeaderMenuButton Href
    */
   href?: string;
 
   /**
-   * HeaderMenuButton Selected
+   * NavigationHeaderMenuButton Selected
    */
   selected?: boolean;
 
   /**
-   * HeaderMenuButton OnClick Function
+   * NavigationHeaderMenuButton OnClick Function
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const HeaderMenuButton = React.forwardRef(function HeaderMenuButton(
-  { className, href, open, onClick, selected, ...rest }: HeaderMenuButtonProps,
+export const NavigationHeaderMenuButton = React.forwardRef(function NavigationHeaderMenuButton(
+  { className, href, open, onClick, selected, ...rest }: NavigationHeaderMenuButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) {
   return (
