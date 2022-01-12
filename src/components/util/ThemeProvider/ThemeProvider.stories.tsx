@@ -10,7 +10,12 @@ export default {
 export const Example = () => {
   return (
     <div style={{ color: "white", margin: "32px" }}>
-      <ThemeProvider>
+      <ThemeProvider
+        theme={{
+          light: { "color-badge-gray-font": "#444" },
+          dark: { "color-badge-gray-font": "#AAA" }
+        }}
+      >
         <Badge>Outer theme, dynamically from system</Badge>
         <ThemeProvider
           theme={{
