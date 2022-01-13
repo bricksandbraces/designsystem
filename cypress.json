@@ -1,4 +1,5 @@
 {
   "baseUrl": "http://localhost:6006",
-  "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"]
+  "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
+  "headless": true
 }
