@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   cypress-run:
-    name: "Test stories with cypress"
+    name: "Test stories with cypress run"
     runs-on: ubuntu-latest
 
     strategy:
