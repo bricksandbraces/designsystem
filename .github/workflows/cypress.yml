@@ -18,5 +18,6 @@ jobs:
         with:
           cache: "yarn"
       - run: yarn install --immutable
+      - run: yarn storybook &
       - name: Cypress run
-        uses: yarn storybook & cypress-io/github-action@v2
+        uses: cypress-io/github-action@v2
