@@ -3,15 +3,19 @@
 # barrel
 src/index.ts
 
+# cypress config
+cypress/fixtures
+cypress/plugins
+cypress/downloads
+cypress/support
+
 # config
 *.config.js
 *.config.cjs
 config/
+.eslintrc.js
 
 # <<<<<<<<<<< General >>>>>>>>>>>>>>
-
-# tasks
-tasks/
 
 # dependencies
 node_modules

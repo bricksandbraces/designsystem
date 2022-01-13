@@ -9,6 +9,10 @@ node_modules
 
 # testing
 coverage
+cypress/screenshots
+cypress/videos
+*.actual.png
+*.diff.png
 
 # lib
 lib/
