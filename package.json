@@ -13,8 +13,8 @@
     "build:package": "rimraf lib/ && yarn build:esm && yarn build:cjs && yarn build:css",
     "build:css-clean": "rimraf lib/styles && yarn build:css",
     "build:css": "postcss src/styles/index.css --ext .css --dir lib/styles/dist/ && cp -R src/styles/ lib/styles/postcss",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build:esm": "tsc --exclude .storybook/ --exclude src/**/*.stories.tsx",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs ",
     "test": "jest --passWithNoTests",
     "format:fix": "DEBUG=eslint:cli-engine eslint --fix --cache --cache-strategy content . && prettier --write . && stylelint \"**/*.?(p)css\" --fix --formatter verbose",
     "format:check": "DEBUG=eslint:cli-engine eslint --cache --cache-strategy content . && prettier --check . && stylelint \"**/*.?(p)css\" --formatter verbose",
@@ -148,6 +148,7 @@
     "stylelint-config-standard": "^24.0.0",
     "stylelint-prettier": "^2.0.0",
     "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0"
   },

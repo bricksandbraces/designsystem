@@ -1,0 +1,22 @@
+name: End-to-end tests
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  cypress-run:
+    name: "Test stories with cypress"
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          cache: "yarn"
+      - run: yarn install --immutable
+      - name: Cypress run
+        uses: cypress-io/github-action@v2

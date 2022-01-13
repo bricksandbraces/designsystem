@@ -4,15 +4,17 @@ import metrics from "@openbricksandbraces/designtokens/dist/json/metrics.json";
 import typography from "@openbricksandbraces/designtokens/dist/json/typography.json";
 import Color from "color";
 
+export type ThemeToken = string;
+export type CssPropertyValue = string;
+
 export type Theme = {
-  light?: Record<string, string>;
-  dark?: Record<string, string>;
+  light?: Record<ThemeToken, CssPropertyValue>;
+  dark?: Record<ThemeToken, CssPropertyValue>;
 };
 
-const rgba = (hex: string, alpha: number): string => {
-  return Color(hex)
-    .alpha(alpha ?? 1)
-    .hex();
+const rgba = (color: string, alpha: number): CssPropertyValue => {
+  const colorObj = Color(color).object() as { r: number; g: number; b: number };
+  return `rgb(${colorObj.r}, ${colorObj.g}, ${colorObj.b}, ${alpha})`;
 };
 
 export const defaultTheme = {
