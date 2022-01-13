@@ -21,3 +21,6 @@ jobs:
       - run: yarn storybook &
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        with:
+          build: yarn build:storybook
+          start: yarn start:storybook

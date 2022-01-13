@@ -1,9 +1,11 @@
 describe("AspectRatio Tests", () => {
   function snapshotMatchesRatio(ratio: string) {
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.visit(
       `/iframe.html?id=components-aspectratio--default&args=&knob-ratio=${ratio}&viewMode=story`
     )
-      .get(".bb--grid-example")
+      .get(".bb--aspect-ratio")
+      .wait(300)
       .toMatchImageSnapshot({ thresholdType: "percent", threshold: 0.01 });
   }
 
