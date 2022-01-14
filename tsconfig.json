@@ -17,6 +17,6 @@
     "jsx": "react",
     "incremental": true
   },
-  "include": ["src", ".storybook/Components/Intro"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src", ".storybook/Components/**/*.tsx"],
+  "exclude": ["node_modules", "lib", ".eslintrc.js", "cypress", "tasks"]
 }

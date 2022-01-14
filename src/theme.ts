@@ -1,14 +1,23 @@
-const animations = require("@openbricksandbraces/designtokens/dist/json/animations.json");
-const colors = require("@openbricksandbraces/designtokens/dist/json/colors.json");
-const metrics = require("@openbricksandbraces/designtokens/dist/json/metrics.json");
-const typography = require("@openbricksandbraces/designtokens/dist/json/typography.json");
-const Color = require("color");
+import animations from "@openbricksandbraces/designtokens/dist/json/animations.json";
+import colors from "@openbricksandbraces/designtokens/dist/json/colors.json";
+import metrics from "@openbricksandbraces/designtokens/dist/json/metrics.json";
+import typography from "@openbricksandbraces/designtokens/dist/json/typography.json";
+import Color from "color";
 
-const rgba = (hex, alpha) => {
-  return Color(hex).alpha(alpha ?? 1);
+export type ThemeToken = string;
+export type CssPropertyValue = string;
+
+export type Theme = {
+  light?: Record<ThemeToken, CssPropertyValue>;
+  dark?: Record<ThemeToken, CssPropertyValue>;
 };
 
-const dynamicTheme = {
+const rgba = (color: string, alpha: number): CssPropertyValue => {
+  const colorObj = Color(color).object() as { r: number; g: number; b: number };
+  return `rgb(${colorObj.r}, ${colorObj.g}, ${colorObj.b}, ${alpha})`;
+};
+
+export const defaultTheme = {
   light: {
     /* " Root Colors " */
     "color-app-01": colors.white,
@@ -613,5 +622,3 @@ const dynamicTheme = {
     "transition-app-05": animations["transition-app-05"]
   }
 };
-
-module.exports = dynamicTheme;

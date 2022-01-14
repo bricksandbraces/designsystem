@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://localhost:6006",
+  "projectId": "qrhxsn",
+  "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
+  "headless": true
+}
