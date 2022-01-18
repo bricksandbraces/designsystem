@@ -42,7 +42,7 @@ export type HeaderProps = {
 };
 
 export const Header = React.forwardRef(function Header(
-  { open, defaultOpen, onOpenChange, linkItems, logo, baseUrl }: HeaderProps,
+  { open, defaultOpen, onOpenChange, linkItems, baseUrl }: HeaderProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   const [headerOpen, setHeaderOpen] = useControlledValue(
@@ -57,29 +57,45 @@ export const Header = React.forwardRef(function Header(
       <header className={cx(`${prefix}--header`)} ref={ref}>
         <div>
           <Grid narrow>
-            <Column className={cx(`${prefix}--header-container`)}>
+            <Column
+              sm={4}
+              md={8}
+              lg={16}
+              xlg={16}
+              className={cx(`${prefix}--header-container`)}
+            >
               <a href={baseUrl} className={cx(`${prefix}--header-logo`)}>
                 <Logo type="logotype" color="black" size="xsmall" />
               </a>
+              <button
+                className={cx(`${prefix}--header-toggle`, {
+                  [`${prefix}--header-toggle__open`]: headerOpen
+                })}
+                onClick={() => {
+                  setHeaderOpen(!headerOpen);
+                }}
+              >
+                <IconMenu />
+              </button>
             </Column>
           </Grid>
         </div>
       </header>
-      <button
-        className={cx(`${prefix}--header-toggle`, {
-          [`${prefix}--header-toggle__open`]: headerOpen
-        })}
-        onClick={() => {
-          setHeaderOpen(!headerOpen);
-        }}
-      >
-        {headerOpen ? <IconX /> : <IconMenu />}
-      </button>
       <div
         className={cx(`${prefix}--header-menu`, {
           [`${prefix}--header-menu__open`]: headerOpen
         })}
       >
+        <button
+          className={cx(`${prefix}--header-toggle`, {
+            [`${prefix}--header-toggle__open`]: headerOpen
+          })}
+          onClick={() => {
+            setHeaderOpen(!headerOpen);
+          }}
+        >
+          <IconX />
+        </button>
         <div>
           {indexedLinkItems?.map((link) => {
             return (
@@ -94,16 +110,6 @@ export const Header = React.forwardRef(function Header(
               </HeaderLink>
             );
           })}
-        </div>
-        <div>
-          <a
-            href={baseUrl}
-            className={cx(
-              `${prefix}--header-logo ${prefix}--header-menu__logo`
-            )}
-          >
-            {logo ?? <Logo type="logomark" color="white" size="xlarge" />}
-          </a>
         </div>
       </div>
       <div className={cx(`${prefix}--header-overlay`)} />

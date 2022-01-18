@@ -40,9 +40,8 @@ export const Product = () => {
           { href: "#", label: "What we do", showChevron: true },
           { href: "#", label: "Learn more about us", showChevron: false }
         ])}
-        backgroundImage="https://i.pinimg.com/originals/30/c6/c3/30c6c39d2ad38b4be22a4932707b0550.png"
-        title="Creating a better tomorrow."
-        videoUrl="assets/video.mp4"
+        title="Without the human, it’s just work."
+        text="Want to cut your turnover in half?* Improve engagement and belonging? Create resilient, more human workplaces that last? You can with Workhuman® solutions by motivating employees to recognize, develop, and celebrate each other all in one place. Be the place that thrives."
       />
     </>
   );

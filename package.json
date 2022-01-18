@@ -19,7 +19,7 @@
     "test": "jest --passWithNoTests",
     "format:fix": "DEBUG=eslint:cli-engine eslint --fix --cache --cache-strategy content . && prettier --write . && stylelint \"**/*.?(p)css\" --fix --formatter verbose",
     "format:check": "DEBUG=eslint:cli-engine eslint --cache --cache-strategy content . && prettier --check . && stylelint \"**/*.?(p)css\" --formatter verbose",
-    "task:generate-pcss-theme": "ts-node -P tasks/tsconfig.json tasks/generate-pcss-theme.js && stylelint \"src/styles/theme.pcss\" --fix --formatter verbose"
+    "task:generate-pcss-theme": "ts-node -P tasks/tsconfig.json tasks/generate-pcss-theme.ts && stylelint \"src/styles/theme.pcss\" --fix --formatter verbose"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.com"

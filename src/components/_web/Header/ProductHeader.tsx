@@ -1,37 +1,37 @@
-import { IconChevronDown, IconMenu, IconX } from "@tabler/icons";
-import Tippy from "@tippyjs/react";
+import { IconAccessible, IconMenu2, IconX } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
-import { roundArrow } from "tippy.js";
-import { Button, IconOnlyButton, Link } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { useControlledValue } from "../../../hooks/useControlled";
 import { prefix } from "../../../settings";
 import { Column, Grid } from "../../Grid/Grid";
 import { Logo } from "../../Logo/Logo";
+import { ProductHeaderLink } from "./ProductHeaderLink";
+import { ProductHeaderMenu } from "./ProductHeaderMenu";
+import { ProductHeaderMenuItem } from "./ProductHeaderMenuItem";
 
-export type LinkItem = {
+export type ProductHeaderLinkItem = {
   /**
-   * LinkItem Link to location
+   * ProductHeaderLinkItem ProductHeaderLink to location
    */
   href: string;
 
   /**
-   * LinkItem Label
+   * ProductHeaderLinkItem Label
    */
   label: string;
 
   /**
-   * LinkItem Promo
+   * ProductHeaderLinkItem Promo
    */
   promo?: boolean;
 };
 
 export type ProductHeaderProps = {
   /**
-   * ProductHeader LinkItems
+   * ProductHeader ProductHeaderLinkItems
    */
-  linkItems?: LinkItem[];
+  linkItems?: ProductHeaderLinkItem[];
 
   /**
    * ProductHeader Logo
@@ -76,7 +76,7 @@ export const ProductHeader = React.forwardRef(function ProductHeader(
     onOpenChange,
     false
   );
-  const indexedLinkItems = idfy(linkItems);
+  const indexedProductHeaderLinkItems = idfy(linkItems);
   return (
     <header
       className={cx(`${prefix}--header ${prefix}--header-product`)}
@@ -86,8 +86,10 @@ export const ProductHeader = React.forwardRef(function ProductHeader(
         <Column
           sm={4}
           md={8}
-          lg={16}
-          xlg={16}
+          lg={14}
+          lgOffset={1}
+          xlgOffset={1}
+          xlg={14}
           className={cx(`${prefix}--header-container`)}
         >
           <a href={baseUrl} className={cx(`${prefix}--header-logo`)}>
@@ -101,50 +103,50 @@ export const ProductHeader = React.forwardRef(function ProductHeader(
               setMenuOpen(!menuOpen);
             }}
           >
-            {menuOpen ? <IconX /> : <IconMenu />}
+            {menuOpen ? <IconX /> : <IconMenu2 />}
           </button>
-          {indexedLinkItems && (
+          {indexedProductHeaderLinkItems && (
             <div className={cx(`${prefix}--header-product__links`)}>
-              <Tippy
-                interactive
-                className={cx(`${prefix}--header-product__list`)}
-                animation="bbds-animation"
-                placement="bottom"
-                theme="dark"
-                offset={[0, 8]}
-                allowHTML
-                arrow={false}
-                content={
-                  <>
-                    <a className={cx(`${prefix}--header-product__list-item`)}>
-                      Item 1
-                    </a>
-                    <a className={cx(`${prefix}--header-product__list-item`)}>
-                      Item 1
-                    </a>
-                    <a className={cx(`${prefix}--header-product__list-item`)}>
-                      Item 1
-                    </a>
-                  </>
-                }
-              >
-                <button
-                  className={cx(
-                    `${prefix}--link ${prefix}--link-default ${prefix}--header-product__list-trigger `
-                  )}
-                >
-                  <span className={cx(`${prefix}--link-label`)}>Open Menu</span>
-                </button>
-              </Tippy>
-              {indexedLinkItems?.map((link) => {
-                return link.promo === undefined ? (
-                  <Link key={link.id} href={link.href}>
+              <ProductHeaderMenu label="Open menu">
+                <ProductHeaderMenuItem
+                  title="Item 1"
+                  subtitle="This is a description"
+                  icon={<IconAccessible />}
+                />
+                <ProductHeaderMenuItem
+                  title="Item 2"
+                  subtitle="This is a description"
+                  icon={<IconAccessible />}
+                />
+                <ProductHeaderMenuItem
+                  title="Item 3"
+                  subtitle="This is a description"
+                  icon={<IconAccessible />}
+                />
+              </ProductHeaderMenu>
+              <ProductHeaderMenu label="Open menu">
+                <ProductHeaderMenuItem
+                  title="Item 1"
+                  subtitle="This is a description"
+                />
+                <ProductHeaderMenuItem
+                  title="Item 2"
+                  subtitle="This is a description"
+                />
+                <ProductHeaderMenuItem
+                  title="Item 3"
+                  subtitle="This is a description"
+                />
+              </ProductHeaderMenu>
+              {indexedProductHeaderLinkItems?.map((link) => {
+                return (
+                  <ProductHeaderLink
+                    promo={link.promo === undefined ? false : true}
+                    key={link.id}
+                    href={link.href}
+                  >
                     {link.label}
-                  </Link>
-                ) : (
-                  <Button key={link.id} href={link.href} size="small">
-                    {link.label}
-                  </Button>
+                  </ProductHeaderLink>
                 );
               })}
             </div>
@@ -156,18 +158,74 @@ export const ProductHeader = React.forwardRef(function ProductHeader(
           [`${prefix}--header-product__menu-open`]: menuOpen
         })}
       >
-        <p className={cx(`${prefix}--header-product__menu-headline`)}>
-          Headline
-        </p>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>Blog</a>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>About us</a>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>Imprint</a>
-        <p className={cx(`${prefix}--header-product__menu-headline`)}>
-          Headline
-        </p>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>Blog</a>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>About us</a>
-        <a className={cx(`${prefix}--header-product__menu-link`)}>Imprint</a>
+        <div
+          className={cx(`${prefix}--header-product__menu-nav--item__container`)}
+        >
+          <p
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-headline`
+            )}
+          >
+            Headline
+          </p>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            Blog
+          </a>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            About us
+          </a>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            Imprint
+          </a>
+          <p
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-headline`
+            )}
+          >
+            Headline
+          </p>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            Blog
+          </a>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            About us
+          </a>
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link`
+            )}
+          >
+            Imprint
+          </a>
+
+          <a
+            className={cx(
+              `${prefix}--header-product__menu-nav--item ${prefix}--header-product__menu-link--promo ${prefix}--button ${prefix}--button-primary ${prefix}--button-large`
+            )}
+          >
+            Item
+          </a>
+        </div>
       </div>
     </header>
   );

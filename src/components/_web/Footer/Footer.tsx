@@ -3,7 +3,6 @@ import React from "react";
 import { Column, Grid, Link, Logo } from "../../..";
 import { idfy } from "../../../helpers/arrayUtilities";
 import { prefix } from "../../../settings";
-import { WordBand } from "../WordBand/WordBand";
 
 export type LinkItem = {
   /**
@@ -69,7 +68,6 @@ export const Footer = React.forwardRef(function Footer(
   const indexedLinkItems = idfy(linkItems);
   return (
     <>
-      <WordBand />
       <footer className={cx(`${prefix}--webfooter`, className)} ref={ref}>
         <Grid narrow className={`${prefix}--webfooter-grid`}>
           <Column

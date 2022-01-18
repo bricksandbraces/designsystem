@@ -1,7 +1,4 @@
-import {
-  IconPlayerPause,
-  IconPlayerPlay
-} from "@tabler/icons";
+import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons";
 import cx from "classnames";
 import React, { useRef, useState } from "react";
 import { idfy } from "../../../helpers/arrayUtilities";
@@ -157,7 +154,7 @@ export const LeadSpaceProduct = React.forwardRef(function LeadSpaceProduct(
                       <Button
                         key={cta.id}
                         size="large"
-                        kind={i === 0 ? "primary" : "ghost"}
+                        kind={i === 0 ? "primary" : "tertiary"}
                         href={cta.href}
                       >
                         {cta.label}
