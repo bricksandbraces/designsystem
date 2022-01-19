@@ -30,50 +30,54 @@ export type NavigationHeaderActionItemProps = {
   onClick?: React.MouseEventHandler<ButtonOrAnchor>;
 };
 
-export const NavigationHeaderActionItem = React.forwardRef(function NavigationHeaderActionItem(
-  {
-    className,
-    href,
-    children,
-    onClick,
-    selected,
-    ...rest
-  }: NavigationHeaderActionItemProps,
-  ref: React.ForwardedRef<ButtonOrAnchor>
-) {
-  return (
-    <>
-      {href ? (
-        <a
-          href={href}
-          {...rest}
-          className={cx(
-            `${prefix}--navigation-header__action-item`,
-            {
-              [`${prefix}--navigation-header__action-item--selected`]: selected
-            },
-            className
-          )}
-          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
-        >
-          {children}
-        </a>
-      ) : (
-        <button
-          onClick={onClick}
-          {...rest}
-          className={cx(
-            `${prefix}--navigation-header__action-item`,
-            {
-              [`${prefix}--navigation-header__action-item--selected`]: selected
-            },
-            className
-          )}
-          ref={ref as React.ForwardedRef<HTMLButtonElement>}
-        >
-          {children}
-        </button>
-      )}
-    </>
-  );
-});
+export const NavigationHeaderActionItem = React.forwardRef(
+  function NavigationHeaderActionItem(
+    {
+      className,
+      href,
+      children,
+      onClick,
+      selected,
+      ...rest
+    }: NavigationHeaderActionItemProps,
+    ref: React.ForwardedRef<ButtonOrAnchor>
+  ) {
+    return (
+      <>
+        {href ? (
+          <a
+            href={href}
+            {...rest}
+            className={cx(
+              `${prefix}--navigation-header__action-item`,
+              {
+                [`${prefix}--navigation-header__action-item--selected`]:
+                  selected
+              },
+              className
+            )}
+            ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+          >
+            {children}
+          </a>
+        ) : (
+          <button
+            onClick={onClick}
+            {...rest}
+            className={cx(
+              `${prefix}--navigation-header__action-item`,
+              {
+                [`${prefix}--navigation-header__action-item--selected`]:
+                  selected
+              },
+              className
+            )}
+            ref={ref as React.ForwardedRef<HTMLButtonElement>}
+          >
+            {children}
+          </button>
+        )}
+      </>
+    );
+  }
+);

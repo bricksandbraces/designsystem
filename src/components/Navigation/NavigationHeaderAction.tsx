@@ -14,17 +14,19 @@ export type NavigationHeaderActionProps = {
   className?: string;
 };
 
-export const NavigationHeaderAction = React.forwardRef(function NavigationHeaderAction(
-  { className, children, ...rest }: NavigationHeaderActionProps,
-  ref: React.ForwardedRef<HTMLDivElement>
-) {
-  return (
-    <div
-      {...rest}
-      className={cx(`${prefix}--navigation-header__action`, className)}
-      ref={ref}
-    >
-      {children}
-    </div>
-  );
-});
+export const NavigationHeaderAction = React.forwardRef(
+  function NavigationHeaderAction(
+    { className, children, ...rest }: NavigationHeaderActionProps,
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) {
+    return (
+      <div
+        {...rest}
+        className={cx(`${prefix}--navigation-header__action`, className)}
+        ref={ref}
+      >
+        {children}
+      </div>
+    );
+  }
+);

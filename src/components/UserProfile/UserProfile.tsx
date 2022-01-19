@@ -1,13 +1,28 @@
 import Tippy from "@tippyjs/react";
 import cx from "classnames";
 import React, { useState } from "react";
-import { Divider, LinkItem } from "../..";
 import { idfy } from "../../helpers/arrayUtilities";
 import { prefix } from "../../settings";
 import { Avatar } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
+import { Divider } from "../Divider/Divider";
 import { Link } from "../Link/Link";
 import { Body } from "../Typography/Typography";
+
+export type LinkItem = {
+  /**
+   * LinkItem Href
+   */
+  href?: string;
+
+  /**
+   * LinkItem Label
+   */
+  label: string;
+
+  /** LinkItem OnClick Action (acts as button) */
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+};
 
 export type UserProfileProps = {
   /**
