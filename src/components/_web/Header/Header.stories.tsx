@@ -1,7 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { object, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { LeadSpace } from "../LeadSpace/LeadSpace";
 import { LeadSpaceProduct } from "../LeadSpace/LeadSpaceProduct";
 import { Header } from "./Header";
 import { ProductHeader } from "./ProductHeader";

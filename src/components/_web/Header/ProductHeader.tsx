@@ -60,14 +60,7 @@ export type ProductHeaderProps = {
 };
 
 export const ProductHeader = React.forwardRef(function ProductHeader(
-  {
-    open,
-    defaultOpen,
-    onOpenChange,
-    linkItems,
-    logo,
-    baseUrl
-  }: ProductHeaderProps,
+  { open, defaultOpen, onOpenChange, linkItems, baseUrl }: ProductHeaderProps,
   ref: React.ForwardedRef<HTMLElement>
 ) {
   const [menuOpen, setMenuOpen] = useControlledValue(
