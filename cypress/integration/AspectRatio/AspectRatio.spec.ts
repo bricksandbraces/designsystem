@@ -6,7 +6,7 @@ describe("AspectRatio Tests", () => {
     )
       .get(".bb--aspect-ratio")
       .wait(300)
-      .toMatchImageSnapshot({ thresholdType: "percent", threshold: 0.01 });
+      .toMatchImageSnapshot();
   }
 
   // dynamic creation of tests for all of our ratios

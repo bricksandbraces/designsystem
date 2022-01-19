@@ -4,10 +4,7 @@ describe("Badge Tests", () => {
       .get(".bb--badge")
       .each((el) => {
         // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wrap(el).wait(300).toMatchImageSnapshot({
-          thresholdType: "percent",
-          threshold: 0.01
-        });
+        cy.wrap(el).wait(300).toMatchSnapshot();
       });
   });
 });

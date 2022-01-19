@@ -6,7 +6,7 @@ describe("Avatar Tests", () => {
     )
       .get(".bb--avatar-img")
       .wait(300)
-      .toMatchImageSnapshot({ thresholdType: "percent", threshold: 0.01 });
+      .toMatchSnapshot();
   }
 
   // dynamic creation of tests for all of our ratios

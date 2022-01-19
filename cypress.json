@@ -2,5 +2,10 @@
   "baseUrl": "http://localhost:6006",
   "projectId": "qrhxsn",
   "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
-  "headless": true
+  "screenshotsFolder": "./cypress/snapshots/actual",
+  "trashAssetsBeforeRuns": true,
+  "headless": true,
+  "env": {
+    "failSilently": false
+  }
 }

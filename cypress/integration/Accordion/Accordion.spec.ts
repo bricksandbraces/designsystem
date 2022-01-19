@@ -1,10 +1,7 @@
 describe("Accordion Tests", () => {
   function snapshotComponent() {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.get(".bb--accordion-list").wait(300).toMatchImageSnapshot({
-      threshold: 0.01,
-      thresholdType: "percent"
-    });
+    cy.get(".bb--accordion-list").wait(300);
   }
 
   function openAndCloseSecondElement() {

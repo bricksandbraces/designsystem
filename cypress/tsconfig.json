@@ -2,8 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "cypress-plugin-snapshots"]
+    "types": ["cypress"],
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "plugins/index.js"],
   "exclude": [".eslintrc.js"]
 }
