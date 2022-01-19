@@ -2,55 +2,55 @@ import cx from "classnames";
 import React, { ReactNode } from "react";
 import { prefix } from "../../settings";
 
-export type HeaderNavMenuItemProps = {
+export type NavigationHeaderNavMenuItemProps = {
   /**
-   * HeaderNavMenuItem Message
+   * NavigationHeaderNavMenuItem Message
    */
   children?: string;
 
   /**
-   * HeaderNavMenuItem Icon
+   * NavigationHeaderNavMenuItem Icon
    */
   icon?: ReactNode;
 
   /**
-   * HeaderNavMenuItem Danger
+   * NavigationHeaderNavMenuItem Danger
    */
   danger?: boolean;
 
   /**
-   * HeaderNavMenuItem Title
+   * NavigationHeaderNavMenuItem Title
    */
   title?: string;
 
   /**
-   * HeaderNavMenuItem TabIndex
+   * NavigationHeaderNavMenuItem TabIndex
    */
   tabIndex?: number;
 
   /**
-   * HeaderNavMenuItem Href
+   * NavigationHeaderNavMenuItem Href
    */
   href?: string;
 
   /**
-   * HeaderNavMenuItem onClose Function
+   * NavigationHeaderNavMenuItem onClose Function
    */
   onClose?: (event: any) => void;
 
   /**
-   * HeaderNavMenuItem onClick Function
+   * NavigationHeaderNavMenuItem onClick Function
    */
   onClick?: (event: any) => void;
 };
 
-export const HeaderNavMenuItem = function ({
+export const NavigationHeaderNavMenuItem = function ({
   children,
   icon,
   danger,
   href,
   ...rest
-}: HeaderNavMenuItemProps) {
+}: NavigationHeaderNavMenuItemProps) {
   const classes = cx(`${prefix}--overflowmenu-item`, {
     [`${prefix}--overflowmenu-item__danger`]: danger
   });

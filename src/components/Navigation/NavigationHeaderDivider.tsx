@@ -3,15 +3,15 @@ import React from "react";
 import { Divider } from "../..";
 import { prefix } from "../../settings";
 
-export type HeaderDividerProps = {
+export type NavigationHeaderDividerProps = {
   /**
-   * HeaderDividerProps ClassName
+   * NavigationHeaderDividerProps ClassName
    */
   className?: string;
 };
 
-export const HeaderDivider = React.forwardRef(function HeaderDivider(
-  { className }: HeaderDividerProps,
+export const NavigationHeaderDivider = React.forwardRef(function NavigationHeaderDivider(
+  { className }: NavigationHeaderDividerProps,
   ref: React.ForwardedRef<HTMLHRElement>
 ) {
   return (

@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   const currentTheme = !isDark
     ? {
         ...defaultTheme.light,
-        "color-app-background": "#F2F2F3",
+        "color-app-background": "#FAFAFA",
         "color-gradient-background":
           "linear-gradient(to right, rgba(242,242,243,1), rgba(242,242,243,0.3)), url(https://user-images.githubusercontent.com/33894877/148248519-75db1e37-e195-4d23-aac6-b0f94a2905c8.png)"
       }

@@ -2,20 +2,20 @@ import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
 
-export type HeaderActionProps = {
+export type NavigationHeaderActionProps = {
   /**
-   * HeaderAction Children
+   * NavigationHeaderAction Children
    */
   children?: React.ReactNode;
 
   /**
-   * HeaderAction ClassName
+   * NavigationHeaderAction ClassName
    */
   className?: string;
 };
 
-export const HeaderAction = React.forwardRef(function HeaderAction(
-  { className, children, ...rest }: HeaderActionProps,
+export const NavigationHeaderAction = React.forwardRef(function NavigationHeaderAction(
+  { className, children, ...rest }: NavigationHeaderActionProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (

@@ -3,34 +3,34 @@ import React from "react";
 import { ButtonOrAnchor } from "../..";
 import { prefix } from "../../settings";
 
-export type HeaderActionItemProps = {
+export type NavigationHeaderActionItemProps = {
   /**
-   * HeaderActionItem Children
+   * NavigationHeaderActionItem Children
    */
   children?: React.ReactNode;
 
   /**
-   * HeaderActionItem ClassName
+   * NavigationHeaderActionItem ClassName
    */
   className?: string;
 
   /**
-   * HeaderActionItem Href
+   * NavigationHeaderActionItem Href
    */
   href?: string;
 
   /**
-   * HeaderActionItem Selected
+   * NavigationHeaderActionItem Selected
    */
   selected?: boolean;
 
   /**
-   * HeaderActionItem OnClick Function
+   * NavigationHeaderActionItem OnClick Function
    */
   onClick?: React.MouseEventHandler<ButtonOrAnchor>;
 };
 
-export const HeaderActionItem = React.forwardRef(function HeaderActionItem(
+export const NavigationHeaderActionItem = React.forwardRef(function NavigationHeaderActionItem(
   {
     className,
     href,
@@ -38,7 +38,7 @@ export const HeaderActionItem = React.forwardRef(function HeaderActionItem(
     onClick,
     selected,
     ...rest
-  }: HeaderActionItemProps,
+  }: NavigationHeaderActionItemProps,
   ref: React.ForwardedRef<ButtonOrAnchor>
 ) {
   return (

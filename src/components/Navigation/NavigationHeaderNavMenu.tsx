@@ -4,39 +4,39 @@ import React from "react";
 import { roundArrow } from "tippy.js";
 import { prefix } from "../../settings";
 
-export type HeaderNavMenuProps = {
+export type NavigationHeaderNavMenuProps = {
   /**
-   * HeaderNavMenu Label
+   * NavigationHeaderNavMenu Label
    */
   label?: string;
 
   /**
-   * HeaderNavMenu Children
+   * NavigationHeaderNavMenu Children
    */
   children: React.ReactNode;
 
   /**
-   * HeaderNavMenu ClassName
+   * NavigationHeaderNavMenu ClassName
    */
   className?: string;
 
   /**
-   * HeaderNavMenu Open
+   * NavigationHeaderNavMenu Open
    */
   open?: boolean;
 
   /**
-   * HeaderNavMenu Selected
+   * NavigationHeaderNavMenu Selected
    */
   selected?: boolean;
 
   /**
-   * HeaderNavMenu OnClick Function
+   * NavigationHeaderNavMenu OnClick Function
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const HeaderNavMenu = React.forwardRef(function HeaderNavMenu(
+export const NavigationHeaderNavMenu = React.forwardRef(function NavigationHeaderNavMenu(
   {
     className,
     label,
@@ -45,7 +45,7 @@ export const HeaderNavMenu = React.forwardRef(function HeaderNavMenu(
     selected,
     children,
     ...props
-  }: HeaderNavMenuProps,
+  }: NavigationHeaderNavMenuProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) {
   return (

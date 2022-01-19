@@ -1,75 +1,70 @@
 import cx from "classnames";
 import React, { ReactNode } from "react";
-import { prefix } from "../../settings";
+import { prefix } from "../../../settings";
 
-export type LinkProps = {
+export type ProductHeaderLinkProps = {
   /**
-   * Link Children
+   * ProductHeaderLink Children
    */
   children: ReactNode;
 
   /**
-   * Link Location
+   * ProductHeaderLink Location
    */
   href?: string;
 
   /**
-   * Link Target
+   * ProductHeaderLink Target
    */
   target?: string;
 
   /**
-   * Link Inline
-   */
-  inline?: boolean;
-
-  /**
-   * Link ClassName
+   * ProductHeaderLink ClassName
    */
   className?: string;
 
   /**
-   * Link Size
+   * ProductHeaderLink Promo
    */
-  size?: "large" | "small" | "default";
+  promo?: boolean;
 
   /**
-   * Link Icon
+   * ProductHeaderLink Icon
    */
   icon?: ReactNode;
 
   /**
-   * Link IconPosition
+   * ProductHeaderLink IconPosition
    */
   iconPosition?: "start" | "end";
 
   /**
-   * Link OnClick Event
+   * ProductHeaderLink OnClick Event
    */
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 };
 
-export const Link = React.forwardRef(function Link({
+export const ProductHeaderLink = React.forwardRef(function ProductHeaderLink({
   children,
   href,
   target,
-  inline,
-  size = "default",
   icon,
+  promo,
   iconPosition = "end",
   onClick,
   className,
   ...rest
-}: LinkProps) {
+}: ProductHeaderLinkProps) {
   const Element = React.createElement(href ? "a" : "button").type;
 
   return (
     <Element
       className={cx(
-        `${prefix}--link ${prefix}--link-${size}`,
+        `${prefix}--header-product__link`,
         {
-          [`${prefix}--link-icon__${iconPosition}`]: iconPosition && icon,
-          [`${prefix}--link-inline`]: inline
+          [`${prefix}--header-product__link-icon--${iconPosition}`]:
+            iconPosition && icon,
+          [`${prefix}--header-product__link-promo`]: promo
         },
         className
       )}
@@ -78,8 +73,10 @@ export const Link = React.forwardRef(function Link({
       target={target}
       onClick={onClick as React.MouseEventHandler<HTMLElement>}
     >
-      <span className={`${prefix}--link-label`}>{children}</span>
-      {!inline && icon}
+      <span className={`${prefix}--header-product__link-label`}>
+        {children}
+      </span>
+      {icon}
     </Element>
   );
 });

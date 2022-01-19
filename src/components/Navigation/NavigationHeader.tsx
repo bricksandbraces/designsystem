@@ -3,15 +3,15 @@ import React from "react";
 
 import { prefix } from "../../settings";
 
-export type HeaderProps = {
+export type NavigationHeaderProps = {
   /**
-   * Header Children
+   * NavigationHeader Children
    */
   children: React.ReactNode;
 };
 
-export const Header = React.forwardRef(function Header(
-  { children }: HeaderProps,
+export const NavigationHeader = React.forwardRef(function NavigationHeader(
+  { children }: NavigationHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
