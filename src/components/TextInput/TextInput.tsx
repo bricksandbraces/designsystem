@@ -68,7 +68,13 @@ export type TextInputProps = {
     | "search"
     | "time"
     | "url"
-    | "hidden";
+    | "hidden"
+    | "tel";
+
+  /**
+   * TextInput Name
+   */
+  name?: string;
 
   /**
    * TextInput Size
@@ -153,6 +159,7 @@ export const TextInput = memo(
       defaultValue,
       disabled,
       light,
+      name,
       readOnly,
       autoComplete,
       onChange,
@@ -210,6 +217,7 @@ export const TextInput = memo(
                 !(error || errorText) && (warning || warningText)
             })}
             type={type}
+            name={name}
             placeholder={!fluid ? placeholder : ""}
             autoComplete={autoComplete}
             value={value}
