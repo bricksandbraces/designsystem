@@ -68,7 +68,13 @@ export type TextInputProps = {
     | "search"
     | "time"
     | "url"
-    | "hidden";
+    | "hidden"
+    | "tel";
+
+  /**
+   * TextInput Name
+   */
+  name?: string;
 
   /**
    * TextInput Size
@@ -94,6 +100,20 @@ export type TextInputProps = {
    * TextInput Icon
    */
   icon?: ReactNode;
+
+  /**
+   * TextInput Input Mode
+   */
+  inputMode?:
+    | "text"
+    | "email"
+    | "search"
+    | "url"
+    | "tel"
+    | "none"
+    | "numeric"
+    | "decimal"
+    | undefined;
 
   /**
    * TextInput Light
@@ -153,6 +173,7 @@ export const TextInput = memo(
       defaultValue,
       disabled,
       light,
+      name,
       readOnly,
       autoComplete,
       onChange,
@@ -163,6 +184,7 @@ export const TextInput = memo(
       error,
       errorText,
       icon,
+      inputMode,
       warning,
       warningText,
       size = "default",
@@ -210,7 +232,9 @@ export const TextInput = memo(
                 !(error || errorText) && (warning || warningText)
             })}
             type={type}
+            name={name}
             placeholder={!fluid ? placeholder : ""}
+            inputMode={inputMode}
             autoComplete={autoComplete}
             value={value}
             defaultValue={defaultValue}
