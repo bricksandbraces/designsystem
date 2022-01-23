@@ -64,6 +64,7 @@ export const TextArea = memo(
       errorText,
       warningText,
       warning,
+      inputMode,
       characterLimit,
       characterLimitExceededText,
       maxLength,
@@ -137,6 +138,7 @@ export const TextArea = memo(
             placeholder={placeholder}
             autoComplete={autoComplete}
             value={value}
+            inputMode={inputMode}
             defaultValue={defaultValue}
             onChange={handleChange()}
             onBlur={onBlur}

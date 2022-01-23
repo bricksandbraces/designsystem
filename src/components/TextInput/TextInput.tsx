@@ -102,6 +102,20 @@ export type TextInputProps = {
   icon?: ReactNode;
 
   /**
+   * TextInput Input Mode
+   */
+  inputMode?:
+    | "text"
+    | "email"
+    | "search"
+    | "url"
+    | "tel"
+    | "none"
+    | "numeric"
+    | "decimal"
+    | undefined;
+
+  /**
    * TextInput Light
    */
   light?: boolean;
