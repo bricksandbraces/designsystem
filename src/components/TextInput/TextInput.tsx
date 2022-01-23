@@ -184,6 +184,7 @@ export const TextInput = memo(
       error,
       errorText,
       icon,
+      inputMode,
       warning,
       warningText,
       size = "default",
@@ -233,6 +234,7 @@ export const TextInput = memo(
             type={type}
             name={name}
             placeholder={!fluid ? placeholder : ""}
+            inputMode={inputMode}
             autoComplete={autoComplete}
             value={value}
             defaultValue={defaultValue}
