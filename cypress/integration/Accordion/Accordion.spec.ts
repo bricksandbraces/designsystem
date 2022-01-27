@@ -1,7 +1,7 @@
 describe("Accordion Tests", () => {
   function snapshotComponent(name: string) {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.get(".bb--accordion-list").wait(200).matchImageSnapshot(name, {
+    cy.get(".bb--accordion-list").wait(500).matchImageSnapshot(name, {
       failureThreshold: 1,
       failureThresholdType: "pixel"
     });
