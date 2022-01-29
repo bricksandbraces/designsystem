@@ -5,7 +5,7 @@
   "repository": "git://github.com/bricksandbraces/designsystem.git",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser chrome",
     "generate-barrels": "barrelsby -D --exclude \".*.stories.tsx\" -d ./src --include \"src/components/.*\"",
     "storybook": "start-storybook -p 6006",
     "start:storybook": "http-server -s -p 6006 ./storybook-static",

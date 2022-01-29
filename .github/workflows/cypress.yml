@@ -6,7 +6,7 @@ on:
 jobs:
   cypress-run:
     name: "Test stories with cypress"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
@@ -18,10 +18,13 @@ jobs:
         with:
           cache: "yarn"
       - run: yarn install --immutable
+      - uses: browser-actions/setup-chrome@latest
+      - run: chrome --version
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           build: yarn build:storybook
           start: yarn start:storybook
+          wait-on: http://localhost:6006
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

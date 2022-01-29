@@ -10,7 +10,7 @@ on:
 jobs:
   check-format-and-build:
     name: "Check and build package"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:

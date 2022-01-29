@@ -21,4 +21,27 @@ const {
  */
 module.exports = (on, config) => {
   addMatchImageSnapshotPlugin(on, config);
+
+  on("before:browser:launch", (browser, launchOptions) => {
+    console.log(
+      "launching browser %s is headless? %s",
+      browser.name,
+      browser.isHeadless
+    );
+
+    if (browser.name !== "chrome") throw new Error("Must use Chrome");
+
+    launchOptions.args.push("--force-device-scale-factor=1");
+    launchOptions.args.push("--disable-gpu");
+    launchOptions.args.push("--force-color-profile=srgb");
+
+    // IMPORTANT: return the updated browser launch options
+    return launchOptions;
+  });
+
+  return {
+    browsers: config.browsers.filter((b) => {
+      return b.name === "chrome";
+    })
+  };
 };
