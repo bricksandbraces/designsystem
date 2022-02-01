@@ -21,9 +21,9 @@
     "format:check": "DEBUG=eslint:cli-engine eslint --cache --cache-strategy content . && prettier --check . && stylelint \"**/*.?(p)css\" --formatter verbose",
     "task:generate-pcss-theme": "ts-node -P tasks/tsconfig.json tasks/generate-pcss-theme.ts && stylelint \"src/styles/theme.pcss\" --fix --formatter verbose",
     "publish:bb": "yarn npm publish --tag latest",
-    "publish:patch": "yarn version patch && yarn build:package && yarn publish:bb",
-    "publish:minor": "yarn version minor && yarn build:package && yarn publish:bb",
-    "publish:major": "yarn version major && yarn build:package && yarn publish:bb"
+    "publish:patch": "yarn version patch && git checkout main && git add . && git commit -m 'Automatic release' && git push && yarn build:package && yarn publish:bb",
+    "publish:minor": "yarn version minor && git checkout main && git add . && git commit -m 'Automatic release' && git push && yarn build:package && yarn publish:bb",
+    "publish:major": "yarn version major && git checkout main && git add . && git commit -m 'Automatic release' && git push && yarn build:package && yarn publish:bb"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.com"
