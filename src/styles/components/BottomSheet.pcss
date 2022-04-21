@@ -150,9 +150,12 @@
 
       @media screen and (min-width: $breakpoint-md) {
         position: fixed;
+        top: calc(var(--size-spacing-05) * 2.5 + var(--size-spacing-05));
+        bottom: var(--size-spacing-08);
         width: 90%;
-        height: auto;
-        height: 90%;
+        height: calc(
+          100% - calc(var(--size-spacing-05) * 2.5 + var(--size-spacing-05))
+        );
 
         &__sm {
           max-width: 400px;
@@ -167,6 +170,9 @@
         }
 
         &__xlg {
+          right: var(--size-spacing-05);
+          left: var(--size-spacing-05);
+          width: unset;
           max-width: unset;
         }
       }
