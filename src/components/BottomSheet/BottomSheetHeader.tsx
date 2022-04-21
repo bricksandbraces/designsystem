@@ -29,7 +29,10 @@ export const BottomSheetHeader = React.forwardRef(function BottomSheetHeader(
       <Headline type="h4" className={`${prefix}--bottomsheet-header__headline`}>
         {headline}
       </Headline>
-      <Body type="body-02" className={`${prefix}--bottomsheet-header__subheadline`}>
+      <Body
+        type="body-02"
+        className={`${prefix}--bottomsheet-header__subheadline`}
+      >
         {subHeadline}
       </Body>
     </div>
