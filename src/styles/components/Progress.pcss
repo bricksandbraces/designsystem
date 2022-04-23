@@ -12,7 +12,8 @@
         min-width: var(--size-container-06);
         height: var(--size-container-06);
 
-        & > button {
+        & > button,
+        & > div {
           flex-flow: row-reverse;
           align-items: flex-start;
           justify-content: left;
@@ -246,6 +247,28 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+    }
+  }
+
+  &--progress-step.$(prefix)--skeleton {
+    border-radius: 0;
+
+    & > div > .$(prefix)--progress-step__container {
+      display: inline-flex;
+      align-items: center;
+
+      & > .$(prefix)--progress-step__label {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    & > div > div > svg {
+      stroke: var(--color-skeleton-02);
+    }
+
+    & > div > .$(prefix)--progress-step__indicator {
+      background-color: var(--color-skeleton-02);
     }
   }
 }
