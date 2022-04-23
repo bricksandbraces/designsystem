@@ -60,7 +60,7 @@ export const WithPortal = () => {
 
   return (
     <div style={{ padding: "32px" }}>
-      <div ref={containerRef} />
+      <div className="bb--tabs" ref={containerRef} />
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
           <Tabs

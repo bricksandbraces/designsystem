@@ -33,6 +33,11 @@ export type TabsProps = {
    */
   className?: string;
 
+  /**
+   * Tabs ContainerClassName
+   */
+  containerClassName?: string;
+
   /** Tabs ContainerRef A ref to a DOM element you can pass to render the tabs content on another place than the tab navigation. */
   containerRef?: React.MutableRefObject<HTMLElement | null>;
 };
@@ -43,6 +48,7 @@ export const Tabs = React.forwardRef(function Tabs(
     onChange,
     defaultIndex,
     className,
+    containerClassName,
     index,
     containerRef
   }: TabsProps,
@@ -64,7 +70,7 @@ export const Tabs = React.forwardRef(function Tabs(
   }, [containerRef?.current]);
 
   const content = (
-    <div className={`${prefix}--tabs-content`}>
+    <div className={containerClassName}>
       {mapReactChildren<TabProps>(children, ({ props, key, index: i }) => {
         return (
           props && (

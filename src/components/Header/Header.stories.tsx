@@ -1,7 +1,6 @@
-import { select, text, withKnobs } from "@storybook/addon-knobs";
-import React from "react";
+import { text, withKnobs } from "@storybook/addon-knobs";
+import React, { useRef } from "react";
 import { Body, Headline, Tab, Tabs } from "../..";
-import { prefix } from "../../settings";
 import { Progress } from "../Progress/Progress";
 import { ProgressStep } from "../Progress/ProgressStep";
 import { Header } from "./Header";
@@ -21,6 +20,7 @@ export const Default = () => {
     >
       <Header
         title={text("title", "Stammdaten") as any}
+        borderWidth={1}
         description={
           text(
             "description",
@@ -42,6 +42,7 @@ export const WithProgress = () => {
     >
       <Header
         title={text("title", "Stammdaten") as any}
+        borderWidth={2}
         description={
           text(
             "description",
@@ -62,6 +63,8 @@ export const WithProgress = () => {
 };
 
 export const WithTabs = () => {
+  const containerRef = useRef(null);
+
   return (
     <div
       style={{
@@ -71,6 +74,7 @@ export const WithTabs = () => {
     >
       <Header
         title={text("title", "Stammdaten") as any}
+        borderWidth={3}
         description={
           text(
             "description",
@@ -78,9 +82,14 @@ export const WithTabs = () => {
           ) as any
         }
       >
-        <Tabs defaultIndex={1}>
+        <Tabs
+          defaultIndex={1}
+          containerRef={containerRef}
+          className="bb--header-tabs"
+          containerClassName="bb--header-tabs__content"
+        >
           <Tab title="Info">
-            <Headline type="h4">Mobile Design is the new standard</Headline>
+            <Headline type="h4">Info</Headline>
             <Body type="body-02">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -90,7 +99,7 @@ export const WithTabs = () => {
             </Body>
           </Tab>
           <Tab title="Innovation Sprints">
-            <Headline type="h4">Mobile Design is the new standard 1</Headline>
+            <Headline type="h4">Innovation Sprints</Headline>
             <Body type="body-02">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -100,7 +109,7 @@ export const WithTabs = () => {
             </Body>
           </Tab>
           <Tab title="Experience Design">
-            <Headline type="h4">Mobile Design is the new standard 2</Headline>
+            <Headline type="h4">Experience Design</Headline>
             <Body type="body-02">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -111,6 +120,7 @@ export const WithTabs = () => {
           </Tab>
         </Tabs>
       </Header>
+      <div ref={containerRef} />
     </div>
   );
 };
