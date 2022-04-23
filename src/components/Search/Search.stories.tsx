@@ -12,7 +12,7 @@ import { Search } from "./Search";
 import { SearchInput } from "./SearchInput";
 import { SearchSkeleton } from "./SearchSkeleton";
 
-export default { title: "Components/Search", decorators: [withKnobs] };
+export default { title: "Input/Search", decorators: [withKnobs] };
 
 const sizeOptions = {
   Default: "default",

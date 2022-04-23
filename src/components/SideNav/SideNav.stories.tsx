@@ -22,7 +22,7 @@ import { SideNavItem } from "./SideNavItem";
 import { SideNavItemExpander } from "./SideNavItemExpander";
 import { SideNavMobileHeader } from "./SideNavMobileHeader";
 
-export default { title: "Components/SideNav", decorators: [withKnobs] };
+export default { title: "Navigation/SideNav", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

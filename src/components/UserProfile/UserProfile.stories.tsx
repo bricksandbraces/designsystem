@@ -4,7 +4,7 @@ import React from "react";
 import { UserProfile } from "./UserProfile";
 
 export default {
-  title: "Components/UserProfile",
+  title: "Pattern/UserProfile",
   decorators: [withKnobs]
 };
 

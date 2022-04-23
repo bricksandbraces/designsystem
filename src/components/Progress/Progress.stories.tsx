@@ -5,7 +5,7 @@ import { ProgressStep } from "./ProgressStep";
 import { ProgressStepSkeleton } from "./ProgressStepSkeleton";
 
 export default {
-  title: "Components/Progress",
+  title: "Navigation/Progress",
   decorators: [withKnobs]
 };
 

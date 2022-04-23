@@ -6,7 +6,7 @@ import { TextInput } from "./TextInput";
 import { TextInputSkeleton } from "./TextInputSkeleton";
 
 export default {
-  title: "Components/TextInput",
+  title: "Input/TextInput",
   decorators: [withKnobs]
 };
 
