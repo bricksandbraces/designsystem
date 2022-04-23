@@ -142,6 +142,9 @@ export const WithBreadcrumbs = () => {
               <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
                 Home
               </BreadcrumbItem>
+              <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
+                Mieterverwaltung
+              </BreadcrumbItem>
               <BreadcrumbItem
                 linkProps={{ onClick: action("onClick") }}
                 currentItem
