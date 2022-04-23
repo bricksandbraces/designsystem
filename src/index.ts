@@ -96,6 +96,8 @@ export * from "./components/OverflowMenu/OverflowMenuItem";
 export * from "./components/Pagination/Pagination";
 export * from "./components/PasswordInput/PasswordInput";
 export * from "./components/PasswordInput/PasswordInputSkeleton";
+export * from "./components/Progress/Progress";
+export * from "./components/Progress/ProgressStep";
 export * from "./components/RadioButton/RadioButton";
 export * from "./components/RadioButton/RadioButtonGroup";
 export * from "./components/RadioButton/RadioButtonSkeleton";
