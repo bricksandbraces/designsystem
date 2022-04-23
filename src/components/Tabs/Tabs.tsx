@@ -1,5 +1,6 @@
 import cx from "classnames";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlledValue } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
@@ -31,10 +32,20 @@ export type TabsProps = {
    * Tabs ClassName
    */
   className?: string;
+
+  /** Tabs ContainerRef A ref to a DOM element you can pass to render the tabs content on another place than the tab navigation. */
+  containerRef?: React.MutableRefObject<HTMLElement | null>;
 };
 
 export const Tabs = React.forwardRef(function Tabs(
-  { children, onChange, defaultIndex, className, index }: TabsProps,
+  {
+    children,
+    onChange,
+    defaultIndex,
+    className,
+    index,
+    containerRef
+  }: TabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   const [selectedIndex, performIndexChange] = useControlledValue(
@@ -42,6 +53,33 @@ export const Tabs = React.forwardRef(function Tabs(
     defaultIndex,
     onChange,
     0
+  );
+
+  const [containerElement, setContainerElement] = useState(
+    containerRef?.current
+  );
+
+  useEffect(() => {
+    setContainerElement(containerRef?.current);
+  }, [containerRef?.current]);
+
+  const content = (
+    <div className={`${prefix}--tabs-content`}>
+      {mapReactChildren<TabProps>(children, ({ props, key, index: i }) => {
+        return (
+          props && (
+            <div
+              key={key}
+              className={cx(`${prefix}--tabs-content__item`, {
+                [`${prefix}--tabs-content__item-selected`]: selectedIndex === i
+              })}
+            >
+              {selectedIndex === i && props.children}
+            </div>
+          )
+        );
+      })}
+    </div>
   );
 
   return (
@@ -68,23 +106,9 @@ export const Tabs = React.forwardRef(function Tabs(
           );
         })}
       </div>
-      <div className={`${prefix}--tabs-content`}>
-        {mapReactChildren<TabProps>(children, ({ props, key, index: i }) => {
-          return (
-            props && (
-              <div
-                key={key}
-                className={cx(`${prefix}--tabs-content__item`, {
-                  [`${prefix}--tabs-content__item-selected`]:
-                    selectedIndex === i
-                })}
-              >
-                {selectedIndex === i && props.children}
-              </div>
-            )
-          );
-        })}
-      </div>
+      {containerElement
+        ? ReactDOM.createPortal(content, containerElement)
+        : content}
     </div>
   );
 });
