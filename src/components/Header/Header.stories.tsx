@@ -1,6 +1,7 @@
+import { action } from "@storybook/addon-actions";
 import { text, withKnobs } from "@storybook/addon-knobs";
 import React, { useRef } from "react";
-import { Body, Headline, Tab, Tabs } from "../..";
+import { Body, Breadcrumb, BreadcrumbItem, Headline, Tab, Tabs } from "../..";
 import { Progress } from "../Progress/Progress";
 import { ProgressStep } from "../Progress/ProgressStep";
 import { Header } from "./Header";
@@ -121,6 +122,43 @@ export const WithTabs = () => {
         </Tabs>
       </Header>
       <div ref={containerRef} />
+    </div>
+  );
+};
+
+export const WithBreadcrumbs = () => {
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh"
+      }}
+    >
+      <Header
+        title={text("title", "Stammdaten") as any}
+        breadcrumbs={
+          <>
+            <Breadcrumb aria-label="Breadcrumb nav">
+              <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
+                Home
+              </BreadcrumbItem>
+              <BreadcrumbItem
+                linkProps={{ onClick: action("onClick") }}
+                currentItem
+              >
+                Stammdaten
+              </BreadcrumbItem>
+            </Breadcrumb>
+          </>
+        }
+        borderWidth={1}
+        description={
+          text(
+            "description",
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          ) as any
+        }
+      />
     </div>
   );
 };

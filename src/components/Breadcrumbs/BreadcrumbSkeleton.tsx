@@ -1,4 +1,4 @@
-import { IconChevronRight } from "@tabler/icons";
+import { IconArrowRight } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
@@ -19,15 +19,15 @@ export const BreadcrumbSkeleton = function BreadcrumbSkeleton({
       <div className={cx(`${prefix}--breadcrumb-list`)}>
         <div className={cx(`${prefix}--breadcrumb-item`)}>
           <SkeletonText style={{ width: "4rem" }} />
-          <IconChevronRight aria-hidden />
+          <IconArrowRight aria-hidden />
         </div>
         <div className={cx(`${prefix}--breadcrumb-item`)}>
           <SkeletonText style={{ width: "4rem" }} />
-          <IconChevronRight aria-hidden />
+          <IconArrowRight aria-hidden />
         </div>
         <div className={cx(`${prefix}--breadcrumb-item`)}>
           <SkeletonText style={{ width: "4rem" }} />
-          <IconChevronRight aria-hidden />
+          <IconArrowRight aria-hidden />
         </div>
       </div>
     </div>

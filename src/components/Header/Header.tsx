@@ -25,6 +25,11 @@ export type HeaderProps = {
   description?: string;
 
   /**
+   * Header Breadcrumbs
+   */
+  breadcrumbs?: React.ReactNode;
+
+  /**
    * Header Classnames
    */
   className?: string;
@@ -36,6 +41,7 @@ export const Header = function Header({
   description,
   borderWidth = 1,
   className,
+  breadcrumbs,
   ...rest
 }: HeaderProps) {
   return (
@@ -50,6 +56,9 @@ export const Header = function Header({
       }}
       {...rest}
     >
+      {breadcrumbs && (
+        <div className={cx(`${prefix}--header-breadcrumbs`)}>{breadcrumbs}</div>
+      )}
       <h1 className={cx(`${prefix}--header-title`)}>{title}</h1>
       <Body className={cx(`${prefix}--header-description`)} type="body-02">
         {description}
