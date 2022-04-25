@@ -2,7 +2,7 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Divider } from "./Divider";
 
-export default { title: "Components/Divider", decorators: [withKnobs] };
+export default { title: "Layout/Divider", decorators: [withKnobs] };
 
 const options = {
   subtle: "subtle",

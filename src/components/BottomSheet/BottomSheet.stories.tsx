@@ -7,7 +7,7 @@ import { BottomSheetBody } from "./BottomSheetBody";
 import { BottomSheetFooter } from "./BottomSheetFooter";
 import { BottomSheetHeader } from "./BottomSheetHeader";
 
-export default { title: "Components/BottomSheet", decorators: [withKnobs] };
+export default { title: "Prompt/BottomSheet", decorators: [withKnobs] };
 
 const options = {
   Small: "sm",

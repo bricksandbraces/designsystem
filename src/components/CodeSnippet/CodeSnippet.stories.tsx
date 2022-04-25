@@ -4,7 +4,7 @@ import { CodeSnippet } from "./CodeSnippet";
 import { CodeSnippetSkeleton } from "./CodeSnippetSkeleton";
 
 export default {
-  title: "Components/CodeSnippet",
+  title: "Miscellaneous/CodeSnippet",
   decorators: [withKnobs]
 };
 

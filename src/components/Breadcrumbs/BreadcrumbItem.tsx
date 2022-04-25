@@ -1,4 +1,4 @@
-import { IconChevronRight } from "@tabler/icons";
+import { IconArrowRight } from "@tabler/icons";
 import cx from "classnames";
 import React from "react";
 import { Link } from "../..";
@@ -62,7 +62,7 @@ export const BreadcrumbItem = React.forwardRef(function BreadcrumpItem(
           </>
         )}
       </div>
-      <IconChevronRight aria-hidden />
+      <IconArrowRight aria-hidden />
     </li>
   );
 });

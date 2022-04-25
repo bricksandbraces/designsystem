@@ -52,3 +52,11 @@ body.sb-show-main {
   position: absolute;
   height: 1rem;
 }
+
+.bb--header-tabs {
+  transform: translateX(-16px);
+}
+
+.bb--header-tabs__content {
+  padding: 32px;
+}

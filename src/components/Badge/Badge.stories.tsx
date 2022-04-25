@@ -3,7 +3,7 @@ import React from "react";
 import { Badge } from "./Badge";
 import { BadgeSkeleton } from "./BadgeSkeleton";
 
-export default { title: "Components/Badge", decorators: [withKnobs] };
+export default { title: "Miscellaneous/Badge", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

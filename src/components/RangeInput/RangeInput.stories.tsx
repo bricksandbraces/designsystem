@@ -12,7 +12,7 @@ import { RangeInput } from "./RangeInput";
 import { RangeInputSkeleton } from "./RangeInputSkeleton";
 
 export default {
-  title: "Components/RangeInput",
+  title: "Input/RangeInput",
   decorators: [withKnobs]
 };
 

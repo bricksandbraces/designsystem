@@ -5,7 +5,7 @@ import { Button } from "../..";
 import { EmptyState } from "./EmptyState";
 
 export default {
-  title: "Components/EmptyState",
+  title: "Pattern/EmptyState",
   decorators: [withKnobs]
 };
 

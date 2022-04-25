@@ -7,7 +7,7 @@ import { Switcher } from "./Switcher";
 import { SwitcherItem } from "./SwitcherItem";
 import { SwitcherSkeleton } from "./SwitcherSkeleton";
 
-export default { title: "Components/Switcher", decorators: [withKnobs] };
+export default { title: "Layout/Switcher", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

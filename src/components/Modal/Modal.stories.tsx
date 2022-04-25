@@ -7,7 +7,7 @@ import { ModalBody } from "./ModalBody";
 import { ModalFooter } from "./ModalFooter";
 import { ModalHeader } from "./ModalHeader";
 
-export default { title: "Components/Modal", decorators: [withKnobs] };
+export default { title: "Prompt/Modal", decorators: [withKnobs] };
 
 const options = {
   Small: "sm",

@@ -8,7 +8,7 @@ import { Breadcrumb } from "./Breadcrumb";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 import { BreadcrumbSkeleton } from "./BreadcrumbSkeleton";
 
-export default { title: "Components/Breadcrumb", decorators: [withKnobs] };
+export default { title: "Navigation/Breadcrumb", decorators: [withKnobs] };
 
 export const Default = () => {
   return (

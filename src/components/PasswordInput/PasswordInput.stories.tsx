@@ -5,7 +5,7 @@ import { PasswordInput } from "./PasswordInput";
 import { PasswordInputSkeleton } from "./PasswordInputSkeleton";
 
 export default {
-  title: "Components/PasswordInput",
+  title: "Input/PasswordInput",
   decorators: [withKnobs]
 };
 

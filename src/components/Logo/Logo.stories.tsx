@@ -2,7 +2,7 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Logo } from "./Logo";
 
-export default { title: "Components/Logo", decorators: [withKnobs] };
+export default { title: "Utilities/Logo", decorators: [withKnobs] };
 
 const colorOptions = {
   Black: "black",

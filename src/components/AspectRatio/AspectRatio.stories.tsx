@@ -4,7 +4,7 @@ import { prefix } from "../../settings";
 import { AspectRatio } from "./AspectRatio";
 
 export default {
-  title: "Components/AspectRatio",
+  title: "Layout/AspectRatio",
   decorators: [withKnobs]
 };
 

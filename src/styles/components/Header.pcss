@@ -1,0 +1,23 @@
+.$(prefix) {
+  &--header {
+    padding: var(--size-spacing-06) var(--size-spacing-07) 0
+      var(--size-spacing-07);
+
+    &-breadcrumbs {
+      margin-bottom: var(--size-spacing-06);
+    }
+
+    &-title {
+      margin-top: 0;
+      margin-bottom: var(--size-spacing-03);
+      color: var(--color-font-text-01);
+      @mixin type--headline-03;
+    }
+
+    &-description {
+      width: 50%;
+      padding-bottom: var(--size-spacing-04);
+      color: var(--color-font-text-05);
+    }
+  }
+}

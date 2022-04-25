@@ -5,7 +5,7 @@ import { Body } from "../Typography/Typography";
 import { Toggle } from "./Toggle";
 import { ToggleSkeleton } from "./ToggleSkeleton";
 
-export default { title: "Components/Toggle", decorators: [withKnobs] };
+export default { title: "Input/Toggle", decorators: [withKnobs] };
 
 const toggleActions = actions("onBlur", "onFocus", "onChange", "onClick");
 

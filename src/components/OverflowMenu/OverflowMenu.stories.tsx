@@ -12,7 +12,7 @@ import { OverflowMenu } from "./OverflowMenu";
 import { OverflowMenuItem } from "./OverflowMenuItem";
 
 export default {
-  title: "Components/OverflowMenu",
+  title: "Prompt/OverflowMenu",
   decorators: [withKnobs]
 };
 

@@ -2,7 +2,7 @@ import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Pagination } from "./Pagination";
 
-export default { title: "Components/Pagination", decorators: [withKnobs] };
+export default { title: "Navigation/Pagination", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",

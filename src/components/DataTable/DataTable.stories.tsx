@@ -43,7 +43,7 @@ import { useTableFilter } from "./useTableFilter";
 import { useTableSelection } from "./useTableSelection";
 import { useTableSort } from "./useTableSort";
 
-export default { title: "Components/DataTable", decorators: [withKnobs] };
+export default { title: "Miscellaneous/DataTable", decorators: [withKnobs] };
 
 const defaultRows: RowEntry[] = [
   {

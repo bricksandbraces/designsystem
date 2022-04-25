@@ -6,7 +6,7 @@ import { RadioTileGroup } from "./RadioTileGroup";
 import { RadioTileSkeleton } from "./RadioTileSkeleton";
 
 export default {
-  title: "Components/RadioTile",
+  title: "Input/RadioTile",
   decorators: [withKnobs]
 };
 

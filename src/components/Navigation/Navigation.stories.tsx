@@ -37,7 +37,7 @@ import {
 } from "../..";
 import { NavigationHeaderNavMenuItem } from "./NavigationHeaderNavMenuItem";
 
-export default { title: "Components/Navigation", decorators: [withKnobs] };
+export default { title: "Navigation/Navigation", decorators: [withKnobs] };
 
 export const WithNav = () => {
   return (

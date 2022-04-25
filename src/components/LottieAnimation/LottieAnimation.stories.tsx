@@ -6,7 +6,7 @@ import animation from "./animation.json";
 import { LottieAnimation } from "./LottieAnimation";
 
 export default {
-  title: "Components/LottieAnimation",
+  title: "Utilities/LottieAnimation",
   decorators: [withKnobs]
 };
 

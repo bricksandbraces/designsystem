@@ -7,7 +7,7 @@ import { RadioButtonGroup } from "./RadioButtonGroup";
 import { RadioButtonSkeleton } from "./RadioButtonSkeleton";
 
 export default {
-  title: "Components/RadioButton",
+  title: "Input/RadioButton",
   decorators: [withKnobs]
 };
 

@@ -2,7 +2,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Body, Caption, Headline, Label, Marketing, Quote } from "../..";
 export default {
-  title: "Components/Typography",
+  title: "Layout/Typography",
   decorators: [withKnobs]
 };
 
