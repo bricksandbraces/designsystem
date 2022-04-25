@@ -1,6 +1,6 @@
 {
   "name": "@openbricksandbraces/designsystem",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The design system of the Bricks & Braces brand.",
   "repository": "git://github.com/bricksandbraces/designsystem.git",
   "scripts": {
@@ -32,9 +32,9 @@
   "engines": {
     "node": ">=16.X"
   },
-  "main": "./lib/cjs/src/index.js",
-  "module": "./lib/esm/src/index.js",
-  "types": "./lib/esm/src/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "files": [
     "lib"
   ],
