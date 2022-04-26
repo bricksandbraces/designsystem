@@ -1,5 +1,3 @@
-import "tippy.js/dist/tippy.css";
-import "tippy.js/dist/svg-arrow.css";
 import cx from "classnames";
 import React, { JSXElementConstructor, ReactElement } from "react";
 import { prefix } from "../../settings";
