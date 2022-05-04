@@ -67,6 +67,7 @@ export * from "./components/Dropdown/DropdownSkeleton";
 export * from "./components/EmptyState/EmptyState";
 export * from "./components/Grid/Grid";
 export * from "./components/Header/Header";
+export * from "./components/LayoutGrid/LayoutGrid";
 export * from "./components/Link/Link";
 export * from "./components/List/ListItem";
 export * from "./components/List/OrderedList";
