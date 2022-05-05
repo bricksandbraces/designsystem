@@ -7,6 +7,46 @@
     background-color: var(--color-background);
     box-shadow: var(--component-shadow-01);
 
+    &-inline {
+      border: unset;
+      border-radius: unset;
+      background-color: unset;
+      box-shadow: unset;
+
+      & .$(prefix)--datatable-title {
+        padding: unset;
+      }
+
+      & .$(prefix)--datatable-skeleton__cell {
+        padding: unset;
+        background-color: unset;
+      }
+
+      & .$(prefix)--datatable-toolbar {
+        padding: unset;
+      }
+
+      & .$(prefix)--datatable-head__cell {
+        padding: unset;
+        background-color: unset;
+      }
+
+      & .$(prefix)--datatable-body__cell {
+        padding: unset;
+        background-color: unset;
+      }
+
+      & .$(prefix)--datatable-pagination {
+        padding: unset;
+        background-color: unset;
+      }
+
+      & .$(prefix)--select-input {
+        background-color: unset;
+        box-shadow: unset;
+      }
+    }
+
     &-container {
       table-layout: auto;
     }

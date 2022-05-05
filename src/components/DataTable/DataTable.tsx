@@ -1,3 +1,4 @@
+import cx from "classnames";
 import { chunk } from "lodash";
 import React, { useState } from "react";
 import { prefix } from "../../settings";
@@ -30,6 +31,7 @@ export type DataTableRendererProps = {
 export type DataTableProps = {
   rows: RowEntry[];
   headers: HeaderEntry[];
+  inline?: boolean;
   sortedByColumn?: string;
   activeFilters?: Record<string, ((row: RowEntry) => boolean) | undefined>;
   customSortFn?: (a: RowEntry, b: RowEntry) => number;
@@ -49,6 +51,7 @@ export const DataTable = React.forwardRef(function DataTable({
   headers,
   activeFilters,
   sortedByColumn,
+  inline = false,
   customSortFn,
   size = "default",
   sortDirection = "ascending",
@@ -138,7 +141,11 @@ export const DataTable = React.forwardRef(function DataTable({
   }
 
   return (
-    <div className={`${prefix}--datatable ${prefix}--datatable-${size}`}>
+    <div
+      className={cx(`${prefix}--datatable ${prefix}--datatable-${size}`, {
+        [`${prefix}--datatable-inline`]: inline === true
+      })}
+    >
       {children?.({
         rows: processedRows,
         headers: processedHeaders,

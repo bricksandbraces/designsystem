@@ -1,4 +1,4 @@
-import { object, withKnobs } from "@storybook/addon-knobs";
+import { boolean, object, withKnobs } from "@storybook/addon-knobs";
 import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
 import React, { useState } from "react";
 import {
@@ -173,7 +173,11 @@ export const Default = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            inline={boolean("Inline", false) as any}
+          >
             {({
               rows,
               headers,
@@ -229,7 +233,11 @@ export const WithSelection = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            inline={boolean("Inline", false) as any}
+          >
             {({
               rows,
               headers,
@@ -294,7 +302,11 @@ export const WithRadioSelection = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            inline={boolean("Inline", false) as any}
+          >
             {({
               rows,
               headers,
@@ -364,6 +376,7 @@ export const WithSorting = () => {
             sortedByColumn={sortByColumn}
             sortDirection={sortDirection}
             customSortFn={sortFn}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -423,6 +436,7 @@ export const WithHeader = () => {
           <DataTable
             rows={object("Rows", defaultRows as RowEntry[])}
             headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -485,6 +499,7 @@ export const WithToolbar = () => {
             rows={unprocessedRows}
             headers={unprocessedHeaders}
             searchQuery={searchQuery}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -599,6 +614,7 @@ export const WithFilterPanel = () => {
             searchQuery={searchQuery}
             rows={object("Rows", defaultRows as RowEntry[])}
             headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -735,6 +751,7 @@ export const WithRowActions = () => {
           <DataTable
             rows={object("Rows", defaultRows as RowEntry[])}
             headers={object("Headers", defaultHeaders) as HeaderEntry[]}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -808,7 +825,11 @@ export const WithBatchActions = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            inline={boolean("Inline", false) as any}
+          >
             {({
               rows,
               headers,
@@ -906,6 +927,7 @@ export const WithTablePagination = () => {
             headers={unprocessedHeaders}
             page={page}
             itemsPerPage={3}
+            inline={boolean("Inline", false) as any}
           >
             {({
               rows,
@@ -962,6 +984,80 @@ export const WithTablePagination = () => {
   );
 };
 
+export const Inline = () => {
+  const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
+  const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
+
+  const [page, setPage] = useState<number>(0);
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <Grid narrow>
+        <Column sm={4} md={8} lg={16} xlg={16}>
+          <DataTable
+            rows={unprocessedRows}
+            inline={boolean("Inline", true) as any}
+            headers={unprocessedHeaders}
+            page={page}
+            itemsPerPage={3}
+          >
+            {({
+              rows,
+              headers,
+              pagesCount,
+              getTableContainerProps,
+              getTableProps,
+              getTableHeadProps
+            }) => {
+              return (
+                <TableContainer {...getTableContainerProps()}>
+                  <TableHeader>
+                    <TableTitle>
+                      Inline Datatable with TablePagination
+                    </TableTitle>
+                  </TableHeader>
+                  <Table {...getTableProps()}>
+                    <TableHead
+                      headers={defaultHeaders}
+                      {...getTableHeadProps()}
+                    >
+                      <TableRow>
+                        {headers.map((header) => (
+                          <TableHeadCell key={header.key}>
+                            {header.title}
+                          </TableHeadCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow key={row.id}>
+                          {headers.map((header) => (
+                            <TableBodyCell key={`${row.id}-${header.key}`}>
+                              {row[header.key]}
+                            </TableBodyCell>
+                          ))}
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                  <TableFooter>
+                    <TablePagination
+                      totalPages={pagesCount}
+                      page={page}
+                      onPageChange={(newPage) => setPage(newPage)}
+                    />
+                  </TableFooter>
+                </TableContainer>
+              );
+            }}
+          </DataTable>
+        </Column>
+      </Grid>
+    </div>
+  );
+};
+
 export const Skeleton = () => {
   const unprocessedRows = object("Rows", defaultRows as RowEntry[]);
   const unprocessedHeaders = object("Headers", defaultHeaders) as HeaderEntry[];
@@ -970,7 +1066,11 @@ export const Skeleton = () => {
     <div style={{ marginTop: "16px" }}>
       <Grid narrow>
         <Column sm={4} md={8} lg={16} xlg={16}>
-          <DataTable rows={unprocessedRows} headers={unprocessedHeaders}>
+          <DataTable
+            rows={unprocessedRows}
+            headers={unprocessedHeaders}
+            inline={boolean("Inline", false) as any}
+          >
             {({
               headers,
               getTableContainerProps,
@@ -980,7 +1080,7 @@ export const Skeleton = () => {
               return (
                 <TableContainer {...getTableContainerProps()}>
                   <TableHeader>
-                    <TableTitle>Datatable with TablePagination</TableTitle>
+                    <TableTitle>Datatable with Skeletons</TableTitle>
                   </TableHeader>
                   <Table {...getTableProps()}>
                     <TableHead
