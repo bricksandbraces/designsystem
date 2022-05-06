@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { withKnobs } from "@storybook/addon-knobs";
+import { number, withKnobs } from "@storybook/addon-knobs";
 import React, { useRef, useState } from "react";
 import { Button } from "../Button/Button";
 import { Column, Grid } from "../Grid/Grid";
@@ -67,6 +67,7 @@ export const WithPortal = () => {
             defaultIndex={1}
             onChange={action("onChange")}
             containerRef={containerRef}
+            borderWidth={number("BorderWidth", 3) as any}
           >
             <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>

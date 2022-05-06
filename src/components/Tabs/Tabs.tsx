@@ -29,6 +29,11 @@ export type TabsProps = {
   index?: number;
 
   /**
+   * Header Border Width
+   */
+  borderWidth?: 0 | 1 | 2 | 3;
+
+  /**
    * Tabs ClassName
    */
   className?: string;
@@ -48,6 +53,7 @@ export const Tabs = React.forwardRef(function Tabs(
     onChange,
     defaultIndex,
     className,
+    borderWidth = 3,
     containerClassName,
     index,
     containerRef
@@ -97,6 +103,9 @@ export const Tabs = React.forwardRef(function Tabs(
               disabled={props.disabled}
               type="button"
               tabIndex={0}
+              style={{
+                borderBottomWidth: `${borderWidth}px`
+              }}
               key={key}
               className={cx(`${prefix}--tabs-btn`, {
                 [`${prefix}--tabs-btn__selected`]: selectedIndex === i
