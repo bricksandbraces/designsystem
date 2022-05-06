@@ -1,32 +1,43 @@
 .$(prefix)--layoutgrid {
   display: grid;
-  grid-template-columns: min-content auto;
-  grid-template-rows: var(--size-container-04) auto;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  grid-template-columns: max-content repeat(4, 1fr);
+  grid-template-rows: 40px 1fr 40px;
   align-content: start;
   width: 100vw;
   height: 100vh;
 
   &-item {
     &__top {
-      grid-column: 2/2;
-      grid-row: 1/1;
+      grid-area: 1 / 2 / 2 / 6;
       max-height: var(--size-container-04);
 
       & ~ .$(prefix)--layoutgrid-item__content {
-        grid-column: 2/2;
-        grid-row: 2/2;
+        grid-area: 2 / 2 / 3 / 6;
       }
     }
 
+    &__bottom {
+      grid-area: 3 / 2 / 4 / 6;
+
+      & ~ .$(prefix)--layoutgrid-item__content {
+        grid-area: 1 / 2 / 3 / 6;
+      }
+    }
+
+    &__top
+      + .$(prefix)--layoutgrid-item__bottom
+      ~ .$(prefix)--layoutgrid-item__content {
+      grid-area: 2 / 2 / 3 / 6;
+    }
+
     &__content {
-      grid-column: 2/2;
-      grid-row: 1/2;
+      grid-area: 1 / 2 / 4 / 6;
     }
 
     &__left {
-      grid-column: 1/1;
-      grid-row: 1/2;
-      height: 100vh;
+      grid-area: 1 / 1 / 4 / 2;
     }
   }
 }

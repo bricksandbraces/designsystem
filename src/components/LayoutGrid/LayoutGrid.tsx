@@ -28,7 +28,7 @@ export type LayoutGridItemProps = {
   /**
    * LayoutGridItem Type
    */
-  type?: "left" | "top" | "content";
+  type?: "left" | "top" | "content" | "bottom";
 
   /**
    * LayoutGridItem Classnames
@@ -58,12 +58,7 @@ const LayoutGridItem = ({
   return (
     <div
       className={cx(
-        `${prefix}--layoutgrid-item`,
-        {
-          [`${prefix}--layoutgrid-item__left`]: type === "left",
-          [`${prefix}--layoutgrid-item__top`]: type === "top",
-          [`${prefix}--layoutgrid-item__content`]: type === "content"
-        },
+        `${prefix}--layoutgrid-item ${prefix}--layoutgrid-item__${type}`,
         className
       )}
       {...rest}
