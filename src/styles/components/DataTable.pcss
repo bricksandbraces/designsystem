@@ -279,10 +279,13 @@
         @mixin type--body-02;
 
         padding: 0 var(--size-spacing-05);
+        overflow: hidden;
         border-bottom: var(--size-divider) var(--style-divider)
           var(--color-border);
         background-color: var(--color-background);
         color: var(--color-font-text-03);
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         &-actions {
           padding: 0 calc(var(--size-spacing-03) / 2);
