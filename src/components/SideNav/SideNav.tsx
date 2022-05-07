@@ -21,6 +21,11 @@ export type SideNavProps = {
   open?: boolean;
 
   /**
+   * SideNav Collapsed
+   */
+  collapsed?: boolean;
+
+  /**
    * SideNav DefaultOpen
    */
   defaultOpen?: boolean;
@@ -56,6 +61,7 @@ export const SideNav = React.forwardRef(function SideNav(
     onLogoClick,
     action,
     logo,
+    collapsed,
     children,
     basePath,
     logoAlt = "Logo"
@@ -76,7 +82,8 @@ export const SideNav = React.forwardRef(function SideNav(
       <nav
         ref={ref}
         className={cx(`${prefix}--sidenav`, {
-          [`${prefix}--sidenav-open`]: currentlyOpen
+          [`${prefix}--sidenav-open`]: currentlyOpen,
+          [`${prefix}--sidenav-collapsed`]: collapsed
         })}
       >
         <div className={cx(`${prefix}--sidenav-head`)}>

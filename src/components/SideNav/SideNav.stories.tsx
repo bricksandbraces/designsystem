@@ -37,6 +37,9 @@ export const Default = () => {
           href="#"
           icon={<IconSmartHome />}
           label="Home &amp; Dashboard"
+          tooltipProps={{
+            tooltipContent: "Home & Dashboard"
+          }}
         />
         <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
         <SideNavDivider />
