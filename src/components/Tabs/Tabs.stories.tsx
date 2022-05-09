@@ -16,7 +16,7 @@ export const Uncontrolled = () => {
     <div style={{ padding: "32px" }}>
       <Grid narrow>
         <Column xlg={16} lg={16} md={8} sm={4}>
-          <Tabs defaultIndex={1} onChange={action("onChange")}>
+          <Tabs defaultIndex={1} asContainer onChange={action("onChange")}>
             <Tab title="Info">
               <Headline type="h4">Mobile Design is the new standard</Headline>
               <Body type="body-02">

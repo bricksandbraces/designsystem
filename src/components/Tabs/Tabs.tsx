@@ -39,6 +39,11 @@ export type TabsProps = {
   className?: string;
 
   /**
+   * Tabs as Container
+   */
+  asContainer?: boolean;
+
+  /**
    * Tabs ContainerClassName
    */
   containerClassName?: string;
@@ -56,6 +61,7 @@ export const Tabs = React.forwardRef(function Tabs(
     borderWidth = 3,
     containerClassName,
     index,
+    asContainer,
     containerRef
   }: TabsProps,
   ref: React.ForwardedRef<HTMLDivElement>
@@ -104,10 +110,11 @@ export const Tabs = React.forwardRef(function Tabs(
               type="button"
               tabIndex={0}
               style={{
-                borderBottomWidth: `${borderWidth}px`
+                borderWidth: `${borderWidth}px`
               }}
               key={key}
               className={cx(`${prefix}--tabs-btn`, {
+                [`${prefix}--tabs-btn__ascontainer`]: asContainer === true,
                 [`${prefix}--tabs-btn__selected`]: selectedIndex === i
               })}
               onClick={() => {
