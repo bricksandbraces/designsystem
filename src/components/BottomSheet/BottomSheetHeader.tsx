@@ -10,6 +10,11 @@ type BottomSheetHeaderProps = {
   className?: string;
 
   /**
+   * BottomSheetHeader Children
+   */
+  children?: React.ReactNode;
+
+  /**
    * BottomSheetHeader Headline
    */
   headline: string;
@@ -21,7 +26,7 @@ type BottomSheetHeaderProps = {
 };
 
 export const BottomSheetHeader = React.forwardRef(function BottomSheetHeader(
-  { className, headline, subHeadline }: BottomSheetHeaderProps,
+  { className, headline, subHeadline, children }: BottomSheetHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
@@ -35,6 +40,7 @@ export const BottomSheetHeader = React.forwardRef(function BottomSheetHeader(
       >
         {subHeadline}
       </Body>
+      {children}
     </div>
   );
 });

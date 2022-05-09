@@ -17,6 +17,7 @@
 
     &-close {
       position: absolute;
+      z-index: 10100;
       top: var(--size-spacing-04);
       right: var(--size-spacing-04);
     }
@@ -26,7 +27,6 @@
       width: 100%;
       padding: var(--size-spacing-06) var(--size-spacing-11) 0
         var(--size-spacing-06);
-      pointer-events: none;
 
       @media screen and (max-width: $breakpoint-md) {
         padding: var(--size-spacing-06) var(--size-spacing-10) 0
@@ -52,7 +52,7 @@
       }
 
       &__subheadline {
-        margin: 0 0 var(--size-spacing-03) 0;
+        margin: 0 0 var(--size-spacing-05) 0;
         color: var(--color-font-text-03);
       }
     }
@@ -199,7 +199,6 @@
 }
 
 .$(prefix)--bottomsheet-with-divider > div > .$(prefix)--bottomsheet-header {
-  padding-bottom: var(--size-spacing-05);
   border-bottom: var(--size-border) var(--style-border) var(--color-border);
 
   &::after {

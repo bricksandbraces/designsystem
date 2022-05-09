@@ -10,6 +10,11 @@ type ModalHeaderProps = {
   className?: string;
 
   /**
+   * ModalHeader Children
+   */
+  children?: React.ReactNode;
+
+  /**
    * ModalHeader Headline
    */
   headline: string;
@@ -21,7 +26,7 @@ type ModalHeaderProps = {
 };
 
 export const ModalHeader = React.forwardRef(function ModalHeader(
-  { className, headline, subHeadline }: ModalHeaderProps,
+  { className, headline, subHeadline, children }: ModalHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
@@ -32,6 +37,7 @@ export const ModalHeader = React.forwardRef(function ModalHeader(
       <Body type="body-02" className={`${prefix}--modal-header__subheadline`}>
         {subHeadline}
       </Body>
+      {children}
     </div>
   );
 });

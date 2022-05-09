@@ -53,7 +53,7 @@ export const DefaultControlled = () => {
             "subheadline",
             "Install via npm package manager or yarn"
           )}
-        />
+        ></ModalHeader>
         <ModalBody>
           {text(
             "Children text",
