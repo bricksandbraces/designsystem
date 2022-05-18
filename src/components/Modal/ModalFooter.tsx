@@ -16,6 +16,11 @@ export type ModalFooterProps = {
   primaryLabel: string;
 
   /**
+   * ModalFooter Border Width
+   */
+  borderWidth?: 0 | 1 | 2 | 3;
+
+  /**
    * ModalFooter OnPrimaryClick
    */
   onPrimaryClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -36,13 +41,24 @@ export const ModalFooter = React.forwardRef(function ModalFooter(
     className,
     onSecondaryClick,
     onPrimaryClick,
+    borderWidth = 0,
     secondaryLabel,
     primaryLabel
   }: ModalFooterProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
-    <div className={cx(`${prefix}--modal-footer`, className)} ref={ref}>
+    <div
+      className={cx(
+        `${prefix}--modal-footer`,
+        {
+          [`${prefix}--modal-footer__divider ${prefix}--functional-divider__top-0${borderWidth}`]:
+            borderWidth
+        },
+        className
+      )}
+      ref={ref}
+    >
       {secondaryLabel && (
         <Button
           kind="secondary"

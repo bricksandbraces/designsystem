@@ -16,6 +16,11 @@ export type BottomSheetFooterProps = {
   primaryLabel: string;
 
   /**
+   * BottomSheetFooter Border Width
+   */
+  borderWidth?: 0 | 1 | 2 | 3;
+
+  /**
    * BottomSheetFooter OnPrimaryClick
    */
   onPrimaryClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -36,13 +41,24 @@ export const BottomSheetFooter = React.forwardRef(function BottomSheetFooter(
     className,
     onSecondaryClick,
     onPrimaryClick,
+    borderWidth = 0,
     secondaryLabel,
     primaryLabel
   }: BottomSheetFooterProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
-    <div className={cx(`${prefix}--bottomsheet-footer`, className)} ref={ref}>
+    <div
+      className={cx(
+        `${prefix}--bottomsheet-footer`,
+        {
+          [`${prefix}--bottomsheet-footer__divider ${prefix}--functional-divider__top-0${borderWidth}`]:
+            borderWidth
+        },
+        className
+      )}
+      ref={ref}
+    >
       {secondaryLabel && (
         <Button
           kind="secondary"

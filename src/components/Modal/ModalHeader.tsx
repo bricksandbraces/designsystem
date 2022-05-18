@@ -15,6 +15,11 @@ type ModalHeaderProps = {
   children?: React.ReactNode;
 
   /**
+   * ModalHeader Border Width
+   */
+  borderWidth?: 0 | 1 | 2 | 3;
+
+  /**
    * ModalHeader Headline
    */
   headline: string;
@@ -26,11 +31,27 @@ type ModalHeaderProps = {
 };
 
 export const ModalHeader = React.forwardRef(function ModalHeader(
-  { className, headline, subHeadline, children }: ModalHeaderProps,
+  {
+    className,
+    headline,
+    borderWidth = 0,
+    subHeadline,
+    children
+  }: ModalHeaderProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
-    <div className={cx(`${prefix}--modal-header`, className)} ref={ref}>
+    <div
+      className={cx(
+        `${prefix}--modal-header`,
+        {
+          [`${prefix}--modal-header__divider ${prefix}--functional-divider__bottom-0${borderWidth}`]:
+            borderWidth
+        },
+        className
+      )}
+      ref={ref}
+    >
       <Headline type="h4" className={`${prefix}--modal-header__headline`}>
         {headline}
       </Headline>

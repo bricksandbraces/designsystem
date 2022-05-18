@@ -48,12 +48,12 @@ export const Header = function Header({
     <div
       className={cx(
         `${prefix}--header`,
-        { [`${prefix}--header-children`]: children },
+        {
+          [`${prefix}--header-children`]: children,
+          [`${prefix}--functional-divider__bottom-0${borderWidth}`]: borderWidth
+        },
         className
       )}
-      style={{
-        boxShadow: `inset 0 -${borderWidth}px 0 0 var(--color-border)`
-      }}
       {...rest}
     >
       {breadcrumbs && (

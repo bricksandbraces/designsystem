@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Button } from "../Button/Button";
 import { BottomSheet } from "./BottomSheet";
@@ -45,7 +45,6 @@ export const DefaultControlled = () => {
           action("onClose")();
         }}
         closeOnOutsideClick
-        withDivider={boolean("withDivider", false)}
       >
         <BottomSheetHeader
           headline={text("headline", "Update available")}
@@ -53,6 +52,7 @@ export const DefaultControlled = () => {
             "subheadline",
             "Install via npm package manager or yarn"
           )}
+          borderWidth={1}
         />
         <BottomSheetBody>
           {text(
@@ -61,6 +61,7 @@ export const DefaultControlled = () => {
           )}
         </BottomSheetBody>
         <BottomSheetFooter
+          borderWidth={1}
           primaryLabel={text("primaryLabel", "Update now")}
           secondaryLabel={text("secondaryLabel", "Cancel")}
           onSecondaryClick={() => {
@@ -98,7 +99,6 @@ export const NestedControlled = () => {
           setOpen(false);
           action("onClose")(event);
         }}
-        withDivider={boolean("withDivider", false)}
       >
         <BottomSheetHeader
           headline={text("headline1", "Behind")}
@@ -133,7 +133,6 @@ export const NestedControlled = () => {
           setSecondOpen(false);
           action("onClose")(event);
         }}
-        withDivider={boolean("withDivider", false)}
       >
         <BottomSheetHeader
           headline={text("headline2", "Always on top of it")}

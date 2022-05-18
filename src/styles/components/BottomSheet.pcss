@@ -150,11 +150,11 @@
 
       @media screen and (min-width: $breakpoint-md) {
         position: fixed;
-        top: calc(var(--size-spacing-05) * 2.5 + var(--size-spacing-05));
+        top: var(--size-spacing-05);
         bottom: var(--size-spacing-08);
         width: 90%;
         height: calc(
-          100% - calc(var(--size-spacing-05) * 2.5 + var(--size-spacing-05))
+          100% - var(--size-spacing-05))
         );
 
         &__sm {
@@ -198,37 +198,13 @@
   }
 }
 
-.$(prefix)--bottomsheet-with-divider > div > .$(prefix)--bottomsheet-header {
-  border-bottom: var(--size-border) var(--style-border) var(--color-border);
-
+.$(prefix)--bottomsheet-header__divider {
   &::after {
     display: none;
   }
 }
 
-.$(prefix)--bottomsheet-with-divider
-  > div
-  > div
-  > .$(prefix)--bottomsheet-body__content {
-  padding: var(--size-spacing-06) var(--size-spacing-11) var(--size-spacing-06)
-    var(--size-spacing-06);
-
-  @media screen and (max-width: $breakpoint-md) {
-    padding: var(--size-spacing-06);
-  }
-}
-
-.$(prefix)--bottomsheet-with-divider
-  > .$(prefix)--bottomsheet-container__small
-  > div
-  > .$(prefix)--bottomsheet-body__content {
-  padding: var(--size-spacing-06);
-}
-
-.$(prefix)--bottomsheet-with-divider > div > .$(prefix)--bottomsheet-footer {
-  margin: 0;
-  border-top: var(--size-border) var(--style-border) var(--color-border);
-
+.$(prefix)--bottomsheet-footer__divider {
   &::before {
     display: none;
   }

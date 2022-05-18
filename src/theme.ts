@@ -126,6 +126,8 @@ export const defaultTheme = {
     /* " Gradients " */
     "color-gradient-01":
       "linear-gradient(90deg, rgba(255, 255, 255, 0.85) 20%, rgba(255, 255, 255, 0) 100%)",
+    "color-gradient-02":
+      "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(238,230,255,1) 100%)",
 
     /* " Badge Colors " */
     "color-badge-gray-bg": colors["gray-900"],
@@ -427,6 +429,8 @@ export const defaultTheme = {
     /* " Gradients " */
     "color-gradient-01":
       "linear-gradient(90deg, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0) 100%)",
+    "color-gradient-02":
+      "linear-gradient(0deg, rgba(12,12,13,1) 0%, rgba(25,0,76,1) 100%, rgba(73,0,229,1) 100%)",
 
     /* " Badge Colors " */
     "color-badge-gray-bg": colors["gray-150"],

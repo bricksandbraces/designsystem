@@ -7,6 +7,8 @@
 @import "./mixins.pcss";
 @import "./keyframes.pcss";
 
+@import "./functional.pcss";
+
 @import "./components/EmptyState.pcss";
 @import "./components/Breadcrumb.pcss";
 @import "./components/Button.pcss";

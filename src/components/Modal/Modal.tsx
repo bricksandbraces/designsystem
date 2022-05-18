@@ -27,11 +27,6 @@ export type ModalProps = {
   open: boolean;
 
   /**
-   * Modal WithDivider
-   */
-  withDivider?: boolean;
-
-  /**
    * Modal Children
    */
   children?: React.ReactNode;
@@ -71,7 +66,6 @@ export const Modal = React.forwardRef(function Modal(
     onClose,
     closeOnOutsideClick = true,
     primaryFocus,
-    withDivider,
     children
   }: ModalProps,
   ref: React.ForwardedRef<HTMLDivElement>
@@ -130,8 +124,7 @@ export const Modal = React.forwardRef(function Modal(
             className={cx(
               `${prefix}--modal`,
               {
-                [`${prefix}--modal-open`]: open,
-                [`${prefix}--modal-with-divider`]: withDivider
+                [`${prefix}--modal-open`]: open
               },
               className
             )}
