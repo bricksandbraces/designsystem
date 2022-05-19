@@ -1,6 +1,6 @@
 {
   "name": "@openbricksandbraces/designsystem",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "description": "The design system of the Bricks & Braces brand.",
   "repository": "git://github.com/bricksandbraces/designsystem.git",
   "scripts": {
