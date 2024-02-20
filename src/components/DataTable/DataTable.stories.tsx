@@ -1,5 +1,5 @@
 import { boolean, object, withKnobs } from "@storybook/addon-knobs";
-import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons";
+import { IconDotsVertical, IconSearch, IconTrash } from "@tabler/icons-react";
 import React, { useState } from "react";
 import {
   Button,

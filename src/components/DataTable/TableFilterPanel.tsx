@@ -1,4 +1,4 @@
-import { IconX } from "@tabler/icons";
+import { IconX } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { Headline } from "../..";

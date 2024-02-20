@@ -83,12 +83,9 @@ Aaaand you are done!
 
 - Storybook
 - Prettier, ESlint, Stylelint
-- Husky
 - Jest, Enzyme
 
 ## Contribute
-
-At first, install husky using `yarn husky install`.
 
 To start storybook and show all components, simply run:
 

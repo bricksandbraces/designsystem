@@ -1,6 +1,6 @@
 import cx from "classnames";
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, {  } from "react";
+import { createPortal } from "react-dom";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlledValue } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
@@ -49,7 +49,7 @@ export type TabsProps = {
   containerClassName?: string;
 
   /** Tabs ContainerRef A ref to a DOM element you can pass to render the tabs content on another place than the tab navigation. */
-  containerRef?: React.MutableRefObject<HTMLElement | null>;
+  containerRef?: React.RefObject<HTMLElement | null>;
 };
 
 export const Tabs = React.forwardRef(function Tabs(
@@ -72,14 +72,6 @@ export const Tabs = React.forwardRef(function Tabs(
     onChange,
     0
   );
-
-  const [containerElement, setContainerElement] = useState(
-    containerRef?.current
-  );
-
-  useEffect(() => {
-    setContainerElement(containerRef?.current);
-  }, [containerRef?.current]);
 
   const content = (
     <div className={containerClassName}>
@@ -128,9 +120,9 @@ export const Tabs = React.forwardRef(function Tabs(
           );
         })}
       </div>
-      {containerElement
-        ? ReactDOM.createPortal(content, containerElement)
-        : content}
+      {(containerRef?.current
+        ? createPortal(content,containerRef?.current)
+        : content) as React.ReactNode}
     </div>
   );
 });

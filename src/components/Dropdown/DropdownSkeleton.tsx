@@ -1,4 +1,4 @@
-import { IconChevronDown } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { SkeletonAnimatedContainer } from "../..";

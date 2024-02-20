@@ -1,4 +1,4 @@
-import { IconFilter } from "@tabler/icons";
+import { IconFilter } from "@tabler/icons-react";
 import React from "react";
 import { withoutPropagation } from "../../helpers/eventUtilities";
 import { IconOnlyButton } from "../Button/IconOnlyButton";

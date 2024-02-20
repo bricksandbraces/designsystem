@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
-import { IconArrowNarrowRight } from "@tabler/icons";
+import { IconArrowNarrowRight } from "@tabler/icons-react";
 import React from "react";
 import { Body } from "../Typography/Typography";
 import { Link } from "./Link";

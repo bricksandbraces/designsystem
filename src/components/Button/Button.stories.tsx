@@ -9,7 +9,7 @@ import {
   IconItalic,
   IconLayoutGridAdd,
   IconUnderline
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import React from "react";
 import { Button } from "./Button";
 import { ButtonSkeleton } from "./ButtonSkeleton";

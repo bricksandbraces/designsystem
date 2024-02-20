@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useRef } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 
 export type OutsideClickListenerProps = {
   children: ReactElement<any, string>;

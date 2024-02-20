@@ -3,7 +3,7 @@ import {
   IconChevronRight,
   IconChevronsLeft,
   IconChevronsRight
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import cx from "classnames";
 import React, { ReactHTML } from "react";
 import { Button } from "../..";

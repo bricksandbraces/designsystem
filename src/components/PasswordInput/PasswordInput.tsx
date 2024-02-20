@@ -1,4 +1,4 @@
-import { IconEye, IconEyeOff } from "@tabler/icons";
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
 import { useControlled } from "../../hooks/useControlled";
 import { prefix } from "../../settings";

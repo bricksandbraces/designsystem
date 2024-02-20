@@ -10,7 +10,8 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    transition: opacity var(--transition-app-01),
+    transition:
+      opacity var(--transition-app-01),
       visibility var(--transition-app-01);
     opacity: 0;
     background-color: var(--color-overlay);
@@ -138,8 +139,10 @@
       overflow: hidden;
       transform: translate3d(0, var(--size-spacing-05), 0);
       transform-origin: top center;
-      transition: transform var(--transition-app-01),
-        opacity var(--transition-app-01), visibility 0ms;
+      transition:
+        transform var(--transition-app-01),
+        opacity var(--transition-app-01),
+        visibility 0ms;
       border: var(--size-border) var(--style-border) var(--color-border);
       border-radius: var(--component-radius-02);
       background-color: var(--color-background);

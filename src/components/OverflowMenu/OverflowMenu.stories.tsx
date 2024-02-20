@@ -5,7 +5,7 @@ import {
   IconAntennaBars3,
   IconCrop,
   IconTrash
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import React from "react";
 import { Divider } from "../..";
 import { OverflowMenu } from "./OverflowMenu";

@@ -2,8 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { format } from "date-fns";
 import React, { useRef, useState } from "react";
-import OutsideClickHandler from "react-outside-click-handler";
-import { Button } from "../..";
+import { Button, OutsideClickListener } from "../..";
 import { formatDate } from "../../helpers/dateUtilities";
 import { prefix } from "../../settings";
 
@@ -136,8 +135,8 @@ export const SingleWithCalendarUncontrolled = () => {
             // inserted date may be invalid and is a live representation from the text
             const selectedDay = insertedDate ?? undefined;
             return (
-              <OutsideClickHandler
-                onOutsideClick={(event) => {
+              <OutsideClickListener
+                onClickOutside={(event) => {
                   if (
                     !containerRef.current?.contains(event.target as HTMLElement)
                   ) {
@@ -149,15 +148,15 @@ export const SingleWithCalendarUncontrolled = () => {
                 <DatePicker
                   light={boolean("light", false)}
                   open={open}
-                  selectedDays={selectedDay}
+                  selected={selectedDay}
                   onDayClick={(newDate) => {
                     changeDate(newDate);
                     setOpen(false);
                     action("onDayClick")(newDate);
                   }}
-                  initialMonth={selectedDay}
+                  defaultMonth={selectedDay}
                 />
-              </OutsideClickHandler>
+              </OutsideClickListener>
             );
           }}
         </DateInput>
@@ -207,8 +206,8 @@ export const SingleWithCalendarControlled = () => {
             // inserted date may be invalid and is a live representation from the text
             const selectedDay = insertedDate ?? undefined;
             return (
-              <OutsideClickHandler
-                onOutsideClick={(event) => {
+              <OutsideClickListener
+                onClickOutside={(event) => {
                   if (
                     !containerRef.current?.contains(event.target as HTMLElement)
                   ) {
@@ -220,15 +219,15 @@ export const SingleWithCalendarControlled = () => {
                 <DatePicker
                   open={open}
                   light={boolean("light", false)}
-                  selectedDays={selectedDay}
+                  selected={selectedDay}
                   onDayClick={(newDate) => {
                     changeDate(newDate);
                     setOpen(false);
                     action("onDayClick")(newDate);
                   }}
-                  initialMonth={selectedDay}
+                  defaultMonth={selectedDay}
                 />
-              </OutsideClickHandler>
+              </OutsideClickListener>
             );
           }}
         </DateInput>

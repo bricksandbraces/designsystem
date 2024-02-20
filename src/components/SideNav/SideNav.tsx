@@ -38,7 +38,7 @@ export type SideNavProps = {
   /**
    * SideNav Logo
    */
-  logo: React.ReactNode | SVGElement;
+  logo: React.ReactNode;
 
   onLogoClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 

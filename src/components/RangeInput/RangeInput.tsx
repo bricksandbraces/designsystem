@@ -266,7 +266,8 @@ export const RangeInput = React.forwardRef(function RangeInput(
             ref={ref}
             onFocus={onFocus}
             onBlur={onBlur}
-            onChange={(newValue) => {
+            onChange={(newValues) => {
+              const newValue = Array.isArray(newValues) ? newValues[0] : newValues;
               if (!controlled) {
                 setLocalSliderValue(newValue);
                 setTextValue(`${newValue}`);

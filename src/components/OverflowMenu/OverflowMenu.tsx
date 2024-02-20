@@ -1,4 +1,4 @@
-import { IconDotsVertical } from "@tabler/icons";
+import { IconDotsVertical } from "@tabler/icons-react";
 import type { TippyProps } from "@tippyjs/react";
 import Tippy from "@tippyjs/react";
 import cx from "classnames";

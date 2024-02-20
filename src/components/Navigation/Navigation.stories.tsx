@@ -14,7 +14,7 @@ import {
   IconSmartHome,
   IconUser,
   IconUsers
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 
 import React, { useState } from "react";
 

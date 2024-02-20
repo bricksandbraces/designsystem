@@ -1,15 +1,14 @@
 {
-  "css.validate": false, // Disable css built-in lint
-  "stylelint.enable": true, // Enable sytlelint
-  "eslint.alwaysShowStatus": true,
+  "css.validate": false,
+  "stylelint.enable": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "svg.preview.background": "black",
   "typescript.tsdk": "node_modules/typescript/lib",

@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronUp } from "@tabler/icons";
+import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import cx from "classnames";
 import React, { useState } from "react";
 import { prefix } from "../../settings";

@@ -1,4 +1,4 @@
-import { IconAB } from "@tabler/icons";
+import { IconAB } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { Body, Headline } from "../..";

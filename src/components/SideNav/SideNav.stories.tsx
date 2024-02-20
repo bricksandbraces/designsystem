@@ -12,7 +12,7 @@ import {
   IconSearch,
   IconSend,
   IconSmartHome
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import React, { useState } from "react";
 import { Logo, SideNav } from "../..";
 import { IconOnlyButton } from "../Button/IconOnlyButton";

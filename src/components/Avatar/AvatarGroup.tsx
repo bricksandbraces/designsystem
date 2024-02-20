@@ -1,4 +1,4 @@
-import { IconPlus, IconUsers } from "@tabler/icons";
+import { IconPlus, IconUsers } from "@tabler/icons-react";
 import cx from "classnames";
 import React, { ReactNode } from "react";
 import { prefix } from "../../settings";

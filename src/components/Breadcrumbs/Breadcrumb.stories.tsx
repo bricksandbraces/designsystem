@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
-import { IconDots, IconFolder } from "@tabler/icons";
+import { IconDots, IconFolder } from "@tabler/icons-react";
 import React from "react";
 import { OverflowMenu } from "../OverflowMenu/OverflowMenu";
 import { OverflowMenuItem } from "../OverflowMenu/OverflowMenuItem";

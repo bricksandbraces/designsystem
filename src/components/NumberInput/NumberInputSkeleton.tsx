@@ -1,4 +1,4 @@
-import { IconMinus, IconPlus } from "@tabler/icons";
+import { IconMinus, IconPlus } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { SkeletonAnimatedContainer } from "../..";

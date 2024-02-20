@@ -1,6 +1,6 @@
 import "tippy.js/dist/tippy.css";
 import { select, withKnobs } from "@storybook/addon-knobs";
-import { IconInfoCircle } from "@tabler/icons";
+import { IconInfoCircle } from "@tabler/icons-react";
 import React from "react";
 import { Button, ContainerTooltip, IconTrigger, Tooltip } from "../..";
 

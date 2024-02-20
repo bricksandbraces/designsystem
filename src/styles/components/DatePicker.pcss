@@ -7,8 +7,10 @@
     left: 0;
     width: var(--size-container-08);
     transform: translateY(var(--size-spacing-03));
-    transition: opacity var(--transition-app-01),
-      transform var(--transition-app-01), visibility var(--transition-app-01);
+    transition:
+      opacity var(--transition-app-01),
+      transform var(--transition-app-01),
+      visibility var(--transition-app-01);
     border: var(--size-border) var(--style-border) var(--color-border);
     border-radius: var(--component-radius-02);
     background: var(--color-background);
@@ -30,7 +32,9 @@
       }
 
       &.$(prefix)--datepicker.DayPicker:not(.DayPicker--interactionDisabled)
-        .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
+        .DayPicker-Day:not(.DayPicker-Day--disabled):not(
+          .DayPicker-Day--selected
+        ):not(.DayPicker-Day--outside) {
         &:hover {
           background-color: var(--color-hover-light);
         }
@@ -65,7 +69,9 @@
     }
 
     &.DayPicker:not(.DayPicker--interactionDisabled)
-      .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) {
+      .DayPicker-Day:not(.DayPicker-Day--disabled):not(
+        .DayPicker-Day--selected
+      ):not(.DayPicker-Day--outside) {
       &:hover {
         background-color: var(--color-hover);
       }
@@ -84,7 +90,8 @@
 
       &:focus-visible {
         outline: 0;
-        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+        box-shadow:
+          0 0 0 0.0625rem var(--color-focus),
           0 0 0 0.25rem var(--color-focus-highlight);
       }
 
@@ -104,7 +111,8 @@
           height: var(--size-container-03);
           margin-top: 0;
           margin-right: 0;
-          transition: background-color var(--transition-app-01),
+          transition:
+            background-color var(--transition-app-01),
             box-shadow var(--transition-app-01);
           border: var(--size-border) var(--style-border) transparent;
           border-radius: var(--component-radius-02);
@@ -123,7 +131,8 @@
 
           &:focus-visible {
             outline: 0;
-            box-shadow: 0 0 0 0.0625rem var(--color-focus),
+            box-shadow:
+              0 0 0 0.0625rem var(--color-focus),
               0 0 0 0.25rem var(--color-focus-highlight);
           }
 
@@ -227,7 +236,8 @@
                 width: var(--size-container-03);
                 height: var(--size-container-03);
                 padding: 0;
-                transition: background-color var(--transition-app-01),
+                transition:
+                  background-color var(--transition-app-01),
                   box-shadow var(--transition-app-01);
                 border: var(--size-border) var(--style-border) transparent;
                 border-radius: var(--component-radius-02);
@@ -237,13 +247,16 @@
 
                 &:focus-visible {
                   outline: 0;
-                  box-shadow: 0 0 0 0.0625rem var(--color-focus),
+                  box-shadow:
+                    0 0 0 0.0625rem var(--color-focus),
                     0 0 0 0.25rem var(--color-focus-highlight);
                 }
               }
 
               &
-                > .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+                > .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(
+                  .DayPicker-Day--outside
+                ) {
                 background-color: var(--color-brand-04);
                 color: var(--color-onbrand-01);
               }

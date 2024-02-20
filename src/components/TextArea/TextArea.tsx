@@ -1,7 +1,7 @@
-import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons-react";
 import cx from "classnames";
 import React, { forwardRef, memo } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { TextInputProps } from "../TextInput/TextInput";

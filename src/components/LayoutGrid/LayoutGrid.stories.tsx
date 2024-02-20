@@ -1,5 +1,5 @@
 import { withKnobs } from "@storybook/addon-knobs";
-import { IconFile, IconSmartHome } from "@tabler/icons";
+import { IconFile, IconSmartHome } from "@tabler/icons-react";
 import React, { useRef } from "react";
 import {
   Body,

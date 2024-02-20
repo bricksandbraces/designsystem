@@ -1,5 +1,5 @@
 import { withKnobs } from "@storybook/addon-knobs";
-import { IconSearch } from "@tabler/icons";
+import { IconSearch } from "@tabler/icons-react";
 import React from "react";
 import { Button } from "../..";
 import { EmptyState } from "./EmptyState";

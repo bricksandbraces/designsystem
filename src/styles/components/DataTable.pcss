@@ -62,8 +62,10 @@
       height: 100%;
       overflow: hidden;
       transform: translateX(var(--size-container-08));
-      transition: transform var(--transition-app-01),
-        visibility var(--transition-app-01), opacity var(--transition-app-01);
+      transition:
+        transform var(--transition-app-01),
+        visibility var(--transition-app-01),
+        opacity var(--transition-app-01);
       border-left: var(--size-divider) var(--style-divider) var(--color-border);
       opacity: 0;
       background-color: var(--color-background);
@@ -360,7 +362,8 @@
       & .$(prefix)--button-ghost {
         &:focus,
         &:focus-visible {
-          box-shadow: inset 0 0 0 0.1875rem var(--color-focus-highlight),
+          box-shadow:
+            inset 0 0 0 0.1875rem var(--color-focus-highlight),
             inset 0 0 0 0.1875rem var(--color-background),
             inset 0 0 0 0.25rem var(--color-focus);
         }
@@ -383,7 +386,8 @@
 
             &:focus,
             &:focus-visible {
-              box-shadow: inset 0 0 0 0.1875rem var(--color-focus-highlight),
+              box-shadow:
+                inset 0 0 0 0.1875rem var(--color-focus-highlight),
                 inset 0 0 0 0.1875rem var(--color-background),
                 inset 0 0 0 0.25rem var(--color-focus);
             }

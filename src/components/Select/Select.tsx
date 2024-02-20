@@ -1,4 +1,4 @@
-import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons";
+import { IconAlertCircle, IconAlertTriangle } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { useControlledValue } from "../../hooks/useControlled";
