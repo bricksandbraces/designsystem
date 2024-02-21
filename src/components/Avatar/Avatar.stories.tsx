@@ -6,7 +6,11 @@ import {
   text,
   withKnobs
 } from "@storybook/addon-knobs";
-import { IconAccessible, IconDotsVertical, IconUser } from "@tabler/icons-react";
+import {
+  IconAccessible,
+  IconDotsVertical,
+  IconUser
+} from "@tabler/icons-react";
 import React from "react";
 import { Button, IconOnlyButton } from "../..";
 import { Avatar } from "./Avatar";

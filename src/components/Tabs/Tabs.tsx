@@ -1,5 +1,5 @@
 import cx from "classnames";
-import React, {  } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { mapReactChildren } from "../../helpers/reactUtilities";
 import { useControlledValue } from "../../hooks/useControlled";
@@ -120,9 +120,11 @@ export const Tabs = React.forwardRef(function Tabs(
           );
         })}
       </div>
-      {(containerRef?.current
-        ? createPortal(content,containerRef?.current)
-        : content) as React.ReactNode}
+      {
+        (containerRef?.current
+          ? createPortal(content, containerRef?.current)
+          : content) as React.ReactNode
+      }
     </div>
   );
 });

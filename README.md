@@ -83,7 +83,7 @@ Aaaand you are done!
 
 - Storybook
 - Prettier, ESlint, Stylelint
-- Jest, Enzyme
+- Jest, RTL, Testcafe
 
 ## Contribute
 

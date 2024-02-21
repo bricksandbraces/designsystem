@@ -10,7 +10,8 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    transition: opacity var(--transition-app-01),
+    transition:
+      opacity var(--transition-app-01),
       visibility var(--transition-app-01);
     opacity: 0;
     background-color: var(--color-overlay);
@@ -28,6 +29,7 @@
       padding: var(--size-spacing-06) var(--size-spacing-11) 0
         var(--size-spacing-06);
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (max-width: $breakpoint-md) {
         padding: var(--size-spacing-06) var(--size-spacing-10) 0
           var(--size-spacing-06);
@@ -70,6 +72,7 @@
         overflow: scroll;
         color: var(--color-font-text-01);
 
+        /* stylelint-disable-next-line media-query-no-invalid */
         @media screen and (max-width: $breakpoint-md) {
           padding: var(--size-spacing-05) var(--size-spacing-10)
             var(--size-spacing-05) var(--size-spacing-06);
@@ -106,6 +109,7 @@
         );
       }
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (max-width: $breakpoint-md) {
         flex-flow: row wrap;
 
@@ -138,8 +142,10 @@
       overflow: hidden;
       transform: translate3d(0, 100%, 0);
       transform-origin: top center;
-      transition: transform var(--transition-app-02),
-        opacity var(--transition-app-01), visibility 0ms;
+      transition:
+        transform var(--transition-app-02),
+        opacity var(--transition-app-01),
+        visibility 0ms;
       border: var(--size-border) var(--style-border) var(--color-border);
       border-top-left-radius: var(--component-radius-02);
       border-top-right-radius: var(--component-radius-02);
@@ -148,14 +154,13 @@
       color: var(--color-font-text-01);
       cursor: auto;
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (min-width: $breakpoint-md) {
         position: fixed;
         top: var(--size-spacing-05);
         bottom: var(--size-spacing-08);
         width: 90%;
-        height: calc(
-          100% - var(--size-spacing-05))
-        );
+        height: calc(100% - var(--size-spacing-05));
 
         &__sm {
           max-width: 400px;
@@ -193,6 +198,7 @@
 .$(prefix)--bottomsheet-container__sm
   > .$(prefix)--bottomsheet-footer
   > .$(prefix)--bottomsheet-footer__secondary {
+  /* stylelint-disable-next-line media-query-no-invalid */
   @media screen and (max-width: $breakpoint-md) {
     margin: 0 0 var(--size-spacing-05) 0;
   }

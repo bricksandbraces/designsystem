@@ -104,6 +104,7 @@
 }
 
 /* < md */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (max-width: $breakpoint-md) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(4, minmax(auto, 1fr));
@@ -151,6 +152,7 @@
 }
 
 /* md */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(8, minmax(auto, 1fr));
@@ -230,6 +232,7 @@
 }
 
 /* lg */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 1fr));
@@ -398,6 +401,7 @@
 }
 
 /* xlg */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-xlg) {
   .$(prefix)--grid-container {
     grid-template-columns: repeat(16, minmax(auto, 1fr));
@@ -566,6 +570,7 @@
 }
 
 /* < md */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (max-width: $breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: 0;
@@ -584,6 +589,7 @@
 }
 
 /* > md */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-md) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: var(--size-spacing-05);
@@ -602,6 +608,7 @@
 }
 
 /* > max */
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-max) {
   .$(prefix)--grid-container.$(prefix)--grid-container__no-gutter {
     padding-right: var(--size-spacing-06);

@@ -29,6 +29,7 @@
       padding: var(--size-spacing-06) var(--size-spacing-11) 0
         var(--size-spacing-06);
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (max-width: $breakpoint-md) {
         padding: var(--size-spacing-06) var(--size-spacing-10) 0
           var(--size-spacing-06);
@@ -71,6 +72,7 @@
         overflow: scroll;
         color: var(--color-font-text-01);
 
+        /* stylelint-disable-next-line media-query-no-invalid */
         @media screen and (max-width: $breakpoint-md) {
           padding: var(--size-spacing-05) var(--size-spacing-10)
             var(--size-spacing-05) var(--size-spacing-06);
@@ -107,6 +109,7 @@
         );
       }
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (max-width: $breakpoint-md) {
         flex-flow: row wrap;
 
@@ -150,6 +153,7 @@
       color: var(--color-font-text-01);
       cursor: auto;
 
+      /* stylelint-disable-next-line media-query-no-invalid */
       @media screen and (min-width: $breakpoint-md) {
         position: static;
         width: 84%;
@@ -187,6 +191,7 @@
 .$(prefix)--modal-container__sm
   > .$(prefix)--modal-footer
   > .$(prefix)--modal-footer__secondary {
+  /* stylelint-disable-next-line media-query-no-invalid */
   @media screen and (max-width: $breakpoint-md) {
     margin: 0 0 var(--size-spacing-05) 0;
   }

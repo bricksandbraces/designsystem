@@ -139,6 +139,8 @@
 .$(prefix)--responsivetabs {
   &-tabs {
     display: block;
+
+    /* stylelint-disable-next-line media-query-no-invalid */
     @media screen and (max-width: $breakpoint-md) {
       display: none;
     }
@@ -146,6 +148,8 @@
 
   &-accordion {
     display: block;
+
+    /* stylelint-disable-next-line media-query-no-invalid */
     @media screen and (min-width: $breakpoint-md) {
       display: none;
     }
