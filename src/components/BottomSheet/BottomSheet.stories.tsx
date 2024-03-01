@@ -1,5 +1,4 @@
 import { action } from "@storybook/addon-actions";
-import { select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Button } from "../Button/Button";
 import { BottomSheet } from "./BottomSheet";
@@ -7,78 +6,102 @@ import { BottomSheetBody } from "./BottomSheetBody";
 import { BottomSheetFooter } from "./BottomSheetFooter";
 import { BottomSheetHeader } from "./BottomSheetHeader";
 
-export default { title: "Prompt/BottomSheet", decorators: [withKnobs] };
-
-const options = {
-  Small: "sm",
-  Medium: "md",
-  Large: "lg",
-  XLarge: "xlg"
-};
-
-const defaultValue = "sm";
-
-export const DefaultControlled = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        padding: "32px",
-        color: "white"
-      }}
-    >
-      <Button
-        onClick={(event) => {
-          event.stopPropagation();
-          setOpen(true);
+export default {
+  component: BottomSheet,
+  title: "Prompt/BottomSheet",
+  decorators: [
+    (Story: any) => (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          padding: "32px",
+          color: "white"
         }}
       >
-        Open BottomSheet
-      </Button>
-      <BottomSheet
-        size={select("size", options, defaultValue) as any}
-        open={open}
-        onClose={() => {
-          setOpen(false);
-          action("onClose")();
-        }}
-        closeOnOutsideClick
-      >
-        <BottomSheetHeader
-          headline={text("headline", "Update available")}
-          subHeadline={text(
-            "subheadline",
-            "Install via npm package manager or yarn"
-          )}
-          borderWidth={1}
-        />
-        <BottomSheetBody>
-          {text(
-            "Children text",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et earebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-          )}
-        </BottomSheetBody>
-        <BottomSheetFooter
-          borderWidth={1}
-          primaryLabel={text("primaryLabel", "Update now")}
-          secondaryLabel={text("secondaryLabel", "Cancel")}
-          onSecondaryClick={() => {
-            setOpen(false);
-            action("onSecondaryClick")();
-          }}
-          onPrimaryClick={() => {
-            setOpen(false);
-            action("onPrimaryClick")();
-          }}
-        />
-      </BottomSheet>
-    </div>
-  );
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: {
+          Small: "sm",
+          Medium: "md",
+          Large: "lg",
+          XLarge: "xlg"
+        }
+      }
+    }
+  },
+  args: {
+    size: "sm",
+    headline: "Update available",
+    subHeadline: "Install via npm package manager or yarn",
+    childrenText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    primaryLabel: "Update now",
+    secondaryLabel: "Cancel",
+    headline1: "Behind",
+    subHeadline1: "Install via npm package manager or yarn",
+    primaryLabel1: "Confirm",
+    secondaryLabel1: "Cancel",
+    headline2: "Always on top of it",
+    subHeadline2: "Install via npm package manager or yarn",
+    primaryLabel2: "I am sure",
+    secondaryLabel2: "Cancel"
+  }
 };
 
-export const NestedControlled = () => {
+export const DefaultControlled = {
+  render: (args: any) => {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <Button
+          onClick={(event) => {
+            event.stopPropagation();
+            setOpen(true);
+          }}
+        >
+          Open BottomSheet
+        </Button>
+        <BottomSheet
+          size={args.size}
+          open={open}
+          onClose={() => {
+            setOpen(false);
+            action("onClose")();
+          }}
+          closeOnOutsideClick
+        >
+          <BottomSheetHeader
+            headline={args.headline}
+            subHeadline={args.subHeadline}
+            borderWidth={1}
+          />
+          <BottomSheetBody>{args.childrenText}</BottomSheetBody>
+          <BottomSheetFooter
+            borderWidth={1}
+            primaryLabel={args.primaryLabel}
+            secondaryLabel={args.secondaryLabel}
+            onSecondaryClick={() => {
+              setOpen(false);
+              action("onSecondaryClick")();
+            }}
+            onPrimaryClick={() => {
+              setOpen(false);
+              action("onPrimaryClick")();
+            }}
+          />
+        </BottomSheet>
+      </>
+    );
+  }
+};
+
+export const NestedControlled = (args: any) => {
   const [open, setOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   return (
@@ -101,21 +124,13 @@ export const NestedControlled = () => {
         }}
       >
         <BottomSheetHeader
-          headline={text("headline1", "Behind")}
-          subHeadline={text(
-            "subHeadline1",
-            "Install via npm package manager or yarn"
-          )}
+          headline={args.headline1}
+          subHeadline={args.subHeadline1}
         />
-        <BottomSheetBody>
-          {text(
-            "children",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et earebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-          )}
-        </BottomSheetBody>
+        <BottomSheetBody>{args.childrenText}</BottomSheetBody>
         <BottomSheetFooter
-          primaryLabel={text("primaryLabel1", "Confirm")}
-          secondaryLabel={text("secondaryLabel1", "Cancel")}
+          primaryLabel={args.primaryLabel1}
+          secondaryLabel={args.secondaryLabel1}
           onSecondaryClick={(event) => {
             setOpen(false);
             action("onSecondaryClick")(event);
@@ -127,7 +142,7 @@ export const NestedControlled = () => {
         />
       </BottomSheet>
       <BottomSheet
-        size={select("size", options, defaultValue) as any}
+        size={args.size}
         open={secondOpen}
         onClose={(event) => {
           setSecondOpen(false);
@@ -135,18 +150,13 @@ export const NestedControlled = () => {
         }}
       >
         <BottomSheetHeader
-          headline={text("headline2", "Always on top of it")}
-          subHeadline={text(
-            "subHeadline2",
-            "Install via npm package manager or yarn"
-          )}
+          headline={args.headline2}
+          subHeadline={args.subHeadline2}
         />
-        <BottomSheetBody>
-          {text("children2", "Lorem ipsum dolor sit amet.")}
-        </BottomSheetBody>
+        <BottomSheetBody>{args.children2}</BottomSheetBody>
         <BottomSheetFooter
-          primaryLabel={text("primaryLabel2", "I am sure")}
-          secondaryLabel={text("secondaryLabel2", "Cancel")}
+          primaryLabel={args.primaryLabel2}
+          secondaryLabel={args.secondaryLabel2}
           onSecondaryClick={(event) => {
             setSecondOpen(false);
             action("onSecondaryClick")(event);

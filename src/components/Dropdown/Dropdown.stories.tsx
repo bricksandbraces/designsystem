@@ -1,24 +1,7 @@
 import { action } from "@storybook/addon-actions";
-import {
-  boolean,
-  object,
-  select,
-  text,
-  withKnobs
-} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Dropdown } from "./Dropdown";
 import { DropdownSkeleton } from "./DropdownSkeleton";
-
-export default { title: "Input/Dropdown", decorators: [withKnobs] };
-
-const sizeOptions = {
-  Default: "default",
-  Small: "small",
-  Large: "large"
-};
-
-const defaultSize = "default";
 
 const sampleItemConfig = [
   {
@@ -54,43 +37,56 @@ const sampleItemConfig = [
   }
 ];
 
-export const Uncontrolled = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export default {
+  component: Dropdown,
+  title: "Input/Dropdown",
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "default", "large"]
+      }
+    }
+  },
+  args: {
+    size: "default",
+    label: "Dropdown label",
+    title: "Dropdown title",
+    light: false,
+    warningText: "",
+    errorText: "",
+    disabled: false,
+    readOnly: false,
+    items: sampleItemConfig
+  },
+  decorator: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ]
+};
+
+export const Uncontrolled = {
+  render: (args: any) => {
+    return (
       <Dropdown
-        light={boolean("light", false)}
-        label={text("label", "Dropdown label")}
-        title={text("title", "Dropdown title")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        id="some-dropdown"
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        items={object("items", sampleItemConfig)}
+        {...args}
         onChange={action("onChange")}
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Controlled = () => {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export const Controlled = {
+  render: (args: any) => {
+    const [selectedValue, setSelectedValue] = useState<string | null>(null);
+    return (
       <Dropdown
-        light={boolean("light", false)}
-        label={text("label", "Dropdown label")}
-        title={text("title", "Dropdown title")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        id="some-dropdown"
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        items={object("items", sampleItemConfig)}
+        {...args}
         value={selectedValue}
         onChange={(newValue) => {
           setSelectedValue(newValue);
@@ -99,16 +95,10 @@ export const Controlled = () => {
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Skeleton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <DropdownSkeleton
-        size={select("size", sizeOptions, defaultSize) as any}
-      />
-    </div>
-  );
+export const Skeleton = (args: any) => {
+  return <DropdownSkeleton size={args.size} />;
 };
