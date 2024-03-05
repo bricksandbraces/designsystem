@@ -63,16 +63,14 @@ export const Controlled = {
   render: (args: any) => {
     const [value, setValue] = useState<string | undefined>(args.value);
     return (
-      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-        <Select
-          {...args}
-          value={value}
-          onChange={(event) => {
-            setValue(event?.target?.value);
-            action("onChange")(event);
-          }}
-        />
-      </div>
+      <Select
+        {...args}
+        value={value}
+        onChange={(event) => {
+          setValue(event?.target?.value);
+          action("onChange")(event);
+        }}
+      />
     );
   }
 };

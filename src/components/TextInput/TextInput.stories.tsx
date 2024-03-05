@@ -132,10 +132,6 @@ export const Controlled = {
 
 export const Skeleton = {
   render: (args: any) => {
-    return (
-      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-        <TextInputSkeleton size={args.size} />
-      </div>
-    );
+    return <TextInputSkeleton size={args.size} />;
   }
 };

@@ -17,7 +17,7 @@ export type SelectSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-export const SelectSkeleton = React.forwardRef(function SelectSkeleton({
+export const SelectSkeleton = function SelectSkeleton({
   size = "default",
   className
 }: SelectSkeletonProps) {
@@ -41,4 +41,4 @@ export const SelectSkeleton = React.forwardRef(function SelectSkeleton({
       </SkeletonAnimatedContainer>
     </div>
   );
-});
+};

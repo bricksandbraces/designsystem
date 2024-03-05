@@ -116,30 +116,28 @@ export const GroupWithTrigger = (args: any) => {
 export const GroupWithAddButton = {
   render: (args: any) => {
     return (
-      <div style={{ margin: "32px" }}>
-        <AvatarGroup
-          itemsToDisplay={3}
-          handleMoreClick={action("handleMoreClick")}
-          handleAddClick={action("handleAddClick")}
-          size={args.size}
-        >
-          <Avatar {...args}>
-            <IconUser />
-          </Avatar>
-          <Avatar {...args}>
-            <IconUser />
-          </Avatar>
-          <Avatar {...args}>
-            <IconUser />
-          </Avatar>
-          <Avatar {...args}>
-            <IconUser />
-          </Avatar>
-          <Avatar {...args}>
-            <IconUser />
-          </Avatar>
-        </AvatarGroup>
-      </div>
+      <AvatarGroup
+        itemsToDisplay={3}
+        handleMoreClick={action("handleMoreClick")}
+        handleAddClick={action("handleAddClick")}
+        size={args.size}
+      >
+        <Avatar {...args}>
+          <IconUser />
+        </Avatar>
+        <Avatar {...args}>
+          <IconUser />
+        </Avatar>
+        <Avatar {...args}>
+          <IconUser />
+        </Avatar>
+        <Avatar {...args}>
+          <IconUser />
+        </Avatar>
+        <Avatar {...args}>
+          <IconUser />
+        </Avatar>
+      </AvatarGroup>
     );
   }
 };
@@ -170,15 +168,23 @@ const avatarItems = [
 ];
 
 export const List = {
+  argTypes: {
+    avatarItems: {
+      control: {
+        type: "object"
+      }
+    }
+  },
+  args: {
+    avatarItems
+  },
   render: (args: any) => {
     return (
-      <div style={{ margin: "32px" }}>
-        <AvatarList {...args}>
-          {args.avatarItems.map((avatar: any) => {
-            return <AvatarListItem key={avatar.id} {...avatar} />;
-          })}
-        </AvatarList>
-      </div>
+      <AvatarList {...args}>
+        {args.avatarItems.map((avatar: any) => {
+          return <AvatarListItem key={avatar.id} {...avatar} />;
+        })}
+      </AvatarList>
     );
   }
 };
@@ -189,43 +195,40 @@ export const ListWithActions = {
       control: {
         type: "object"
       }
-    },
-    args: {
-      avatarItems
-    },
-
-    render: (args: any) => {
-      return (
-        <div style={{ margin: "32px" }}>
-          <AvatarList>
-            {args.avatarItems.map((avatar: any) => {
-              return (
-                <AvatarListItem
-                  key={avatar.id}
-                  {...avatar}
-                  actions={
-                    <>
-                      <IconOnlyButton
-                        size="small"
-                        kind="ghost"
-                        onClick={action("onFirstActionClick")}
-                        icon={<IconAccessible />}
-                      />
-                      <IconOnlyButton
-                        size="small"
-                        kind="ghost"
-                        onClick={action("onSeconActionClick")}
-                        icon={<IconDotsVertical />}
-                      />
-                    </>
-                  }
-                />
-              );
-            })}
-          </AvatarList>
-        </div>
-      );
     }
+  },
+  args: {
+    avatarItems
+  },
+  render: (args: any) => {
+    return (
+      <AvatarList>
+        {args.avatarItems.map((avatar: any) => {
+          return (
+            <AvatarListItem
+              key={avatar.id}
+              {...avatar}
+              actions={
+                <>
+                  <IconOnlyButton
+                    size="small"
+                    kind="ghost"
+                    onClick={action("onFirstActionClick")}
+                    icon={<IconAccessible />}
+                  />
+                  <IconOnlyButton
+                    size="small"
+                    kind="ghost"
+                    onClick={action("onSeconActionClick")}
+                    icon={<IconDotsVertical />}
+                  />
+                </>
+              }
+            />
+          );
+        })}
+      </AvatarList>
+    );
   }
 };
 
@@ -242,27 +245,25 @@ export const ListWithChildren = {
   },
   render: (args: any) => {
     return (
-      <div style={{ margin: "32px" }}>
-        <AvatarList
-          footer={
-            <>
-              <Button fluid size="default">
-                Sharing Settings
-              </Button>
-              <IconOnlyButton
-                icon={<IconDotsVertical />}
-                type="button"
-                size="default"
-                kind="ghost"
-              />
-            </>
-          }
-        >
-          {args.avatarItems.map((avatar: any) => {
-            return <AvatarListItem key={avatar.id} {...avatar} />;
-          })}
-        </AvatarList>
-      </div>
+      <AvatarList
+        footer={
+          <>
+            <Button fluid size="default">
+              Sharing Settings
+            </Button>
+            <IconOnlyButton
+              icon={<IconDotsVertical />}
+              type="button"
+              size="default"
+              kind="ghost"
+            />
+          </>
+        }
+      >
+        {args.avatarItems?.map((avatar: any) => {
+          return <AvatarListItem key={avatar.id} {...avatar} />;
+        })}
+      </AvatarList>
     );
   }
 };

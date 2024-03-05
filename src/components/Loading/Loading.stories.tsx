@@ -23,7 +23,7 @@ export default {
     loadingDescription: "Loading spinner",
     size: "default"
   },
-  decorator: [
+  decorators: [
     (Story: any) => (
       <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
         <Story />

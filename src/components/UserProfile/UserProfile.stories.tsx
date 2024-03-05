@@ -36,7 +36,7 @@ export default {
   args: {
     name: "Hendrik Ulbrich",
     subName: "@hendriku",
-    imgUrl: "https://randomuser.me",
+    imgUrl: "https://randomuser.me/api/portraits/men/74.jpg",
     links: [
       { href: "#", label: "User profile" },
       { href: "#", label: "Settings" },

@@ -77,7 +77,7 @@ export const Controlled = {
     const { float } = args;
     const parsedValue = parseToNumber(textValue, float);
     return (
-      <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <>
         <NumberInput
           {...args}
           value={textValue}
@@ -98,7 +98,7 @@ export const Controlled = {
           float={float}
         />
         <Label>parsedValue: {parsedValue}</Label>
-      </div>
+      </>
     );
   }
 };

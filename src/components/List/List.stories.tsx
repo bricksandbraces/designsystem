@@ -8,7 +8,7 @@ export default {
   title: "Layout/List",
   decorators: [
     (Story: any) => (
-      <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
+      <div style={{ padding: "32px", color: "white" }}>
         <Story />
       </div>
     )

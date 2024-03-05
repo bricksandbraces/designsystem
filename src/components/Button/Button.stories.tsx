@@ -61,6 +61,8 @@ export default {
   }
 };
 
+export const Default = {};
+
 export const WithIcon = {
   args: {
     iconPosition: "right",

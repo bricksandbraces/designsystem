@@ -5,6 +5,7 @@ import { Body } from "../Typography/Typography";
 import { Link } from "./Link";
 
 export default {
+  component: Link,
   title: "Navigation/Link",
   decorators: [
     (Story: any) => (

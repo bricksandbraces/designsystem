@@ -32,7 +32,6 @@ export const Default: StoryObj<typeof AspectRatio> = {
       <div
         style={{
           display: "flex",
-          padding: "32px",
           width: "100vw",
           height: "100vh"
         }}

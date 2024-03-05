@@ -6,8 +6,10 @@ export default {
   title: "Layout/Divider",
   decorators: [
     (Story: any) => (
-      <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
-        <Story />
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
+          <Story />
+        </div>
       </div>
     )
   ],
@@ -25,11 +27,5 @@ export default {
 };
 
 export const Default = (args: any) => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Divider {...args} />
-      </div>
-    </div>
-  );
+  return <Divider {...args} />;
 };

@@ -114,30 +114,28 @@ export const AsGroupUncontrolled = {
   },
   render: (args: any) => {
     return (
-      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-        <form>
-          <CheckboxGroup
-            {...args}
-            defaultValue={["fries"]}
-            onChange={action("onChange")}
-          >
-            <Checkbox
-              label={"Checkbox label 1"}
-              id="checkbox-1"
-              value="fries"
-              onBlur={action("onBlur")}
-              onFocus={action("onFocus")}
-            />
-            <Checkbox
-              label={"Checkbox label 2"}
-              id="checkbox-2"
-              value="wedges"
-              onBlur={action("onBlur")}
-              onFocus={action("onFocus")}
-            />
-          </CheckboxGroup>
-        </form>
-      </div>
+      <form>
+        <CheckboxGroup
+          {...args}
+          defaultValue={["fries"]}
+          onChange={action("onChange")}
+        >
+          <Checkbox
+            label={"Checkbox label 1"}
+            id="checkbox-1"
+            value="fries"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+          <Checkbox
+            label={"Checkbox label 2"}
+            id="checkbox-2"
+            value="wedges"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+        </CheckboxGroup>
+      </form>
     );
   }
 };
@@ -152,33 +150,31 @@ export const AsGroupControlled = {
   render: (args: any) => {
     const [selectedList, setSelectedList] = useState<string[]>([]);
     return (
-      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-        <form>
-          <CheckboxGroup
-            {...args}
-            value={selectedList}
-            onChange={(newValue, event) => {
-              setSelectedList(newValue);
-              action("onChange")(event);
-            }}
-          >
-            <Checkbox
-              label={"Checkbox label 1"}
-              id="checkbox-1"
-              value="fries"
-              onBlur={action("onBlur")}
-              onFocus={action("onFocus")}
-            />
-            <Checkbox
-              label={"Checkbox label 2"}
-              id="checkbox-2"
-              value="wedges"
-              onBlur={action("onBlur")}
-              onFocus={action("onFocus")}
-            />
-          </CheckboxGroup>
-        </form>
-      </div>
+      <form>
+        <CheckboxGroup
+          {...args}
+          value={selectedList}
+          onChange={(newValue, event) => {
+            setSelectedList(newValue);
+            action("onChange")(event);
+          }}
+        >
+          <Checkbox
+            label={"Checkbox label 1"}
+            id="checkbox-1"
+            value="fries"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+          <Checkbox
+            label={"Checkbox label 2"}
+            id="checkbox-2"
+            value="wedges"
+            onBlur={action("onBlur")}
+            onFocus={action("onFocus")}
+          />
+        </CheckboxGroup>
+      </form>
     );
   }
 };
