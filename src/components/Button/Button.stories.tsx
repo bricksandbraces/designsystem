@@ -16,93 +16,174 @@ import { IconOnlyButton } from "./IconOnlyButton";
 import { IconOnlyButtonGroup } from "./IconOnlyButtonGroup";
 import { IconOnlyButtonSkeleton } from "./IconOnlyButtonSkeleton";
 
+const options = {
+  Primary: "primary",
+  Secondary: "secondary",
+  Tertiary: "tertiary",
+  Ghost: "ghost"
+};
+
+const defaultValue = "primary";
+
+const sizeOptions = {
+  Large: "large",
+  Small: "small",
+  Default: "default"
+};
+
+const defaultSize = "default";
+
+const iconPositionOptions = {
+  Right: "right",
+  Left: "left"
+};
+
+const defaultIconPosition = "right";
+
 export default {
-  component: Button,
   title: "Navigation/Button",
-  decorators: [
-    (Story: any) => (
-      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-        <div style={{ width: "405px" }}>
-          <Story />
-        </div>
-      </div>
-    )
-  ],
+  decorators: [],
   argTypes: {
     kind: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "tertiary", "ghost"]
+        options: options
       }
     },
     size: {
       control: {
         type: "select",
-        options: ["large", "default", "small"]
-      }
-    },
-    iconPosition: {
-      control: {
-        type: "select",
-        options: ["right", "left"]
+        options: sizeOptions
       }
     }
   },
   args: {
-    kind: "primary",
-    size: "default",
-    iconPosition: "right",
-    fluid: false,
+    kind: defaultValue,
+    size: defaultSize,
     danger: false,
+    fluid: false,
     isLoading: false,
-    disabled: false,
-    label: "Button",
-    ...actions("onClick", "onFocus", "onBlur", "onMouseEnter", "onMouseLeave")
+    disabled: false
   }
 };
 
-export const Default = {};
+const buttonActions = actions(
+  "onClick",
+  "onFocus",
+  "onBlur",
+  "onMouseEnter",
+  "onMouseLeave"
+);
+
+export const Default = {
+  render: (args: any) => (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Button {...args} {...buttonActions}>
+          Button
+        </Button>
+      </div>
+    </div>
+  )
+};
 
 export const WithIcon = {
-  args: {
-    iconPosition: "right",
-    icon: <Icon3dCubeSphere />
-  },
   argTypes: {
     iconPosition: {
       control: {
         type: "select",
-        options: ["right", "left"]
+        options: iconPositionOptions
+      }
+    },
+    icon: {
+      control: {
+        type: "object"
       }
     }
-  }
+  },
+  args: {
+    iconPosition: defaultIconPosition,
+    icon: <Icon3dCubeSphere />
+  },
+  render: (args: any) => (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <Button {...args} {...buttonActions}>
+          Button
+        </Button>
+      </div>
+    </div>
+  )
 };
 
 export const WithIconOnly = {
-  component: IconOnlyButton,
   args: {
-    icon: <IconLayoutGridAdd />,
-    tooltipProps: { tooltipContent: "Label" }
-  }
+    tooltipProps: {
+      tooltipContent: "Label"
+    }
+  },
+  render: (args: any) => (
+    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+      <div style={{ width: "405px" }}>
+        <IconOnlyButton
+          {...args}
+          icon={<IconLayoutGridAdd />}
+          {...buttonActions}
+        />
+      </div>
+    </div>
+  )
 };
 
 export const IconOnlyGroup = {
-  args: {
-    daner: false,
-    kind: "primary",
-    size: "default",
-    tooltipProps: { tooltipContent: "Tooltip" }
-  },
   render: (args: any) => {
     return (
-      <IconOnlyButtonGroup withDivider singletonProps={{ delay: 900 }}>
-        <IconOnlyButton icon={<IconAlignLeft />} {...args} />
-        <IconOnlyButton icon={<IconAlignCenter />} {...args} />
-        <IconOnlyButton icon={<IconAlignRight />} {...args} />
-        <IconOnlyButton icon={<IconBold />} {...args} />
-        <IconOnlyButton icon={<IconItalic />} {...args} />
-        <IconOnlyButton icon={<IconUnderline />} {...args} />
-      </IconOnlyButtonGroup>
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <IconOnlyButtonGroup withDivider singletonProps={{ delay: 900 }}>
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Align Left"
+            }}
+            icon={<IconAlignLeft />}
+          />
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Center"
+            }}
+            icon={<IconAlignCenter />}
+          />
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Align Right"
+            }}
+            icon={<IconAlignRight />}
+          />
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Bold"
+            }}
+            icon={<IconBold />}
+          />
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Italic"
+            }}
+            icon={<IconItalic />}
+          />
+          <IconOnlyButton
+            {...args}
+            tooltipProps={{
+              tooltipContent: "Underline"
+            }}
+            icon={<IconUnderline />}
+          />
+        </IconOnlyButtonGroup>
+      </div>
     );
   }
 };
@@ -118,7 +199,7 @@ export const Skeleton = {
         gap: "1rem"
       }}
     >
-      <IconOnlyButtonSkeleton size={args.size} {...args} />
+      <IconOnlyButtonSkeleton size={args.size} />
       <ButtonSkeleton size={args.size} />
     </div>
   )
