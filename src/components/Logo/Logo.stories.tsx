@@ -1,41 +1,41 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Logo } from "./Logo";
 
-export default { title: "Utilities/Logo", decorators: [withKnobs] };
-
-const colorOptions = {
-  Black: "black",
-  White: "white"
+export default {
+  component: Logo,
+  title: "Utilities/Logo",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    color: {
+      control: {
+        type: "select",
+        options: ["black", "white"]
+      }
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["xsmall", "small", "medium", "large", "xlarge"]
+      }
+    },
+    type: {
+      control: {
+        type: "select",
+        options: ["logomark", "logotype"]
+      }
+    }
+  },
+  args: {
+    color: "white",
+    size: "medium",
+    type: "logotype"
+  }
 };
 
-const defaultColor = "white";
-
-const sizeOptions = {
-  ExtraSmall: "xsmall",
-  Small: "small",
-  Medium: "medium",
-  Large: "large",
-  ExtraLarge: "xlarge"
-};
-
-const defaultSize = "medium";
-
-const typeOptions = {
-  LogoMark: "logomark",
-  LogoType: "logotype"
-};
-
-const defaultType = "logotype";
-
-export const Default = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <Logo
-        color={select("color", colorOptions, defaultColor) as any}
-        size={select("size", sizeOptions, defaultSize) as any}
-        type={select("type", typeOptions, defaultType) as any}
-      />
-    </div>
-  );
-};
+export const Default = {};

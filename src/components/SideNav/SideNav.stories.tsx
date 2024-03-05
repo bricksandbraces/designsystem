@@ -1,5 +1,4 @@
 import { action } from "@storybook/addon-actions";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
 import {
   Icon2fa,
   IconAngle,
@@ -22,11 +21,20 @@ import { SideNavItem } from "./SideNavItem";
 import { SideNavItemExpander } from "./SideNavItemExpander";
 import { SideNavMobileHeader } from "./SideNavMobileHeader";
 
-export default { title: "Navigation/SideNav", decorators: [withKnobs] };
+export default {
+  title: "Navigation/SideNav",
+  decorators: [
+    (Story: any) => (
+      <div style={{ height: "100vh" }}>
+        <Story />
+      </div>
+    )
+  ]
+};
 
-export const Default = () => {
-  return (
-    <div style={{ height: "100vh" }}>
+export const Default = {
+  render: () => {
+    return (
       <SideNav
         basePath="#"
         logo={<Logo type="logotype" color="white" size="xsmall" />}
@@ -61,13 +69,13 @@ export const Default = () => {
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
         <SideNavItem href="#" icon={<IconAward />} label="Awards" />
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const DefaultWithoutIcons = () => {
-  return (
-    <div style={{ height: "100vh" }}>
+export const DefaultWithoutIcons = {
+  render: () => {
+    return (
       <SideNav
         basePath="#"
         logo={<Logo type="logotype" color="white" size="xsmall" />}
@@ -95,13 +103,13 @@ export const DefaultWithoutIcons = () => {
         <SideNavItem href="#" label="Two-factor auth" />
         <SideNavItem href="#" label="Awards" />
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const ButtonsAsItems = () => {
-  return (
-    <div style={{ height: "100vh" }}>
+export const ButtonsAsItems = {
+  render: () => {
+    return (
       <SideNav
         logo={<Logo type="logotype" color="white" size="xsmall" />}
         defaultOpen={true}
@@ -127,14 +135,14 @@ export const ButtonsAsItems = () => {
         <SideNavItem icon={<Icon2fa />} label="Two-factor auth" />
         <SideNavItem icon={<IconAward />} label="Awards" />
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithSelection = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  return (
-    <div style={{ height: "100vh" }}>
+export const WithSelection = {
+  render: () => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    return (
       <SideNav
         logo={<Logo type="logotype" color="white" size="xsmall" />}
         defaultOpen={true}
@@ -167,16 +175,17 @@ export const WithSelection = () => {
           />
         </SideNavItemExpander>
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithAction = () => {
-  return (
-    <div style={{ height: "100vh" }}>
+export const WithAction = {
+  args: { defaultOpen: true },
+  render: (args: any) => {
+    return (
       <SideNav
         basePath="#"
-        defaultOpen={boolean("open", false)}
+        defaultOpen={args.defaultOpen}
         logo={<Logo type="logotype" color="white" size="xsmall" />}
         action={
           <IconOnlyButton
@@ -211,16 +220,17 @@ export const WithAction = () => {
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
         <SideNavItem href="#" icon={<IconAward />} label="Awards" />
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithLogoImg = () => {
-  return (
-    <div style={{ height: "100vh" }}>
+export const WithLogoImg = {
+  args: { defaultOpen: true },
+  render: (args: any) => {
+    return (
       <SideNav
         basePath="#"
-        defaultOpen={boolean("open", false)}
+        defaultOpen={args.defaultOpen}
         logo={
           <img
             alt="Glyph"
@@ -254,50 +264,55 @@ export const WithLogoImg = () => {
         <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
         <SideNavItem href="#" icon={<IconAward />} label="Awards" />
       </SideNav>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithMobileHeader = () => {
-  const [openMenu, setOpenMenu] = useState(false);
-  return (
-    <div style={{ height: "100vh" }}>
-      <SideNavMobileHeader
-        onMenuClick={() => {
-          setOpenMenu(!openMenu);
-        }}
-        open={openMenu}
-      />
-      <SideNav
-        basePath="#"
-        open={openMenu}
-        onOpenChange={(newOpen) => setOpenMenu(newOpen)}
-        logo={<Logo type="logotype" color="white" size="xsmall" />}
-      >
-        <SideNavItem
-          href="#"
-          icon={<IconSmartHome />}
-          label="Home &amp; Dashboard"
+export const WithMobileHeader = {
+  args: {
+    open: true
+  },
+  render: (args: any) => {
+    const [openMenu, setOpenMenu] = useState(args.open);
+    return (
+      <>
+        <SideNavMobileHeader
+          onMenuClick={() => {
+            setOpenMenu(!openMenu);
+          }}
+          open={openMenu}
         />
-        <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
-        <SideNavDivider />
-        <SideNavHeadline>Group 1</SideNavHeadline>
-        <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
-        <SideNavItem href="#" icon={<IconSearch />} label="Search" />
-        <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
-        </SideNavItemExpander>
-        <SideNavItemExpander icon={<IconApps />} label="All apps">
-          <SideNavItem href="#" icon={<IconCash />} label="Cash" />
-          <SideNavItem href="#" icon={<IconAngle />} label="Angle" />
-          <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
-        </SideNavItemExpander>
-        <SideNavHeadline>Group 2</SideNavHeadline>
-        <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
-        <SideNavItem href="#" icon={<IconAward />} label="Awards" />
-      </SideNav>
-    </div>
-  );
+        <SideNav
+          basePath="#"
+          open={openMenu}
+          onOpenChange={(newOpen) => setOpenMenu(newOpen)}
+          logo={<Logo type="logotype" color="white" size="xsmall" />}
+        >
+          <SideNavItem
+            href="#"
+            icon={<IconSmartHome />}
+            label="Home &amp; Dashboard"
+          />
+          <SideNavItem href="#" icon={<IconSend />} label="Campaigns" />
+          <SideNavDivider />
+          <SideNavHeadline>Group 1</SideNavHeadline>
+          <SideNavItem href="#" icon={<IconDatabase />} label="Data base" />
+          <SideNavItem href="#" icon={<IconSearch />} label="Search" />
+          <SideNavItemExpander icon={<IconApps />} label="All apps">
+            <SideNavItem href="#" icon={<IconCash />} label="Cash" />
+            <SideNavItem href="#" icon={<IconAngle />} label="Angle" selected />
+            <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          </SideNavItemExpander>
+          <SideNavItemExpander icon={<IconApps />} label="All apps">
+            <SideNavItem href="#" icon={<IconCash />} label="Cash" />
+            <SideNavItem href="#" icon={<IconAngle />} label="Angle" />
+            <SideNavItem href="#" icon={<IconBrandTinder />} label="Tinder" />
+          </SideNavItemExpander>
+          <SideNavHeadline>Group 2</SideNavHeadline>
+          <SideNavItem href="#" icon={<Icon2fa />} label="Two-factor auth" />
+          <SideNavItem href="#" icon={<IconAward />} label="Awards" />
+        </SideNav>
+      </>
+    );
+  }
 };

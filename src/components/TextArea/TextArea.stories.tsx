@@ -1,47 +1,113 @@
 import { action } from "@storybook/addon-actions";
-import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { TextArea } from "./TextArea";
 import { TextAreaSkeleton } from "./TextAreaSkeleton";
 
-export default { title: "Input/TextArea", decorators: [withKnobs] };
+export default {
+  title: "Input/TextArea",
+  decorators: [
+    (Story: any) => (
+      <div style={{ height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    light: {
+      control: {
+        type: "boolean"
+      }
+    },
+    warningText: {
+      control: {
+        type: "text"
+      }
+    },
+    errorText: {
+      control: {
+        type: "text"
+      }
+    },
+    id: {
+      control: {
+        type: "text"
+      }
+    },
+    label: {
+      control: {
+        type: "text"
+      }
+    },
+    placeholder: {
+      control: {
+        type: "text"
+      }
+    },
+    disabled: {
+      control: {
+        type: "boolean"
+      }
+    },
+    readOnly: {
+      control: {
+        type: "boolean"
+      }
+    },
+    maxLength: {
+      control: {
+        type: "number"
+      }
+    },
+    characterLimit: {
+      control: {
+        type: "number"
+      }
+    },
+    characterLimitExceededText: {
+      control: {
+        type: "text"
+      }
+    }
+  },
+  args: {
+    light: false,
+    warningText: "",
+    errorText: "",
+    id: "textfield-01",
+    label: "Label",
+    placeholder: "Enter text...",
+    disabled: false,
+    readOnly: false,
+    maxLength: undefined,
+    characterLimit: undefined,
+    characterLimitExceededText: "Ooops that is too long!"
+  }
+};
 
-export const Uncontrolled = () => {
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
+export const Uncontrolled = {
+  args: {
+    defaultValue: "Henlo"
+  },
+  render: (args: any) => {
+    return (
       <TextArea
-        light={boolean("light", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter text...")}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        maxLength={number("maxLength", undefined as any)}
+        {...args}
         onChange={action("onChange")}
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
         onKeyDown={action("onKeyDown")}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Controlled = () => {
-  const [value, setValue] = useState<string | undefined>("");
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
+export const Controlled = {
+  render: (args: any) => {
+    const [value, setValue] = useState<string | undefined>("");
+    return (
       <TextArea
-        light={boolean("light", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
+        {...args}
         value={value ?? ""}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter text...")}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
         onChange={(newValue, event) => {
           setValue(newValue);
           action("onChange")(newValue, event);
@@ -49,43 +115,29 @@ export const Controlled = () => {
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
         onKeyDown={action("onKeyDown")}
-        maxLength={number("maxLength", undefined as any)}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const WithCharacterCounter = () => {
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
+export const WithCharacterCounter = {
+  args: {
+    characterLimit: 30,
+    characterLimitExceededText: "Ooops that is too long!"
+  },
+  render: (args: any) => {
+    return (
       <TextArea
-        light={boolean("light", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        defaultValue={text("defaultValue", "Henlo")}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter text...")}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        characterLimit={number("characterLimit", 30)}
-        characterLimitExceededText={text(
-          "characterLimitExceededText",
-          "Ooops that is too long!"
-        )}
+        {...args}
         onChange={action("onChange")}
         onFocus={action("onFocus")}
         onBlur={action("onBlur")}
         onKeyDown={action("onKeyDown")}
       />
-    </div>
-  );
+    );
+  }
 };
 
 export const Skeleton = () => {
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
-      <TextAreaSkeleton />
-    </div>
-  );
+  return <TextAreaSkeleton />;
 };

@@ -1,31 +1,35 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { SkeletonAnimatedContainer } from "./SkeletonAnimatedContainer";
 import { SkeletonContainer } from "./SkeletonContainer";
 import { SkeletonText } from "./SkeletonText";
 
-export default { title: "Utilities/Skeleton", decorators: [withKnobs] };
+export default {
+  title: "Utilities/Skeleton",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ]
+};
 
-export const AnimatedContainer = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export const AnimatedContainer = {
+  render: () => {
+    return (
       <SkeletonAnimatedContainer style={{ width: "8rem", height: "8rem" }} />
-    </div>
-  );
+    );
+  }
 };
 
-export const Container = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SkeletonContainer style={{ width: "8rem", height: "8rem" }} />
-    </div>
-  );
+export const Container = {
+  render: () => {
+    return <SkeletonContainer style={{ width: "8rem", height: "8rem" }} />;
+  }
 };
 
-export const Text = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SkeletonText style={{ width: "8rem" }} />
-    </div>
-  );
+export const Text = {
+  render: () => {
+    return <SkeletonText style={{ width: "8rem" }} />;
+  }
 };

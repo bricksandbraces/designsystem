@@ -1,51 +1,69 @@
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { ClickableTile } from "./ClickableTile";
 import { Tile } from "./Tile";
 import { TileSkeleton } from "./TileSkeleton";
 
-export default { title: "Layout/Tile", decorators: [withKnobs] };
-
-export const Default = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Tile
-          light={boolean("light", false)}
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-        >
-          Default Tile
-        </Tile>
+export default {
+  title: "Layout/Tile",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
+          <Story />
+        </div>
       </div>
-    </div>
-  );
+    )
+  ],
+  argTypes: {
+    light: {
+      control: {
+        type: "boolean"
+      }
+    },
+    disabled: {
+      control: {
+        type: "boolean"
+      }
+    },
+    readOnly: {
+      control: {
+        type: "boolean"
+      }
+    },
+    href: {
+      control: {
+        type: "text"
+      }
+    },
+    target: {
+      control: {
+        type: "text"
+      }
+    }
+  },
+  args: {
+    light: false,
+    disabled: false,
+    readOnly: false,
+    href: undefined,
+    target: undefined
+  }
 };
 
-export const Clickable = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <ClickableTile
-          light={boolean("light", false)}
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-          href={text("href", "#")}
-          target={text("target", "_blank")}
-        >
-          Clickable Tile
-        </ClickableTile>
-      </div>
-    </div>
-  );
+export const Default = {
+  render: (args: any) => {
+    return <Tile {...args}>Default Tile</Tile>;
+  }
 };
 
-export const Skeleton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <TileSkeleton />
-      </div>
-    </div>
-  );
+export const Clickable = {
+  render: (args: any) => {
+    return <ClickableTile {...args}>Clickable Tile</ClickableTile>;
+  }
+};
+
+export const Skeleton = {
+  render: () => {
+    return <TileSkeleton />;
+  }
 };

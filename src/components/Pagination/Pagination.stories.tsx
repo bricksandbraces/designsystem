@@ -1,29 +1,33 @@
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Pagination } from "./Pagination";
 
-export default { title: "Navigation/Pagination", decorators: [withKnobs] };
-
-const sizeOptions = {
-  Large: "large",
-  Small: "small",
-  Default: "default"
-};
-
-const defaultSize = "default";
-
-export const Default = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Pagination
-          hideFastforward={boolean("hideFastforward", false)}
-          hideNav={boolean("hideNav", false)}
-          totalPages={8}
-          pagesShown={4}
-          size={select("size", sizeOptions, defaultSize) as any}
-        />
+export default {
+  component: Pagination,
+  title: "Navigation/Pagination",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
+          <Story />
+        </div>
       </div>
-    </div>
-  );
+    )
+  ],
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "default", "large"]
+      }
+    }
+  },
+  args: {
+    totalPages: 8,
+    pagesShown: 4,
+    size: "default",
+    hideFastforward: false,
+    hideNav: false
+  }
 };
+
+export const Default = {};

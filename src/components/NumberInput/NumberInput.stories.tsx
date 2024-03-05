@@ -1,11 +1,4 @@
 import { action } from "@storybook/addon-actions";
-import {
-  boolean,
-  number,
-  select,
-  text,
-  withKnobs
-} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import { Label } from "../Typography/Typography";
@@ -14,96 +7,104 @@ import { NumberInputSkeleton } from "./NumberInputSkeleton";
 
 export default {
   title: "Input/NumberInput",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["default", "small", "large"]
+      }
+    }
+  },
+  args: {
+    size: "default",
+    label: "Label",
+    placeholder: "Enter text...",
+    autoComplete: "off",
+    min: -50,
+    max: 50,
+    step: 1,
+    light: false,
+    warningText: "",
+    errorText: "",
+    readOnly: false,
+    disabled: false,
+    fluid: false,
+    id: "textfield-01",
+    defaultValue: 0
+  }
 };
 
-const sizeOptions = {
-  Default: "default",
-  Small: "small",
-  Large: "large"
+export const Uncontrolled = {
+  render: (args: any) => {
+    const { defaultValue, ...rest } = args;
+    const backedDefaultValue = defaultValue ?? 0;
+    // this is only a monitoring value since uncontrolled input holds the value
+    const [parsedValue, setReference] = useState<number | undefined>(
+      backedDefaultValue
+    );
+    return (
+      <>
+        <NumberInput
+          {...rest}
+          defaultValue={backedDefaultValue}
+          onChange={(params, event) => {
+            setReference(params.parsedValue);
+            action("onChange")(event, params);
+          }}
+          onBlur={action("onBlur")}
+          onFocus={action("onFocus")}
+          onKeyDown={action("onKeyDown")}
+        />
+        <Label>Reference parsedValue: {parsedValue}</Label>
+      </>
+    );
+  }
 };
 
-const defaultSize = "default";
-
-export const Uncontrolled = () => {
-  const defaultValue = number("defaultValue", 0);
-  // this is only a monitoring value since uncontrolled input holds the value
-  const [parsedValue, setReference] = useState<number | undefined>(
-    defaultValue
-  );
-  return (
-    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <NumberInput
-        light={boolean("light", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        defaultValue={defaultValue}
-        onChange={(params, event) => {
-          setReference(params.parsedValue);
-          action("onChange")(event, params);
-        }}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        fluid={boolean("fluid", false)}
-        onBlur={action("onBlur")}
-        onFocus={action("onFocus")}
-        onKeyDown={action("onKeyDown")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter text...")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
-        min={number("min", -50)}
-        max={number("max", 50)}
-        step={number("step", 1)}
-      />
-      <Label>Reference parsedValue: {parsedValue}</Label>
-    </div>
-  );
+export const Controlled = {
+  args: {
+    fluid: false
+  },
+  render: (args: any) => {
+    const [textValue, setValue] = useState<string>("1e42");
+    const { float } = args;
+    const parsedValue = parseToNumber(textValue, float);
+    return (
+      <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+        <NumberInput
+          {...args}
+          value={textValue}
+          onBlur={action("onBlur")}
+          onFocus={action("onFocus")}
+          onKeyDown={action("onKeyDown")}
+          onChange={(params, event) => {
+            if (
+              params.parsedValue != null &&
+              !Number.isNaN(params.parsedValue)
+            ) {
+              setValue(`${params.parsedValue}`);
+            } else {
+              setValue(params.newValue ?? "");
+            }
+            action("onChange")(params, event);
+          }}
+          float={float}
+        />
+        <Label>parsedValue: {parsedValue}</Label>
+      </div>
+    );
+  }
 };
 
-export const Controlled = () => {
-  const [textValue, setValue] = useState<string>("1e42");
-  const float = boolean("float", false);
-  const parsedValue = parseToNumber(textValue, float);
-  return (
-    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <NumberInput
-        light={boolean("light", false)}
-        fluid={boolean("fluid", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter text...")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
-        value={textValue}
-        onBlur={action("onBlur")}
-        onFocus={action("onFocus")}
-        onKeyDown={action("onKeyDown")}
-        onChange={(params, event) => {
-          if (params.parsedValue != null && !Number.isNaN(params.parsedValue)) {
-            setValue(`${params.parsedValue}`);
-          } else {
-            setValue(params.newValue ?? "");
-          }
-          action("onChange")(params, event);
-        }}
-        min={number("min", -50)}
-        max={number("max", 50)}
-        step={number("step", 1)}
-        float={float}
-      />
-      <Label>parsedValue: {parsedValue}</Label>
-    </div>
-  );
-};
-
-export const Skeleton = () => {
-  return (
-    <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-      <NumberInputSkeleton />
-    </div>
-  );
+export const Skeleton = {
+  render: () => {
+    return <NumberInputSkeleton />;
+  }
 };
