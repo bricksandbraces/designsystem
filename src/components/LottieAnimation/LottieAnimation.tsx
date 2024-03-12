@@ -6,7 +6,7 @@ import Lottie, {
   AnimationItem
 } from "lottie-web";
 import React, { useEffect, useRef } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 
 export type LottieProps = {
   title?: string;

@@ -1,70 +1,39 @@
-import { withKnobs } from "@storybook/addon-knobs";
-import { IconSearch } from "@tabler/icons";
+import { IconSearch } from "@tabler/icons-react";
 import React from "react";
 import { Button } from "../..";
 import { EmptyState } from "./EmptyState";
 
 export default {
+  component: EmptyState,
   title: "Pattern/EmptyState",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  args: {
+    title: "No search items found",
+    subTitle:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
+  }
 };
 
-export const Vertical = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <EmptyState
-        icon={<IconSearch />}
-        title="No search items found"
-        subTitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
-      />
-    </div>
-  );
+export const Vertical = { args: { icon: <IconSearch /> } };
+
+export const Horizontal = {
+  args: { orientation: "horizontal", icon: <IconSearch /> }
 };
 
-export const Horizontal = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <EmptyState
-        orientation="horizontal"
-        icon={<IconSearch />}
-        title="No search items found"
-        subTitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
-      />
-    </div>
-  );
+export const VerticalWithButton = {
+  args: { icon: <IconSearch />, actions: <Button>Empty Search</Button> }
 };
 
-export const VerticalWithButton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <EmptyState
-        icon={<IconSearch />}
-        title="No search items found"
-        subTitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-        actions={
-          <>
-            <Button>Empty Search</Button>
-          </>
-        }
-      ></EmptyState>
-    </div>
-  );
-};
-
-export const HorizontallWithButton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <EmptyState
-        orientation="horizontal"
-        icon={<IconSearch />}
-        title="No search items found"
-        subTitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
-        actions={
-          <>
-            <Button>Empty Search</Button>
-          </>
-        }
-      ></EmptyState>
-    </div>
-  );
+export const HorizontallWithButton = {
+  args: {
+    orientation: "horizontal",
+    icon: <IconSearch />,
+    actions: <Button>Empty Search</Button>
+  }
 };

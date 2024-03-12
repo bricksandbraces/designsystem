@@ -1,4 +1,4 @@
-import { IconArrowRight } from "@tabler/icons";
+import { IconArrowRight } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { Link } from "../..";

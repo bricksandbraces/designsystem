@@ -2,7 +2,7 @@ import {
   IconAlertCircle,
   IconAlertTriangle,
   IconChevronDown
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import Tippy from "@tippyjs/react";
 import cx from "classnames";
 import React, { useEffect, useRef, useState } from "react";

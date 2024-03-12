@@ -1,7 +1,7 @@
-import { IconSearch, IconX } from "@tabler/icons";
+import { IconSearch, IconX } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { useControlledInput } from "../../hooks/useControlled";
 import { prefix } from "../../settings";
 import { Button } from "../Button/Button";

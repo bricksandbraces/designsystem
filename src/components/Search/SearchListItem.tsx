@@ -1,4 +1,4 @@
-import { IconClock } from "@tabler/icons";
+import { IconClock } from "@tabler/icons-react";
 import cx from "classnames";
 import React, { useEffect, useState } from "react";
 import { prefix } from "../../settings";

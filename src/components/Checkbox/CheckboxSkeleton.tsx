@@ -10,7 +10,7 @@ export type CheckboxSkeletonProps = {
   className?: string;
 };
 
-export const CheckboxSkeleton = React.forwardRef(function CheckboxSkeleton({
+export const CheckboxSkeleton = function CheckboxSkeleton({
   className
 }: CheckboxSkeletonProps) {
   return (
@@ -48,4 +48,4 @@ export const CheckboxSkeleton = React.forwardRef(function CheckboxSkeleton({
       />
     </div>
   );
-});
+};

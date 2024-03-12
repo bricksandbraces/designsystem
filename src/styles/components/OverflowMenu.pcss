@@ -13,8 +13,10 @@
     flex-wrap: wrap;
     width: calc(var(--size-container-07) + var(--size-container-06));
     padding: var(--size-spacing-inner);
-    transition: transform var(--transition-app-01),
-      opacity var(--transition-app-01), visibility var(--transition-app-01) !important;
+    transition:
+      transform var(--transition-app-01),
+      opacity var(--transition-app-01),
+      visibility var(--transition-app-01) !important;
     border: var(--size-border) var(--style-border) var(--color-border);
     border-radius: var(--component-radius-02);
     background-color: var(--color-background);
@@ -82,8 +84,10 @@
           justify-content: flex-start;
           width: 100%;
           padding: 0 var(--size-spacing-04);
-          transition: background-color var(--transition-app-01),
-            box-shadow var(--transition-app-01), color var(--transition-app-01);
+          transition:
+            background-color var(--transition-app-01),
+            box-shadow var(--transition-app-01),
+            color var(--transition-app-01);
           border: var(--size-border) var(--style-border) transparent;
           border-radius: var(--component-radius-02);
           background-color: var(--color-background);
@@ -123,7 +127,8 @@
 
           &:focus-visible {
             outline: 0;
-            box-shadow: 0 0 0 0.0625rem var(--color-focus),
+            box-shadow:
+              0 0 0 0.0625rem var(--color-focus),
               0 0 0 0.25rem var(--color-focus-highlight);
           }
 

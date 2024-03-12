@@ -3,8 +3,8 @@
     "strict": true,
     "outDir": "lib/esm",
     "module": "esnext",
-    "target": "es2019",
-    "lib": ["dom", "dom.iterable", "esnext", "es2020"],
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext", "es2022"],
     "declaration": true,
     "moduleResolution": "node",
     "sourceMap": true,
@@ -17,6 +17,6 @@
     "jsx": "react",
     "incremental": true
   },
-  "include": ["src", ".storybook/Components/**/*.tsx"],
-  "exclude": ["node_modules", "lib", ".eslintrc.js", "cypress", "tasks"]
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", ".eslintrc.js"]
 }

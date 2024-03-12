@@ -1,11 +1,8 @@
 import { action } from "@storybook/addon-actions";
-import { select, text, withKnobs } from "@storybook/addon-knobs";
-import { IconArrowNarrowRight } from "@tabler/icons";
+import { IconArrowNarrowRight } from "@tabler/icons-react";
 import React from "react";
 import { Body } from "../Typography/Typography";
 import { Link } from "./Link";
-
-export default { title: "Navigation/Link", decorators: [withKnobs] };
 
 const sizeOptions = {
   Large: "large",
@@ -15,61 +12,81 @@ const sizeOptions = {
 
 const defaultSize = "default";
 
-export const Default = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Link
-          href="https://google.de"
-          target="_blank"
-          icon={<IconArrowNarrowRight />}
-          size={select("size", sizeOptions, defaultSize) as any}
-          onClick={action("onClick")}
-        >
-          {text("children", "Link text")}
-        </Link>
-      </div>
-    </div>
-  );
+export default {
+  title: "Navigation/Link",
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: sizeOptions
+      }
+    }
+  },
+  args: { size: defaultSize }
 };
 
-export const AsButton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Link
-          icon={<IconArrowNarrowRight />}
-          size={select("size", sizeOptions, defaultSize) as any}
-          onClick={action("onClick")}
-        >
-          {text("children", "Link Button text")}
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-export const Inline = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px", color: "white" }}>
-        <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.{" "}
+export const Default = {
+  render: (args: any) => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
           <Link
+            {...args}
             href="https://google.de"
             target="_blank"
-            inline
+            icon={<IconArrowNarrowRight />}
             onClick={action("onClick")}
           >
             Stet clita kasd
-          </Link>{" "}
-          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </Body>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+};
+
+export const AsButton = {
+  render: (args: any) => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
+          <Link
+            {...args}
+            icon={<IconArrowNarrowRight />}
+            onClick={action("onClick")}
+          >
+            Stet clita kasd
+          </Link>
+        </div>
+      </div>
+    );
+  }
+};
+
+export const Inline = {
+  render: (args: any) => {
+    return (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px", color: "white" }}>
+          <Body type="body-02" style={{ color: "var(--color-font-text-01)" }}>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.{" "}
+            <Link
+              {...args}
+              href="https://google.de"
+              target="_blank"
+              inline
+              onClick={action("onClick")}
+            >
+              Stet clita kasd
+            </Link>{" "}
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </Body>
+        </div>
+      </div>
+    );
+  }
 };

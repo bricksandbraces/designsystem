@@ -20,7 +20,7 @@ export type ButtonSkeletonProps = {
   light?: boolean;
 };
 
-export const ButtonSkeleton = React.forwardRef(function ButtonSkeleton({
+export const ButtonSkeleton = function ButtonSkeleton({
   size = "default",
   className
 }: ButtonSkeletonProps) {
@@ -30,4 +30,4 @@ export const ButtonSkeleton = React.forwardRef(function ButtonSkeleton({
       className={cx(`${prefix}--button ${prefix}--button-${size}`, className)}
     />
   );
-});
+};

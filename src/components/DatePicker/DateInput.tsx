@@ -1,7 +1,7 @@
-import { IconCalendar } from "@tabler/icons";
+import { IconCalendar } from "@tabler/icons-react";
 import cx from "classnames";
 import React, { forwardRef, memo } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { formatDate, parseDate } from "../../helpers/dateUtilities";
 import { withoutPropagation } from "../../helpers/eventUtilities";
 import { filterForKeys } from "../../helpers/keyboardUtilities";

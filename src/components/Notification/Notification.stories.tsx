@@ -1,57 +1,60 @@
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { InlineNotification, ToastNotification } from "../..";
 
 export default {
   title: "Prompt/Notification",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    type: {
+      control: {
+        type: "select",
+        options: ["warning", "info", "success", "danger"]
+      }
+    }
+  },
+  args: {
+    type: "info",
+    open: true,
+    hideCloseButton: false,
+    title: "This is a title",
+    subTitle: "While this is a subtitle"
+  }
 };
 
-const typeOptions = {
-  warning: "warning",
-  info: "info",
-  success: "success",
-  danger: "danger"
-};
-
-const defaultType = "info";
-
-export const Inline = () => {
-  const [open, setOpen] = useState(true);
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export const Inline = {
+  render: (args: any) => {
+    const [, setOpen] = useState(true);
+    return (
       <InlineNotification
-        type={select("type", typeOptions, defaultType) as any}
-        open={boolean("open", open)}
+        {...args}
         onClose={(event) => {
           setOpen(false);
           action("onClose")(event);
         }}
-        hideCloseButton={boolean("hideCloseButton", false)}
-        title={text("title", "This is a title")}
-        subTitle={text("subTitle", "While this is a subtitle")}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Toast = () => {
-  const [open, setOpen] = useState(true);
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export const Toast = {
+  args: { time: "12:23 Uhr" },
+  render: (args: any) => {
+    const [, setOpen] = useState(true);
+    return (
       <ToastNotification
-        type={select("type", typeOptions, defaultType) as any}
-        open={boolean("open", open)}
+        {...args}
         onClose={(event) => {
           setOpen(false);
           action("onClose")(event);
         }}
-        hideCloseButton={boolean("hideCloseButton", false)}
-        title={text("title", "This is a title")}
-        subTitle={text("subTitle", "While this is a subtitle")}
-        time={text("time", "12:23 Uhr")}
       />
-    </div>
-  );
+    );
+  }
 };

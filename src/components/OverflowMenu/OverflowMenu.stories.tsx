@@ -1,11 +1,10 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
 import {
   Icon2fa,
   IconAccessible,
   IconAntennaBars3,
   IconCrop,
   IconTrash
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import React from "react";
 import { Divider } from "../..";
 import { OverflowMenu } from "./OverflowMenu";
@@ -13,37 +12,44 @@ import { OverflowMenuItem } from "./OverflowMenuItem";
 
 export default {
   title: "Prompt/OverflowMenu",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div style={{ padding: "32px", display: "flex" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["large", "small", "default"]
+      }
+    }
+  },
+  args: {
+    size: "default"
+  }
 };
 
-const sizeOptions = {
-  Large: "large",
-  Small: "small",
-  Default: "default"
-};
-
-const defaultSize = "default";
-
-export const Default = () => {
+export const Default = (args: any) => {
   return (
-    <div style={{ padding: "32px", display: "flex" }}>
-      <OverflowMenu size={select("size", sizeOptions, defaultSize) as any}>
-        <OverflowMenuItem onClick={() => {}} icon={<Icon2fa />}>
-          Enable 2FA
-        </OverflowMenuItem>
-        <OverflowMenuItem href="#" icon={<IconAccessible />}>
-          Turn on accessibility
-        </OverflowMenuItem>
-        <Divider />
-        <OverflowMenuItem icon={<IconAntennaBars3 />}>
-          Check connectivity
-        </OverflowMenuItem>
-        <OverflowMenuItem icon={<IconCrop />}>Crop image</OverflowMenuItem>
-        <Divider />
-        <OverflowMenuItem danger icon={<IconTrash />}>
-          Delete
-        </OverflowMenuItem>
-      </OverflowMenu>
-    </div>
+    <OverflowMenu size={args.size}>
+      <OverflowMenuItem onClick={() => {}} icon={<Icon2fa />}>
+        Enable 2FA
+      </OverflowMenuItem>
+      <OverflowMenuItem href="#" icon={<IconAccessible />}>
+        Turn on accessibility
+      </OverflowMenuItem>
+      <Divider />
+      <OverflowMenuItem icon={<IconAntennaBars3 />}>
+        Check connectivity
+      </OverflowMenuItem>
+      <OverflowMenuItem icon={<IconCrop />}>Crop image</OverflowMenuItem>
+      <Divider />
+      <OverflowMenuItem danger icon={<IconTrash />}>
+        Delete
+      </OverflowMenuItem>
+    </OverflowMenu>
   );
 };

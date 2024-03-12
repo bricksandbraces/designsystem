@@ -1,86 +1,82 @@
 import { action } from "@storybook/addon-actions";
-import {
-  boolean,
-  object,
-  select,
-  text,
-  withKnobs
-} from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { Select } from "./Select";
 import { SelectSkeleton } from "./SelectSkeleton";
 
-export default { title: "Input/Select", decorators: [withKnobs] };
-
-const sizeOptions = {
-  Default: "default",
-  Small: "small",
-  Large: "large"
-};
-
-const defaultSize = "default";
-
-const options = [
-  { value: "", text: "Please select an option" },
-  { value: "coffee", text: "Coffee" },
-  {
-    group: "With Milk",
-    options: [
-      { value: "latte macchiato", text: "Latte Macchiato" },
-      { value: "cappucino", text: "Cappucino" }
-    ]
+export default {
+  component: Select,
+  title: "Input/Select",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    size: {
+      Default: "default",
+      Small: "small",
+      Large: "large"
+    },
+    options: {
+      control: {
+        type: "object"
+      }
+    }
   },
-  { value: "espresso", text: "Espresso" }
-];
-
-export const Uncontrolled = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <Select
-        light={boolean("light", false)}
-        id="some-select"
-        label={text("label", "Label")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        warningText={text("warningText", "")}
-        onChange={action("onChange")}
-        errorText={text("errorText", "")}
-        options={object("options", options) as any}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
-        defaultValue="cappucino"
-      />
-    </div>
-  );
+  args: {
+    id: "some-select",
+    light: false,
+    label: "Label",
+    size: "default",
+    warningText: "",
+    errorText: "",
+    options: [
+      { value: "", text: "Please select an option" },
+      { value: "coffee", text: "Coffee" },
+      {
+        group: "With Milk",
+        options: [
+          { value: "latte macchiato", text: "Latte Macchiato" },
+          { value: "cappucino", text: "Cappucino" }
+        ]
+      },
+      { value: "espresso", text: "Espresso" }
+    ],
+    disabled: false,
+    readOnly: false,
+    onChange: action("onChange")
+  }
 };
 
-export const Controlled = () => {
-  const [value, setValue] = useState<string | undefined>("espresso");
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+export const Uncontrolled = {
+  args: {
+    defaultValue: "cappucino"
+  }
+};
+
+export const Controlled = {
+  args: {
+    value: "espresso"
+  },
+  render: (args: any) => {
+    const [value, setValue] = useState<string | undefined>(args.value);
+    return (
       <Select
-        light={boolean("light", false)}
-        id="some-dropdown"
-        label={text("label", "Label")}
-        size={select("size", sizeOptions, defaultSize) as any}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        options={object("options", options) as any}
-        disabled={boolean("disabled", false)}
-        readOnly={boolean("readOnly", false)}
+        {...args}
         value={value}
         onChange={(event) => {
           setValue(event?.target?.value);
           action("onChange")(event);
         }}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Skeleton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <SelectSkeleton />
-    </div>
-  );
+export const Skeleton = {
+  render: () => {
+    return <SelectSkeleton />;
+  }
 };

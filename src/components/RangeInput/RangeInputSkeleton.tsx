@@ -21,7 +21,7 @@ export type RangeInputSkeletonProps = {
   size?: "large" | "default" | "small";
 };
 
-export const RangeInputSkeleton = React.forwardRef(function RangeInputSkeleton({
+export const RangeInputSkeleton = function RangeInputSkeleton({
   size = "default",
   hideInput,
   className
@@ -65,4 +65,4 @@ export const RangeInputSkeleton = React.forwardRef(function RangeInputSkeleton({
       </div>
     </div>
   );
-});
+};

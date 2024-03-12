@@ -1,6 +1,6 @@
 import cx from "classnames";
 import React, { useEffect, useRef } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { prefix } from "../../settings";
 
 export type CheckboxProps = {

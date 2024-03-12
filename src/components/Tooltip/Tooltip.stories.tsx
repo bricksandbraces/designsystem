@@ -1,36 +1,45 @@
 import "tippy.js/dist/tippy.css";
-import { select, withKnobs } from "@storybook/addon-knobs";
-import { IconInfoCircle } from "@tabler/icons";
+import { IconInfoCircle } from "@tabler/icons-react";
 import React from "react";
 import { Button, ContainerTooltip, IconTrigger, Tooltip } from "../..";
 
-export default { title: "Utilities/Tooltip", decorators: [withKnobs] };
-
-const themeOptions = {
-  light: "light",
-  dark: "dark"
+export default {
+  title: "Utilities/Tooltip",
+  decorators: [
+    (Story: any) => (
+      <div style={{ padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    theme: {
+      control: {
+        type: "select",
+        options: ["light", "dark"]
+      }
+    }
+  },
+  args: {
+    theme: "light"
+  }
 };
 
-const defaultTheme = "light";
-
-export const Default = () => {
-  return (
-    <div style={{ padding: "32px" }}>
-      <Tooltip
-        theme={select("theme", themeOptions, defaultTheme) as any}
-        tooltipContent="You sneaky little thing."
-      >
+export const Default = {
+  render: (args: any) => {
+    return (
+      <Tooltip {...args} tooltipContent="You sneaky little thing.">
         <Button>Don`t you dare hovering me.</Button>
       </Tooltip>
-    </div>
-  );
+    );
+  }
 };
 
-export const Container = () => {
-  return (
-    <div style={{ padding: "32px" }}>
+export const Container = {
+  render: (args: any) => {
+    return (
       <ContainerTooltip
-        theme={select("theme", themeOptions, defaultTheme) as any}
+        {...args}
         title="You sneaky little thing."
         body={
           <>
@@ -42,15 +51,15 @@ export const Container = () => {
       >
         <Button>Don`t you dare clicking me.</Button>
       </ContainerTooltip>
-    </div>
-  );
+    );
+  }
 };
 
-export const IconAsTrigger = () => {
-  return (
-    <div style={{ padding: "32px" }}>
+export const IconAsTrigger = {
+  render: (args: any) => {
+    return (
       <ContainerTooltip
-        theme={select("theme", themeOptions, defaultTheme) as any}
+        {...args}
         title="You sneaky little thing."
         body={
           <>
@@ -67,6 +76,6 @@ export const IconAsTrigger = () => {
           />
         </IconTrigger>
       </ContainerTooltip>
-    </div>
-  );
+    );
+  }
 };

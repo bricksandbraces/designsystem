@@ -2,7 +2,8 @@
   &--link {
     display: inline-flex;
     align-items: center;
-    transition: box-shadow var(--transition-app-01),
+    transition:
+      box-shadow var(--transition-app-01),
       color var(--transition-app-01);
     border: 0;
     border-radius: var(--component-radius-02);
@@ -76,7 +77,8 @@
 
     &:focus-visible {
       outline: 0;
-      box-shadow: 0 0 0 0.0625rem var(--color-focus),
+      box-shadow:
+        0 0 0 0.0625rem var(--color-focus),
         0 0 0 0.25rem var(--color-focus-highlight);
     }
 
@@ -95,7 +97,8 @@
         bottom: 0;
         width: 0;
         height: 0.0625rem;
-        transition: width var(--transition-app-02),
+        transition:
+          width var(--transition-app-02),
           opacity var(--transition-app-02),
           background-color var(--transition-app-01);
         opacity: 0;

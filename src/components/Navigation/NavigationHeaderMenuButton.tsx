@@ -1,4 +1,4 @@
-import { IconMenu2, IconX } from "@tabler/icons";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";

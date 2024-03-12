@@ -1,10 +1,8 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Badge, ThemeProvider } from "../../..";
 
 export default {
-  title: "Utilities/ThemeProvider",
-  decorators: [withKnobs]
+  title: "Utilities/ThemeProvider"
 };
 
 export const Example = () => {

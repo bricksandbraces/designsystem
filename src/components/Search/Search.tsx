@@ -1,6 +1,6 @@
 import cx from "classnames";
 import React from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { idfy } from "../../helpers/arrayUtilities";
 import {
   useControlledInput,

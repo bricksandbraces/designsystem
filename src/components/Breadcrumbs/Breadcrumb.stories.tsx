@@ -1,6 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { withKnobs } from "@storybook/addon-knobs";
-import { IconDots, IconFolder } from "@tabler/icons";
+import { IconDots, IconFolder } from "@tabler/icons-react";
 import React from "react";
 import { OverflowMenu } from "../OverflowMenu/OverflowMenu";
 import { OverflowMenuItem } from "../OverflowMenu/OverflowMenuItem";
@@ -8,12 +7,22 @@ import { Breadcrumb } from "./Breadcrumb";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 import { BreadcrumbSkeleton } from "./BreadcrumbSkeleton";
 
-export default { title: "Navigation/Breadcrumb", decorators: [withKnobs] };
+export default {
+  component: Breadcrumb,
+  title: "Navigation/Breadcrumb",
+  decorators: [
+    (Story: any) => (
+      <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
+        <Story />
+      </div>
+    )
+  ]
+};
 
-export const Default = () => {
-  return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
-      <Breadcrumb aria-label="Breadcrumb nav">
+export const Default = {
+  render: (args: any) => {
+    return (
+      <Breadcrumb aria-label="Breadcrumb nav" {...args}>
         <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
           Home
         </BreadcrumbItem>
@@ -27,14 +36,14 @@ export const Default = () => {
           Change IBAN
         </BreadcrumbItem>
       </Breadcrumb>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithOverflowMenu = () => {
-  return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
-      <Breadcrumb aria-label="Breadcrumb nav">
+export const WithOverflowMenu = {
+  render: (args: any) => {
+    return (
+      <Breadcrumb aria-label="Breadcrumb nav" {...args}>
         <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
           Home
         </BreadcrumbItem>
@@ -57,14 +66,14 @@ export const WithOverflowMenu = () => {
           Change IBAN
         </BreadcrumbItem>
       </Breadcrumb>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithCurrentItem = () => {
-  return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
-      <Breadcrumb aria-label="Breadcrumb nav">
+export const WithCurrentItem = {
+  render: (args: any) => {
+    return (
+      <Breadcrumb aria-label="Breadcrumb nav" {...args}>
         <BreadcrumbItem linkProps={{ onClick: action("onClick") }}>
           Home
         </BreadcrumbItem>
@@ -79,14 +88,14 @@ export const WithCurrentItem = () => {
           Change IBAN
         </BreadcrumbItem>
       </Breadcrumb>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithIcons = () => {
-  return (
-    <div style={{ padding: "32px", display: "flex", gap: "16px" }}>
-      <Breadcrumb aria-label="Breadcrumb nav">
+export const WithIcons = {
+  render: (args: any) => {
+    return (
+      <Breadcrumb aria-label="Breadcrumb nav" {...args}>
         <BreadcrumbItem
           linkProps={{ onClick: action("onClick") }}
           icon={<IconFolder />}
@@ -113,14 +122,12 @@ export const WithIcons = () => {
           Change IBAN
         </BreadcrumbItem>
       </Breadcrumb>
-    </div>
-  );
+    );
+  }
 };
 
-export const Skeleton = () => {
-  return (
-    <div style={{ padding: "32px", display: "flex", gap: "8px" }}>
-      <BreadcrumbSkeleton />
-    </div>
-  );
+export const Skeleton = {
+  render: (args: any) => {
+    return <BreadcrumbSkeleton {...args} />;
+  }
 };

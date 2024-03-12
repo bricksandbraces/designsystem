@@ -1,4 +1,4 @@
-import { IconEye } from "@tabler/icons";
+import { IconEye } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { SkeletonText } from "../..";

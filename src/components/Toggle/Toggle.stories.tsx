@@ -1,81 +1,78 @@
 import { action, actions } from "@storybook/addon-actions";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { ChangeEvent, useState } from "react";
 import { Body } from "../Typography/Typography";
 import { Toggle } from "./Toggle";
 import { ToggleSkeleton } from "./ToggleSkeleton";
 
-export default { title: "Input/Toggle", decorators: [withKnobs] };
+export default {
+  title: "Input/Toggle",
+  decorators: [
+    (Story: any) => (
+      <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
+        <div style={{ width: "405px" }}>
+          <Story />
+        </div>
+      </div>
+    )
+  ],
+  args: {
+    label: "Toggle label",
+    disabled: false,
+    readOnly: false
+  }
+};
 
 const toggleActions = actions("onBlur", "onFocus", "onChange", "onClick");
 
-export const Small = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
+export const Small = {
+  render: (args: any) => {
+    return (
+      <>
         <Toggle
+          {...args}
           size="small"
-          label={text("label", "Toggle label")}
-          id="checkbox"
-          value="c1"
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-          {...actions}
-        />
-        <Toggle
-          size="small"
-          label={text("label", "Toggle label")}
-          id="checkbox-2"
-          defaultChecked
-          value="c2"
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-          {...actions}
-        />
-      </div>
-    </div>
-  );
-};
-
-export const Default = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Toggle
-          label={text("label", "Toggle label")}
-          id="checkbox"
-          value="c1"
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-          {...actions}
-        />
-        <Toggle
-          label={text("label", "Toggle label")}
-          id="checkbox-2"
-          defaultChecked
-          value="c2"
-          disabled={boolean("disabled", false)}
-          readOnly={boolean("readOnly", false)}
-          {...actions}
-        />
-      </div>
-    </div>
-  );
-};
-
-export const Controlled = () => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Toggle
-          label={text("label", "Toggle label")}
           id="checkbox"
           value="c1"
           {...toggleActions}
         />
         <Toggle
-          label={text("label", "Toggle label")}
+          {...args}
+          size="small"
+          id="checkbox-2"
+          defaultChecked
+          value="c2"
+          {...toggleActions}
+        />
+      </>
+    );
+  }
+};
+
+export const Default = {
+  render: (args: any) => {
+    return (
+      <>
+        <Toggle {...args} id="checkbox" value="c1" {...toggleActions} />
+        <Toggle
+          {...args}
+          id="checkbox-2"
+          defaultChecked
+          value="c2"
+          {...toggleActions}
+        />
+      </>
+    );
+  }
+};
+
+export const Controlled = {
+  render: (args: any) => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <>
+        <Toggle {...args} id="checkbox" value="c1" {...toggleActions} />
+        <Toggle
+          {...args}
           id="checkbox-2"
           checked={checked}
           {...toggleActions}
@@ -85,53 +82,39 @@ export const Controlled = () => {
           }}
           value="c2"
         />
-      </div>
-    </div>
-  );
+      </>
+    );
+  }
 };
 
-export const WithChildren = () => {
+export const WithChildren = (args: any) => {
   return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div style={{ width: "405px" }}>
-        <Toggle
-          label={text("label", "Toggle label")}
-          id="checkbox"
-          value="c1"
-          {...toggleActions}
-        />
-        <Toggle
-          label={text("label", "Toggle label")}
-          id="checkbox-2"
-          value="c2"
-          {...toggleActions}
-        >
-          <Body type="body-02" style={{ marginTop: "8px", display: "block" }}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          </Body>
-        </Toggle>
-      </div>
-    </div>
+    <>
+      <Toggle {...args} id="checkbox" value="c1" {...toggleActions} />
+      <Toggle {...args} id="checkbox-2" value="c2" {...toggleActions}>
+        <Body type="body-02" style={{ marginTop: "8px", display: "block" }}>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet.
+        </Body>
+      </Toggle>
+    </>
   );
 };
 
 export const Skeleton = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <div
-        style={{
-          width: "405px",
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: "column"
-        }}
-      >
-        <ToggleSkeleton />
-      </div>
+    <div
+      style={{
+        width: "405px",
+        display: "flex",
+        flexWrap: "wrap",
+        flexDirection: "column"
+      }}
+    >
+      <ToggleSkeleton />
     </div>
   );
 };

@@ -46,22 +46,25 @@ export type DataTableProps = {
   size?: "large" | "default" | "small";
 };
 
-export const DataTable = React.forwardRef(function DataTable({
-  rows,
-  headers,
-  activeFilters,
-  sortedByColumn,
-  inline = false,
-  customSortFn,
-  size = "default",
-  sortDirection = "ascending",
-  itemsToShow,
-  searchQuery,
-  page,
-  itemsPerPage,
-  customSearchFilterFn,
-  children
-}: DataTableProps): JSX.Element {
+export const DataTable = React.forwardRef(function DataTable(
+  {
+    rows,
+    headers,
+    activeFilters,
+    sortedByColumn,
+    inline = false,
+    customSortFn,
+    size = "default",
+    sortDirection = "ascending",
+    itemsToShow,
+    searchQuery,
+    page,
+    itemsPerPage,
+    customSearchFilterFn,
+    children
+  }: DataTableProps,
+  ref: React.ForwardedRef<any>
+): JSX.Element {
   const [tableContainerProps] = useState<Partial<TableContainerProps>>({});
   const [tableProps] = useState<Partial<TableProps>>({});
   const [tableHeadProps] = useState<Partial<TableHeadProps>>();
@@ -145,6 +148,7 @@ export const DataTable = React.forwardRef(function DataTable({
       className={cx(`${prefix}--datatable ${prefix}--datatable-${size}`, {
         [`${prefix}--datatable-inline`]: inline === true
       })}
+      ref={ref}
     >
       {children?.({
         rows: processedRows,

@@ -1,4 +1,4 @@
-import { IconX } from "@tabler/icons";
+import { IconX } from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";
@@ -135,7 +135,7 @@ export const Badge = React.forwardRef(function Badge(
             {onClose && (
               <button
                 type="button"
-                tab-index={0}
+                tabIndex={0}
                 className={`${prefix}--badge-close`}
                 title={title}
                 onClick={onClose}

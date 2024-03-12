@@ -1,21 +1,38 @@
 import { action, actions } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 import { PasswordInput } from "./PasswordInput";
 import { PasswordInputSkeleton } from "./PasswordInputSkeleton";
 
 export default {
+  component: PasswordInput,
   title: "Input/PasswordInput",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div style={{ height: "100vh", padding: "32px" }}>
+        <Story />
+      </div>
+    )
+  ],
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["default", "small", "large"]
+      }
+    }
+  },
+  args: {
+    size: "default",
+    light: false,
+    fluid: false,
+    warningText: "",
+    errorText: "",
+    id: "textfield-01",
+    label: "Label",
+    placeholder: "Enter Password",
+    autoComplete: "off"
+  }
 };
-
-const sizeOptions = {
-  Default: "default",
-  Small: "small",
-  Large: "large"
-};
-
-const defaultSize = "default";
 
 const passwordActions = actions(
   "onBlur",
@@ -24,57 +41,37 @@ const passwordActions = actions(
   "onVisibilityChange"
 );
 
-export const Uncontrolled = () => {
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
+export const Uncontrolled = {
+  render: (args: any) => {
+    return (
       <PasswordInput
-        light={boolean("light", false)}
-        size={select("size", sizeOptions, defaultSize) as any}
-        fluid={boolean("fluid", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter Password")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
+        {...args}
         onChange={action("onChange")}
         {...passwordActions}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const ControlledTextValue = () => {
-  const [value, setValue] = useState<string>("");
-  return (
-    <div style={{ height: "100vh", padding: "32px" }}>
+export const ControlledTextValue = {
+  render: (args: any) => {
+    const [value, setValue] = useState<string>("");
+    return (
       <PasswordInput
-        light={boolean("light", false)}
-        size={select("size", sizeOptions, defaultSize) as any}
-        fluid={boolean("fluid", false)}
-        warningText={text("warningText", "")}
-        errorText={text("errorText", "")}
+        {...args}
         value={value}
-        id={text("id", "textfield-01")}
-        label={text("label", "Label")}
-        placeholder={text("placeholder", "Enter Password")}
-        autoComplete={select("autoComplete", ["off", "on"], "off") as any}
         onChange={(newValue, event) => {
           setValue(newValue);
           action("onChange")(newValue, event);
         }}
         {...passwordActions}
       />
-    </div>
-  );
+    );
+  }
 };
 
-export const Skeleton = () => {
-  return (
-    <div style={{ width: "100vw", height: "100vh", padding: "32px" }}>
-      <PasswordInputSkeleton
-        size={select("size", sizeOptions, defaultSize) as any}
-      />
-    </div>
-  );
+export const Skeleton = {
+  render: (args: any) => {
+    return <PasswordInputSkeleton size={args.size} />;
+  }
 };

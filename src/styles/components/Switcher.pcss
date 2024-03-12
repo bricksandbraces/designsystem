@@ -81,7 +81,8 @@
       width: 100%;
       padding: 0 var(--size-spacing-05);
       overflow: hidden;
-      transition: background-color var(--transition-app-01),
+      transition:
+        background-color var(--transition-app-01),
         box-shadow var(--transition-app-01);
       border: var(--size-border) var(--style-border) transparent;
       border-radius: calc(var(--component-radius-02) - 0.0625rem);
@@ -91,7 +92,8 @@
 
       &:focus-visible {
         outline: 0;
-        box-shadow: 0 0 0 0.0625rem var(--color-focus),
+        box-shadow:
+          0 0 0 0.0625rem var(--color-focus),
           0 0 0 0.25rem var(--color-focus-highlight);
       }
 
@@ -343,6 +345,7 @@
         transition: background-color var(--transition-app-01);
         text-overflow: ellipsis;
         white-space: nowrap;
+
         @mixin type--body-02;
       }
 

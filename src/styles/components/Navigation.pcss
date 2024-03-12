@@ -53,8 +53,10 @@
           justify-content: center;
           height: 100%;
           padding: 0 var(--size-spacing-04);
-          transition: background-color var(--transition-app-01),
-            color var(--transition-app-01), box-shadow var(--transition-app-01);
+          transition:
+            background-color var(--transition-app-01),
+            color var(--transition-app-01),
+            box-shadow var(--transition-app-01);
           border: var(--size-border) var(--style-border) transparent;
           background-color: transparent;
           box-shadow: 0 0 0 0;
@@ -67,7 +69,8 @@
             bottom: 0;
             width: 0;
             height: calc(var(--size-container-01) / 4);
-            transition: width var(--transition-app-01),
+            transition:
+              width var(--transition-app-01),
               opacity var(--transition-app-01);
             border-radius: calc(var(--component-radius-01) * 2);
             opacity: 0;
@@ -95,7 +98,8 @@
 
           &:focus-visible {
             outline: 0;
-            box-shadow: inset 0 0 0 0.1875rem var(--color-focus-highlight),
+            box-shadow:
+              inset 0 0 0 0.1875rem var(--color-focus-highlight),
               inset 0 0 0 0.1875rem var(--color-background),
               inset 0 0 0 0.25rem var(--color-focus);
           }
@@ -124,8 +128,10 @@
           max-width: var(--size-container-04);
           min-height: var(--size-container-04);
           max-height: var(--size-container-04);
-          transition: background-color var(--transition-app-01),
-            color var(--transition-app-01), box-shadow var(--transition-app-01);
+          transition:
+            background-color var(--transition-app-01),
+            color var(--transition-app-01),
+            box-shadow var(--transition-app-01);
           border: var(--size-border) var(--style-border) transparent;
           background-color: transparent;
           box-shadow: 0 0 0 0;
@@ -155,7 +161,8 @@
 
           &:focus-visible {
             outline: 0;
-            box-shadow: inset 0 0 0 0.1875rem var(--color-focus-highlight),
+            box-shadow:
+              inset 0 0 0 0.1875rem var(--color-focus-highlight),
               inset 0 0 0 0.1875rem var(--color-background),
               inset 0 0 0 0.25rem var(--color-focus);
           }
@@ -165,6 +172,7 @@
   }
 }
 
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-md) {
   .$(prefix)--navigation-header {
     &__menu-button {
@@ -173,6 +181,7 @@
   }
 }
 
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (max-width: $breakpoint-md) {
   .$(prefix)--navigation-header {
     & + .$(prefix)--sidenav {
@@ -185,6 +194,7 @@
   }
 }
 
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (max-width: $breakpoint-lg) {
   .$(prefix)--navigation-header {
     &__nav {
@@ -193,6 +203,7 @@
   }
 }
 
+/* stylelint-disable-next-line media-query-no-invalid */
 @media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
   .$(prefix)--navigation-header {
     justify-content: flex-end;

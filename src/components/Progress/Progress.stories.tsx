@@ -1,4 +1,3 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { Progress } from "./Progress";
 import { ProgressStep } from "./ProgressStep";
@@ -6,21 +5,27 @@ import { ProgressStepSkeleton } from "./ProgressStepSkeleton";
 
 export default {
   title: "Navigation/Progress",
-  decorators: [withKnobs]
+  decorators: [
+    (Story: any) => (
+      <div
+        style={{
+          display: "flex",
+          padding: "32px",
+          width: "100vw",
+          height: "100vh"
+        }}
+      >
+        <Story />
+      </div>
+    )
+  ]
 };
 
-export const Horizontal = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px",
-        width: "100vw",
-        height: "100vh"
-      }}
-    >
+export const Horizontal = {
+  render: (args: any) => {
+    return (
       <div>
-        <Progress>
+        <Progress {...args}>
           <ProgressStep inactive label="Cart" />
           <ProgressStep error label="Items" />
           <ProgressStep current label="Address and Shipment Information" />
@@ -28,22 +33,15 @@ export const Horizontal = () => {
           <ProgressStep label="Summary" />
         </Progress>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export const Vertical = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px",
-        width: "100vw",
-        height: "100vh"
-      }}
-    >
+export const Vertical = {
+  render: (args: any) => {
+    return (
       <div>
-        <Progress vertical>
+        <Progress vertical {...args}>
           <ProgressStep inactive label="Cart" />
           <ProgressStep error label="Items" />
           <ProgressStep current label="Address and Shipment Information" />
@@ -51,22 +49,15 @@ export const Vertical = () => {
           <ProgressStep label="Summary" />
         </Progress>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export const WithTooltip = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px",
-        width: "100vw",
-        height: "100vh"
-      }}
-    >
+export const WithTooltip = {
+  render: (args: any) => {
+    return (
       <div>
-        <Progress>
+        <Progress {...args}>
           <ProgressStep inactive label="Cart" />
           <ProgressStep
             tooltipContent="This is an error message"
@@ -79,22 +70,15 @@ export const WithTooltip = () => {
           <ProgressStep label="Summary" />
         </Progress>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export const SkeletonHorizontal = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px",
-        width: "100vw",
-        height: "100vh"
-      }}
-    >
+export const SkeletonHorizontal = {
+  render: (args: any) => {
+    return (
       <div>
-        <Progress>
+        <Progress {...args}>
           <ProgressStepSkeleton />
           <ProgressStepSkeleton />
           <ProgressStepSkeleton />
@@ -102,22 +86,15 @@ export const SkeletonHorizontal = () => {
           <ProgressStepSkeleton />
         </Progress>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export const SkeletonVertical = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px",
-        width: "100vw",
-        height: "100vh"
-      }}
-    >
+export const SkeletonVertical = {
+  render: (args: any) => {
+    return (
       <div>
-        <Progress vertical>
+        <Progress vertical {...args}>
           <ProgressStepSkeleton />
           <ProgressStepSkeleton />
           <ProgressStepSkeleton />
@@ -125,6 +102,6 @@ export const SkeletonVertical = () => {
           <ProgressStepSkeleton />
         </Progress>
       </div>
-    </div>
-  );
+    );
+  }
 };

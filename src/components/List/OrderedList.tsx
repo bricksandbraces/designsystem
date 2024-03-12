@@ -19,7 +19,7 @@ export type OrderedListProps = {
   nested?: boolean;
 };
 
-export const OrderedList = React.forwardRef(function OrderedList({
+export const OrderedList = function OrderedList({
   nested,
   children,
   className
@@ -35,4 +35,4 @@ export const OrderedList = React.forwardRef(function OrderedList({
       {children}
     </ol>
   );
-});
+};

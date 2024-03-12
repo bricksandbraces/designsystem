@@ -1,4 +1,8 @@
-import { IconArrowDown, IconArrowUp, IconSortDescending } from "@tabler/icons";
+import {
+  IconArrowDown,
+  IconArrowUp,
+  IconSortDescending
+} from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
 import { prefix } from "../../settings";

@@ -3,10 +3,10 @@ import {
   IconAlertTriangle,
   IconMinus,
   IconPlus
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 import cx from "classnames";
 import React from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { filterForKeys } from "../../helpers/keyboardUtilities";
 import { parseToNumber } from "../../helpers/numberUtilities";
 import { useControlledInput } from "../../hooks/useControlled";
