@@ -3,7 +3,6 @@ import { useDarkMode } from "storybook-dark-mode";
 import { defaultTheme } from "../src/theme";
 
 import "../src/styles/index.css";
-import "./storybook.css";
 
 const Layout = ({ children }) => {
   const isDark = useDarkMode();
@@ -23,6 +22,7 @@ const Layout = ({ children }) => {
           "linear-gradient(to right, rgba(13,13,13,1), rgba(13,13,13,0.3)), url(https://user-images.githubusercontent.com/33894877/148248514-6499eccf-2aae-4ebc-ab1a-7b033138df19.png)"
       };
 
+  // apply the theme to the body (css variables)
   useEffect(() => {
     Object.keys(currentTheme).forEach((token) => {
       document.body.style.setProperty("--" + token, currentTheme[token]);
