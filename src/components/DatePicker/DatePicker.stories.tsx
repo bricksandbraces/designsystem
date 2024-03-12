@@ -185,7 +185,7 @@ export const SingleWithCalendarControlled = {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-      <div style={{ height: "100vh", padding: "32px", color: "white" }}>
+      <>
         <div
           ref={containerRef}
           className={`${prefix}--datepicker-container ${prefix}--datepicker-default`}
@@ -251,17 +251,13 @@ export const SingleWithCalendarControlled = {
         >
           Reset to today
         </Button>
-      </div>
+      </>
     );
   }
 };
 
 export const Skeleton = {
   render: (args: any) => {
-    return (
-      <div style={{ height: "100vh", padding: "32px", color: "white" }}>
-        <DatePickerSkeleton size={args.size} />
-      </div>
-    );
+    return <DatePickerSkeleton size={args.size} />;
   }
 };

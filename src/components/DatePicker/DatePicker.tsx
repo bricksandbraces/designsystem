@@ -10,10 +10,12 @@ export type DatePickerProps = {
   light?: boolean;
 } & DayPickerProps;
 
-export const DatePicker = React.forwardRef(function DatePicker(
-  { className, open, light, ...rest }: DatePickerProps,
-  ref: React.ForwardedRef<any>
-) {
+export const DatePicker = function DatePicker({
+  className,
+  open,
+  light,
+  ...rest
+}: DatePickerProps) {
   return (
     <DayPicker
       showOutsideDays
@@ -24,7 +26,7 @@ export const DatePicker = React.forwardRef(function DatePicker(
         [`${prefix}--datepicker-light`]: light,
         [`${prefix}--datepicker-hidden`]: !open
       })}
-      {...{ ...rest, ref }}
+      {...rest}
     />
   );
-});
+};
