@@ -115,17 +115,5 @@ export const Controlled = {
 };
 
 export const Skeleton = () => {
-  return (
-    <div
-      style={{
-        padding: "32px"
-      }}
-    >
-      <Grid narrow>
-        <Column xlg={16} lg={16} md={8} sm={4}>
-          <SwitcherSkeleton />
-        </Column>
-      </Grid>
-    </div>
-  );
+  return <SwitcherSkeleton />;
 };

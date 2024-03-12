@@ -14,6 +14,7 @@ export default {
   ],
   args: {
     light: false,
+    type: "multi",
     code: `"scripts": {
     "build": "lerna run build --stream --prefix --npm-client yarn",
     "ci-check": "carbon-cli ci-check",
@@ -50,7 +51,7 @@ export const MultiLine = {};
 
 export const SingleLine = {
   args: {
-    single: true,
+    type: "single",
     code: `"scripts": {
   "build": "lerna run build --stream --prefix --npm-client yarn",
   "ci-check": "carbon-cli ci-check",
