@@ -3,6 +3,7 @@ import { useDarkMode } from "storybook-dark-mode";
 import { defaultTheme } from "../src/theme";
 
 import "../src/styles/index.css";
+import "./storybook.css";
 
 const Layout = ({ children }) => {
   const isDark = useDarkMode();
